@@ -27,6 +27,9 @@ export default function Home() {
             <a href="#gaussian" className="whitespace-nowrap hover:text-[var(--muted)]">
               Gaussian Splatting
             </a>
+            <a href="#streaming" className="whitespace-nowrap hover:text-[var(--muted)]">
+              Streaming Avatars
+            </a>
             <a href="#comparison" className="whitespace-nowrap hover:text-[var(--muted)]">
               Comparison
             </a>
@@ -49,14 +52,15 @@ export default function Home() {
               and feasible deployment.
             </p>
             <p>
-              Recent advances (2023-2024) have produced three distinct approaches to real-time
+              Recent advances (2023-2024) have produced several distinct approaches to real-time
               responsive avatars, each with unique trade-offs in latency, fidelity, control, and
-              system cost.
+              system cost. Additionally, streaming infrastructure like LiveKit now enables
+              production-ready avatar deployment with multiple provider integrations.
             </p>
           </div>
 
-          {/* Three Cards */}
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
+          {/* Four Cards */}
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-lg border border-[var(--border)] bg-[var(--card-bg)] p-6">
               <div
                 className="mb-4 inline-block rounded-full px-3 py-1 text-sm font-medium text-white"
@@ -96,6 +100,20 @@ export default function Home() {
               <p className="text-sm text-[var(--muted)]">
                 Neural 3D scene representation using Gaussian primitives that can be efficiently
                 animated and rendered in real-time.
+              </p>
+            </div>
+
+            <div className="rounded-lg border border-[var(--border)] bg-[var(--card-bg)] p-6">
+              <div
+                className="mb-4 inline-block rounded-full px-3 py-1 text-sm font-medium text-white"
+                style={{ backgroundColor: "var(--accent-streaming)" }}
+              >
+                Infrastructure
+              </div>
+              <h3 className="mb-2 text-lg font-semibold">Streaming Avatars</h3>
+              <p className="text-sm text-[var(--muted)]">
+                Production-ready WebRTC infrastructure integrating multiple avatar providers with
+                voice AI agents via LiveKit.
               </p>
             </div>
           </div>
@@ -368,6 +386,148 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Streaming Avatars Section */}
+        <section id="streaming" className="mb-16">
+          <div
+            className="mb-4 inline-block rounded-full px-3 py-1 text-sm font-medium text-white"
+            style={{ backgroundColor: "var(--accent-streaming)" }}
+          >
+            Production Ready
+          </div>
+          <h2 className="mb-6 text-3xl font-bold">Streaming Avatars with LiveKit</h2>
+
+          <div className="prose mb-8">
+            <p>
+              LiveKit Agents provides production-ready infrastructure for deploying real-time avatars
+              at scale. Rather than building avatar rendering from scratch, it integrates multiple
+              avatar providers through a unified API, handling WebRTC streaming, synchronization,
+              and voice AI pipelines automatically.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-lg border border-[var(--border)] bg-[var(--card-bg)] p-6">
+              <h3 className="mb-4 font-semibold">Key Features</h3>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 text-green-600">+</span>
+                  <span>Multiple avatar providers (Tavus, Hedra, Simli, etc.)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 text-green-600">+</span>
+                  <span>Built-in voice AI pipeline (STT + LLM + TTS)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 text-green-600">+</span>
+                  <span>WebRTC-based low-latency streaming</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 text-green-600">+</span>
+                  <span>Production deployment with load balancing</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 text-green-600">+</span>
+                  <span>Cross-platform SDKs (Web, iOS, Android, Flutter)</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="rounded-lg border border-[var(--border)] bg-[var(--card-bg)] p-6">
+              <h3 className="mb-4 font-semibold">Limitations</h3>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 text-red-500">-</span>
+                  <span>Requires third-party avatar provider subscription</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 text-red-500">-</span>
+                  <span>Less control over avatar rendering pipeline</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 text-red-500">-</span>
+                  <span>Dependent on provider capabilities and quality</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 text-red-500">-</span>
+                  <span>Per-minute or per-session pricing from providers</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-6 rounded-lg border border-[var(--border)] bg-[var(--card-bg)] p-6">
+            <h3 className="mb-4 font-semibold">Architecture</h3>
+            <div className="flex flex-col gap-4 text-sm md:flex-row md:items-center">
+              <div className="flex-1 rounded bg-[var(--background)] p-3 text-center">
+                <div className="font-medium">Agent Session</div>
+                <div className="text-[var(--muted)]">Python/Node.js</div>
+              </div>
+              <div className="hidden text-[var(--muted)] md:block">&rarr;</div>
+              <div className="flex-1 rounded bg-[var(--background)] p-3 text-center">
+                <div className="font-medium">Avatar Worker</div>
+                <div className="text-[var(--muted)]">Provider API</div>
+              </div>
+              <div className="hidden text-[var(--muted)] md:block">&rarr;</div>
+              <div className="flex-1 rounded bg-[var(--background)] p-3 text-center">
+                <div className="font-medium">LiveKit Room</div>
+                <div className="text-[var(--muted)]">WebRTC</div>
+              </div>
+              <div className="hidden text-[var(--muted)] md:block">&rarr;</div>
+              <div className="flex-1 rounded bg-[var(--background)] p-3 text-center">
+                <div className="font-medium">Client</div>
+                <div className="text-[var(--muted)]">Web/Mobile</div>
+              </div>
+            </div>
+            <p className="mt-4 text-sm text-[var(--muted)]">
+              The avatar worker joins as a separate participant, receiving audio from the agent and
+              publishing synchronized video back to users. This minimizes latency by having the
+              provider connect directly to LiveKit rooms.
+            </p>
+          </div>
+
+          <div className="mt-6 rounded-lg border border-[var(--border)] bg-[var(--card-bg)] p-6">
+            <h3 className="mb-4 font-semibold">Supported Avatar Providers</h3>
+            <div className="grid gap-4 text-sm md:grid-cols-3">
+              <div className="rounded bg-[var(--background)] p-4">
+                <div className="mb-2 font-medium">Tavus</div>
+                <p className="text-[var(--muted)]">
+                  Photorealistic digital twins with custom voice cloning and persona training.
+                </p>
+              </div>
+              <div className="rounded bg-[var(--background)] p-4">
+                <div className="mb-2 font-medium">Hedra</div>
+                <p className="text-[var(--muted)]">
+                  Character-based avatars with expressive animations and customizable styles.
+                </p>
+              </div>
+              <div className="rounded bg-[var(--background)] p-4">
+                <div className="mb-2 font-medium">Simli</div>
+                <p className="text-[var(--muted)]">
+                  Real-time lip-sync avatars optimized for conversational AI applications.
+                </p>
+              </div>
+              <div className="rounded bg-[var(--background)] p-4">
+                <div className="mb-2 font-medium">Anam</div>
+                <p className="text-[var(--muted)]">
+                  AI-powered digital humans with natural gestures and emotional expressions.
+                </p>
+              </div>
+              <div className="rounded bg-[var(--background)] p-4">
+                <div className="mb-2 font-medium">Beyond Presence</div>
+                <p className="text-[var(--muted)]">
+                  Enterprise-grade avatars for customer service and virtual assistance.
+                </p>
+              </div>
+              <div className="rounded bg-[var(--background)] p-4">
+                <div className="mb-2 font-medium">bitHuman</div>
+                <p className="text-[var(--muted)]">
+                  Hyper-realistic avatars with advanced facial animation technology.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Comparison Table Section */}
         <section id="comparison" className="mb-16">
           <h2 className="mb-6 text-3xl font-bold">Side-by-Side Comparison</h2>
@@ -395,6 +555,12 @@ export default function Home() {
                   >
                     Gaussian
                   </th>
+                  <th
+                    className="p-4 text-left font-semibold"
+                    style={{ color: "var(--accent-streaming)" }}
+                  >
+                    Streaming
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -403,42 +569,49 @@ export default function Home() {
                   <td className="p-4">~30-50ms (60+ FPS)</td>
                   <td className="p-4">~0.3-1s first frame, 20-30 FPS</td>
                   <td className="p-4">&lt;100ms (30-60 FPS)</td>
+                  <td className="p-4">~100-300ms (provider dependent)</td>
                 </tr>
                 <tr className="border-b border-[var(--border)]">
                   <td className="p-4 font-medium">Visual Realism</td>
                   <td className="p-4">High-quality CGI</td>
                   <td className="p-4">Photorealistic</td>
                   <td className="p-4">Photorealistic (subject-specific)</td>
+                  <td className="p-4">Varies by provider</td>
                 </tr>
                 <tr className="border-b border-[var(--border)]">
                   <td className="p-4 font-medium">Controllability</td>
                   <td className="p-4">Explicit, fine-grained</td>
                   <td className="p-4">Limited, audio-driven</td>
                   <td className="p-4">Moderate to high</td>
+                  <td className="p-4">Audio-driven, provider APIs</td>
                 </tr>
                 <tr className="border-b border-[var(--border)]">
                   <td className="p-4 font-medium">New Identity</td>
                   <td className="p-4">Moderate effort (modeling)</td>
                   <td className="p-4">One-shot (just an image)</td>
                   <td className="p-4">Low (capture + training)</td>
+                  <td className="p-4">Provider-specific setup</td>
                 </tr>
                 <tr className="border-b border-[var(--border)]">
                   <td className="p-4 font-medium">Training Required</td>
                   <td className="p-4">None per character</td>
                   <td className="p-4">Base model only</td>
                   <td className="p-4">Per-subject (hours)</td>
+                  <td className="p-4">None (managed by provider)</td>
                 </tr>
                 <tr className="border-b border-[var(--border)]">
                   <td className="p-4 font-medium">Hardware</td>
                   <td className="p-4">Gaming GPU</td>
                   <td className="p-4">A100+ or cloud</td>
                   <td className="p-4">Consumer GPU</td>
+                  <td className="p-4">Any (cloud-hosted)</td>
                 </tr>
                 <tr className="border-b border-[var(--border)]">
                   <td className="p-4 font-medium">Best For</td>
                   <td className="p-4">Production, precise control</td>
                   <td className="p-4">Quick deployment, any face</td>
                   <td className="p-4">VR/AR telepresence</td>
+                  <td className="p-4">Voice AI apps, rapid deploy</td>
                 </tr>
               </tbody>
             </table>
@@ -657,6 +830,90 @@ export default function Home() {
               Also see: GaussianSpeech (audio-driven), GaussianTalker
             </div>
           </div>
+
+          {/* LiveKit Tutorial */}
+          <div className="mb-8 rounded-lg border border-[var(--border)] bg-[var(--card-bg)] p-6">
+            <div
+              className="mb-4 inline-block rounded-full px-3 py-1 text-sm font-medium text-white"
+              style={{ backgroundColor: "var(--accent-streaming)" }}
+            >
+              Tutorial 4
+            </div>
+            <h3 className="mb-4 text-xl font-semibold">LiveKit Agents + Avatar</h3>
+
+            <div className="space-y-4 text-sm">
+              <div className="flex gap-4">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--accent-streaming)] font-bold text-white">
+                  1
+                </div>
+                <div>
+                  <div className="font-medium">Install LiveKit Agents SDK</div>
+                  <code className="mt-1 block rounded bg-[var(--background)] px-2 py-1 font-mono text-xs">
+                    pip install livekit-agents livekit-plugins-hedra
+                  </code>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--accent-streaming)] font-bold text-white">
+                  2
+                </div>
+                <div>
+                  <div className="font-medium">Configure API credentials</div>
+                  <p className="text-[var(--muted)]">
+                    Set up LiveKit Cloud account and obtain API keys from your chosen avatar
+                    provider (Hedra, Tavus, Simli, etc.).
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--accent-streaming)] font-bold text-white">
+                  3
+                </div>
+                <div>
+                  <div className="font-medium">Create Agent + Avatar session</div>
+                  <div className="mt-2 rounded bg-[var(--background)] p-3 font-mono text-xs">
+                    <pre className="overflow-x-auto">{`from livekit.agents import AgentSession
+from livekit.plugins import hedra
+
+# Create voice AI agent
+agent_session = AgentSession(
+    stt="assemblyai/universal-streaming",
+    llm="openai/gpt-4.1-mini",
+    tts="cartesia/sonic-3"
+)
+
+# Create avatar session
+avatar_session = hedra.AvatarSession()
+
+# Start avatar with agent
+await avatar_session.start(
+    agent_session=agent_session,
+    room=ctx.room
+)`}</pre>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--accent-streaming)] font-bold text-white">
+                  4
+                </div>
+                <div>
+                  <div className="font-medium">Deploy and connect frontend</div>
+                  <p className="text-[var(--muted)]">
+                    Use LiveKit&apos;s React hooks or native SDKs to display the avatar video track.
+                    The avatar worker publishes synchronized audio/video to the room.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 text-sm text-[var(--muted)]">
+              Providers: Tavus, Hedra, Simli, Anam, Beyond Presence, bitHuman, LiveAvatar
+            </div>
+          </div>
         </section>
 
         {/* Resources Section */}
@@ -709,6 +966,30 @@ export default function Home() {
               <div className="font-medium">Awesome Talking Head</div>
               <p className="text-sm text-[var(--muted)]">
                 Curated list of talking head generation papers and code
+              </p>
+            </a>
+
+            <a
+              href="https://github.com/livekit/agents"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border border-[var(--border)] bg-[var(--card-bg)] p-4 transition-colors hover:border-[var(--muted)]"
+            >
+              <div className="font-medium">LiveKit Agents</div>
+              <p className="text-sm text-[var(--muted)]">
+                Build real-time AI agents with voice and avatar support
+              </p>
+            </a>
+
+            <a
+              href="https://docs.livekit.io/agents/models/avatar/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border border-[var(--border)] bg-[var(--card-bg)] p-4 transition-colors hover:border-[var(--muted)]"
+            >
+              <div className="font-medium">LiveKit Avatar Docs</div>
+              <p className="text-sm text-[var(--muted)]">
+                Official documentation for integrating avatar providers
               </p>
             </a>
           </div>
