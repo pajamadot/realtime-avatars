@@ -12,6 +12,7 @@ export default function Home() {
             <div className="flex items-center gap-6">
               <a href="#methods" className="nav-link">Methods</a>
               <a href="#comparison" className="nav-link">Comparison</a>
+              <a href="#hybrids" className="nav-link">Hybrids</a>
               <a href="#implementation" className="nav-link">Implementation</a>
             </div>
           </nav>
@@ -21,20 +22,21 @@ export default function Home() {
       <main className="mx-auto max-w-4xl px-6 py-12 relative">
         {/* Title Section */}
         <article className="mb-12">
-          <p className="section-label mb-4">Research Survey · 2024</p>
+          <p className="section-label mb-4">Research Survey · January 2026</p>
           <h1 className="text-3xl md:text-4xl font-semibold mb-4 leading-tight">
             Real-Time Avatar Systems:<br />
             A Comparative Analysis
           </h1>
           <p className="text-lg text-[var(--muted)] max-w-2xl">
-            An overview of four approaches to building interactive digital humans,
-            examining trade-offs in latency, visual fidelity, controllability, and deployment.
+            A comprehensive survey of four approaches to building interactive digital humans,
+            examining trade-offs in latency, visual fidelity, controllability, and deployment
+            across graphics pipelines, generative models, neural rendering, and streaming infrastructure.
           </p>
         </article>
 
         {/* Abstract / Key Findings */}
         <section className="highlight-box mb-12">
-          <p className="section-label mb-3">Key Findings</p>
+          <p className="section-label mb-3">Key Findings (2026)</p>
           <div className="grid md:grid-cols-4 gap-6 text-center">
             <div>
               <div className="text-2xl font-semibold mb-1">60+ FPS</div>
@@ -45,12 +47,12 @@ export default function Home() {
               <div className="text-sm text-[var(--muted)]">Achievable latency</div>
             </div>
             <div>
-              <div className="text-2xl font-semibold mb-1">4</div>
-              <div className="text-sm text-[var(--muted)]">Distinct approaches</div>
+              <div className="text-2xl font-semibold mb-1">40x</div>
+              <div className="text-sm text-[var(--muted)]">Distillation speedup</div>
             </div>
             <div>
-              <div className="text-2xl font-semibold mb-1">10+</div>
-              <div className="text-sm text-[var(--muted)]">Open implementations</div>
+              <div className="text-2xl font-semibold mb-1">24-32 FPS</div>
+              <div className="text-sm text-[var(--muted)]">Diffusion real-time</div>
             </div>
           </div>
         </section>
@@ -67,10 +69,17 @@ export default function Home() {
             precise controllability, and feasible deployment.
           </p>
           <p className="text-[var(--muted)] mb-4">
-            Recent advances (2023–2024) have produced several distinct approaches to real-time
+            Recent advances (2023–2026) have produced several distinct approaches to real-time
             responsive avatars. This survey examines four primary methods, each with unique
-            characteristics suited to different use cases.
+            characteristics suited to different use cases. Rather than one approach replacing
+            the others, we are seeing convergence—future systems will likely combine elements
+            from graphics, generative AI, and neural rendering.
           </p>
+          <div className="research-note">
+            &ldquo;The day is not far when interacting with a digital character in real-time feels
+            nearly as natural as a video call with a real person—and it will likely be thanks
+            to the combination of these techniques.&rdquo;
+          </div>
         </section>
 
         {/* Methods Overview */}
@@ -84,28 +93,28 @@ export default function Home() {
                 title: "MetaHuman Pipeline",
                 type: "Graphics-based",
                 color: "var(--color-metahuman)",
-                desc: "Game-engine characters with rigged faces for real-time rendering",
+                desc: "Game-engine characters with rigged faces for real-time rendering at 60+ FPS",
               },
               {
                 num: "2.2",
                 title: "Generative Video Models",
                 type: "Diffusion / Transformer",
                 color: "var(--color-generative)",
-                desc: "AI models synthesizing photorealistic video from audio signals",
+                desc: "AI models synthesizing photorealistic video with 40x distillation speedup",
               },
               {
                 num: "2.3",
                 title: "Gaussian Splatting",
                 type: "Neural 3D Rendering",
                 color: "var(--color-gaussian)",
-                desc: "3D Gaussian primitives enabling fast photorealistic rendering",
+                desc: "3D Gaussian primitives enabling real-time photorealistic rendering",
               },
               {
                 num: "2.4",
                 title: "Streaming Avatars",
                 type: "Infrastructure",
                 color: "var(--color-streaming)",
-                desc: "Production-ready WebRTC systems with multiple providers",
+                desc: "Production-ready WebRTC systems with multiple avatar providers",
               },
             ].map((method) => (
               <a
@@ -140,12 +149,19 @@ export default function Home() {
             <h3 className="text-xl font-semibold">2.1 MetaHuman Pipeline</h3>
           </div>
 
-          <p className="text-[var(--muted)] mb-6">
+          <p className="text-[var(--muted)] mb-4">
             Epic Games&apos; MetaHuman framework exemplifies the graphics-based approach to digital
             humans. MetaHumans are highly detailed 3D character models with rigged faces and
             bodies, designed for real-time rendering in Unreal Engine. By driving these rigs
             with input data (live video, motion capture, or audio), one can achieve interactive
             animation at 60+ FPS.
+          </p>
+
+          <p className="text-[var(--muted)] mb-6">
+            In 2023, Epic introduced MetaHuman Animator, a tool using a 4D facial solver to combine
+            video and depth data from a single camera (e.g., an iPhone) and automatically retarget
+            an actor&apos;s performance onto any MetaHuman character. This captures subtle details
+            down to tongue movement driven by audio cues.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -168,6 +184,10 @@ export default function Home() {
                   <span className="marker-pro">+</span>
                   No per-person ML training required
                 </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-pro">+</span>
+                  Stable, deterministic output
+                </li>
               </ul>
             </div>
             <div className="card-alt p-5">
@@ -189,7 +209,35 @@ export default function Home() {
                   <span className="marker-con">−</span>
                   Manual design for specific likenesses
                 </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-con">−</span>
+                  Scaling to many concurrent users is costly
+                </li>
               </ul>
+            </div>
+          </div>
+
+          <div className="card p-5 mb-6">
+            <p className="font-medium mb-4">Key Technologies</p>
+            <div className="grid md:grid-cols-3 gap-4 text-sm">
+              <div>
+                <p className="font-medium mb-1">MetaHuman Animator</p>
+                <p className="text-[var(--muted)]">
+                  4D facial solver combining video and depth data for high-fidelity performance capture.
+                </p>
+              </div>
+              <div>
+                <p className="font-medium mb-1">Live Link System</p>
+                <p className="text-[var(--muted)]">
+                  Real-time streaming of facial blendshape parameters from iPhone or microphone input.
+                </p>
+              </div>
+              <div>
+                <p className="font-medium mb-1">NVIDIA Audio2Face</p>
+                <p className="text-[var(--muted)]">
+                  Pretrained ML model for audio-driven lip-sync that integrates with Unreal Engine.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -231,17 +279,23 @@ export default function Home() {
             <h3 className="text-xl font-semibold">2.2 Generative Video Models</h3>
           </div>
 
-          <p className="text-[var(--muted)] mb-6">
+          <p className="text-[var(--muted)] mb-4">
             AI generative models, based on diffusion or transformer architectures, directly
             synthesize video frames of a talking or moving person. These models can turn a
             single input image into a lifelike talking video with one-shot generalization
             to unseen identities—a significant advantage for rapid deployment.
           </p>
 
+          <p className="text-[var(--muted)] mb-6">
+            Recent research has attacked the speed problem from multiple angles: autoregressive
+            streaming with block-wise causal attention, aggressive diffusion distillation achieving
+            40x speedup, and adversarial refinement to recover quality lost in distillation.
+          </p>
+
           <div className="research-note">
-            &ldquo;Diffusion models have become the leading method for high-quality avatar video
-            generation. Recent distillation techniques achieve 40× speedup over vanilla diffusion,
-            enabling near real-time performance.&rdquo;
+            &ldquo;LiveTalk (Chern et al., 2025) introduces a real-time diffusion avatar that runs
+            the denoising process at 1/40 of the original runtime via a two-stage distillation
+            and refinement strategy, achieving ~24-25 FPS on a single high-end GPU.&rdquo;
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -262,7 +316,11 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="marker-pro">+</span>
-                  20-30 FPS achievable on high-end GPUs
+                  24-32 FPS achievable with distillation
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-pro">+</span>
+                  Rapid improvement via ML research
                 </li>
               </ul>
             </div>
@@ -285,30 +343,62 @@ export default function Home() {
                   <span className="marker-con">−</span>
                   Higher first-frame latency (~0.3-1s)
                 </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-con">−</span>
+                  Ethical concerns (deepfake potential)
+                </li>
               </ul>
             </div>
           </div>
 
-          <div className="card p-5">
-            <p className="font-medium mb-4">Key Techniques</p>
-            <div className="grid md:grid-cols-3 gap-4 text-sm">
+          <div className="card p-5 mb-6">
+            <p className="font-medium mb-4">Key Techniques (2024-2026)</p>
+            <div className="grid md:grid-cols-2 gap-6 text-sm">
               <div>
                 <p className="font-medium mb-1">Autoregressive Streaming</p>
-                <p className="text-[var(--muted)]">
-                  Block-wise causal attention enables real-time generation without future context.
+                <p className="text-[var(--muted)] mb-3">
+                  Block-wise causal attention (CausVid, Self-Forcing, Seaweed) enables real-time
+                  generation without future context, achieving orders-of-magnitude speedup.
                 </p>
               </div>
               <div>
                 <p className="font-medium mb-1">Long-term Consistency</p>
-                <p className="text-[var(--muted)]">
-                  Reference anchors and positional re-encoding prevent identity drift.
+                <p className="text-[var(--muted)] mb-3">
+                  Reference Sink and Reference-Anchored Positional Re-encoding (RAPR) prevent
+                  identity drift in 5+ minute continuous generation sessions.
                 </p>
               </div>
               <div>
                 <p className="font-medium mb-1">Adversarial Refinement</p>
                 <p className="text-[var(--muted)]">
-                  Second-stage discriminator training recovers detail lost in distillation.
+                  Consistency-aware discriminator training recovers detail lost in distillation,
+                  approaching quality of heavy non-real-time models.
                 </p>
+              </div>
+              <div>
+                <p className="font-medium mb-1">Avatar Forcing (Ki et al., 2026)</p>
+                <p className="text-[var(--muted)]">
+                  Combines diffusion forcing with preference optimization to achieve &lt;500ms
+                  latency for interactive conversational avatars.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="card p-5">
+            <p className="font-medium mb-4">Performance Benchmarks</p>
+            <div className="grid md:grid-cols-3 gap-4 text-sm">
+              <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
+                <div className="text-xl font-semibold mb-1">~0.33s</div>
+                <div className="text-[var(--muted)]">First frame latency (LiveTalk 1.3B)</div>
+              </div>
+              <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
+                <div className="text-xl font-semibold mb-1">24-25 FPS</div>
+                <div className="text-[var(--muted)]">Sustained generation (single GPU)</div>
+              </div>
+              <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
+                <div className="text-xl font-semibold mb-1">~32 FPS</div>
+                <div className="text-[var(--muted)]">SoulX-LiveTalk 14B (8× H800)</div>
               </div>
             </div>
           </div>
@@ -326,11 +416,18 @@ export default function Home() {
             <h3 className="text-xl font-semibold">2.3 Neural Gaussian Splatting</h3>
           </div>
 
+          <p className="text-[var(--muted)] mb-4">
+            3D Gaussian Splatting (3DGS), emerging in 2023, enables real-time rendering of
+            photorealistic 3D scenes using clouds of Gaussian primitives instead of dense
+            neural networks. By capturing a person as textured 3D Gaussians that can be
+            transformed and animated, we obtain a streaming neural avatar that runs extremely
+            fast and looks realistic.
+          </p>
+
           <p className="text-[var(--muted)] mb-6">
-            3D Gaussian Splatting (3DGS) enables real-time rendering of photorealistic 3D scenes
-            using clouds of Gaussian primitives instead of dense neural networks. By capturing a
-            person as textured 3D Gaussians that can be transformed and animated, we obtain a
-            streaming neural avatar that runs extremely fast and looks realistic.
+            Multi-view video capture of a person is used to optimize a Gaussian splatting model,
+            creating a personalized neural character—a digital asset that &ldquo;looks exactly like X.&rdquo;
+            Once trained, it can be driven by parametric rigs or audio/motion models.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -353,6 +450,10 @@ export default function Home() {
                   <span className="marker-pro">+</span>
                   Can be driven by parametric models
                 </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-pro">+</span>
+                  Lower runtime cost than diffusion
+                </li>
               </ul>
             </div>
             <div className="card-alt p-5">
@@ -374,28 +475,40 @@ export default function Home() {
                   <span className="marker-con">−</span>
                   Quality degrades outside training range
                 </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-con">−</span>
+                  Tooling less mature than game engines
+                </li>
               </ul>
             </div>
           </div>
 
-          <div className="card p-5">
+          <div className="card p-5 mb-6">
             <p className="font-medium mb-4">Notable Implementations</p>
             <div className="grid md:grid-cols-2 gap-6 text-sm">
               <div>
-                <p className="font-medium mb-1">D3GA (Drivable 3D Gaussian Avatars)</p>
+                <p className="font-medium mb-1">D3GA (Zielonka et al., 2025)</p>
                 <p className="text-[var(--muted)]">
-                  Factors full human avatars into layered Gaussian clusters (body, garments, face)
-                  attached to a deformable cage rig, enabling animation via standard motion inputs.
+                  Drivable 3D Gaussian Avatars factoring full human avatars into layered Gaussian
+                  clusters (body, garments, face) attached to a deformable cage rig. Handles complex
+                  phenomena like loose clothing through layered Gaussian sets.
                 </p>
               </div>
               <div>
-                <p className="font-medium mb-1">GaussianSpeech</p>
+                <p className="font-medium mb-1">GaussianSpeech (Aneja et al., 2025)</p>
                 <p className="text-[var(--muted)]">
-                  First photorealistic multi-view talking head from audio input, with
-                  expression-dependent color changes and high-frequency details like wrinkles.
+                  First photorealistic multi-view talking head from audio input with expression-dependent
+                  color changes. Supports high-frequency details like wrinkles through specialized
+                  perceptual losses.
                 </p>
               </div>
             </div>
+          </div>
+
+          <div className="research-note">
+            &ldquo;GaussianSpeech&apos;s representation supports expression-dependent color changes and
+            high-frequency details like wrinkles: as the person speaks or smiles, the model adjusts
+            the splats&apos; colors to simulate skin creases or micro-expressions.&rdquo;
           </div>
         </section>
 
@@ -438,6 +551,10 @@ export default function Home() {
                   <span className="marker-pro">+</span>
                   Cross-platform SDKs
                 </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-pro">+</span>
+                  No local GPU required
+                </li>
               </ul>
             </div>
             <div className="card-alt p-5">
@@ -458,6 +575,10 @@ export default function Home() {
                 <li className="flex items-start gap-2">
                   <span className="marker-con">−</span>
                   Per-minute or per-session pricing
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-con">−</span>
+                  Network latency dependency
                 </li>
               </ul>
             </div>
@@ -570,7 +691,7 @@ export default function Home() {
                   <td className="font-medium">Controllability</td>
                   <td>Fine-grained (rig)</td>
                   <td>Limited (audio)</td>
-                  <td>Moderate</td>
+                  <td>Moderate to high</td>
                   <td>API-based</td>
                 </tr>
                 <tr>
@@ -595,6 +716,13 @@ export default function Home() {
                   <td>Any (cloud)</td>
                 </tr>
                 <tr>
+                  <td className="font-medium">Runtime Cost</td>
+                  <td>Low (local render)</td>
+                  <td>High (inference)</td>
+                  <td>Low (splatting)</td>
+                  <td>Per-minute pricing</td>
+                </tr>
+                <tr>
                   <td className="font-medium">Best Use Case</td>
                   <td>Production control</td>
                   <td>Quick deployment</td>
@@ -609,9 +737,102 @@ export default function Home() {
 
         <div className="divider" />
 
+        {/* Hybrid Strategies */}
+        <section id="hybrids" className="mb-12">
+          <h2 className="text-2xl font-semibold mb-6">4. Hybrid Strategies</h2>
+
+          <p className="text-[var(--muted)] mb-6">
+            Given the strengths and weaknesses of each approach, researchers are exploring hybrid
+            solutions that combine elements of graphics, generative models, and neural renderers
+            to achieve the best of both worlds—controllability of a rig with realism of generative output.
+          </p>
+
+          <div className="grid gap-6 mb-6">
+            <div className="card p-5">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} />
+                <span className="text-[var(--accent)]">+</span>
+                <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} />
+                <h4 className="font-semibold">4.1 MetaHuman + Generative Enhancement</h4>
+              </div>
+              <p className="text-sm text-[var(--muted)] mb-4">
+                Start with a MetaHuman for real-time responsiveness and precise control, then use
+                a generative model to enhance realism. GeneFace++ exemplifies this: a 3D face model
+                ensures accurate lip movement, while a neural renderer produces realistic appearance.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4 text-sm">
+                <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+                  <p className="font-medium text-green-700 mb-1">Benefits</p>
+                  <p className="text-[var(--muted)]">Combines precision with realism. Rig enforces hard constraints while generative step adds rich detail.</p>
+                </div>
+                <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+                  <p className="font-medium text-red-700 mb-1">Challenges</p>
+                  <p className="text-[var(--muted)]">Complex pipeline. Risk of AI introducing unwanted movements. Additional latency from diffusion.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="card p-5">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="approach-dot" style={{ backgroundColor: "var(--color-gaussian)" }} />
+                <span className="text-[var(--accent)]">+</span>
+                <span className="badge">Parametric</span>
+                <h4 className="font-semibold">4.2 Gaussian + Parametric Driver</h4>
+              </div>
+              <p className="text-sm text-[var(--muted)] mb-4">
+                Drive a Gaussian avatar with classical parametric models (ARKit blendshapes, FLAME).
+                One person can puppeteer a photoreal avatar of someone else in real-time. VASA-3D
+                uses hybrid audio-driven and pose-driven control for this approach.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4 text-sm">
+                <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+                  <p className="font-medium text-green-700 mb-1">Benefits</p>
+                  <p className="text-[var(--muted)]">Low latency (~10ms tracking + fast render). Allows existing animation data to drive neural avatars.</p>
+                </div>
+                <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+                  <p className="font-medium text-red-700 mb-1">Challenges</p>
+                  <p className="text-[var(--muted)]">Calibration between driver and avatar. Extrapolating beyond training data may cause artifacts.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="card p-5">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} />
+                <span className="text-[var(--accent)]">+</span>
+                <span className="badge">Animation</span>
+                <h4 className="font-semibold">4.3 Generative Motion + Traditional Rendering</h4>
+              </div>
+              <p className="text-sm text-[var(--muted)] mb-4">
+                Use generative models to produce animation (not pixels)—GLDiTalker generates 3D mesh
+                vertex movements at ~30 FPS via latent diffusion. By splitting content generation
+                (AI) from rendering (deterministic), we get robust, tunable systems.
+              </p>
+              <div className="grid md:grid-cols-2 gap-4 text-sm">
+                <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+                  <p className="font-medium text-green-700 mb-1">Benefits</p>
+                  <p className="text-[var(--muted)]">Interpretable output (animation curves). Human designers can adjust without retraining models.</p>
+                </div>
+                <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+                  <p className="font-medium text-red-700 mb-1">Challenges</p>
+                  <p className="text-[var(--muted)]">Bridging representation gaps between AI output and rig parameters. Motion retargeting complexity.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="research-note">
+            &ldquo;Future MetaHumans might internally use neural networks to render facial detail,
+            making them as photoreal as diffusion models while remaining fully controllable—
+            we are likely to see convergence rather than one approach replacing the others.&rdquo;
+          </div>
+        </section>
+
+        <div className="divider" />
+
         {/* Implementation Guide */}
         <section id="implementation" className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">4. Implementation</h2>
+          <h2 className="text-2xl font-semibold mb-6">5. Implementation</h2>
 
           <p className="text-[var(--muted)] mb-6">
             The following guides provide starting points for each approach. All referenced
@@ -622,13 +843,14 @@ export default function Home() {
           <div className="card p-6 mb-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} />
-              <h4 className="font-semibold">4.1 MetaHuman + Live Link</h4>
+              <h4 className="font-semibold">5.1 MetaHuman + Live Link</h4>
             </div>
             <ol className="numbered-list text-sm text-[var(--muted)]">
               <li>Install Unreal Engine 5 from Epic Games Launcher</li>
               <li>Create character using MetaHuman Creator web tool</li>
               <li>Install Live Link Face app on iPhone, connect to Unreal</li>
               <li>Enable Live Link plugin and connect ARKit face data to MetaHuman blueprint</li>
+              <li>Optionally integrate NVIDIA Audio2Face for audio-driven lip-sync</li>
             </ol>
           </div>
 
@@ -636,7 +858,7 @@ export default function Home() {
           <div className="card p-6 mb-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} />
-              <h4 className="font-semibold">4.2 SadTalker (Diffusion-based)</h4>
+              <h4 className="font-semibold">5.2 SadTalker (Diffusion-based)</h4>
             </div>
             <ol className="numbered-list text-sm text-[var(--muted)]">
               <li>
@@ -661,11 +883,30 @@ export default function Home() {
             </ol>
           </div>
 
+          {/* GeneFace++ Implementation */}
+          <div className="card p-6 mb-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} />
+              <h4 className="font-semibold">5.3 GeneFace++ (Hybrid NeRF)</h4>
+            </div>
+            <ol className="numbered-list text-sm text-[var(--muted)]">
+              <li>
+                <div>
+                  Clone repository
+                  <div className="code mt-2">git clone https://github.com/yerfor/GeneFacePlusPlus.git</div>
+                </div>
+              </li>
+              <li>Install PyTorch and dependencies for NeRF rendering</li>
+              <li>Download pretrained audio-to-motion and neural renderer models</li>
+              <li>Run real-time audio-driven generation on a single GPU with strong lip-sync</li>
+            </ol>
+          </div>
+
           {/* Gaussian Implementation */}
           <div className="card p-6 mb-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-gaussian)" }} />
-              <h4 className="font-semibold">4.3 D3GA (Gaussian Avatars)</h4>
+              <h4 className="font-semibold">5.4 D3GA (Gaussian Avatars)</h4>
             </div>
             <ol className="numbered-list text-sm text-[var(--muted)]">
               <li>
@@ -684,7 +925,7 @@ export default function Home() {
           <div className="card p-6 mb-6">
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-streaming)" }} />
-              <h4 className="font-semibold">4.4 LiveKit Agents + Avatar</h4>
+              <h4 className="font-semibold">5.5 LiveKit Agents + Avatar</h4>
             </div>
             <ol className="numbered-list text-sm text-[var(--muted)]">
               <li>
@@ -702,21 +943,87 @@ export default function Home() {
 
         <div className="divider" />
 
+        {/* Discussion */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-6">6. Discussion & Outlook</h2>
+
+          <p className="text-[var(--muted)] mb-4">
+            The rapid progress in responsive digital human technologies is bringing us closer to
+            avatars that can engage in natural, face-to-face style conversations. Each approach
+            contributes vital pieces: graphics gives interactivity, generative AI gives authenticity,
+            and neural rendering gives personalization.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div className="card-alt p-5">
+              <p className="font-medium mb-3">Latency vs. Quality Trade-off</p>
+              <p className="text-sm text-[var(--muted)]">
+                Real-time systems historically meant compromising fidelity, but that gap is closing.
+                With distillation and powerful hardware, even complex models hit real-time thresholds.
+                Adaptive systems can adjust quality on the fly—lower during fast dialogue, higher
+                during pauses.
+              </p>
+            </div>
+            <div className="card-alt p-5">
+              <p className="font-medium mb-3">Human-Centric Evaluation</p>
+              <p className="text-sm text-[var(--muted)]">
+                Users strongly prefer avatars with responsive listening behaviors and timely nods.
+                It&apos;s not just about photorealistic speaking, but behaving realistically in two-way
+                interaction. This drives hybrid approaches combining language models (knowing when
+                to nod) with visual models (executing naturally).
+              </p>
+            </div>
+          </div>
+
+          <div className="research-note mb-6">
+            &ldquo;We can expect tighter integration of language understanding, voice synthesis, and
+            visual animation—essentially full conversational AI avatars that not only look and
+            sound human but also act and react in a human-like loop.&rdquo;
+          </div>
+
+          <div className="card p-5">
+            <p className="font-medium mb-3">Ethical Considerations</p>
+            <p className="text-sm text-[var(--muted)]">
+              With photoreal digital humans come concerns: deepfake misuse, identity theft, and
+              recreating someone without consent. Real-time deepfakes are practically possible—an
+              avatar could mimic a celebrity in a live call. The community is developing watermarking,
+              gatekeeping models, and consent requirements as necessary norms.
+            </p>
+          </div>
+        </section>
+
+        <div className="divider" />
+
         {/* References / Resources */}
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">5. References & Resources</h2>
+          <h2 className="text-2xl font-semibold mb-6">7. References & Resources</h2>
 
           <div className="grid md:grid-cols-2 gap-4">
             {[
               {
-                title: "SadTalker",
-                desc: "Audio-driven talking head generation with 3D motion",
+                title: "SadTalker (CVPR 2023)",
+                desc: "Audio-driven talking head with 3D motion coefficients",
                 url: "https://github.com/OpenTalker/SadTalker",
               },
               {
-                title: "D3GA",
+                title: "GeneFace++",
+                desc: "Real-time NeRF-based talking head with strong lip-sync",
+                url: "https://github.com/yerfor/GeneFacePlusPlus",
+              },
+              {
+                title: "D3GA (3DV 2025)",
                 desc: "Drivable 3D Gaussian Avatars (Facebook Research)",
                 url: "https://github.com/facebookresearch/D3GA",
+              },
+              {
+                title: "GaussianSpeech (ICCV 2025)",
+                desc: "Audio-driven multi-view Gaussian talking heads",
+                url: "https://github.com/shivangi-aneja/GaussianSpeech",
+              },
+              {
+                title: "OmniAvatar",
+                desc: "1.3B audio-driven diffusion for one-shot avatars",
+                url: "https://github.com/omni-avatar/OmniAvatar",
               },
               {
                 title: "Avatarify",
@@ -727,11 +1034,6 @@ export default function Home() {
                 title: "LiveKit Agents",
                 desc: "Real-time AI agents with avatar support",
                 url: "https://github.com/livekit/agents",
-              },
-              {
-                title: "LiveKit Avatar Documentation",
-                desc: "Official integration guide for avatar providers",
-                url: "https://docs.livekit.io/agents/models/avatar/",
               },
               {
                 title: "Awesome Talking Head Generation",
@@ -765,7 +1067,7 @@ export default function Home() {
               Real-Time Avatar Systems: A Comparative Analysis
             </p>
             <p className="footer-text">
-              Based on research from 2023–2025
+              Based on research from 2023–2026 · Last updated January 2026
             </p>
           </div>
         </div>
