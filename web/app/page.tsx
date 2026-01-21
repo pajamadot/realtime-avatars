@@ -1021,6 +1021,11 @@ export default function Home() {
                 url: "https://github.com/shivangi-aneja/GaussianSpeech",
               },
               {
+                title: "ICo3D (IJCV 2025)",
+                desc: "Interactive conversational 3D avatars with Gaussian Splatting",
+                url: "https://ico3d.github.io/",
+              },
+              {
                 title: "OmniAvatar",
                 desc: "1.3B audio-driven diffusion for one-shot avatars",
                 url: "https://github.com/omni-avatar/OmniAvatar",
