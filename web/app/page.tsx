@@ -1,3 +1,5 @@
+import GaussianSplatDemo from './components/GaussianSplatDemo';
+
 export default function Home() {
   return (
     <div className="min-h-screen relative">
@@ -509,6 +511,19 @@ export default function Home() {
             &ldquo;GaussianSpeech&apos;s representation supports expression-dependent color changes and
             high-frequency details like wrinkles: as the person speaks or smiles, the model adjusts
             the splats&apos; colors to simulate skin creases or micro-expressions.&rdquo;
+          </div>
+
+          {/* Interactive Demo */}
+          <div className="card p-5 mt-6">
+            <p className="font-medium mb-4">Interactive Demo: 3D Gaussian Splatting</p>
+            <p className="text-sm text-[var(--muted)] mb-4">
+              Experience real-time Gaussian splatting rendering in your browser. This demo shows a
+              photorealistic 3D scene captured and rendered using Gaussian primitives.
+            </p>
+            <GaussianSplatDemo className="h-[400px] bg-black/20" />
+            <p className="text-xs text-[var(--muted)] mt-3 text-center">
+              Powered by <a href="https://lumalabs.ai" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">Luma AI</a> WebGL renderer
+            </p>
           </div>
         </section>
 
