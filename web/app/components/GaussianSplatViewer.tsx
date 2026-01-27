@@ -35,10 +35,17 @@ function LumaSplatsComponent({ source, position = [0, 0, 0], rotation = [0, 0, 0
     };
   }, [source, scene, position, rotation, scale]);
 
-  useFrame(() => {
-    if (splatRef.current) {
-      splatRef.current.rotation.y += 0.002;
-    }
+  useFrame((state) => {
+    if (!splatRef.current) return;
+
+    const t = state.clock.getElapsedTime();
+    const idleBob = Math.sin(t * 1.1) * 0.03;
+    const idleBreath = 1 + Math.sin(t * 1.6) * 0.01;
+    const idleYaw = Math.sin(t * 0.35) * 0.12;
+
+    splatRef.current.position.set(position[0], position[1] + idleBob, position[2]);
+    splatRef.current.rotation.set(rotation[0] + Math.sin(t * 0.45) * 0.03, rotation[1] + idleYaw, rotation[2]);
+    splatRef.current.scale.setScalar(scale * idleBreath);
   });
 
   return null;
@@ -69,7 +76,7 @@ interface GaussianSplatViewerProps {
 }
 
 export default function GaussianSplatViewer({
-  source = 'https://lumalabs.ai/capture/822bac8d-70d6-404e-aaae-f89f46672c67',
+  source = 'https://lumalabs.ai/capture/83e9aae8-7023-448e-83a6-53ccb377ec86',
   className = ''
 }: GaussianSplatViewerProps) {
   const [isClient, setIsClient] = useState(false);

@@ -515,10 +515,11 @@ export default function Home() {
 
           {/* Interactive Demo */}
           <div className="card p-5 mt-6">
-            <p className="font-medium mb-4">Interactive Demo: 3D Gaussian Splatting</p>
+            <p className="font-medium mb-4">Interactive Demo: Animated Gaussian Splat Avatar</p>
             <p className="text-sm text-[var(--muted)] mb-4">
-              Experience real-time Gaussian splatting rendering in your browser. This demo shows a
-              photorealistic 3D scene captured and rendered using Gaussian primitives.
+              A digital human captured as a Gaussian splat avatar, with an idle animation loop to
+              keep the presence feeling alive. This keeps the demo aligned with real-time avatar
+              experiences while staying fully browser-native.
             </p>
             <GaussianSplatDemo className="h-[400px] bg-black/20" />
             <p className="text-xs text-[var(--muted)] mt-3 text-center">
