@@ -32,7 +32,27 @@ Optional:
 The Worker exposes:
 - `POST /api/livekit/token`
 
+## Agent dispatch (LiveKit Agents)
+
+If you are using LiveKit Agents (including LiveKit Cloud Agents), you can ask the token issuer to
+dispatch an agent when the first participant joins.
+
+Send either:
+- `agent_name` (simple), or
+- `room_config` (advanced passthrough; maps to the JWT claim `roomConfig`)
+
+Example request:
+
+```json
+{
+  "room_name": "realtime-avatar-demo",
+  "participant_identity": "web-user-123",
+  "participant_name": "web-user",
+  "agent_name": "avatar-agent",
+  "agent_metadata": "{\"session\":\"demo\"}"
+}
+```
+
 You can either:
 1) Bind the Worker to the same domain/path as your website (`/api/livekit/token`), so the frontend can use the default URL.
 2) Or deploy it to a separate domain and set `NEXT_PUBLIC_LIVEKIT_TOKEN_ENDPOINT` in the web build to that full URL.
-

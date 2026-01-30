@@ -20,6 +20,7 @@ Option A: Next.js API route (Node)
 
 Option B (Cloudflare): Worker token service
 - `workers/livekit-token/` implements `POST /api/livekit/token` using WebCrypto (HS256 JWT).
+  - Supports agent dispatch via `agent_name` / `room_config` (maps to the JWT claim `roomConfig`).
 
 If the Worker is hosted on a different origin, set `NEXT_PUBLIC_LIVEKIT_TOKEN_ENDPOINT` in the web build to that full URL.
 
@@ -30,6 +31,12 @@ Server env vars / secrets (set on the token issuer):
 - `LIVEKIT_API_SECRET`
 
 You also need a running agent that publishes an avatar stream into the room. A minimal Hedra example is in `agents/livekit-hedra-avatar/`.
+
+### LiveKit Cloud notes
+
+- LiveKit Cloud provides the SFU/RTC backend (use your Cloud project URL for `LIVEKIT_URL`, e.g. `wss://...livekit.cloud`).
+- Token minting must run somewhere that can hold `LIVEKIT_API_SECRET` (Worker/Node backend is fine).
+- The *avatar agent* must run as a long-lived process (your own server, or LiveKit Cloud Agents). A Cloudflare Worker cannot run the real-time media pipeline.
 
 ## Local dev
 
