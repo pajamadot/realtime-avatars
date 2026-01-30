@@ -1107,7 +1107,7 @@ export default function Home() {
           <h3 className="text-xl font-semibold mb-4">7.1 Living Research Feed (Auto-updating)</h3>
           <p className="text-sm text-[var(--muted)] mb-6">
             This section is generated from an updater script so the site can continuously evolve as new papers land.
-            It is intentionally broad (keyword-based) to act as an “inbox” rather than a curated bibliography.
+            It is intentionally broad (keyword-based) to act as an "inbox" rather than a curated bibliography.
           </p>
           <LivingResearchFeed />
         </section>

@@ -7,7 +7,13 @@ const MAX_RESULTS_PER_METHOD = 12;
 
 function stripHtml(input) {
   if (!input) return '';
-  return String(input).replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+  const cleaned = String(input).replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+  // Keep output mostly-ASCII to avoid mojibake across different terminals.
+  return cleaned
+    .replace(/[\u2018\u2019]/g, "'")
+    .replace(/[\u201C\u201D]/g, '"')
+    .replace(/[\u2013\u2014]/g, '-')
+    .replace(/\u2026/g, '...');
 }
 
 function normalizeTitle(t) {
@@ -28,7 +34,7 @@ function normalizeSummary(s) {
   // Keep it short enough for a compact UI card.
   const limit = 280;
   if (cleaned.length <= limit) return cleaned;
-  return `${cleaned.slice(0, limit - 1)}…`;
+  return `${cleaned.slice(0, Math.max(0, limit - 3))}...`;
 }
 
 function normalizeIsoDate(d) {
