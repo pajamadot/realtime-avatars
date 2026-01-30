@@ -6,6 +6,7 @@ type FeedItem = {
   published?: string;
   authors?: string;
   summary?: string;
+  tags?: string[];
 };
 
 type FeedMethod = {
@@ -76,6 +77,15 @@ export default function LivingResearchFeed({ className = '' }: { className?: str
                     {item.summary ? (
                       <p className="text-xs text-[var(--muted)] mt-2 line-clamp-3">{item.summary}</p>
                     ) : null}
+                    {item.tags?.length ? (
+                      <div className="mt-2 flex flex-wrap gap-1">
+                        {item.tags.slice(0, 6).map((t) => (
+                          <span key={t} className="badge text-[0.6875rem] py-0.5 px-2">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
                   </a>
                 ))}
               </div>
@@ -90,4 +100,3 @@ export default function LivingResearchFeed({ className = '' }: { className?: str
     </div>
   );
 }
-

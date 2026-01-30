@@ -4,6 +4,7 @@ type FeedItem = {
   title: string;
   link: string;
   published?: string;
+  tags?: string[];
 };
 
 type FeedMethod = {
@@ -94,6 +95,15 @@ export default function ResearchHighlights({
                 </span>
               </div>
               <p className="text-xs text-[var(--muted)] mt-1">{row.methodLabel}</p>
+              {row.item.tags?.length ? (
+                <div className="mt-2 flex flex-wrap gap-1">
+                  {row.item.tags.slice(0, 4).map((t) => (
+                    <span key={t} className="badge text-[0.6875rem] py-0.5 px-2">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
             </div>
           </a>
         ))}
@@ -101,4 +111,3 @@ export default function ResearchHighlights({
     </div>
   );
 }
-

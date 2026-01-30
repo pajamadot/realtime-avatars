@@ -100,6 +100,33 @@ function scoreItem(item, includeAny, excludeAny) {
   return includeScore - excludeScore;
 }
 
+const TAG_RULES = [
+  { tag: 'real-time', any: ['real-time', 'realtime', 'low-latency', 'low latency'] },
+  { tag: 'audio-driven', any: ['audio-driven', 'audio driven', 'speech-driven', 'speech driven'] },
+  { tag: 'lip-sync', any: ['lip-sync', 'lipsync', 'lip sync'] },
+  { tag: 'diffusion', any: ['diffusion', 'dit', 'diffusion transformer'] },
+  { tag: 'transformer', any: ['transformer', 'attention'] },
+  { tag: 'gaussian', any: ['gaussian', '3dgs', 'splatting'] },
+  { tag: 'monocular', any: ['monocular', 'single-view', 'single view', 'single image'] },
+  { tag: 'multi-view', any: ['multi-view', 'multiview', 'multi view'] },
+  { tag: 'few-shot', any: ['few-shot', 'few shot'] },
+  { tag: 'relighting', any: ['relight', 'relighting', 'illumination'] },
+  { tag: 'compression', any: ['compression', 'bitrate', 'codec', 'neural compression'] },
+  { tag: 'telepresence', any: ['telepresence', 'video conferencing', 'conferencing'] },
+  { tag: 'webrtc', any: ['webrtc', 'sfu'] },
+];
+
+function extractTags(item) {
+  const text = `${item.title ?? ''}\n${item.summary ?? ''}`.toLowerCase();
+  const tags = [];
+  for (const rule of TAG_RULES) {
+    if (rule.any.some((kw) => text.includes(String(kw).toLowerCase()))) {
+      tags.push(rule.tag);
+    }
+  }
+  return Array.from(new Set(tags)).sort();
+}
+
 async function main() {
   const config = await readJson(CONFIGFILE);
   const methods = config?.methods ?? {};
@@ -144,6 +171,9 @@ async function main() {
       authors: normalizeAuthors(it.creator ?? it.author),
       summary: normalizeSummary(it.summary ?? it.contentSnippet ?? it.content),
     }));
+    for (const it of items) {
+      it.tags = extractTags(it);
+    }
 
     // Deduplicate by link and keep output stable.
     const byLink = new Map();
