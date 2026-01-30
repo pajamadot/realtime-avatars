@@ -2,6 +2,7 @@ import GaussianSplatDemo from './components/GaussianSplatDemo';
 import LivingResearchFeed from './components/LivingResearchFeed';
 import ResearchHighlights from './components/ResearchHighlights';
 import RecentPapers from './components/RecentPapers';
+import ToolingHighlights from './components/ToolingHighlights';
 import ToolingRadar from './components/ToolingRadar';
 
 export default function Home() {
@@ -66,7 +67,10 @@ export default function Home() {
         </section>
 
         <section className="mb-12">
-          <ResearchHighlights />
+          <div className="grid md:grid-cols-2 gap-6">
+            <ResearchHighlights />
+            <ToolingHighlights />
+          </div>
         </section>
 
         <div className="divider" />
