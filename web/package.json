@@ -9,7 +9,9 @@
     "lint": "eslint",
     "research:update": "node scripts/update-research-feed.mjs",
     "research:refresh": "npm run research:update && npm run build",
-    "tooling:update": "node scripts/update-tooling-feed.mjs"
+    "tooling:update": "node scripts/update-tooling-feed.mjs",
+    "feeds:update": "npm run research:update && npm run tooling:update",
+    "feeds:refresh": "npm run feeds:update && npm run build"
   },
   "dependencies": {
     "@lumaai/luma-web": "^0.2.2",
