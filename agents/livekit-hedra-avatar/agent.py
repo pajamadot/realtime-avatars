@@ -9,12 +9,30 @@ from livekit.agents.voice import Agent, AgentSession
 from livekit.plugins import hedra, openai, silero
 
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+_HERE = Path(__file__).resolve().parent
+
+
+def _find_repo_root_for_secrets(start: Path) -> Path | None:
+    # When running from the monorepo, this file lives at:
+    #   <repo>/agents/livekit-hedra-avatar/agent.py
+    #
+    # When deployed to LiveKit Cloud, the build context is usually the agent folder,
+    # so this file will be at:
+    #   /app/agent.py
+    #
+    # We walk upwards safely and only use the repo root if it contains secrets/.ENV.
+    for p in (start, *start.parents):
+        if (p / "secrets" / ".ENV").exists():
+            return p
+    return None
+
 
 # Support repo-level secrets storage (not checked into git), while still allowing
 # per-agent overrides via a local `.env` next to this file.
-load_dotenv(dotenv_path=_REPO_ROOT / "secrets" / ".ENV", override=False)
-load_dotenv(dotenv_path=Path(__file__).resolve().parent / ".env", override=False)
+_repo_root = _find_repo_root_for_secrets(_HERE)
+if _repo_root:
+    load_dotenv(dotenv_path=_repo_root / "secrets" / ".ENV", override=False)
+load_dotenv(dotenv_path=_HERE / ".env", override=False)
 
 
 def _env(name: str, default: str = "") -> str:
@@ -57,13 +75,21 @@ class HedraRealtimeAgent(Agent):
 async def entrypoint(ctx: agents.JobContext):
     # Hedra creates a live avatar stream from a static face image, driven by the agent's
     # speech output. This requires no GPU on your side.
-    avatar_image = _load_avatar_image()
-
     avatar_identity = _env("AVATAR_PARTICIPANT_IDENTITY", "hedra-avatar")
-    avatar_session = hedra.AvatarSession(
-        avatar_participant_identity=avatar_identity,
-        avatar_image=avatar_image,
-    )
+
+    # Prefer a pre-created Hedra avatar when available (no image shipped in the container).
+    hedra_avatar_id = _env("HEDRA_AVATAR_ID")
+    if hedra_avatar_id:
+        avatar_session = hedra.AvatarSession(
+            avatar_participant_identity=avatar_identity,
+            avatar_id=hedra_avatar_id,
+        )
+    else:
+        avatar_image = _load_avatar_image()
+        avatar_session = hedra.AvatarSession(
+            avatar_participant_identity=avatar_identity,
+            avatar_image=avatar_image,
+        )
 
     session = AgentSession(
         llm=openai.realtime.RealtimeModel(),
