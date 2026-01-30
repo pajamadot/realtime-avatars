@@ -206,6 +206,15 @@ async function main() {
   }
 
   await fs.mkdir(path.dirname(OUTFILE), { recursive: true });
+  const comparableNext = { source: next.source, methods: next.methods };
+  const comparableExisting = existingOut ? { source: existingOut.source, methods: existingOut.methods } : null;
+
+  if (comparableExisting && JSON.stringify(comparableExisting) === JSON.stringify(comparableNext)) {
+    // eslint-disable-next-line no-console
+    console.log(`No changes for ${path.relative(process.cwd(), OUTFILE)}`);
+    return;
+  }
+
   await fs.writeFile(OUTFILE, `${JSON.stringify(next, null, 2)}\n`, 'utf8');
 
   // eslint-disable-next-line no-console
