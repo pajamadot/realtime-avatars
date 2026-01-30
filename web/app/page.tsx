@@ -19,6 +19,7 @@ export default function Home() {
               <a href="#comparison" className="nav-link">Comparison</a>
               <a href="#hybrids" className="nav-link">Hybrids</a>
               <a href="#implementation" className="nav-link">Implementation</a>
+              <a href="#living-feed" className="nav-link">Feed</a>
             </div>
           </nav>
         </div>
