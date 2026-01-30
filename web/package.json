@@ -6,7 +6,8 @@
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "research:update": "node scripts/update-research-feed.mjs"
   },
   "dependencies": {
     "@lumaai/luma-web": "^0.2.2",
@@ -25,6 +26,7 @@
     "@types/three": "^0.157.2",
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
+    "rss-parser": "^3.13.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

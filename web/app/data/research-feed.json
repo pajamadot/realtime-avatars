@@ -1,0 +1,317 @@
+{
+  "updatedAt": "2026-01-30T17:53:38.155Z",
+  "source": "arXiv",
+  "methods": {
+    "metahuman": {
+      "label": "MetaHuman / Graphics Pipeline",
+      "query": "cat:cs.CV AND (all:metahuman OR (all:realtime AND all:facial AND all:animation) OR (all:facial AND all:retargeting AND all:rig))",
+      "items": [
+        {
+          "title": "Improving Facial Rig Semantics for Tracking and Retargeting",
+          "link": "https://arxiv.org/abs/2508.08429v1",
+          "published": "2025-08-11T19:39:04.000Z",
+          "authors": "Dalton Omens",
+          "summary": "In this paper, we consider retargeting a tracked facial performance to either another person or to a virtual character in a game or virtual reality (VR) environment. We remove the difficulties associated with identifying and retargeting the semantics of one rig framework to anot…"
+        },
+        {
+          "title": "MienCap: Realtime Performance-Based Facial Animation with Live Mood Dynamics",
+          "link": "https://arxiv.org/abs/2508.04687v1",
+          "published": "2025-08-06T17:50:01.000Z",
+          "authors": "Ye Pan",
+          "summary": "Our purpose is to improve performance-based animation which can drive believable 3D stylized characters that are truly perceptual. By combining traditional blendshape animation techniques with multiple machine learning models, we present both non-real time and real time solution…"
+        },
+        {
+          "title": "MEDTalk: Multimodal Controlled 3D Facial Animation with Dynamic Emotions by Disentangled Embedding",
+          "link": "https://arxiv.org/abs/2507.06071v4",
+          "published": "2025-07-08T15:14:27.000Z",
+          "authors": "Chang Liu",
+          "summary": "Audio-driven emotional 3D facial animation aims to generate synchronized lip movements and vivid facial expressions. However, most existing approaches focus on static and predefined emotion labels, limiting their diversity and naturalness. To address these challenges, we propose…"
+        },
+        {
+          "title": "MirrorMe: Towards Realtime and High Fidelity Audio-Driven Halfbody Animation",
+          "link": "https://arxiv.org/abs/2506.22065v1",
+          "published": "2025-06-27T09:57:23.000Z",
+          "authors": "Dechao Meng",
+          "summary": "Audio-driven portrait animation, which synthesizes realistic videos from reference images using audio signals, faces significant challenges in real-time generation of high-fidelity, temporally coherent animations. While recent diffusion-based methods improve generation quality b…"
+        },
+        {
+          "title": "Multimodal Integration Challenges in Emotionally Expressive Child Avatars for Training Applications",
+          "link": "https://arxiv.org/abs/2506.13477v2",
+          "published": "2025-06-16T13:34:36.000Z",
+          "authors": "Pegah Salehi",
+          "summary": "Dynamic facial emotion is essential for believable AI-generated avatars, yet most systems remain visually static, limiting their use in simulations like virtual training for investigative interviews with abused children. We present a real-time architecture combining Unreal Engin…"
+        },
+        {
+          "title": "GSAC: Leveraging Gaussian Splatting for Photorealistic Avatar Creation with Unity Integration",
+          "link": "https://arxiv.org/abs/2504.12999v1",
+          "published": "2025-04-17T15:10:14.000Z",
+          "authors": "Rendong Zhang",
+          "summary": "Photorealistic avatars have become essential for immersive applications in virtual reality (VR) and augmented reality (AR), enabling lifelike interactions in areas such as training simulations, telemedicine, and virtual collaboration. These avatars bridge the gap between the phy…"
+        },
+        {
+          "title": "Universal Facial Encoding of Codec Avatars from VR Headsets",
+          "link": "https://arxiv.org/abs/2407.13038v1",
+          "published": "2024-07-17T22:08:15.000Z",
+          "authors": "Shaojie Bai",
+          "summary": "Faithful real-time facial animation is essential for avatar-mediated telepresence in Virtual Reality (VR). To emulate authentic communication, avatar animation needs to be efficient and accurate: able to capture both extreme and subtle expressions within a few milliseconds to su…"
+        },
+        {
+          "title": "EmoFace: Audio-driven Emotional 3D Face Animation",
+          "link": "https://arxiv.org/abs/2407.12501v1",
+          "published": "2024-07-17T11:32:16.000Z",
+          "authors": "Chang Liu",
+          "summary": "Audio-driven emotional 3D face animation aims to generate emotionally expressive talking heads with synchronized lip movements. However, previous research has often overlooked the influence of diverse emotions on facial expressions or proved unsuitable for driving MetaHuman mode…"
+        },
+        {
+          "title": "CSTalk: Correlation Supervised Speech-driven 3D Emotional Facial Animation Generation",
+          "link": "https://arxiv.org/abs/2404.18604v1",
+          "published": "2024-04-29T11:19:15.000Z",
+          "authors": "Xiangyu Liang",
+          "summary": "Speech-driven 3D facial animation technology has been developed for years, but its practical application still lacks expectations. The main challenges lie in data limitations, lip alignment, and the naturalness of facial expressions. Although lip alignment has seen many related …"
+        },
+        {
+          "title": "Appearance-based gaze estimation enhanced with synthetic images using deep neural networks",
+          "link": "https://arxiv.org/abs/2311.14175v2",
+          "published": "2023-11-23T19:44:50.000Z",
+          "authors": "Dmytro Herashchenko",
+          "summary": "Human eye gaze estimation is an important cognitive ingredient for successful human-robot interaction, enabling the robot to read and predict human behavior. We approach this problem using artificial neural networks and build a modular system estimating gaze from separately crop…"
+        },
+        {
+          "title": "DeepMetricEye: Metric Depth Estimation in Periocular VR Imagery",
+          "link": "https://arxiv.org/abs/2311.07235v1",
+          "published": "2023-11-13T10:55:05.000Z",
+          "authors": "Yitong Sun",
+          "summary": "Despite the enhanced realism and immersion provided by VR headsets, users frequently encounter adverse effects such as digital eye strain (DES), dry eye, and potential long-term visual impairment due to excessive eye stimulation from VR displays and pressure from the mask. Recen…"
+        },
+        {
+          "title": "Versatile Face Animator: Driving Arbitrary 3D Facial Avatar in RGBD Space",
+          "link": "https://arxiv.org/abs/2308.06076v1",
+          "published": "2023-08-11T11:29:01.000Z",
+          "authors": "Haoyu Wang",
+          "summary": "Creating realistic 3D facial animation is crucial for various applications in the movie production and gaming industry, especially with the burgeoning demand in the metaverse. However, prevalent methods such as blendshape-based approaches and facial rigging techniques are time-c…"
+        }
+      ]
+    },
+    "generative": {
+      "label": "Generative Video Models",
+      "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
+      "items": [
+        {
+          "title": "EditYourself: Audio-Driven Generation and Manipulation of Talking Head Videos with Diffusion Transformers",
+          "link": "https://arxiv.org/abs/2601.22127v1",
+          "published": "2026-01-29T18:49:27.000Z",
+          "authors": "John Flynn",
+          "summary": "Current generative video models excel at producing novel content from text and image prompts, but leave a critical gap in editing existing pre-recorded videos, where minor alterations to the spoken script require preserving motion, temporal coherence, speaker identity, and accur…"
+        },
+        {
+          "title": "Splat-Portrait: Generalizing Talking Heads with Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2601.18633v1",
+          "published": "2026-01-26T16:06:57.000Z",
+          "authors": "Tong Shi",
+          "summary": "Talking Head Generation aims at synthesizing natural-looking talking videos from speech and a single portrait image. Previous 3D talking head generation methods have relied on domain-specific heuristics such as warping-based facial motion representation priors to animate talking…"
+        },
+        {
+          "title": "SelfieAvatar: Real-time Head Avatar reenactment from a Selfie Video",
+          "link": "https://arxiv.org/abs/2601.18851v1",
+          "published": "2026-01-26T14:26:16.000Z",
+          "authors": "Wei Liang",
+          "summary": "Head avatar reenactment focuses on creating animatable personal avatars from monocular videos, serving as a foundational element for applications like social signal understanding, gaming, human-machine interaction, and computer vision. Recent advances in 3D Morphable Model (3DMM…"
+        },
+        {
+          "title": "GlassesGB: Controllable 2D GAN-Based Eyewear Personalization for 3D Gaussian Blendshapes Head Avatars",
+          "link": "https://arxiv.org/abs/2601.17088v1",
+          "published": "2026-01-23T10:04:20.000Z",
+          "authors": "Rui-Yang Ju",
+          "summary": "Virtual try-on systems allow users to interactively try different products within VR scenarios. However, most existing VTON methods operate only on predefined eyewear templates and lack support for fine-grained, user-driven customization. While GlassesGAN enables personalized 2D…"
+        },
+        {
+          "title": "FastGHA: Generalized Few-Shot 3D Gaussian Head Avatars with Real-Time Animation",
+          "link": "https://arxiv.org/abs/2601.13837v1",
+          "published": "2026-01-20T10:49:49.000Z",
+          "authors": "Xinya Ji",
+          "summary": "Despite recent progress in 3D Gaussian-based head avatar modeling, efficiently generating high fidelity avatars remains a challenge. Current methods typically rely on extensive multi-view capture setups or monocular videos with per-identity optimization during inference, limitin…"
+        },
+        {
+          "title": "Exploring Talking Head Models With Adjacent Frame Prior for Speech-Preserving Facial Expression Manipulation",
+          "link": "https://arxiv.org/abs/2601.12876v1",
+          "published": "2026-01-19T09:31:24.000Z",
+          "authors": "Zhenxuan Lu",
+          "summary": "Speech-Preserving Facial Expression Manipulation (SPFEM) is an innovative technique aimed at altering facial expressions in images and videos while retaining the original mouth movements. Despite advancements, SPFEM still struggles with accurate lip synchronization due to the co…"
+        },
+        {
+          "title": "Generalizable and Animatable 3D Full-Head Gaussian Avatar from a Single Image",
+          "link": "https://arxiv.org/abs/2601.12770v1",
+          "published": "2026-01-19T06:56:58.000Z",
+          "authors": "Shuling Zhao",
+          "summary": "Building 3D animatable head avatars from a single image is an important yet challenging problem. Existing methods generally collapse under large camera pose variations, compromising the realism of 3D avatars. In this work, we propose a new framework to tackle the novel setting o…"
+        },
+        {
+          "title": "RSATalker: Realistic Socially-Aware Talking Head Generation for Multi-Turn Conversation",
+          "link": "https://arxiv.org/abs/2601.10606v1",
+          "published": "2026-01-15T17:23:19.000Z",
+          "authors": "Peng Chen",
+          "summary": "Talking head generation is increasingly important in virtual reality (VR), especially for social scenarios involving multi-turn conversation. Existing approaches face notable limitations: mesh-based 3D methods can model dual-person dialogue but lack realistic textures, while lar…"
+        },
+        {
+          "title": "ELITE: Efficient Gaussian Head Avatar from a Monocular Video via Learned Initialization and TEst-time Generative Adaptation",
+          "link": "https://arxiv.org/abs/2601.10200v1",
+          "published": "2026-01-15T08:57:49.000Z",
+          "authors": "Kim Youwang",
+          "summary": "We introduce ELITE, an Efficient Gaussian head avatar synthesis from a monocular video via Learned Initialization and TEst-time generative adaptation. Prior works rely either on a 3D data prior or a 2D generative prior to compensate for missing visual cues in monocular videos. H…"
+        },
+        {
+          "title": "UIKA: Fast Universal Head Avatar from Pose-Free Images",
+          "link": "https://arxiv.org/abs/2601.07603v2",
+          "published": "2026-01-12T14:53:56.000Z",
+          "authors": "Zijian Wu",
+          "summary": "We present UIKA, a feed-forward animatable Gaussian head model from an arbitrary number of unposed inputs, including a single image, multi-view captures, and smartphone-captured videos. Unlike the traditional avatar method, which requires a studio-level multi-view capture system…"
+        },
+        {
+          "title": "RelightAnyone: A Generalized Relightable 3D Gaussian Head Model",
+          "link": "https://arxiv.org/abs/2601.03357v1",
+          "published": "2026-01-06T19:01:07.000Z",
+          "authors": "Yingyan Xu",
+          "summary": "3D Gaussian Splatting (3DGS) has become a standard approach to reconstruct and render photorealistic 3D head avatars. A major challenge is to relight the avatars to match any scene illumination. For high quality relighting, existing methods require subjects to be captured under …"
+        },
+        {
+          "title": "ESGaussianFace: Emotional and Stylized Audio-Driven Facial Animation via 3D Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2601.01847v1",
+          "published": "2026-01-05T07:19:38.000Z",
+          "authors": "Chuhang Ma",
+          "summary": "Most current audio-driven facial animation research primarily focuses on generating videos with neutral emotions. While some studies have addressed the generation of facial videos driven by emotional audio, efficiently generating high-quality talking head videos that integrate b…"
+        }
+      ]
+    },
+    "gaussian": {
+      "label": "Gaussian Splatting (3DGS)",
+      "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head))",
+      "items": [
+        {
+          "title": "Lightweight High-Fidelity Low-Bitrate Talking Face Compression for 3D Video Conference",
+          "link": "https://arxiv.org/abs/2601.21269v1",
+          "published": "2026-01-29T05:03:29.000Z",
+          "authors": "Jianglong Li",
+          "summary": "The demand for immersive and interactive communication has driven advancements in 3D video conferencing, yet achieving high-fidelity 3D talking face representation at low bitrates remains a challenge. Traditional 2D video compression techniques fail to preserve fine-grained geom…"
+        },
+        {
+          "title": "Splat-Portrait: Generalizing Talking Heads with Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2601.18633v1",
+          "published": "2026-01-26T16:06:57.000Z",
+          "authors": "Tong Shi",
+          "summary": "Talking Head Generation aims at synthesizing natural-looking talking videos from speech and a single portrait image. Previous 3D talking head generation methods have relied on domain-specific heuristics such as warping-based facial motion representation priors to animate talking…"
+        },
+        {
+          "title": "ReWeaver: Towards Simulation-Ready and Topology-Accurate Garment Reconstruction",
+          "link": "https://arxiv.org/abs/2601.16672v1",
+          "published": "2026-01-23T11:42:02.000Z",
+          "authors": "Ming Li",
+          "summary": "High-quality 3D garment reconstruction plays a crucial role in mitigating the sim-to-real gap in applications such as digital avatars, virtual try-on and robotic manipulation. However, existing garment reconstruction methods typically rely on unstructured representations, such a…"
+        },
+        {
+          "title": "ICo3D: An Interactive Conversational 3D Virtual Human",
+          "link": "https://arxiv.org/abs/2601.13148v1",
+          "published": "2026-01-19T15:30:08.000Z",
+          "authors": "Richard Shaw",
+          "summary": "This work presents Interactive Conversational 3D Virtual Human (ICo3D), a method for generating an interactive, conversational, and photorealistic 3D human avatar. Based on multi-view captures of a subject, we create an animatable 3D face model and a dynamic 3D body model, both …"
+        },
+        {
+          "title": "RSATalker: Realistic Socially-Aware Talking Head Generation for Multi-Turn Conversation",
+          "link": "https://arxiv.org/abs/2601.10606v1",
+          "published": "2026-01-15T17:23:19.000Z",
+          "authors": "Peng Chen",
+          "summary": "Talking head generation is increasingly important in virtual reality (VR), especially for social scenarios involving multi-turn conversation. Existing approaches face notable limitations: mesh-based 3D methods can model dual-person dialogue but lack realistic textures, while lar…"
+        },
+        {
+          "title": "Mon3tr: Monocular 3D Telepresence with Pre-built Gaussian Avatars as Amortization",
+          "link": "https://arxiv.org/abs/2601.07518v1",
+          "published": "2026-01-12T13:17:41.000Z",
+          "authors": "Fangyu Lin",
+          "summary": "Immersive telepresence aims to transform human interaction in AR/VR applications by enabling lifelike full-body holographic representations for enhanced remote collaboration. However, existing systems rely on hardware-intensive multi-camera setups and demand high bandwidth for v…"
+        },
+        {
+          "title": "LayerGS: Decomposition and Inpainting of Layered 3D Human Avatars via 2D Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2601.05853v1",
+          "published": "2026-01-09T15:30:12.000Z",
+          "authors": "Yinghan Xu",
+          "summary": "We propose a novel framework for decomposing arbitrarily posed humans into animatable multi-layered 3D human avatars, separating the body and garments. Conventional single-layer reconstruction methods lock clothing to one identity, while prior multi-layer approaches struggle wit…"
+        },
+        {
+          "title": "GaussianSwap: Animatable Video Face Swapping with 3D Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2601.05511v1",
+          "published": "2026-01-09T03:39:29.000Z",
+          "authors": "Xuan Cheng",
+          "summary": "We introduce GaussianSwap, a novel video face swapping framework that constructs a 3D Gaussian Splatting based face avatar from a target video while transferring identity from a source image to the avatar. Conventional video swapping frameworks are limited to generating facial r…"
+        },
+        {
+          "title": "RelightAnyone: A Generalized Relightable 3D Gaussian Head Model",
+          "link": "https://arxiv.org/abs/2601.03357v1",
+          "published": "2026-01-06T19:01:07.000Z",
+          "authors": "Yingyan Xu",
+          "summary": "3D Gaussian Splatting (3DGS) has become a standard approach to reconstruct and render photorealistic 3D head avatars. A major challenge is to relight the avatars to match any scene illumination. For high quality relighting, existing methods require subjects to be captured under …"
+        },
+        {
+          "title": "HeadLighter: Disentangling Illumination in Generative 3D Gaussian Heads via Lightstage Captures",
+          "link": "https://arxiv.org/abs/2601.02103v2",
+          "published": "2026-01-05T13:32:37.000Z",
+          "authors": "Yating Wang",
+          "summary": "Recent 3D-aware head generative models based on 3D Gaussian Splatting achieve real-time, photorealistic and view-consistent head synthesis. However, a fundamental limitation persists: the deep entanglement of illumination and intrinsic appearance prevents controllable relighting…"
+        },
+        {
+          "title": "InpaintHuman: Reconstructing Occluded Humans with Multi-Scale UV Mapping and Identity-Preserving Diffusion Inpainting",
+          "link": "https://arxiv.org/abs/2601.02098v1",
+          "published": "2026-01-05T13:26:02.000Z",
+          "authors": "Jinlong Fan",
+          "summary": "Reconstructing complete and animatable 3D human avatars from monocular videos remains challenging, particularly under severe occlusions. While 3D Gaussian Splatting has enabled photorealistic human rendering, existing methods struggle with incomplete observations, often producin…"
+        },
+        {
+          "title": "ESGaussianFace: Emotional and Stylized Audio-Driven Facial Animation via 3D Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2601.01847v1",
+          "published": "2026-01-05T07:19:38.000Z",
+          "authors": "Chuhang Ma",
+          "summary": "Most current audio-driven facial animation research primarily focuses on generating videos with neutral emotions. While some studies have addressed the generation of facial videos driven by emotional audio, efficiently generating high-quality talking head videos that integrate b…"
+        }
+      ]
+    },
+    "streaming": {
+      "label": "Streaming Avatars / Infrastructure",
+      "query": "all:webrtc AND (all:avatar OR all:\"talking head\" OR all:\"digital human\")",
+      "items": [
+        {
+          "title": "Mon3tr: Monocular 3D Telepresence with Pre-built Gaussian Avatars as Amortization",
+          "link": "https://arxiv.org/abs/2601.07518v1",
+          "published": "2026-01-12T13:17:41.000Z",
+          "authors": "Fangyu Lin",
+          "summary": "Immersive telepresence aims to transform human interaction in AR/VR applications by enabling lifelike full-body holographic representations for enhanced remote collaboration. However, existing systems rely on hardware-intensive multi-camera setups and demand high bandwidth for v…"
+        },
+        {
+          "title": "Synchronizing Full-Body Avatar Transforms with WebRTC DataChannel on Educational Metaverse",
+          "link": "https://arxiv.org/abs/2309.14634v1",
+          "published": "2023-09-26T03:28:09.000Z",
+          "authors": "Yong-Hao Hu",
+          "summary": "Full-body avatars are suggested to be beneficial for communication in virtual environments, and consistency between users' voices and gestures is considered essential to ensure communication quality. This paper propose extending the functionality of a web-based VR platform to su…"
+        },
+        {
+          "title": "Virtual Avatar Stream: a cost-down approach to the Metaverse experience",
+          "link": "https://arxiv.org/abs/2304.01443v1",
+          "published": "2023-04-04T01:34:23.000Z",
+          "authors": "Joseph Chang",
+          "summary": "The Metaverse through VR headsets is a rapidly growing concept, but the high cost of entry currently limits access for many users. This project aims to provide an accessible entry point to the immersive Metaverse experience by leveraging web technologies. The platform developed …"
+        },
+        {
+          "title": "Improving Real-time Communication for Educational Metaverse by Alternative WebRTC SFU and Delegating Transmission of Avatar Transform",
+          "link": "https://arxiv.org/abs/2303.14071v1",
+          "published": "2023-03-24T15:31:03.000Z",
+          "authors": "Yong-Hao Hu",
+          "summary": "Maintaining real-time communication quality in metaverse has always been a challenge, especially when the number of participants increase. We introduce a proprietary WebRTC SFU service to an open-source web-based VR platform, to realize a more stable and reliable platform suitab…"
+        },
+        {
+          "title": "Gemino: Practical and Robust Neural Compression for Video Conferencing",
+          "link": "https://arxiv.org/abs/2209.10507v4",
+          "published": "2022-09-21T17:10:46.000Z",
+          "authors": "Vibhaalakshmi Sivaraman",
+          "summary": "Video conferencing systems suffer from poor user experience when network conditions deteriorate because current video codecs simply cannot operate at extremely low bitrates. Recently, several neural alternatives have been proposed that reconstruct talking head videos at very low…"
+        }
+      ]
+    }
+  }
+}

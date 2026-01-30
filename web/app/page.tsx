@@ -1,4 +1,5 @@
 import GaussianSplatDemo from './components/GaussianSplatDemo';
+import LivingResearchFeed from './components/LivingResearchFeed';
 
 export default function Home() {
   return (
@@ -81,6 +82,29 @@ export default function Home() {
             &ldquo;The day is not far when interacting with a digital character in real-time feels
             nearly as natural as a video call with a real person—and it will likely be thanks
             to the combination of these techniques.&rdquo;
+          </div>
+
+          <div className="card p-5 mt-6">
+            <p className="font-medium mb-4">Latency Budget (Rule of Thumb)</p>
+            <div className="grid md:grid-cols-5 gap-3 text-sm">
+              {[
+                { k: "Capture", v: "10–30ms", d: "cam / mic" },
+                { k: "Tracking", v: "10–40ms", d: "pose / face" },
+                { k: "Render/Gen", v: "10–120ms", d: "GPU / model" },
+                { k: "Encode", v: "5–25ms", d: "H.264/AV1" },
+                { k: "Network", v: "30–150ms", d: "RTT-dependent" },
+              ].map((x) => (
+                <div key={x.k} className="p-3 bg-[var(--card-bg-alt)] rounded">
+                  <div className="text-xs text-[var(--muted)]">{x.k}</div>
+                  <div className="font-semibold">{x.v}</div>
+                  <div className="text-xs text-[var(--muted)]">{x.d}</div>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-[var(--muted)] mt-3">
+              For conversational avatars, “feels responsive” is usually an end-to-end budget under ~200–400ms,
+              depending on turn-taking and how much motion must match the audio.
+            </p>
           </div>
         </section>
 
@@ -1012,7 +1036,7 @@ export default function Home() {
 
         {/* References / Resources */}
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">7. References & Resources</h2>
+          <h2 className="text-2xl font-semibold mb-6">7. References, Resources & Living Feed</h2>
 
           <div className="grid md:grid-cols-2 gap-4">
             {[
@@ -1077,6 +1101,15 @@ export default function Home() {
               </a>
             ))}
           </div>
+
+          <div className="divider" />
+
+          <h3 className="text-xl font-semibold mb-4">7.1 Living Research Feed (Auto-updating)</h3>
+          <p className="text-sm text-[var(--muted)] mb-6">
+            This section is generated from an updater script so the site can continuously evolve as new papers land.
+            It is intentionally broad (keyword-based) to act as an “inbox” rather than a curated bibliography.
+          </p>
+          <LivingResearchFeed />
         </section>
       </main>
 
