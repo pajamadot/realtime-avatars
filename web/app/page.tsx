@@ -21,6 +21,7 @@ export default function Home() {
               <a href="#hybrids" className="nav-link">Hybrids</a>
               <a href="#implementation" className="nav-link">Implementation</a>
               <a href="#living-feed" className="nav-link">Feed</a>
+              <a href="#tooling-radar" className="nav-link">Tooling</a>
             </div>
           </nav>
         </div>
