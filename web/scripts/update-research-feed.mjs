@@ -2,8 +2,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import Parser from 'rss-parser';
 
+const CONFIGFILE = path.join(process.cwd(), 'app', 'data', 'research-feed.config.json');
 const OUTFILE = path.join(process.cwd(), 'app', 'data', 'research-feed.json');
-const MAX_RESULTS_PER_METHOD = 12;
 
 function stripHtml(input) {
   if (!input) return '';
@@ -55,29 +55,56 @@ function stableSortByPublishedDesc(items) {
     });
 }
 
-function buildArxivUrl(searchQuery) {
+function buildArxivUrl(searchQuery, maxResults) {
   const params = new URLSearchParams({
     search_query: searchQuery,
     start: '0',
-    max_results: String(MAX_RESULTS_PER_METHOD),
+    max_results: String(maxResults),
     sortBy: 'submittedDate',
     sortOrder: 'descending',
   });
   return `https://export.arxiv.org/api/query?${params.toString()}`;
 }
 
-async function readExisting() {
+async function readJson(filePath) {
   try {
-    const raw = await fs.readFile(OUTFILE, 'utf8');
+    const raw = await fs.readFile(filePath, 'utf8');
     return JSON.parse(raw);
   } catch {
     return null;
   }
 }
 
+function splitKeywords(list) {
+  if (!Array.isArray(list)) return [];
+  return list
+    .map((x) => String(x ?? '').trim().toLowerCase())
+    .filter(Boolean);
+}
+
+function scoreText(text, keywords) {
+  if (!text || !keywords.length) return 0;
+  const t = String(text).toLowerCase();
+  let score = 0;
+  for (const kw of keywords) {
+    if (!kw) continue;
+    if (t.includes(kw)) score += 1;
+  }
+  return score;
+}
+
+function scoreItem(item, includeAny, excludeAny) {
+  const text = `${item.title ?? ''}\n${item.summary ?? ''}`;
+  const includeScore = scoreText(text, includeAny);
+  const excludeScore = scoreText(text, excludeAny);
+  return includeScore - excludeScore;
+}
+
 async function main() {
-  const existing = await readExisting();
-  const methods = existing?.methods ?? {};
+  const config = await readJson(CONFIGFILE);
+  const methods = config?.methods ?? {};
+  const maxResultsPerMethod = Number(config?.maxResultsPerMethod ?? 24);
+  const maxItemsPerMethod = Number(config?.maxItemsPerMethod ?? 12);
 
   const parser = new Parser({
     // rss-parser treats Atom feeds as "feeds" with "items".
@@ -87,24 +114,27 @@ async function main() {
 
   const next = {
     updatedAt: new Date().toISOString(),
-    source: existing?.source ?? 'arXiv',
+    source: config?.source ?? 'arXiv',
     methods: {},
   };
 
   const entries = Object.entries(methods);
   if (!entries.length) {
-    throw new Error(`No methods found in ${OUTFILE}.`);
+    throw new Error(`No methods found in ${CONFIGFILE}.`);
   }
 
   for (const [key, method] of entries) {
     const label = method?.label ?? key;
     const query = method?.query;
+    const includeAny = splitKeywords(method?.includeAny);
+    const excludeAny = splitKeywords(method?.excludeAny);
+    const minScore = Number(method?.minScore ?? 0);
     if (!query) {
       next.methods[key] = { label, query: '', items: [] };
       continue;
     }
 
-    const url = buildArxivUrl(query);
+    const url = buildArxivUrl(query, maxResultsPerMethod);
     const feed = await parser.parseURL(url);
 
     const items = (feed.items ?? []).map((it) => ({
@@ -122,7 +152,9 @@ async function main() {
       if (!byLink.has(it.link)) byLink.set(it.link, it);
     }
 
-    const deduped = stableSortByPublishedDesc(Array.from(byLink.values())).slice(0, MAX_RESULTS_PER_METHOD);
+    const deduped = stableSortByPublishedDesc(Array.from(byLink.values()))
+      .filter((it) => scoreItem(it, includeAny, excludeAny) >= minScore)
+      .slice(0, maxItemsPerMethod);
 
     next.methods[key] = {
       label,

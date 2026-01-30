@@ -1,0 +1,96 @@
+{
+  "source": "arXiv",
+  "maxResultsPerMethod": 24,
+  "maxItemsPerMethod": 12,
+  "methods": {
+    "metahuman": {
+      "label": "MetaHuman / Graphics Pipeline",
+      "query": "cat:cs.CV AND (all:metahuman OR (all:realtime AND all:facial AND all:animation) OR (all:facial AND all:retargeting AND all:rig) OR all:blendshape)",
+      "minScore": 2,
+      "includeAny": [
+        "metahuman",
+        "blendshape",
+        "facial",
+        "retarget",
+        "rig",
+        "livelink",
+        "unreal",
+        "performance capture",
+        "animation"
+      ],
+      "excludeAny": [
+        "diagnosis",
+        "mental-health",
+        "interview preparation",
+        "job interview",
+        "child avatar"
+      ]
+    },
+    "generative": {
+      "label": "Generative Video Models",
+      "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
+      "minScore": 2,
+      "includeAny": [
+        "talking head",
+        "portrait",
+        "reenact",
+        "audio",
+        "speech",
+        "lip",
+        "avatar",
+        "diffusion",
+        "transformer",
+        "video-to-video"
+      ],
+      "excludeAny": [
+        "heat transfer",
+        "convective",
+        "joules",
+        "energy consumption"
+      ]
+    },
+    "gaussian": {
+      "label": "Gaussian Splatting (3DGS)",
+      "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head))",
+      "minScore": 2,
+      "includeAny": [
+        "gaussian",
+        "splatting",
+        "3dgs",
+        "avatar",
+        "head",
+        "human",
+        "telepresence",
+        "relight",
+        "compression"
+      ],
+      "excludeAny": [
+        "garment",
+        "cloth",
+        "try-on"
+      ]
+    },
+    "streaming": {
+      "label": "Streaming Avatars / Infrastructure",
+      "query": "(cat:cs.NI OR cat:cs.CV) AND (all:webrtc AND (all:streaming OR all:low-latency OR all:conference OR all:sfu OR all:telepresence OR all:avatar))",
+      "minScore": 2,
+      "includeAny": [
+        "webrtc",
+        "low-latency",
+        "telepresence",
+        "video conference",
+        "conferencing",
+        "sfu",
+        "streaming",
+        "codec",
+        "compression",
+        "avatar"
+      ],
+      "excludeAny": [
+        "educational metaverse",
+        "metaverse education"
+      ]
+    }
+  }
+}
+
