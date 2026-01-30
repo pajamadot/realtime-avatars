@@ -1,11 +1,92 @@
 {
-  "updatedAt": "2026-01-30T18:43:26.108Z",
+  "updatedAt": "2026-01-30T18:46:39.758Z",
   "source": "GitHub Search",
   "queries": {
     "metahuman": {
       "label": "MetaHuman / Unreal (tooling)",
-      "q": "metahuman (livelink OR arkit OR facial) language:C++ OR language:Python",
-      "items": []
+      "q": "metahuman (unreal OR livelink OR arkit OR facial OR rig)",
+      "items": [
+        {
+          "name": "YUANZHUO-BNU/metahuman_overview",
+          "link": "https://github.com/YUANZHUO-BNU/metahuman_overview",
+          "description": "",
+          "stars": 1078,
+          "pushedAt": "2025-01-08T10:04:36.000Z",
+          "language": ""
+        },
+        {
+          "name": "EpicGames/MetaHuman-DNA-Calibration",
+          "link": "https://github.com/EpicGames/MetaHuman-DNA-Calibration",
+          "description": "",
+          "stars": 563,
+          "pushedAt": "2025-06-20T07:14:51.000Z",
+          "language": "Mathematica"
+        },
+        {
+          "name": "see2023/Bert-VITS2-ext",
+          "link": "https://github.com/see2023/Bert-VITS2-ext",
+          "description": "Bert-VITS2. Animation testing based on Bert-VITS2.",
+          "stars": 539,
+          "pushedAt": "2025-08-06T14:35:53.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "poly-hammer/meta-human-dna-addon",
+          "link": "https://github.com/poly-hammer/meta-human-dna-addon",
+          "description": "Imports MetaHuman head and body components into Blender from a their DNA files, lets you customize them, then send them back to MetaHuman Creator.",
+          "stars": 202,
+          "pushedAt": "2026-01-29T20:59:04.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "swnolan/metahuman_facial_transfer",
+          "link": "https://github.com/swnolan/metahuman_facial_transfer",
+          "description": "Extracts/Transfers Metahuman Facial from exported FBX onto Maya face control board",
+          "stars": 174,
+          "pushedAt": "2024-07-24T23:14:32.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "chrisevans3d/poseWrangler",
+          "link": "https://github.com/chrisevans3d/poseWrangler",
+          "description": "A simple visual front end to the Maya UE4 RBF plugin delivered with MetaHumans",
+          "stars": 160,
+          "pushedAt": "2023-12-07T15:02:25.000Z",
+          "language": ""
+        },
+        {
+          "name": "NxRoot/ALSV4-Metahumans",
+          "link": "https://github.com/NxRoot/ALSV4-Metahumans",
+          "description": "UE5 - Advanced Locomotion System (Replicated)",
+          "stars": 153,
+          "pushedAt": "2024-05-08T00:06:54.000Z",
+          "language": ""
+        },
+        {
+          "name": "SocAIty/py_audio2face",
+          "link": "https://github.com/SocAIty/py_audio2face",
+          "description": "Use the NVIDIA Audio2Face headless server and interact with it through a requests API. Generate animation sequences for Unreal Engine 5, Maya and MetaHumans",
+          "stars": 146,
+          "pushedAt": "2025-05-01T17:23:11.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "SpookyCorgi/phiz",
+          "link": "https://github.com/SpookyCorgi/phiz",
+          "description": "Phiz is a tool that allows you to perform facial motion capture from any device and location.",
+          "stars": 141,
+          "pushedAt": "2023-05-04T10:03:40.000Z",
+          "language": "Svelte"
+        },
+        {
+          "name": "vinjn/llm-metahuman",
+          "link": "https://github.com/vinjn/llm-metahuman",
+          "description": "An open solution for AI-powered photorealistic digital humans.",
+          "stars": 137,
+          "pushedAt": "2025-07-12T19:17:58.000Z",
+          "language": "Python"
+        }
+      ]
     },
     "generative": {
       "label": "Generative Talking Heads (repos)",

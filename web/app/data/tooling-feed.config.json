@@ -5,7 +5,7 @@
   "queries": {
     "metahuman": {
       "label": "MetaHuman / Unreal (tooling)",
-      "q": "metahuman (livelink OR arkit OR facial) language:C++ OR language:Python"
+      "q": "metahuman (unreal OR livelink OR arkit OR facial OR rig)"
     },
     "generative": {
       "label": "Generative Talking Heads (repos)",
@@ -21,4 +21,3 @@
     }
   }
 }
-
