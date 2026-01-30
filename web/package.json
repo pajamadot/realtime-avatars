@@ -7,7 +7,8 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
-    "research:update": "node scripts/update-research-feed.mjs"
+    "research:update": "node scripts/update-research-feed.mjs",
+    "research:refresh": "npm run research:update && npm run build"
   },
   "dependencies": {
     "@lumaai/luma-web": "^0.2.2",
