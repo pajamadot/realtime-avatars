@@ -13,7 +13,7 @@
     "@lumaai/luma-web": "^0.2.2",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
-    "next": "16.1.1",
+    "next": "16.1.6",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "three": "^0.172.0"
