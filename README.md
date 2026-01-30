@@ -11,7 +11,19 @@ The website includes an auto-updating "Living Research Feed" that pulls recent p
 
 There is a LiveKit WebRTC demo page at `/livekit` that connects to a LiveKit room and renders the first remote video track (intended to be an avatar worker publishing a digital human stream).
 
-Server env vars (set in Vercel or local env):
+### Token issuer (server-side)
+
+The browser must fetch a LiveKit token from a server-side endpoint (because it uses `LIVEKIT_API_SECRET`).
+
+Option A: Next.js API route (Node)
+- `web/app/api/livekit/token/route.ts`
+
+Option B (Cloudflare): Worker token service
+- `workers/livekit-token/` implements `POST /api/livekit/token` using WebCrypto (HS256 JWT).
+
+If the Worker is hosted on a different origin, set `NEXT_PUBLIC_LIVEKIT_TOKEN_ENDPOINT` in the web build to that full URL.
+
+Server env vars / secrets (set on the token issuer):
 
 - `LIVEKIT_URL`
 - `LIVEKIT_API_KEY`

@@ -77,6 +77,8 @@ export default function LiveKitStreamingAvatarDemo({
   className?: string;
 }) {
   const identity = useMemo(() => safeRandomId(), []);
+  const tokenEndpoint =
+    process.env.NEXT_PUBLIC_LIVEKIT_TOKEN_ENDPOINT || '/api/livekit/token';
 
   const [roomName, setRoomName] = useState('realtime-avatar-demo');
   const [agentName, setAgentName] = useState('avatar-agent');
@@ -92,7 +94,7 @@ export default function LiveKitStreamingAvatarDemo({
     setError(null);
     setBusy(true);
     try {
-      const res = await fetch('/api/livekit/token', {
+      const res = await fetch(tokenEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

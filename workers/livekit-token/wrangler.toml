@@ -1,0 +1,9 @@
+name = "realtime-avatars-livekit-token"
+main = "src/index.ts"
+compatibility_date = "2026-01-30"
+
+[vars]
+# Optional CORS restriction. Default in code is "*".
+ALLOWED_ORIGIN = "*"
+TOKEN_TTL_SECONDS = "3600"
+
