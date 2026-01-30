@@ -1,5 +1,6 @@
 import GaussianSplatDemo from './components/GaussianSplatDemo';
 import LivingResearchFeed from './components/LivingResearchFeed';
+import ResearchHighlights from './components/ResearchHighlights';
 
 export default function Home() {
   return (
@@ -58,6 +59,10 @@ export default function Home() {
               <div className="text-sm text-[var(--muted)]">Diffusion real-time</div>
             </div>
           </div>
+        </section>
+
+        <section className="mb-12">
+          <ResearchHighlights />
         </section>
 
         <div className="divider" />
