@@ -9,7 +9,12 @@ from livekit.agents.voice import Agent, AgentSession
 from livekit.plugins import hedra, openai, silero
 
 
-load_dotenv()
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+
+# Support repo-level secrets storage (not checked into git), while still allowing
+# per-agent overrides via a local `.env` next to this file.
+load_dotenv(dotenv_path=_REPO_ROOT / "secrets" / ".ENV", override=False)
+load_dotenv(dotenv_path=Path(__file__).resolve().parent / ".env", override=False)
 
 
 def _env(name: str, default: str = "") -> str:
@@ -84,4 +89,3 @@ if __name__ == "__main__":
             agent_name=_env("LIVEKIT_AGENT_NAME", "avatar-agent"),
         )
     )
-

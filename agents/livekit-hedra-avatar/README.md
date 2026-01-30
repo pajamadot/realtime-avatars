@@ -42,10 +42,19 @@ HEDRA_API_KEY=...
 OPENAI_API_KEY=...
 ```
 
+Tip: this repo also supports storing secrets at `secrets/.ENV` (repo root). The agent will load
+that automatically (and you can still override with a local `agents/livekit-hedra-avatar/.env`).
+
 4) Run:
 
 ```bash
-python agent.py
+python agent.py dev
+```
+
+For production (no file watching):
+
+```bash
+python agent.py start
 ```
 
 Then open the web demo at `/livekit`, use the same room name, and keep `Agent name` as
@@ -67,4 +76,3 @@ LiveKit docs:
 
 - If you want the avatar to wait for the user to speak first, set `AGENT_GREET=0`.
 - You can also set `AVATAR_IMAGE_PATH` to point at an image file instead of `avatar.png`.
-
