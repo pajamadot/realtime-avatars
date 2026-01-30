@@ -29,13 +29,9 @@ jobs:
         working-directory: web
         run: npm ci
 
-      - name: Update feed
+      - name: Update feed + build (safety check)
         working-directory: web
-        run: npm run research:update
-
-      - name: Build (safety check)
-        working-directory: web
-        run: npm run build
+        run: npm run research:refresh
 
       - name: Commit & push (if changed)
         run: |
