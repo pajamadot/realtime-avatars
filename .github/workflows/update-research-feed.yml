@@ -12,6 +12,8 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,15 +33,18 @@ jobs:
 
       - name: Update feed + build (safety check)
         working-directory: web
-        run: npm run research:refresh
+        run: |
+          npm run research:update
+          npm run tooling:update
+          npm run build
 
       - name: Commit & push (if changed)
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add web/app/data/research-feed.json
-            git commit -m "chore(research): update living feed"
+            git add web/app/data/research-feed.json web/app/data/tooling-feed.json
+            git commit -m "chore(feeds): update research + tooling"
             git push
           else
             echo "No changes"
