@@ -1,6 +1,7 @@
 import GaussianSplatDemo from './components/GaussianSplatDemo';
 import LivingResearchFeed from './components/LivingResearchFeed';
 import ResearchHighlights from './components/ResearchHighlights';
+import RecentPapers from './components/RecentPapers';
 
 export default function Home() {
   return (
@@ -296,6 +297,8 @@ export default function Home() {
             </div>
             <p className="figure-caption">Figure 1: MetaHuman real-time animation pipeline</p>
           </div>
+
+          <RecentPapers methodKey="metahuman" className="mt-6" />
         </section>
 
         <div className="divider" />
@@ -433,6 +436,8 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          <RecentPapers methodKey="generative" className="mt-6" />
         </section>
 
         <div className="divider" />
@@ -541,6 +546,8 @@ export default function Home() {
             high-frequency details like wrinkles: as the person speaks or smiles, the model adjusts
             the splats&apos; colors to simulate skin creases or micro-expressions.&rdquo;
           </div>
+
+          <RecentPapers methodKey="gaussian" className="mt-6" />
 
           {/* Interactive Demo */}
           <div className="card p-5 mt-6">
@@ -678,6 +685,8 @@ export default function Home() {
               ))}
             </div>
           </div>
+
+          <RecentPapers methodKey="streaming" className="mt-6" />
         </section>
 
         <div className="divider" />
@@ -1109,7 +1118,7 @@ export default function Home() {
 
           <div className="divider" />
 
-          <h3 className="text-xl font-semibold mb-4">7.1 Living Research Feed (Auto-updating)</h3>
+          <h3 id="living-feed" className="text-xl font-semibold mb-4">7.1 Living Research Feed (Auto-updating)</h3>
           <p className="text-sm text-[var(--muted)] mb-6">
             This section is generated from an updater script so the site can continuously evolve as new papers land.
             It is intentionally broad (keyword-based) to act as an "inbox" rather than a curated bibliography.
