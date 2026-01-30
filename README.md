@@ -7,6 +7,18 @@ Real-time digital humans: a living comparison site for four technical routes:
 
 The website includes an auto-updating "Living Research Feed" that pulls recent papers from arXiv and renders them on the homepage and per-method sections.
 
+## LiveKit streaming avatar demo
+
+There is a LiveKit WebRTC demo page at `/livekit` that connects to a LiveKit room and renders the first remote video track (intended to be an avatar worker publishing a digital human stream).
+
+Server env vars (set in Vercel or local env):
+
+- `LIVEKIT_URL`
+- `LIVEKIT_API_KEY`
+- `LIVEKIT_API_SECRET`
+
+You also need a running agent that publishes an avatar stream into the room. A minimal Hedra example is in `agents/livekit-hedra-avatar/`.
+
 ## Local dev
 
 From `web/`:

@@ -693,6 +693,17 @@ export default function Home() {
             </div>
           </div>
 
+          <div className="card p-5 mt-6">
+            <p className="font-medium mb-4">Interactive Demo: LiveKit Streaming Avatar</p>
+            <p className="text-sm text-[var(--muted)] mb-4">
+              Launch a WebRTC room that can display an avatar worker video stream (and optionally
+              dispatch an agent on join). Requires LiveKit credentials and a running avatar agent.
+            </p>
+            <a href="/livekit" className="badge hover:border-[var(--border-strong)]">
+              Open LiveKit demo →
+            </a>
+          </div>
+
           <RecentPapers methodKey="streaming" className="mt-6" />
         </section>
 
@@ -1128,7 +1139,7 @@ export default function Home() {
           <h3 id="living-feed" className="text-xl font-semibold mb-4">7.1 Living Research Feed (Auto-updating)</h3>
           <p className="text-sm text-[var(--muted)] mb-6">
             This section is generated from an updater script so the site can continuously evolve as new papers land.
-            It is intentionally broad (keyword-based) to act as an "inbox" rather than a curated bibliography.
+            It is intentionally broad (keyword-based) to act as an inbox rather than a curated bibliography.
           </p>
           <LivingResearchFeed />
 

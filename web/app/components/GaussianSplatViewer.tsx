@@ -79,20 +79,7 @@ export default function GaussianSplatViewer({
   source = 'https://lumalabs.ai/capture/83e9aae8-7023-448e-83a6-53ccb377ec86',
   className = ''
 }: GaussianSplatViewerProps) {
-  const [isClient, setIsClient] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) {
-    return (
-      <div className={`bg-[var(--card-bg)] rounded-lg flex items-center justify-center ${className}`}>
-        <div className="text-[var(--muted)]">Loading 3D viewer...</div>
-      </div>
-    );
-  }
 
   if (error) {
     return (
