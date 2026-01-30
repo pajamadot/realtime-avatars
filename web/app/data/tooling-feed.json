@@ -1,0 +1,188 @@
+{
+  "updatedAt": "2026-01-30T18:43:26.108Z",
+  "source": "GitHub Search",
+  "queries": {
+    "metahuman": {
+      "label": "MetaHuman / Unreal (tooling)",
+      "q": "metahuman (livelink OR arkit OR facial) language:C++ OR language:Python",
+      "items": []
+    },
+    "generative": {
+      "label": "Generative Talking Heads (repos)",
+      "q": "\"talking head\" (realtime OR real-time OR streaming OR webrtc OR diffusion) language:Python",
+      "items": [
+        {
+          "name": "AIGC-Audio/AudioGPT",
+          "link": "https://github.com/AIGC-Audio/AudioGPT",
+          "description": "AudioGPT: Understanding and Generating Speech, Music, Sound, and Talking Head",
+          "stars": 10211,
+          "pushedAt": "2024-07-06T21:35:18.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "OpenTalker/video-retalking",
+          "link": "https://github.com/OpenTalker/video-retalking",
+          "description": "[SIGGRAPH Asia 2022] VideoReTalking: Audio-based Lip Synchronization for Talking Head Video Editing In the Wild",
+          "stars": 7207,
+          "pushedAt": "2024-08-05T05:59:59.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "Kedreamix/Linly-Talker",
+          "link": "https://github.com/Kedreamix/Linly-Talker",
+          "description": "Digital Avatar Conversational System - Linly-Talker.  Linly-Talker is an intelligent AI system that combines large language models (LLMs) with visual models to create a novel human-AI interaction method.  It integrates various technologies like Whisper, Linly, Microsoft Speech Services, and SadTalker talking head generation system. ",
+          "stars": 3116,
+          "pushedAt": "2025-02-24T05:40:05.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "yuyuyzl/EasyVtuber",
+          "link": "https://github.com/yuyuyzl/EasyVtuber",
+          "description": "Based on Talking-head-anime 3, works like Vtube Studio.",
+          "stars": 2581,
+          "pushedAt": "2025-08-17T00:58:25.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "tencent-ailab/V-Express",
+          "link": "https://github.com/tencent-ailab/V-Express",
+          "description": "V-Express aims to generate a talking head video under the control of a reference image, an audio, and a sequence of V-Kps images.",
+          "stars": 2364,
+          "pushedAt": "2025-01-24T14:40:41.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "pkhungurn/talking-head-anime-demo",
+          "link": "https://github.com/pkhungurn/talking-head-anime-demo",
+          "description": "Demo for the \"Talking Head Anime from a Single Image.\"",
+          "stars": 2022,
+          "pushedAt": "2022-06-29T20:27:14.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "ali-vilab/dreamtalk",
+          "link": "https://github.com/ali-vilab/dreamtalk",
+          "description": "Official implementations for paper: DreamTalk: When Expressive Talking Head Generation Meets Diffusion Probabilistic Models",
+          "stars": 1791,
+          "pushedAt": "2024-01-15T19:11:17.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "ZiqiaoPeng/SyncTalk",
+          "link": "https://github.com/ZiqiaoPeng/SyncTalk",
+          "description": "[CVPR 2024] This is the official source for our paper \"SyncTalk: The Devil is in the Synchronization for Talking Head Synthesis\"",
+          "stars": 1611,
+          "pushedAt": "2025-09-18T15:00:06.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "YuanxunLu/LiveSpeechPortraits",
+          "link": "https://github.com/YuanxunLu/LiveSpeechPortraits",
+          "description": "Live Speech Portraits: Real-Time Photorealistic Talking-Head Animation (SIGGRAPH Asia 2021)",
+          "stars": 1280,
+          "pushedAt": "2023-06-19T21:51:32.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "pkhungurn/talking-head-anime-2-demo",
+          "link": "https://github.com/pkhungurn/talking-head-anime-2-demo",
+          "description": "Demo programs for the Talking Head Anime from a Single Image 2: More Expressive project.",
+          "stars": 1151,
+          "pushedAt": "2022-06-29T20:26:56.000Z",
+          "language": "Python"
+        }
+      ]
+    },
+    "gaussian": {
+      "label": "Gaussian Avatars / 3DGS (repos)",
+      "q": "\"gaussian splatting\" (avatar OR head OR human) language:Python",
+      "items": [
+        {
+          "name": "graphdeco-inria/gaussian-splatting",
+          "link": "https://github.com/graphdeco-inria/gaussian-splatting",
+          "description": "Original reference implementation of \"3D Gaussian Splatting for Real-Time Radiance Field Rendering\"",
+          "stars": 20555,
+          "pushedAt": "2025-10-17T14:28:15.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "nerfstudio-project/gsplat",
+          "link": "https://github.com/nerfstudio-project/gsplat",
+          "description": "CUDA accelerated rasterization of gaussian splatting",
+          "stars": 4422,
+          "pushedAt": "2026-01-28T01:39:03.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "dreamgaussian/dreamgaussian",
+          "link": "https://github.com/dreamgaussian/dreamgaussian",
+          "description": "[ICLR 2024 Oral] Generative Gaussian Splatting for Efficient 3D Content Creation",
+          "stars": 4284,
+          "pushedAt": "2024-01-02T04:12:09.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "hbb1/2d-gaussian-splatting",
+          "link": "https://github.com/hbb1/2d-gaussian-splatting",
+          "description": "[SIGGRAPH'24] 2D Gaussian Splatting for Geometrically Accurate Radiance Fields",
+          "stars": 3010,
+          "pushedAt": "2025-11-24T15:26:53.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "Awesome3DGS/3D-Gaussian-Splatting-Papers",
+          "link": "https://github.com/Awesome3DGS/3D-Gaussian-Splatting-Papers",
+          "description": "3D",
+          "stars": 2669,
+          "pushedAt": "2026-01-20T06:34:28.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "muskie82/MonoGS",
+          "link": "https://github.com/muskie82/MonoGS",
+          "description": "[CVPR'24 Highlight & Best Demo Award] Gaussian Splatting SLAM",
+          "stars": 1979,
+          "pushedAt": "2024-08-07T14:15:29.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "NVlabs/InstantSplat",
+          "link": "https://github.com/NVlabs/InstantSplat",
+          "description": "InstantSplat: Sparse-view SfM-free Gaussian Splatting in Seconds",
+          "stars": 1613,
+          "pushedAt": "2025-05-05T19:25:53.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "luciddreamer-cvlab/LucidDreamer",
+          "link": "https://github.com/luciddreamer-cvlab/LucidDreamer",
+          "description": "Official code for the paper \"LucidDreamer: Domain-free Generation of 3D Gaussian Splatting Scenes\".",
+          "stars": 1504,
+          "pushedAt": "2025-11-24T06:41:45.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "Florian-Barthel/splatviz",
+          "link": "https://github.com/Florian-Barthel/splatviz",
+          "description": "Full python interactive 3D Gaussian Splatting viewer for real-time editing and analyzing.",
+          "stars": 1500,
+          "pushedAt": "2025-09-29T13:33:14.000Z",
+          "language": "Python"
+        },
+        {
+          "name": "autonomousvision/mip-splatting",
+          "link": "https://github.com/autonomousvision/mip-splatting",
+          "description": "[CVPR'24 Best Student Paper] Mip-Splatting: Alias-free 3D Gaussian Splatting",
+          "stars": 1399,
+          "pushedAt": "2024-12-17T10:42:50.000Z",
+          "language": "Python"
+        }
+      ]
+    },
+    "streaming": {
+      "label": "Streaming Avatars / WebRTC (repos)",
+      "q": "webrtc (avatar OR telepresence OR \"video conferencing\") language:TypeScript OR language:Go OR language:Python",
+      "items": []
+    }
+  }
+}

@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "research:update": "node scripts/update-research-feed.mjs",
-    "research:refresh": "npm run research:update && npm run build"
+    "research:refresh": "npm run research:update && npm run build",
+    "tooling:update": "node scripts/update-tooling-feed.mjs"
   },
   "dependencies": {
     "@lumaai/luma-web": "^0.2.2",

@@ -1,0 +1,24 @@
+{
+  "source": "GitHub Search",
+  "maxResultsPerQuery": 25,
+  "maxItemsPerQuery": 10,
+  "queries": {
+    "metahuman": {
+      "label": "MetaHuman / Unreal (tooling)",
+      "q": "metahuman (livelink OR arkit OR facial) language:C++ OR language:Python"
+    },
+    "generative": {
+      "label": "Generative Talking Heads (repos)",
+      "q": "\"talking head\" (realtime OR real-time OR streaming OR webrtc OR diffusion) language:Python"
+    },
+    "gaussian": {
+      "label": "Gaussian Avatars / 3DGS (repos)",
+      "q": "\"gaussian splatting\" (avatar OR head OR human) language:Python"
+    },
+    "streaming": {
+      "label": "Streaming Avatars / WebRTC (repos)",
+      "q": "webrtc (avatar OR telepresence OR \"video conferencing\") language:TypeScript OR language:Go OR language:Python"
+    }
+  }
+}
+
