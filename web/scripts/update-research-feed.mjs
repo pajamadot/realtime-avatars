@@ -129,6 +129,7 @@ function extractTags(item) {
 
 async function main() {
   const config = await readJson(CONFIGFILE);
+  const existingOut = await readJson(OUTFILE);
   const methods = config?.methods ?? {};
   const maxResultsPerMethod = Number(config?.maxResultsPerMethod ?? 24);
   const maxItemsPerMethod = Number(config?.maxItemsPerMethod ?? 12);
@@ -161,18 +162,29 @@ async function main() {
       continue;
     }
 
-    const url = buildArxivUrl(query, maxResultsPerMethod);
-    const feed = await parser.parseURL(url);
+    let items = [];
+    try {
+      const url = buildArxivUrl(query, maxResultsPerMethod);
+      const feed = await parser.parseURL(url);
 
-    const items = (feed.items ?? []).map((it) => ({
-      title: normalizeTitle(it.title),
-      link: it.link,
-      published: normalizeIsoDate(it.isoDate ?? it.pubDate),
-      authors: normalizeAuthors(it.creator ?? it.author),
-      summary: normalizeSummary(it.summary ?? it.contentSnippet ?? it.content),
-    }));
-    for (const it of items) {
-      it.tags = extractTags(it);
+      items = (feed.items ?? []).map((it) => ({
+        title: normalizeTitle(it.title),
+        link: it.link,
+        published: normalizeIsoDate(it.isoDate ?? it.pubDate),
+        authors: normalizeAuthors(it.creator ?? it.author),
+        summary: normalizeSummary(it.summary ?? it.contentSnippet ?? it.content),
+      }));
+      for (const it of items) {
+        it.tags = extractTags(it);
+      }
+    } catch (err) {
+      // Keep the last known items for this method rather than nuking the section.
+      const prev = existingOut?.methods?.[key]?.items;
+      if (Array.isArray(prev)) items = prev;
+      // eslint-disable-next-line no-console
+      console.warn(`WARN: failed to fetch ${key}; using previous items`);
+      // eslint-disable-next-line no-console
+      console.warn(err);
     }
 
     // Deduplicate by link and keep output stable.
