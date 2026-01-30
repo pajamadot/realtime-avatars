@@ -33,10 +33,7 @@ jobs:
 
       - name: Update feed + build (safety check)
         working-directory: web
-        run: |
-          npm run research:update
-          npm run tooling:update
-          npm run build
+        run: npm run feeds:refresh
 
       - name: Commit & push (if changed)
         run: |
