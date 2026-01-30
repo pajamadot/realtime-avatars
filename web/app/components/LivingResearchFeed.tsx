@@ -1,3 +1,6 @@
+'use client';
+
+import { useMemo, useState } from 'react';
 import researchFeed from '../data/research-feed.json';
 
 type FeedItem = {
@@ -32,6 +35,21 @@ export default function LivingResearchFeed({ className = '' }: { className?: str
   const feed = researchFeed as unknown as ResearchFeed;
   const updated = formatISODate(feed.updatedAt);
   const methods = Object.entries(feed.methods ?? {});
+  const [query, setQuery] = useState('');
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return methods;
+
+    return methods.map(([key, method]) => {
+      const items = (method.items ?? []).filter((it) => {
+        const text = `${it.title ?? ''}\n${it.authors ?? ''}\n${it.summary ?? ''}`.toLowerCase();
+        if (text.includes(q)) return true;
+        return (it.tags ?? []).some((t) => String(t).toLowerCase().includes(q));
+      });
+      return [key, { ...method, items }] as const;
+    });
+  }, [methods, query]);
 
   return (
     <div className={className}>
@@ -42,8 +60,28 @@ export default function LivingResearchFeed({ className = '' }: { className?: str
         <code>npm run research:update</code>
       </div>
 
+      <div className="mb-4">
+        <div className="flex items-center gap-3">
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Filter by title, author, summary, or tag..."
+            className="w-full bg-[var(--card-bg)] border border-[var(--border)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--border-strong)]"
+          />
+          {query ? (
+            <button
+              type="button"
+              onClick={() => setQuery('')}
+              className="badge hover:border-[var(--border-strong)]"
+            >
+              Clear
+            </button>
+          ) : null}
+        </div>
+      </div>
+
       <div className="grid md:grid-cols-2 gap-4">
-        {methods.map(([key, method]) => (
+        {filtered.map(([key, method]) => (
           <div key={key} className="card p-4">
             <div className="flex items-center justify-between gap-3 mb-3">
               <p className="font-medium">{method.label}</p>
