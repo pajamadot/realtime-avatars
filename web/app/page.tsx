@@ -2,6 +2,7 @@ import GaussianSplatDemo from './components/GaussianSplatDemo';
 import LivingResearchFeed from './components/LivingResearchFeed';
 import ResearchHighlights from './components/ResearchHighlights';
 import RecentPapers from './components/RecentPapers';
+import ToolingRadar from './components/ToolingRadar';
 
 export default function Home() {
   return (
@@ -1125,6 +1126,15 @@ export default function Home() {
             It is intentionally broad (keyword-based) to act as an "inbox" rather than a curated bibliography.
           </p>
           <LivingResearchFeed />
+
+          <div className="divider" />
+
+          <h3 id="tooling-radar" className="text-xl font-semibold mb-4">7.2 Tooling Radar (Auto-updating)</h3>
+          <p className="text-sm text-[var(--muted)] mb-6">
+            A lightweight GitHub search feed to surface useful repos (implementations, demos, and tooling)
+            around real-time avatars. Treat it as discovery, then curate what matters into the main sections.
+          </p>
+          <ToolingRadar />
         </section>
       </main>
 
