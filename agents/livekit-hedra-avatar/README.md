@@ -1,29 +1,70 @@
-# LiveKit Hedra Avatar Agent (Example)
+# LiveKit Hedra Avatar Agent (Realtime, Custom Face)
 
-This folder contains a minimal LiveKit Agents example that starts a Hedra avatar session
-and publishes an avatar video track into a LiveKit room.
+This agent publishes a low-latency talking-head avatar into a LiveKit room:
+- Custom face from a single image (no GPU required)
+- OpenAI Realtime model for fast conversation
+- Hedra generates the avatar video/audio tracks
 
-Prereqs
-- A LiveKit project (Cloud or self-hosted)
-- A Hedra account + avatar id
-- Python 3.10+
+Works with LiveKit Cloud (recommended) or a self-hosted LiveKit server.
 
-Environment
-- LIVEKIT_URL
-- LIVEKIT_API_KEY
-- LIVEKIT_API_SECRET
-- HEDRA_API_KEY
-- HEDRA_AVATAR_ID
+## What you need
 
-Install
+- LiveKit project (Cloud)
+- Hedra API key
+- OpenAI API key (Realtime)
+- A face image (e.g. `avatar.png`)
+
+## Setup (local)
+
+1) Put your face image here (NOT committed):
+
+- `agents/livekit-hedra-avatar/avatar.png` (or `.jpg` / `.jpeg`)
+
+2) Create a venv and install deps:
+
 ```bash
-pip install "livekit-agents[hedra]~=1.3"
+cd agents/livekit-hedra-avatar
+python -m venv .venv
+.venv\\Scripts\\activate
+pip install -r requirements.txt
 ```
 
-Run
+3) Create `.env`:
+
+```bash
+LIVEKIT_URL=wss://YOUR-PROJECT.livekit.cloud
+LIVEKIT_API_KEY=...
+LIVEKIT_API_SECRET=...
+
+LIVEKIT_AGENT_NAME=avatar-agent
+
+HEDRA_API_KEY=...
+OPENAI_API_KEY=...
+```
+
+4) Run:
+
 ```bash
 python agent.py
 ```
 
-Then open the web demo at `/livekit` and join the same room.
+Then open the web demo at `/livekit`, use the same room name, and keep `Agent name` as
+`avatar-agent` (or whatever you set in `LIVEKIT_AGENT_NAME`).
+
+## Deploy (LiveKit Cloud Agents)
+
+You can deploy this as a managed agent on LiveKit Cloud and avoid running a server yourself.
+
+High-level steps:
+- Install and auth the LiveKit CLI (`lk`)
+- Create an agent deployment from this folder
+- Set secrets on the deployment (`HEDRA_API_KEY`, `OPENAI_API_KEY`, etc.)
+
+LiveKit docs:
+- https://docs.livekit.io/agents/deployment/
+
+## Notes
+
+- If you want the avatar to wait for the user to speak first, set `AGENT_GREET=0`.
+- You can also set `AVATAR_IMAGE_PATH` to point at an image file instead of `avatar.png`.
 

@@ -1003,7 +1003,7 @@ export default function Home() {
               <li>
                 <div>
                   Install SDK
-                  <div className="code mt-2">pip install livekit-agents livekit-plugins-hedra</div>
+                  <div className="code mt-2">pip install -r agents/livekit-hedra-avatar/requirements.txt</div>
                 </div>
               </li>
               <li>Configure LiveKit Cloud account and avatar provider API keys</li>

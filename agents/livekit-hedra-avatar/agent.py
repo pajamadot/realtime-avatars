@@ -1,36 +1,87 @@
 import os
+from pathlib import Path
+
+from dotenv import load_dotenv
+from PIL import Image
 
 from livekit import agents
-from livekit.agents import AgentServer, AgentSession
-from livekit.plugins import hedra
+from livekit.agents.voice import Agent, AgentSession
+from livekit.plugins import hedra, openai, silero
 
 
-def _env(name: str) -> str:
-    v = os.environ.get(name, "")
+load_dotenv()
+
+
+def _env(name: str, default: str = "") -> str:
+    v = os.environ.get(name, default)
     return v.strip()
 
 
-server = AgentServer()
+def _load_avatar_image() -> Image.Image:
+    # Prefer explicit env var for CI / container deployments.
+    configured = _env("AVATAR_IMAGE_PATH") or _env("HEDRA_AVATAR_IMAGE_PATH")
+    if configured:
+        p = Path(configured).expanduser().resolve()
+        if not p.exists():
+            raise FileNotFoundError(f"Avatar image not found at {p}")
+        return Image.open(p)
+
+    # Local dev convenience: drop avatar.(png|jpg|jpeg) next to this file.
+    here = Path(__file__).resolve().parent
+    for ext in (".png", ".jpg", ".jpeg"):
+        p = here / f"avatar{ext}"
+        if p.exists():
+            return Image.open(p)
+
+    raise FileNotFoundError(
+        "No avatar image found. Add agents/livekit-hedra-avatar/avatar.png (or .jpg/.jpeg) "
+        "or set AVATAR_IMAGE_PATH."
+    )
 
 
-@server.rtc_session(agent_name=_env("LIVEKIT_AGENT_NAME") or "avatar-agent")
+class HedraRealtimeAgent(Agent):
+    def __init__(self) -> None:
+        super().__init__(
+            instructions=(
+                "You are a helpful, concise voice assistant. "
+                "Speak clearly and keep responses under 2 sentences unless asked."
+            )
+        )
+
+
 async def entrypoint(ctx: agents.JobContext):
-    # NOTE: This is intentionally minimal. For a real conversational avatar,
-    # configure STT/LLM/TTS on the AgentSession and handle turn-taking.
-    session = AgentSession()
+    # Hedra creates a live avatar stream from a static face image, driven by the agent's
+    # speech output. This requires no GPU on your side.
+    avatar_image = _load_avatar_image()
 
-    avatar_id = _env("HEDRA_AVATAR_ID")
-    if not avatar_id:
-        raise RuntimeError("Missing HEDRA_AVATAR_ID")
+    avatar_identity = _env("AVATAR_PARTICIPANT_IDENTITY", "hedra-avatar")
+    avatar_session = hedra.AvatarSession(
+        avatar_participant_identity=avatar_identity,
+        avatar_image=avatar_image,
+    )
 
-    avatar = hedra.AvatarSession(avatar_id=avatar_id)
-    await avatar.start(session, room=ctx.room)
+    session = AgentSession(
+        llm=openai.realtime.RealtimeModel(),
+        vad=silero.VAD.load(),
+    )
 
-    # The Hedra avatar session uses the agent audio output to drive the avatar.
-    # Your web client should publish microphone audio into the same room.
-    await session.start(room=ctx.room)
+    # Start the avatar worker first so its tracks appear immediately when the user joins.
+    await avatar_session.start(session, room=ctx.room)
+
+    await session.start(room=ctx.room, agent=HedraRealtimeAgent())
+
+    # Optional: speak first (removes the "blank room" feeling).
+    if _env("AGENT_GREET", "1") not in ("0", "false", "False"):
+        await session.generate_reply(
+            instructions="Greet the user briefly and ask what you can help with."
+        )
 
 
 if __name__ == "__main__":
-    server.run()
+    agents.cli.run_app(
+        agents.WorkerOptions(
+            entrypoint_fnc=entrypoint,
+            agent_name=_env("LIVEKIT_AGENT_NAME", "avatar-agent"),
+        )
+    )
 

@@ -40,6 +40,12 @@ yarn-error.log*
 .wrangler
 .dev.vars
 
+# local scratch
+.cache
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# avatar assets (keep user faces out of git)
+agents/livekit-hedra-avatar/avatar.*

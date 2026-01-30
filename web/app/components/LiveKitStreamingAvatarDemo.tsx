@@ -8,10 +8,8 @@ import {
   RoomAudioRenderer,
   VideoTrack,
   VoiceAssistantControlBar,
-  useTracks,
   useVoiceAssistant,
 } from '@livekit/components-react';
-import { Track } from 'livekit-client';
 
 function safeRandomId() {
   try {
@@ -25,14 +23,13 @@ function safeRandomId() {
 }
 
 function AvatarStage() {
-  const tracks = useTracks([Track.Source.Camera], { onlySubscribed: true });
-  const remoteVideo = tracks.find((t) => !t.participant.isLocal);
+  const { videoTrack } = useVoiceAssistant();
 
   return (
     <div className="relative h-[420px] w-full bg-black/20 rounded border border-[var(--border)] overflow-hidden flex items-center justify-center">
-      {remoteVideo ? (
+      {videoTrack ? (
         <VideoTrack
-          trackRef={remoteVideo}
+          trackRef={videoTrack}
           className="h-full w-full object-cover"
         />
       ) : (

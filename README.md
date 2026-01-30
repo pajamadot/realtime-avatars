@@ -30,7 +30,8 @@ Server env vars / secrets (set on the token issuer):
 - `LIVEKIT_API_KEY`
 - `LIVEKIT_API_SECRET`
 
-You also need a running agent that publishes an avatar stream into the room. A minimal Hedra example is in `agents/livekit-hedra-avatar/`.
+You also need a running agent that publishes an avatar stream into the room. A Hedra + OpenAI Realtime example
+(custom face from a single image) is in `agents/livekit-hedra-avatar/`.
 
 ### LiveKit Cloud notes
 
