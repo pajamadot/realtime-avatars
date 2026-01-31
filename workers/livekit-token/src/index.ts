@@ -21,8 +21,8 @@ type TokenRequestBody = {
   // https://docs.livekit.io/agents/worker/dispatch/
   agent_name?: string;
   agentName?: string;
-  agent_metadata?: string;
-  agentMetadata?: string;
+  agent_metadata?: unknown;
+  agentMetadata?: unknown;
 
   // Advanced: pass through a full RoomConfiguration or room preset.
   // This maps to the JWT claim "roomConfig" / "roomPreset".
@@ -105,6 +105,19 @@ function getString(v: string | undefined) {
   return (v ?? '').trim();
 }
 
+function normalizeMetadata(v: unknown) {
+  if (!v) return '';
+  if (typeof v === 'string') return v.trim();
+  if (typeof v === 'object') {
+    try {
+      return JSON.stringify(v);
+    } catch {
+      return '';
+    }
+  }
+  return '';
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
@@ -164,7 +177,7 @@ export default {
     const metadata = body.participant_metadata ?? body.participantMetadata;
     const attributes = body.participant_attributes ?? body.participantAttributes;
     const agentName = (body.agent_name ?? body.agentName ?? '').trim();
-    const agentMetadata = (body.agent_metadata ?? body.agentMetadata ?? '').trim();
+    const agentMetadata = normalizeMetadata(body.agent_metadata ?? body.agentMetadata);
     const roomPreset = (body.room_preset ?? body.roomPreset ?? '').trim();
     const roomConfig = body.room_config ?? body.roomConfig;
 

@@ -1,6 +1,9 @@
 'use client';
 
+/* eslint-disable @next/next/no-img-element */
+
 import { useMemo, useState } from 'react';
+import { fal } from '@fal-ai/client';
 import '@livekit/components-styles';
 import {
   BarVisualizer,
@@ -10,6 +13,10 @@ import {
   VoiceAssistantControlBar,
   useVoiceAssistant,
 } from '@livekit/components-react';
+
+fal.config({
+  proxyUrl: '/api/fal/proxy',
+});
 
 function safeRandomId() {
   try {
@@ -81,11 +88,45 @@ export default function LiveKitStreamingAvatarDemo({
   const [agentName, setAgentName] = useState('avatar-agent');
   const [displayName, setDisplayName] = useState('web-user');
 
+  const [avatarPrompt, setAvatarPrompt] = useState(
+    'A photorealistic close-up headshot of a friendly digital human, neutral background, studio lighting, looking at the camera, high detail, sharp focus'
+  );
+  const [avatarImageUrl, setAvatarImageUrl] = useState('');
+  const [avatarBusy, setAvatarBusy] = useState(false);
+  const [avatarError, setAvatarError] = useState<string | null>(null);
+
   const [serverUrl, setServerUrl] = useState<string | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [connect, setConnect] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  async function generateAvatar() {
+    setAvatarError(null);
+    setAvatarBusy(true);
+    try {
+      const result = await fal.subscribe('fal-ai/flux/schnell', {
+        input: {
+          prompt: avatarPrompt.trim(),
+          image_size: 'square_hd',
+          num_images: 1,
+        },
+        storageSettings: { expiresIn: '1d' },
+        pollInterval: 1000,
+      });
+
+      const url = result?.data?.images?.[0]?.url;
+      if (!url) {
+        throw new Error('fal response missing images[0].url');
+      }
+
+      setAvatarImageUrl(url);
+    } catch (e) {
+      setAvatarError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setAvatarBusy(false);
+    }
+  }
 
   async function join() {
     setError(null);
@@ -99,6 +140,9 @@ export default function LiveKitStreamingAvatarDemo({
           participant_identity: identity,
           participant_name: displayName.trim() || identity,
           agent_name: agentName.trim() || undefined,
+          agent_metadata: avatarImageUrl.trim()
+            ? { avatarImageUrl: avatarImageUrl.trim() }
+            : undefined,
         }),
       });
 
@@ -170,6 +214,66 @@ export default function LiveKitStreamingAvatarDemo({
               placeholder="web-user"
             />
           </label>
+        </div>
+
+        <div className="mt-6 pt-5 border-t border-[var(--border)]">
+          <p className="text-sm font-medium mb-2">Avatar (fal.ai)</p>
+          <p className="text-xs text-[var(--muted)] mb-3">
+            Generate a face image, then we pass the image URL to the agent via LiveKit dispatch
+            metadata (<code>avatarImageUrl</code>). The fal key stays server-side via the proxy
+            route.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            <label className="text-sm md:col-span-2">
+              <div className="text-xs text-[var(--muted)] mb-1">Prompt</div>
+              <textarea
+                value={avatarPrompt}
+                onChange={(e) => setAvatarPrompt(e.target.value)}
+                rows={3}
+                className="w-full bg-[var(--card-bg)] border border-[var(--border)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--border-strong)] resize-y"
+                placeholder="Describe your digital human..."
+              />
+            </label>
+
+            <div className="flex flex-col gap-3">
+              <button
+                type="button"
+                disabled={avatarBusy}
+                onClick={generateAvatar}
+                className="badge hover:border-[var(--border-strong)] disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {avatarBusy ? 'Generating...' : 'Generate face image'}
+              </button>
+
+              <label className="text-sm">
+                <div className="text-xs text-[var(--muted)] mb-1">Or paste image URL</div>
+                <input
+                  value={avatarImageUrl}
+                  onChange={(e) => setAvatarImageUrl(e.target.value)}
+                  className="w-full bg-[var(--card-bg)] border border-[var(--border)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--border-strong)]"
+                  placeholder="https://..."
+                />
+              </label>
+            </div>
+          </div>
+
+          {avatarImageUrl ? (
+            <div className="mt-4 flex flex-col md:flex-row md:items-center gap-4">
+              <img
+                src={avatarImageUrl}
+                alt="Generated avatar"
+                className="h-24 w-24 rounded border border-[var(--border)] object-cover"
+              />
+              <p className="text-xs text-[var(--muted)] break-all">
+                Using: <code>{avatarImageUrl}</code>
+              </p>
+            </div>
+          ) : null}
+
+          {avatarError ? (
+            <p className="text-sm text-red-600 mt-3">{avatarError}</p>
+          ) : null}
         </div>
 
         <div className="flex flex-col md:flex-row md:items-center gap-3 mt-4">

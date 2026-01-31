@@ -1,9 +1,12 @@
 import { NextResponse } from 'next/server';
 import { AccessToken, VideoGrant } from 'livekit-server-sdk';
 import { RoomAgentDispatch, RoomConfiguration } from '@livekit/protocol';
+import { loadRepoSecretsEnv } from '@/app/api/_lib/repo-secrets';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+
+loadRepoSecretsEnv();
 
 type TokenRequestBody = {
   // LiveKit endpoint token generation schema (supports both snake_case and camelCase).
@@ -25,13 +28,29 @@ type TokenRequestBody = {
   // Convenience: allow direct agent dispatch fields from clients.
   agent_name?: string;
   agentName?: string;
-  agent_metadata?: string;
-  agentMetadata?: string;
+  agent_metadata?: unknown;
+  agentMetadata?: unknown;
 };
 
 function getEnv(name: string) {
   const v = process.env[name];
   return v && v.trim() ? v.trim() : '';
+}
+
+function normalizeMetadata(value: unknown) {
+  if (!value) return undefined;
+  if (typeof value === 'string') {
+    const t = value.trim();
+    return t ? t : undefined;
+  }
+  if (typeof value === 'object') {
+    try {
+      return JSON.stringify(value);
+    } catch {
+      return undefined;
+    }
+  }
+  return undefined;
 }
 
 export async function POST(req: Request) {
@@ -69,7 +88,7 @@ export async function POST(req: Request) {
     body.participant_attributes ?? body.participantAttributes ?? undefined;
 
   const agentName = body.agent_name ?? body.agentName;
-  const agentMetadata = body.agent_metadata ?? body.agentMetadata;
+  const agentMetadata = normalizeMetadata(body.agent_metadata ?? body.agentMetadata);
 
   const token = new AccessToken(apiKey, apiSecret, {
     identity,
@@ -111,4 +130,3 @@ export async function POST(req: Request) {
     { status: 201 }
   );
 }
-

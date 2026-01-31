@@ -14,12 +14,14 @@
     "feeds:refresh": "npm run feeds:update && npm run build"
   },
   "dependencies": {
-    "@lumaai/luma-web": "^0.2.2",
-    "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.5.0",
+    "@fal-ai/client": "^1.8.4",
+    "@fal-ai/server-proxy": "^1.1.2",
     "@livekit/components-react": "^2.9.19",
     "@livekit/components-styles": "^1.2.0",
     "@livekit/protocol": "^1.44.0",
+    "@lumaai/luma-web": "^0.2.2",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
     "livekit-client": "^2.17.0",
     "livekit-server-sdk": "^2.15.0",
     "next": "16.1.6",

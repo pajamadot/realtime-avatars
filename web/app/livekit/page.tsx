@@ -47,7 +47,8 @@ export default function LiveKitPage() {
             <div className="code">
               LIVEKIT_URL=...{'\n'}
               LIVEKIT_API_KEY=...{'\n'}
-              LIVEKIT_API_SECRET=...
+              LIVEKIT_API_SECRET=...{'\n'}
+              FAL_KEY=... (optional; only needed for generating a custom face image)
             </div>
             <p>
               Then run an agent that publishes an avatar stream into the same room (or dispatch

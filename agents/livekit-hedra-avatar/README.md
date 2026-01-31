@@ -76,6 +76,9 @@ LiveKit docs:
 
 - If you want the avatar to wait for the user to speak first, set `AGENT_GREET=0`.
 - You can also set `AVATAR_IMAGE_PATH` to point at an image file instead of `avatar.png`.
+- This agent supports per-room overrides via LiveKit Agent dispatch metadata (JSON string):
+  - `{"avatarImageUrl":"https://..."}` (use an image URL instead of shipping `avatar.png`)
+  - `{"hedraAvatarId":"..."}`
 - For cloud deployments, you have two options:
   - Ship an `avatar.png` with the agent build (the file is gitignored but will be uploaded when building the image).
   - Or set `HEDRA_AVATAR_ID` (recommended for production) to use a pre-created avatar on Hedra without bundling an image.
