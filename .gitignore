@@ -50,6 +50,8 @@ agents/**/livekit.toml
 
 # python
 .venv
+__pycache__/
+*.pyc
 
 # typescript
 *.tsbuildinfo
