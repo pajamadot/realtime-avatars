@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-30T18:46:39.758Z",
+  "updatedAt": "2026-01-31T10:33:34.538Z",
   "source": "GitHub Search",
   "queries": {
     "metahuman": {
@@ -10,7 +10,7 @@
           "name": "YUANZHUO-BNU/metahuman_overview",
           "link": "https://github.com/YUANZHUO-BNU/metahuman_overview",
           "description": "",
-          "stars": 1078,
+          "stars": 1079,
           "pushedAt": "2025-01-08T10:04:36.000Z",
           "language": ""
         },
@@ -96,7 +96,7 @@
           "name": "AIGC-Audio/AudioGPT",
           "link": "https://github.com/AIGC-Audio/AudioGPT",
           "description": "AudioGPT: Understanding and Generating Speech, Music, Sound, and Talking Head",
-          "stars": 10211,
+          "stars": 10210,
           "pushedAt": "2024-07-06T21:35:18.000Z",
           "language": "Python"
         },
@@ -104,7 +104,7 @@
           "name": "OpenTalker/video-retalking",
           "link": "https://github.com/OpenTalker/video-retalking",
           "description": "[SIGGRAPH Asia 2022] VideoReTalking: Audio-based Lip Synchronization for Talking Head Video Editing In the Wild",
-          "stars": 7207,
+          "stars": 7206,
           "pushedAt": "2024-08-05T05:59:59.000Z",
           "language": "Python"
         },
@@ -160,7 +160,7 @@
           "name": "YuanxunLu/LiveSpeechPortraits",
           "link": "https://github.com/YuanxunLu/LiveSpeechPortraits",
           "description": "Live Speech Portraits: Real-Time Photorealistic Talking-Head Animation (SIGGRAPH Asia 2021)",
-          "stars": 1280,
+          "stars": 1281,
           "pushedAt": "2023-06-19T21:51:32.000Z",
           "language": "Python"
         },
@@ -182,7 +182,7 @@
           "name": "graphdeco-inria/gaussian-splatting",
           "link": "https://github.com/graphdeco-inria/gaussian-splatting",
           "description": "Original reference implementation of \"3D Gaussian Splatting for Real-Time Radiance Field Rendering\"",
-          "stars": 20555,
+          "stars": 20564,
           "pushedAt": "2025-10-17T14:28:15.000Z",
           "language": "Python"
         },
@@ -190,7 +190,7 @@
           "name": "nerfstudio-project/gsplat",
           "link": "https://github.com/nerfstudio-project/gsplat",
           "description": "CUDA accelerated rasterization of gaussian splatting",
-          "stars": 4422,
+          "stars": 4423,
           "pushedAt": "2026-01-28T01:39:03.000Z",
           "language": "Python"
         },
@@ -206,7 +206,7 @@
           "name": "hbb1/2d-gaussian-splatting",
           "link": "https://github.com/hbb1/2d-gaussian-splatting",
           "description": "[SIGGRAPH'24] 2D Gaussian Splatting for Geometrically Accurate Radiance Fields",
-          "stars": 3010,
+          "stars": 3012,
           "pushedAt": "2025-11-24T15:26:53.000Z",
           "language": "Python"
         },
@@ -214,7 +214,7 @@
           "name": "Awesome3DGS/3D-Gaussian-Splatting-Papers",
           "link": "https://github.com/Awesome3DGS/3D-Gaussian-Splatting-Papers",
           "description": "3D",
-          "stars": 2669,
+          "stars": 2671,
           "pushedAt": "2026-01-20T06:34:28.000Z",
           "language": "Python"
         },
@@ -222,7 +222,7 @@
           "name": "muskie82/MonoGS",
           "link": "https://github.com/muskie82/MonoGS",
           "description": "[CVPR'24 Highlight & Best Demo Award] Gaussian Splatting SLAM",
-          "stars": 1979,
+          "stars": 1980,
           "pushedAt": "2024-08-07T14:15:29.000Z",
           "language": "Python"
         },
