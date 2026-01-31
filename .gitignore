@@ -41,6 +41,10 @@ secrets/.ENV
 .wrangler
 .dev.vars
 
+# livekit
+livekit.toml
+agents/**/livekit.toml
+
 # local scratch
 .cache
 
