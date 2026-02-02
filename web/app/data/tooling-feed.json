@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-01T10:35:07.056Z",
+  "updatedAt": "2026-02-02T10:54:13.674Z",
   "source": "GitHub Search",
   "queries": {
     "metahuman": {
@@ -10,7 +10,7 @@
           "name": "YUANZHUO-BNU/metahuman_overview",
           "link": "https://github.com/YUANZHUO-BNU/metahuman_overview",
           "description": "",
-          "stars": 1079,
+          "stars": 1080,
           "pushedAt": "2025-01-08T10:04:36.000Z",
           "language": ""
         },
@@ -18,7 +18,7 @@
           "name": "EpicGames/MetaHuman-DNA-Calibration",
           "link": "https://github.com/EpicGames/MetaHuman-DNA-Calibration",
           "description": "",
-          "stars": 563,
+          "stars": 565,
           "pushedAt": "2025-06-20T07:14:51.000Z",
           "language": "Mathematica"
         },
@@ -96,7 +96,7 @@
           "name": "AIGC-Audio/AudioGPT",
           "link": "https://github.com/AIGC-Audio/AudioGPT",
           "description": "AudioGPT: Understanding and Generating Speech, Music, Sound, and Talking Head",
-          "stars": 10210,
+          "stars": 10209,
           "pushedAt": "2024-07-06T21:35:18.000Z",
           "language": "Python"
         },
@@ -112,7 +112,7 @@
           "name": "Kedreamix/Linly-Talker",
           "link": "https://github.com/Kedreamix/Linly-Talker",
           "description": "Digital Avatar Conversational System - Linly-Talker.  Linly-Talker is an intelligent AI system that combines large language models (LLMs) with visual models to create a novel human-AI interaction method.  It integrates various technologies like Whisper, Linly, Microsoft Speech Services, and SadTalker talking head generation system. ",
-          "stars": 3117,
+          "stars": 3119,
           "pushedAt": "2025-02-24T05:40:05.000Z",
           "language": "Python"
         },
@@ -182,7 +182,7 @@
           "name": "graphdeco-inria/gaussian-splatting",
           "link": "https://github.com/graphdeco-inria/gaussian-splatting",
           "description": "Original reference implementation of \"3D Gaussian Splatting for Real-Time Radiance Field Rendering\"",
-          "stars": 20569,
+          "stars": 20579,
           "pushedAt": "2025-10-17T14:28:15.000Z",
           "language": "Python"
         },
@@ -190,7 +190,7 @@
           "name": "nerfstudio-project/gsplat",
           "link": "https://github.com/nerfstudio-project/gsplat",
           "description": "CUDA accelerated rasterization of gaussian splatting",
-          "stars": 4427,
+          "stars": 4436,
           "pushedAt": "2026-01-28T01:39:03.000Z",
           "language": "Python"
         },
@@ -198,7 +198,7 @@
           "name": "dreamgaussian/dreamgaussian",
           "link": "https://github.com/dreamgaussian/dreamgaussian",
           "description": "[ICLR 2024 Oral] Generative Gaussian Splatting for Efficient 3D Content Creation",
-          "stars": 4285,
+          "stars": 4286,
           "pushedAt": "2024-01-02T04:12:09.000Z",
           "language": "Python"
         },
@@ -206,7 +206,7 @@
           "name": "hbb1/2d-gaussian-splatting",
           "link": "https://github.com/hbb1/2d-gaussian-splatting",
           "description": "[SIGGRAPH'24] 2D Gaussian Splatting for Geometrically Accurate Radiance Fields",
-          "stars": 3014,
+          "stars": 3016,
           "pushedAt": "2025-11-24T15:26:53.000Z",
           "language": "Python"
         },
@@ -214,7 +214,7 @@
           "name": "Awesome3DGS/3D-Gaussian-Splatting-Papers",
           "link": "https://github.com/Awesome3DGS/3D-Gaussian-Splatting-Papers",
           "description": "3D",
-          "stars": 2672,
+          "stars": 2676,
           "pushedAt": "2026-01-20T06:34:28.000Z",
           "language": "Python"
         },
@@ -222,7 +222,7 @@
           "name": "muskie82/MonoGS",
           "link": "https://github.com/muskie82/MonoGS",
           "description": "[CVPR'24 Highlight & Best Demo Award] Gaussian Splatting SLAM",
-          "stars": 1980,
+          "stars": 1983,
           "pushedAt": "2024-08-07T14:15:29.000Z",
           "language": "Python"
         },
@@ -254,7 +254,7 @@
           "name": "autonomousvision/mip-splatting",
           "link": "https://github.com/autonomousvision/mip-splatting",
           "description": "[CVPR'24 Best Student Paper] Mip-Splatting: Alias-free 3D Gaussian Splatting",
-          "stars": 1400,
+          "stars": 1402,
           "pushedAt": "2024-12-17T10:42:50.000Z",
           "language": "Python"
         }
