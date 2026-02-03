@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/metahuman.json';
-import { ConceptCard, AnimatedDiagram, CodeWalkthrough } from '../components/core';
+import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
 import { BlendshapeDemo, SkinningWeightDemo, FaceTrackingDemo } from '../components/demos/metahuman';
 
 const sections = [
@@ -294,6 +294,8 @@ export default function MetaHumanPage() {
           </div>
         </div>
       </section>
+
+      <CrossTrackNav currentTrack="metahuman" />
     </div>
   );
 }

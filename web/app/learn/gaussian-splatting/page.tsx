@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import content from '../data/content/gaussian-splatting.json';
-import { ConceptCard, AnimatedDiagram, CodeWalkthrough } from '../components/core';
+import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
 
 // Dynamically import heavy 3D demos
 const SingleGaussianDemo = dynamic(
@@ -315,6 +315,8 @@ export default function GaussianSplattingPage() {
           </div>
         </div>
       </section>
+
+      <CrossTrackNav currentTrack="gaussian-splatting" />
     </div>
   );
 }

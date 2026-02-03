@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/streaming-avatars.json';
-import { ConceptCard, AnimatedDiagram, CodeWalkthrough } from '../components/core';
+import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
 import { LatencyDemo, ICEConnectionDemo } from '../components/demos/streaming';
 
 const sections = [
@@ -361,6 +361,8 @@ export default function StreamingAvatarsPage() {
           </div>
         </div>
       </section>
+
+      <CrossTrackNav currentTrack="streaming-avatars" />
     </div>
   );
 }

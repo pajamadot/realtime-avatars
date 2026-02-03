@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/generative-video.json';
-import { ConceptCard, AnimatedDiagram, CodeWalkthrough } from '../components/core';
+import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
 import { DenoisingDemo, DiffusionStepsDemo } from '../components/demos/generative';
 
 const sections = [
@@ -333,6 +333,8 @@ export default function GenerativeVideoPage() {
           </div>
         </div>
       </section>
+
+      <CrossTrackNav currentTrack="generative-video" />
     </div>
   );
 }
