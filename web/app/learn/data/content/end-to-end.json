@@ -1,0 +1,344 @@
+{
+  "id": "end-to-end",
+  "title": "End-to-End Real-Time Avatar",
+  "subtitle": "Building a complete conversational avatar system from audio to pixels",
+  "color": "var(--accent)",
+
+  "intro": {
+    "text": "A real-time conversational avatar isn't just one technology—it's a pipeline. Audio comes in from a microphone, gets transcribed to text, processed by an AI brain, converted back to speech, and finally rendered as a talking avatar. Each stage has latency, and the total must stay under ~1 second to feel natural. This guide shows you how to wire these pieces together using each of the four avatar approaches, with working code you can deploy today.",
+    "duration": "90s"
+  },
+
+  "pipeline": {
+    "steps": [
+      {
+        "id": "capture",
+        "label": "Audio Capture",
+        "description": "Capture user speech via WebRTC or browser MediaRecorder API"
+      },
+      {
+        "id": "vad",
+        "label": "Voice Activity Detection",
+        "description": "Detect when the user starts and stops speaking (turn detection)"
+      },
+      {
+        "id": "stt",
+        "label": "Speech-to-Text",
+        "description": "Transcribe audio to text using Deepgram, Whisper, or AssemblyAI"
+      },
+      {
+        "id": "llm",
+        "label": "LLM Processing",
+        "description": "Generate response using GPT-4, Claude, or other language models"
+      },
+      {
+        "id": "tts",
+        "label": "Text-to-Speech",
+        "description": "Convert text to natural speech audio with ElevenLabs, PlayHT, or Cartesia"
+      },
+      {
+        "id": "avatar",
+        "label": "Avatar Rendering",
+        "description": "Animate and render the avatar driven by the audio output"
+      },
+      {
+        "id": "stream",
+        "label": "Stream to User",
+        "description": "Deliver video/audio back to the user via WebRTC"
+      }
+    ],
+    "connections": [
+      ["capture", "vad"],
+      ["vad", "stt"],
+      ["stt", "llm"],
+      ["llm", "tts"],
+      ["tts", "avatar"],
+      ["avatar", "stream"]
+    ]
+  },
+
+  "approaches": [
+    {
+      "id": "streaming-approach",
+      "title": "Streaming Provider (Fastest to Deploy)",
+      "subtitle": "Use Hedra, Tavus, or HeyGen via WebRTC",
+      "latency": "300-800ms total",
+      "complexity": "Low",
+      "quality": "Provider-dependent",
+      "summary": "The simplest path to production. Avatar providers handle all rendering server-side—you just send audio and receive video. Best for MVPs and production apps where you don't need custom rendering.",
+      "architecture": {
+        "client": ["WebRTC audio/video", "LiveKit SDK"],
+        "server": ["LiveKit Agent", "STT/LLM/TTS pipeline"],
+        "avatar": ["Hedra/Tavus API", "Receives audio, returns video"]
+      },
+      "pros": [
+        "Fastest time to production",
+        "Works on any device (rendering is server-side)",
+        "Scales automatically",
+        "No GPU infrastructure needed"
+      ],
+      "cons": [
+        "Per-minute costs add up",
+        "Limited customization",
+        "Dependent on provider uptime",
+        "Network latency is unavoidable"
+      ],
+      "code": {
+        "title": "LiveKit Agent with Hedra",
+        "language": "python",
+        "snippet": "from livekit.agents import Agent, JobContext\nfrom livekit.plugins import deepgram, openai, hedra\n\nasync def entrypoint(ctx: JobContext):\n    agent = Agent(\n        stt=deepgram.STT(),\n        llm=openai.LLM(model=\"gpt-4o-mini\"),\n        tts=hedra.TTS(voice_id=\"your-voice\"),\n        avatar=hedra.Avatar(avatar_id=\"your-avatar\")\n    )\n    await agent.start(ctx.room)"
+      }
+    },
+    {
+      "id": "generative-approach",
+      "title": "Generative Video (Best Quality)",
+      "subtitle": "Diffusion models for photorealistic synthesis",
+      "latency": "500ms-2s per chunk",
+      "complexity": "High",
+      "quality": "Photorealistic",
+      "summary": "Use diffusion models like those powering Hedra or open-source alternatives to generate photorealistic talking head video. Requires GPU infrastructure but produces the highest quality output from a single reference photo.",
+      "architecture": {
+        "client": ["WebRTC audio/video", "Video player"],
+        "server": ["STT/LLM/TTS pipeline", "Audio2Face model", "Diffusion renderer"],
+        "avatar": ["Reference image", "Trained/distilled model"]
+      },
+      "pros": [
+        "Photorealistic output",
+        "Works from single photo",
+        "No per-person training needed",
+        "Can represent anyone"
+      ],
+      "cons": [
+        "Requires GPU infrastructure",
+        "Higher latency than real-time approaches",
+        "Compute costs can be high",
+        "Quality varies with distillation"
+      ],
+      "code": {
+        "title": "Audio-to-Video Pipeline",
+        "language": "python",
+        "snippet": "import torch\nfrom diffusers import AudioToVideoPipeline\n\npipeline = AudioToVideoPipeline.from_pretrained(\n    \"stabilityai/stable-video-diffusion\",\n    torch_dtype=torch.float16\n).to(\"cuda\")\n\n# Generate video from audio + reference image\nvideo = pipeline(\n    audio=audio_tensor,\n    image=reference_image,\n    num_inference_steps=4  # Distilled for speed\n).frames"
+      }
+    },
+    {
+      "id": "metahuman-approach",
+      "title": "MetaHuman / Game Engine (Most Control)",
+      "subtitle": "Real-time 3D with skeletal animation",
+      "latency": "50-150ms rendering",
+      "complexity": "Medium-High",
+      "quality": "High-quality 3D",
+      "summary": "Use Unreal Engine's MetaHuman or similar 3D avatars with real-time face tracking. Audio drives blendshapes via Audio2Face or similar, and the game engine renders at 60+ FPS. Best for games, VR, or when you need precise animation control.",
+      "architecture": {
+        "client": ["Unreal/Unity client", "Or Pixel Streaming"],
+        "server": ["STT/LLM/TTS pipeline", "Audio2Face server", "Render server (optional)"],
+        "avatar": ["MetaHuman asset", "ARKit/blendshape rig"]
+      },
+      "pros": [
+        "Real-time rendering (60+ FPS)",
+        "Full animation control",
+        "Works in VR/AR",
+        "Industry-standard tools"
+      ],
+      "cons": [
+        "Requires game engine expertise",
+        "Asset creation is complex",
+        "Not photorealistic",
+        "Heavy client or server streaming"
+      ],
+      "code": {
+        "title": "Audio2Face to Blendshapes",
+        "language": "python",
+        "snippet": "import grpc\nfrom audio2face import Audio2FaceService\n\n# Connect to NVIDIA Audio2Face\nchannel = grpc.insecure_channel('localhost:50051')\na2f = Audio2FaceService(channel)\n\n# Send audio, get blendshape weights\nblendshapes = a2f.process_audio(\n    audio_data=tts_output,\n    sample_rate=22050\n)\n\n# Send to Unreal via Live Link\nlive_link.send_blendshapes(blendshapes)"
+      }
+    },
+    {
+      "id": "gaussian-approach",
+      "title": "Gaussian Splatting (Cutting Edge)",
+      "subtitle": "Photorealistic real-time 3D",
+      "latency": "16-33ms rendering",
+      "complexity": "Very High",
+      "quality": "Photorealistic",
+      "summary": "The newest approach: capture a person as millions of 3D Gaussians, then animate them in real-time. Combines photorealism with real-time rendering speeds. Still research-stage but rapidly maturing.",
+      "architecture": {
+        "client": ["WebGL/Three.js viewer", "Or native app"],
+        "server": ["STT/LLM/TTS pipeline", "Expression/pose prediction"],
+        "avatar": ["Pre-captured Gaussian model", "Animation driver (FLAME, blendshapes)"]
+      },
+      "pros": [
+        "Photorealistic AND real-time",
+        "60+ FPS rendering",
+        "Works in browser (WebGL)",
+        "Multi-view consistent"
+      ],
+      "cons": [
+        "Requires multi-view capture per person",
+        "Animation is still research-stage",
+        "Limited tooling",
+        "Per-identity training required"
+      ],
+      "code": {
+        "title": "Animated Gaussian Avatar",
+        "language": "typescript",
+        "snippet": "import { GaussianAvatar } from '@gaussian/avatar';\n\nconst avatar = new GaussianAvatar({\n  modelPath: '/models/person.splat',\n  flameModel: '/models/flame.bin'\n});\n\n// Drive with audio features\naudioAnalyzer.onFrame((features) => {\n  const expression = audio2expression(features);\n  avatar.setExpression(expression);\n  avatar.render(camera);\n});"
+      }
+    }
+  ],
+
+  "latencyBreakdown": {
+    "title": "Latency Budget for Natural Conversation",
+    "target": "< 1000ms total round-trip",
+    "components": [
+      { "name": "Network (user → server)", "min": 20, "max": 100, "unit": "ms" },
+      { "name": "Voice Activity Detection", "min": 100, "max": 300, "unit": "ms" },
+      { "name": "Speech-to-Text", "min": 100, "max": 500, "unit": "ms" },
+      { "name": "LLM (first token)", "min": 100, "max": 500, "unit": "ms" },
+      { "name": "Text-to-Speech", "min": 50, "max": 200, "unit": "ms" },
+      { "name": "Avatar Rendering", "min": 16, "max": 500, "unit": "ms" },
+      { "name": "Network (server → user)", "min": 20, "max": 100, "unit": "ms" }
+    ],
+    "tips": [
+      "Use streaming STT (process as user speaks)",
+      "Stream LLM tokens to TTS immediately",
+      "Pre-buffer TTS audio before starting avatar",
+      "Use WebRTC for lowest network latency",
+      "Co-locate services in same region"
+    ]
+  },
+
+  "implementation": {
+    "steps": [
+      {
+        "title": "Set Up LiveKit Server",
+        "description": "Deploy LiveKit for WebRTC infrastructure - handles audio/video routing",
+        "code": "# Using LiveKit Cloud (easiest)\n# Or self-host with Docker:\ndocker run -d \\\n  -p 7880:7880 -p 7881:7881 -p 7882:7882/udp \\\n  livekit/livekit-server \\\n  --dev --bind 0.0.0.0",
+        "language": "bash"
+      },
+      {
+        "title": "Create the Agent Pipeline",
+        "description": "Wire up STT → LLM → TTS with LiveKit Agents framework",
+        "code": "from livekit.agents import Agent, AutoSubscribe, JobContext, WorkerOptions, cli\nfrom livekit.agents.voice import VoiceAgent\nfrom livekit.plugins import deepgram, openai, cartesia\n\nasync def entrypoint(ctx: JobContext):\n    await ctx.connect(auto_subscribe=AutoSubscribe.AUDIO_ONLY)\n    \n    agent = VoiceAgent(\n        stt=deepgram.STT(),\n        llm=openai.LLM(model=\"gpt-4o-mini\"),\n        tts=cartesia.TTS(voice=\"professional-woman\"),\n    )\n    \n    agent.start(ctx.room)\n    await agent.say(\"Hello! How can I help you today?\")\n\nif __name__ == \"__main__\":\n    cli.run_app(WorkerOptions(entrypoint_fnc=entrypoint))",
+        "language": "python"
+      },
+      {
+        "title": "Add Avatar Integration",
+        "description": "Connect TTS output to avatar provider or local renderer",
+        "code": "# Option A: Hedra streaming avatar\nfrom livekit.plugins import hedra\n\nagent = VoiceAgent(\n    stt=deepgram.STT(),\n    llm=openai.LLM(),\n    tts=hedra.TTS(),  # Hedra handles TTS + avatar\n)\n\n# Option B: Local avatar with separate TTS\nfrom avatar_renderer import GaussianAvatarRenderer\n\nrenderer = GaussianAvatarRenderer(model=\"./avatar.splat\")\n\n@agent.on(\"tts_audio\")\nasync def on_audio(audio_frame):\n    video_frame = renderer.process(audio_frame)\n    await ctx.room.publish_video(video_frame)",
+        "language": "python"
+      },
+      {
+        "title": "Build the Client",
+        "description": "Create a web client that connects to the avatar session",
+        "code": "'use client';\n\nimport { LiveKitRoom, VideoTrack, useVoiceAssistant } from '@livekit/components-react';\n\nexport default function AvatarChat() {\n  const { state, audioTrack, videoTrack } = useVoiceAssistant();\n  \n  return (\n    <LiveKitRoom\n      serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_URL}\n      token={token}\n    >\n      <div className=\"avatar-container\">\n        {videoTrack && <VideoTrack track={videoTrack} />}\n        <div className=\"status\">{state}</div>\n      </div>\n      <AudioVisualizer track={audioTrack} />\n    </LiveKitRoom>\n  );\n}",
+        "language": "tsx"
+      },
+      {
+        "title": "Deploy and Scale",
+        "description": "Deploy to production with proper infrastructure",
+        "code": "# Deploy agent to LiveKit Cloud\nlk agent deploy --name my-avatar-agent\n\n# Or deploy to your own infrastructure\ndocker build -t avatar-agent .\ndocker run -d \\\n  -e LIVEKIT_URL=wss://your-server.livekit.cloud \\\n  -e LIVEKIT_API_KEY=your-key \\\n  -e LIVEKIT_API_SECRET=your-secret \\\n  avatar-agent",
+        "language": "bash"
+      }
+    ],
+    "resources": [
+      {
+        "title": "LiveKit Agents Framework",
+        "url": "https://github.com/livekit/agents",
+        "type": "github"
+      },
+      {
+        "title": "LiveKit Voice Assistant Example",
+        "url": "https://github.com/livekit-examples/voice-assistant",
+        "type": "github"
+      },
+      {
+        "title": "Hedra API Documentation",
+        "url": "https://docs.hedra.com",
+        "type": "docs"
+      },
+      {
+        "title": "NVIDIA Audio2Face",
+        "url": "https://www.nvidia.com/en-us/omniverse/apps/audio2face/",
+        "type": "docs"
+      },
+      {
+        "title": "This Project's LiveKit Demo",
+        "url": "/livekit",
+        "type": "demo"
+      }
+    ]
+  },
+
+  "comparisonTable": {
+    "headers": ["Approach", "Latency", "Quality", "Setup Time", "Cost", "Best For"],
+    "rows": [
+      {
+        "approach": "Streaming (Hedra/Tavus)",
+        "latency": "300-800ms",
+        "quality": "High",
+        "setupTime": "Hours",
+        "cost": "$$$/min",
+        "bestFor": "Production apps, MVPs"
+      },
+      {
+        "approach": "Generative Video",
+        "latency": "500ms-2s",
+        "quality": "Photorealistic",
+        "setupTime": "Days",
+        "cost": "GPU compute",
+        "bestFor": "Async content, highest quality"
+      },
+      {
+        "approach": "MetaHuman/3D",
+        "latency": "50-150ms",
+        "quality": "3D realistic",
+        "setupTime": "Weeks",
+        "cost": "Render server",
+        "bestFor": "Games, VR/AR, control"
+      },
+      {
+        "approach": "Gaussian Splatting",
+        "latency": "16-33ms",
+        "quality": "Photorealistic",
+        "setupTime": "Days-Weeks",
+        "cost": "Capture + train",
+        "bestFor": "Known identities, research"
+      }
+    ]
+  },
+
+  "decisionTree": {
+    "title": "Which Approach Should You Use?",
+    "questions": [
+      {
+        "question": "Do you need to ship in < 1 week?",
+        "yes": "streaming-approach",
+        "no": "next"
+      },
+      {
+        "question": "Do you need photorealistic quality?",
+        "yes": "generative-or-gaussian",
+        "no": "metahuman-approach"
+      },
+      {
+        "question": "Is it a specific known person?",
+        "yes": "gaussian-approach",
+        "no": "generative-approach"
+      }
+    ]
+  },
+
+  "tradeoffs": {
+    "when": [
+      "Building a conversational AI product",
+      "Need visual engagement beyond voice-only",
+      "Want to create emotional connection with users",
+      "Representing a brand or persona visually"
+    ],
+    "whenNot": [
+      "Voice-only is sufficient for your use case",
+      "Latency budget is extremely tight (< 200ms)",
+      "Running on very low-end devices",
+      "Privacy concerns about face synthesis"
+    ],
+    "bestFor": "Customer service, education, entertainment, and telepresence applications where visual presence enhances the interaction"
+  }
+}

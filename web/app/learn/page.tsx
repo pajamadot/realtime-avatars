@@ -95,9 +95,41 @@ export default function LearnPage() {
         </div>
       </section>
 
+      {/* End-to-End Guide - Featured */}
+      <section className="mb-16">
+        <Link
+          href="/learn/end-to-end"
+          className="block card p-6 bg-gradient-to-r from-[var(--color-gaussian)]/5 via-[var(--color-generative)]/5 to-[var(--color-streaming)]/5 hover:from-[var(--color-gaussian)]/10 hover:via-[var(--color-generative)]/10 hover:to-[var(--color-streaming)]/10 transition-all group"
+        >
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-4 h-4 rounded-full bg-gradient-to-r from-[var(--color-gaussian)] via-[var(--color-generative)] to-[var(--color-streaming)]" />
+            <span className="badge bg-[var(--accent)]/10 text-[var(--accent)] border-[var(--accent)]/20">
+              Start Here
+            </span>
+            <span className="text-xs text-[var(--muted)]">30 min</span>
+          </div>
+          <h2 className="text-2xl font-semibold mb-2 group-hover:text-[var(--accent)] transition-colors">
+            End-to-End Real-Time Avatar
+          </h2>
+          <p className="text-[var(--muted)] mb-4 max-w-2xl">
+            Build a complete conversational avatar system from scratch. Learn how audio flows through
+            STT → LLM → TTS → Avatar rendering, with working code for each of the four approaches.
+          </p>
+          <div className="flex flex-wrap gap-2 mb-4">
+            <span className="badge text-xs">Voice AI Pipeline</span>
+            <span className="badge text-xs">Latency Optimization</span>
+            <span className="badge text-xs">LiveKit Integration</span>
+            <span className="badge text-xs">Production Deployment</span>
+          </div>
+          <div className="text-sm font-medium text-[var(--accent)] group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+            Build the complete system →
+          </div>
+        </Link>
+      </section>
+
       {/* Tracks Grid */}
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold mb-6">Choose Your Track</h2>
+        <h2 className="text-2xl font-semibold mb-6">Deep Dive: Choose Your Track</h2>
         <div className="grid md:grid-cols-2 gap-6">
           {tracks.map((track) => (
             <Link
