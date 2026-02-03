@@ -4,7 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/generative-video.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
-import { DenoisingDemo, DiffusionStepsDemo } from '../components/demos/generative';
+import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo } from '../components/demos/generative';
+import { GradientDescentDemo, NeuralNetworkDemo } from '../components/demos/fundamentals';
 
 const sections = [
   { id: 'intro', label: 'Introduction' },
@@ -124,6 +125,57 @@ export default function GenerativeVideoPage() {
         {/* Steps Comparison Demo */}
         <div className="mt-8">
           <DiffusionStepsDemo />
+        </div>
+
+        {/* Latent Space Demo */}
+        <div className="mt-8">
+          <LatentSpaceDemo />
+        </div>
+
+        {/* Lip Sync Demo */}
+        <div className="mt-8">
+          <LipSyncPlaygroundDemo />
+        </div>
+
+        {/* Identity Lock Demo */}
+        <div className="mt-8">
+          <IdentityLockDemo />
+        </div>
+
+        {/* Gradient Descent Demo - Fundamental */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">How Neural Networks Learn</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Diffusion models learn to denoise through gradient descent. This fundamental algorithm drives all deep learning.
+          </p>
+          <GradientDescentDemo />
+        </div>
+
+        {/* Neural Network Demo - Fundamental */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Neural Network Forward Pass</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Watch data flow through layers of neurons. This is the basic building block of diffusion models and face encoders.
+          </p>
+          <NeuralNetworkDemo />
+        </div>
+
+        {/* U-Net Architecture Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">U-Net Architecture</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            The U-Net is the denoising backbone of Stable Diffusion. Explore its encoder-decoder structure with skip connections.
+          </p>
+          <UNetArchitectureDemo />
+        </div>
+
+        {/* Cross-Attention Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Cross-Attention Mechanism</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            See how audio tokens guide which parts of the image to modify. This is how the model knows to move the mouth when speaking.
+          </p>
+          <CrossAttentionDemo />
         </div>
       </section>
 

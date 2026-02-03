@@ -255,11 +255,11 @@ Suggest improvements or corrections.
 
 | Track | Research | Structure | Drilldowns | Demos | Review |
 |-------|----------|-----------|------------|-------|--------|
-| Gaussian Splatting | Done | Done | 5/5 done | 3 done | Done |
-| MetaHuman | Done | Done | 4/5 done | 3 done | Done |
-| Generative Video | Done | Done | 6/6 done | 2 done | Done |
-| Streaming Avatars | Done | Done | 5/5 done | 2 done | Done |
-| **End-to-End** | Done | Done | N/A | N/A | Done |
+| Gaussian Splatting | Done | Done | 5/5 done | 7 done | Done |
+| MetaHuman | Done | Done | 4/5 done | 6 done | Done |
+| Generative Video | Done | Done | 6/6 done | 10 done | Done |
+| Streaming Avatars | Done | Done | 5/5 done | 5 done | Done |
+| **End-to-End** | Done | Done | N/A | 2 done | Done |
 
 ### Completed Drill-Down Concepts
 
@@ -294,39 +294,57 @@ Suggest improvements or corrections.
 
 ### Completed Demos
 
-**Gaussian Splatting (5 demos):**
+**Gaussian Splatting (7 demos):**
 1. **SingleGaussianDemo** - 3D Gaussian manipulator (Three.js)
 2. **AlphaBlendingDemo** - Drag-and-drop layer ordering
 3. **SphericalHarmonicsDemo** - SH coefficient playground (Three.js)
 4. **MatrixTransformDemo** - 2D scale/rotation matrix visualizer
 5. **CovarianceShapeDemo** - 3D ellipsoid covariance shape manipulator
+6. **TrainingProgressDemo** - 3DGS training visualization with PSNR/Gaussian count curves
+7. **DifferentiableRenderingDemo** - Interactive gradient flow through rendering
 
-**MetaHuman (4 demos):**
-6. **BlendshapeDemo** - ARKit 52 blendshape playground
-7. **SkinningWeightDemo** - Skeletal skinning weights visualizer
-8. **FaceTrackingDemo** - Simulated ARKit face tracking
-9. **AudioToExpressionDemo** - Phoneme-to-viseme lip sync demo
+**MetaHuman (6 demos):**
+8. **BlendshapeDemo** - ARKit 52 blendshape playground
+9. **SkinningWeightDemo** - Skeletal skinning weights visualizer
+10. **FaceTrackingDemo** - Simulated ARKit face tracking
+11. **AudioToExpressionDemo** - Phoneme-to-viseme lip sync demo
+12. **BoneHierarchyDemo** - Interactive skeletal bone hierarchy explorer with FK
+13. **BlendshapeMixerDemo** - Multi-expression blending mixer
 
-**Generative Video (2 demos):**
-10. **DenoisingDemo** - Diffusion step visualizer
-11. **DiffusionStepsDemo** - 4-step vs 50-step quality comparison
+**Generative Video (10 demos):**
+14. **DenoisingDemo** - Diffusion step visualizer
+15. **DiffusionStepsDemo** - 4-step vs 50-step quality comparison
+16. **LatentSpaceDemo** - VAE latent space explorer with expression interpolation
+17. **LipSyncPlaygroundDemo** - Phoneme-to-viseme lip sync playground
+18. **IdentityLockDemo** - Identity preservation during animation
+19. **GradientDescentDemo** - Interactive gradient descent visualizer with momentum
+20. **NeuralNetworkDemo** - Interactive neural network forward pass visualization
+21. **UNetArchitectureDemo** - Encoder-decoder U-Net architecture explorer
+22. **CrossAttentionDemo** - Audio-to-image cross-attention visualization
 
-**Streaming Avatars (3 demos):**
-12. **LatencyDemo** - Voice AI pipeline latency visualizer
-13. **ICEConnectionDemo** - WebRTC ICE candidate gathering visualizer
-14. **VADDemo** - Voice activity detection simulation
+**Streaming Avatars (5 demos):**
+23. **LatencyDemo** - Voice AI pipeline latency visualizer
+24. **ICEConnectionDemo** - WebRTC ICE candidate gathering visualizer
+25. **VADDemo** - Voice activity detection simulation
+26. **SFUComparisonDemo** - P2P vs SFU vs MCU architecture comparison
+27. **ProviderComparisonDemo** - Interactive avatar provider comparison
 
-**End-to-End (1 demo):**
-15. **PipelineFlowDemo** - Animated data flow through voice AI pipeline
+**End-to-End (2 demos):**
+28. **PipelineFlowDemo** - Animated data flow through voice AI pipeline
+29. **QualityLatencyDemo** - Interactive quality vs latency tradeoff configurator
 
 ### Missing Concepts (To Create)
 
 **MetaHuman:**
 - arkit-protocol.json (optional - ARKit blendshapes already covers this)
 
-### Demo Ideas (Not Yet Implemented)
+### Demo Ideas (Future Enhancements)
 
-(All planned demos have been implemented!)
+**Potential additional demos:**
+- **DensificationDemo** (Gaussian) - Visualize adaptive density control step-by-step
+- **AgentBuilderDemo** (Streaming) - Interactive voice AI agent configuration builder
+- **TransformerAttentionDemo** (Fundamentals) - Self-attention mechanism visualizer
+- **VAEReconstructionDemo** (Generative) - Encode/decode comparison showing reconstruction quality
 
 ---
 

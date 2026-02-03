@@ -32,6 +32,16 @@ const CovarianceShapeDemo = dynamic(
   { ssr: false, loading: () => <DemoPlaceholder label="Loading covariance shape demo..." /> }
 );
 
+const TrainingProgressDemo = dynamic(
+  () => import('../components/demos/gaussian/TrainingProgressDemo'),
+  { ssr: false, loading: () => <DemoPlaceholder label="Loading training progress demo..." /> }
+);
+
+const DifferentiableRenderingDemo = dynamic(
+  () => import('../components/demos/gaussian/DifferentiableRenderingDemo'),
+  { ssr: false, loading: () => <DemoPlaceholder label="Loading differentiable rendering demo..." /> }
+);
+
 function DemoPlaceholder({ label }: { label: string }) {
   return (
     <div className="h-[300px] bg-[var(--card-bg-alt)] rounded-lg flex items-center justify-center text-[var(--muted)]">
@@ -223,6 +233,24 @@ export default function GaussianSplattingPage() {
             Manipulate scale along each axis to create spheres, pancakes, or needles—the building blocks of 3D Gaussian Splatting.
           </p>
           <CovarianceShapeDemo />
+        </div>
+
+        {/* Demo 6: Training Progress */}
+        <div id="demo-training-progress" className="mb-8">
+          <h3 className="text-xl font-semibold mb-3">Demo 6: Training Progress</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Watch how 3DGS training evolves over 30K iterations: Gaussian count, PSNR quality, and key milestones.
+          </p>
+          <TrainingProgressDemo />
+        </div>
+
+        {/* Demo 7: Differentiable Rendering */}
+        <div id="demo-differentiable-rendering" className="mb-8">
+          <h3 className="text-xl font-semibold mb-3">Demo 7: Differentiable Rendering</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            See how gradients flow backward through rendering. Click to set a target - the Gaussian learns to cover it.
+          </p>
+          <DifferentiableRenderingDemo />
         </div>
       </section>
 

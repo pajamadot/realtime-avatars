@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/end-to-end.json';
 import { AnimatedDiagram, CodeWalkthrough } from '../components/core';
-import { PipelineFlowDemo } from '../components/demos/endtoend';
+import { PipelineFlowDemo, QualityLatencyDemo } from '../components/demos/endtoend';
 
 const sections = [
   { id: 'intro', label: 'Overview' },
@@ -372,6 +372,11 @@ export default function EndToEndPage() {
               </li>
             ))}
           </ul>
+        </div>
+
+        {/* Quality vs Latency Demo */}
+        <div className="mt-8">
+          <QualityLatencyDemo />
         </div>
       </section>
 
