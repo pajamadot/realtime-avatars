@@ -1,6 +1,6 @@
 {
   "id": "gaussian-splatting",
-  "title": "Neural Gaussian Splatting",
+  "title": "Gaussian Splatting",
   "subtitle": "3D Gaussian primitives for real-time photorealistic rendering",
   "color": "var(--color-gaussian)",
 

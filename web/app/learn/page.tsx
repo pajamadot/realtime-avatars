@@ -3,7 +3,7 @@ import Link from 'next/link';
 const tracks = [
   {
     id: 'gaussian-splatting',
-    title: 'Neural Gaussian Splatting',
+    title: 'Gaussian Splatting',
     subtitle: '3D Gaussian primitives for photorealistic rendering',
     color: 'var(--color-gaussian)',
     description: 'Learn how millions of fuzzy 3D blobs can represent photorealistic scenes and avatars, rendering at 60+ FPS on consumer hardware.',
