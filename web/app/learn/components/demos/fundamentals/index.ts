@@ -6,3 +6,4 @@ export { BackpropagationDemo } from './BackpropagationDemo';
 export { PoolingLayerDemo } from './PoolingLayerDemo';
 export { DropoutDemo } from './DropoutDemo';
 export { BatchNormalizationDemo } from './BatchNormalizationDemo';
+export { LossFunctionDemo } from './LossFunctionDemo';

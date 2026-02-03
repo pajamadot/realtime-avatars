@@ -4,8 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/generative-video.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
-import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo, TemporalConsistencyDemo, SamplerComparisonDemo, FaceEncoderDemo, VAEDemo, MotionFieldDemo, AttentionMechanismDemo } from '../components/demos/generative';
-import { ConvolutionDemo, ActivationFunctionsDemo, BackpropagationDemo, PoolingLayerDemo, DropoutDemo, BatchNormalizationDemo } from '../components/demos/fundamentals';
+import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo, TemporalConsistencyDemo, SamplerComparisonDemo, FaceEncoderDemo, VAEDemo, MotionFieldDemo, AttentionMechanismDemo, EmbeddingSpaceDemo } from '../components/demos/generative';
+import { ConvolutionDemo, ActivationFunctionsDemo, BackpropagationDemo, PoolingLayerDemo, DropoutDemo, BatchNormalizationDemo, LossFunctionDemo } from '../components/demos/fundamentals';
 import { GradientDescentDemo, NeuralNetworkDemo } from '../components/demos/fundamentals';
 
 const sections = [
@@ -303,6 +303,24 @@ export default function GenerativeVideoPage() {
             Explore self-attention and cross-attention. These mechanisms allow models to focus on relevant parts of the input.
           </p>
           <AttentionMechanismDemo />
+        </div>
+
+        {/* Loss Function Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Loss Functions</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Loss functions measure prediction errors. Compare MSE, MAE, BCE, and Huber loss for different training scenarios.
+          </p>
+          <LossFunctionDemo />
+        </div>
+
+        {/* Embedding Space Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Embedding Space</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Explore how neural networks learn meaningful vector representations. Similar concepts cluster together in embedding space.
+          </p>
+          <EmbeddingSpaceDemo />
         </div>
       </section>
 

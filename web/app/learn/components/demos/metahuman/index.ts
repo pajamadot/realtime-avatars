@@ -12,3 +12,4 @@ export { JointConstraintsDemo } from './JointConstraintsDemo';
 export { EyeGazeDemo } from './EyeGazeDemo';
 export { HairSimulationDemo } from './HairSimulationDemo';
 export { SecondaryMotionDemo } from './SecondaryMotionDemo';
+export { MuscleSystemDemo } from './MuscleSystemDemo';

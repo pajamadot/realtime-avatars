@@ -13,3 +13,4 @@ export { FaceEncoderDemo } from './FaceEncoderDemo';
 export { VAEDemo } from './VAEDemo';
 export { MotionFieldDemo } from './MotionFieldDemo';
 export { AttentionMechanismDemo } from './AttentionMechanismDemo';
+export { EmbeddingSpaceDemo } from './EmbeddingSpaceDemo';
