@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/end-to-end.json';
 import { AnimatedDiagram, CodeWalkthrough } from '../components/core';
+import { PipelineFlowDemo } from '../components/demos/endtoend';
 
 const sections = [
   { id: 'intro', label: 'Overview' },
@@ -127,6 +128,11 @@ export default function EndToEndPage() {
           autoPlay={true}
           intervalMs={2000}
         />
+
+        {/* Interactive Pipeline Demo */}
+        <div className="mt-8">
+          <PipelineFlowDemo />
+        </div>
 
         {/* Pipeline detail */}
         <div className="grid md:grid-cols-2 gap-4 mt-8">

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/streaming-avatars.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
-import { LatencyDemo, ICEConnectionDemo } from '../components/demos/streaming';
+import { LatencyDemo, ICEConnectionDemo, VADDemo } from '../components/demos/streaming';
 
 const sections = [
   { id: 'intro', label: 'Introduction' },
@@ -147,6 +147,11 @@ export default function StreamingAvatarsPage() {
         {/* ICE Connection Demo */}
         <div className="mt-8">
           <ICEConnectionDemo />
+        </div>
+
+        {/* VAD Demo */}
+        <div className="mt-8">
+          <VADDemo />
         </div>
 
         {/* Latency budget */}

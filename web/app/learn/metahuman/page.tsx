@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/metahuman.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
-import { BlendshapeDemo, SkinningWeightDemo, FaceTrackingDemo } from '../components/demos/metahuman';
+import { BlendshapeDemo, SkinningWeightDemo, FaceTrackingDemo, AudioToExpressionDemo } from '../components/demos/metahuman';
 
 const sections = [
   { id: 'intro', label: 'Introduction' },
@@ -129,6 +129,11 @@ export default function MetaHumanPage() {
         {/* Face Tracking Demo */}
         <div className="mt-8">
           <FaceTrackingDemo />
+        </div>
+
+        {/* Audio to Expression Demo */}
+        <div className="mt-8">
+          <AudioToExpressionDemo />
         </div>
       </section>
 

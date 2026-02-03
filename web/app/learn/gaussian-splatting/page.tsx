@@ -22,6 +22,16 @@ const SphericalHarmonicsDemo = dynamic(
   { ssr: false, loading: () => <DemoPlaceholder label="Loading spherical harmonics demo..." /> }
 );
 
+const MatrixTransformDemo = dynamic(
+  () => import('../components/demos/gaussian/MatrixTransformDemo'),
+  { ssr: false, loading: () => <DemoPlaceholder label="Loading matrix transform demo..." /> }
+);
+
+const CovarianceShapeDemo = dynamic(
+  () => import('../components/demos/gaussian/CovarianceShapeDemo'),
+  { ssr: false, loading: () => <DemoPlaceholder label="Loading covariance shape demo..." /> }
+);
+
 function DemoPlaceholder({ label }: { label: string }) {
   return (
     <div className="h-[300px] bg-[var(--card-bg-alt)] rounded-lg flex items-center justify-center text-[var(--muted)]">
@@ -195,6 +205,24 @@ export default function GaussianSplattingPage() {
             Adjust SH coefficients to see how view-dependent color is encoded. This is how 3DGS captures specular highlights.
           </p>
           <SphericalHarmonicsDemo />
+        </div>
+
+        {/* Demo 4: Matrix Transform */}
+        <div id="demo-matrix-transform" className="mb-8">
+          <h3 className="text-xl font-semibold mb-3">Demo 4: Matrix Transformations</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            See how scale and rotation matrices transform a unit circle into an ellipse—the foundation of Gaussian covariance.
+          </p>
+          <MatrixTransformDemo />
+        </div>
+
+        {/* Demo 5: Covariance Shape */}
+        <div id="demo-covariance-shape" className="mb-8">
+          <h3 className="text-xl font-semibold mb-3">Demo 5: 3D Covariance Shapes</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Manipulate scale along each axis to create spheres, pancakes, or needles—the building blocks of 3D Gaussian Splatting.
+          </p>
+          <CovarianceShapeDemo />
         </div>
       </section>
 
