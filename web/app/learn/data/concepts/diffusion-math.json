@@ -1,0 +1,26 @@
+{
+  "id": "diffusion-math",
+  "title": "The Math Behind Diffusion",
+  "level": 2,
+  "parentConcept": "diffusion-denoising",
+
+  "explanation": {
+    "level3Assumes": "You understand that diffusion models learn to reverse a gradual noise-addition process, predicting what noise was added at each step so we can subtract it.",
+    "thisExplains": "The mathematical framework of forward/reverse processes, what the model actually predicts, and why this formulation enables high-quality generation.",
+    "text": "Diffusion models are built on two connected processes: forward (adding noise) and reverse (removing noise).\n\n**Forward Process (q):**\nGiven a clean image x₀, we gradually add Gaussian noise over T timesteps:\n\n```\nq(xₜ | xₜ₋₁) = N(xₜ; √(1-βₜ)xₜ₋₁, βₜI)\n```\n\nWhere βₜ is a small 'noise schedule' value. After many steps, x_T becomes nearly pure Gaussian noise.\n\n**Key Insight: Skip the Middle Steps**\nWe can jump directly from x₀ to any xₜ:\n\n```\nxₜ = √(ᾱₜ)x₀ + √(1-ᾱₜ)ε\n```\n\nWhere ᾱₜ = ∏(1-βₛ) for s=1 to t, and ε ~ N(0, I).\n\nThis is crucial for training: we don't need to run all T steps, just sample t randomly and add the right amount of noise.\n\n**Reverse Process (pθ):**\nThe neural network learns to predict the noise ε given xₜ and t:\n\n```\nεθ(xₜ, t) ≈ ε\n```\n\n**Training Loss:**\nSimple mean squared error between predicted and actual noise:\n\n```\nL = E[||ε - εθ(xₜ, t)||²]\n```\n\n**Why Predict Noise Instead of Clean Image?**\n1. Noise is easier to estimate (smaller range of values)\n2. Works consistently across all timesteps\n3. Naturally handles the varying difficulty of denoising at different t\n\n**Generation (Sampling):**\nStart with pure noise x_T ~ N(0, I), then iterate:\n\n```\nxₜ₋₁ = (xₜ - √(1-ᾱₜ)/√(1-αₜ) × εθ(xₜ,t)) / √αₜ + σₜz\n```\n\nWhere z is fresh noise for stochasticity."
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "denoising-visualizer",
+    "caption": "Watch how the image evolves as we step through denoising. Toggle between showing the predicted noise and the progressively cleaner image."
+  },
+
+  "prerequisites": [
+    "gaussian-distribution",
+    "gradient-descent",
+    "neural-network-basics"
+  ],
+
+  "insight": "The brilliance of diffusion is that predicting the 'noise that was added' is much easier than directly generating images - we're training an error corrector, not a creator."
+}

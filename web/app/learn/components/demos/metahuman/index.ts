@@ -1,0 +1,1 @@
+export { BlendshapeDemo } from './BlendshapeDemo';

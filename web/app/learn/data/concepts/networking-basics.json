@@ -1,0 +1,25 @@
+{
+  "id": "networking-basics",
+  "title": "Networking Fundamentals",
+  "level": 1,
+  "parentConcept": "computer-science",
+
+  "explanation": {
+    "level3Assumes": "You know that computers can communicate over the internet but not how.",
+    "thisExplains": "The fundamental concepts of computer networking: IP addresses, ports, TCP vs UDP, and how data travels from one computer to another.",
+    "text": "Networking is how computers talk to each other. Understanding the basics is essential for real-time communication technologies like WebRTC.\n\n**IP Addresses:**\n\nEvery device on a network has an IP address - its unique identifier:\n\n```\nIPv4: 192.168.1.100 (4 bytes, ~4 billion addresses)\nIPv6: 2001:0db8:85a3:0000:0000:8a2e:0370:7334 (16 bytes, virtually unlimited)\n```\n\n**Ports:**\n\nA single IP can have 65,535 ports - like apartment numbers in a building:\n- Port 80: HTTP (web)\n- Port 443: HTTPS (secure web)\n- Port 22: SSH\n- Port 3478: STUN/TURN (WebRTC)\n\n**TCP vs UDP:**\n\n**TCP (Transmission Control Protocol):**\n- Reliable: Guarantees delivery and order\n- Connection-oriented: Establishes session first\n- Slower: Waits for acknowledgments\n- Use case: Web pages, file downloads, APIs\n\n```\nClient: SYN (I want to connect)\nServer: SYN-ACK (Okay, I acknowledge)\nClient: ACK (Great, let's talk)\n... data transfer with acknowledgments ...\n```\n\n**UDP (User Datagram Protocol):**\n- Unreliable: No delivery guarantee\n- Connectionless: Just send packets\n- Faster: No waiting for acks\n- Use case: Video calls, games, streaming\n\n```\nClient: Data packet → Server (might arrive, might not)\n```\n\n**Why WebRTC Uses UDP:**\n\nFor real-time media, old data is worthless:\n- If a video frame is 500ms late, skip it\n- TCP would wait and retransmit, causing stuttering\n- UDP loses packets but keeps flowing\n\n**The OSI Model (Simplified):**\n\n```\n7. Application   (HTTP, WebRTC)\n4. Transport     (TCP, UDP)\n3. Network       (IP)\n2. Data Link     (Ethernet, WiFi)\n1. Physical      (Cables, Radio)\n```\n\n**NAT (Network Address Translation):**\n\nYour router translates between private and public IPs:\n\n```\nYour laptop: 192.168.1.100:54321\n    ↓ (Router NAT)\nInternet sees: 73.45.123.89:54321\n```\n\nNAT is why ICE/STUN/TURN exist - to discover and traverse these translations.\n\n**Latency Components:**\n\n```\nPropagation: Distance / speed of light (~5ms per 1000km)\nTransmission: Packet size / bandwidth\nProcessing: Router/switch handling time\nQueuing: Waiting behind other packets\n```\n\n**Bandwidth vs Latency:**\n\n- Bandwidth: How much water the pipe can carry (Mbps)\n- Latency: How long for water to travel through (ms)\n\nHigh bandwidth + high latency = downloading large files is fast, but web browsing feels slow."
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "network-simulator",
+    "caption": "Trace a packet's journey from your browser to a server and back. See TCP handshakes and UDP fire-and-forget."
+  },
+
+  "prerequisites": [
+    "binary-numbers",
+    "basic-protocols"
+  ],
+
+  "insight": "TCP is like certified mail with delivery confirmation - slow but reliable. UDP is like shouting across a field - fast but you might miss some words."
+}

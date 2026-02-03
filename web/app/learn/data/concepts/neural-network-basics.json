@@ -1,0 +1,25 @@
+{
+  "id": "neural-network-basics",
+  "title": "Neural Network Fundamentals",
+  "level": 1,
+  "parentConcept": "machine-learning",
+
+  "explanation": {
+    "level3Assumes": "You understand that AI systems can learn from data, but not the mechanics of how.",
+    "thisExplains": "The fundamental building blocks of neural networks: neurons, layers, activation functions, and how they combine to learn complex patterns.",
+    "text": "A neural network is a function approximator built from simple building blocks. It learns to map inputs to outputs by adjusting millions of parameters based on examples.\n\n**The Artificial Neuron:**\n\n```\nInputs: [x₁, x₂, x₃]\nWeights: [w₁, w₂, w₃]\nBias: b\n\nOutput = activation(w₁×x₁ + w₂×x₂ + w₃×x₃ + b)\n```\n\nA neuron:\n1. Takes multiple inputs\n2. Multiplies each by a learned weight\n3. Sums them up and adds a bias\n4. Applies a non-linear activation function\n\n**Activation Functions:**\n\nWithout activation functions, stacking layers would just be matrix multiplication:\n\n```\nReLU(x) = max(0, x)         [Most common, simple]\nSigmoid(x) = 1/(1+e⁻ˣ)      [Outputs 0-1, for probabilities]\nTanh(x) = (eˣ-e⁻ˣ)/(eˣ+e⁻ˣ) [Outputs -1 to 1]\nGELU(x) = x×Φ(x)            [Smooth ReLU, used in transformers]\n```\n\n**Layers:**\n\n```\nInput Layer → Hidden Layer 1 → Hidden Layer 2 → Output Layer\n   (data)      (features)       (combinations)    (prediction)\n```\n\n- **Dense/Fully Connected**: Every neuron connects to all previous neurons\n- **Convolutional**: Shares weights across spatial positions (images)\n- **Attention**: Learns which inputs to focus on (transformers)\n\n**Forward Pass:**\n\n```python\n# Layer 1: 784 inputs → 256 neurons\nh1 = relu(W1 @ x + b1)      # Shape: (256,)\n\n# Layer 2: 256 → 128 neurons  \nh2 = relu(W2 @ h1 + b2)     # Shape: (128,)\n\n# Output: 128 → 10 classes\nout = softmax(W3 @ h2 + b3) # Shape: (10,)\n```\n\n**Training (Backpropagation):**\n\n1. **Forward pass**: Compute output from input\n2. **Compute loss**: Compare output to target\n3. **Backward pass**: Compute gradients using chain rule\n4. **Update weights**: Move in direction that reduces loss\n\n```python\nloss = cross_entropy(output, target)\nloss.backward()  # Computes ∂loss/∂w for all weights\noptimizer.step() # w = w - learning_rate × ∂loss/∂w\n```\n\n**Universal Approximation:**\n\nA neural network with one hidden layer and enough neurons can approximate any continuous function. More layers = more efficient approximation.\n\n**Key Concepts:**\n\n- **Parameters**: The learnable weights and biases (~millions)\n- **Hyperparameters**: Architecture choices (layers, neurons, learning rate)\n- **Overfitting**: Memorizing training data instead of generalizing\n- **Regularization**: Techniques to prevent overfitting (dropout, weight decay)\n\n**Why Deep > Wide:**\n\n```\nShallow: 1 layer with 1000 neurons = 1000 simple features\nDeep: 10 layers with 100 neurons = compositional features\n```\n\nDeep networks learn hierarchical representations: edges → textures → parts → objects."
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "neural-network-playground",
+    "caption": "Build a simple neural network, adjust weights manually, and see how it learns to classify points."
+  },
+
+  "prerequisites": [
+    "linear-algebra-basics",
+    "calculus-basics"
+  ],
+
+  "insight": "A neural network is just a very complicated function with millions of adjustable knobs (weights), and training is the process of turning those knobs until the function does what you want."
+}

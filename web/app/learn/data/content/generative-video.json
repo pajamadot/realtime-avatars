@@ -1,0 +1,234 @@
+{
+  "id": "generative-video",
+  "title": "Generative Video Models",
+  "subtitle": "Diffusion-based photorealistic talking head synthesis",
+  "color": "var(--color-generative)",
+
+  "intro": {
+    "text": "Imagine training an AI to reverse the process of adding static to a TV signal. You start with a clear image, gradually add noise until it's pure static, then teach a neural network to undo each step. That's diffusion. For talking heads, we combine this with audio-to-motion prediction: your voice controls an AI that progressively refines noise into photorealistic video of a face speaking your words. The magic is that from just one photo and any audio, you get a lifelike talking video - no 3D modeling, no motion capture, no per-person training needed.",
+    "duration": "60s"
+  },
+
+  "pipeline": {
+    "steps": [
+      {
+        "id": "audio-encode",
+        "label": "Audio Encoding",
+        "description": "Convert speech to mel-spectrograms or learned speech embeddings that capture phonemes and prosody"
+      },
+      {
+        "id": "motion-predict",
+        "label": "Motion Prediction",
+        "description": "Map audio features to facial motion parameters (landmarks, 3DMM coefficients, or latent codes)"
+      },
+      {
+        "id": "identity-encode",
+        "label": "Identity Encoding",
+        "description": "Extract identity features from the reference image to preserve appearance throughout"
+      },
+      {
+        "id": "latent-noise",
+        "label": "Latent Noise",
+        "description": "Start with random noise in the compressed latent space (64x smaller than pixel space)"
+      },
+      {
+        "id": "denoise",
+        "label": "Iterative Denoising",
+        "description": "Progressively remove noise over multiple steps, guided by motion and identity"
+      },
+      {
+        "id": "decode",
+        "label": "VAE Decode",
+        "description": "Decompress the clean latent back to pixel space for the final video frame"
+      }
+    ],
+    "connections": [
+      ["audio-encode", "motion-predict"],
+      ["motion-predict", "denoise"],
+      ["identity-encode", "denoise"],
+      ["latent-noise", "denoise"],
+      ["denoise", "decode"]
+    ]
+  },
+
+  "concepts": [
+    {
+      "id": "diffusion-denoising",
+      "title": "Diffusion & Denoising",
+      "summary": "The model learns to reverse a gradual noise-addition process. Given noisy input and a timestep, it predicts what noise was added so we can subtract it, step by step refining static into a clear image.",
+      "visualMetaphor": "Imagine a marble sculpture slowly eroded by sandpaper until it's an unrecognizable block. Now train a 'master restorer' to undo exactly one sandpaper stroke. Give them a rough block, and stroke by stroke, the sculpture emerges.",
+      "demoId": "denoising-visualizer",
+      "drillDown": "diffusion-math"
+    },
+    {
+      "id": "latent-space",
+      "title": "Latent Space",
+      "summary": "Instead of working with millions of pixels, we compress images into a smaller 'semantic ZIP' using a VAE. Diffusion happens in this compressed representation, then we decompress back to pixels.",
+      "visualMetaphor": "Like how a ZIP file preserves document essentials in a smaller package, the VAE compresses images keeping what matters (face shape, expression) while discarding redundant pixel details.",
+      "demoId": "latent-explorer",
+      "drillDown": "vae-encoder"
+    },
+    {
+      "id": "audio-to-motion",
+      "title": "Audio-to-Motion",
+      "summary": "The model learns which mouth shapes go with which sounds. 'P' and 'B' = lips closed. 'Ah' = mouth open. It converts audio waveforms into facial motion parameters that drive the talking head.",
+      "visualMetaphor": "Think of a puppeteer reading a script with stage directions. Each sound is a cue: 'close mouth for M', 'raise eyebrows for questions'. The model learned these mappings from thousands of hours of people talking.",
+      "demoId": "lip-sync-playground",
+      "drillDown": "phoneme-viseme"
+    },
+    {
+      "id": "distillation",
+      "title": "Distillation for Real-Time",
+      "summary": "Standard diffusion needs 50+ steps - too slow for real-time. Distillation trains a 'student' model to achieve the same result in 1-4 steps by learning shortcuts, enabling 20+ FPS generation.",
+      "visualMetaphor": "A careful artist makes 50 brushstrokes to complete a painting. Distillation trains an apprentice to achieve the same result in 4 bold strokes by learning 'what would the master eventually create?'",
+      "demoId": "distillation-comparison",
+      "drillDown": "consistency-models"
+    },
+    {
+      "id": "identity-preservation",
+      "title": "Identity Preservation",
+      "summary": "The hardest challenge: keeping the same person's face throughout the video. ReferenceNet and decoupled attention separate 'what moves' (expression) from 'what stays' (identity).",
+      "visualMetaphor": "Like a film actor wearing prosthetic makeup that moves naturally with their expressions while maintaining the character's distinct look. The reference encoder captures this 'prosthetic template'.",
+      "demoId": "identity-lock",
+      "drillDown": "reference-net"
+    }
+  ],
+
+  "implementation": {
+    "steps": [
+      {
+        "title": "Install SadTalker",
+        "description": "Clone the repository and set up the environment for audio-driven talking head generation",
+        "code": "git clone https://github.com/OpenTalker/SadTalker.git\ncd SadTalker\npip install -r requirements.txt",
+        "language": "bash"
+      },
+      {
+        "title": "Download Pretrained Models",
+        "description": "Get the pretrained checkpoints for face reconstruction and motion generation",
+        "code": "bash scripts/download_models.sh",
+        "language": "bash"
+      },
+      {
+        "title": "Generate Talking Head",
+        "description": "Run inference with a source image and audio file",
+        "code": "python inference.py \\\n  --source_image examples/source.jpg \\\n  --driven_audio examples/speech.wav \\\n  --result_dir results/",
+        "language": "bash"
+      },
+      {
+        "title": "Try GeneFace++ for Real-Time",
+        "description": "For lower latency, GeneFace++ combines NeRF with audio-driven animation",
+        "code": "git clone https://github.com/yerfor/GeneFacePlusPlus.git\ncd GeneFacePlusPlus\npip install -r requirements.txt",
+        "language": "bash"
+      },
+      {
+        "title": "Explore Diffusion-Based Options",
+        "description": "For highest quality, try Hallo or Sonic which leverage video diffusion priors",
+        "code": "# Hallo: https://github.com/fudan-generative-vision/hallo\n# Sonic: State-of-art but requires significant GPU resources",
+        "language": "bash"
+      }
+    ],
+    "resources": [
+      {
+        "title": "SadTalker (CVPR 2023)",
+        "url": "https://github.com/OpenTalker/SadTalker",
+        "type": "github"
+      },
+      {
+        "title": "GeneFace++ (Real-Time NeRF)",
+        "url": "https://github.com/yerfor/GeneFacePlusPlus",
+        "type": "github"
+      },
+      {
+        "title": "LivePortrait (High-Fidelity Animation)",
+        "url": "https://github.com/KwaiVGI/LivePortrait",
+        "type": "github"
+      },
+      {
+        "title": "CausVid Paper (Streaming Diffusion)",
+        "url": "https://arxiv.org/abs/2412.07772",
+        "type": "paper"
+      },
+      {
+        "title": "Awesome Talking Head Generation",
+        "url": "https://github.com/harlanhong/awesome-talking-head-generation",
+        "type": "github"
+      },
+      {
+        "title": "Hugging Face Diffusers Tutorial",
+        "url": "https://huggingface.co/docs/diffusers/en/using-diffusers/write_own_pipeline",
+        "type": "docs"
+      }
+    ]
+  },
+
+  "tradeoffs": {
+    "when": [
+      "You need photorealistic results from a single reference image",
+      "You want to animate any face without per-person training",
+      "Quality matters more than inference speed (or you can use distillation)",
+      "You have access to powerful GPUs (A100 / H100 / cloud)",
+      "You want natural behaviors like blinks and micro-expressions"
+    ],
+    "whenNot": [
+      "You need sub-100ms latency (use MetaHuman or Streaming instead)",
+      "You need precise frame-by-frame control (use rigged models)",
+      "You're running on consumer hardware without cloud (use Gaussian Splatting)",
+      "You need guaranteed deterministic output (diffusion is probabilistic)",
+      "You're concerned about deepfake misuse in your application"
+    ],
+    "bestFor": "Creating photorealistic talking head videos from any face image without per-person training, ideal for content creation, dubbing, and AI assistants"
+  },
+
+  "misconceptions": [
+    {
+      "wrong": "Diffusion models generate images in one shot",
+      "correct": "Diffusion requires iterative refinement - typically 20-50 steps. Each step slightly improves the image. This is fundamentally different from GANs which generate in a single forward pass."
+    },
+    {
+      "wrong": "More denoising steps always means better quality",
+      "correct": "Returns diminish rapidly after a certain point (often 20-30 steps). Distilled models achieve comparable quality in 1-4 steps through learned shortcuts."
+    },
+    {
+      "wrong": "The prompt controls everything precisely",
+      "correct": "The mapping from conditioning to output is probabilistic, not deterministic. Artists spend hours refining prompts because results vary."
+    },
+    {
+      "wrong": "Real-time diffusion is impossible",
+      "correct": "Through distillation (CausVid, DMD, consistency models), diffusion can achieve 9-20+ FPS. The key is training a student model to skip steps."
+    },
+    {
+      "wrong": "GANs are obsolete",
+      "correct": "GANs still excel at speed and can be better for specific real-time applications. Diffusion offers superior stability, diversity, and mode coverage."
+    }
+  ],
+
+  "avatarApplications": {
+    "approaches": [
+      {
+        "name": "2D Warping",
+        "description": "First-Order Motion Model: fast and simple but limited head motion",
+        "example": "Avatarify"
+      },
+      {
+        "name": "3DMM-based",
+        "description": "Explicit 3D face model for interpretable control",
+        "example": "SadTalker, VividTalk"
+      },
+      {
+        "name": "NeRF-based",
+        "description": "True 3D neural rendering for view synthesis",
+        "example": "GeneFace++"
+      },
+      {
+        "name": "Full Diffusion",
+        "description": "Highest quality using video diffusion priors",
+        "example": "Hallo, Sonic, MAGIC-Talk"
+      }
+    ],
+    "performance": {
+      "quality": "State-of-art photorealism, natural micro-expressions",
+      "speed": "1-4 FPS native, 9-24 FPS with distillation",
+      "memory": "High (8GB+ VRAM for inference, 40GB+ for training)"
+    }
+  }
+}

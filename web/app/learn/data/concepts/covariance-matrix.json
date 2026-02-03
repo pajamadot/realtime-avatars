@@ -1,0 +1,26 @@
+{
+  "id": "covariance-matrix",
+  "title": "The Covariance Matrix",
+  "level": 2,
+  "parentConcept": "gaussian-primitive",
+
+  "explanation": {
+    "level3Assumes": "You understand that each Gaussian has a 'shape' that can be spherical, elongated, or flattened, and that this shape is controlled by something called the covariance matrix.",
+    "thisExplains": "What the covariance matrix actually is, how it's computed, and why it perfectly captures the shape of a 3D ellipsoid.",
+    "text": "The covariance matrix is a 3x3 grid of numbers that completely describes the shape and orientation of a Gaussian ellipsoid.\n\nHere's the key insight: instead of storing the covariance matrix directly (which would be complex to optimize), 3DGS stores two simpler things:\n\n1. **Scale (S)**: Three numbers saying how much to stretch in each direction (x, y, z)\n2. **Rotation (R)**: A quaternion (4 numbers) saying which way to point the stretch\n\nThe covariance matrix is then computed as: **Σ = R · S · Sᵀ · Rᵀ**\n\nThis is brilliant because:\n- Scale and rotation are intuitive to optimize\n- The result is always a valid (positive semi-definite) covariance matrix\n- We can easily clamp scales to prevent degenerate shapes\n\nGeometrically, the eigenvectors of Σ point along the principal axes of the ellipsoid, and the eigenvalues tell you how stretched it is along each axis."
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "covariance-manipulator",
+    "caption": "Drag the scale sliders to stretch the Gaussian. Rotate to change orientation. Watch how the covariance matrix values change in real-time."
+  },
+
+  "prerequisites": [
+    "matrix-multiplication",
+    "vectors-3d",
+    "eigenvalues"
+  ],
+
+  "insight": "The covariance matrix turns the abstract concept of 'shape' into concrete numbers that GPUs can manipulate millions of times per second."
+}

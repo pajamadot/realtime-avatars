@@ -1,0 +1,226 @@
+{
+  "id": "gaussian-splatting",
+  "title": "Neural Gaussian Splatting",
+  "subtitle": "3D Gaussian primitives for real-time photorealistic rendering",
+  "color": "var(--color-gaussian)",
+
+  "intro": {
+    "text": "Imagine representing a 3D scene not with triangles or pixels, but with millions of tiny, fuzzy, colored blobs floating in space. That's Gaussian Splatting. Each blob, called a Gaussian, has a position, a shape, a color that can change based on viewing angle, and transparency. When you look at the scene, these blobs are 'splatted' onto your screen like spray paint, blending together to create photorealistic images at 60+ frames per second. For avatars, this means we can capture a real person as a cloud of Gaussians, then animate and render them in real-time with quality that rivals photographs.",
+    "duration": "60s"
+  },
+
+  "pipeline": {
+    "steps": [
+      {
+        "id": "capture",
+        "label": "Multi-View Capture",
+        "description": "Record the subject from multiple camera angles to get complete 3D coverage"
+      },
+      {
+        "id": "sfm",
+        "label": "Structure from Motion",
+        "description": "Extract sparse 3D points and camera positions from the captured images"
+      },
+      {
+        "id": "init",
+        "label": "Gaussian Initialization",
+        "description": "Place initial Gaussians at the sparse point locations"
+      },
+      {
+        "id": "optimize",
+        "label": "Differentiable Optimization",
+        "description": "Iteratively adjust Gaussian parameters to match ground truth images"
+      },
+      {
+        "id": "densify",
+        "label": "Adaptive Densification",
+        "description": "Split, clone, or prune Gaussians based on gradient signals"
+      },
+      {
+        "id": "render",
+        "label": "Real-Time Splatting",
+        "description": "Project Gaussians to 2D, sort by depth, and blend for final image"
+      }
+    ],
+    "connections": [
+      ["capture", "sfm"],
+      ["sfm", "init"],
+      ["init", "optimize"],
+      ["optimize", "densify"],
+      ["densify", "optimize"],
+      ["optimize", "render"]
+    ]
+  },
+
+  "concepts": [
+    {
+      "id": "gaussian-primitive",
+      "title": "The 3D Gaussian Primitive",
+      "summary": "Each Gaussian is a fuzzy ellipsoid in 3D space with position, shape, view-dependent color, and opacity. Millions of these overlapping blobs create the final image.",
+      "visualMetaphor": "Think of impressionist brushstrokes - each is a soft, translucent ellipse. Viewed together, they form a complete scene.",
+      "demoId": "single-gaussian",
+      "drillDown": "covariance-matrix"
+    },
+    {
+      "id": "covariance-shape",
+      "title": "Covariance = Shape",
+      "summary": "The covariance matrix defines whether a Gaussian is spherical, pancake-shaped, or needle-like. It's computed from scale and rotation matrices.",
+      "visualMetaphor": "Start with a round balloon. Squeeze it in one direction - it elongates. Rotate it - it points a new way. The covariance matrix describes exactly how the balloon is squished.",
+      "demoId": "covariance-manipulator",
+      "drillDown": "matrix-math"
+    },
+    {
+      "id": "spherical-harmonics",
+      "title": "View-Dependent Color",
+      "summary": "Instead of storing a single RGB color, each Gaussian stores spherical harmonic coefficients that encode how color changes with viewing direction.",
+      "visualMetaphor": "Imagine describing how a disco ball reflects light. Instead of listing brightness for every angle, you describe the pattern of changes - that's what spherical harmonics do.",
+      "demoId": "sh-playground",
+      "drillDown": "spherical-harmonics-math"
+    },
+    {
+      "id": "splatting-render",
+      "title": "The Splatting Pipeline",
+      "summary": "Rendering happens in three steps: project each 3D Gaussian to a 2D ellipse, sort all ellipses by depth, then blend them front-to-back using alpha compositing.",
+      "visualMetaphor": "Think of layered transparency film on an overhead projector. Each layer is partially see-through. The final image is what you see through all layers combined.",
+      "demoId": "alpha-blending",
+      "drillDown": "alpha-compositing"
+    },
+    {
+      "id": "optimization",
+      "title": "Learning the Scene",
+      "summary": "Training is differentiable: render an image, compare to ground truth, backpropagate gradients to adjust every Gaussian's parameters. Adaptive densification splits or removes Gaussians as needed.",
+      "visualMetaphor": "You're sculpting with millions of tiny clay blobs. Take a photo, compare to reference, adjust each blob slightly. Too big? Split it. Nearly invisible? Remove it. Repeat thousands of times.",
+      "demoId": "densification-sim",
+      "drillDown": "gradient-descent"
+    }
+  ],
+
+  "implementation": {
+    "steps": [
+      {
+        "title": "Install Dependencies",
+        "description": "Clone the official repository and set up the CUDA environment for GPU acceleration",
+        "code": "git clone https://github.com/graphdeco-inria/gaussian-splatting --recursive\nconda env create --file environment.yml\nconda activate gaussian_splatting",
+        "language": "bash"
+      },
+      {
+        "title": "Prepare Training Data",
+        "description": "Use COLMAP to extract camera poses and sparse points from your multi-view images",
+        "code": "python convert.py -s /path/to/your/images",
+        "language": "bash"
+      },
+      {
+        "title": "Train the Model",
+        "description": "Run optimization to fit Gaussians to your scene (typically 30 minutes to a few hours)",
+        "code": "python train.py -s /path/to/your/images -m /path/to/output",
+        "language": "bash"
+      },
+      {
+        "title": "Render Results",
+        "description": "Generate novel views or videos from the trained model",
+        "code": "python render.py -m /path/to/output",
+        "language": "bash"
+      },
+      {
+        "title": "Export for Web",
+        "description": "Convert to a web-compatible format for Three.js or Luma AI viewer",
+        "code": "# Use SuperSplat or similar tool to export as .splat file\n# Or use @lumaai/luma-web for direct loading",
+        "language": "bash"
+      }
+    ],
+    "resources": [
+      {
+        "title": "Original 3DGS Repository (INRIA)",
+        "url": "https://github.com/graphdeco-inria/gaussian-splatting",
+        "type": "github"
+      },
+      {
+        "title": "3D Gaussian Splatting Paper (SIGGRAPH 2023)",
+        "url": "https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/",
+        "type": "paper"
+      },
+      {
+        "title": "SuperSplat Editor (Web-based)",
+        "url": "https://superspl.at/editor",
+        "type": "docs"
+      },
+      {
+        "title": "Three.js Gaussian Splat Viewer",
+        "url": "https://github.com/mkkellogg/GaussianSplats3D",
+        "type": "github"
+      },
+      {
+        "title": "Luma AI WebGL Renderer",
+        "url": "https://github.com/lumalabs/luma-web-examples",
+        "type": "github"
+      },
+      {
+        "title": "D3GA: Drivable 3D Gaussian Avatars",
+        "url": "https://github.com/facebookresearch/D3GA",
+        "type": "github"
+      }
+    ]
+  },
+
+  "tradeoffs": {
+    "when": [
+      "You need photorealistic rendering of a specific person",
+      "Real-time performance (60+ FPS) is critical",
+      "You're building for VR/AR where multi-view consistency matters",
+      "You have access to multi-view capture equipment",
+      "You can afford per-person training time (hours)"
+    ],
+    "whenNot": [
+      "You need to render arbitrary people from a single photo (use Generative instead)",
+      "You need to change lighting dynamically (lighting is baked in)",
+      "You're constrained to web-only without GPU (consider Streaming)",
+      "You need production-proven tools with mature ecosystems (consider MetaHuman)",
+      "You need to handle complex clothing or loose hair motion"
+    ],
+    "bestFor": "VR/AR telepresence where a specific person needs to be photorealistically rendered in real-time from any viewpoint"
+  },
+
+  "misconceptions": [
+    {
+      "wrong": "Gaussians are like voxels",
+      "correct": "Voxels are discrete grid cells. Gaussians are continuous, overlapping, anisotropic (non-cubic), and don't exist on a grid."
+    },
+    {
+      "wrong": "3DGS uses ray tracing",
+      "correct": "3DGS is a rasterization technique. It projects primitives to the screen, not rays through the scene. This is why it's so fast."
+    },
+    {
+      "wrong": "More Gaussians = better quality",
+      "correct": "Quality depends on proper placement and parameters. Poorly placed Gaussians create 'needle' artifacts and blurriness."
+    },
+    {
+      "wrong": "Spherical harmonics are just for lighting",
+      "correct": "In 3DGS, SH encodes view-dependent color, not lighting calculations. The lighting is 'baked in' during training."
+    }
+  ],
+
+  "avatarApplications": {
+    "approaches": [
+      {
+        "name": "Forward Skinning",
+        "description": "Gaussians in canonical (T-pose) space, deformed via skeleton",
+        "example": "HuGS (Human Gaussian Splatting)"
+      },
+      {
+        "name": "Mesh Embedding",
+        "description": "Gaussians attached to triangle mesh vertices - mesh animates, Gaussians follow",
+        "example": "SplattingAvatar, GaussianAvatars"
+      },
+      {
+        "name": "Deformation Networks",
+        "description": "Neural network predicts per-Gaussian offsets for each pose",
+        "example": "3DGS-Avatar"
+      }
+    ],
+    "performance": {
+      "rendering": "50-300+ FPS depending on complexity",
+      "training": "30 minutes to several hours per identity",
+      "memory": "More compact than voxels for equivalent detail"
+    }
+  }
+}

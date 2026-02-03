@@ -1,0 +1,25 @@
+{
+  "id": "spherical-harmonics-math",
+  "title": "Spherical Harmonics",
+  "level": 2,
+  "parentConcept": "spherical-harmonics",
+
+  "explanation": {
+    "level3Assumes": "You understand that Gaussians can change color based on viewing direction, and that 'spherical harmonic coefficients' somehow encode this view-dependent color compactly.",
+    "thisExplains": "What spherical harmonics actually are, why they're perfect for encoding directional functions, and how 3DGS uses them for color.",
+    "text": "Spherical harmonics (SH) are a set of mathematical functions defined on the surface of a sphere. Think of them like Fourier series, but for spherical data instead of 1D signals.\n\n**The Basics:**\n- Degree 0 (1 coefficient): Constant value in all directions\n- Degree 1 (4 total coefficients): Basic directional variation (brighter on top, dimmer below)\n- Degree 2 (9 total coefficients): More complex patterns (bright from two sides)\n- Degree 3+ (16+ coefficients): Increasingly detailed angular patterns\n\n**How 3DGS Uses SH:**\nFor each Gaussian, instead of storing one RGB color, we store SH coefficients for R, G, and B separately. To get the color from a specific viewing direction:\n\n1. Evaluate the SH basis functions for that direction\n2. Multiply by the stored coefficients\n3. Sum up the result\n\nThis gives us view-dependent color with just a few numbers per Gaussian.\n\n**Why This Works:**\nMost real-world view-dependent effects (specular highlights, subsurface scattering) are 'smooth' - they don't have sharp discontinuities. Low-degree SH captures these smooth variations efficiently."
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "sh-playground",
+    "caption": "Toggle SH degrees on/off to see how each level adds detail. Rotate the view to see color change with direction."
+  },
+
+  "prerequisites": [
+    "trigonometry",
+    "fourier-intuition"
+  ],
+
+  "insight": "Spherical harmonics let us store 'a function of direction' as a small list of numbers - it's compression for angular patterns."
+}

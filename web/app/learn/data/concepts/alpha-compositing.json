@@ -1,0 +1,25 @@
+{
+  "id": "alpha-compositing",
+  "title": "Alpha Compositing",
+  "level": 2,
+  "parentConcept": "splatting-render",
+
+  "explanation": {
+    "level3Assumes": "You understand that Gaussians are blended together front-to-back to create the final image, and that each has an opacity (alpha) value.",
+    "thisExplains": "The exact math of how multiple semi-transparent layers combine, why order matters, and how this enables differentiable rendering.",
+    "text": "When you stack semi-transparent objects, the final color isn't a simple average - it follows specific blending rules.\n\n**The Formula:**\nFor each pixel, we process Gaussians in depth order (front to back):\n\n```\nC_final = Σ (c_i × α_i × T_i)\n```\n\nWhere:\n- `c_i` is the color of Gaussian i\n- `α_i` is the opacity of Gaussian i\n- `T_i` is the transmittance (how much light got through all previous Gaussians)\n\n**Transmittance:**\n```\nT_i = Π (1 - α_j) for all j < i\n```\n\nThis means: each Gaussian in front 'blocks' some light. If the first Gaussian has α=0.5, only 50% of light reaches the second one.\n\n**Why Order Matters:**\nSwap two Gaussians with different alphas and colors, and you get a different result. This is why depth sorting is critical before rendering.\n\n**Why It's Differentiable:**\nEvery operation here (multiplication, addition) has well-defined gradients. This means we can backpropagate through the entire rendering process to optimize Gaussian parameters."
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "alpha-blending",
+    "caption": "Drag to reorder layers. Watch how the final color changes. Try setting different alpha values to see the transmittance effect."
+  },
+
+  "prerequisites": [
+    "rgba-color",
+    "basic-calculus"
+  ],
+
+  "insight": "Alpha compositing is what makes Gaussian Splatting both visually correct (proper transparency) and trainable (differentiable end-to-end)."
+}

@@ -1,0 +1,25 @@
+{
+  "id": "arkit-blendshapes",
+  "title": "ARKit 52 Blendshapes",
+  "level": 2,
+  "parentConcept": "face-tracking",
+
+  "explanation": {
+    "level3Assumes": "You understand that iPhone face tracking provides data that drives MetaHuman expressions, but not the specifics of what data or how it maps to the face.",
+    "thisExplains": "The exact 52 blendshape parameters that ARKit extracts, what each one controls, and how they combine to create realistic facial expressions.",
+    "text": "ARKit's Face Tracking uses the iPhone's TrueDepth camera (30,000 infrared dots + machine learning) to extract 52 specific blendshape coefficients at 60 FPS. Each coefficient is a float from 0.0 to 1.0.\n\n**The 52 Blendshapes by Category:**\n\n**Eyes (12 parameters):**\n- `eyeBlinkLeft/Right` - Eyelid closure (0=open, 1=closed)\n- `eyeLookUpLeft/Right`, `eyeLookDownLeft/Right` - Vertical gaze direction\n- `eyeLookInLeft/Right`, `eyeLookOutLeft/Right` - Horizontal gaze direction\n- `eyeSquintLeft/Right` - Squinting/crow's feet\n- `eyeWideLeft/Right` - Eyes wide open (surprise)\n\n**Brows (4 parameters):**\n- `browDownLeft/Right` - Frown, anger\n- `browInnerUp` - Worry, sadness (center brow raise)\n- `browOuterUpLeft/Right` - Surprise (outer brow raise)\n\n**Mouth (26 parameters):**\n- `jawOpen`, `jawForward`, `jawLeft`, `jawRight` - Jaw movement\n- `mouthClose` - Lips together (independent of jaw)\n- `mouthFunnel` - 'O' shape (as in 'ooh')\n- `mouthPucker` - Kiss shape\n- `mouthLeft/Right` - Mouth shift sideways\n- `mouthSmileLeft/Right` - Smile\n- `mouthFrownLeft/Right` - Frown\n- `mouthDimpleLeft/Right` - Cheek dimples\n- `mouthStretchLeft/Right` - Stretching mouth corners\n- `mouthRollLower/Upper` - Rolling lips inward\n- `mouthShrugLower/Upper` - Lip shrug\n- `mouthPressLeft/Right` - Pressing lips together\n- `mouthLowerDownLeft/Right` - Lower lip down\n- `mouthUpperUpLeft/Right` - Upper lip up\n\n**Cheeks & Nose (6 parameters):**\n- `cheekPuff` - Puffed cheeks\n- `cheekSquintLeft/Right` - Cheek raise (smiling eyes)\n- `noseSneerLeft/Right` - Nose wrinkle (disgust)\n\n**Tongue (2 parameters):**\n- `tongueOut` - Tongue protrusion (limited tracking)\n\n**How They Combine:**\n\nExpressions are additive combinations:\n```\nSmile = mouthSmileLeft(0.8) + mouthSmileRight(0.8) + cheekSquintLeft(0.5) + cheekSquintRight(0.5)\nSurprise = eyeWideLeft(1.0) + eyeWideRight(1.0) + browInnerUp(0.7) + jawOpen(0.6)\nDisgust = noseSneerLeft(0.8) + noseSneerRight(0.8) + browDownLeft(0.4) + mouthFrownLeft(0.5)\n```\n\n**Limitations:**\n- Binary tongue tracking (out or not, no position)\n- No micro-expressions (faster than 60 FPS)\n- No asymmetric eye gaze (both eyes look in same direction)\n- Occlusion causes loss of tracking (hair, hands, glasses)\n- Fixed 52 parameters can't capture every nuance"
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "blendshape-playground",
+    "caption": "Manipulate individual ARKit blendshapes and see how they combine to create expressions."
+  },
+
+  "prerequisites": [
+    "infrared-depth-sensing",
+    "mesh-deformation"
+  ],
+
+  "insight": "Your face has 43 muscles, but ARKit simplifies this to 52 independent 'sliders' that, when mixed, can approximate nearly any expression humans make."
+}

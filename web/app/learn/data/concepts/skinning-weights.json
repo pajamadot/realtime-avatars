@@ -1,0 +1,25 @@
+{
+  "id": "skinning-weights",
+  "title": "Skinning & Weight Painting",
+  "level": 2,
+  "parentConcept": "skeletal-animation",
+
+  "explanation": {
+    "level3Assumes": "You understand that MetaHuman has a skeleton of bones that deform the mesh, but not how the mesh 'knows' which bones to follow.",
+    "thisExplains": "How skinning weights define the relationship between bones and mesh vertices, enabling smooth deformation when bones move.",
+    "text": "Skinning is the process of attaching a mesh (the 'skin') to a skeleton so that when bones move, the mesh deforms naturally. The key is **weight painting** - defining how strongly each vertex follows each bone.\n\n**The Core Concept:**\n\nEvery vertex in the mesh has a list of bones that influence it, each with a weight from 0.0 to 1.0. Weights must sum to 1.0 per vertex.\n\n```\nvertex_position = Σ (bone_transform × original_position × weight)\n```\n\n**Example: Elbow Joint**\n\nConsider a vertex at the inner elbow:\n- Upper arm bone weight: 0.4\n- Forearm bone weight: 0.6\n- All other bones: 0.0\n\nWhen you bend your elbow:\n- The vertex follows 40% of the upper arm's rotation\n- And 60% of the forearm's rotation\n- Creating smooth deformation instead of sharp folding\n\n**Linear Blend Skinning (LBS):**\n\nThe most common algorithm, used by most game engines:\n\n```\nv' = Σᵢ wᵢ × Mᵢ × v\n\nwhere:\n  v = original vertex position\n  v' = deformed vertex position\n  wᵢ = weight for bone i\n  Mᵢ = transformation matrix for bone i\n```\n\n**Problems with LBS:**\n\n1. **Volume Loss** - When joints bend 90°+, vertices collapse inward (the 'candy wrapper' effect)\n2. **Collapsing Elbows** - Sharp bends cause mesh intersection\n3. **Unnatural Creasing** - Skin doesn't behave like weighted interpolation\n\n**Solutions:**\n\n1. **Dual Quaternion Skinning** - Preserves volume better\n2. **Corrective Blendshapes** - Add sculpted fixes for extreme poses\n3. **Muscle Systems** - Simulate underlying muscle bulge\n\n**MetaHuman's Approach:**\n\nMetaHuman uses a hybrid system:\n- LBS as the base deformation\n- 700+ bones for fine control (especially in the face)\n- Corrective morphs for problem poses\n- RigLogic for optimized evaluation\n\n**Weight Painting in Practice:**\n\nArtists manually paint weights using tools that visualize influence:\n- Red = full influence (1.0)\n- Blue = no influence (0.0)\n- Gradient between = partial influence\n\nGood weights require understanding anatomy - where does skin stretch vs. compress? Where do bones have exclusive control vs. shared influence?"
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "skinning-visualizer",
+    "caption": "See how weight values affect vertex deformation. Adjust bone weights and watch the mesh respond to rotation."
+  },
+
+  "prerequisites": [
+    "transformation-matrices",
+    "vertex-mesh-basics"
+  ],
+
+  "insight": "Skinning weights answer the question: 'When this bone moves, how much should each nearby vertex care?' - and the answer creates the difference between robotic and organic movement."
+}

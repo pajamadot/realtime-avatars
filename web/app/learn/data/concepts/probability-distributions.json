@@ -1,0 +1,25 @@
+{
+  "id": "probability-distributions",
+  "title": "Probability Distributions",
+  "level": 1,
+  "parentConcept": "statistics",
+
+  "explanation": {
+    "level3Assumes": "You understand basic probability concepts like 'there's a 50% chance of heads'.",
+    "thisExplains": "How probability distributions describe the likelihood of different outcomes, focusing on the Gaussian (normal) distribution which is central to diffusion models.",
+    "text": "A probability distribution describes how likely different values are. In machine learning, especially diffusion models, the Gaussian (normal) distribution is king.\n\n**Discrete vs Continuous:**\n\nDiscrete: Finite outcomes (dice roll: 1, 2, 3, 4, 5, or 6)\nContinuous: Infinite outcomes in a range (height: any value between 4' and 7')\n\n**The Gaussian Distribution:**\n\nThe famous 'bell curve' defined by two parameters:\n- **μ (mu)**: Mean - where the peak is\n- **σ (sigma)**: Standard deviation - how spread out it is\n\n```\n              ┌──────────────┐\n              │      ▄▄      │\n              │    ▄████▄    │  μ = 0\n              │  ▄████████▄  │  σ = 1\n              │▄████████████▄│  \n              └──────────────┘\n              -3  -2  -1  0  1  2  3\n```\n\n**The Formula:**\n\n```\np(x) = (1 / (σ√(2π))) × e^(-(x-μ)²/(2σ²))\n```\n\n**Key Properties:**\n\n1. **68-95-99.7 Rule**:\n   - 68% of values within 1σ of μ\n   - 95% within 2σ\n   - 99.7% within 3σ\n\n2. **Standard Normal**: μ=0, σ=1, written as N(0,1)\n\n3. **Sampling**: Drawing random values from the distribution\n\n**In Diffusion Models:**\n\nDiffusion works by:\n1. **Forward process**: Gradually add Gaussian noise\n   ```\n   x_t = √(1-β_t) × x_{t-1} + √(β_t) × ε    where ε ~ N(0,1)\n   ```\n\n2. **Reverse process**: Learn to predict the noise that was added\n   ```\n   x_{t-1} = (x_t - predicted_noise) / √(1-β_t)\n   ```\n\n**Why Gaussian?**\n\n1. **Central Limit Theorem**: Sum of many random variables → Gaussian\n2. **Closed form**: Adding Gaussians gives Gaussian\n3. **Maximum entropy**: Most 'random' distribution for given mean/variance\n4. **Mathematical convenience**: Derivatives are tractable\n\n**Multivariate Gaussian:**\n\nFor vectors (like images), we have:\n- Mean vector μ ∈ ℝⁿ\n- Covariance matrix Σ ∈ ℝⁿˣⁿ\n\n```\np(x) = (1 / √((2π)ⁿ|Σ|)) × e^(-½(x-μ)ᵀΣ⁻¹(x-μ))\n```\n\n**KL Divergence:**\n\nMeasures how different two distributions are:\n\n```\nKL(P || Q) = Σ P(x) × log(P(x) / Q(x))\n```\n\nVAEs use KL divergence to keep the latent distribution close to N(0,1)."
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "distribution-sampler",
+    "caption": "Adjust μ and σ to see how the Gaussian changes. Sample random values and watch the histogram form."
+  },
+
+  "prerequisites": [
+    "basic-probability",
+    "exponential-functions"
+  ],
+
+  "insight": "The Gaussian distribution is nature's favorite randomness - it emerges whenever many small independent factors combine, which is why it appears everywhere from measurement errors to neural network weights."
+}

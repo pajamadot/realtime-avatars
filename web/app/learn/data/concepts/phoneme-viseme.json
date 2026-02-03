@@ -1,0 +1,25 @@
+{
+  "id": "phoneme-viseme",
+  "title": "Phonemes & Visemes",
+  "level": 2,
+  "parentConcept": "audio-to-motion",
+
+  "explanation": {
+    "level3Assumes": "You understand that audio-driven talking heads map speech to mouth shapes, but not the linguistic foundation of this mapping.",
+    "thisExplains": "What phonemes and visemes are, how they relate to each other, and why this mapping is the foundation of lip sync technology.",
+    "text": "**Phonemes** are the smallest units of sound in speech. **Visemes** are the corresponding visual mouth shapes. Lip sync is fundamentally about phoneme → viseme mapping.\n\n**English has ~44 phonemes:**\n\n**Vowels (20):**\n- /iː/ as in 'see' - lips spread, tongue high\n- /ɑː/ as in 'car' - mouth open wide\n- /uː/ as in 'too' - lips rounded, protruded\n- /æ/ as in 'cat' - mouth open, tongue low\n- /ə/ as in 'about' - neutral, relaxed mouth\n\n**Consonants (24):**\n- /p/, /b/, /m/ - Bilabial (lips together)\n- /f/, /v/ - Labiodental (teeth on lip)\n- /θ/, /ð/ - Dental (tongue between teeth)\n- /t/, /d/, /n/, /s/, /z/ - Alveolar (tongue on ridge)\n- /k/, /g/, /ŋ/ - Velar (tongue on soft palate)\n\n**Visemes are fewer (~15-22):**\n\nMany phonemes share the same mouth shape:\n\n```\nViseme Group    Phonemes      Mouth Shape\n─────────────────────────────────────────\nBilabial        p, b, m       Lips closed\nLabiodental     f, v          Top teeth on bottom lip\nDental          th            Tongue visible between teeth\nAlveolar        t, d, n       Tongue behind teeth (not visible)\nOpen            aa, ah        Mouth wide open\nRounded         oo, w         Lips rounded\nEE              ee, i         Lips spread wide\nOH              oh, o         Lips rounded, open\n```\n\n**The Coarticulation Problem:**\n\nMouth shapes blend into each other. The 'o' in 'boat' looks different from 'o' in 'boom' because surrounding sounds affect the shape.\n\n```\nIsolated:  /b/ → /oʊ/ → /t/\nReality:   b-oʊ (lips already rounding during b)\n```\n\nThis is why simple phoneme → viseme lookup fails. ML models learn these transitions implicitly.\n\n**Audio Features for Lip Sync:**\n\n1. **Mel-spectrograms**: Frequency over time, human-perception weighted\n2. **MFCCs**: Compact representation of spectral envelope\n3. **Wav2Vec embeddings**: Learned speech representations\n\n**The Pipeline:**\n\n```\nAudio → Spectrogram → Neural Network → Viseme Weights/Landmarks → Face Animation\n```\n\n**Timing is Critical:**\n\nLip sync must be precise to ±50ms or it feels 'dubbed':\n- Audio leads by ~100ms feels wrong\n- Audio lags by ~100ms is more tolerable (dubbed movie effect)\n- Perfect sync is essential for believability\n\n**Why This is Hard:**\n\n1. Same sound, different speakers → different mouth shapes\n2. Emotions affect how we form sounds\n3. Speaking rate changes articulation\n4. Accents change phoneme → viseme mapping"
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "phoneme-visualizer",
+    "caption": "Type or speak text and see the phoneme breakdown with corresponding viseme animations."
+  },
+
+  "prerequisites": [
+    "audio-signal-processing",
+    "linguistics-basics"
+  ],
+
+  "insight": "Lip sync isn't about animating 'the letter A' - it's about knowing that /æ/ and /eɪ/ both use the letter A but need completely different mouth shapes."
+}

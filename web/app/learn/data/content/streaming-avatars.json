@@ -1,0 +1,241 @@
+{
+  "id": "streaming-avatars",
+  "title": "Streaming Avatars",
+  "subtitle": "WebRTC infrastructure for production deployment",
+  "color": "var(--color-streaming)",
+
+  "intro": {
+    "text": "Streaming avatars let you deploy real-time conversational AI without requiring GPUs on your users' devices. Your audio goes to the cloud, gets processed through a voice AI pipeline (speech-to-text, LLM, text-to-speech), and an avatar provider generates synchronized video that streams back via WebRTC. LiveKit acts as the traffic controller, routing media through their SFU (Selective Forwarding Unit) without ever seeing the content. The result: photorealistic talking avatars on any device with a web browser.",
+    "duration": "60s"
+  },
+
+  "pipeline": {
+    "steps": [
+      {
+        "id": "capture",
+        "label": "User Speech",
+        "description": "Microphone captures audio via getUserMedia API"
+      },
+      {
+        "id": "webrtc",
+        "label": "WebRTC Transport",
+        "description": "Audio streams to LiveKit SFU using encrypted UDP/RTP"
+      },
+      {
+        "id": "stt",
+        "label": "Speech-to-Text",
+        "description": "Streaming transcription converts audio to text (90-200ms)"
+      },
+      {
+        "id": "llm",
+        "label": "LLM Response",
+        "description": "Language model generates conversational response"
+      },
+      {
+        "id": "tts",
+        "label": "Text-to-Speech",
+        "description": "Voice synthesis converts response to audio"
+      },
+      {
+        "id": "avatar",
+        "label": "Avatar Render",
+        "description": "Provider (Hedra/Tavus) generates lip-synced video"
+      }
+    ],
+    "connections": [
+      ["capture", "webrtc"],
+      ["webrtc", "stt"],
+      ["stt", "llm"],
+      ["llm", "tts"],
+      ["tts", "avatar"],
+      ["avatar", "webrtc"]
+    ]
+  },
+
+  "concepts": [
+    {
+      "id": "webrtc",
+      "title": "WebRTC",
+      "summary": "Browser APIs for peer-to-peer real-time communication. Signaling exchanges metadata, then media flows via encrypted UDP. No plugins needed.",
+      "visualMetaphor": "Like a phone system: the operator (signaling server) connects your call, but once connected you talk directly. STUN tells you your external address, TURN relays when direct fails.",
+      "demoId": "webrtc-inspector",
+      "drillDown": "ice-protocol"
+    },
+    {
+      "id": "sfu",
+      "title": "SFU Architecture",
+      "summary": "Selective Forwarding Unit routes streams without processing content. Unlike MCU (which mixes), SFU just forwards - cheaper, faster, more scalable.",
+      "visualMetaphor": "A smart mail room that routes sealed envelopes to recipients without opening them. MCU would be a secretary who reads every letter, combines them, and makes photocopies.",
+      "demoId": "sfu-comparison",
+      "drillDown": "media-routing"
+    },
+    {
+      "id": "voice-pipeline",
+      "title": "Voice AI Pipeline",
+      "summary": "STT → LLM → TTS cascade. Each component adds latency (100-500ms each). Streaming APIs enable parallelization - TTS can start before LLM finishes.",
+      "visualMetaphor": "A translation relay race: Runner 1 writes what they hear, Runner 2 crafts a response, Runner 3 speaks it. With streaming, Runner 3 starts before Runner 2 finishes.",
+      "demoId": "latency-visualizer",
+      "drillDown": "turn-detection"
+    },
+    {
+      "id": "avatar-providers",
+      "title": "Avatar Providers",
+      "summary": "Hedra, Tavus, Simli, HeyGen - each takes audio and generates synchronized video. No client GPU needed; rendering happens on their servers.",
+      "visualMetaphor": "A puppeteer hidden behind the stage. You send them a script (audio), they perform the show (video). The audience only sees the puppet, never the puppeteer.",
+      "demoId": "provider-comparison",
+      "drillDown": "avatar-apis"
+    },
+    {
+      "id": "livekit-agents",
+      "title": "LiveKit Agents",
+      "summary": "Python framework for voice AI. JobContext manages room connection, AgentSession orchestrates the pipeline, plugins handle STT/LLM/TTS integration.",
+      "visualMetaphor": "A restaurant kitchen: LiveKit Room is the dining room, Agent Worker is the chef, Dispatch assigns chefs to tables, and plugins are specialized equipment.",
+      "demoId": "agent-builder",
+      "drillDown": "agent-lifecycle"
+    }
+  ],
+
+  "implementation": {
+    "steps": [
+      {
+        "title": "Install LiveKit Agents SDK",
+        "description": "Set up the Python environment with LiveKit and Hedra plugin",
+        "code": "pip install \"livekit-agents[hedra,openai,silero]~=1.3.0\"",
+        "language": "bash"
+      },
+      {
+        "title": "Configure Environment",
+        "description": "Set up API keys for LiveKit, OpenAI, and Hedra",
+        "code": "# .env file\nLIVEKIT_URL=wss://your-project.livekit.cloud\nLIVEKIT_API_KEY=your_key\nLIVEKIT_API_SECRET=your_secret\nOPENAI_API_KEY=sk-...\nHEDRA_API_KEY=...",
+        "language": "bash"
+      },
+      {
+        "title": "Create Agent",
+        "description": "Define the conversational agent with instructions",
+        "code": "from livekit.agents.voice import Agent\n\nclass MyAgent(Agent):\n    def __init__(self):\n        super().__init__(\n            instructions=\"You are a helpful assistant...\"\n        )",
+        "language": "python"
+      },
+      {
+        "title": "Set Up Avatar Session",
+        "description": "Connect Hedra avatar to the LiveKit room",
+        "code": "from livekit.plugins import hedra\n\navatar_session = hedra.AvatarSession(\n    avatar_image=Image.open(\"face.png\")\n)\nawait avatar_session.start(session, room=ctx.room)",
+        "language": "python"
+      },
+      {
+        "title": "Deploy Frontend",
+        "description": "Use LiveKit React components to display the avatar",
+        "code": "npm install @livekit/components-react livekit-client\n\n// In your React component:\n<LiveKitRoom\n  token={token}\n  serverUrl={LIVEKIT_URL}\n>\n  <VideoTrack />\n</LiveKitRoom>",
+        "language": "typescript"
+      }
+    ],
+    "resources": [
+      {
+        "title": "LiveKit Agents Documentation",
+        "url": "https://docs.livekit.io/agents/",
+        "type": "docs"
+      },
+      {
+        "title": "Hedra Realtime Avatar Docs",
+        "url": "https://www.hedra.com/docs/pages/realtime-avatar/get-started",
+        "type": "docs"
+      },
+      {
+        "title": "LiveKit React Components",
+        "url": "https://docs.livekit.io/reference/components/react/",
+        "type": "docs"
+      },
+      {
+        "title": "Tavus CVI Documentation",
+        "url": "https://docs.tavus.io/sections/conversational-video-interface/overview-cvi",
+        "type": "docs"
+      },
+      {
+        "title": "Simli WebRTC Client",
+        "url": "https://github.com/simliai/simli-client",
+        "type": "github"
+      },
+      {
+        "title": "HeyGen Streaming SDK",
+        "url": "https://docs.heygen.com/docs/streaming-avatar-sdk",
+        "type": "docs"
+      }
+    ]
+  },
+
+  "tradeoffs": {
+    "when": [
+      "You need cross-platform support (web, mobile, low-end devices)",
+      "Rapid development without ML infrastructure",
+      "Consistent quality across all devices",
+      "You're building a conversational AI product",
+      "You want to leverage existing avatar providers"
+    ],
+    "whenNot": [
+      "You need sub-100ms latency (streaming adds network delay)",
+      "Privacy is critical (audio/video goes through third parties)",
+      "High-volume usage makes API costs prohibitive",
+      "You need custom avatar models not supported by providers",
+      "Offline capability is required"
+    ],
+    "bestFor": "Production voice AI applications requiring quick deployment to any device without user GPU requirements"
+  },
+
+  "misconceptions": [
+    {
+      "wrong": "WebRTC is always peer-to-peer",
+      "correct": "Production apps almost always use an SFU. Pure P2P doesn't scale beyond 3-4 participants due to upload bandwidth."
+    },
+    {
+      "wrong": "Avatar generation happens locally",
+      "correct": "Avatar providers run GPU-intensive models on their servers. Your client sends audio, receives video via WebRTC."
+    },
+    {
+      "wrong": "Streaming STT is just faster batch processing",
+      "correct": "Streaming provides partial results during speech, enabling parallel processing. LLM can start while user is still talking."
+    },
+    {
+      "wrong": "WebRTC handles NAT traversal automatically",
+      "correct": "WebRTC requires STUN/TURN servers. Without TURN, ~20-25% of connections fail. Production must include TURN fallback."
+    },
+    {
+      "wrong": "Lower latency always means better quality",
+      "correct": "There's a tradeoff. Aggressive jitter buffers smooth playback but add delay. Some use cases need <500ms, others tolerate 1-2s."
+    }
+  ],
+
+  "avatarApplications": {
+    "providers": [
+      {
+        "name": "Hedra",
+        "latency": "<100ms",
+        "input": "Single face image",
+        "bestFor": "Quick prototyping, LiveKit native"
+      },
+      {
+        "name": "Tavus",
+        "latency": "~600ms",
+        "input": "2-minute training video",
+        "bestFor": "Personalized digital twins"
+      },
+      {
+        "name": "Simli",
+        "latency": "<300ms",
+        "input": "Face image + config",
+        "bestFor": "Multi-platform apps"
+      },
+      {
+        "name": "HeyGen",
+        "latency": "Variable",
+        "input": "Pre-built or custom avatar",
+        "bestFor": "Enterprise content pipelines"
+      }
+    ],
+    "latencyBudget": {
+      "target": "~500ms",
+      "stt": "90-200ms",
+      "llm": "75-300ms",
+      "tts": "100-200ms",
+      "network": "50-100ms"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "convolutional-networks",
+  "title": "Convolutional Neural Networks",
+  "level": 1,
+  "parentConcept": "deep-learning",
+
+  "explanation": {
+    "level3Assumes": "You understand that neural networks learn patterns from data and that images are grids of pixel values.",
+    "thisExplains": "How convolutional layers detect patterns in images by sliding small learnable filters across the input, and why this is more efficient than fully connected layers.",
+    "text": "Convolutional Neural Networks (CNNs) are the foundation of modern computer vision. Instead of treating each pixel independently, CNNs look at local neighborhoods to detect patterns like edges, textures, and shapes.\n\n**The Core Operation: Convolution**\n\nA small filter (kernel) slides across the image, computing a weighted sum at each position:\n\n```\nInput (5×5):          Filter (3×3):          Output (3×3):\n[1 2 3 4 5]           [1 0 1]                [sum₁ sum₂ sum₃]\n[2 3 4 5 6]     *     [0 1 0]          =     [sum₄ sum₅ sum₆]\n[3 4 5 6 7]           [1 0 1]                [sum₇ sum₈ sum₉]\n[4 5 6 7 8]\n[5 6 7 8 9]\n\nsum₁ = 1×1 + 2×0 + 3×1 + 2×0 + 3×1 + 4×0 + 3×1 + 4×0 + 5×1 = 16\n```\n\n**Why Convolution Works:**\n\n1. **Local connectivity**: Each output only depends on a small region\n2. **Weight sharing**: Same filter applied everywhere (learns 'what' not 'where')\n3. **Translation equivariance**: An edge in the top-left uses the same detector as an edge in the bottom-right\n\n**Building Blocks:**\n\n1. **Convolutional Layer**: Learn multiple filters (e.g., 64 filters → 64 feature maps)\n2. **Activation (ReLU)**: Add non-linearity: f(x) = max(0, x)\n3. **Pooling**: Downsample to reduce size: Max Pool takes the maximum in each 2×2 region\n4. **Batch Normalization**: Stabilize training by normalizing activations\n\n**A Typical CNN:**\n\n```\nInput: 224×224×3 (RGB image)\n  ↓\nConv1: 64 filters 3×3 → 224×224×64\nReLU + MaxPool 2×2 → 112×112×64\n  ↓\nConv2: 128 filters 3×3 → 112×112×128\nReLU + MaxPool 2×2 → 56×56×128\n  ↓\n... (more layers) ...\n  ↓\nFlatten → Fully Connected → Output\n```\n\n**What Each Layer Learns:**\n\n- **Early layers**: Edges, colors, simple textures\n- **Middle layers**: Corners, shapes, object parts\n- **Late layers**: Faces, wheels, entire objects\n\n**Parameters:**\n\n- **Kernel size**: Usually 3×3 or 5×5\n- **Stride**: How many pixels to skip (stride=2 halves dimensions)\n- **Padding**: Add zeros around edges to preserve size\n- **Channels**: Input depth and output depth\n\n**Why This Beats Fully Connected:**\n\nFor a 224×224×3 image:\n- Fully connected: 224×224×3×1000 = 150 million parameters per layer\n- Convolutional (3×3, 64 filters): 3×3×3×64 = 1,728 parameters\n\nConvolutions exploit the structure of images: nearby pixels are related, and patterns can appear anywhere."
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "conv-visualizer",
+    "caption": "Watch convolution in action: see how different filters detect edges, blurs, and other patterns."
+  },
+
+  "prerequisites": [
+    "neural-network-basics",
+    "matrix-multiplication"
+  ],
+
+  "insight": "A CNN is like a series of increasingly sophisticated magnifying glasses - the first sees only edges, the next sees shapes made of edges, the next sees objects made of shapes."
+}

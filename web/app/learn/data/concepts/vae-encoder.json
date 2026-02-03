@@ -1,0 +1,25 @@
+{
+  "id": "vae-encoder",
+  "title": "VAE Encoder & Latent Space",
+  "level": 2,
+  "parentConcept": "generative-models",
+
+  "explanation": {
+    "level3Assumes": "You understand that diffusion models work in a 'compressed' representation called latent space, but not how images get compressed or what this space represents.",
+    "thisExplains": "How Variational Autoencoders compress images into latent representations, what the latent space looks like, and why this compression is crucial for efficient diffusion.",
+    "text": "A Variational Autoencoder (VAE) learns to compress images into a smaller 'latent' representation and decompress them back. For diffusion models like Stable Diffusion, this compression is essential - working with 64×64×4 latents is 64× cheaper than 512×512×3 pixels.\n\n**The Architecture:**\n\n```\nImage (512×512×3) → Encoder → Latent (64×64×4) → Decoder → Image (512×512×3)\n                           ↑\n                     This is where diffusion happens\n```\n\n**Encoder: Image → Latent**\n\nThe encoder is a convolutional neural network that progressively downsamples:\n\n```\n512×512×3   → Conv → 256×256×64\n256×256×64  → Conv → 128×128×128\n128×128×128 → Conv → 64×64×256\n64×64×256   → Conv → 64×64×8\n64×64×8     → Split → μ (64×64×4) + σ (64×64×4)\n```\n\nThe final layer outputs mean (μ) and standard deviation (σ) for the latent distribution.\n\n**The 'Variational' Part:**\n\nInstead of encoding to a single point, VAE encodes to a probability distribution:\n\n```\nz = μ + σ × ε    where ε ~ N(0, 1)\n```\n\nThis randomness during training forces the latent space to be smooth and continuous - nearby points decode to similar images.\n\n**What Lives in Latent Space:**\n\nThink of it as a 'semantic ZIP file':\n- Position encodes spatial location\n- Channels encode different visual features\n- Similar images cluster together\n- You can interpolate between images smoothly\n\n**Decoder: Latent → Image**\n\nMirrors the encoder with transposed convolutions:\n\n```\n64×64×4    → ConvT → 64×64×256\n64×64×256  → ConvT → 128×128×128\n128×128×128 → ConvT → 256×256×64\n256×256×64 → ConvT → 512×512×3\n```\n\n**Why Latent Diffusion Works:**\n\n1. **Efficiency**: 64× fewer values to denoise\n2. **Semantic compression**: High-level features, not pixel noise\n3. **Pretrained**: VAE is trained separately, frozen during diffusion training\n4. **Information preservation**: Good VAEs have near-perfect reconstruction\n\n**The KL Divergence Loss:**\n\nVAE training balances two objectives:\n\n```\nLoss = Reconstruction_Loss + β × KL_Divergence\n\nReconstruction: Make output match input\nKL Divergence: Keep latent distribution close to standard normal\n```\n\nToo much KL → blurry reconstructions\nToo little KL → discontinuous latent space"
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "latent-explorer",
+    "caption": "Explore the latent space: encode an image, modify the latent vector, and decode to see what changes."
+  },
+
+  "prerequisites": [
+    "convolutional-networks",
+    "probability-distributions"
+  ],
+
+  "insight": "The VAE learns what 'matters' about an image - face shape, lighting, expression - and discards what doesn't - exact pixel values. Diffusion then operates on this distilled essence."
+}

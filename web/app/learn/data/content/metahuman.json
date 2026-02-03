@@ -1,0 +1,228 @@
+{
+  "id": "metahuman",
+  "title": "MetaHuman Pipeline",
+  "subtitle": "Game-engine rigged avatars with precise control",
+  "color": "var(--color-metahuman)",
+
+  "intro": {
+    "text": "MetaHuman is Epic Games' framework for creating photorealistic digital humans in Unreal Engine. Think of it as a sophisticated puppet system: a skeleton of virtual bones controls a high-detail 3D mesh, while blendshapes handle subtle facial deformations. The magic comes from live face tracking - your iPhone's TrueDepth camera captures 52 different facial muscles at 60 FPS, streaming this data directly to drive the MetaHuman's expressions. Combined with Audio2Face for lip sync, you get real-time digital humans with precise, frame-by-frame control.",
+    "duration": "60s"
+  },
+
+  "pipeline": {
+    "steps": [
+      {
+        "id": "input",
+        "label": "Input Capture",
+        "description": "iPhone TrueDepth camera or microphone captures facial movement or speech"
+      },
+      {
+        "id": "tracking",
+        "label": "ARKit Tracking",
+        "description": "52 blendshape weights extracted at 60 FPS using infrared dot projection"
+      },
+      {
+        "id": "livelink",
+        "label": "Live Link",
+        "description": "Stream tracking data over WiFi to Unreal Engine in real-time"
+      },
+      {
+        "id": "rig",
+        "label": "Rig Solver",
+        "description": "RigLogic maps 800+ joints and 200+ controls to final pose"
+      },
+      {
+        "id": "render",
+        "label": "UE5 Render",
+        "description": "Lumen lighting, ray-traced hair, and subsurface skin rendering"
+      }
+    ],
+    "connections": [
+      ["input", "tracking"],
+      ["tracking", "livelink"],
+      ["livelink", "rig"],
+      ["rig", "render"]
+    ]
+  },
+
+  "concepts": [
+    {
+      "id": "blendshapes",
+      "title": "Blendshapes (Morph Targets)",
+      "summary": "Deformed versions of a mesh representing different expressions. Blend between neutral and target shapes using 0-1 weights to create smooth animations.",
+      "visualMetaphor": "Imagine a collection of rubber masks showing different expressions. To animate, you 'blend' the neutral mask toward any expression mask by a percentage - 50% smile gives you a half-smile.",
+      "demoId": "blendshape-playground",
+      "drillDown": "arkit-blendshapes"
+    },
+    {
+      "id": "skeletal-rig",
+      "title": "Skeletal Rig",
+      "summary": "A hierarchy of virtual bones that deform the mesh. Moving the shoulder bone cascades to the arm, hand, and fingers. Weight painting determines how strongly each bone affects nearby vertices.",
+      "visualMetaphor": "Like a marionette puppet with wooden crossbars (bones) connected by strings (joints). Moving the shoulder bar pulls the arm and hand bars along. The puppet's cloth stretches based on where bones move.",
+      "demoId": "skeleton-inspector",
+      "drillDown": "skinning-weights"
+    },
+    {
+      "id": "live-link",
+      "title": "Live Link / ARKit",
+      "summary": "Real-time streaming from iPhone TrueDepth camera to Unreal Engine. 30,000 infrared dots map to 52 blendshape weights at 60 FPS, giving frame-accurate expression control.",
+      "visualMetaphor": "Your face is reflected in a magic mirror tracking 52 muscle movements. Each muscle has a dial (0-100%). Those readings instantly control a puppet in another room.",
+      "demoId": "face-tracking-demo",
+      "drillDown": "arkit-protocol"
+    },
+    {
+      "id": "rendering",
+      "title": "UE5 Rendering",
+      "summary": "Lumen for global illumination, ray-traced hair strands, and subsurface scattering for realistic skin. 8 LOD levels balance quality and performance.",
+      "visualMetaphor": "An assembly line factory: raw 3D data enters, gets measured (vertex), stamped flat (rasterization), painted (fragment shading), and assembled into the final image.",
+      "demoId": "rendering-settings",
+      "drillDown": "lumen-nanite"
+    },
+    {
+      "id": "audio2face",
+      "title": "Audio2Face",
+      "summary": "NVIDIA's AI that generates facial animation from audio. A neural network maps speech to 72 blendshapes in real-time, enabling automatic lip sync without motion capture.",
+      "visualMetaphor": "An AI ventriloquist who learned by watching thousands of hours of people speaking. It knows 'oo' sounds need pursed lips and 'ah' needs an open jaw - and puppeteers accordingly.",
+      "demoId": "audio2face-tuning",
+      "drillDown": "audio2face-network"
+    }
+  ],
+
+  "implementation": {
+    "steps": [
+      {
+        "title": "Install Unreal Engine 5",
+        "description": "Download from Epic Games Launcher and create a new project",
+        "code": "# Download from launcher.unrealengine.com\n# Create new Third Person or Blank project\n# Enable MetaHuman plugin in Edit > Plugins",
+        "language": "bash"
+      },
+      {
+        "title": "Create MetaHuman",
+        "description": "Use MetaHuman Creator web tool to design your character",
+        "code": "# Visit metahuman.unrealengine.com\n# Customize face, body, clothing\n# Export to Quixel Bridge\n# Import to project via Bridge plugin",
+        "language": "bash"
+      },
+      {
+        "title": "Set Up Live Link",
+        "description": "Install the Live Link Face app and connect to Unreal",
+        "code": "# iPhone: Download 'Live Link Face' from App Store\n# UE5: Enable 'Live Link' and 'Apple ARKit Face Support' plugins\n# Connect iPhone and UE5 machine to same WiFi\n# In Live Link Face app: Enter UE5 machine IP address",
+        "language": "bash"
+      },
+      {
+        "title": "Connect to MetaHuman",
+        "description": "Map Live Link data to your MetaHuman's face rig",
+        "code": "# In MetaHuman Blueprint:\n# Add 'Live Link Pose' node\n# Set Subject Name to match iPhone\n# Connect to Face component",
+        "language": "bash"
+      },
+      {
+        "title": "Add Audio2Face (Optional)",
+        "description": "For audio-driven lip sync without face tracking",
+        "code": "# Install NVIDIA Omniverse Audio2Face\n# Enable Audio2Face Live Link plugin in UE5\n# Route TTS audio through Audio2Face\n# Stream blendshapes to MetaHuman",
+        "language": "bash"
+      }
+    ],
+    "resources": [
+      {
+        "title": "MetaHuman Creator",
+        "url": "https://metahuman.unrealengine.com/",
+        "type": "docs"
+      },
+      {
+        "title": "Live Link Face App",
+        "url": "https://apps.apple.com/app/live-link-face/id1495370836",
+        "type": "docs"
+      },
+      {
+        "title": "MetaHuman Documentation",
+        "url": "https://dev.epicgames.com/documentation/en-us/metahuman/",
+        "type": "docs"
+      },
+      {
+        "title": "NVIDIA Audio2Face",
+        "url": "https://github.com/NVIDIA/Audio2Face-3D",
+        "type": "github"
+      },
+      {
+        "title": "Control Rig Tutorial",
+        "url": "https://dev.epicgames.com/documentation/en-us/metahuman/animating-metahumans-with-control-rig-in-unreal-engine",
+        "type": "docs"
+      },
+      {
+        "title": "Convai MetaHuman Plugin",
+        "url": "https://convai.com/blog/create-ai-characters-with-metahumans-unreal-engine",
+        "type": "docs"
+      }
+    ]
+  },
+
+  "tradeoffs": {
+    "when": [
+      "You need frame-accurate animation control",
+      "You're building for desktop/console with good GPUs",
+      "You want to use existing Unreal Engine workflows",
+      "You need deterministic, repeatable output",
+      "You're integrating with game or simulation systems"
+    ],
+    "whenNot": [
+      "You need photorealism of a real person (use Gaussian Splatting)",
+      "You want web/mobile deployment without powerful hardware",
+      "You need one-shot avatar from any photo (use Generative Video)",
+      "You're building a lightweight voice AI app (use Streaming)",
+      "You have limited GPU resources"
+    ],
+    "bestFor": "Production environments requiring precise control, deterministic animation, and integration with game engine workflows"
+  },
+
+  "misconceptions": [
+    {
+      "wrong": "MetaHuman has completely crossed the uncanny valley",
+      "correct": "While impressive in stills, animation often reveals the illusion. Micro-expressions, subtle skin deformations, and natural asymmetry are still challenging."
+    },
+    {
+      "wrong": "MetaHumans are easy to run on any hardware",
+      "correct": "They're computationally expensive: RTX 3070 drops to 20 FPS with 10 MetaHumans. 8K textures, ray-traced hair, and 700-bone rigs require significant GPU power."
+    },
+    {
+      "wrong": "Blendshapes and bones are interchangeable",
+      "correct": "They serve different purposes: blendshapes for soft tissue (face muscles), bones for rigid structures (limbs). MetaHuman uses both together."
+    },
+    {
+      "wrong": "ARKit captures all facial expressions accurately",
+      "correct": "52 blendshapes are a simplification. No micro-expressions, binary tongue tracking, 60 FPS cap misses fast movements."
+    },
+    {
+      "wrong": "Audio2Face replaces traditional animation",
+      "correct": "It excels at lip sync but can't generate head movement or body gestures. Best for NPCs and first drafts, not final film quality."
+    }
+  ],
+
+  "avatarApplications": {
+    "approaches": [
+      {
+        "name": "Live Face Tracking",
+        "description": "iPhone TrueDepth → ARKit → Live Link → MetaHuman",
+        "example": "Real-time performance capture"
+      },
+      {
+        "name": "Audio-Driven",
+        "description": "Audio → Audio2Face → Blendshapes → MetaHuman",
+        "example": "Voice AI assistants"
+      },
+      {
+        "name": "Keyframe Animation",
+        "description": "Control Rig → Sequencer → MetaHuman",
+        "example": "Pre-rendered cutscenes"
+      },
+      {
+        "name": "Hybrid",
+        "description": "Combine face tracking with procedural body animation",
+        "example": "Interactive NPCs"
+      }
+    ],
+    "performance": {
+      "rendering": "30-60 FPS on RTX 3060+",
+      "tracking": "60 FPS from iPhone TrueDepth",
+      "memory": "High (8K textures, complex rigs)"
+    }
+  }
+}

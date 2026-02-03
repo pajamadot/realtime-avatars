@@ -1,0 +1,25 @@
+{
+  "id": "turn-detection",
+  "title": "Turn Detection in Voice AI",
+  "level": 2,
+  "parentConcept": "voice-pipeline",
+
+  "explanation": {
+    "level3Assumes": "You understand the voice AI pipeline (STT → LLM → TTS) and that latency is critical, but not how the system knows when to start responding.",
+    "thisExplains": "How voice AI systems detect when a user has finished speaking (end-of-turn) and when they're just pausing, plus the trade-offs in different detection methods.",
+    "text": "Turn detection is the problem of knowing when someone has finished speaking. Too early and you interrupt them. Too late and there's awkward silence. This is one of the hardest problems in conversational AI.\n\n**The Challenge:**\n\nHumans pause mid-sentence:\n- \"I want to order... um... the pasta\" (1.2s pause)\n- \"The answer is... 42.\" (0.8s pause for effect)\n\nBut also indicate turn completion:\n- \"What do you think?\" (0.3s then expects response)\n- Falling intonation + silence\n\n**Approach 1: Fixed Silence Threshold**\n\nSimplest method - respond after N milliseconds of silence:\n\n```python\nSILENCE_THRESHOLD = 700  # ms\n\nif time_since_speech > SILENCE_THRESHOLD:\n    end_of_turn = True\n```\n\nProblems:\n- 700ms feels slow for quick exchanges\n- 300ms interrupts thoughtful speakers\n- No universal \"right\" value\n\n**Approach 2: Prosodic Features**\n\nAnalyze speech patterns that signal turn completion:\n\n```\nFeatures indicating turn end:\n- Falling pitch (declarative ending)\n- Decreasing energy/volume\n- Lengthening of final syllable\n- Specific words (\"okay\", \"so...\", questions)\n\nFeatures indicating continuation:\n- Rising pitch (incomplete thought)\n- Sustained energy\n- Conjunction words (\"and\", \"but\")\n- Filler words (\"um\", \"uh\")\n```\n\n**Approach 3: Semantic Understanding**\n\nUse the LLM to predict completeness:\n\n```python\nprompt = f'''Given the partial transcript: \"{transcript}\"\nIs this a complete turn or is the speaker likely to continue?\nOutput: COMPLETE or INCOMPLETE'''\n```\n\nThis catches \"I want to buy...\" as incomplete.\n\n**Approach 4: Hybrid (State of the Art)**\n\nCombine multiple signals:\n\n```python\ndef detect_end_of_turn(audio_features, transcript):\n    # Short silence check\n    if silence_duration < 200:\n        return False\n    \n    # Strong signals of completion\n    if is_question(transcript) or ends_with_period(transcript):\n        return True\n    \n    # Prosodic analysis\n    if pitch_falling and energy_decreasing:\n        confidence += 0.3\n    \n    # Semantic check for ambiguous cases\n    if 300 < silence_duration < 800:\n        semantic_complete = llm_check_completeness(transcript)\n        confidence += 0.5 if semantic_complete else -0.3\n    \n    # Long silence always ends turn\n    if silence_duration > 1200:\n        return True\n    \n    return confidence > 0.7\n```\n\n**LiveKit's Approach:**\n\n```python\nfrom livekit.agents import voice\n\nsession = voice.AgentSession(\n    turn_detector=voice.turn_detector.EOUModel(),\n    min_endpointing_delay=0.5,  # Minimum wait\n    max_endpointing_delay=1.5,  # Maximum wait\n)\n```\n\n**Interruption Handling:**\n\nWhat if the user speaks while the AI is responding?\n\n1. **Always stop** - Immediately halt TTS\n2. **Threshold** - Only stop if user speaks 500ms+\n3. **Backchannels** - Ignore \"mhm\", \"yeah\" as non-interruptions"
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "turn-detection-demo",
+    "caption": "Speak into the microphone and see how different turn detection algorithms decide when you've finished."
+  },
+
+  "prerequisites": [
+    "speech-recognition-basics",
+    "audio-feature-extraction"
+  ],
+
+  "insight": "The difference between an interrupting AI and a natural conversationalist often comes down to 200 milliseconds and whether the system understands that 'I want to...' is never a complete thought."
+}

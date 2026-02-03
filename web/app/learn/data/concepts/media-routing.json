@@ -1,0 +1,25 @@
+{
+  "id": "media-routing",
+  "title": "SFU Media Routing",
+  "level": 2,
+  "parentConcept": "sfu-architecture",
+
+  "explanation": {
+    "level3Assumes": "You understand that an SFU forwards streams without processing them and that this is more efficient than other approaches, but not how the routing actually works.",
+    "thisExplains": "How Selective Forwarding Units decide which streams to forward to which participants, how they handle different quality levels, and the mechanics of simulcast.",
+    "text": "An SFU (Selective Forwarding Unit) is a smart router for real-time media. Unlike an MCU that decodes, mixes, and re-encodes streams, an SFU just forwards the right packets to the right participants.\n\n**Why 'Selective':**\n\nNot every participant needs every stream at full quality:\n- A thumbnail view doesn't need 1080p\n- A muted participant doesn't need audio\n- Screen share should get priority bandwidth\n\nThe SFU selects what to forward based on:\n1. **Subscription** - What the client asked for\n2. **Bandwidth** - What the client can receive\n3. **Priority** - What matters most right now\n\n**Simulcast: Multiple Quality Levels**\n\nSenders encode their video at multiple resolutions simultaneously:\n\n```\nSender encodes:\n  High:   1280×720 @ 2.5 Mbps\n  Medium: 640×360  @ 500 Kbps\n  Low:    320×180  @ 150 Kbps\n\nSFU forwards:\n  To participant viewing full screen → High\n  To participant with 6-up grid → Medium\n  To participant on mobile → Low\n```\n\n**SVC (Scalable Video Coding):**\n\nAlternative to simulcast - single stream with layers:\n\n```\nBase layer: 320×180 (always decodable)\n  + Enhancement 1: 640×360\n    + Enhancement 2: 1280×720\n```\n\nSFU can drop layers rather than entire frames during congestion.\n\n**Subscription Model:**\n\n```typescript\n// Client requests specific tracks\nroom.subscribe(participant.videoTrack, {\n  quality: 'high',\n  enabled: true\n});\n\n// SFU tracks subscriptions per participant\nsubscriptions = {\n  participant_A: [\n    { track: 'video_B', quality: 'high' },\n    { track: 'audio_B', enabled: true }\n  ]\n}\n```\n\n**Bandwidth Estimation:**\n\nThe SFU continuously estimates each participant's bandwidth:\n\n1. **RTCP feedback** - Receiver reports packet loss and jitter\n2. **Transport-wide CC** - Google's congestion control\n3. **REMB** - Receiver Estimated Maximum Bitrate\n\n```\nIf estimated_bandwidth < required_bandwidth:\n  Downgrade video quality\n  Or pause non-essential streams\n```\n\n**Packet Routing:**\n\n```\nIncoming RTP packet:\n  1. Identify source participant\n  2. Find subscribers for this track\n  3. For each subscriber:\n     a. Check their requested quality\n     b. Check their estimated bandwidth\n     c. Rewrite SSRC (stream identifier)\n     d. Forward packet\n```\n\n**Active Speaker Detection:**\n\nSFUs often detect who's speaking and:\n- Prioritize their video quality\n- Notify clients to spotlight them\n- Forward their stream first\n\n**No Transcoding = Efficiency:**\n\nSFU CPU usage is nearly constant regardless of participant count:\n- MCU: O(n²) - decode n streams, encode n outputs\n- SFU: O(n) - just forward packets"
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "sfu-routing-simulator",
+    "caption": "Simulate an SFU routing streams between participants. Add/remove participants and see how bandwidth is allocated."
+  },
+
+  "prerequisites": [
+    "rtp-protocol",
+    "video-codecs"
+  ],
+
+  "insight": "An SFU is like a smart mail room that routes sealed envelopes without opening them - it knows who needs what, but never sees the contents."
+}

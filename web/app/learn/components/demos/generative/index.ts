@@ -1,0 +1,1 @@
+export { DenoisingDemo } from './DenoisingDemo';

@@ -1,0 +1,25 @@
+{
+  "id": "differentiable-rendering",
+  "title": "Differentiable Rendering",
+  "level": 2,
+  "parentConcept": "optimization",
+
+  "explanation": {
+    "level3Assumes": "You understand that 3D Gaussian Splatting optimizes Gaussians to match training images, but not how the system knows which direction to adjust each parameter.",
+    "thisExplains": "How differentiable rendering enables gradient-based optimization by making the rendering pipeline mathematically differentiable, allowing backpropagation from image loss to 3D parameters.",
+    "text": "Differentiable rendering is the key that unlocks learning 3D representations from 2D images. It means we can compute gradients through the rendering process, answering the question: 'How should I change my 3D parameters to make the rendered image look more like the target?'\n\n**The Core Problem:**\n\nTraditional rendering is a black box:\n```\n3D Scene → Renderer → 2D Image\n     ?         ?         ✓ (we can compare to ground truth)\n```\n\nWe can measure error in the output image, but how do we propagate that error back to change the 3D scene?\n\n**The Solution: Make Everything Differentiable**\n\n```\n∂Loss/∂Gaussians = ∂Loss/∂Image × ∂Image/∂Gaussians\n```\n\nIf we can compute `∂Image/∂Gaussians` (how each pixel changes when we change each Gaussian parameter), we can use gradient descent to optimize.\n\n**What Needs to Be Differentiable:**\n\n1. **Projection** - 3D to 2D coordinate mapping\n   ```\n   ∂(screen_pos)/∂(3D_pos) = projection_jacobian\n   ```\n\n2. **Splatting** - How Gaussians contribute to pixels\n   ```\n   ∂(pixel_color)/∂(gaussian_color) = gaussian_weight_at_pixel\n   ∂(pixel_color)/∂(gaussian_opacity) = color × coverage\n   ```\n\n3. **Alpha Compositing** - Blending order\n   ```\n   ∂C_final/∂C_i = T_i × α_i  (transmittance × opacity)\n   ```\n\n4. **Covariance/Shape** - How ellipsoid bounds affect coverage\n   ```\n   ∂(coverage)/∂(covariance) = complex but computable!\n   ```\n\n**The Rendering Equation for 3DGS:**\n\n```\nC(x) = Σᵢ cᵢ × αᵢ × G(x; μᵢ, Σᵢ) × Πⱼ<ᵢ (1 - αⱼ × G(x; μⱼ, Σⱼ))\n```\n\nEvery operation here (multiplication, Gaussian evaluation, product) has known derivatives!\n\n**Challenges:**\n\n1. **Sorting** - Depth ordering is discontinuous (solved by soft sorting or local approximations)\n2. **Visibility** - Hard occlusion is non-differentiable (solved by soft visibility)\n3. **Memory** - Need to store intermediate values for backprop\n\n**The Training Loop:**\n\n```python\nfor image, camera in training_data:\n    # Forward pass\n    rendered = render_gaussians(gaussians, camera)\n    \n    # Compute loss\n    loss = L1(rendered, image) + SSIM(rendered, image)\n    \n    # Backward pass - gradients flow through render!\n    loss.backward()\n    \n    # Update Gaussians\n    optimizer.step()\n```\n\n**Why This is Revolutionary:**\n\nBefore differentiable rendering, optimizing 3D representations required:\n- Hand-crafted features\n- Expensive sampling methods\n- Limited to simple shapes\n\nNow we can optimize millions of parameters directly from images."
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "gradient-flow-visualizer",
+    "caption": "See how gradients flow backward from pixel loss through the rendering pipeline to each Gaussian parameter."
+  },
+
+  "prerequisites": [
+    "gradient-descent",
+    "chain-rule"
+  ],
+
+  "insight": "Differentiable rendering turns 'what 3D scene created this image?' from an impossible inverse problem into an optimization problem we can solve with gradient descent."
+}

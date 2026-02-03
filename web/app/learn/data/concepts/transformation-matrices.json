@@ -1,0 +1,25 @@
+{
+  "id": "transformation-matrices",
+  "title": "Transformation Matrices",
+  "level": 1,
+  "parentConcept": "linear-algebra",
+
+  "explanation": {
+    "level3Assumes": "You have a basic understanding that 3D graphics involves moving, rotating, and scaling objects.",
+    "thisExplains": "How 4×4 matrices encode all possible 3D transformations (translation, rotation, scale) and why matrix multiplication lets us combine them efficiently.",
+    "text": "In 3D graphics, every object's position, orientation, and size is controlled by a 4×4 transformation matrix. This single matrix can encode any combination of translation (moving), rotation (turning), and scale (resizing).\n\n**Why 4×4 instead of 3×3?**\n\nA 3×3 matrix can handle rotation and scale, but not translation. The trick is to use **homogeneous coordinates** - adding a 4th coordinate (w=1 for points, w=0 for directions).\n\n**The Structure:**\n\n```\n| Rx  Ry  Rz  Tx |     Rotation + Scale (3×3)  |  Translation\n| Rx  Ry  Rz  Ty |     in the upper-left       |  in the right\n| Rx  Ry  Rz  Tz |     corner                  |  column\n| 0   0   0   1  |     Always [0, 0, 0, 1] for affine transforms\n```\n\n**Identity Matrix (No Change):**\n\n```\n| 1  0  0  0 |\n| 0  1  0  0 |  × point = same point\n| 0  0  1  0 |\n| 0  0  0  1 |\n```\n\n**Translation (Move):**\n\nTo move by (tx, ty, tz):\n\n```\n| 1  0  0  tx |\n| 0  1  0  ty |  × (x, y, z, 1) = (x+tx, y+ty, z+tz, 1)\n| 0  0  1  tz |\n| 0  0  0  1  |\n```\n\n**Scale:**\n\nTo scale by (sx, sy, sz):\n\n```\n| sx 0  0  0 |\n| 0  sy 0  0 |  × (x, y, z, 1) = (x×sx, y×sy, z×sz, 1)\n| 0  0  sz 0 |\n| 0  0  0  1 |\n```\n\n**Rotation (around Z axis by θ):**\n\n```\n| cos(θ) -sin(θ)  0  0 |\n| sin(θ)  cos(θ)  0  0 |\n| 0       0       1  0 |\n| 0       0       0  1 |\n```\n\n**The Power: Composition**\n\nMultiply matrices together to combine transformations:\n\n```\nM_final = M_translate × M_rotate × M_scale\n```\n\n**Order Matters!**\n\nMatrix multiplication is not commutative:\n- Rotate then translate ≠ Translate then rotate\n- Read right-to-left: M₃ × M₂ × M₁ means 'first M₁, then M₂, then M₃'\n\n**In Skeletal Animation:**\n\nEach bone stores its local transform matrix. To find a vertex's world position:\n\n```\nworld_position = M_root × M_spine × M_shoulder × M_arm × M_hand × local_position\n```\n\nThis chain of multiplications is why bone hierarchies work - moving the shoulder automatically moves everything below it."
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "matrix-playground",
+    "caption": "Manipulate translation, rotation, and scale values and see the resulting 4×4 matrix and its effect on a 3D cube."
+  },
+
+  "prerequisites": [
+    "matrix-multiplication",
+    "trigonometry-basics"
+  ],
+
+  "insight": "A 4×4 matrix is a compact encoding of 'where is this object and what does it look like?' - and multiplying matrices lets us chain these questions through a hierarchy of parent-child relationships."
+}

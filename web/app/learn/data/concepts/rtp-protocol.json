@@ -1,0 +1,25 @@
+{
+  "id": "rtp-protocol",
+  "title": "RTP: Real-time Transport Protocol",
+  "level": 1,
+  "parentConcept": "networking",
+
+  "explanation": {
+    "level3Assumes": "You understand that WebRTC sends audio and video over the network, but not the format or structure of that data.",
+    "thisExplains": "How RTP (Real-time Transport Protocol) packages media data for transmission, including headers, timestamps, and sequence numbers that enable real-time playback.",
+    "text": "RTP is the standard protocol for delivering audio and video over IP networks. It's the 'language' that WebRTC uses to send media, sitting on top of UDP.\n\n**Why Not Just UDP?**\n\nUDP provides fast, unreliable delivery. But for media, we need:\n- Timing information (when should this frame play?)\n- Ordering (which packet comes first?)\n- Source identification (which stream is this?)\n- Payload description (what codec?)\n\nRTP adds this metadata in a structured header.\n\n**RTP Packet Structure:**\n\n```\n 0                   1                   2                   3\n 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|V=2|P|X|  CC   |M|     PT      |       Sequence Number         |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|                           Timestamp                           |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|           Synchronization Source (SSRC) identifier            |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n|                          Payload...                           |\n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n```\n\n**Key Fields:**\n\n- **V (2 bits)**: Version (always 2)\n- **PT (7 bits)**: Payload Type - identifies codec (96-127 for dynamic)\n- **Sequence Number (16 bits)**: Increments by 1 per packet - detects loss and ordering\n- **Timestamp (32 bits)**: Sampling instant - for synchronization\n- **SSRC (32 bits)**: Random identifier for this stream\n\n**Timestamp Deep Dive:**\n\nTimestamps increment based on media clock rate:\n\n```\nAudio (Opus, 48kHz): timestamp += 960 per 20ms frame\nVideo (VP8, 90kHz): timestamp += 3000 per 33ms frame (30 FPS)\n```\n\nThese enable:\n- Jitter buffer calculation\n- Lip sync between audio and video\n- Playback timing decisions\n\n**Handling Packet Loss:**\n\nSequence numbers reveal gaps:\n\n```\nReceived: 100, 101, 102, 104, 105  // 103 is missing!\n\nOptions:\n1. Wait briefly (jitter buffer)\n2. Request retransmission (RTCP NACK)\n3. Conceal the gap (interpolation)\n```\n\n**RTCP: Control Protocol**\n\nRTP's companion protocol for feedback:\n\n- **Sender Report (SR)**: 'I sent X packets at Y bitrate'\n- **Receiver Report (RR)**: 'I received 97% of packets, jitter is 5ms'\n- **NACK**: 'Please resend packet 103'\n- **REMB**: 'Please reduce bitrate to 500 kbps'\n\n**Example WebRTC RTP Flow:**\n\n```\n[Browser] --RTP--> [SFU] --RTP--> [Other Browser]\n    ↑                ↑                ↑\n    └──────RTCP──────┴──────RTCP──────┘\n```\n\n**SRTP: Secure RTP**\n\nWebRTC always encrypts RTP using SRTP:\n- AES-128 encryption\n- HMAC authentication\n- Key exchange via DTLS"
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "rtp-packet-inspector",
+    "caption": "Decode a real RTP packet header and see how sequence numbers and timestamps work."
+  },
+
+  "prerequisites": [
+    "networking-basics",
+    "binary-numbers"
+  ],
+
+  "insight": "RTP is like a conveyor belt with numbered, timestamped boxes - even if some boxes fall off (packet loss), you know exactly which ones are missing and when the remaining ones should be opened."
+}

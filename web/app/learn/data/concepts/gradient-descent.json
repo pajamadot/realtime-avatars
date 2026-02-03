@@ -1,0 +1,25 @@
+{
+  "id": "gradient-descent",
+  "title": "Gradient Descent",
+  "level": 2,
+  "parentConcept": "optimization",
+
+  "explanation": {
+    "level3Assumes": "You understand that neural networks have parameters (weights) that get adjusted during training to minimize a 'loss' that measures how wrong the predictions are.",
+    "thisExplains": "How gradient descent actually adjusts those parameters, what gradients are, and why this simple idea powers all of deep learning.",
+    "text": "Gradient descent is an optimization algorithm that finds the minimum of a function by repeatedly taking steps in the direction of steepest descent.\n\n**The Core Idea:**\nImagine you're blindfolded on a hilly landscape, trying to find the lowest point. You can feel the slope under your feet. The strategy: always step downhill.\n\n**Mathematically:**\n\n```\nθ_new = θ_old - α × ∇L(θ)\n```\n\nWhere:\n- θ = the parameters (weights) of the neural network\n- α = learning rate (step size)\n- ∇L(θ) = gradient of the loss function\n\n**What is a Gradient?**\nThe gradient is a vector of partial derivatives - it points in the direction of steepest increase. We go the opposite way (hence the minus sign) to decrease the loss.\n\n**For a neural network:**\n1. Forward pass: Compute predictions\n2. Loss: Measure how wrong we are\n3. Backward pass: Compute gradients via chain rule (backpropagation)\n4. Update: Adjust each parameter proportionally to its gradient\n\n**Variants:**\n- **SGD**: Use random mini-batches for faster, noisier updates\n- **Adam**: Adapt learning rate per-parameter based on history\n- **AdaGrad**: Accumulate squared gradients for adaptive rates\n\n**Learning Rate Matters:**\n- Too high: Overshoot and diverge\n- Too low: Painfully slow convergence\n- Just right: Smooth descent to minimum\n\n**Local vs Global Minima:**\nIn high dimensions (millions of parameters), there are many 'valleys'. Fortunately, research shows that for overparameterized networks, most local minima are nearly as good as the global minimum."
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "gradient-descent-visualizer",
+    "caption": "Adjust the learning rate and watch the optimization path on a 2D loss landscape. See how different rates lead to convergence, oscillation, or divergence."
+  },
+
+  "prerequisites": [
+    "derivatives-basics",
+    "vectors-and-matrices"
+  ],
+
+  "insight": "Gradient descent finds patterns in data by treating learning as a slow downhill walk on a mathematical landscape where altitude represents error."
+}

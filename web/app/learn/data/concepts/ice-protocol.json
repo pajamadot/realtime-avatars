@@ -1,0 +1,25 @@
+{
+  "id": "ice-protocol",
+  "title": "ICE Protocol & NAT Traversal",
+  "level": 2,
+  "parentConcept": "webrtc",
+
+  "explanation": {
+    "level3Assumes": "You understand that WebRTC enables real-time communication and that STUN/TURN servers help establish connections, but not how the connection process actually works.",
+    "thisExplains": "How the ICE (Interactive Connectivity Establishment) protocol discovers network paths through NATs and firewalls to establish peer-to-peer connections.",
+    "text": "ICE (Interactive Connectivity Establishment) is the protocol WebRTC uses to find a working network path between two peers. It's necessary because most devices sit behind NAT (Network Address Translation), which hides their real IP addresses.\n\n**The NAT Problem:**\n\nYour laptop might have IP 192.168.1.100, but the internet sees your router's IP (e.g., 73.45.123.89). When someone tries to connect to you, which address do they use? Neither works directly - NAT blocks unsolicited incoming connections.\n\n**ICE Candidates:**\n\nICE gathers multiple possible connection paths (candidates):\n\n1. **Host candidates** - Your device's local IP\n   ```\n   candidate:1 host 192.168.1.100:54321\n   ```\n\n2. **Server Reflexive (srflx)** - Your public IP discovered via STUN\n   ```\n   candidate:2 srflx 73.45.123.89:54321 raddr 192.168.1.100:54321\n   ```\n\n3. **Relay candidates** - TURN server address (fallback)\n   ```\n   candidate:3 relay 203.0.113.50:3478 raddr 73.45.123.89:54321\n   ```\n\n**STUN (Session Traversal Utilities for NAT):**\n\nSTUN servers tell you your public IP address:\n\n```\nYou → STUN Server: \"What's my address?\"\nSTUN Server → You: \"You appear as 73.45.123.89:54321\"\n```\n\nThis enables NAT hole punching - if both peers send packets to each other's public addresses simultaneously, most NATs will allow the traffic through.\n\n**TURN (Traversal Using Relays around NAT):**\n\nWhen direct connection fails (symmetric NAT, corporate firewalls), TURN relays all traffic:\n\n```\nPeer A → TURN Server → Peer B\n```\n\nThis always works but adds latency and bandwidth cost.\n\n**The ICE Process:**\n\n1. **Gathering** - Collect all candidates (host, srflx, relay)\n2. **Exchange** - Send candidates to peer via signaling\n3. **Connectivity Checks** - Try each candidate pair:\n   ```\n   Your host ↔ Their host (fastest if both on LAN)\n   Your srflx ↔ Their srflx (NAT traversal)\n   Your relay ↔ Their relay (always works, slowest)\n   ```\n4. **Selection** - Use the best working pair\n\n**Candidate Pair Priority:**\n\n```\nPriority = 2^24 × min(local, remote) + 2 × max(local, remote) + (local > remote ? 1 : 0)\n\nwhere local/remote = candidate type priority:\n  host: 126\n  srflx: 100\n  relay: 0\n```\n\n**Trickle ICE:**\n\nInstead of waiting to gather all candidates before connecting, trickle ICE sends candidates as they're discovered - faster connection establishment.\n\n**ICE Restart:**\n\nIf connection drops (network change, NAT rebinding), ICE can restart with new candidates without re-establishing the entire session."
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "ice-visualizer",
+    "caption": "Watch ICE candidate gathering and connectivity checks in real-time. See which paths succeed and fail."
+  },
+
+  "prerequisites": [
+    "networking-basics",
+    "nat-fundamentals"
+  ],
+
+  "insight": "ICE is like trying every possible phone number and area code combination to reach someone, then using the clearest connection - but doing it in milliseconds."
+}
