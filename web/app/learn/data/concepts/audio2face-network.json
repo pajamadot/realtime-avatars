@@ -1,0 +1,25 @@
+{
+  "id": "audio2face-network",
+  "title": "Audio2Face Neural Architecture",
+  "level": 2,
+  "parentConcept": "audio-to-motion",
+
+  "explanation": {
+    "level3Assumes": "You understand that Audio2Face converts speech to facial animation, but not the neural network architecture that makes this possible.",
+    "thisExplains": "The specific network architectures, audio encoders, and training techniques that enable NVIDIA's Audio2Face to generate realistic lip sync from audio.",
+    "text": "NVIDIA's Audio2Face uses a sophisticated neural architecture to predict 72 ARKit-compatible blendshape weights from audio input in real-time.\n\n**The Complete Pipeline:**\n\n```\nAudio Waveform\n    ↓\n┌───────────────────────────┐\n│     Audio Encoder         │\n│  (Wav2Vec 2.0 + Custom)   │\n└───────────────┬───────────┘\n                ↓\n┌───────────────────────────┐\n│    Motion Predictor       │\n│   (CNN-GRU / Diffusion)   │\n└───────────────┬───────────┘\n                ↓\n┌───────────────────────────┐\n│   Identity/Emotion        │\n│     Conditioning          │\n└───────────────┬───────────┘\n                ↓\n    72 Blendshape Weights\n```\n\n**Audio Encoding (Hybrid Approach):**\n\nAudio2Face uses multiple audio representations:\n\n1. **Mel-Spectrograms**: Classic frequency representation\n   ```\n   audio → STFT → Mel filterbank → log scaling\n   Shape: [batch, time, 80 mel bins]\n   ```\n\n2. **Wav2Vec 2.0 Features**: Learned speech representations\n   ```\n   audio → Pretrained Wav2Vec → contextual embeddings\n   Shape: [batch, time, 768]\n   ```\n   Captures phonetic and prosodic information.\n\n3. **Autocorrelation Features**: Pitch detection\n   ```\n   audio → autocorrelation → peak detection → F0 estimate\n   ```\n\n**Motion Prediction Network:**\n\n**Architecture v2.3 (Regression):**\n```\nAudio Features [B, T, 768]\n    ↓\nConv1D layers (temporal context)\n    ↓\nBidirectional GRU (sequence modeling)\n    ↓\nLinear → 72 blendshapes\n```\n\n**Architecture v3.0 (Diffusion):**\n```\nNoise + Audio Conditioning\n    ↓\nU-Net with cross-attention\n    ↓\nIterative denoising (4-8 steps)\n    ↓\n72 blendshapes (cleaner, more varied)\n```\n\n**Identity Conditioning:**\n\nDifferent faces move differently. Audio2Face conditions on identity:\n\n```python\nidentity_embedding = identity_encoder(neutral_face_mesh)\nmotion = predictor(audio_features, identity_embedding)\n```\n\nThis allows:\n- Wider mouth for some characters\n- More subtle movements for others\n- Stylized characters with exaggerated motion\n\n**Emotion Conditioning:**\n\nBlend between emotional states:\n\n```python\nemotion_vector = [neutral, happy, angry, sad, surprised]\n# e.g., [0.0, 0.7, 0.0, 0.3, 0.0] for happy-sad blend\n\nmotion = predictor(audio, identity, emotion_vector)\n```\n\n**Temporal Modeling:**\n\nLip sync requires temporal context:\n- Past context: What sounds came before affects current mouth shape\n- Future context: Coarticulation - mouth anticipates upcoming sounds\n\n```\n[..., t-3, t-2, t-1, t, t+1, t+2, t+3, ...]\n                    ↑\n            current frame\n```\n\nTypically uses ±5 frames (±100ms at 50 FPS).\n\n**Training Data:**\n\n```\nDataset requirements:\n- High-quality 4D face scans with audio\n- Diverse speakers (age, gender, ethnicity)\n- Multiple languages for generalization\n- Clean audio (no background noise)\n\nTypical scale:\n- 100+ hours of aligned audio-visual data\n- 50+ subjects\n- Multiple emotional states per subject\n```\n\n**Loss Functions:**\n\n```python\n# Blendshape reconstruction\nL_bs = MSE(predicted_blendshapes, ground_truth_blendshapes)\n\n# Velocity smoothness\nL_vel = MSE(diff(predicted), diff(ground_truth))\n\n# Lip sync discriminator\nL_sync = SyncNet_loss(audio, generated_video)\n\n# Total\nL = L_bs + λ_vel * L_vel + λ_sync * L_sync\n```\n\n**Real-Time Performance:**\n\n```\nInference on RTX 4090:\n- Audio encoding: ~2ms\n- Motion prediction: ~3ms\n- Total: ~5ms (200 FPS possible)\n\nActual deployment: 40-60 FPS\n(includes buffering, smoothing, streaming overhead)\n```"
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "audio2face-network",
+    "caption": "Explore the Audio2Face architecture: see how audio features flow through the network to produce blendshapes."
+  },
+
+  "prerequisites": [
+    "recurrent-networks",
+    "audio-processing"
+  ],
+
+  "insight": "Audio2Face learned the mapping from sound to face by watching thousands of hours of people talking - it knows that 'P' means closed lips not because anyone told it, but because that pattern emerged from the data."
+}

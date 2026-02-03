@@ -9,12 +9,16 @@ import diffusionMath from '../../../data/concepts/diffusion-math.json';
 import gradientDescent from '../../../data/concepts/gradient-descent.json';
 import vaeEncoder from '../../../data/concepts/vae-encoder.json';
 import phonemeViseme from '../../../data/concepts/phoneme-viseme.json';
+import consistencyModels from '../../../data/concepts/consistency-models.json';
+import referenceNet from '../../../data/concepts/reference-net.json';
 
 const concepts: Record<string, typeof diffusionMath> = {
   'diffusion-math': diffusionMath,
   'gradient-descent': gradientDescent,
   'vae-encoder': vaeEncoder,
   'phoneme-viseme': phonemeViseme,
+  'consistency-models': consistencyModels,
+  'reference-net': referenceNet,
 };
 
 const color = 'var(--color-generative)';

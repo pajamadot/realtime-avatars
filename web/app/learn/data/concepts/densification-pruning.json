@@ -1,0 +1,25 @@
+{
+  "id": "densification-pruning",
+  "title": "Densification & Pruning",
+  "level": 2,
+  "parentConcept": "optimization",
+
+  "explanation": {
+    "level3Assumes": "You understand that 3DGS optimizes Gaussian parameters through gradient descent, but not how the number of Gaussians changes during training.",
+    "thisExplains": "The adaptive density control mechanism that adds Gaussians where detail is needed (densification) and removes unnecessary ones (pruning).",
+    "text": "Training starts with sparse points from Structure-from-Motion. Gradient descent alone can't add new Gaussians - we need explicit rules to grow and shrink the representation.\n\n**The Problem:**\n\n- Too few Gaussians → blurry, missing details\n- Too many Gaussians → slow rendering, memory issues\n- Wrong positions → wasted capacity\n\n**Densification: Adding Gaussians**\n\nEvery N iterations (typically 100-500), check each Gaussian:\n\n**Clone (for under-reconstruction):**\nIf gradient is high AND Gaussian is small:\n```\nif ∥∇_pos∥ > threshold_grad AND scale < threshold_scale:\n    new_gaussian = copy(gaussian)\n    new_gaussian.position += small_offset\n```\nSmall Gaussians with high gradients indicate fine detail that needs more coverage.\n\n**Split (for over-reconstruction):**\nIf gradient is high AND Gaussian is large:\n```\nif ∥∇_pos∥ > threshold_grad AND scale > threshold_scale:\n    child1, child2 = split(gaussian)\n    child1.scale = gaussian.scale / 1.6\n    child2.scale = gaussian.scale / 1.6\n    child1.position = gaussian.position + offset\n    child2.position = gaussian.position - offset\n```\nLarge Gaussians with high gradients are trying to cover too much - split them.\n\n**Pruning: Removing Gaussians**\n\nPeriodically remove Gaussians that aren't contributing:\n\n**Low Opacity:**\n```\nif gaussian.opacity < 0.005:\n    delete(gaussian)  # Nearly transparent = useless\n```\n\n**World-Space Size:**\n```\nif gaussian.world_scale > threshold_world:\n    delete(gaussian)  # Too large, probably background noise\n```\n\n**Screen-Space Size:**\n```\nif gaussian.screen_footprint > threshold_screen:\n    delete(gaussian)  # Covers too many pixels\n```\n\n**The Complete Training Schedule:**\n\n```\nfor iteration in range(30000):\n    # Standard optimization\n    loss = render_and_compare(gaussians, target_image)\n    loss.backward()\n    optimizer.step()\n    \n    # Adaptive density control (every 100 iterations)\n    if iteration % 100 == 0 and iteration < 15000:\n        densify_and_prune(gaussians)\n    \n    # Opacity reset (one-time at iteration 3000)\n    if iteration == 3000:\n        reset_opacity(gaussians)  # Force re-learning of visibility\n```\n\n**Opacity Reset:**\n\nAt a specific iteration, reset all opacities to a low value. This forces the optimization to re-discover which Gaussians are truly needed, eliminating floaters that accumulated.\n\n**Gradient Accumulation:**\n\nGradients are accumulated across views before densification decisions:\n```\nfor view in training_views:\n    accumulate_gradients(view)\naverage_gradients()\ndensify_if_needed()\n```\n\n**Typical Growth Pattern:**\n\n```\nIteration 0:     100,000 points (from SfM)\nIteration 5000:  500,000 Gaussians\nIteration 15000: 2,000,000 Gaussians (peak)\nIteration 30000: 1,500,000 Gaussians (after pruning stabilizes)\n```"
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "densification-simulator",
+    "caption": "Watch Gaussians split, clone, and prune in real-time as you adjust thresholds."
+  },
+
+  "prerequisites": [
+    "gradient-descent",
+    "optimization-schedules"
+  ],
+
+  "insight": "The magic of 3DGS isn't just optimizing parameters - it's knowing when to say 'I need more detail here' (split/clone) and 'this Gaussian is useless' (prune)."
+}

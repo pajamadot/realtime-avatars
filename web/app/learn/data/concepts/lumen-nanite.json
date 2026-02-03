@@ -1,0 +1,25 @@
+{
+  "id": "lumen-nanite",
+  "title": "Lumen & Nanite in UE5",
+  "level": 2,
+  "parentConcept": "rendering",
+
+  "explanation": {
+    "level3Assumes": "You understand that Unreal Engine 5 renders MetaHumans with advanced lighting and detail, but not the specific technologies involved.",
+    "thisExplains": "How Lumen provides dynamic global illumination and Nanite handles virtualized geometry, including their limitations with MetaHumans.",
+    "text": "Unreal Engine 5 introduced two revolutionary rendering technologies. Understanding their capabilities and limitations is essential for MetaHuman optimization.\n\n**Lumen: Dynamic Global Illumination**\n\nLumen provides real-time indirect lighting without baking:\n\n**How It Works:**\n\n1. **Surface Cache**: Pre-render low-res views of all surfaces\n2. **Ray Tracing**: Trace rays from camera to find lit surfaces\n3. **Gather Lighting**: Sample the surface cache for indirect light\n4. **Temporal Accumulation**: Spread computation across frames\n\n```\nFor each pixel:\n  1. Cast ray into scene\n  2. Hit surface → lookup surface cache\n  3. Surface cache contains: albedo, normal, emissive, indirect lighting\n  4. Combine direct + indirect lighting\n  5. Accumulate over multiple frames for stability\n```\n\n**Lumen Modes:**\n\n| Mode | Quality | Performance | Use Case |\n|------|---------|-------------|----------|\n| Software | Good | Faster | No RTX GPU |\n| Hardware RT | Excellent | Slower | RTX GPUs, film quality |\n\n**MetaHuman + Lumen:**\n- Skin subsurface scattering works beautifully\n- Eye caustics render correctly\n- Hair may need special handling\n- Performance cost is significant\n\n---\n\n**Nanite: Virtualized Geometry**\n\nNanite streams and renders billions of triangles efficiently:\n\n**How It Works:**\n\n1. **Clustering**: Pre-process mesh into hierarchical clusters\n2. **LOD Selection**: GPU chooses detail level per cluster based on screen size\n3. **Visibility**: Software rasterization culls invisible clusters\n4. **Rendering**: Only visible, appropriately-detailed clusters drawn\n\n```\nMesh (10M triangles)\n  ↓\nCluster Hierarchy (LOD 0-8)\n  ↓\nGPU selects visible clusters at appropriate LOD\n  ↓\nRender only what's needed (~100K triangles visible)\n```\n\n**Nanite Limitations:**\n\n**Cannot handle:**\n- Skeletal meshes (animated bones)\n- Morph targets (blendshapes)\n- Per-vertex animation\n- Translucent materials\n- Two-sided foliage\n\n**MetaHuman + Nanite: NOT COMPATIBLE**\n\nMetaHumans are skeletal meshes with blendshapes. Nanite cannot be used for:\n- Face mesh\n- Body mesh\n- Clothing (if rigged)\n\nNanite CAN be used for:\n- Static environment\n- Props\n- Non-animated elements\n\n---\n\n**MetaHuman Rendering Strategy:**\n\n```\n┌─────────────────────────────────────────┐\n│          MetaHuman Rendering            │\n├─────────────────────────────────────────┤\n│  Face/Body: Traditional skeletal mesh   │\n│    - LOD system (0-7)                   │\n│    - ~700 bones at LOD 0                │\n│    - Blendshapes for expressions        │\n│                                         │\n│  Hair: Two options                      │\n│    - Strands (ray-traced, expensive)    │\n│    - Cards (faster, lower quality)      │\n│                                         │\n│  Lighting: Lumen                        │\n│    - Subsurface scattering              │\n│    - Eye reflections                    │\n│    - Dynamic shadows                    │\n├─────────────────────────────────────────┤\n│  Environment: Nanite                    │\n│    - Static geometry                    │\n│    - Billions of polygons               │\n│    - Automatic LOD                      │\n└─────────────────────────────────────────┘\n```\n\n**Performance Budgeting:**\n\n```\nTarget: 60 FPS, 16.67ms per frame\n\nTypical MetaHuman budget:\n  - Skeletal evaluation: 1-2ms\n  - Face rendering: 2-3ms\n  - Hair (strands): 3-5ms\n  - Lumen GI: 2-4ms\n  - Post-processing: 1-2ms\n  ─────────────────────\n  Total: 9-16ms (leaves margin)\n\nWith 10 MetaHumans:\n  - Multiply skeletal/face costs\n  - May need to use hair cards\n  - Consider LOD distance settings\n```\n\n**Optimization Recommendations:**\n\n1. Use LOD aggressively (LOD 2-3 for background characters)\n2. Switch to hair cards when performance-critical\n3. Limit Lumen ray budget in dense scenes\n4. Use Screen Percentage scaling under load"
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "rendering-settings",
+    "caption": "Toggle Lumen/Nanite settings and see their effect on visual quality and performance."
+  },
+
+  "prerequisites": [
+    "ray-tracing-basics",
+    "lod-systems"
+  ],
+
+  "insight": "Lumen makes lighting dynamic, Nanite makes geometry infinite - but MetaHumans can only use Lumen because animated characters need traditional skeletal rendering."
+}

@@ -1,0 +1,25 @@
+{
+  "id": "reference-net",
+  "title": "ReferenceNet & Identity Preservation",
+  "level": 2,
+  "parentConcept": "identity-preservation",
+
+  "explanation": {
+    "level3Assumes": "You understand that talking head generation needs to preserve the identity from a reference image, but not the architectural techniques used.",
+    "thisExplains": "How ReferenceNet and decoupled attention architectures separate identity features from motion features to maintain consistent appearance across generated frames.",
+    "text": "The hardest challenge in talking head generation: make the face move naturally while keeping it recognizable as the same person. ReferenceNet is an architectural pattern that solves this.\n\n**The Problem:**\n\nSimple conditioning fails:\n- CLIP embeddings lose fine details (freckles, exact eye shape)\n- Direct concatenation mixes identity with motion\n- Cross-attention alone can't preserve pixel-level details\n\n**ReferenceNet Architecture:**\n\n```\n┌─────────────────┐     ┌─────────────────┐\n│  Reference      │     │  Denoising      │\n│  Image          │     │  U-Net          │\n└────────┬────────┘     └────────┬────────┘\n         │                       │\n    ┌────▼────┐             ┌────▼────┐\n    │Reference│             │  Main   │\n    │ U-Net   │             │ U-Net   │\n    │(frozen) │             │         │\n    └────┬────┘             └────┬────┘\n         │                       │\n         │    Feature Injection  │\n         └───────────────────────┘\n```\n\n**How It Works:**\n\n1. **Reference Encoder**: A U-Net (often pretrained, frozen) processes the reference image\n2. **Feature Extraction**: Extract multi-scale features at each U-Net level\n3. **Feature Injection**: Inject these features into the denoising U-Net via:\n   - Addition to corresponding layers\n   - Cross-attention with reference features\n   - Concatenation before convolution\n\n**Decoupled Cross-Attention:**\n\nMAGIC-Talk and similar methods decouple identity from motion:\n\n```python\n# Standard cross-attention\nQ = project_query(noisy_latent)\nK, V = project_kv(condition)  # Mixed identity + motion\nout = softmax(Q @ K.T) @ V\n\n# Decoupled attention\nQ = project_query(noisy_latent)\nK_id, V_id = project_kv(identity_features)   # From reference\nK_mo, V_mo = project_kv(motion_features)     # From audio\n\nout_id = softmax(Q @ K_id.T) @ V_id\nout_mo = softmax(Q @ K_mo.T) @ V_mo\nout = out_id + out_mo  # Or learned weighted combination\n```\n\n**Spatial Attention for Detail:**\n\n```python\n# Self-attention between reference and target\nref_features = reference_encoder(reference_image)\ntgt_features = denoising_unet.intermediate(noisy_latent)\n\n# Cross-spatial attention\nQ = project(tgt_features)  # Where to look\nK = project(ref_features)  # What to find\nV = ref_features           # What to copy\n\nattended = softmax(Q @ K.T) @ V\n```\n\nThis lets the model copy specific details (eye texture, skin pattern) from reference to output.\n\n**IP-Adapter Approach:**\n\nAnother pattern: train a separate adapter that projects image features into the text embedding space:\n\n```\nReference Image → Image Encoder → Projection → [Inject into cross-attn]\n```\n\nAdvantage: Works with any base model without fine-tuning.\n\n**Training Strategies:**\n\n1. **Two-stage**: First train base model, then add ReferenceNet\n2. **Joint training**: Train everything together with identity loss\n3. **Contrastive**: Ensure same-person frames cluster in feature space\n\n**Loss Functions:**\n\n```python\n# Reconstruction\nL_rec = MSE(generated, ground_truth)\n\n# Perceptual (identity)\nL_id = MSE(face_encoder(generated), face_encoder(reference))\n\n# Adversarial (realism)\nL_adv = -log(discriminator(generated))\n\n# Total\nL = L_rec + λ_id * L_id + λ_adv * L_adv\n```\n\n**Why This Works:**\n\nThe key insight: identity and motion are independent.\n- Identity: static features (face shape, skin texture, eye color)\n- Motion: dynamic features (lip position, expression, head pose)\n\nBy processing them through separate pathways and combining late, the model learns to preserve one while varying the other."
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "identity-injection",
+    "caption": "Visualize how reference features flow through the network and combine with motion signals."
+  },
+
+  "prerequisites": [
+    "attention-mechanisms",
+    "feature-extraction"
+  ],
+
+  "insight": "ReferenceNet treats identity like a template and motion like instructions: 'Make THIS face do THAT action' - keeping the 'this' constant while varying the 'that'."
+}

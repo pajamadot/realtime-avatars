@@ -7,10 +7,14 @@ import { notFound } from 'next/navigation';
 // Import concept data
 import arkitBlendshapes from '../../../data/concepts/arkit-blendshapes.json';
 import skinningWeights from '../../../data/concepts/skinning-weights.json';
+import lumenNanite from '../../../data/concepts/lumen-nanite.json';
+import audio2faceNetwork from '../../../data/concepts/audio2face-network.json';
 
 const concepts: Record<string, typeof arkitBlendshapes> = {
   'arkit-blendshapes': arkitBlendshapes,
   'skinning-weights': skinningWeights,
+  'lumen-nanite': lumenNanite,
+  'audio2face-network': audio2faceNetwork,
 };
 
 const color = 'var(--color-metahuman)';

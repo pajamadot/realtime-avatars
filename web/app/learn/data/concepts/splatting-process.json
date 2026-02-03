@@ -1,0 +1,25 @@
+{
+  "id": "splatting-process",
+  "title": "The Splatting Process",
+  "level": 2,
+  "parentConcept": "rendering",
+
+  "explanation": {
+    "level3Assumes": "You understand that 3D Gaussian Splatting renders scenes by projecting Gaussians onto the screen, but not the specific steps involved.",
+    "thisExplains": "The complete rendering pipeline: how 3D Gaussians are projected to 2D, sorted by depth, and composited to produce the final image.",
+    "text": "Splatting is the process of rendering 3D Gaussians by 'throwing' them onto the image plane. Unlike traditional rasterization (triangles → pixels), splatting works with soft, overlapping primitives.\n\n**The Complete Pipeline:**\n\n**Step 1: Frustum Culling**\nDiscard Gaussians outside the camera's view volume:\n```\nif gaussian.center not in camera.frustum:\n    skip this Gaussian\n```\n\n**Step 2: Project to 2D**\nTransform each 3D Gaussian to screen space:\n```\n# 3D covariance Σ → 2D covariance Σ'\nμ' = P × V × μ        # Project center\nJ = ∂(project)/∂(3D)  # Jacobian of projection\nΣ' = J × Σ × Jᵀ       # Project covariance\n```\n\nThe projected 2D Gaussian is an ellipse on screen.\n\n**Step 3: Tile-Based Sorting**\n\n3DGS uses a clever tile-based approach for efficiency:\n\n1. Divide screen into 16×16 pixel tiles\n2. For each Gaussian, determine which tiles it overlaps\n3. Create (tile_id, depth, gaussian_id) tuples\n4. Sort all tuples by (tile_id, depth) using GPU radix sort\n\nThis gives front-to-back ordering per tile.\n\n**Step 4: Alpha Compositing**\n\nFor each pixel, blend Gaussians front-to-back:\n\n```\nC = 0       # Accumulated color\nT = 1       # Remaining transmittance\n\nfor gaussian in sorted_by_depth:\n    α = opacity × exp(-0.5 × d²)  # d = distance from gaussian center\n    C += T × α × gaussian.color\n    T *= (1 - α)\n    \n    if T < 0.001:  # Early termination\n        break\n```\n\n**Key Insight: Differentiable Everything**\n\nFor training, we need gradients. The splatting formula:\n```\nC(x) = Σᵢ cᵢ × αᵢ × G(x|μᵢ,Σᵢ) × Πⱼ<ᵢ(1 - αⱼ × G(x|μⱼ,Σⱼ))\n```\n\nEvery operation (projection, Gaussian evaluation, alpha blending) has computable derivatives!\n\n**Performance Optimizations:**\n\n1. **Tile-based**: Only process Gaussians relevant to each tile\n2. **Depth sorting**: GPU radix sort is O(n log n) but highly parallel\n3. **Early termination**: Stop when transmittance drops below threshold\n4. **Shared memory**: Cache Gaussian data per tile in fast GPU memory\n\n**Why Not Ray Marching?**\n\nNeRF uses ray marching (sample points along each ray). Splatting inverts this:\n- Ray marching: For each pixel, find contributing 3D points\n- Splatting: For each Gaussian, find contributing pixels\n\nSplatting is faster because Gaussians are sparse and localized."
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "splatting-pipeline",
+    "caption": "Watch the splatting process step-by-step: projection, tiling, sorting, and compositing."
+  },
+
+  "prerequisites": [
+    "projection-matrices",
+    "gpu-parallelism"
+  ],
+
+  "insight": "Splatting flips the rendering question from 'what 3D points affect this pixel?' to 'what pixels does this Gaussian affect?' - and the answer is a simple 2D ellipse."
+}

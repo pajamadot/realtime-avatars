@@ -1,0 +1,25 @@
+{
+  "id": "consistency-models",
+  "title": "Consistency Models & Distillation",
+  "level": 2,
+  "parentConcept": "distillation",
+
+  "explanation": {
+    "level3Assumes": "You understand that diffusion models need many denoising steps and that distillation trains faster models, but not how consistency models achieve one-step generation.",
+    "thisExplains": "How consistency models learn to map any point on the diffusion trajectory directly to the final clean image, enabling 1-4 step generation.",
+    "text": "Standard diffusion walks from noise to image in 50+ steps. Consistency models learn a shortcut: jump directly to the destination from anywhere on the path.\n\n**The Core Insight:**\n\nIn diffusion, all points along a trajectory map to the same clean image:\n```\nx_T (pure noise)\n  ↓\nx_t (partially noisy)\n  ↓\nx_0 (clean image)\n```\n\nIf we could learn f(x_t, t) = x_0 for any t, we'd only need one step!\n\n**The Consistency Function:**\n\n```\nf_θ(x_t, t) → x_0\n\nProperties required:\n1. f(x_0, 0) = x_0 (identity at t=0)\n2. f(x_t, t) = f(x_s, s) for all t, s on same trajectory\n```\n\nProperty 2 is key: any point on a trajectory should map to the same endpoint.\n\n**Training Approaches:**\n\n**1. Consistency Distillation (CD):**\nDistill from a pretrained diffusion model:\n```\nLoss = ‖f_θ(x_{t+1}, t+1) - f_θ̄(x_t, t)‖²\n\nwhere:\n  x_t = one_step_denoise(x_{t+1}) using teacher\n  θ̄ = exponential moving average of θ\n```\n\nThe model learns that adjacent points should predict the same output.\n\n**2. Consistency Training (CT):**\nTrain from scratch without a teacher:\n```\nLoss = ‖f_θ(x_{t+Δ}, t+Δ) - f_θ̄(x_t, t)‖²\n\nwhere:\n  x_t, x_{t+Δ} are on same trajectory (same noise, different timesteps)\n```\n\n**Architecture Modifications:**\n\nConsistency models often use:\n- Skip connections from input to output\n- Timestep conditioning via adaptive normalization\n- Boundary condition: output = input when t → 0\n\n**Generation Process:**\n\n```python\n# One-step generation\nz = torch.randn(shape)  # Pure noise\nx_0 = model(z, t=T)     # Direct prediction\n\n# Multi-step (better quality)\nx = torch.randn(shape)\nfor t in [T, T/2, T/4]:  # Few steps\n    x = model(x, t)\n```\n\n**Quality vs Steps Tradeoff:**\n\n| Steps | Quality | Speed | Use Case |\n|-------|---------|-------|----------|\n| 1 | Good | 20+ FPS | Real-time preview |\n| 2 | Better | 10+ FPS | Interactive apps |\n| 4 | Excellent | 5+ FPS | High-quality real-time |\n| 50 | Best | <1 FPS | Offline rendering |\n\n**Latent Consistency Models (LCM):**\n\nApply consistency training in latent space:\n```\nz = VAE.encode(image)\nz_noisy = add_noise(z, t)\nz_clean = LCM(z_noisy, t)\nimage = VAE.decode(z_clean)\n```\n\nLCM achieves 4-step generation with quality comparable to 50-step SDXL.\n\n**Comparison to Other Fast Methods:**\n\n| Method | Approach | Steps | Training |\n|--------|----------|-------|----------|\n| DDIM | Deterministic sampling | 10-50 | None |\n| Progressive Distillation | Halve steps iteratively | 4-8 | Heavy |\n| Consistency Models | Direct endpoint prediction | 1-4 | Moderate |\n| Adversarial Distillation | GAN-style training | 1-4 | Complex |"
+  },
+
+  "visual": {
+    "type": "interactive",
+    "demoId": "consistency-comparison",
+    "caption": "Compare 1-step, 4-step, and 50-step generation side by side with quality metrics."
+  },
+
+  "prerequisites": [
+    "diffusion-math",
+    "knowledge-distillation"
+  ],
+
+  "insight": "Consistency models ask: 'Instead of walking home step by step, can I just learn where home is from any starting point?' - and it turns out, yes."
+}

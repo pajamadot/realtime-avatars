@@ -8,11 +8,15 @@ import { notFound } from 'next/navigation';
 import iceProtocol from '../../../data/concepts/ice-protocol.json';
 import mediaRouting from '../../../data/concepts/media-routing.json';
 import turnDetection from '../../../data/concepts/turn-detection.json';
+import avatarApis from '../../../data/concepts/avatar-apis.json';
+import agentLifecycle from '../../../data/concepts/agent-lifecycle.json';
 
 const concepts: Record<string, typeof iceProtocol> = {
   'ice-protocol': iceProtocol,
   'media-routing': mediaRouting,
   'turn-detection': turnDetection,
+  'avatar-apis': avatarApis,
+  'agent-lifecycle': agentLifecycle,
 };
 
 const color = 'var(--color-streaming)';
