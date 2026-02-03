@@ -10,3 +10,4 @@ export { CFGStrengthDemo } from './CFGStrengthDemo';
 export { TemporalConsistencyDemo } from './TemporalConsistencyDemo';
 export { SamplerComparisonDemo } from './SamplerComparisonDemo';
 export { FaceEncoderDemo } from './FaceEncoderDemo';
+export { VAEDemo } from './VAEDemo';

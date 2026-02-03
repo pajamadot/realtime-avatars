@@ -4,8 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/generative-video.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
-import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo, TemporalConsistencyDemo, SamplerComparisonDemo, FaceEncoderDemo } from '../components/demos/generative';
-import { ConvolutionDemo, ActivationFunctionsDemo, BackpropagationDemo } from '../components/demos/fundamentals';
+import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo, TemporalConsistencyDemo, SamplerComparisonDemo, FaceEncoderDemo, VAEDemo } from '../components/demos/generative';
+import { ConvolutionDemo, ActivationFunctionsDemo, BackpropagationDemo, PoolingLayerDemo } from '../components/demos/fundamentals';
 import { GradientDescentDemo, NeuralNetworkDemo } from '../components/demos/fundamentals';
 
 const sections = [
@@ -249,6 +249,24 @@ export default function GenerativeVideoPage() {
             Watch the training algorithm in action: forward pass, backward pass, and weight updates.
           </p>
           <BackpropagationDemo />
+        </div>
+
+        {/* Pooling Layers Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Pooling Layers</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Pooling reduces spatial dimensions while preserving important features. Essential for building efficient encoders.
+          </p>
+          <PoolingLayerDemo />
+        </div>
+
+        {/* VAE Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Variational Autoencoder (VAE)</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Stable Diffusion operates in VAE latent space. Understand how images are compressed and reconstructed.
+          </p>
+          <VAEDemo />
         </div>
       </section>
 

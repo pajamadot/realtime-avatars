@@ -6,3 +6,4 @@ export { ProviderComparisonDemo } from './ProviderComparisonDemo';
 export { JitterBufferDemo } from './JitterBufferDemo';
 export { BitrateAdaptationDemo } from './BitrateAdaptationDemo';
 export { SimulcastDemo } from './SimulcastDemo';
+export { LatencyBreakdownDemo } from './LatencyBreakdownDemo';
