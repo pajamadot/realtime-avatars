@@ -5,7 +5,9 @@ import Link from 'next/link';
 import content from '../data/content/streaming-avatars.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget,
   LatencyStack, PacketOrdering, ICECandidatesMini, BitrateAdaptationMini, SimulcastMini,
-  FECRecoveryMini, RTTMeasurementMini, CodecComparisonMini, WSvsWebRTCMini, SFUTopologyMini
+  FECRecoveryMini, RTTMeasurementMini, CodecComparisonMini, WSvsWebRTCMini, SFUTopologyMini,
+  BufferManagementMini, NetworkJitterMini, PacketLossRecoveryMini, FrameRateComparisonMini,
+  KeyframeMini, QuantizationMini, DCTVisualizationMini
 } from '../components/core';
 import { LatencyDemo, ICEConnectionDemo, VADDemo, SFUComparisonDemo, ProviderComparisonDemo, JitterBufferDemo, BitrateAdaptationDemo, SimulcastDemo, LatencyBreakdownDemo, FrameInterpolationDemo, PacketLossRecoveryDemo, CongestionControlDemo } from '../components/demos/streaming';
 
@@ -140,8 +142,22 @@ export default function StreamingAvatarsPage() {
             <RTTMeasurementMini />
           </MechanismNugget>
 
-          <MechanismNugget title="Packet Jitter" description="Out-of-order arrival handling">
+          <MechanismNugget title="Network Jitter" description="Variance in packet arrival times">
+            <NetworkJitterMini />
+          </MechanismNugget>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-4 mt-4">
+          <MechanismNugget title="Packet Reordering" description="Out-of-order arrival handling">
             <PacketOrdering />
+          </MechanismNugget>
+
+          <MechanismNugget title="Buffer Management" description="Playback buffer and playhead">
+            <BufferManagementMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Frame Rate" description="FPS vs frame time tradeoff">
+            <FrameRateComparisonMini />
           </MechanismNugget>
         </div>
 
@@ -177,11 +193,31 @@ export default function StreamingAvatarsPage() {
           </MechanismNugget>
         </div>
 
+        {/* Mechanism Nuggets - Video Encoding */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Video Encoding</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <MechanismNugget title="Keyframes (I/P/B)" description="I-frame, P-frame, B-frame structure">
+            <KeyframeMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="DCT Transform" description="Frequency domain compression">
+            <DCTVisualizationMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Quantization" description="Lossy bit reduction">
+            <QuantizationMini />
+          </MechanismNugget>
+        </div>
+
         {/* Mechanism Nuggets - Reliability */}
         <h3 className="text-lg font-semibold mt-8 mb-4">Error Recovery</h3>
         <div className="grid md:grid-cols-2 gap-4">
           <MechanismNugget title="FEC Recovery" description="Forward Error Correction">
             <FECRecoveryMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Packet Loss" description="Detection and recovery">
+            <PacketLossRecoveryMini />
           </MechanismNugget>
         </div>
       </section>

@@ -4,7 +4,10 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/metahuman.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget,
-  BoneHierarchyMini, BlendshapeInterpolation, SkinningWeightsMini, FKvsIKMini, LODMini, FACSMini, WrinkleMapMini
+  BoneHierarchyMini, BlendshapeInterpolation, SkinningWeightsMini, FKvsIKMini, LODMini, FACSMini, WrinkleMapMini,
+  BoneTransformMini, MorphTargetMini, JointLimitsMini, QuaternionMini, InterpolationMini,
+  NormalMappingMini, PBRMaterialMini, AmbientOcclusionMini, PhonemeVisemeMini, LipSyncWeightsMini,
+  MelSpectrogramMini, AudioEnvelopeMini
 } from '../components/core';
 import { BlendshapeDemo, SkinningWeightDemo, FaceTrackingDemo, AudioToExpressionDemo, BoneHierarchyDemo, BlendshapeMixerDemo, InverseKinematicsDemo, LODDemo, WrinkleMapDemo, CorrectiveBlendshapesDemo, JointConstraintsDemo, EyeGazeDemo, HairSimulationDemo, SecondaryMotionDemo, MuscleSystemDemo } from '../components/demos/metahuman';
 
@@ -140,6 +143,20 @@ export default function MetaHumanPage() {
           </MechanismNugget>
         </div>
 
+        <div className="grid md:grid-cols-3 gap-4 mt-4">
+          <MechanismNugget title="Bone Transforms" description="Rotation propagation down chain">
+            <BoneTransformMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Joint Limits" description="Angle constraints prevent bad poses">
+            <JointLimitsMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Quaternion Rotation" description="Smooth interpolation without gimbal lock">
+            <QuaternionMini />
+          </MechanismNugget>
+        </div>
+
         {/* Mechanism Nuggets - Facial Animation */}
         <h3 className="text-lg font-semibold mt-8 mb-4">Facial Animation</h3>
         <div className="grid md:grid-cols-3 gap-4">
@@ -151,8 +168,50 @@ export default function MetaHumanPage() {
             <FACSMini />
           </MechanismNugget>
 
+          <MechanismNugget title="Morph Targets" description="Combine multiple deformations">
+            <MorphTargetMini />
+          </MechanismNugget>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-4 mt-4">
           <MechanismNugget title="Wrinkle Maps" description="Dynamic skin detail based on expression">
             <WrinkleMapMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Phoneme to Viseme" description="Audio phonemes map to mouth shapes">
+            <PhonemeVisemeMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Lip Sync Weights" description="Blendshape weights per viseme">
+            <LipSyncWeightsMini />
+          </MechanismNugget>
+        </div>
+
+        {/* Mechanism Nuggets - Audio Processing */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Audio to Animation</h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <MechanismNugget title="Mel Spectrogram" description="Frequency-time representation">
+            <MelSpectrogramMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Audio Envelope" description="Amplitude over time for lip sync">
+            <AudioEnvelopeMini />
+          </MechanismNugget>
+        </div>
+
+        {/* Mechanism Nuggets - Materials */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Realistic Materials</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <MechanismNugget title="PBR Materials" description="Physically-based roughness/metallic">
+            <PBRMaterialMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Normal Mapping" description="Surface detail without geometry">
+            <NormalMappingMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Ambient Occlusion" description="Soft contact shadows">
+            <AmbientOcclusionMini />
           </MechanismNugget>
         </div>
 
@@ -161,6 +220,10 @@ export default function MetaHumanPage() {
         <div className="grid md:grid-cols-2 gap-4">
           <MechanismNugget title="LOD Switching" description="Detail level based on camera distance">
             <LODMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Interpolation Types" description="Linear, ease, step transitions">
+            <InterpolationMini />
           </MechanismNugget>
         </div>
 

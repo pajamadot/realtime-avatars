@@ -6,7 +6,10 @@ import content from '../data/content/generative-video.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget,
   DiffusionNoiseLevels, GaussianCurve, UNetSkipMini, AttentionHeatmapMini, VAELatentMini, CFGStrengthMini,
   NoiseScheduleMini, TemporalConsistencyMini, NeuronMini, ActivationFunctionsMini, ConvolutionMini,
-  PoolingMini, DropoutMini, LossLandscape, LearningRateMini, BatchNormMini
+  PoolingMini, DropoutMini, LossLandscape, LearningRateMini, BatchNormMini,
+  SamplingMethodMini, TextEmbeddingMini, CFGScaleMini, SoftmaxMini, EmbeddingSpaceMini,
+  PositionalEncodingMini, ResidualConnectionMini, LayerNormMini, MultiHeadAttentionMini,
+  BackpropagationMini, AttentionMechanismMini, OverfittingMini, VanishingGradientMini
 } from '../components/core';
 import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo, TemporalConsistencyDemo, SamplerComparisonDemo, FaceEncoderDemo, VAEDemo, MotionFieldDemo, AttentionMechanismDemo, EmbeddingSpaceDemo } from '../components/demos/generative';
 import { ConvolutionDemo, ActivationFunctionsDemo, BackpropagationDemo, PoolingLayerDemo, DropoutDemo, BatchNormalizationDemo, LossFunctionDemo } from '../components/demos/fundamentals';
@@ -144,6 +147,20 @@ export default function GenerativeVideoPage() {
           </MechanismNugget>
         </div>
 
+        <div className="grid md:grid-cols-3 gap-4 mt-4">
+          <MechanismNugget title="DDPM vs DDIM" description="Stochastic vs deterministic sampling">
+            <SamplingMethodMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Text Embeddings" description="Prompt to vector representation">
+            <TextEmbeddingMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="CFG Scale Effect" description="Prompt adherence strength">
+            <CFGScaleMini />
+          </MechanismNugget>
+        </div>
+
         {/* Mechanism Nuggets - Architecture */}
         <h3 className="text-lg font-semibold mt-8 mb-4">Model Architecture</h3>
         <div className="grid md:grid-cols-3 gap-4">
@@ -151,24 +168,58 @@ export default function GenerativeVideoPage() {
             <UNetSkipMini />
           </MechanismNugget>
 
+          <MechanismNugget title="VAE Latent Space" description="Compress/decompress images">
+            <VAELatentMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Residual Connections" description="Skip connections for gradient flow">
+            <ResidualConnectionMini />
+          </MechanismNugget>
+        </div>
+
+        {/* Mechanism Nuggets - Attention */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Attention Mechanisms</h3>
+        <div className="grid md:grid-cols-3 gap-4">
           <MechanismNugget title="Attention Heatmap" description="Where the model focuses">
             <AttentionHeatmapMini />
           </MechanismNugget>
 
-          <MechanismNugget title="VAE Latent Space" description="Compress/decompress images">
-            <VAELatentMini />
+          <MechanismNugget title="Multi-Head Attention" description="Parallel attention patterns">
+            <MultiHeadAttentionMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Attention Q×K" description="Query-key dot product similarity">
+            <AttentionMechanismMini />
+          </MechanismNugget>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-4 mt-4">
+          <MechanismNugget title="Positional Encoding" description="Position info in transformers">
+            <PositionalEncodingMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Layer Normalization" description="Stabilize transformer training">
+            <LayerNormMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Softmax" description="Attention weight normalization">
+            <SoftmaxMini />
           </MechanismNugget>
         </div>
 
         {/* Mechanism Nuggets - Generation Control */}
         <h3 className="text-lg font-semibold mt-8 mb-4">Generation Control</h3>
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-3 gap-4">
           <MechanismNugget title="CFG Strength" description="Conditioning guidance scale">
             <CFGStrengthMini />
           </MechanismNugget>
 
           <MechanismNugget title="Temporal Consistency" description="Frame-to-frame stability">
             <TemporalConsistencyMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Embedding Space" description="Semantic word clustering">
+            <EmbeddingSpaceMini />
           </MechanismNugget>
         </div>
 
@@ -204,13 +255,27 @@ export default function GenerativeVideoPage() {
 
         {/* Mechanism Nuggets - Training */}
         <h3 className="text-lg font-semibold mt-8 mb-4">Training Dynamics</h3>
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-3 gap-4">
           <MechanismNugget title="Loss Landscape" description="Optimization surface">
             <LossLandscape />
           </MechanismNugget>
 
           <MechanismNugget title="Learning Rate" description="Step size affects convergence">
             <LearningRateMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Backpropagation" description="Gradient computation through layers">
+            <BackpropagationMini />
+          </MechanismNugget>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4 mt-4">
+          <MechanismNugget title="Overfitting" description="Train vs validation loss divergence">
+            <OverfittingMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Vanishing Gradient" description="Gradient decay in deep networks">
+            <VanishingGradientMini />
           </MechanismNugget>
         </div>
 

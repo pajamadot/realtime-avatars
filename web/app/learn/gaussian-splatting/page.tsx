@@ -6,7 +6,9 @@ import dynamic from 'next/dynamic';
 import content from '../data/content/gaussian-splatting.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget,
   AlphaBlendMath, GaussianCurve, MatrixTransformMini, DepthSortingMini, TileRasterizationMini,
-  ScreenProjectionMini, OpacityAccumulation, SphericalHarmonicsBands, GradientFlowMini, AdaptiveDensityMini
+  ScreenProjectionMini, OpacityAccumulation, SphericalHarmonicsBands, GradientFlowMini, AdaptiveDensityMini,
+  CovarianceMatrixMini, PointCloudToSplatMini, ViewDependentColorMini, FrustumCullingMini, ZBufferMini,
+  LossLandscape, BackpropagationMini, NoiseGenerationMini
 } from '../components/core';
 
 // Dynamically import heavy 3D demos
@@ -174,8 +176,23 @@ export default function GaussianSplattingPage() {
             <AlphaBlendMath />
           </MechanismNugget>
 
+          <MechanismNugget title="Covariance Matrix" description="2D ellipse shape from σx, σy, rotation">
+            <CovarianceMatrixMini />
+          </MechanismNugget>
+        </div>
+
+        {/* Mechanism Nuggets - Row 1b */}
+        <div className="grid md:grid-cols-3 gap-4 mt-4">
           <MechanismNugget title="Matrix Transform" description="How rotation + scale create ellipsoid shapes">
             <MatrixTransformMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Point Cloud → Splats" description="Initialize Gaussians from SfM points">
+            <PointCloudToSplatMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="View-Dependent Color" description="Spherical harmonics encode reflections">
+            <ViewDependentColorMini />
           </MechanismNugget>
         </div>
 
@@ -195,27 +212,52 @@ export default function GaussianSplattingPage() {
           </MechanismNugget>
         </div>
 
-        {/* Mechanism Nuggets - Row 3 */}
-        <h3 className="text-lg font-semibold mt-8 mb-4">Advanced Concepts</h3>
-        <div className="grid md:grid-cols-3 gap-4">
+        {/* Mechanism Nuggets - Row 2b */}
+        <div className="grid md:grid-cols-3 gap-4 mt-4">
+          <MechanismNugget title="Frustum Culling" description="Skip Gaussians outside camera view">
+            <FrustumCullingMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Z-Buffer" description="Depth testing for occlusion">
+            <ZBufferMini />
+          </MechanismNugget>
+
           <MechanismNugget title="Opacity Accumulation" description="Multiple Gaussians add up to opaque">
             <OpacityAccumulation />
           </MechanismNugget>
+        </div>
 
+        {/* Mechanism Nuggets - Row 3 */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">View-Dependent Effects</h3>
+        <div className="grid md:grid-cols-2 gap-4">
           <MechanismNugget title="Spherical Harmonics" description="View-dependent color encoding">
             <SphericalHarmonicsBands />
           </MechanismNugget>
 
-          <MechanismNugget title="Gradient Flow" description="How backprop optimizes Gaussian params">
-            <GradientFlowMini />
+          <MechanismNugget title="Noise in Training" description="Perturb positions for robustness">
+            <NoiseGenerationMini />
           </MechanismNugget>
         </div>
 
         {/* Mechanism Nuggets - Row 4 */}
         <h3 className="text-lg font-semibold mt-8 mb-4">Training Dynamics</h3>
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-3 gap-4">
           <MechanismNugget title="Adaptive Density" description="Clone, split, or prune Gaussians">
             <AdaptiveDensityMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Gradient Flow" description="How backprop optimizes Gaussian params">
+            <GradientFlowMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Loss Landscape" description="Optimization finds the best parameters">
+            <LossLandscape />
+          </MechanismNugget>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4 mt-4">
+          <MechanismNugget title="Backpropagation" description="Compute gradients through render pipeline">
+            <BackpropagationMini />
           </MechanismNugget>
         </div>
       </section>
