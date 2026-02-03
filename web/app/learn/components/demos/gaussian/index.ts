@@ -6,3 +6,4 @@ export { default as CovarianceShapeDemo } from './CovarianceShapeDemo';
 export { TrainingProgressDemo } from './TrainingProgressDemo';
 export { DifferentiableRenderingDemo } from './DifferentiableRenderingDemo';
 export { PointCloudDemo } from './PointCloudDemo';
+export { TileRasterizationDemo } from './TileRasterizationDemo';

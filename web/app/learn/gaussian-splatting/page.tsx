@@ -47,6 +47,11 @@ const PointCloudDemo = dynamic(
   { ssr: false, loading: () => <DemoPlaceholder label="Loading point cloud demo..." /> }
 );
 
+const TileRasterizationDemo = dynamic(
+  () => import('../components/demos/gaussian/TileRasterizationDemo'),
+  { ssr: false, loading: () => <DemoPlaceholder label="Loading tile rasterization demo..." /> }
+);
+
 function DemoPlaceholder({ label }: { label: string }) {
   return (
     <div className="h-[300px] bg-[var(--card-bg-alt)] rounded-lg flex items-center justify-center text-[var(--muted)]">
@@ -265,6 +270,15 @@ export default function GaussianSplattingPage() {
             3DGS starts from SfM point cloud and initializes Gaussians at each point. Drag to rotate, toggle to see how points become splats.
           </p>
           <PointCloudDemo />
+        </div>
+
+        {/* Demo 9: Tile-Based Rasterization */}
+        <div id="demo-tile-rasterization" className="mb-8">
+          <h3 className="text-xl font-semibold mb-3">Demo 9: Tile-Based Rasterization</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            See how 3DGS divides the screen into tiles for parallel GPU processing. Click tiles to see which Gaussians they contain.
+          </p>
+          <TileRasterizationDemo />
         </div>
       </section>
 

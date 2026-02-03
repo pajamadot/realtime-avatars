@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/generative-video.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
-import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo } from '../components/demos/generative';
+import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo } from '../components/demos/generative';
 import { GradientDescentDemo, NeuralNetworkDemo } from '../components/demos/fundamentals';
 
 const sections = [
@@ -185,6 +185,15 @@ export default function GenerativeVideoPage() {
             Different schedules control how quickly noise is added/removed. The schedule significantly affects generation quality and speed.
           </p>
           <NoiseScheduleDemo />
+        </div>
+
+        {/* CFG Strength Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Classifier-Free Guidance</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            CFG controls how strongly the model follows conditioning. Too low = blurry, too high = artifacts. Find the sweet spot.
+          </p>
+          <CFGStrengthDemo />
         </div>
       </section>
 
