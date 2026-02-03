@@ -1,0 +1,104 @@
+{
+  "id": "arkit-protocol",
+  "title": "ARKit Face Tracking Protocol",
+  "level": 2,
+  "parentTrack": "metahuman",
+  "parentConcept": "live-link",
+
+  "assumedKnowledge": "Basic understanding of face tracking and blendshapes",
+
+  "fills": "How ARKit captures face data and transmits it to external applications via Live Link",
+
+  "explanation": {
+    "text": "ARKit is Apple's augmented reality framework that includes real-time face tracking. It detects a user's face through the TrueDepth camera (iPhone X and later) and outputs two types of data: 52 blendshape coefficients describing facial expressions, and a transform matrix for head position/rotation. This data streams at 60 FPS and can be sent to Unreal Engine or other apps via the Live Link protocol—a real-time data streaming system that uses UDP for low latency.",
+    "keyPoints": [
+      "TrueDepth camera projects 30,000 infrared dots to map face geometry",
+      "52 blendshape coefficients (0-1) control individual facial features",
+      "Head pose: position (x,y,z) and rotation (pitch, yaw, roll)",
+      "Live Link streams data over UDP at 60 FPS with ~16ms latency",
+      "Works on same network or via internet with proper configuration"
+    ]
+  },
+
+  "visualAid": {
+    "type": "animation",
+    "description": "Diagram showing iPhone → Live Link → Unreal Engine data flow with blendshape values updating in real-time",
+    "caption": "Face data flows from iPhone to MetaHuman at 60 FPS"
+  },
+
+  "dataFormat": {
+    "title": "ARKit Face Anchor Data Structure",
+    "fields": [
+      { "name": "blendShapes", "type": "Dictionary<ARBlendShapeLocation, Float>", "description": "52 blendshape coefficients (0.0-1.0)" },
+      { "name": "transform", "type": "simd_float4x4", "description": "4x4 matrix for head position and rotation" },
+      { "name": "leftEyeTransform", "type": "simd_float4x4", "description": "Left eye gaze direction" },
+      { "name": "rightEyeTransform", "type": "simd_float4x4", "description": "Right eye gaze direction" },
+      { "name": "geometry", "type": "ARFaceGeometry", "description": "1220-vertex mesh (optional, heavy)" }
+    ]
+  },
+
+  "blendshapeCategories": [
+    { "category": "Eyebrows", "count": 4, "examples": ["browInnerUp", "browDownLeft", "browOuterUpRight"] },
+    { "category": "Eyes", "count": 14, "examples": ["eyeBlinkLeft", "eyeLookUpRight", "eyeSquintLeft"] },
+    { "category": "Nose", "count": 2, "examples": ["noseSneerLeft", "noseSneerRight"] },
+    { "category": "Mouth", "count": 24, "examples": ["mouthSmileLeft", "jawOpen", "mouthPucker"] },
+    { "category": "Jaw", "count": 4, "examples": ["jawOpen", "jawForward", "jawLeft"] },
+    { "category": "Cheeks", "count": 2, "examples": ["cheekPuff", "cheekSquintLeft"] },
+    { "category": "Tongue", "count": 1, "examples": ["tongueOut"] }
+  ],
+
+  "codeExample": {
+    "language": "swift",
+    "code": "import ARKit\n\nclass FaceTracker: NSObject, ARSessionDelegate {\n    let session = ARSession()\n    \n    func startTracking() {\n        guard ARFaceTrackingConfiguration.isSupported else { return }\n        let config = ARFaceTrackingConfiguration()\n        config.maximumNumberOfTrackedFaces = 1\n        session.delegate = self\n        session.run(config)\n    }\n    \n    func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {\n        guard let face = anchors.first as? ARFaceAnchor else { return }\n        \n        // Get blendshapes\n        let jawOpen = face.blendShapes[.jawOpen]?.floatValue ?? 0\n        let smileLeft = face.blendShapes[.mouthSmileLeft]?.floatValue ?? 0\n        \n        // Get head transform\n        let position = face.transform.columns.3\n        let headX = position.x\n        let headY = position.y\n        \n        // Send to Live Link...\n        sendToLiveLink(blendshapes: face.blendShapes, transform: face.transform)\n    }\n}",
+    "explanation": "Basic ARKit face tracking that captures blendshapes and head pose at 60 FPS"
+  },
+
+  "liveLinkProtocol": {
+    "transport": "UDP",
+    "port": 11111,
+    "format": "Custom binary (Unreal Engine specific)",
+    "latency": "~16ms on local network",
+    "apps": ["Live Link Face (iOS)", "Unreal Engine", "Blender (with addon)", "Unity (with plugin)"]
+  },
+
+  "prerequisites": [
+    {
+      "id": "arkit-blendshapes",
+      "title": "ARKit 52 Blendshapes",
+      "description": "Understanding the 52 facial action units"
+    },
+    {
+      "id": "networking-basics",
+      "title": "Networking Basics",
+      "description": "UDP vs TCP, latency considerations"
+    }
+  ],
+
+  "insight": "ARKit doesn't just track expressions—it tracks where you're looking. Eye gaze tracking enables eye contact with virtual characters, making interactions feel much more natural.",
+
+  "practicalApplication": "The Live Link Face app is free on the App Store. Combined with Unreal Engine's MetaHuman, you can drive a photorealistic avatar with your face in real-time using just an iPhone.",
+
+  "commonMistakes": [
+    {
+      "mistake": "Expecting ARKit to work through glass or masks",
+      "correction": "The TrueDepth camera needs clear view of the face. Glasses are usually fine, but masks will break tracking."
+    },
+    {
+      "mistake": "Not accounting for network latency in remote setups",
+      "correction": "Live Link over internet adds 50-200ms. For real-time applications, keep devices on same local network."
+    }
+  ],
+
+  "alternatives": [
+    {
+      "name": "MediaPipe Face Mesh",
+      "description": "Google's cross-platform face tracking, works with any camera",
+      "tradeoff": "478 landmarks but less accurate than TrueDepth, no native blendshape output"
+    },
+    {
+      "name": "NVIDIA Maxine AR",
+      "description": "GPU-accelerated face tracking for desktop",
+      "tradeoff": "Requires NVIDIA GPU, excellent accuracy"
+    }
+  ]
+}

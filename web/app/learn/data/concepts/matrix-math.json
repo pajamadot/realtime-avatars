@@ -1,0 +1,85 @@
+{
+  "id": "matrix-math",
+  "title": "Matrix Operations",
+  "level": 1,
+  "parentTrack": "gaussian-splatting",
+  "parentConcept": "covariance-shape",
+
+  "assumedKnowledge": "Basic linear algebra (vectors, dot products)",
+
+  "fills": "Understanding how matrices transform 3D shapes - the foundation for defining Gaussian covariance",
+
+  "explanation": {
+    "text": "A matrix is a grid of numbers that can transform points in space. In 3D graphics, we use 3x3 or 4x4 matrices to scale, rotate, and translate objects. For Gaussian Splatting, the key insight is that a symmetric positive-definite 3x3 matrix called a covariance matrix defines the shape of an ellipsoid. This matrix is built from two simpler operations: scaling (how stretched along each axis) and rotation (which way it points).",
+    "keyPoints": [
+      "Matrix multiplication applies transformations: Mv transforms point v by matrix M",
+      "Rotation matrices preserve distances but change orientation",
+      "Scale matrices stretch/shrink along axes",
+      "Covariance = RSS^TR^T where R is rotation and S is scale",
+      "Symmetric matrices have real eigenvalues (the axes of the ellipse)"
+    ]
+  },
+
+  "visualAid": {
+    "type": "static",
+    "description": "3D ellipsoid showing how scale matrix elongates along axes, then rotation matrix reorients the whole shape",
+    "caption": "Scale stretches the sphere into an ellipsoid, rotation points it in space"
+  },
+
+  "mathFormulas": [
+    {
+      "name": "Rotation Matrix (2D simplified)",
+      "latex": "R = \\begin{bmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{bmatrix}",
+      "explanation": "Rotates points by angle theta around the origin"
+    },
+    {
+      "name": "Scale Matrix",
+      "latex": "S = \\begin{bmatrix} s_x & 0 & 0 \\\\ 0 & s_y & 0 \\\\ 0 & 0 & s_z \\end{bmatrix}",
+      "explanation": "Scales along each axis independently"
+    },
+    {
+      "name": "Covariance Construction",
+      "latex": "\\Sigma = RSS^TR^T",
+      "explanation": "Covariance matrix from rotation R and scale S - defines ellipsoid shape"
+    },
+    {
+      "name": "Matrix-Vector Multiplication",
+      "latex": "\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} ax + by \\\\ cx + dy \\end{bmatrix}",
+      "explanation": "Each output component is dot product of row with input vector"
+    }
+  ],
+
+  "codeExample": {
+    "language": "typescript",
+    "code": "// Build covariance matrix from scale and rotation\nfunction buildCovariance(\n  scale: [number, number, number],\n  quaternion: [number, number, number, number]\n): number[][] {\n  // Convert quaternion to rotation matrix\n  const R = quaternionToMatrix(quaternion);\n  \n  // Scale matrix (diagonal)\n  const S = [\n    [scale[0], 0, 0],\n    [0, scale[1], 0],\n    [0, 0, scale[2]]\n  ];\n  \n  // Covariance = R * S * S^T * R^T\n  const RS = matMul(R, S);\n  const RST = transpose(RS);\n  return matMul(RS, RST);\n}",
+    "explanation": "The covariance matrix is constructed from scale and rotation, defining the 3D Gaussian's shape"
+  },
+
+  "interactiveDemo": {
+    "id": "matrix-transform",
+    "description": "Drag sliders to change rotation and scale, watch the ellipsoid transform"
+  },
+
+  "prerequisites": [
+    {
+      "id": "vectors",
+      "title": "Vectors and Dot Products",
+      "description": "Understanding 3D vectors as points/directions"
+    }
+  ],
+
+  "insight": "A matrix is just a recipe for transforming points. The covariance matrix is the recipe that turns a unit sphere into the Gaussian's fuzzy ellipsoid shape.",
+
+  "practicalApplication": "In Gaussian Splatting, each Gaussian stores scale (3 values) and rotation (4 quaternion values) rather than the full 6-value covariance matrix. This is more compact and easier to optimize.",
+
+  "commonMistakes": [
+    {
+      "mistake": "Thinking matrices only work on vectors",
+      "correction": "Matrices can transform other matrices too! M * N applies N first, then M."
+    },
+    {
+      "mistake": "Forgetting matrix multiplication order matters",
+      "correction": "AB ≠ BA in general. Apply transformations right-to-left."
+    }
+  ]
+}

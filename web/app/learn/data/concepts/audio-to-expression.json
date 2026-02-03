@@ -1,0 +1,178 @@
+{
+  "id": "audio-to-expression",
+  "title": "Audio-to-Expression Mapping",
+  "level": 2,
+  "parentTrack": "metahuman",
+  "parentConcept": "audio2face-network",
+
+  "assumedKnowledge": "Understanding of blendshapes and basic audio concepts",
+
+  "fills": "How audio signals are converted into facial animation parameters for realistic talking avatars",
+
+  "explanation": {
+    "text": "Audio-to-Expression mapping is the process of converting speech audio into facial animation parameters (blendshapes, FLAME parameters, or vertex offsets). This is what makes avatars 'talk'—their lips sync with the audio and their face shows appropriate emotional expressions. Modern approaches use neural networks trained on hours of video to learn the complex relationship between sound patterns and facial movements.",
+    "keyPoints": [
+      "Audio features: mel spectrograms, MFCCs, or learned embeddings",
+      "Output: blendshape weights, vertex displacements, or parametric model coefficients",
+      "Must handle both phonetic content (lip sync) and emotional expression",
+      "Latency critical: must process faster than real-time for live avatars",
+      "Quality depends on training data diversity and model architecture"
+    ]
+  },
+
+  "visualAid": {
+    "type": "interactive",
+    "description": "Side-by-side: audio waveform/spectrogram on left, animated face with blendshape values on right, synchronized in real-time",
+    "caption": "Watch how different sounds map to different mouth shapes"
+  },
+
+  "approaches": {
+    "title": "Audio-to-Expression Approaches",
+    "methods": [
+      {
+        "name": "Rule-Based Viseme",
+        "description": "Map phonemes to predefined mouth shapes via lookup table",
+        "pros": "Fast, predictable, no training needed",
+        "cons": "Looks robotic, no emotion, limited expressions",
+        "latency": "<5ms",
+        "example": "Classic game engines, TTS systems"
+      },
+      {
+        "name": "NVIDIA Audio2Face",
+        "description": "Neural network trained on 4D face scans + audio",
+        "pros": "High quality, handles emotion, production-ready",
+        "cons": "Requires NVIDIA GPU, commercial license",
+        "latency": "~30ms",
+        "example": "Unreal Engine integration"
+      },
+      {
+        "name": "Wav2Lip",
+        "description": "Directly generates lip pixels from audio + face image",
+        "pros": "Works on any face image, good lip sync",
+        "cons": "Only affects lip region, can look uncanny",
+        "latency": "~100ms",
+        "example": "Video dubbing applications"
+      },
+      {
+        "name": "Diffusion-Based",
+        "description": "Full face generation conditioned on audio",
+        "pros": "Best quality, full expression range",
+        "cons": "High compute, not real-time (yet)",
+        "latency": "500ms+",
+        "example": "Hedra, Synthesia"
+      },
+      {
+        "name": "Gaussian Avatar",
+        "description": "Audio → FLAME → Gaussian deformation",
+        "pros": "Real-time, photorealistic, animatable",
+        "cons": "Requires per-person training",
+        "latency": "~20ms",
+        "example": "GaussianAvatars, SplattingAvatar"
+      }
+    ]
+  },
+
+  "audioFeatures": {
+    "title": "Audio Feature Extraction",
+    "features": [
+      {
+        "name": "Mel Spectrogram",
+        "description": "Time-frequency representation weighted for human hearing",
+        "dims": "80-128 mel bins x time frames",
+        "used_by": "Most neural approaches"
+      },
+      {
+        "name": "MFCCs",
+        "description": "Compact representation of spectral envelope",
+        "dims": "13-40 coefficients per frame",
+        "used_by": "Older systems, efficient"
+      },
+      {
+        "name": "Wav2Vec Embeddings",
+        "description": "Learned audio representations from self-supervised model",
+        "dims": "768-1024 dim vectors",
+        "used_by": "State-of-the-art systems"
+      },
+      {
+        "name": "DeepSpeech Features",
+        "description": "Intermediate representations from ASR model",
+        "dims": "Variable",
+        "used_by": "SadTalker, similar"
+      }
+    ]
+  },
+
+  "codeExample": {
+    "language": "python",
+    "code": "import torch\nimport torchaudio\nfrom audio2face import Audio2FaceModel\n\nclass AudioToExpression:\n    def __init__(self):\n        self.model = Audio2FaceModel.load_pretrained()\n        self.mel_transform = torchaudio.transforms.MelSpectrogram(\n            sample_rate=16000,\n            n_mels=80,\n            n_fft=1024,\n            hop_length=256\n        )\n    \n    def process_audio(self, audio: torch.Tensor) -> dict:\n        \"\"\"\n        Convert audio to blendshape weights.\n        \n        Args:\n            audio: Tensor of shape (samples,) at 16kHz\n        \n        Returns:\n            dict with 'blendshapes' (52 values) and 'head_pose' (6 values)\n        \"\"\"\n        # Extract mel spectrogram\n        mel = self.mel_transform(audio)\n        \n        # Run through model\n        with torch.no_grad():\n            output = self.model(mel.unsqueeze(0))\n        \n        return {\n            'blendshapes': output['blendshapes'][0].numpy(),  # [52]\n            'head_pose': output['head_pose'][0].numpy(),      # [6] = rx,ry,rz,tx,ty,tz\n            'emotion': output['emotion'][0].numpy()           # [8] emotion logits\n        }\n    \n    def process_streaming(self, chunk: torch.Tensor, state: dict) -> tuple:\n        \"\"\"\n        Process audio chunk in streaming mode.\n        Returns (blendshapes, updated_state).\n        \"\"\"\n        # Accumulate context for temporal coherence\n        state['buffer'] = torch.cat([state['buffer'], chunk])[-16000:]  # 1 sec context\n        \n        result = self.process_audio(state['buffer'])\n        \n        # Apply temporal smoothing\n        if 'prev_blendshapes' in state:\n            alpha = 0.7  # Smoothing factor\n            result['blendshapes'] = (\n                alpha * result['blendshapes'] + \n                (1 - alpha) * state['prev_blendshapes']\n            )\n        \n        state['prev_blendshapes'] = result['blendshapes']\n        return result, state",
+    "explanation": "Basic audio-to-expression pipeline with mel spectrogram features and temporal smoothing"
+  },
+
+  "visemeMapping": {
+    "title": "Phoneme to Viseme (Basic Approach)",
+    "description": "When neural approaches aren't available, rule-based mapping still works",
+    "mappings": [
+      { "phonemes": "p, b, m", "viseme": "Closed lips", "blendshapes": "mouthClose, lipsPucker" },
+      { "phonemes": "f, v", "viseme": "Lip to teeth", "blendshapes": "mouthFunnel, jawOpen low" },
+      { "phonemes": "th, dh", "viseme": "Tongue tip", "blendshapes": "tongueOut slight, jawOpen" },
+      { "phonemes": "t, d, n, l", "viseme": "Tongue tip up", "blendshapes": "jawOpen medium" },
+      { "phonemes": "k, g, ng", "viseme": "Back tongue", "blendshapes": "jawOpen, mouthStretch" },
+      { "phonemes": "s, z", "viseme": "Teeth show", "blendshapes": "mouthSmile slight, jawOpen low" },
+      { "phonemes": "sh, zh, ch, j", "viseme": "Rounded lips", "blendshapes": "mouthPucker, jawOpen" },
+      { "phonemes": "r", "viseme": "Rounded", "blendshapes": "mouthFunnel slight" },
+      { "phonemes": "w", "viseme": "Tight round", "blendshapes": "mouthPucker strong" },
+      { "phonemes": "y", "viseme": "Smile", "blendshapes": "mouthSmile, jawOpen low" },
+      { "phonemes": "aa, ah", "viseme": "Wide open", "blendshapes": "jawOpen high, mouthStretch" },
+      { "phonemes": "ae", "viseme": "Open smile", "blendshapes": "jawOpen medium, mouthSmile" },
+      { "phonemes": "eh, ey", "viseme": "Mid open", "blendshapes": "jawOpen medium" },
+      { "phonemes": "ee, ih, iy", "viseme": "Smile closed", "blendshapes": "mouthSmile, jawOpen low" },
+      { "phonemes": "oh, ow", "viseme": "Round open", "blendshapes": "mouthFunnel, jawOpen" },
+      { "phonemes": "oo, uw", "viseme": "Tight round", "blendshapes": "mouthPucker, jawOpen low" }
+    ]
+  },
+
+  "prerequisites": [
+    {
+      "id": "arkit-blendshapes",
+      "title": "ARKit 52 Blendshapes",
+      "description": "The standard output format for facial animation"
+    },
+    {
+      "id": "phoneme-viseme",
+      "title": "Phonemes and Visemes",
+      "description": "Speech sounds and their visual representations"
+    },
+    {
+      "id": "neural-network-basics",
+      "title": "Neural Network Basics",
+      "description": "Understanding model inference"
+    }
+  ],
+
+  "insight": "Perfect lip sync isn't enough—emotion and micro-expressions are what make avatar conversations feel real. The best systems model not just phonetics but prosody (speech rhythm) and affect (emotional state).",
+
+  "practicalApplication": "For production avatars, NVIDIA Audio2Face is the current standard. For research or custom solutions, open-source models like SadTalker provide good starting points that can be fine-tuned.",
+
+  "commonMistakes": [
+    {
+      "mistake": "Only animating the mouth region",
+      "correction": "Speech involves eyebrows, cheeks, and head movement. Isolating lips looks robotic."
+    },
+    {
+      "mistake": "No temporal smoothing",
+      "correction": "Frame-by-frame predictions are jittery. Apply smoothing (exponential, Kalman filter) between frames."
+    },
+    {
+      "mistake": "Using raw audio without preprocessing",
+      "correction": "Normalize audio levels, handle silence, and consider noise reduction for consistent output."
+    }
+  ],
+
+  "latencyConsiderations": [
+    "Audio context: most models need 0.5-1s of audio context",
+    "Feature extraction: mel spectrogram adds 10-20ms",
+    "Model inference: 10-100ms depending on complexity",
+    "Smoothing: adds small delay for better quality",
+    "Total: 100-500ms from audio to final animation"
+  ]
+}

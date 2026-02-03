@@ -1,0 +1,149 @@
+{
+  "id": "voice-activity-detection",
+  "title": "Voice Activity Detection (VAD)",
+  "level": 2,
+  "parentTrack": "streaming-avatars",
+  "parentConcept": "turn-detection",
+
+  "assumedKnowledge": "Basic understanding of audio signals and sampling",
+
+  "fills": "How systems detect when a user starts and stops speaking, enabling natural turn-taking in conversations",
+
+  "explanation": {
+    "text": "Voice Activity Detection (VAD) is the AI component that distinguishes speech from silence or background noise. It's the first critical step in any voice AI pipeline—you can't transcribe what you can't detect. Modern VAD uses neural networks trained on millions of audio samples to recognize the acoustic patterns of human speech, even in noisy environments. The output is typically a probability (0-1) that speech is occurring at each moment.",
+    "keyPoints": [
+      "Operates on audio frames (typically 10-30ms chunks)",
+      "Output: speech probability or binary speech/non-speech",
+      "Must handle background noise, music, multiple speakers",
+      "Latency critical: add too much buffering and conversations feel laggy",
+      "Used for endpoint detection (when user finishes speaking)"
+    ]
+  },
+
+  "visualAid": {
+    "type": "interactive",
+    "description": "Audio waveform with VAD overlay showing detected speech regions highlighted in green",
+    "caption": "VAD identifies speech segments in real-time audio stream"
+  },
+
+  "algorithms": {
+    "title": "VAD Approaches",
+    "methods": [
+      {
+        "name": "Energy-Based",
+        "description": "Simple threshold on audio volume/RMS",
+        "pros": "Fast, no model needed",
+        "cons": "Fails with background noise",
+        "latency": "<1ms"
+      },
+      {
+        "name": "WebRTC VAD",
+        "description": "GMM-based model from Google's WebRTC",
+        "pros": "Lightweight, battle-tested, works offline",
+        "cons": "Less accurate than neural methods",
+        "latency": "~10ms"
+      },
+      {
+        "name": "Silero VAD",
+        "description": "Neural network model, ONNX deployable",
+        "pros": "Highly accurate, handles noise well",
+        "cons": "Requires model inference",
+        "latency": "~30ms"
+      },
+      {
+        "name": "Streaming ASR VAD",
+        "description": "Built into transcription services (Deepgram, etc.)",
+        "pros": "No separate model needed, integrated",
+        "cons": "Tied to provider",
+        "latency": "Variable"
+      }
+    ]
+  },
+
+  "codeExample": {
+    "language": "python",
+    "code": "import torch\nfrom silero_vad import get_speech_timestamps, load_silero_vad\n\n# Load Silero VAD model\nmodel = load_silero_vad()\n\ndef detect_speech(audio_chunk: torch.Tensor, sample_rate: int = 16000):\n    \"\"\"\n    Detect speech in audio chunk.\n    Returns list of (start_ms, end_ms) tuples.\n    \"\"\"\n    # Get speech timestamps\n    timestamps = get_speech_timestamps(\n        audio_chunk,\n        model,\n        sampling_rate=sample_rate,\n        threshold=0.5,  # Speech probability threshold\n        min_speech_duration_ms=250,  # Ignore very short sounds\n        min_silence_duration_ms=100,  # Gap to consider end of speech\n    )\n    return timestamps\n\n# Real-time streaming usage\nclass StreamingVAD:\n    def __init__(self):\n        self.model = load_silero_vad()\n        self.buffer = torch.tensor([])\n        self.is_speaking = False\n    \n    def process_chunk(self, chunk: torch.Tensor) -> str:\n        # Run VAD on chunk\n        speech_prob = self.model(chunk, 16000).item()\n        \n        if speech_prob > 0.5 and not self.is_speaking:\n            self.is_speaking = True\n            return 'speech_start'\n        elif speech_prob < 0.3 and self.is_speaking:\n            self.is_speaking = False\n            return 'speech_end'\n        return 'continue'",
+    "explanation": "Silero VAD provides accurate speech detection that works well in real-time streaming scenarios"
+  },
+
+  "endpointDetection": {
+    "title": "Endpoint Detection Strategy",
+    "description": "Detecting when the user has finished speaking is harder than detecting speech",
+    "strategies": [
+      {
+        "name": "Silence Duration",
+        "description": "Wait for N ms of silence after speech",
+        "typical_value": "300-700ms",
+        "tradeoff": "Too short = cuts off user, too long = feels slow"
+      },
+      {
+        "name": "Semantic Endpoint",
+        "description": "Use partial transcription to detect complete sentences",
+        "typical_value": "Look for period, question mark",
+        "tradeoff": "More accurate but adds STT latency"
+      },
+      {
+        "name": "Prosodic Cues",
+        "description": "Detect falling pitch/energy that signals end of utterance",
+        "typical_value": "Pitch drop + volume decrease",
+        "tradeoff": "Language/speaker dependent"
+      },
+      {
+        "name": "Hybrid",
+        "description": "Combine silence + semantic + prosodic",
+        "typical_value": "What production systems use",
+        "tradeoff": "Most complex but best results"
+      }
+    ]
+  },
+
+  "latencyImpact": {
+    "title": "VAD Latency in the Pipeline",
+    "stages": [
+      { "stage": "Audio buffering", "latency": "10-30ms", "note": "Need enough samples for inference" },
+      { "stage": "VAD inference", "latency": "5-30ms", "note": "Depends on model complexity" },
+      { "stage": "Endpoint wait", "latency": "300-700ms", "note": "Silence threshold after speech" },
+      { "stage": "Total", "latency": "315-760ms", "note": "Before STT even starts!" }
+    ]
+  },
+
+  "prerequisites": [
+    {
+      "id": "turn-detection",
+      "title": "Turn Detection",
+      "description": "Higher-level conversation flow management"
+    },
+    {
+      "id": "neural-network-basics",
+      "title": "Neural Network Basics",
+      "description": "Understanding model inference"
+    }
+  ],
+
+  "insight": "VAD is the unsung hero of conversational AI. Get it wrong and conversations feel broken—either cutting users off mid-sentence or waiting awkwardly after they've finished speaking.",
+
+  "practicalApplication": "Most voice AI platforms (LiveKit, Daily, etc.) include built-in VAD. But understanding how it works helps you tune the parameters for your specific use case—customer service needs longer endpoint timeouts than gaming.",
+
+  "commonMistakes": [
+    {
+      "mistake": "Using only volume threshold for VAD",
+      "correction": "Volume-based VAD fails with background noise. Use a trained model like Silero or WebRTC VAD."
+    },
+    {
+      "mistake": "Setting endpoint timeout too short",
+      "correction": "Users pause to think! 500-700ms minimum, or use semantic detection for natural conversations."
+    },
+    {
+      "mistake": "Not handling interruptions (barge-in)",
+      "correction": "Good VAD should detect when user starts speaking while avatar is talking, enabling natural interruptions."
+    }
+  ],
+
+  "productionTips": [
+    "Run VAD on the edge (client-side) to minimize latency",
+    "Use adaptive thresholds based on ambient noise level",
+    "Implement barge-in detection for natural interruptions",
+    "Log VAD events for debugging conversation flow issues",
+    "Test with real users—synthetic audio behaves differently"
+  ]
+}

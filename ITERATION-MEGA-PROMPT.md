@@ -285,6 +285,12 @@ Suggest improvements or corrections.
 - networking-basics.json
 - neural-network-basics.json
 - rtp-protocol.json
+- matrix-math.json (Gaussian Splatting)
+
+**Additional Concepts (End-to-End):**
+- arkit-protocol.json (MetaHuman - Live Link)
+- voice-activity-detection.json (Streaming/End-to-End)
+- audio-to-expression.json (MetaHuman/Generative)
 
 ### Completed Demos
 
