@@ -78,6 +78,14 @@
       "drillDown": "turn-detection"
     },
     {
+      "id": "vad",
+      "title": "Voice Activity Detection",
+      "summary": "Detects when users start and stop speaking. Critical for natural turn-taking - too aggressive cuts off users, too slow feels laggy.",
+      "visualMetaphor": "A conversation traffic light: green when someone's speaking, red during silence. The challenge is deciding exactly when to change.",
+      "demoId": "vad-demo",
+      "drillDown": "voice-activity-detection"
+    },
+    {
       "id": "avatar-providers",
       "title": "Avatar Providers",
       "summary": "Hedra, Tavus, Simli, HeyGen - each takes audio and generates synchronized video. No client GPU needed; rendering happens on their servers.",
