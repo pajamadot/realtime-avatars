@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/generative-video.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough } from '../components/core';
-import { DenoisingDemo } from '../components/demos/generative';
+import { DenoisingDemo, DiffusionStepsDemo } from '../components/demos/generative';
 
 const sections = [
   { id: 'intro', label: 'Introduction' },
@@ -119,6 +119,11 @@ export default function GenerativeVideoPage() {
         {/* Interactive Demo */}
         <div className="mt-8">
           <DenoisingDemo />
+        </div>
+
+        {/* Steps Comparison Demo */}
+        <div className="mt-8">
+          <DiffusionStepsDemo />
         </div>
       </section>
 

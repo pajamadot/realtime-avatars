@@ -252,10 +252,10 @@ Suggest improvements or corrections.
 
 | Track | Research | Structure | Drilldowns | Demos | Review |
 |-------|----------|-----------|------------|-------|--------|
-| Gaussian Splatting | Done | Done | 3/5 done | 2 done | Pending |
-| MetaHuman | Done | Done | 2/5 done | 1 done | Pending |
-| Generative Video | Done | Done | 4/5 done | 1 done | Pending |
-| Streaming Avatars | Done | Done | 3/5 done | 1 done | Pending |
+| Gaussian Splatting | Done | Done | 5/5 done | 3 done | Pending |
+| MetaHuman | Done | Done | 4/5 done | 1 done | Pending |
+| Generative Video | Done | Done | 6/6 done | 2 done | Pending |
+| Streaming Avatars | Done | Done | 5/5 done | 2 done | Pending |
 
 ### Completed Drill-Down Concepts
 
@@ -289,33 +289,19 @@ Suggest improvements or corrections.
 3. **DenoisingDemo** - Diffusion step visualizer
 4. **BlendshapeDemo** - ARKit 52 blendshape playground
 5. **LatencyDemo** - Voice AI pipeline latency visualizer
+6. **SphericalHarmonicsDemo** - SH coefficient playground (Three.js)
+7. **ICEConnectionDemo** - WebRTC ICE candidate gathering visualizer
+8. **DiffusionStepsDemo** - 4-step vs 50-step quality comparison
 
 ### Missing Concepts (To Create)
 
-**Gaussian Splatting:**
-- splatting-process.json
-- densification-pruning.json
-
 **MetaHuman:**
-- arkit-protocol.json
-- lumen-nanite.json
-- audio2face-network.json
-
-**Generative Video:**
-- consistency-models.json
-- reference-net.json
-
-**Streaming Avatars:**
-- avatar-apis.json
-- agent-lifecycle.json
+- arkit-protocol.json (optional - ARKit blendshapes already covers this)
 
 ### Demo Ideas (Not Yet Implemented)
 
-1. **Spherical Harmonics Playground** - Adjust SH coefficients, see color change
-2. **Skinning Weight Visualizer** - Paint weights, see deformation
-3. **Face Tracking Simulator** - Webcam input → blendshape output
-4. **ICE Connection Visualizer** - Watch candidate gathering in real-time
-5. **Diffusion Step Comparison** - 4-step vs 50-step quality
+1. **Skinning Weight Visualizer** - Paint weights, see deformation (MetaHuman)
+2. **Face Tracking Simulator** - Webcam input → blendshape output (MetaHuman)
 
 ---
 

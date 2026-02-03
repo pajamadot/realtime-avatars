@@ -17,6 +17,11 @@ const AlphaBlendingDemo = dynamic(
   { ssr: false, loading: () => <DemoPlaceholder label="Loading alpha blending demo..." /> }
 );
 
+const SphericalHarmonicsDemo = dynamic(
+  () => import('../components/demos/gaussian/SphericalHarmonicsDemo'),
+  { ssr: false, loading: () => <DemoPlaceholder label="Loading spherical harmonics demo..." /> }
+);
+
 function DemoPlaceholder({ label }: { label: string }) {
   return (
     <div className="h-[300px] bg-[var(--card-bg-alt)] rounded-lg flex items-center justify-center text-[var(--muted)]">
@@ -181,6 +186,15 @@ export default function GaussianSplattingPage() {
             Drag to reorder layers and see how depth ordering affects the final blended color.
           </p>
           <AlphaBlendingDemo />
+        </div>
+
+        {/* Demo 3: Spherical Harmonics */}
+        <div id="demo-spherical-harmonics" className="mb-8">
+          <h3 className="text-xl font-semibold mb-3">Demo 3: Spherical Harmonics</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Adjust SH coefficients to see how view-dependent color is encoded. This is how 3DGS captures specular highlights.
+          </p>
+          <SphericalHarmonicsDemo />
         </div>
       </section>
 
