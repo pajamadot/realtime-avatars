@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-30T18:40:13.227Z",
+  "updatedAt": "2026-02-03T10:51:41.925Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -265,6 +265,17 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head))",
       "items": [
         {
+          "title": "VRGaussianAvatar: Integrating 3D Gaussian Avatars into VR",
+          "link": "https://arxiv.org/abs/2602.01674v1",
+          "published": "2026-02-02T05:42:40.000Z",
+          "authors": "Hail Song",
+          "summary": "We present VRGaussianAvatar, an integrated system that enables real-time full-body 3D Gaussian Splatting (3DGS) avatars in virtual reality using only head-mounted display (HMD) tracking signals. The system adopts a parallel pipeline with a VR Frontend and a GA Backend. The VR ...",
+          "tags": [
+            "gaussian",
+            "real-time"
+          ]
+        },
+        {
           "title": "Splat-Portrait: Generalizing Talking Heads with Gaussian Splatting",
           "link": "https://arxiv.org/abs/2601.18633v1",
           "published": "2026-01-26T16:06:57.000Z",
@@ -379,17 +390,6 @@
           "authors": "Qijian Tian",
           "summary": "We present FLEG, a feed-forward network that reconstructs language-embedded 3D Gaussians from any views. Previous straightforward solutions combine feed-forward reconstruction with Gaussian heads but suffer from fixed input views and insufficient 3D training data. In contrast,...",
           "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "Instant Expressive Gaussian Head Avatar via 3D-Aware Expression Distillation",
-          "link": "https://arxiv.org/abs/2512.16893v1",
-          "published": "2025-12-18T18:53:28.000Z",
-          "authors": "Kaiwen Jiang",
-          "summary": "Portrait animation has witnessed tremendous quality improvements thanks to recent advances in video diffusion models. However, these 2D methods often compromise 3D consistency and speed, limiting their applicability in real-world scenarios, such as digital twins or telepresenc...",
-          "tags": [
-            "diffusion",
             "gaussian"
           ]
         }

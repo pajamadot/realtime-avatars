@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-02T10:54:13.674Z",
+  "updatedAt": "2026-02-03T10:51:44.266Z",
   "source": "GitHub Search",
   "queries": {
     "metahuman": {
@@ -10,7 +10,7 @@
           "name": "YUANZHUO-BNU/metahuman_overview",
           "link": "https://github.com/YUANZHUO-BNU/metahuman_overview",
           "description": "",
-          "stars": 1080,
+          "stars": 1082,
           "pushedAt": "2025-01-08T10:04:36.000Z",
           "language": ""
         },
@@ -66,7 +66,7 @@
           "name": "SocAIty/py_audio2face",
           "link": "https://github.com/SocAIty/py_audio2face",
           "description": "Use the NVIDIA Audio2Face headless server and interact with it through a requests API. Generate animation sequences for Unreal Engine 5, Maya and MetaHumans",
-          "stars": 146,
+          "stars": 147,
           "pushedAt": "2025-05-01T17:23:11.000Z",
           "language": "Python"
         },
@@ -96,7 +96,7 @@
           "name": "AIGC-Audio/AudioGPT",
           "link": "https://github.com/AIGC-Audio/AudioGPT",
           "description": "AudioGPT: Understanding and Generating Speech, Music, Sound, and Talking Head",
-          "stars": 10209,
+          "stars": 10210,
           "pushedAt": "2024-07-06T21:35:18.000Z",
           "language": "Python"
         },
@@ -104,7 +104,7 @@
           "name": "OpenTalker/video-retalking",
           "link": "https://github.com/OpenTalker/video-retalking",
           "description": "[SIGGRAPH Asia 2022] VideoReTalking: Audio-based Lip Synchronization for Talking Head Video Editing In the Wild",
-          "stars": 7205,
+          "stars": 7207,
           "pushedAt": "2024-08-05T05:59:59.000Z",
           "language": "Python"
         },
@@ -112,7 +112,7 @@
           "name": "Kedreamix/Linly-Talker",
           "link": "https://github.com/Kedreamix/Linly-Talker",
           "description": "Digital Avatar Conversational System - Linly-Talker.  Linly-Talker is an intelligent AI system that combines large language models (LLMs) with visual models to create a novel human-AI interaction method.  It integrates various technologies like Whisper, Linly, Microsoft Speech Services, and SadTalker talking head generation system. ",
-          "stars": 3119,
+          "stars": 3118,
           "pushedAt": "2025-02-24T05:40:05.000Z",
           "language": "Python"
         },
@@ -120,7 +120,7 @@
           "name": "yuyuyzl/EasyVtuber",
           "link": "https://github.com/yuyuyzl/EasyVtuber",
           "description": "Based on Talking-head-anime 3, works like Vtube Studio.",
-          "stars": 2582,
+          "stars": 2583,
           "pushedAt": "2025-08-17T00:58:25.000Z",
           "language": "Python"
         },
@@ -152,7 +152,7 @@
           "name": "ZiqiaoPeng/SyncTalk",
           "link": "https://github.com/ZiqiaoPeng/SyncTalk",
           "description": "[CVPR 2024] This is the official source for our paper \"SyncTalk: The Devil is in the Synchronization for Talking Head Synthesis\"",
-          "stars": 1611,
+          "stars": 1612,
           "pushedAt": "2025-09-18T15:00:06.000Z",
           "language": "Python"
         },
@@ -182,7 +182,7 @@
           "name": "graphdeco-inria/gaussian-splatting",
           "link": "https://github.com/graphdeco-inria/gaussian-splatting",
           "description": "Original reference implementation of \"3D Gaussian Splatting for Real-Time Radiance Field Rendering\"",
-          "stars": 20579,
+          "stars": 20582,
           "pushedAt": "2025-10-17T14:28:15.000Z",
           "language": "Python"
         },
@@ -190,7 +190,7 @@
           "name": "nerfstudio-project/gsplat",
           "link": "https://github.com/nerfstudio-project/gsplat",
           "description": "CUDA accelerated rasterization of gaussian splatting",
-          "stars": 4436,
+          "stars": 4441,
           "pushedAt": "2026-01-28T01:39:03.000Z",
           "language": "Python"
         },
@@ -198,7 +198,7 @@
           "name": "dreamgaussian/dreamgaussian",
           "link": "https://github.com/dreamgaussian/dreamgaussian",
           "description": "[ICLR 2024 Oral] Generative Gaussian Splatting for Efficient 3D Content Creation",
-          "stars": 4286,
+          "stars": 4287,
           "pushedAt": "2024-01-02T04:12:09.000Z",
           "language": "Python"
         },
@@ -206,7 +206,7 @@
           "name": "hbb1/2d-gaussian-splatting",
           "link": "https://github.com/hbb1/2d-gaussian-splatting",
           "description": "[SIGGRAPH'24] 2D Gaussian Splatting for Geometrically Accurate Radiance Fields",
-          "stars": 3016,
+          "stars": 3017,
           "pushedAt": "2025-11-24T15:26:53.000Z",
           "language": "Python"
         },
@@ -214,15 +214,15 @@
           "name": "Awesome3DGS/3D-Gaussian-Splatting-Papers",
           "link": "https://github.com/Awesome3DGS/3D-Gaussian-Splatting-Papers",
           "description": "3D",
-          "stars": 2676,
-          "pushedAt": "2026-01-20T06:34:28.000Z",
+          "stars": 2681,
+          "pushedAt": "2026-02-02T12:54:15.000Z",
           "language": "Python"
         },
         {
           "name": "muskie82/MonoGS",
           "link": "https://github.com/muskie82/MonoGS",
           "description": "[CVPR'24 Highlight & Best Demo Award] Gaussian Splatting SLAM",
-          "stars": 1983,
+          "stars": 1986,
           "pushedAt": "2024-08-07T14:15:29.000Z",
           "language": "Python"
         },
@@ -246,7 +246,7 @@
           "name": "Florian-Barthel/splatviz",
           "link": "https://github.com/Florian-Barthel/splatviz",
           "description": "Full python interactive 3D Gaussian Splatting viewer for real-time editing and analyzing.",
-          "stars": 1500,
+          "stars": 1501,
           "pushedAt": "2025-09-29T13:33:14.000Z",
           "language": "Python"
         },
