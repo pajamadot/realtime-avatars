@@ -42,6 +42,11 @@ const DifferentiableRenderingDemo = dynamic(
   { ssr: false, loading: () => <DemoPlaceholder label="Loading differentiable rendering demo..." /> }
 );
 
+const PointCloudDemo = dynamic(
+  () => import('../components/demos/gaussian/PointCloudDemo'),
+  { ssr: false, loading: () => <DemoPlaceholder label="Loading point cloud demo..." /> }
+);
+
 function DemoPlaceholder({ label }: { label: string }) {
   return (
     <div className="h-[300px] bg-[var(--card-bg-alt)] rounded-lg flex items-center justify-center text-[var(--muted)]">
@@ -251,6 +256,15 @@ export default function GaussianSplattingPage() {
             See how gradients flow backward through rendering. Click to set a target - the Gaussian learns to cover it.
           </p>
           <DifferentiableRenderingDemo />
+        </div>
+
+        {/* Demo 8: Point Cloud to Gaussians */}
+        <div id="demo-point-cloud" className="mb-8">
+          <h3 className="text-xl font-semibold mb-3">Demo 8: Point Cloud to Gaussians</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            3DGS starts from SfM point cloud and initializes Gaussians at each point. Drag to rotate, toggle to see how points become splats.
+          </p>
+          <PointCloudDemo />
         </div>
       </section>
 

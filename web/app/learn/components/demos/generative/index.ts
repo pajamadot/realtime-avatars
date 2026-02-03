@@ -5,3 +5,4 @@ export { LipSyncPlaygroundDemo } from './LipSyncPlaygroundDemo';
 export { IdentityLockDemo } from './IdentityLockDemo';
 export { CrossAttentionDemo } from './CrossAttentionDemo';
 export { UNetArchitectureDemo } from './UNetArchitectureDemo';
+export { NoiseScheduleDemo } from './NoiseScheduleDemo';

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/streaming-avatars.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
-import { LatencyDemo, ICEConnectionDemo, VADDemo, SFUComparisonDemo, ProviderComparisonDemo } from '../components/demos/streaming';
+import { LatencyDemo, ICEConnectionDemo, VADDemo, SFUComparisonDemo, ProviderComparisonDemo, JitterBufferDemo } from '../components/demos/streaming';
 
 const sections = [
   { id: 'intro', label: 'Introduction' },
@@ -162,6 +162,11 @@ export default function StreamingAvatarsPage() {
         {/* Provider Comparison Demo */}
         <div className="mt-8">
           <ProviderComparisonDemo />
+        </div>
+
+        {/* Jitter Buffer Demo */}
+        <div className="mt-8">
+          <JitterBufferDemo />
         </div>
 
         {/* Latency budget */}

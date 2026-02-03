@@ -5,3 +5,4 @@ export { default as MatrixTransformDemo } from './MatrixTransformDemo';
 export { default as CovarianceShapeDemo } from './CovarianceShapeDemo';
 export { TrainingProgressDemo } from './TrainingProgressDemo';
 export { DifferentiableRenderingDemo } from './DifferentiableRenderingDemo';
+export { PointCloudDemo } from './PointCloudDemo';

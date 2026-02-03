@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/generative-video.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
-import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo } from '../components/demos/generative';
+import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo } from '../components/demos/generative';
 import { GradientDescentDemo, NeuralNetworkDemo } from '../components/demos/fundamentals';
 
 const sections = [
@@ -176,6 +176,15 @@ export default function GenerativeVideoPage() {
             See how audio tokens guide which parts of the image to modify. This is how the model knows to move the mouth when speaking.
           </p>
           <CrossAttentionDemo />
+        </div>
+
+        {/* Noise Schedule Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Noise Schedule Comparison</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Different schedules control how quickly noise is added/removed. The schedule significantly affects generation quality and speed.
+          </p>
+          <NoiseScheduleDemo />
         </div>
       </section>
 
