@@ -168,6 +168,71 @@ export default function LearnPage() {
         </div>
       </section>
 
+      {/* Comparison Table */}
+      <section className="mb-16">
+        <h2 className="text-2xl font-semibold mb-6">Quick Comparison</h2>
+        <div className="overflow-x-auto">
+          <table className="research-table">
+            <thead>
+              <tr>
+                <th>Approach</th>
+                <th>Latency</th>
+                <th>Quality</th>
+                <th>Setup Cost</th>
+                <th>Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="font-medium" style={{ color: 'var(--color-gaussian)' }}>Gaussian Splatting</td>
+                <td>~16ms</td>
+                <td>Photorealistic</td>
+                <td>High (capture)</td>
+                <td>Static scenes, known identities</td>
+              </tr>
+              <tr>
+                <td className="font-medium" style={{ color: 'var(--color-metahuman)' }}>MetaHuman</td>
+                <td>~16ms</td>
+                <td>High-quality 3D</td>
+                <td>Medium (setup)</td>
+                <td>Games, precise animation control</td>
+              </tr>
+              <tr>
+                <td className="font-medium" style={{ color: 'var(--color-generative)' }}>Generative Video</td>
+                <td>100-500ms</td>
+                <td>Photorealistic</td>
+                <td>Low (1 photo)</td>
+                <td>Any face, async content</td>
+              </tr>
+              <tr>
+                <td className="font-medium" style={{ color: 'var(--color-streaming)' }}>Streaming</td>
+                <td>300-800ms</td>
+                <td>Provider-dependent</td>
+                <td>Low (API key)</td>
+                <td>Production apps, any device</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Try the Demo */}
+      <section className="mb-16">
+        <div className="card p-6 text-center">
+          <h3 className="font-semibold mb-2">See It In Action</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Experience a streaming avatar demo built with LiveKit and Hedra.
+            Talk to an AI-powered avatar in real-time.
+          </p>
+          <Link
+            href="/livekit"
+            className="badge hover:border-[var(--border-strong)] inline-flex"
+          >
+            Launch Live Demo →
+          </Link>
+        </div>
+      </section>
+
       {/* Convergence Note */}
       <section>
         <div className="research-note">
