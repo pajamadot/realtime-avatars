@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/streaming-avatars.json';
-import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, QuickQuiz, DemoWrapper, InteractiveTooltip } from '../components/core';
+import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget, LatencyStack, PacketOrdering } from '../components/core';
 import { LatencyDemo, ICEConnectionDemo, VADDemo, SFUComparisonDemo, ProviderComparisonDemo, JitterBufferDemo, BitrateAdaptationDemo, SimulcastDemo, LatencyBreakdownDemo, FrameInterpolationDemo, PacketLossRecoveryDemo, CongestionControlDemo } from '../components/demos/streaming';
 
 const sections = [
@@ -12,65 +12,6 @@ const sections = [
   { id: 'concepts', label: 'Key Concepts' },
   { id: 'implementation', label: 'Build It' },
   { id: 'tradeoffs', label: 'Trade-offs' },
-  { id: 'quiz', label: 'Quiz' },
-];
-
-const streamingQuiz = [
-  {
-    question: 'What is ICE (Interactive Connectivity Establishment) used for in WebRTC?',
-    options: [
-      'Compressing video for streaming',
-      'Finding the best network path between peers through NATs/firewalls',
-      'Encrypting audio and video data',
-      'Synchronizing audio and video tracks'
-    ],
-    correctIndex: 1,
-    explanation: 'ICE gathers "candidates" (possible network paths) and tests them to find a working connection. It tries direct peer-to-peer first, then TURN relay servers if needed. This NAT traversal is essential for WebRTC to work across different networks.'
-  },
-  {
-    question: 'What is a jitter buffer used for in streaming?',
-    options: [
-      'To compress video data',
-      'To smooth out variable packet arrival times',
-      'To encrypt the audio stream',
-      'To reduce video resolution'
-    ],
-    correctIndex: 1,
-    explanation: 'Network packets arrive at irregular intervals (jitter). The jitter buffer holds packets briefly to deliver them at a steady rate. Too small = choppy audio, too large = increased latency. Adaptive buffers balance this tradeoff.'
-  },
-  {
-    question: 'What is VAD (Voice Activity Detection) used for?',
-    options: [
-      'Detecting when someone is speaking to optimize bandwidth',
-      'Validating audio quality',
-      'Adjusting video resolution',
-      'Encrypting voice data'
-    ],
-    correctIndex: 0,
-    explanation: 'VAD detects speech vs silence to determine when to send audio. This reduces bandwidth (no need to send silence) and is crucial for turn-taking in conversations - it helps decide when the user has finished speaking.'
-  },
-  {
-    question: 'What is the purpose of simulcast in video streaming?',
-    options: [
-      'To play video on multiple screens',
-      'To send multiple quality layers so receivers can choose based on bandwidth',
-      'To synchronize multiple video streams',
-      'To compress video more efficiently'
-    ],
-    correctIndex: 1,
-    explanation: 'Simulcast encodes video at multiple resolutions (e.g., 1080p, 720p, 360p) simultaneously. The SFU or receiver can select the appropriate quality based on available bandwidth, enabling smooth adaptation without re-encoding.'
-  },
-  {
-    question: 'What is the typical end-to-end latency target for conversational AI avatars?',
-    options: [
-      'Under 50ms',
-      'Under 200ms',
-      'Under 500ms',
-      'Under 2 seconds'
-    ],
-    correctIndex: 2,
-    explanation: 'Natural conversation feels responsive under 500ms total latency (STT + LLM + TTS + Avatar + Network). Above 1 second, users start feeling like they\'re talking to a slow responder. The challenge is fitting all processing within this budget.'
-  }
 ];
 
 export default function StreamingAvatarsPage() {
@@ -184,6 +125,17 @@ export default function StreamingAvatarsPage() {
           Above <strong>500ms</strong> feels sluggish, above <strong>1 second</strong> feels broken. Streaming avatars must balance quality vs speed:
           faster generation often means lower quality, and network conditions add unpredictable delays.
         </KeyInsight>
+
+        {/* Mechanism Nuggets */}
+        <div className="grid md:grid-cols-2 gap-4 mt-6">
+          <MechanismNugget title="Latency Stack" description="Each component adds to total response time">
+            <LatencyStack />
+          </MechanismNugget>
+
+          <MechanismNugget title="Packet Jitter" description="Network causes out-of-order arrival, buffer reorders">
+            <PacketOrdering />
+          </MechanismNugget>
+        </div>
       </section>
 
       <div className="divider" />
@@ -451,19 +403,6 @@ export default function StreamingAvatarsPage() {
             Launch LiveKit Demo →
           </Link>
         </div>
-      </section>
-
-      {/* Section 6: Quiz */}
-      <section id="quiz" className="mb-16 scroll-mt-32">
-        <h2 className="text-2xl font-semibold mb-4">Test Your Knowledge</h2>
-        <p className="text-[var(--muted)] mb-6">
-          Check your understanding of streaming infrastructure and WebRTC concepts.
-        </p>
-        <QuickQuiz
-          title="Streaming Avatars Quiz"
-          questions={streamingQuiz}
-          color={color}
-        />
       </section>
 
       {/* Next Steps */}

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/metahuman.json';
-import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, QuickQuiz, DemoWrapper, InteractiveTooltip } from '../components/core';
+import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget, BoneHierarchyMini, BlendshapeInterpolation } from '../components/core';
 import { BlendshapeDemo, SkinningWeightDemo, FaceTrackingDemo, AudioToExpressionDemo, BoneHierarchyDemo, BlendshapeMixerDemo, InverseKinematicsDemo, LODDemo, WrinkleMapDemo, CorrectiveBlendshapesDemo, JointConstraintsDemo, EyeGazeDemo, HairSimulationDemo, SecondaryMotionDemo, MuscleSystemDemo } from '../components/demos/metahuman';
 
 const sections = [
@@ -12,65 +12,6 @@ const sections = [
   { id: 'concepts', label: 'Key Concepts' },
   { id: 'implementation', label: 'Build It' },
   { id: 'tradeoffs', label: 'Trade-offs' },
-  { id: 'quiz', label: 'Quiz' },
-];
-
-const metahumanQuiz = [
-  {
-    question: 'What are blendshapes (morph targets) used for in MetaHuman?',
-    options: [
-      'Defining bone positions in the skeleton',
-      'Storing pre-computed facial expressions as vertex offsets',
-      'Calculating lighting on the skin surface',
-      'Compressing texture data'
-    ],
-    correctIndex: 1,
-    explanation: 'Blendshapes store the difference between a neutral pose and an expression (like "smile") as per-vertex offsets. At runtime, these offsets are linearly blended together based on weights (0-1) to create any expression.'
-  },
-  {
-    question: 'How many blendshapes does the ARKit standard define?',
-    options: [
-      '12 basic expressions',
-      '52 facial blend shapes',
-      '128 morph targets',
-      '256 control points'
-    ],
-    correctIndex: 1,
-    explanation: 'ARKit defines 52 blend shapes that cover the full range of facial expressions, from individual eye blinks to jaw movement. This has become a de-facto standard for real-time face tracking.'
-  },
-  {
-    question: 'What is skeletal skinning in character animation?',
-    options: [
-      'Applying textures to the character mesh',
-      'Deforming mesh vertices based on bone transformations',
-      'Rendering skin subsurface scattering',
-      'Calculating collision detection'
-    ],
-    correctIndex: 1,
-    explanation: 'Skinning connects mesh vertices to bones using weights. When a bone rotates, each vertex moves based on its weight assignment. Linear Blend Skinning (LBS) is the most common technique, though it can cause artifacts at extreme joint angles.'
-  },
-  {
-    question: 'What are corrective blendshapes used for?',
-    options: [
-      'Fixing errors in the base mesh',
-      'Compensating for skinning artifacts at extreme poses',
-      'Correcting lighting calculations',
-      'Improving texture resolution'
-    ],
-    correctIndex: 1,
-    explanation: 'Corrective blendshapes activate automatically based on pose to fix artifacts like "candy wrapper" effects at elbows or "volume loss" at shoulders. They add artistic corrections on top of the mathematical skinning.'
-  },
-  {
-    question: 'How does Live Link connect iPhone face tracking to Unreal Engine?',
-    options: [
-      'It streams 3D mesh data over WiFi',
-      'It sends 52 ARKit blendshape weights as animation data',
-      'It captures and sends video frames',
-      'It transfers bone positions directly'
-    ],
-    correctIndex: 1,
-    explanation: 'Live Link streams the 52 ARKit blendshape weights from the iPhone to UE5 in real-time over the network. The MetaHuman rig then maps these weights to drive its own facial controls, creating a live puppet effect.'
-  }
 ];
 
 export default function MetaHumanPage() {
@@ -180,6 +121,17 @@ export default function MetaHumanPage() {
           This means <strong>predictable performance</strong> (always 60 FPS on target hardware), <strong>full artistic control</strong> (every parameter is adjustable),
           and <strong>no training required</strong>. The tradeoff is the need for expensive motion capture or manual animation.
         </KeyInsight>
+
+        {/* Mechanism Nuggets */}
+        <div className="grid md:grid-cols-2 gap-4 mt-6">
+          <MechanismNugget title="Bone Hierarchy" description="Child bones inherit parent transforms automatically">
+            <BoneHierarchyMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Blendshape Interpolation" description="Expressions blend linearly between stored poses">
+            <BlendshapeInterpolation />
+          </MechanismNugget>
+        </div>
 
         {/* Interactive Demo */}
         <div className="mt-8">
@@ -394,19 +346,6 @@ export default function MetaHumanPage() {
             </div>
           ))}
         </div>
-      </section>
-
-      {/* Section 6: Quiz */}
-      <section id="quiz" className="mb-16 scroll-mt-32">
-        <h2 className="text-2xl font-semibold mb-4">Test Your Knowledge</h2>
-        <p className="text-[var(--muted)] mb-6">
-          Check your understanding of MetaHuman and character animation concepts.
-        </p>
-        <QuickQuiz
-          title="MetaHuman Quiz"
-          questions={metahumanQuiz}
-          color={color}
-        />
       </section>
 
       {/* Next Steps */}

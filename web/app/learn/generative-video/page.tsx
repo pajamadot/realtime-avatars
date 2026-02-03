@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/generative-video.json';
-import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, QuickQuiz, DemoWrapper, InteractiveTooltip } from '../components/core';
+import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget, DiffusionNoiseLevels, GaussianCurve } from '../components/core';
 import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo, TemporalConsistencyDemo, SamplerComparisonDemo, FaceEncoderDemo, VAEDemo, MotionFieldDemo, AttentionMechanismDemo, EmbeddingSpaceDemo } from '../components/demos/generative';
 import { ConvolutionDemo, ActivationFunctionsDemo, BackpropagationDemo, PoolingLayerDemo, DropoutDemo, BatchNormalizationDemo, LossFunctionDemo } from '../components/demos/fundamentals';
 import { GradientDescentDemo, NeuralNetworkDemo } from '../components/demos/fundamentals';
@@ -14,65 +14,6 @@ const sections = [
   { id: 'concepts', label: 'Key Concepts' },
   { id: 'implementation', label: 'Build It' },
   { id: 'tradeoffs', label: 'Trade-offs' },
-  { id: 'quiz', label: 'Quiz' },
-];
-
-const generativeQuiz = [
-  {
-    question: 'What is the core idea behind diffusion models?',
-    options: [
-      'Generate images by combining pre-existing patches',
-      'Learn to gradually remove noise from random static',
-      'Use GANs to create photorealistic images',
-      'Transform low-resolution images to high-resolution'
-    ],
-    correctIndex: 1,
-    explanation: 'Diffusion models are trained by adding noise to images step by step, then learning to reverse the process. At generation time, they start from pure noise and iteratively denoise to create images.'
-  },
-  {
-    question: 'What is the purpose of the VAE in Stable Diffusion?',
-    options: [
-      'To generate random noise',
-      'To compress images to a smaller latent space for faster processing',
-      'To apply style transfer to the output',
-      'To detect faces in the input image'
-    ],
-    correctIndex: 1,
-    explanation: 'The VAE (Variational Autoencoder) compresses images from 512x512x3 to 64x64x4, reducing computation by 48x. The U-Net operates in this latent space, making training and inference much faster.'
-  },
-  {
-    question: 'How does cross-attention enable audio-driven face animation?',
-    options: [
-      'It converts audio to lip movements directly',
-      'It lets audio embeddings guide which image regions to modify',
-      'It synchronizes the frame rate with audio',
-      'It removes background noise from the audio'
-    ],
-    correctIndex: 1,
-    explanation: 'Cross-attention allows the denoising network to "attend" to audio features when deciding how to denoise each part of the image. This creates a soft connection between sound patterns and visual changes, like opening the mouth for vowels.'
-  },
-  {
-    question: 'What does CFG (Classifier-Free Guidance) scale control?',
-    options: [
-      'The resolution of the output image',
-      'The number of denoising steps',
-      'How strongly the output follows the conditioning signal',
-      'The frame rate of video generation'
-    ],
-    correctIndex: 2,
-    explanation: 'CFG scale controls the trade-off between sample quality and diversity. Higher values (7-15) produce outputs that more closely match the conditioning but may have artifacts. Lower values give more varied but potentially less relevant results.'
-  },
-  {
-    question: 'What is the main challenge in video diffusion compared to image diffusion?',
-    options: [
-      'Videos require higher resolution',
-      'Maintaining temporal consistency across frames',
-      'Videos use more colors than images',
-      'Audio synchronization is automatic'
-    ],
-    correctIndex: 1,
-    explanation: 'Each frame must be consistent with its neighbors - a flickering or jittering face looks unnatural. Video diffusion adds temporal attention layers and motion modeling to ensure smooth transitions between frames.'
-  }
 ];
 
 export default function GenerativeVideoPage() {
@@ -182,6 +123,17 @@ export default function GenerativeVideoPage() {
           This makes training <strong>more stable</strong> (no mode collapse) and generation <strong>more controllable</strong> (you can guide each step).
           The cost? Generation requires 20-50 network passes instead of just one, making real-time video challenging.
         </KeyInsight>
+
+        {/* Mechanism Nuggets */}
+        <div className="grid md:grid-cols-2 gap-4 mt-6">
+          <MechanismNugget title="Noise Levels" description="Forward process adds noise, reverse process removes it">
+            <DiffusionNoiseLevels />
+          </MechanismNugget>
+
+          <MechanismNugget title="Gaussian Noise" description="The bell curve distribution used for adding noise">
+            <GaussianCurve />
+          </MechanismNugget>
+        </div>
 
         {/* Interactive Demo */}
         <div className="mt-8">
@@ -570,19 +522,6 @@ export default function GenerativeVideoPage() {
             </tbody>
           </table>
         </div>
-      </section>
-
-      {/* Section 6: Quiz */}
-      <section id="quiz" className="mb-16 scroll-mt-32">
-        <h2 className="text-2xl font-semibold mb-4">Test Your Knowledge</h2>
-        <p className="text-[var(--muted)] mb-6">
-          Check your understanding of diffusion models and generative video.
-        </p>
-        <QuickQuiz
-          title="Generative Video Quiz"
-          questions={generativeQuiz}
-          color={color}
-        />
       </section>
 
       {/* Next Steps */}

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import content from '../data/content/gaussian-splatting.json';
-import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, QuickQuiz, DemoWrapper, InteractiveTooltip } from '../components/core';
+import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget, AlphaBlendMath, GaussianCurve, MatrixTransformMini } from '../components/core';
 
 // Dynamically import heavy 3D demos
 const SingleGaussianDemo = dynamic(
@@ -77,65 +77,6 @@ const sections = [
   { id: 'demos', label: 'Interactive Demos' },
   { id: 'implementation', label: 'Build It' },
   { id: 'tradeoffs', label: 'Trade-offs' },
-  { id: 'quiz', label: 'Quiz' },
-];
-
-const gaussianQuiz = [
-  {
-    question: 'What makes 3D Gaussian Splatting faster than NeRF?',
-    options: [
-      'It uses rasterization instead of ray marching',
-      'It uses smaller neural networks',
-      'It has fewer Gaussians to process',
-      'It skips the rendering step entirely'
-    ],
-    correctIndex: 0,
-    explanation: '3DGS uses tile-based rasterization which is highly optimized on GPUs, while NeRF requires expensive per-ray sampling through the volume. This is the key to achieving 60+ FPS.'
-  },
-  {
-    question: 'What does the covariance matrix control in a 3D Gaussian?',
-    options: [
-      'The color of the Gaussian',
-      'The position in 3D space',
-      'The shape, size, and orientation (the "splat" shape)',
-      'The blending order during rendering'
-    ],
-    correctIndex: 2,
-    explanation: 'The covariance matrix (Σ) defines the 3D ellipsoid shape of each Gaussian. It\'s decomposed into rotation (R) and scale (S) matrices for easier optimization: Σ = RSS^TR^T'
-  },
-  {
-    question: 'Why does 3DGS use spherical harmonics for color?',
-    options: [
-      'They compress better than RGB values',
-      'They encode view-dependent color (specular highlights)',
-      'They render faster on GPUs',
-      'They require less training data'
-    ],
-    correctIndex: 1,
-    explanation: 'Spherical harmonics allow each Gaussian to have different colors from different viewing angles, capturing specular reflections and other view-dependent effects that make scenes look realistic.'
-  },
-  {
-    question: 'What is the purpose of adaptive density control during training?',
-    options: [
-      'To reduce memory usage',
-      'To add detail where needed and remove redundant Gaussians',
-      'To speed up the rendering pipeline',
-      'To prevent overfitting to the training views'
-    ],
-    correctIndex: 1,
-    explanation: 'Adaptive density control clones/splits Gaussians in under-reconstructed areas (high gradient) and prunes transparent or redundant ones. This lets the model allocate capacity where detail is needed most.'
-  },
-  {
-    question: 'Why must Gaussians be sorted by depth before rendering?',
-    options: [
-      'To reduce GPU memory usage',
-      'Because alpha blending is not commutative - order matters',
-      'To enable parallel processing on the GPU',
-      'To prevent Z-fighting artifacts'
-    ],
-    correctIndex: 1,
-    explanation: 'Alpha blending (semi-transparent compositing) gives different results depending on the order. Blending A over B is different from B over A, so we sort back-to-front and blend front-to-back with the over operator.'
-  }
 ];
 
 export default function GaussianSplattingPage() {
@@ -218,6 +159,21 @@ export default function GaussianSplattingPage() {
           This makes the representation both <InteractiveTooltip content="Each Gaussian can be independently moved, colored, or deleted without retraining">editable</InteractiveTooltip> and fast to render.
           The tradeoff? More memory usage (~1-2GB for typical scenes) compared to NeRF's compact MLP weights.
         </KeyInsight>
+
+        {/* Mechanism Nuggets */}
+        <div className="grid md:grid-cols-3 gap-4 mt-6">
+          <MechanismNugget title="Gaussian Function" description="The bell curve that defines each splat's falloff">
+            <GaussianCurve />
+          </MechanismNugget>
+
+          <MechanismNugget title="Alpha Blending Math" description="How overlapping Gaussians combine colors">
+            <AlphaBlendMath />
+          </MechanismNugget>
+
+          <MechanismNugget title="Matrix Transform" description="How rotation + scale create ellipsoid shapes">
+            <MatrixTransformMini />
+          </MechanismNugget>
+        </div>
       </section>
 
       <div className="divider" />
@@ -507,19 +463,6 @@ export default function GaussianSplattingPage() {
             </div>
           ))}
         </div>
-      </section>
-
-      {/* Section 7: Quiz */}
-      <section id="quiz" className="mb-16 scroll-mt-32">
-        <h2 className="text-2xl font-semibold mb-4">Test Your Knowledge</h2>
-        <p className="text-[var(--muted)] mb-6">
-          Check your understanding of 3D Gaussian Splatting concepts.
-        </p>
-        <QuickQuiz
-          title="Gaussian Splatting Quiz"
-          questions={gaussianQuiz}
-          color={color}
-        />
       </section>
 
       {/* Next Steps */}
