@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import { Circle, Layers, Zap, Github, BookOpen, ArrowRight } from 'lucide-react';
 import content from '../data/content/gaussian-splatting.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget,
   AlphaBlendMath, GaussianCurve, MatrixTransformMini, DepthSortingMini, TileRasterizationMini,
@@ -141,20 +142,26 @@ export default function GaussianSplattingPage() {
         <div className="highlight-box">
           <p className="font-medium mb-4">The Core Idea in 30 Seconds</p>
           <div className="grid md:grid-cols-3 gap-4 text-center">
-            <div className="p-4 bg-[var(--card-bg)] rounded">
-              <div className="text-3xl mb-2">🔵</div>
+            <div className="p-4 bg-[var(--card-bg)] rounded-lg">
+              <div className="w-10 h-10 rounded-full bg-[var(--color-gaussian-light)] flex items-center justify-center mx-auto mb-3">
+                <Circle size={24} className="text-[var(--color-gaussian)]" strokeWidth={1.5} />
+              </div>
               <p className="font-medium">Millions of Fuzzy Blobs</p>
-              <p className="text-sm text-[var(--muted)]">Each is a 3D Gaussian with position, shape, color, opacity</p>
+              <p className="text-sm text-[var(--text-muted)]">Each is a 3D Gaussian with position, shape, color, opacity</p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded">
-              <div className="text-3xl mb-2">📽️</div>
+            <div className="p-4 bg-[var(--card-bg)] rounded-lg">
+              <div className="w-10 h-10 rounded-full bg-[var(--color-gaussian-light)] flex items-center justify-center mx-auto mb-3">
+                <Layers size={24} className="text-[var(--color-gaussian)]" strokeWidth={1.5} />
+              </div>
               <p className="font-medium">Splat to Screen</p>
-              <p className="text-sm text-[var(--muted)]">Project each blob to 2D, sort by depth, blend together</p>
+              <p className="text-sm text-[var(--text-muted)]">Project each blob to 2D, sort by depth, blend together</p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded">
-              <div className="text-3xl mb-2">⚡</div>
+            <div className="p-4 bg-[var(--card-bg)] rounded-lg">
+              <div className="w-10 h-10 rounded-full bg-[var(--color-gaussian-light)] flex items-center justify-center mx-auto mb-3">
+                <Zap size={24} className="text-[var(--color-gaussian)]" strokeWidth={1.5} />
+              </div>
               <p className="font-medium">60+ FPS</p>
-              <p className="text-sm text-[var(--muted)]">Rasterization (not ray tracing) enables real-time speed</p>
+              <p className="text-sm text-[var(--text-muted)]">Rasterization (not ray tracing) enables real-time speed</p>
             </div>
           </div>
         </div>
@@ -484,7 +491,7 @@ export default function GaussianSplattingPage() {
                 className="card p-4 flex items-start gap-3 hover:border-[var(--border-strong)]"
               >
                 <span className="text-[var(--accent)]">
-                  {resource.type === 'github' ? '📦' : resource.type === 'paper' ? '📄' : '📖'}
+                  {resource.type === 'github' ? <Github size={18} strokeWidth={1.75} /> : <BookOpen size={18} strokeWidth={1.75} />}
                 </span>
                 <div>
                   <p className="font-medium text-sm">{resource.title}</p>

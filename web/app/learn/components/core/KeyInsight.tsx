@@ -1,6 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import {
+  Lightbulb,
+  AlertTriangle,
+  Target,
+  FileText,
+  CheckCircle,
+  ChevronRight,
+  LucideIcon,
+} from 'lucide-react';
 
 interface KeyInsightProps {
   title?: string;
@@ -9,6 +18,47 @@ interface KeyInsightProps {
   expandable?: boolean;
   defaultExpanded?: boolean;
 }
+
+const typeConfig: Record<
+  string,
+  { bg: string; border: string; Icon: LucideIcon; title: string; color: string }
+> = {
+  insight: {
+    bg: 'bg-[var(--color-metahuman-light)]',
+    border: 'border-[var(--color-metahuman)]',
+    Icon: Lightbulb,
+    title: 'Key Insight',
+    color: 'text-[var(--color-metahuman)]',
+  },
+  warning: {
+    bg: 'bg-[var(--warning-light)]',
+    border: 'border-[var(--warning)]',
+    Icon: AlertTriangle,
+    title: 'Warning',
+    color: 'text-[var(--warning)]',
+  },
+  tip: {
+    bg: 'bg-[var(--info-light)]',
+    border: 'border-[var(--info)]',
+    Icon: Target,
+    title: 'Pro Tip',
+    color: 'text-[var(--info)]',
+  },
+  note: {
+    bg: 'bg-[var(--surface-2)]',
+    border: 'border-[var(--border-strong)]',
+    Icon: FileText,
+    title: 'Note',
+    color: 'text-[var(--text-muted)]',
+  },
+  success: {
+    bg: 'bg-[var(--success-light)]',
+    border: 'border-[var(--success)]',
+    Icon: CheckCircle,
+    title: 'Success',
+    color: 'text-[var(--success)]',
+  },
+};
 
 export default function KeyInsight({
   title,
@@ -19,70 +69,35 @@ export default function KeyInsight({
 }: KeyInsightProps) {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
 
-  const styles = {
-    insight: {
-      bg: 'bg-purple-500/10',
-      border: 'border-purple-500',
-      icon: '💡',
-      title: 'Key Insight',
-      color: 'text-purple-500',
-    },
-    warning: {
-      bg: 'bg-yellow-500/10',
-      border: 'border-yellow-500',
-      icon: '⚠️',
-      title: 'Warning',
-      color: 'text-yellow-500',
-    },
-    tip: {
-      bg: 'bg-blue-500/10',
-      border: 'border-blue-500',
-      icon: '🎯',
-      title: 'Pro Tip',
-      color: 'text-blue-500',
-    },
-    note: {
-      bg: 'bg-gray-500/10',
-      border: 'border-gray-500',
-      icon: '📝',
-      title: 'Note',
-      color: 'text-gray-400',
-    },
-    success: {
-      bg: 'bg-green-500/10',
-      border: 'border-green-500',
-      icon: '✅',
-      title: 'Success',
-      color: 'text-green-500',
-    },
-  };
-
-  const style = styles[type];
+  const config = typeConfig[type];
+  const { Icon } = config;
 
   return (
-    <div className={`${style.bg} border-l-4 ${style.border} rounded-r p-4 my-4`}>
+    <div className={`${config.bg} border-l-4 ${config.border} rounded-r-lg p-4 my-4`}>
       <button
         type="button"
         onClick={() => expandable && setIsExpanded(!isExpanded)}
-        className={`flex items-center gap-2 font-semibold ${style.color} ${expandable ? 'cursor-pointer' : ''}`}
+        className={`flex items-center gap-2 font-semibold ${config.color} ${
+          expandable ? 'cursor-pointer hover:opacity-80' : 'cursor-default'
+        } transition-opacity`}
       >
-        <span>{style.icon}</span>
-        <span>{title || style.title}</span>
+        <Icon size={18} strokeWidth={2} />
+        <span>{title || config.title}</span>
         {expandable && (
-          <span className={`text-xs transition-transform ${isExpanded ? 'rotate-90' : ''}`}>
-            ▶
-          </span>
+          <ChevronRight
+            size={14}
+            strokeWidth={2}
+            className={`transition-transform duration-200 ${isExpanded ? 'rotate-90' : ''}`}
+          />
         )}
       </button>
 
       <div
         className={`overflow-hidden transition-all duration-300 ${
-          isExpanded ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'
+          isExpanded ? 'max-h-[500px] opacity-100 mt-3' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="text-sm text-[var(--foreground)] leading-relaxed">
-          {children}
-        </div>
+        <div className="text-sm text-[var(--text-secondary)] leading-relaxed">{children}</div>
       </div>
     </div>
   );

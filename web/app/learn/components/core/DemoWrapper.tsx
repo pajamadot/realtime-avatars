@@ -1,6 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import {
+  Gamepad2,
+  Lightbulb,
+  Maximize2,
+  Minimize2,
+  Target,
+  ArrowRight,
+  Circle,
+} from 'lucide-react';
 
 interface DemoWrapperProps {
   id?: string;
@@ -28,11 +37,13 @@ export default function DemoWrapper({
   const [showInsights, setShowInsights] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  const difficultyColors = {
-    beginner: '#22c55e',
-    intermediate: '#f59e0b',
-    advanced: '#ef4444',
+  const difficultyConfig = {
+    beginner: { color: 'var(--success)', bg: 'var(--success-light)' },
+    intermediate: { color: 'var(--warning)', bg: 'var(--warning-light)' },
+    advanced: { color: 'var(--error)', bg: 'var(--error-light)' },
   };
+
+  const config = difficultyConfig[difficulty];
 
   return (
     <div
@@ -42,24 +53,26 @@ export default function DemoWrapper({
       }`}
     >
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-[var(--border)] bg-[var(--card-bg)]">
+      <div className="flex items-center justify-between p-4 border-b border-[var(--border)] bg-[var(--surface-0)]">
         <div className="flex items-center gap-3">
-          <span className="text-lg">🎮</span>
+          <div className="w-8 h-8 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center text-[var(--accent)]">
+            <Gamepad2 size={18} strokeWidth={1.75} />
+          </div>
           <div>
             <h3 className="font-semibold flex items-center gap-2">
               {title}
               <span
-                className="text-xs px-2 py-0.5 rounded-full"
+                className="text-xs px-2 py-0.5 rounded-full font-medium"
                 style={{
-                  backgroundColor: difficultyColors[difficulty] + '20',
-                  color: difficultyColors[difficulty],
+                  backgroundColor: config.bg,
+                  color: config.color,
                 }}
               >
                 {difficulty}
               </span>
             </h3>
             {description && (
-              <p className="text-xs text-[var(--muted)] mt-0.5">{description}</p>
+              <p className="text-xs text-[var(--text-muted)] mt-0.5">{description}</p>
             )}
           </div>
         </div>
@@ -69,34 +82,40 @@ export default function DemoWrapper({
             <button
               type="button"
               onClick={() => setShowInsights(!showInsights)}
-              className={`text-xs px-3 py-1 rounded transition-colors ${
-                showInsights
-                  ? 'bg-purple-500 text-white'
-                  : 'bg-[var(--card-bg-alt)] text-[var(--muted)] hover:text-[var(--foreground)]'
+              className={`btn btn-sm ${
+                showInsights ? 'btn-primary' : 'btn-ghost'
               }`}
             >
-              💡 Insights
+              <Lightbulb size={14} strokeWidth={1.75} />
+              <span>Insights</span>
             </button>
           )}
           <button
             type="button"
             onClick={() => setIsFullscreen(!isFullscreen)}
-            className="text-xs px-3 py-1 rounded bg-[var(--card-bg-alt)] text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+            className="btn btn-sm btn-ghost btn-icon"
             title={isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}
           >
-            {isFullscreen ? '⊙' : '⛶'}
+            {isFullscreen ? (
+              <Minimize2 size={16} strokeWidth={1.75} />
+            ) : (
+              <Maximize2 size={16} strokeWidth={1.75} />
+            )}
           </button>
         </div>
       </div>
 
       {/* Insights panel */}
       {showInsights && insights.length > 0 && (
-        <div className="p-4 bg-purple-500/10 border-b border-purple-500/20">
-          <h4 className="text-sm font-semibold text-purple-400 mb-2">Key Insights</h4>
-          <ul className="space-y-1">
+        <div className="p-4 bg-[var(--color-metahuman-light)] border-b border-[var(--color-metahuman)]/20">
+          <h4 className="text-sm font-semibold text-[var(--color-metahuman)] mb-2 flex items-center gap-2">
+            <Lightbulb size={14} strokeWidth={2} />
+            Key Insights
+          </h4>
+          <ul className="space-y-1.5">
             {insights.map((insight, i) => (
-              <li key={i} className="text-sm text-[var(--muted)] flex items-start gap-2">
-                <span className="text-purple-400">•</span>
+              <li key={i} className="text-sm text-[var(--text-secondary)] flex items-start gap-2">
+                <Circle size={6} className="mt-1.5 fill-[var(--color-metahuman)] text-[var(--color-metahuman)]" />
                 {insight}
               </li>
             ))}
@@ -105,27 +124,26 @@ export default function DemoWrapper({
       )}
 
       {/* Demo content */}
-      <div className="p-4">
-        {children}
-      </div>
+      <div className="p-4">{children}</div>
 
       {/* Controls */}
       {controls && (
-        <div className="p-4 border-t border-[var(--border)] bg-[var(--card-bg-alt)]">
+        <div className="p-4 border-t border-[var(--border)] bg-[var(--surface-2)]">
           {controls}
         </div>
       )}
 
       {/* Tips section */}
       {tips.length > 0 && (
-        <div className="p-4 border-t border-[var(--border)] bg-blue-500/5">
-          <h4 className="text-xs font-semibold text-blue-400 mb-2 flex items-center gap-1">
-            <span>🎯</span> Tips for this demo
+        <div className="p-4 border-t border-[var(--border)] bg-[var(--info-light)]">
+          <h4 className="text-xs font-semibold text-[var(--info)] mb-2 flex items-center gap-1.5">
+            <Target size={12} strokeWidth={2} />
+            Tips for this demo
           </h4>
           <ul className="grid md:grid-cols-2 gap-2">
             {tips.map((tip, i) => (
-              <li key={i} className="text-xs text-[var(--muted)] flex items-start gap-2">
-                <span className="text-blue-400">→</span>
+              <li key={i} className="text-xs text-[var(--text-secondary)] flex items-start gap-2">
+                <ArrowRight size={12} className="mt-0.5 text-[var(--info)]" strokeWidth={2} />
                 {tip}
               </li>
             ))}
@@ -136,13 +154,13 @@ export default function DemoWrapper({
       {/* Related concepts */}
       {relatedConcepts.length > 0 && (
         <div className="p-4 border-t border-[var(--border)]">
-          <span className="text-xs text-[var(--muted)]">Related:</span>
-          <div className="flex flex-wrap gap-2 mt-1">
+          <span className="text-xs text-[var(--text-muted)]">Related:</span>
+          <div className="flex flex-wrap gap-2 mt-1.5">
             {relatedConcepts.map((concept) => (
               <a
                 key={concept.name}
                 href={concept.link}
-                className="text-xs px-2 py-1 rounded bg-[var(--card-bg-alt)] hover:bg-[var(--border)] transition-colors"
+                className="badge hover:border-[var(--border-strong)] transition-colors"
               >
                 {concept.name}
               </a>

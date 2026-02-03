@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { Bone, Smile, Smartphone, Palette, Link2, Shirt, Sparkles, Github, BookOpen } from 'lucide-react';
 import content from '../data/content/metahuman.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget,
   BoneHierarchyMini, BlendshapeInterpolation, SkinningWeightsMini, FKvsIKMini, LODMini, FACSMini, WrinkleMapMini,
@@ -76,20 +77,26 @@ export default function MetaHumanPage() {
         <div className="highlight-box">
           <p className="font-medium mb-4">The Core Idea in 30 Seconds</p>
           <div className="grid md:grid-cols-3 gap-4 text-center">
-            <div className="p-4 bg-[var(--card-bg)] rounded">
-              <div className="text-3xl mb-2">🦴</div>
+            <div className="p-4 bg-[var(--card-bg)] rounded-lg">
+              <div className="w-10 h-10 rounded-full bg-[var(--color-metahuman-light)] flex items-center justify-center mx-auto mb-3">
+                <Bone size={24} className="text-[var(--color-metahuman)]" strokeWidth={1.5} />
+              </div>
               <p className="font-medium">Skeletal Rig</p>
-              <p className="text-sm text-[var(--muted)]">700+ bones control mesh deformation hierarchically</p>
+              <p className="text-sm text-[var(--text-muted)]">700+ bones control mesh deformation hierarchically</p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded">
-              <div className="text-3xl mb-2">😊</div>
+            <div className="p-4 bg-[var(--card-bg)] rounded-lg">
+              <div className="w-10 h-10 rounded-full bg-[var(--color-metahuman-light)] flex items-center justify-center mx-auto mb-3">
+                <Smile size={24} className="text-[var(--color-metahuman)]" strokeWidth={1.5} />
+              </div>
               <p className="font-medium">52 Blendshapes</p>
-              <p className="text-sm text-[var(--muted)]">ARKit standard for facial expressions at 60 FPS</p>
+              <p className="text-sm text-[var(--text-muted)]">ARKit standard for facial expressions at 60 FPS</p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded">
-              <div className="text-3xl mb-2">📱</div>
+            <div className="p-4 bg-[var(--card-bg)] rounded-lg">
+              <div className="w-10 h-10 rounded-full bg-[var(--color-metahuman-light)] flex items-center justify-center mx-auto mb-3">
+                <Smartphone size={24} className="text-[var(--color-metahuman)]" strokeWidth={1.5} />
+              </div>
               <p className="font-medium">Live Link</p>
-              <p className="text-sm text-[var(--muted)]">iPhone face tracking streams directly to UE5</p>
+              <p className="text-sm text-[var(--text-muted)]">iPhone face tracking streams directly to UE5</p>
             </div>
           </div>
         </div>
@@ -98,25 +105,33 @@ export default function MetaHumanPage() {
         <div className="card p-6 mt-6">
           <h3 className="font-semibold mb-3">The Marionette Metaphor</h3>
           <div className="grid md:grid-cols-4 gap-4">
-            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
-              <div className="text-4xl mb-2">🎭</div>
+            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded-lg">
+              <div className="w-10 h-10 rounded-full bg-[var(--surface-0)] flex items-center justify-center mx-auto mb-2">
+                <Palette size={20} className="text-[var(--color-metahuman)]" strokeWidth={1.5} />
+              </div>
               <p className="text-sm font-medium">Bones</p>
-              <p className="text-xs text-[var(--muted)]">Wooden crossbars</p>
+              <p className="text-xs text-[var(--text-muted)]">Wooden crossbars</p>
             </div>
-            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
-              <div className="text-4xl mb-2">🔗</div>
+            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded-lg">
+              <div className="w-10 h-10 rounded-full bg-[var(--surface-0)] flex items-center justify-center mx-auto mb-2">
+                <Link2 size={20} className="text-[var(--color-metahuman)]" strokeWidth={1.5} />
+              </div>
               <p className="text-sm font-medium">Joints</p>
-              <p className="text-xs text-[var(--muted)]">Strings connecting bars</p>
+              <p className="text-xs text-[var(--text-muted)]">Strings connecting bars</p>
             </div>
-            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
-              <div className="text-4xl mb-2">👕</div>
+            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded-lg">
+              <div className="w-10 h-10 rounded-full bg-[var(--surface-0)] flex items-center justify-center mx-auto mb-2">
+                <Shirt size={20} className="text-[var(--color-metahuman)]" strokeWidth={1.5} />
+              </div>
               <p className="text-sm font-medium">Mesh</p>
-              <p className="text-xs text-[var(--muted)]">Puppet's cloth/skin</p>
+              <p className="text-xs text-[var(--text-muted)]">Puppet's cloth/skin</p>
             </div>
-            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
-              <div className="text-4xl mb-2">✨</div>
+            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded-lg">
+              <div className="w-10 h-10 rounded-full bg-[var(--surface-0)] flex items-center justify-center mx-auto mb-2">
+                <Sparkles size={20} className="text-[var(--color-metahuman)]" strokeWidth={1.5} />
+              </div>
               <p className="text-sm font-medium">Blendshapes</p>
-              <p className="text-xs text-[var(--muted)]">Facial expressions overlay</p>
+              <p className="text-xs text-[var(--text-muted)]">Facial expressions overlay</p>
             </div>
           </div>
         </div>
