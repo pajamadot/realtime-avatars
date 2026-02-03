@@ -253,7 +253,7 @@ Suggest improvements or corrections.
 | Track | Research | Structure | Drilldowns | Demos | Review |
 |-------|----------|-----------|------------|-------|--------|
 | Gaussian Splatting | Done | Done | 5/5 done | 3 done | Pending |
-| MetaHuman | Done | Done | 4/5 done | 2 done | Pending |
+| MetaHuman | Done | Done | 4/5 done | 3 done | Pending |
 | Generative Video | Done | Done | 6/6 done | 2 done | Pending |
 | Streaming Avatars | Done | Done | 5/5 done | 2 done | Pending |
 
@@ -293,6 +293,7 @@ Suggest improvements or corrections.
 7. **ICEConnectionDemo** - WebRTC ICE candidate gathering visualizer
 8. **DiffusionStepsDemo** - 4-step vs 50-step quality comparison
 9. **SkinningWeightDemo** - Skeletal skinning weights visualizer
+10. **FaceTrackingDemo** - Simulated ARKit face tracking with blendshape output
 
 ### Missing Concepts (To Create)
 
@@ -301,7 +302,7 @@ Suggest improvements or corrections.
 
 ### Demo Ideas (Not Yet Implemented)
 
-1. **Face Tracking Simulator** - Webcam input → blendshape output (MetaHuman)
+(All planned demos have been implemented!)
 
 ---
 
