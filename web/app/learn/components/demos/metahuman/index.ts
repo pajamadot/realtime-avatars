@@ -7,3 +7,4 @@ export { BlendshapeMixerDemo } from './BlendshapeMixerDemo';
 export { InverseKinematicsDemo } from './InverseKinematicsDemo';
 export { LODDemo } from './LODDemo';
 export { WrinkleMapDemo } from './WrinkleMapDemo';
+export { CorrectiveBlendshapesDemo } from './CorrectiveBlendshapesDemo';

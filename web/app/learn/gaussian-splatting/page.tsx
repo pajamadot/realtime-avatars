@@ -57,6 +57,11 @@ const AdaptiveDensityDemo = dynamic(
   { ssr: false, loading: () => <DemoPlaceholder label="Loading adaptive density demo..." /> }
 );
 
+const DepthSortingDemo = dynamic(
+  () => import('../components/demos/gaussian/DepthSortingDemo'),
+  { ssr: false, loading: () => <DemoPlaceholder label="Loading depth sorting demo..." /> }
+);
+
 function DemoPlaceholder({ label }: { label: string }) {
   return (
     <div className="h-[300px] bg-[var(--card-bg-alt)] rounded-lg flex items-center justify-center text-[var(--muted)]">
@@ -293,6 +298,15 @@ export default function GaussianSplattingPage() {
             Watch how 3DGS dynamically adjusts Gaussian count during training through densification and pruning.
           </p>
           <AdaptiveDensityDemo />
+        </div>
+
+        {/* Demo 11: Depth Sorting */}
+        <div id="demo-depth-sorting" className="mb-8">
+          <h3 className="text-xl font-semibold mb-3">Demo 11: Depth Sorting for Alpha Blending</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Transparent objects must be rendered back-to-front. Watch the sorting algorithm in action.
+          </p>
+          <DepthSortingDemo />
         </div>
       </section>
 

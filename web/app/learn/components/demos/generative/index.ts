@@ -8,3 +8,4 @@ export { UNetArchitectureDemo } from './UNetArchitectureDemo';
 export { NoiseScheduleDemo } from './NoiseScheduleDemo';
 export { CFGStrengthDemo } from './CFGStrengthDemo';
 export { TemporalConsistencyDemo } from './TemporalConsistencyDemo';
+export { SamplerComparisonDemo } from './SamplerComparisonDemo';

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/generative-video.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
-import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo, TemporalConsistencyDemo } from '../components/demos/generative';
+import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo, TemporalConsistencyDemo, SamplerComparisonDemo } from '../components/demos/generative';
 import { ConvolutionDemo } from '../components/demos/fundamentals';
 import { GradientDescentDemo, NeuralNetworkDemo } from '../components/demos/fundamentals';
 
@@ -213,6 +213,15 @@ export default function GenerativeVideoPage() {
             The fundamental operation behind CNNs. Watch how kernels slide over images to extract features for face encoding.
           </p>
           <ConvolutionDemo />
+        </div>
+
+        {/* Sampler Comparison Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Sampler Comparison</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Compare DDPM, DDIM, Euler, and DPM++ samplers. See how modern samplers achieve quality in 20 steps vs 1000.
+          </p>
+          <SamplerComparisonDemo />
         </div>
       </section>
 
