@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { Lightbulb } from 'lucide-react';
 import ParameterSlider from '../../core/ParameterSlider';
 
 interface Layer {
@@ -249,9 +250,10 @@ export default function AlphaBlendingDemo() {
       </div>
 
       {/* Insight */}
-      <div className="p-4 bg-[var(--card-bg-alt)] border-t border-[var(--border)] text-sm text-[var(--muted)]">
-        💡 <strong>Key insight:</strong> Order matters! Swap the front and back layers and notice how the result changes.
-        This is why 3DGS must sort all Gaussians by depth before rendering each frame.
+      <div className="p-4 bg-[var(--card-bg-alt)] border-t border-[var(--border)] text-sm text-[var(--muted)] flex items-start gap-2">
+        <Lightbulb size={16} className="text-yellow-500 flex-shrink-0 mt-0.5" />
+        <span><strong>Key insight:</strong> Order matters! Swap the front and back layers and notice how the result changes.
+        This is why 3DGS must sort all Gaussians by depth before rendering each frame.</span>
       </div>
     </div>
   );

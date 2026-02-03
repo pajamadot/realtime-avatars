@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { Lightbulb, Gamepad2, Search } from 'lucide-react';
 
 interface ConceptCardProps {
   id: string;
@@ -146,10 +147,11 @@ export default function ConceptCard({
 
         <div className={`overflow-hidden transition-all duration-300 ${showMetaphor ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
           <div
-            className="p-3 bg-[var(--card-bg-alt)] rounded text-sm text-[var(--muted)] mb-4 border-l-2"
+            className="p-3 bg-[var(--card-bg-alt)] rounded text-sm text-[var(--muted)] mb-4 border-l-2 flex items-start gap-2"
             style={{ borderColor: color }}
           >
-            💡 {visualMetaphor}
+            <Lightbulb size={16} className="flex-shrink-0 mt-0.5" style={{ color }} />
+            <span>{visualMetaphor}</span>
           </div>
         </div>
 
@@ -160,7 +162,7 @@ export default function ConceptCard({
               href={`/learn/${trackId}#demo-${demoId}`}
               className="badge hover:border-[var(--border-strong)] flex items-center gap-1 transition-all hover:scale-105"
             >
-              <span>🎮</span>
+              <Gamepad2 size={14} />
               <span>Try demo</span>
             </Link>
           )}
@@ -169,7 +171,7 @@ export default function ConceptCard({
               href={`/learn/${trackId}/concepts/${drillDown}`}
               className="badge hover:border-[var(--border-strong)] flex items-center gap-1 transition-all hover:scale-105"
             >
-              <span>🔍</span>
+              <Search size={14} />
               <span>Go deeper</span>
             </Link>
           )}

@@ -2,6 +2,20 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import {
+  Monitor,
+  Mic,
+  Image,
+  Box,
+  Layers,
+  Paintbrush,
+  Sparkles,
+  Github,
+  BookOpen,
+  FileText,
+  Check,
+  X,
+} from 'lucide-react';
 import content from '../data/content/generative-video.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget,
   DiffusionNoiseLevels, GaussianCurve, UNetSkipMini, AttentionHeatmapMini, VAELatentMini, CFGStrengthMini,
@@ -81,17 +95,23 @@ export default function GenerativeVideoPage() {
           <p className="font-medium mb-4">The Core Idea in 30 Seconds</p>
           <div className="grid md:grid-cols-3 gap-4 text-center">
             <div className="p-4 bg-[var(--card-bg)] rounded">
-              <div className="text-3xl mb-2">📺</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
+                <Monitor size={24} className="text-[var(--color-generative)]" />
+              </div>
               <p className="font-medium">Add Noise → Learn to Reverse</p>
               <p className="text-sm text-[var(--muted)]">Train on clear→noisy, generate noisy→clear</p>
             </div>
             <div className="p-4 bg-[var(--card-bg)] rounded">
-              <div className="text-3xl mb-2">🎤</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
+                <Mic size={24} className="text-[var(--color-generative)]" />
+              </div>
               <p className="font-medium">Audio Drives Motion</p>
               <p className="text-sm text-[var(--muted)]">Sound patterns map to mouth shapes automatically</p>
             </div>
             <div className="p-4 bg-[var(--card-bg)] rounded">
-              <div className="text-3xl mb-2">🖼️</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
+                <Image size={24} className="text-[var(--color-generative)]" />
+              </div>
               <p className="font-medium">One Photo → Any Voice</p>
               <p className="text-sm text-[var(--muted)]">No per-person training, works on any face</p>
             </div>
@@ -103,22 +123,30 @@ export default function GenerativeVideoPage() {
           <h3 className="font-semibold mb-3">The Marble Sculpture Metaphor</h3>
           <div className="grid md:grid-cols-4 gap-4">
             <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
-              <div className="text-4xl mb-2">🗿</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
+                <Box size={24} className="text-[var(--color-generative)]" />
+              </div>
               <p className="text-sm font-medium">1. Perfect Sculpture</p>
               <p className="text-xs text-[var(--muted)]">Start with a clear image</p>
             </div>
             <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
-              <div className="text-4xl mb-2">🪨</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
+                <Layers size={24} className="text-[var(--color-generative)]" />
+              </div>
               <p className="text-sm font-medium">2. Sandpaper 1000x</p>
               <p className="text-xs text-[var(--muted)]">Add noise until unrecognizable</p>
             </div>
             <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
-              <div className="text-4xl mb-2">👨‍🎨</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
+                <Paintbrush size={24} className="text-[var(--color-generative)]" />
+              </div>
               <p className="text-sm font-medium">3. Train Restorer</p>
               <p className="text-xs text-[var(--muted)]">Learn to undo one stroke</p>
             </div>
             <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
-              <div className="text-4xl mb-2">✨</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
+                <Sparkles size={24} className="text-[var(--color-generative)]" />
+              </div>
               <p className="text-sm font-medium">4. Generate</p>
               <p className="text-xs text-[var(--muted)]">Rough block → sculpture emerges</p>
             </div>
@@ -569,7 +597,7 @@ export default function GenerativeVideoPage() {
                 className="card p-4 flex items-start gap-3 hover:border-[var(--border-strong)]"
               >
                 <span className="text-[var(--accent)]">
-                  {resource.type === 'github' ? '📦' : resource.type === 'paper' ? '📄' : '📖'}
+                  {resource.type === 'github' ? <Github size={18} /> : resource.type === 'paper' ? <FileText size={18} /> : <BookOpen size={18} />}
                 </span>
                 <div>
                   <p className="font-medium text-sm">{resource.title}</p>
@@ -589,7 +617,7 @@ export default function GenerativeVideoPage() {
 
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div className="card-alt p-5">
-            <p className="font-medium mb-3 text-green-600">✓ Use When</p>
+            <p className="font-medium mb-3 text-green-600 flex items-center gap-1"><Check size={16} /> Use When</p>
             <ul className="space-y-2 text-sm text-[var(--muted)]">
               {content.tradeoffs.when.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
@@ -600,7 +628,7 @@ export default function GenerativeVideoPage() {
             </ul>
           </div>
           <div className="card-alt p-5">
-            <p className="font-medium mb-3 text-red-600">✗ Avoid When</p>
+            <p className="font-medium mb-3 text-red-600 flex items-center gap-1"><X size={16} /> Avoid When</p>
             <ul className="space-y-2 text-sm text-[var(--muted)]">
               {content.tradeoffs.whenNot.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">

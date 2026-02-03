@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { X, RefreshCw } from 'lucide-react';
 
 interface MechanismNuggetProps {
   title: string;
@@ -3208,7 +3209,7 @@ export function PacketLossRecoveryMini() {
               p === 1 ? 'bg-green-500' : (fecEnabled ? 'bg-yellow-500' : 'bg-red-500')
             }`}
           >
-            {p === 0 && (fecEnabled ? '↻' : '✗')}
+            {p === 0 && (fecEnabled ? <RefreshCw size={12} /> : <X size={12} />)}
           </div>
         ))}
       </div>

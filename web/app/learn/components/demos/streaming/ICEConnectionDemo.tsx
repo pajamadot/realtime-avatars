@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { Check, X, Circle, ArrowLeftRight, Lightbulb, PartyPopper, Ban } from 'lucide-react';
 
 interface ICECandidate {
   id: string;
@@ -169,10 +170,10 @@ export function ICEConnectionDemo() {
         successPair = pair;
         pair.local.status = 'succeeded';
         pair.remote.status = 'succeeded';
-        addLog(`✓ Connectivity check succeeded: ${pair.local.type} ↔ ${pair.remote.type}`);
+        addLog(`[OK] Connectivity check succeeded: ${pair.local.type} <-> ${pair.remote.type}`);
       } else if (!canConnect) {
         pair.local.status = 'failed';
-        addLog(`✗ Connectivity check failed: ${pair.local.type} ↔ ${pair.remote.type}`);
+        addLog(`[FAIL] Connectivity check failed: ${pair.local.type} <-> ${pair.remote.type}`);
       }
 
       setState(prev => ({
@@ -189,11 +190,11 @@ export function ICEConnectionDemo() {
         phase: 'connected',
         selectedPair: { local: successPair!.local.id, remote: successPair!.remote.id },
       }));
-      addLog(`🎉 Connected via ${CANDIDATE_TYPES[successPair.local.type].label} ↔ ${CANDIDATE_TYPES[successPair.remote.type].label}`);
+      addLog(`[SUCCESS] Connected via ${CANDIDATE_TYPES[successPair.local.type].label} <-> ${CANDIDATE_TYPES[successPair.remote.type].label}`);
       addLog(`Estimated latency: ${(successPair.local.latency || 0) + (successPair.remote.latency || 0)}ms`);
     } else {
       setState(prev => ({ ...prev, phase: 'failed' }));
-      addLog('❌ Connection failed - no viable candidate pair');
+      addLog('[ERROR] Connection failed - no viable candidate pair');
     }
   };
 
@@ -336,7 +337,7 @@ export function ICEConnectionDemo() {
                 : 'bg-yellow-500/20 text-yellow-500 animate-pulse'
             }`}
           >
-            {state.phase === 'connected' ? '✓' : state.phase === 'failed' ? '✗' : state.phase === 'idle' ? '○' : '↔'}
+            {state.phase === 'connected' ? <Check size={16} /> : state.phase === 'failed' ? <X size={16} /> : state.phase === 'idle' ? <Circle size={16} /> : <ArrowLeftRight size={16} />}
           </div>
           <p className="text-sm font-medium capitalize">{state.phase}</p>
           {state.selectedPair && (
@@ -391,9 +392,10 @@ export function ICEConnectionDemo() {
       )}
 
       {/* Insight */}
-      <div className="mt-4 p-4 bg-[var(--card-bg-alt)] rounded text-sm text-[var(--muted)]">
-        💡 <strong>Try this:</strong> Set NAT type to &quot;Strict&quot; and start a connection.
-        Notice how it falls back to TURN relay when direct connections fail — this adds latency but ensures connectivity!
+      <div className="mt-4 p-4 bg-[var(--card-bg-alt)] rounded text-sm text-[var(--muted)] flex items-start gap-2">
+        <Lightbulb size={16} className="text-yellow-500 flex-shrink-0 mt-0.5" />
+        <span><strong>Try this:</strong> Set NAT type to &quot;Strict&quot; and start a connection.
+        Notice how it falls back to TURN relay when direct connections fail — this adds latency but ensures connectivity!</span>
       </div>
     </div>
   );

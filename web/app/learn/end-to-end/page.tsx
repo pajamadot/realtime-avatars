@@ -2,6 +2,15 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import {
+  Ear,
+  Brain,
+  MessageCircle,
+  Drama,
+  Github,
+  Gamepad2,
+  BookOpen,
+} from 'lucide-react';
 import content from '../data/content/end-to-end.json';
 import { AnimatedDiagram, CodeWalkthrough } from '../components/core';
 import { PipelineFlowDemo, QualityLatencyDemo } from '../components/demos/endtoend';
@@ -88,22 +97,30 @@ export default function EndToEndPage() {
           <p className="font-medium mb-4">What Makes a Real-Time Avatar?</p>
           <div className="grid md:grid-cols-4 gap-4 text-center">
             <div className="p-4 bg-[var(--card-bg)] rounded">
-              <div className="text-3xl mb-2">👂</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center">
+                <Ear size={24} className="text-[var(--accent)]" />
+              </div>
               <p className="font-medium">Listen</p>
               <p className="text-sm text-[var(--muted)]">Capture and transcribe speech</p>
             </div>
             <div className="p-4 bg-[var(--card-bg)] rounded">
-              <div className="text-3xl mb-2">🧠</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center">
+                <Brain size={24} className="text-[var(--accent)]" />
+              </div>
               <p className="font-medium">Think</p>
               <p className="text-sm text-[var(--muted)]">Generate intelligent response</p>
             </div>
             <div className="p-4 bg-[var(--card-bg)] rounded">
-              <div className="text-3xl mb-2">🗣️</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center">
+                <MessageCircle size={24} className="text-[var(--accent)]" />
+              </div>
               <p className="font-medium">Speak</p>
               <p className="text-sm text-[var(--muted)]">Synthesize natural speech</p>
             </div>
             <div className="p-4 bg-[var(--card-bg)] rounded">
-              <div className="text-3xl mb-2">🎭</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center">
+                <Drama size={24} className="text-[var(--accent)]" />
+              </div>
               <p className="font-medium">Animate</p>
               <p className="text-sm text-[var(--muted)]">Render talking avatar</p>
             </div>
@@ -407,7 +424,7 @@ export default function EndToEndPage() {
                 className="card p-4 flex items-start gap-3 hover:border-[var(--border-strong)]"
               >
                 <span className="text-[var(--accent)]">
-                  {resource.type === 'github' ? '📦' : resource.type === 'demo' ? '🎮' : '📖'}
+                  {resource.type === 'github' ? <Github size={18} /> : resource.type === 'demo' ? <Gamepad2 size={18} /> : <BookOpen size={18} />}
                 </span>
                 <div>
                   <p className="font-medium text-sm">{resource.title}</p>

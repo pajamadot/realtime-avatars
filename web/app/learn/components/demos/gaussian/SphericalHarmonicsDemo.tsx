@@ -4,6 +4,7 @@ import { useRef, useState, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
+import { Lightbulb } from 'lucide-react';
 import ParameterSlider from '../../core/ParameterSlider';
 
 interface SHCoefficients {
@@ -263,9 +264,10 @@ export default function SphericalHarmonicsDemo() {
       </div>
 
       {/* Insight */}
-      <div className="p-4 bg-[var(--card-bg-alt)] border-t border-[var(--border)] text-sm text-[var(--muted)]">
-        💡 <strong>Try this:</strong> Select the &quot;gradient&quot; preset and rotate the sphere.
-        Notice how color changes based on viewing direction — this is how 3DGS captures specular highlights!
+      <div className="p-4 bg-[var(--card-bg-alt)] border-t border-[var(--border)] text-sm text-[var(--muted)] flex items-start gap-2">
+        <Lightbulb size={16} className="text-yellow-500 flex-shrink-0 mt-0.5" />
+        <span><strong>Try this:</strong> Select the &quot;gradient&quot; preset and rotate the sphere.
+        Notice how color changes based on viewing direction — this is how 3DGS captures specular highlights!</span>
       </div>
     </div>
   );

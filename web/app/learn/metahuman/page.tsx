@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Bone, Smile, Smartphone, Palette, Link2, Shirt, Sparkles, Github, BookOpen } from 'lucide-react';
+import { Bone, Smile, Smartphone, Palette, Link2, Shirt, Sparkles, Github, BookOpen, Check, X } from 'lucide-react';
 import content from '../data/content/metahuman.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget,
   BoneHierarchyMini, BlendshapeInterpolation, SkinningWeightsMini, FKvsIKMini, LODMini, FACSMini, WrinkleMapMini,
@@ -390,7 +390,7 @@ export default function MetaHumanPage() {
                 className="card p-4 flex items-start gap-3 hover:border-[var(--border-strong)]"
               >
                 <span className="text-[var(--accent)]">
-                  {resource.type === 'github' ? '📦' : '📖'}
+                  {resource.type === 'github' ? <Github size={18} /> : <BookOpen size={18} />}
                 </span>
                 <div>
                   <p className="font-medium text-sm">{resource.title}</p>
@@ -410,7 +410,7 @@ export default function MetaHumanPage() {
 
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div className="card-alt p-5">
-            <p className="font-medium mb-3 text-green-600">✓ Use When</p>
+            <p className="font-medium mb-3 text-green-600 flex items-center gap-1"><Check size={16} /> Use When</p>
             <ul className="space-y-2 text-sm text-[var(--muted)]">
               {content.tradeoffs.when.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
@@ -421,7 +421,7 @@ export default function MetaHumanPage() {
             </ul>
           </div>
           <div className="card-alt p-5">
-            <p className="font-medium mb-3 text-red-600">✗ Avoid When</p>
+            <p className="font-medium mb-3 text-red-600 flex items-center gap-1"><X size={16} /> Avoid When</p>
             <ul className="space-y-2 text-sm text-[var(--muted)]">
               {content.tradeoffs.whenNot.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">

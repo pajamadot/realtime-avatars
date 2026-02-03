@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Check, X } from 'lucide-react';
 
 interface QuizQuestion {
   question: string;
@@ -155,8 +156,8 @@ export default function QuickQuiz({
                     ${selectedAnswer !== null && index === selectedAnswer && index !== question.correctIndex ? 'bg-red-500 border-red-500 text-white' : ''}
                   `}
                 >
-                  {selectedAnswer !== null && index === question.correctIndex && '✓'}
-                  {selectedAnswer !== null && index === selectedAnswer && index !== question.correctIndex && '✗'}
+                  {selectedAnswer !== null && index === question.correctIndex && <Check size={14} />}
+                  {selectedAnswer !== null && index === selectedAnswer && index !== question.correctIndex && <X size={14} />}
                   {selectedAnswer === null && String.fromCharCode(65 + index)}
                 </span>
                 <span>{option}</span>
@@ -173,8 +174,8 @@ export default function QuickQuiz({
             isCorrect ? 'bg-green-500/10 border-l-4 border-green-500' : 'bg-red-500/10 border-l-4 border-red-500'
           }`}
         >
-          <p className={`font-semibold mb-2 ${isCorrect ? 'text-green-500' : 'text-red-500'}`}>
-            {isCorrect ? '✓ Correct!' : '✗ Not quite'}
+          <p className={`font-semibold mb-2 flex items-center gap-1 ${isCorrect ? 'text-green-500' : 'text-red-500'}`}>
+            {isCorrect ? <><Check size={16} /> Correct!</> : <><X size={16} /> Not quite</>}
           </p>
           <p className="text-sm text-[var(--muted)]">{question.explanation}</p>
         </div>

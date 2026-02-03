@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { BookOpen, Search, Gamepad2 } from 'lucide-react';
 
 const tracks = [
   {
@@ -174,7 +175,9 @@ export default function LearnPage() {
         <h2 className="text-2xl font-semibold mb-6">How These Guides Work</h2>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="card-alt p-5">
-            <div className="text-2xl mb-3">📚</div>
+            <div className="w-10 h-10 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center mb-3">
+              <BookOpen size={20} className="text-[var(--accent)]" />
+            </div>
             <h3 className="font-semibold mb-2">Level 3: Practical Start</h3>
             <p className="text-sm text-[var(--muted)]">
               Each track starts with "what does this do?" — practical explanations
@@ -182,7 +185,9 @@ export default function LearnPage() {
             </p>
           </div>
           <div className="card-alt p-5">
-            <div className="text-2xl mb-3">🔍</div>
+            <div className="w-10 h-10 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center mb-3">
+              <Search size={20} className="text-[var(--accent)]" />
+            </div>
             <h3 className="font-semibold mb-2">Level 2: Drill Down</h3>
             <p className="text-sm text-[var(--muted)]">
               Curious about the math? Click any concept to drill deeper.
@@ -190,7 +195,9 @@ export default function LearnPage() {
             </p>
           </div>
           <div className="card-alt p-5">
-            <div className="text-2xl mb-3">🎮</div>
+            <div className="w-10 h-10 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center mb-3">
+              <Gamepad2 size={20} className="text-[var(--accent)]" />
+            </div>
             <h3 className="font-semibold mb-2">Interactive Demos</h3>
             <p className="text-sm text-[var(--muted)]">
               Every concept has tweakable parameters. Manipulate a Gaussian,

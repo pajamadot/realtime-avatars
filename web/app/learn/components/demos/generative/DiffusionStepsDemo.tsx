@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { Lightbulb } from 'lucide-react';
 
 interface ImageState {
   steps: number;
@@ -292,9 +293,10 @@ export function DiffusionStepsDemo() {
       </div>
 
       {/* Insight */}
-      <div className="mt-4 p-4 bg-[var(--card-bg-alt)] rounded text-sm text-[var(--muted)]">
-        💡 <strong>Try this:</strong> Generate with different seeds and compare the 4-step vs 50-step results.
-        Notice how the basic structure is there in 4 steps, but fine details like eye highlights are missing!
+      <div className="mt-4 p-4 bg-[var(--card-bg-alt)] rounded text-sm text-[var(--muted)] flex items-start gap-2">
+        <Lightbulb size={16} className="text-yellow-500 flex-shrink-0 mt-0.5" />
+        <span><strong>Try this:</strong> Generate with different seeds and compare the 4-step vs 50-step results.
+        Notice how the basic structure is there in 4 steps, but fine details like eye highlights are missing!</span>
       </div>
     </div>
   );

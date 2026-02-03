@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { Lightbulb, AlertTriangle, Copy, Check, ChevronUp, ChevronDown } from 'lucide-react';
 
 interface CodeStep {
   title: string;
@@ -109,7 +110,7 @@ export default function CodeWalkthrough({
               style={isActive ? { color, borderColor: color } : undefined}
             >
               <span className={`mr-2 ${isCompleted && !isActive ? '' : ''}`}>
-                {isCompleted && !isActive ? '✓' : `${index + 1}.`}
+                {isCompleted && !isActive ? <Check size={12} /> : `${index + 1}.`}
               </span>
               {step.title}
 
@@ -135,7 +136,7 @@ export default function CodeWalkthrough({
         {/* Tip callout */}
         {currentStep?.tip && (
           <div className="p-3 mb-4 rounded border-l-4 bg-blue-500/10 border-blue-500 text-sm">
-            <span className="font-semibold text-blue-500">💡 Tip:</span>{' '}
+            <span className="font-semibold text-blue-500 inline-flex items-center gap-1"><Lightbulb size={14} /> Tip:</span>{' '}
             <span className="text-[var(--foreground)]">{currentStep.tip}</span>
           </div>
         )}
@@ -143,7 +144,7 @@ export default function CodeWalkthrough({
         {/* Warning callout */}
         {currentStep?.warning && (
           <div className="p-3 mb-4 rounded border-l-4 bg-yellow-500/10 border-yellow-500 text-sm">
-            <span className="font-semibold text-yellow-500">⚠️ Warning:</span>{' '}
+            <span className="font-semibold text-yellow-500 inline-flex items-center gap-1"><AlertTriangle size={14} /> Warning:</span>{' '}
             <span className="text-[var(--foreground)]">{currentStep.warning}</span>
           </div>
         )}
@@ -181,7 +182,7 @@ export default function CodeWalkthrough({
                     }
                   `}
                 >
-                  {copied ? '✓ Copied!' : '📋 Copy'}
+                  {copied ? <><Check size={12} className="inline mr-1" /> Copied!</> : <><Copy size={12} className="inline mr-1" /> Copy</>}
                 </button>
               </div>
             </div>
@@ -209,7 +210,7 @@ export default function CodeWalkthrough({
                 onClick={() => setExpandedCode(!expandedCode)}
                 className="w-full py-2 text-sm text-[var(--muted)] hover:text-[var(--foreground)] bg-[var(--card-bg-alt)] border-t border-[var(--border)] transition-colors"
               >
-                {expandedCode ? '▲ Show less' : `▼ Show all ${codeLines} lines`}
+                {expandedCode ? <><ChevronUp size={14} className="inline mr-1" /> Show less</> : <><ChevronDown size={14} className="inline mr-1" /> Show all {codeLines} lines</>}
               </button>
             )}
           </div>
@@ -259,7 +260,7 @@ export default function CodeWalkthrough({
         <p className="text-center text-xs text-[var(--muted)] mt-3">
           Step {activeStep + 1} of {steps.length}
           {activeStep === steps.length - 1 && (
-            <span className="ml-2 text-green-500">✓ Complete!</span>
+            <span className="ml-2 text-green-500 inline-flex items-center gap-1"><Check size={12} /> Complete!</span>
           )}
         </p>
       </div>

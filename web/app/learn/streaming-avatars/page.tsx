@@ -2,6 +2,18 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import {
+  Globe,
+  Drama,
+  Smartphone,
+  Mic,
+  Video,
+  Eye,
+  Github,
+  BookOpen,
+  Check,
+  X,
+} from 'lucide-react';
 import content from '../data/content/streaming-avatars.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget,
   LatencyStack, PacketOrdering, ICECandidatesMini, BitrateAdaptationMini, SimulcastMini,
@@ -77,17 +89,23 @@ export default function StreamingAvatarsPage() {
           <p className="font-medium mb-4">The Core Idea in 30 Seconds</p>
           <div className="grid md:grid-cols-3 gap-4 text-center">
             <div className="p-4 bg-[var(--card-bg)] rounded">
-              <div className="text-3xl mb-2">🌐</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-streaming-light)] flex items-center justify-center">
+                <Globe size={24} className="text-[var(--color-streaming)]" />
+              </div>
               <p className="font-medium">WebRTC Transport</p>
               <p className="text-sm text-[var(--muted)]">Encrypted, real-time, no plugins needed</p>
             </div>
             <div className="p-4 bg-[var(--card-bg)] rounded">
-              <div className="text-3xl mb-2">🎭</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-streaming-light)] flex items-center justify-center">
+                <Drama size={24} className="text-[var(--color-streaming)]" />
+              </div>
               <p className="font-medium">Cloud Avatar</p>
               <p className="text-sm text-[var(--muted)]">GPU rendering happens server-side</p>
             </div>
             <div className="p-4 bg-[var(--card-bg)] rounded">
-              <div className="text-3xl mb-2">📱</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-streaming-light)] flex items-center justify-center">
+                <Smartphone size={24} className="text-[var(--color-streaming)]" />
+              </div>
               <p className="font-medium">Any Device</p>
               <p className="text-sm text-[var(--muted)]">Works on web, mobile, low-end hardware</p>
             </div>
@@ -103,22 +121,30 @@ export default function StreamingAvatarsPage() {
           </p>
           <div className="grid md:grid-cols-4 gap-4">
             <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
-              <div className="text-4xl mb-2">🎤</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-streaming-light)] flex items-center justify-center">
+                <Mic size={24} className="text-[var(--color-streaming)]" />
+              </div>
               <p className="text-sm font-medium">Your Audio</p>
               <p className="text-xs text-[var(--muted)]">The script</p>
             </div>
             <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
-              <div className="text-4xl mb-2">🎭</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-streaming-light)] flex items-center justify-center">
+                <Drama size={24} className="text-[var(--color-streaming)]" />
+              </div>
               <p className="text-sm font-medium">Avatar Provider</p>
               <p className="text-xs text-[var(--muted)]">The hidden puppeteer</p>
             </div>
             <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
-              <div className="text-4xl mb-2">📹</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-streaming-light)] flex items-center justify-center">
+                <Video size={24} className="text-[var(--color-streaming)]" />
+              </div>
               <p className="text-sm font-medium">Video Stream</p>
               <p className="text-xs text-[var(--muted)]">The performance</p>
             </div>
             <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
-              <div className="text-4xl mb-2">👀</div>
+              <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-streaming-light)] flex items-center justify-center">
+                <Eye size={24} className="text-[var(--color-streaming)]" />
+              </div>
               <p className="text-sm font-medium">Your User</p>
               <p className="text-xs text-[var(--muted)]">The audience</p>
             </div>
@@ -378,7 +404,7 @@ export default function StreamingAvatarsPage() {
                 className="card p-4 flex items-start gap-3 hover:border-[var(--border-strong)]"
               >
                 <span className="text-[var(--accent)]">
-                  {resource.type === 'github' ? '📦' : '📖'}
+                  {resource.type === 'github' ? <Github size={18} /> : <BookOpen size={18} />}
                 </span>
                 <div>
                   <p className="font-medium text-sm">{resource.title}</p>
@@ -398,7 +424,7 @@ export default function StreamingAvatarsPage() {
 
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div className="card-alt p-5">
-            <p className="font-medium mb-3 text-green-600">✓ Use When</p>
+            <p className="font-medium mb-3 text-green-600 flex items-center gap-1"><Check size={16} /> Use When</p>
             <ul className="space-y-2 text-sm text-[var(--muted)]">
               {content.tradeoffs.when.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
@@ -409,7 +435,7 @@ export default function StreamingAvatarsPage() {
             </ul>
           </div>
           <div className="card-alt p-5">
-            <p className="font-medium mb-3 text-red-600">✗ Avoid When</p>
+            <p className="font-medium mb-3 text-red-600 flex items-center gap-1"><X size={16} /> Avoid When</p>
             <ul className="space-y-2 text-sm text-[var(--muted)]">
               {content.tradeoffs.whenNot.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { Check } from 'lucide-react';
 
 interface PipelineStep {
   id: string;
@@ -148,7 +149,7 @@ export default function AnimatedDiagram({
                   style={isActive ? { backgroundColor: 'rgba(255,255,255,0.2)' } : undefined}
                 >
                   {isCompleted && !isActive ? (
-                    <span className="text-lg">✓</span>
+                    <Check size={18} />
                   ) : (
                     step.icon || (index + 1)
                   )}

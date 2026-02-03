@@ -3,6 +3,7 @@
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { Lightbulb } from 'lucide-react';
 
 // Import concept data
 import diffusionMath from '../../../data/concepts/diffusion-math.json';
@@ -150,7 +151,7 @@ export default function ConceptPage() {
       {/* Aha Moment */}
       <section className="mb-12">
         <div className="research-note">
-          <p className="font-medium mb-2">💡 The "Aha" Moment</p>
+          <p className="font-medium mb-2 flex items-center gap-2"><Lightbulb size={18} className="text-yellow-500" /> The "Aha" Moment</p>
           <p className="text-lg">{concept.insight}</p>
         </div>
       </section>

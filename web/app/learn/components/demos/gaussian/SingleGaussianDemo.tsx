@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Line } from '@react-three/drei';
 import * as THREE from 'three';
+import { Lightbulb } from 'lucide-react';
 import ParameterSlider from '../../core/ParameterSlider';
 
 interface GaussianParams {
@@ -292,9 +293,10 @@ export default function SingleGaussianDemo() {
       </div>
 
       {/* Insight */}
-      <div className="p-4 bg-[var(--card-bg-alt)] border-t border-[var(--border)] text-sm text-[var(--muted)]">
-        💡 <strong>Try this:</strong> Set X Scale to 2 and Y Scale to 0.5, then rotate around Z.
-        Watch how the covariance matrix changes — this is exactly how 3DGS stores shape information!
+      <div className="p-4 bg-[var(--card-bg-alt)] border-t border-[var(--border)] text-sm text-[var(--muted)] flex items-start gap-2">
+        <Lightbulb size={16} className="text-yellow-500 flex-shrink-0 mt-0.5" />
+        <span><strong>Try this:</strong> Set X Scale to 2 and Y Scale to 0.5, then rotate around Z.
+        Watch how the covariance matrix changes — this is exactly how 3DGS stores shape information!</span>
       </div>
     </div>
   );

@@ -1,5 +1,7 @@
 'use client';
 
+import { Check } from 'lucide-react';
+
 interface ProgressTrackerProps {
   sections: Array<{
     id: string;
@@ -45,7 +47,7 @@ export default function ProgressTracker({
                 `}
                 style={isActive ? { backgroundColor: 'rgba(255,255,255,0.3)' } : undefined}
               >
-                {isComplete ? '✓' : index + 1}
+                {isComplete ? <Check size={12} /> : index + 1}
               </span>
               <span className="hidden sm:inline">{section.label}</span>
             </a>

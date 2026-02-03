@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { Mic, FileText, Smile, Drama } from 'lucide-react';
 
 interface Viseme {
   id: string;
@@ -301,22 +302,30 @@ export function LipSyncPlaygroundDemo() {
         <p className="font-medium mb-2">Audio-to-Lip-Sync Pipeline</p>
         <div className="grid md:grid-cols-4 gap-4 text-sm text-[var(--muted)]">
           <div className="text-center">
-            <div className="text-2xl mb-1">🎤</div>
+            <div className="w-10 h-10 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
+              <Mic size={20} className="text-[var(--color-generative)]" />
+            </div>
             <p className="font-medium text-[var(--foreground)]">Audio</p>
             <p className="text-xs">Raw waveform</p>
           </div>
           <div className="text-center">
-            <div className="text-2xl mb-1">📝</div>
+            <div className="w-10 h-10 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
+              <FileText size={20} className="text-[var(--color-generative)]" />
+            </div>
             <p className="font-medium text-[var(--foreground)]">Phonemes</p>
             <p className="text-xs">"Hello" → h-ə-l-oʊ</p>
           </div>
           <div className="text-center">
-            <div className="text-2xl mb-1">👄</div>
+            <div className="w-10 h-10 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
+              <Smile size={20} className="text-[var(--color-generative)]" />
+            </div>
             <p className="font-medium text-[var(--foreground)]">Visemes</p>
             <p className="text-xs">Mouth shape targets</p>
           </div>
           <div className="text-center">
-            <div className="text-2xl mb-1">🎭</div>
+            <div className="w-10 h-10 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
+              <Drama size={20} className="text-[var(--color-generative)]" />
+            </div>
             <p className="font-medium text-[var(--foreground)]">Animation</p>
             <p className="text-xs">Blended shapes</p>
           </div>

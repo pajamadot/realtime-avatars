@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { Circle, Layers, Zap, Github, BookOpen, ArrowRight } from 'lucide-react';
+import { Circle, Layers, Zap, Github, BookOpen, ArrowRight, Check, X } from 'lucide-react';
 import content from '../data/content/gaussian-splatting.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget,
   AlphaBlendMath, GaussianCurve, MatrixTransformMini, DepthSortingMini, TileRasterizationMini,
@@ -511,7 +511,7 @@ export default function GaussianSplattingPage() {
 
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div className="card-alt p-5">
-            <p className="font-medium mb-3 text-green-600">✓ Use When</p>
+            <p className="font-medium mb-3 text-green-600 flex items-center gap-1"><Check size={16} /> Use When</p>
             <ul className="space-y-2 text-sm text-[var(--muted)]">
               {content.tradeoffs.when.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
@@ -522,7 +522,7 @@ export default function GaussianSplattingPage() {
             </ul>
           </div>
           <div className="card-alt p-5">
-            <p className="font-medium mb-3 text-red-600">✗ Avoid When</p>
+            <p className="font-medium mb-3 text-red-600 flex items-center gap-1"><X size={16} /> Avoid When</p>
             <ul className="space-y-2 text-sm text-[var(--muted)]">
               {content.tradeoffs.whenNot.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">

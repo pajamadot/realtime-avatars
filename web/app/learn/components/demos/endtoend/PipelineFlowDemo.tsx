@@ -1,24 +1,25 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { Mic, BarChart2, FileText, Brain, Volume2, Drama, Radio, LucideIcon } from 'lucide-react';
 
 interface PipelineStage {
   id: string;
   name: string;
-  icon: string;
+  icon: LucideIcon;
   latency: { min: number; max: number };
   description: string;
   color: string;
 }
 
 const stages: PipelineStage[] = [
-  { id: 'mic', name: 'Mic', icon: '🎤', latency: { min: 0, max: 0 }, description: 'User speaks', color: '#6bcb77' },
-  { id: 'vad', name: 'VAD', icon: '📊', latency: { min: 100, max: 300 }, description: 'Detect speech end', color: '#4ecdc4' },
-  { id: 'stt', name: 'STT', icon: '📝', latency: { min: 100, max: 400 }, description: 'Transcribe audio', color: '#45b7d1' },
-  { id: 'llm', name: 'LLM', icon: '🧠', latency: { min: 150, max: 500 }, description: 'Generate response', color: '#96ceb4' },
-  { id: 'tts', name: 'TTS', icon: '🔊', latency: { min: 100, max: 300 }, description: 'Synthesize speech', color: '#ffd93d' },
-  { id: 'avatar', name: 'Avatar', icon: '🎭', latency: { min: 50, max: 200 }, description: 'Render face', color: '#ff6b6b' },
-  { id: 'stream', name: 'Stream', icon: '📡', latency: { min: 30, max: 100 }, description: 'Deliver to user', color: '#c9b1ff' },
+  { id: 'mic', name: 'Mic', icon: Mic, latency: { min: 0, max: 0 }, description: 'User speaks', color: '#6bcb77' },
+  { id: 'vad', name: 'VAD', icon: BarChart2, latency: { min: 100, max: 300 }, description: 'Detect speech end', color: '#4ecdc4' },
+  { id: 'stt', name: 'STT', icon: FileText, latency: { min: 100, max: 400 }, description: 'Transcribe audio', color: '#45b7d1' },
+  { id: 'llm', name: 'LLM', icon: Brain, latency: { min: 150, max: 500 }, description: 'Generate response', color: '#96ceb4' },
+  { id: 'tts', name: 'TTS', icon: Volume2, latency: { min: 100, max: 300 }, description: 'Synthesize speech', color: '#ffd93d' },
+  { id: 'avatar', name: 'Avatar', icon: Drama, latency: { min: 50, max: 200 }, description: 'Render face', color: '#ff6b6b' },
+  { id: 'stream', name: 'Stream', icon: Radio, latency: { min: 30, max: 100 }, description: 'Deliver to user', color: '#c9b1ff' },
 ];
 
 interface DataPacket {
@@ -192,10 +193,10 @@ export default function PipelineFlowDemo() {
           {stages.map((stage, idx) => (
             <div key={stage.id} className="flex flex-col items-center">
               <div
-                className="w-14 h-14 rounded-lg flex items-center justify-center text-2xl relative"
+                className="w-14 h-14 rounded-lg flex items-center justify-center relative"
                 style={{ backgroundColor: `${stage.color}20`, border: `2px solid ${stage.color}` }}
               >
-                {stage.icon}
+                <stage.icon size={24} style={{ color: stage.color }} />
                 {/* Stage activity indicator */}
                 {packets.some(p => p.stage === idx) && (
                   <div
