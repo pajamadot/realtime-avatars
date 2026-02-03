@@ -2064,3 +2064,1739 @@ export function SFUTopologyMini() {
     </div>
   );
 }
+
+// ============ MORE NEURAL NETWORK MECHANISMS ============
+
+// Softmax
+export function SoftmaxMini() {
+  const [values, setValues] = useState([2, 1, 0.5]);
+  const expValues = values.map(v => Math.exp(v));
+  const sum = expValues.reduce((a, b) => a + b, 0);
+  const probs = expValues.map(e => e / sum);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-2 justify-center">
+        {values.map((v, i) => (
+          <div key={i} className="text-center">
+            <input
+              type="range"
+              min="-2"
+              max="4"
+              step="0.5"
+              value={v}
+              onChange={(e) => {
+                const newV = [...values];
+                newV[i] = parseFloat(e.target.value);
+                setValues(newV);
+              }}
+              className="w-12 -rotate-90 origin-center h-8"
+            />
+            <div className="text-xs font-mono mt-4">{(probs[i] * 100).toFixed(0)}%</div>
+          </div>
+        ))}
+      </div>
+      <p className="text-xs text-center text-[var(--muted)] font-mono">
+        softmax(z)ᵢ = eᶻⁱ / Σeᶻʲ
+      </p>
+    </div>
+  );
+}
+
+// Embedding space
+export function EmbeddingSpaceMini() {
+  const words = [
+    { word: 'king', x: 30, y: 20 },
+    { word: 'queen', x: 35, y: 25 },
+    { word: 'man', x: 20, y: 60 },
+    { word: 'woman', x: 25, y: 65 },
+    { word: 'cat', x: 80, y: 50 },
+    { word: 'dog', x: 75, y: 55 },
+  ];
+
+  return (
+    <div className="space-y-3">
+      <div className="relative h-24 bg-[var(--card-bg-alt)] rounded">
+        {words.map((w, i) => (
+          <div
+            key={i}
+            className="absolute text-xs px-1 rounded bg-purple-500/30"
+            style={{ left: `${w.x}%`, top: `${w.y}%`, transform: 'translate(-50%, -50%)' }}
+          >
+            {w.word}
+          </div>
+        ))}
+      </div>
+      <p className="text-xs text-center text-[var(--muted)]">
+        Similar concepts cluster together in vector space
+      </p>
+    </div>
+  );
+}
+
+// Positional encoding
+export function PositionalEncodingMini() {
+  const positions = 8;
+  const dims = 4;
+
+  return (
+    <div className="space-y-3">
+      <div className="grid gap-0.5" style={{ gridTemplateColumns: `repeat(${dims}, 1fr)` }}>
+        {Array(positions).fill(0).map((_, pos) =>
+          Array(dims).fill(0).map((_, dim) => {
+            const freq = 1 / Math.pow(10000, (2 * Math.floor(dim/2)) / dims);
+            const val = dim % 2 === 0 ? Math.sin(pos * freq) : Math.cos(pos * freq);
+            return (
+              <div
+                key={`${pos}-${dim}`}
+                className="aspect-square rounded-sm"
+                style={{
+                  backgroundColor: `rgba(139, 92, 246, ${(val + 1) / 2})`,
+                }}
+              />
+            );
+          })
+        )}
+      </div>
+      <p className="text-xs text-center text-[var(--muted)]">
+        Sinusoidal patterns encode position info
+      </p>
+    </div>
+  );
+}
+
+// Residual connection
+export function ResidualConnectionMini() {
+  const [useResidual, setUseResidual] = useState(true);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex items-center justify-center gap-2">
+        <div className="w-8 h-8 rounded bg-blue-500 flex items-center justify-center text-xs">x</div>
+        <span>→</span>
+        <div className="flex flex-col items-center gap-1">
+          <div className="w-12 h-6 rounded bg-purple-500/50 text-xs flex items-center justify-center">F(x)</div>
+          {useResidual && (
+            <div className="w-8 h-0.5 bg-yellow-500" />
+          )}
+        </div>
+        <span>→</span>
+        <div className="w-8 h-8 rounded bg-green-500 flex items-center justify-center text-xs">
+          {useResidual ? '+' : 'y'}
+        </div>
+      </div>
+      <button
+        onClick={() => setUseResidual(!useResidual)}
+        className={`w-full text-xs py-1 rounded ${useResidual ? 'bg-yellow-500 text-black' : 'bg-[var(--card-bg-alt)]'}`}
+      >
+        {useResidual ? 'y = F(x) + x (skip)' : 'y = F(x) (no skip)'}
+      </button>
+    </div>
+  );
+}
+
+// Layer normalization
+export function LayerNormMini() {
+  const [normalized, setNormalized] = useState(false);
+  const values = [3, 7, 2, 8, 1, 9, 4, 6];
+  const mean = values.reduce((a, b) => a + b, 0) / values.length;
+  const variance = values.reduce((a, b) => a + (b - mean) ** 2, 0) / values.length;
+  const normValues = values.map(v => (v - mean) / Math.sqrt(variance + 1e-5));
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-0.5 justify-center h-16 items-end">
+        {(normalized ? normValues : values).map((v, i) => (
+          <div
+            key={i}
+            className={`w-4 rounded-t transition-all ${v >= 0 ? 'bg-green-500' : 'bg-red-500'}`}
+            style={{ height: `${Math.abs(v) * (normalized ? 20 : 8)}%` }}
+          />
+        ))}
+      </div>
+      <button
+        onClick={() => setNormalized(!normalized)}
+        className={`w-full text-xs py-1 rounded ${normalized ? 'bg-green-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+      >
+        {normalized ? 'Layer Normalized' : 'Original values'}
+      </button>
+    </div>
+  );
+}
+
+// Multi-head attention
+export function MultiHeadAttentionMini() {
+  const [heads, setHeads] = useState(4);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-1 justify-center">
+        {Array(heads).fill(0).map((_, i) => (
+          <div
+            key={i}
+            className="w-8 h-8 rounded flex items-center justify-center text-xs"
+            style={{ backgroundColor: `hsl(${i * (360 / heads)}, 70%, 50%)` }}
+          >
+            H{i+1}
+          </div>
+        ))}
+      </div>
+      <input
+        type="range"
+        min="1"
+        max="8"
+        value={heads}
+        onChange={(e) => setHeads(parseInt(e.target.value))}
+        className="w-full"
+      />
+      <p className="text-xs text-center text-[var(--muted)]">
+        {heads} heads × {Math.floor(64/heads)}d = 64d total
+      </p>
+    </div>
+  );
+}
+
+// Gradient clipping
+export function GradientClippingMini() {
+  const [clipValue, setClipValue] = useState(1);
+  const gradients = [0.3, 2.5, -1.8, 0.7, -3.2, 1.1];
+  const clipped = gradients.map(g => Math.max(-clipValue, Math.min(clipValue, g)));
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-1 justify-center h-16">
+        {gradients.map((g, i) => (
+          <div key={i} className="flex flex-col items-center justify-center">
+            <div
+              className={`w-4 transition-all ${g >= 0 ? 'bg-blue-500/30' : 'bg-blue-500/30'}`}
+              style={{ height: `${Math.abs(g) * 15}px`, marginTop: g < 0 ? 0 : 'auto' }}
+            />
+            <div
+              className={`w-4 transition-all ${clipped[i] >= 0 ? 'bg-green-500' : 'bg-green-500'}`}
+              style={{ height: `${Math.abs(clipped[i]) * 15}px` }}
+            />
+          </div>
+        ))}
+      </div>
+      <input
+        type="range"
+        min="0.5"
+        max="3"
+        step="0.5"
+        value={clipValue}
+        onChange={(e) => setClipValue(parseFloat(e.target.value))}
+        className="w-full"
+      />
+      <p className="text-xs text-center text-[var(--muted)]">
+        Clip threshold: ±{clipValue}
+      </p>
+    </div>
+  );
+}
+
+// ============ MORE 3D GRAPHICS MECHANISMS ============
+
+// Normal mapping
+export function NormalMappingMini() {
+  const [useNormals, setUseNormals] = useState(true);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-4 justify-center">
+        <div className="text-center">
+          <div
+            className="w-16 h-16 rounded-lg"
+            style={{
+              background: useNormals
+                ? 'repeating-linear-gradient(45deg, #666 0px, #888 2px, #666 4px)'
+                : '#777',
+              boxShadow: useNormals
+                ? 'inset 2px 2px 4px rgba(255,255,255,0.3), inset -2px -2px 4px rgba(0,0,0,0.3)'
+                : 'none',
+            }}
+          />
+          <span className="text-xs text-[var(--muted)]">Surface</span>
+        </div>
+      </div>
+      <button
+        onClick={() => setUseNormals(!useNormals)}
+        className={`w-full text-xs py-1 rounded ${useNormals ? 'bg-blue-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+      >
+        {useNormals ? 'Normal map ON' : 'Normal map OFF'}
+      </button>
+    </div>
+  );
+}
+
+// PBR materials
+export function PBRMaterialMini() {
+  const [roughness, setRoughness] = useState(0.5);
+  const [metallic, setMetallic] = useState(0);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex justify-center">
+        <div
+          className="w-16 h-16 rounded-full"
+          style={{
+            background: `radial-gradient(circle at 30% 30%,
+              ${metallic > 0.5 ? '#ccc' : '#888'} 0%,
+              ${metallic > 0.5 ? '#666' : '#444'} 100%)`,
+            filter: `blur(${roughness * 2}px)`,
+            boxShadow: roughness < 0.3 ? '0 0 10px rgba(255,255,255,0.5)' : 'none',
+          }}
+        />
+      </div>
+      <div className="grid grid-cols-2 gap-2 text-xs">
+        <div>
+          <span className="text-[var(--muted)]">Rough</span>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.1"
+            value={roughness}
+            onChange={(e) => setRoughness(parseFloat(e.target.value))}
+            className="w-full"
+          />
+        </div>
+        <div>
+          <span className="text-[var(--muted)]">Metal</span>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.1"
+            value={metallic}
+            onChange={(e) => setMetallic(parseFloat(e.target.value))}
+            className="w-full"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Frustum culling
+export function FrustumCullingMini() {
+  const [fov, setFov] = useState(60);
+  const objects = [
+    { x: 50, y: 30, visible: true },
+    { x: 20, y: 50, visible: true },
+    { x: 80, y: 40, visible: true },
+    { x: 10, y: 20, visible: false },
+    { x: 90, y: 70, visible: false },
+  ];
+
+  const inFrustum = (obj: typeof objects[0]) => {
+    const halfFov = fov / 2;
+    const angle = Math.abs(obj.x - 50);
+    return angle < halfFov && obj.y > 20 && obj.y < 80;
+  };
+
+  return (
+    <div className="space-y-3">
+      <div className="relative h-20 bg-[var(--card-bg-alt)] rounded overflow-hidden">
+        {/* Frustum */}
+        <div
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 border-l-2 border-r-2 border-t-2 border-green-500/50"
+          style={{
+            width: `${fov}%`,
+            height: '100%',
+            borderTopLeftRadius: '50%',
+            borderTopRightRadius: '50%',
+          }}
+        />
+        {/* Objects */}
+        {objects.map((obj, i) => (
+          <div
+            key={i}
+            className={`absolute w-3 h-3 rounded-full transition-all ${inFrustum(obj) ? 'bg-green-500' : 'bg-red-500 opacity-50'}`}
+            style={{ left: `${obj.x}%`, top: `${obj.y}%`, transform: 'translate(-50%, -50%)' }}
+          />
+        ))}
+      </div>
+      <input
+        type="range"
+        min="30"
+        max="90"
+        value={fov}
+        onChange={(e) => setFov(parseInt(e.target.value))}
+        className="w-full"
+      />
+      <p className="text-xs text-center text-[var(--muted)]">
+        {objects.filter(inFrustum).length} of {objects.length} visible
+      </p>
+    </div>
+  );
+}
+
+// Z-buffer
+export function ZBufferMini() {
+  const [showBuffer, setShowBuffer] = useState(false);
+
+  return (
+    <div className="space-y-3">
+      <div className="relative h-20 bg-[var(--card-bg-alt)] rounded overflow-hidden">
+        {showBuffer ? (
+          <div className="absolute inset-0 grid grid-cols-8 grid-rows-4 gap-0.5 p-1">
+            {Array(32).fill(0).map((_, i) => (
+              <div
+                key={i}
+                className="rounded-sm"
+                style={{ backgroundColor: `rgba(255,255,255,${0.2 + Math.random() * 0.6})` }}
+              />
+            ))}
+          </div>
+        ) : (
+          <>
+            <div className="absolute w-12 h-12 bg-blue-500 rounded" style={{ left: '20%', top: '20%' }} />
+            <div className="absolute w-10 h-10 bg-green-500 rounded" style={{ left: '35%', top: '30%' }} />
+            <div className="absolute w-8 h-8 bg-red-500 rounded" style={{ left: '50%', top: '40%' }} />
+          </>
+        )}
+      </div>
+      <button
+        onClick={() => setShowBuffer(!showBuffer)}
+        className={`w-full text-xs py-1 rounded ${showBuffer ? 'bg-gray-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+      >
+        {showBuffer ? 'View: Depth Buffer' : 'View: Color Output'}
+      </button>
+    </div>
+  );
+}
+
+// Mipmap levels
+export function MipmapMini() {
+  const [level, setLevel] = useState(0);
+  const sizes = [64, 32, 16, 8, 4];
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-2 justify-center items-end h-20">
+        {sizes.map((s, i) => (
+          <div
+            key={i}
+            className={`rounded transition-all cursor-pointer ${level === i ? 'ring-2 ring-yellow-500' : 'opacity-50'}`}
+            style={{
+              width: s,
+              height: s,
+              backgroundColor: '#8b5cf6',
+              filter: `blur(${i * 0.5}px)`,
+            }}
+            onClick={() => setLevel(i)}
+          />
+        ))}
+      </div>
+      <p className="text-xs text-center text-[var(--muted)]">
+        Level {level}: {sizes[level]}×{sizes[level]}px
+      </p>
+    </div>
+  );
+}
+
+// ============ MORE AUDIO/VIDEO MECHANISMS ============
+
+// Mel spectrogram
+export function MelSpectrogramMini() {
+  const [playing, setPlaying] = useState(false);
+  const bins = 8;
+  const frames = 12;
+
+  useEffect(() => {
+    if (!playing) return;
+    const interval = setInterval(() => {}, 100);
+    return () => clearInterval(interval);
+  }, [playing]);
+
+  return (
+    <div className="space-y-3">
+      <div className="grid gap-0.5" style={{ gridTemplateColumns: `repeat(${frames}, 1fr)` }}>
+        {Array(bins * frames).fill(0).map((_, i) => {
+          const intensity = Math.random() * 0.8 + 0.2;
+          return (
+            <div
+              key={i}
+              className="aspect-square rounded-sm transition-all"
+              style={{ backgroundColor: `rgba(139, 92, 246, ${intensity})` }}
+            />
+          );
+        })}
+      </div>
+      <div className="flex justify-between text-xs text-[var(--muted)]">
+        <span>Low freq</span>
+        <span>Time →</span>
+        <span>High freq</span>
+      </div>
+    </div>
+  );
+}
+
+// Phoneme to viseme
+export function PhonemeVisemeMini() {
+  const [phoneme, setPhoneme] = useState<'a' | 'e' | 'o' | 'm'>('a');
+  const visemes = {
+    a: { jaw: 0.8, lips: 0.3 },
+    e: { jaw: 0.4, lips: 0.6 },
+    o: { jaw: 0.6, lips: 0.8 },
+    m: { jaw: 0.1, lips: 0.9 },
+  };
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-1 justify-center">
+        {(Object.keys(visemes) as Array<keyof typeof visemes>).map((p) => (
+          <button
+            key={p}
+            onClick={() => setPhoneme(p)}
+            className={`w-8 h-8 rounded font-mono ${phoneme === p ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+          >
+            {p}
+          </button>
+        ))}
+      </div>
+      <svg width="60" height="40" viewBox="0 0 60 40" className="mx-auto">
+        <ellipse
+          cx="30"
+          cy="20"
+          rx={8 + visemes[phoneme].lips * 8}
+          ry={4 + visemes[phoneme].jaw * 12}
+          fill="none"
+          stroke="#666"
+          strokeWidth="2"
+        />
+      </svg>
+      <p className="text-xs text-center text-[var(--muted)]">
+        /{phoneme}/ → jaw: {(visemes[phoneme].jaw * 100).toFixed(0)}%, lips: {(visemes[phoneme].lips * 100).toFixed(0)}%
+      </p>
+    </div>
+  );
+}
+
+// Audio envelope
+export function AudioEnvelopeMini() {
+  const [phase, setPhase] = useState<'A' | 'D' | 'S' | 'R'>('A');
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+
+    // Draw ADSR curve
+    ctx.strokeStyle = '#8b5cf6';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(0, h);
+    ctx.lineTo(w * 0.15, h * 0.1); // Attack
+    ctx.lineTo(w * 0.3, h * 0.3);  // Decay
+    ctx.lineTo(w * 0.7, h * 0.3);  // Sustain
+    ctx.lineTo(w, h);              // Release
+    ctx.stroke();
+
+    // Highlight current phase
+    const phases = { A: 0, D: 0.15, S: 0.3, R: 0.7 };
+    const phaseWidths = { A: 0.15, D: 0.15, S: 0.4, R: 0.3 };
+    ctx.fillStyle = 'rgba(139, 92, 246, 0.3)';
+    ctx.fillRect(phases[phase] * w, 0, phaseWidths[phase] * w, h);
+  }, [phase]);
+
+  return (
+    <div className="space-y-3">
+      <canvas ref={canvasRef} width={120} height={50} className="w-full rounded bg-[var(--card-bg-alt)]" />
+      <div className="flex gap-1 justify-center">
+        {(['A', 'D', 'S', 'R'] as const).map((p) => (
+          <button
+            key={p}
+            onClick={() => setPhase(p)}
+            className={`px-2 py-1 rounded text-xs ${phase === p ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+          >
+            {p === 'A' ? 'Attack' : p === 'D' ? 'Decay' : p === 'S' ? 'Sustain' : 'Release'}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Frame interpolation
+export function FrameInterpolationMini() {
+  const [interpolated, setInterpolated] = useState(true);
+  const frames = interpolated ? [1, 1.5, 2, 2.5, 3] : [1, 2, 3];
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-1 justify-center">
+        {frames.map((f, i) => (
+          <div
+            key={i}
+            className={`w-10 h-10 rounded flex items-center justify-center text-xs font-mono
+              ${Number.isInteger(f) ? 'bg-blue-500' : 'bg-purple-500/50 border border-dashed border-purple-500'}`}
+          >
+            {f}
+          </div>
+        ))}
+      </div>
+      <button
+        onClick={() => setInterpolated(!interpolated)}
+        className={`w-full text-xs py-1 rounded ${interpolated ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+      >
+        {interpolated ? '60fps (interpolated)' : '30fps (original)'}
+      </button>
+    </div>
+  );
+}
+
+// Motion vectors
+export function MotionVectorsMini() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+
+    // Draw grid of motion vectors
+    ctx.strokeStyle = '#22c55e';
+    ctx.lineWidth = 1;
+    for (let x = 10; x < w; x += 20) {
+      for (let y = 10; y < h; y += 20) {
+        const dx = (Math.random() - 0.5) * 15;
+        const dy = (Math.random() - 0.5) * 15;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + dx, y + dy);
+        ctx.stroke();
+        // Arrow head
+        ctx.fillStyle = '#22c55e';
+        ctx.beginPath();
+        ctx.arc(x + dx, y + dy, 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }, []);
+
+  return (
+    <div className="space-y-3">
+      <canvas ref={canvasRef} width={120} height={80} className="w-full rounded bg-[var(--card-bg-alt)]" />
+      <p className="text-xs text-center text-[var(--muted)]">
+        Per-block motion vectors for prediction
+      </p>
+    </div>
+  );
+}
+
+// Keyframe vs P-frame
+export function KeyframeMini() {
+  const [frameType, setFrameType] = useState<'I' | 'P' | 'B'>('I');
+  const frames = ['I', 'P', 'P', 'B', 'P', 'P', 'I'];
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-0.5 justify-center">
+        {frames.map((f, i) => (
+          <div
+            key={i}
+            className={`w-8 h-10 rounded flex items-center justify-center text-xs font-bold cursor-pointer
+              ${f === 'I' ? 'bg-green-500' : f === 'P' ? 'bg-blue-500' : 'bg-purple-500'}
+              ${frameType === f ? 'ring-2 ring-white' : ''}`}
+            onClick={() => setFrameType(f as 'I' | 'P' | 'B')}
+          >
+            {f}
+          </div>
+        ))}
+      </div>
+      <p className="text-xs text-center text-[var(--muted)]">
+        {frameType === 'I' ? 'Keyframe: full image' : frameType === 'P' ? 'P-frame: predicted from previous' : 'B-frame: bidirectional'}
+      </p>
+    </div>
+  );
+}
+
+// ============ MORE TRAINING MECHANISMS ============
+
+// Overfitting visualization
+export function OverfittingMini() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [epoch, setEpoch] = useState(50);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+
+    // Training loss
+    ctx.strokeStyle = '#22c55e';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    for (let x = 0; x < epoch * 2 && x < w; x++) {
+      const y = h - 10 - Math.exp(-x / 30) * 50;
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Validation loss
+    ctx.strokeStyle = '#ef4444';
+    ctx.beginPath();
+    for (let x = 0; x < epoch * 2 && x < w; x++) {
+      const decay = Math.exp(-x / 30) * 50;
+      const overfit = x > 50 ? (x - 50) * 0.3 : 0;
+      const y = h - 10 - decay + overfit;
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }, [epoch]);
+
+  return (
+    <div className="space-y-3">
+      <canvas ref={canvasRef} width={120} height={60} className="w-full rounded bg-[var(--card-bg-alt)]" />
+      <div className="flex justify-between text-xs">
+        <span className="text-green-500">Train</span>
+        <span className="text-red-500">Val</span>
+      </div>
+      <input type="range" min="20" max="100" value={epoch} onChange={(e) => setEpoch(parseInt(e.target.value))} className="w-full" />
+    </div>
+  );
+}
+
+
+// Dot product
+export function DotProductMini() {
+  const [angle, setAngle] = useState(0);
+  const dot = Math.cos(angle * Math.PI / 180);
+
+  return (
+    <div className="space-y-3">
+      <svg width="100" height="100" viewBox="-1.5 -1.5 3 3" className="w-full max-w-[100px] mx-auto bg-[var(--card-bg-alt)] rounded">
+        <circle cx="0" cy="0" r="1" fill="none" stroke="#666" strokeWidth="0.02" />
+        <line x1="0" y1="0" x2="1" y2="0" stroke="#22c55e" strokeWidth="0.08" />
+        <line x1="0" y1="0" x2={Math.cos(angle * Math.PI / 180)} y2={-Math.sin(angle * Math.PI / 180)} stroke="#3b82f6" strokeWidth="0.08" />
+      </svg>
+      <input type="range" min="0" max="180" value={angle} onChange={(e) => setAngle(parseInt(e.target.value))} className="w-full" />
+      <p className="text-xs text-center font-mono" style={{ color: dot > 0 ? '#22c55e' : dot < 0 ? '#ef4444' : '#666' }}>a·b = {dot.toFixed(2)}</p>
+    </div>
+  );
+}
+
+// Quaternion rotation
+export function QuaternionMini() {
+  const [axis, setAxis] = useState<'x' | 'y' | 'z'>('y');
+  const [angle, setAngle] = useState(45);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-1 justify-center">
+        {(['x', 'y', 'z'] as const).map((a) => (
+          <button key={a} onClick={() => setAxis(a)} className={`w-8 h-8 rounded text-xs font-bold ${axis === a ? (a === 'x' ? 'bg-red-500' : a === 'y' ? 'bg-green-500' : 'bg-blue-500') + ' text-white' : 'bg-[var(--card-bg-alt)]'}`}>{a.toUpperCase()}</button>
+        ))}
+      </div>
+      <div className="flex justify-center">
+        <div className="w-12 h-12 rounded bg-purple-500/50 border-2 border-purple-500" style={{ transform: `rotate${axis.toUpperCase()}(${angle}deg)` }} />
+      </div>
+      <input type="range" min="0" max="360" value={angle} onChange={(e) => setAngle(parseInt(e.target.value))} className="w-full" />
+    </div>
+  );
+}
+
+// Interpolation types
+export function InterpolationMini() {
+  const [type, setType] = useState<'linear' | 'ease' | 'step'>('linear');
+  const [t, setT] = useState(0.5);
+  const val = type === 'linear' ? t : type === 'ease' ? t * t * (3 - 2 * t) : t < 0.5 ? 0 : 1;
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-1 justify-center">
+        {(['linear', 'ease', 'step'] as const).map((i) => (
+          <button key={i} onClick={() => setType(i)} className={`px-2 py-1 rounded text-xs ${type === i ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{i}</button>
+        ))}
+      </div>
+      <div className="relative h-8 bg-[var(--card-bg-alt)] rounded">
+        <div className="absolute top-0 bottom-0 bg-purple-500 rounded-l" style={{ width: `${val * 100}%` }} />
+      </div>
+      <input type="range" min="0" max="1" step="0.05" value={t} onChange={(e) => setT(parseFloat(e.target.value))} className="w-full" />
+    </div>
+  );
+}
+
+// ============ GAUSSIAN SPLATTING ADVANCED ============
+
+// Covariance matrix visualization
+export function CovarianceMatrixMini() {
+  const [scaleX, setScaleX] = useState(1);
+  const [scaleY, setScaleY] = useState(0.5);
+  const [rotation, setRotation] = useState(30);
+
+  return (
+    <div className="space-y-3">
+      <svg width="100" height="100" viewBox="-2 -2 4 4" className="w-full max-w-[100px] mx-auto bg-[var(--card-bg-alt)] rounded">
+        <ellipse
+          cx="0" cy="0"
+          rx={scaleX} ry={scaleY}
+          fill="rgba(139, 92, 246, 0.5)"
+          stroke="#8b5cf6"
+          strokeWidth="0.05"
+          transform={`rotate(${rotation})`}
+        />
+        <line x1="-2" y1="0" x2="2" y2="0" stroke="#666" strokeWidth="0.02" />
+        <line x1="0" y1="-2" x2="0" y2="2" stroke="#666" strokeWidth="0.02" />
+      </svg>
+      <div className="grid grid-cols-2 gap-1 text-xs">
+        <div>σx<input type="range" min="0.2" max="1.5" step="0.1" value={scaleX} onChange={(e) => setScaleX(parseFloat(e.target.value))} className="w-full" /></div>
+        <div>σy<input type="range" min="0.2" max="1.5" step="0.1" value={scaleY} onChange={(e) => setScaleY(parseFloat(e.target.value))} className="w-full" /></div>
+      </div>
+    </div>
+  );
+}
+
+// Point cloud to splat
+export function PointCloudToSplatMini() {
+  const [splatted, setSplatted] = useState(false);
+  const points = [[20, 30], [50, 20], [80, 40], [30, 70], [60, 60], [75, 75]];
+
+  return (
+    <div className="space-y-3">
+      <div className="relative h-24 bg-[var(--card-bg-alt)] rounded">
+        {points.map((p, i) => (
+          <div
+            key={i}
+            className="absolute transition-all duration-500"
+            style={{
+              left: `${p[0]}%`,
+              top: `${p[1]}%`,
+              transform: 'translate(-50%, -50%)',
+              width: splatted ? '24px' : '4px',
+              height: splatted ? '24px' : '4px',
+              borderRadius: '50%',
+              background: splatted ? 'radial-gradient(circle, rgba(139,92,246,0.8) 0%, transparent 70%)' : '#8b5cf6',
+            }}
+          />
+        ))}
+      </div>
+      <button
+        onClick={() => setSplatted(!splatted)}
+        className={`w-full text-xs py-1 rounded ${splatted ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+      >
+        {splatted ? 'Splatted' : 'Point Cloud'}
+      </button>
+    </div>
+  );
+}
+
+// View-dependent color (SH)
+export function ViewDependentColorMini() {
+  const [angle, setAngle] = useState(0);
+  const hue = (angle / 360) * 60 + 200;
+
+  return (
+    <div className="space-y-3">
+      <div className="flex justify-center">
+        <div
+          className="w-16 h-16 rounded-full"
+          style={{
+            background: `radial-gradient(circle at ${50 + Math.cos(angle * Math.PI / 180) * 20}% ${50 - Math.sin(angle * Math.PI / 180) * 20}%, hsl(${hue}, 70%, 60%) 0%, hsl(${hue + 40}, 50%, 40%) 100%)`,
+          }}
+        />
+      </div>
+      <input type="range" min="0" max="360" value={angle} onChange={(e) => setAngle(parseInt(e.target.value))} className="w-full" />
+      <p className="text-xs text-center text-[var(--muted)]">View angle: {angle}°</p>
+    </div>
+  );
+}
+
+// ============ NEURAL NETWORK ADVANCED ============
+
+// Backpropagation flow
+export function BackpropagationMini() {
+  const [step, setStep] = useState(0);
+  const layers = [3, 4, 2];
+
+  return (
+    <div className="space-y-3">
+      <svg width="120" height="80" viewBox="0 0 120 80" className="w-full">
+        {layers.map((count, li) =>
+          Array(count).fill(0).map((_, ni) => {
+            const x = 20 + li * 40;
+            const y = 40 - (count * 10) / 2 + ni * 15 + 7;
+            const isActive = step === 0 ? li === 0 : step === 1 ? true : li === layers.length - 1;
+            return (
+              <g key={`${li}-${ni}`}>
+                <circle cx={x} cy={y} r="6" fill={isActive ? '#8b5cf6' : '#444'} />
+                {li < layers.length - 1 && Array(layers[li + 1]).fill(0).map((_, nj) => {
+                  const x2 = 20 + (li + 1) * 40;
+                  const y2 = 40 - (layers[li + 1] * 10) / 2 + nj * 15 + 7;
+                  return <line key={nj} x1={x} y1={y} x2={x2} y2={y2} stroke={step === 2 ? '#ef4444' : '#666'} strokeWidth="1" />;
+                })}
+              </g>
+            );
+          })
+        )}
+      </svg>
+      <div className="flex gap-1 justify-center">
+        {['Forward', 'Loss', 'Backward'].map((s, i) => (
+          <button key={i} onClick={() => setStep(i)} className={`px-2 py-1 rounded text-xs ${step === i ? (i === 2 ? 'bg-red-500' : 'bg-purple-500') + ' text-white' : 'bg-[var(--card-bg-alt)]'}`}>{s}</button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Attention mechanism
+export function AttentionMechanismMini() {
+  const [query, setQuery] = useState(0);
+  const keys = [0.8, 0.3, 0.9, 0.2];
+  const values = ['A', 'B', 'C', 'D'];
+  const scores = keys.map((k, i) => Math.exp(k * (query === i ? 2 : 1)));
+  const sum = scores.reduce((a, b) => a + b, 0);
+  const weights = scores.map(s => s / sum);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-1 justify-center">
+        {values.map((v, i) => (
+          <div
+            key={i}
+            onClick={() => setQuery(i)}
+            className={`w-10 h-10 rounded flex items-center justify-center text-xs font-bold cursor-pointer transition-all`}
+            style={{ backgroundColor: `rgba(139, 92, 246, ${weights[i]})`, border: query === i ? '2px solid yellow' : 'none' }}
+          >
+            {v}
+          </div>
+        ))}
+      </div>
+      <p className="text-xs text-center text-[var(--muted)]">Query attends to keys</p>
+    </div>
+  );
+}
+
+// Weight initialization
+export function WeightInitMini() {
+  const [method, setMethod] = useState<'zeros' | 'random' | 'xavier'>('xavier');
+  const getVal = () => method === 'zeros' ? 0 : method === 'random' ? Math.random() - 0.5 : (Math.random() - 0.5) * 0.5;
+  const weights = Array(16).fill(0).map(() => getVal());
+
+  return (
+    <div className="space-y-3">
+      <div className="grid grid-cols-4 gap-0.5">
+        {weights.map((w, i) => (
+          <div
+            key={i}
+            className="aspect-square rounded-sm"
+            style={{ backgroundColor: `rgba(${w > 0 ? '34, 197, 94' : '239, 68, 68'}, ${Math.abs(w) * 2})` }}
+          />
+        ))}
+      </div>
+      <div className="flex gap-1 justify-center">
+        {(['zeros', 'random', 'xavier'] as const).map((m) => (
+          <button key={m} onClick={() => setMethod(m)} className={`px-2 py-1 rounded text-xs ${method === m ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{m}</button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Vanishing gradient
+export function VanishingGradientMini() {
+  const [depth, setDepth] = useState(5);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-0.5 justify-center items-end h-16">
+        {Array(depth).fill(0).map((_, i) => (
+          <div
+            key={i}
+            className="w-6 rounded-t bg-red-500"
+            style={{ height: `${100 * Math.pow(0.7, i)}%`, opacity: Math.pow(0.8, i) }}
+          />
+        ))}
+      </div>
+      <input type="range" min="3" max="10" value={depth} onChange={(e) => setDepth(parseInt(e.target.value))} className="w-full" />
+      <p className="text-xs text-center text-[var(--muted)]">{depth} layers → gradient shrinks</p>
+    </div>
+  );
+}
+
+// Adam optimizer
+export function AdamOptimizerMini() {
+  const [momentum, setMomentum] = useState(true);
+
+  return (
+    <div className="space-y-3">
+      <svg width="100" height="60" viewBox="0 0 100 60" className="w-full">
+        <path d="M10,50 Q30,20 50,35 Q70,50 90,15" fill="none" stroke="#666" strokeWidth="2" />
+        <circle cx={momentum ? 90 : 50} cy={momentum ? 15 : 35} r="4" fill="#22c55e" />
+        {momentum && (
+          <path d="M10,50 C20,30 60,25 90,15" fill="none" stroke="#22c55e" strokeWidth="1" strokeDasharray="3" />
+        )}
+      </svg>
+      <button
+        onClick={() => setMomentum(!momentum)}
+        className={`w-full text-xs py-1 rounded ${momentum ? 'bg-green-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+      >
+        {momentum ? 'Adam (momentum)' : 'SGD (no momentum)'}
+      </button>
+    </div>
+  );
+}
+
+// ============ METAHUMAN ADVANCED ============
+
+// Bone transform hierarchy
+export function BoneTransformMini() {
+  const [parentRotation, setParentRotation] = useState(0);
+  const childOffset = 30;
+
+  return (
+    <div className="space-y-3">
+      <svg width="100" height="80" viewBox="0 0 100 80" className="w-full mx-auto">
+        <g transform={`translate(50, 20) rotate(${parentRotation})`}>
+          <rect x="-4" y="0" width="8" height="30" fill="#8b5cf6" rx="2" />
+          <g transform={`translate(0, ${childOffset}) rotate(${parentRotation / 2})`}>
+            <rect x="-3" y="0" width="6" height="25" fill="#a78bfa" rx="2" />
+            <circle cx="0" cy="25" r="3" fill="#c4b5fd" />
+          </g>
+          <circle cx="0" cy="0" r="4" fill="#7c3aed" />
+        </g>
+      </svg>
+      <input type="range" min="-45" max="45" value={parentRotation} onChange={(e) => setParentRotation(parseInt(e.target.value))} className="w-full" />
+      <p className="text-xs text-center text-[var(--muted)]">Parent rotation: {parentRotation}°</p>
+    </div>
+  );
+}
+
+// Morph target blend
+export function MorphTargetMini() {
+  const [blendA, setBlendA] = useState(0.5);
+  const [blendB, setBlendB] = useState(0.3);
+
+  return (
+    <div className="space-y-3">
+      <svg width="80" height="60" viewBox="0 0 80 60" className="w-full max-w-[80px] mx-auto">
+        <ellipse
+          cx="40"
+          cy="30"
+          rx={20 + blendA * 10}
+          ry={20 - blendB * 5}
+          fill="#8b5cf6"
+        />
+        <ellipse cx={30 - blendA * 5} cy={25} rx="4" ry={3 + blendB * 2} fill="white" />
+        <ellipse cx={50 + blendA * 5} cy={25} rx="4" ry={3 + blendB * 2} fill="white" />
+        <path
+          d={`M ${35 - blendA * 3} ${38 + blendB * 5} Q 40 ${42 + blendB * 8} ${45 + blendA * 3} ${38 + blendB * 5}`}
+          fill="none"
+          stroke="white"
+          strokeWidth="2"
+        />
+      </svg>
+      <div className="grid grid-cols-2 gap-2 text-xs">
+        <div>A: {(blendA * 100).toFixed(0)}%<input type="range" min="0" max="1" step="0.1" value={blendA} onChange={(e) => setBlendA(parseFloat(e.target.value))} className="w-full" /></div>
+        <div>B: {(blendB * 100).toFixed(0)}%<input type="range" min="0" max="1" step="0.1" value={blendB} onChange={(e) => setBlendB(parseFloat(e.target.value))} className="w-full" /></div>
+      </div>
+    </div>
+  );
+}
+
+// Joint limits
+export function JointLimitsMini() {
+  const [angle, setAngle] = useState(45);
+  const minAngle = -30;
+  const maxAngle = 120;
+  const clampedAngle = Math.max(minAngle, Math.min(maxAngle, angle));
+  const isLimited = angle !== clampedAngle;
+
+  return (
+    <div className="space-y-3">
+      <svg width="100" height="60" viewBox="0 0 100 60" className="w-full">
+        <path d={`M 50 50 L 50 20`} stroke="#666" strokeWidth="4" />
+        <path
+          d={`M 50 50 L ${50 + Math.sin(clampedAngle * Math.PI / 180) * 30} ${50 - Math.cos(clampedAngle * Math.PI / 180) * 30}`}
+          stroke={isLimited ? '#ef4444' : '#22c55e'}
+          strokeWidth="4"
+        />
+        <circle cx="50" cy="50" r="5" fill="#8b5cf6" />
+      </svg>
+      <input type="range" min="-60" max="150" value={angle} onChange={(e) => setAngle(parseInt(e.target.value))} className="w-full" />
+      <p className="text-xs text-center" style={{ color: isLimited ? '#ef4444' : 'var(--muted)' }}>
+        {isLimited ? 'Limited!' : `${clampedAngle}°`} (range: {minAngle}° to {maxAngle}°)
+      </p>
+    </div>
+  );
+}
+
+// ============ STREAMING ADVANCED ============
+
+// Buffer management
+export function BufferManagementMini() {
+  const [bufferSize, setBufferSize] = useState(5);
+  const [playhead, setPlayhead] = useState(2);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-0.5 justify-center">
+        {Array(10).fill(0).map((_, i) => (
+          <div
+            key={i}
+            className={`w-6 h-8 rounded text-xs flex items-center justify-center
+              ${i < playhead ? 'bg-gray-600' : i < playhead + bufferSize ? 'bg-green-500' : 'bg-[var(--card-bg-alt)]'}`}
+          >
+            {i === playhead && '▶'}
+          </div>
+        ))}
+      </div>
+      <div className="grid grid-cols-2 gap-2 text-xs">
+        <div>Buffer: {bufferSize}<input type="range" min="1" max="8" value={bufferSize} onChange={(e) => setBufferSize(parseInt(e.target.value))} className="w-full" /></div>
+        <div>Play: {playhead}<input type="range" min="0" max="5" value={playhead} onChange={(e) => setPlayhead(parseInt(e.target.value))} className="w-full" /></div>
+      </div>
+    </div>
+  );
+}
+
+// Network jitter visualization
+export function NetworkJitterMini() {
+  const [jitter, setJitter] = useState(20);
+  const baseTime = 50;
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-1 justify-center items-end h-16">
+        {Array(8).fill(0).map((_, i) => {
+          const variance = (Math.sin(i * 1.5) * jitter);
+          return (
+            <div
+              key={i}
+              className="w-6 rounded-t bg-blue-500"
+              style={{ height: `${baseTime + variance}%` }}
+            />
+          );
+        })}
+      </div>
+      <input type="range" min="0" max="40" value={jitter} onChange={(e) => setJitter(parseInt(e.target.value))} className="w-full" />
+      <p className="text-xs text-center text-[var(--muted)]">Jitter: ±{jitter}ms</p>
+    </div>
+  );
+}
+
+// Packet loss recovery
+export function PacketLossRecoveryMini() {
+  const [fecEnabled, setFecEnabled] = useState(true);
+  const packets = [1, 0, 1, 1, 0, 1, 1, 1];
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-0.5 justify-center">
+        {packets.map((p, i) => (
+          <div
+            key={i}
+            className={`w-6 h-8 rounded text-xs flex items-center justify-center ${
+              p === 1 ? 'bg-green-500' : (fecEnabled ? 'bg-yellow-500' : 'bg-red-500')
+            }`}
+          >
+            {p === 0 && (fecEnabled ? '↻' : '✗')}
+          </div>
+        ))}
+      </div>
+      <button
+        onClick={() => setFecEnabled(!fecEnabled)}
+        className={`w-full text-xs py-1 rounded ${fecEnabled ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}
+      >
+        FEC: {fecEnabled ? 'ON (recovered)' : 'OFF (lost)'}
+      </button>
+    </div>
+  );
+}
+
+// ============ DIFFUSION MODEL ADVANCED ============
+
+// DDPM vs DDIM sampling
+export function SamplingMethodMini() {
+  const [method, setMethod] = useState<'ddpm' | 'ddim'>('ddpm');
+  const steps = method === 'ddpm' ? 50 : 10;
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-0.5 justify-center h-8">
+        {Array(method === 'ddpm' ? 10 : 5).fill(0).map((_, i) => (
+          <div key={i} className="w-4 h-full rounded bg-purple-500" style={{ opacity: 0.3 + (i / (method === 'ddpm' ? 10 : 5)) * 0.7 }} />
+        ))}
+      </div>
+      <div className="flex gap-2 justify-center">
+        {(['ddpm', 'ddim'] as const).map((m) => (
+          <button key={m} onClick={() => setMethod(m)} className={`px-3 py-1 rounded text-xs ${method === m ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>
+            {m.toUpperCase()}
+          </button>
+        ))}
+      </div>
+      <p className="text-xs text-center text-[var(--muted)]">{steps} steps</p>
+    </div>
+  );
+}
+
+// Text embedding visualization
+export function TextEmbeddingMini() {
+  const [prompt, setPrompt] = useState<'cat' | 'dog' | 'bird'>('cat');
+  const embeddings = { cat: [0.8, 0.2, 0.5], dog: [0.7, 0.3, 0.4], bird: [0.3, 0.9, 0.6] };
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-1 justify-center">
+        {(['cat', 'dog', 'bird'] as const).map((p) => (
+          <button key={p} onClick={() => setPrompt(p)} className={`px-2 py-1 rounded text-xs ${prompt === p ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{p}</button>
+        ))}
+      </div>
+      <div className="flex gap-2 justify-center items-end h-12">
+        {embeddings[prompt].map((v, i) => (
+          <div key={i} className="w-8 rounded-t bg-purple-500 transition-all" style={{ height: `${v * 100}%` }} />
+        ))}
+      </div>
+      <p className="text-xs text-center text-[var(--muted)]">Token embedding dims</p>
+    </div>
+  );
+}
+
+// Classifier-free guidance scale
+export function CFGScaleMini() {
+  const [scale, setScale] = useState(7.5);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-2 justify-center">
+        <div className="text-center">
+          <div className="w-12 h-12 rounded bg-gray-500" style={{ filter: `blur(${Math.max(0, 3 - scale / 5)}px)` }} />
+          <span className="text-xs text-[var(--muted)]">Low</span>
+        </div>
+        <div className="text-center">
+          <div className="w-12 h-12 rounded bg-purple-500" style={{ filter: `contrast(${0.8 + scale / 20})` }} />
+          <span className="text-xs text-[var(--muted)]">High</span>
+        </div>
+      </div>
+      <input type="range" min="1" max="20" step="0.5" value={scale} onChange={(e) => setScale(parseFloat(e.target.value))} className="w-full" />
+      <p className="text-xs text-center text-[var(--muted)]">CFG Scale: {scale}</p>
+    </div>
+  );
+}
+
+// ============ AUDIO/SPEECH MECHANISMS ============
+
+// Pitch detection
+export function PitchDetectionMini() {
+  const [frequency, setFrequency] = useState(440);
+  const note = frequency < 300 ? 'C' : frequency < 400 ? 'E' : frequency < 500 ? 'A' : 'C5';
+
+  return (
+    <div className="space-y-3">
+      <svg width="100" height="40" viewBox="0 0 100 40" className="w-full">
+        <path
+          d={Array(20).fill(0).map((_, i) => {
+            const x = i * 5;
+            const y = 20 + Math.sin(i * frequency / 100) * 15;
+            return `${i === 0 ? 'M' : 'L'} ${x} ${y}`;
+          }).join(' ')}
+          fill="none"
+          stroke="#8b5cf6"
+          strokeWidth="2"
+        />
+      </svg>
+      <input type="range" min="200" max="800" value={frequency} onChange={(e) => setFrequency(parseInt(e.target.value))} className="w-full" />
+      <p className="text-xs text-center text-[var(--muted)]">{frequency}Hz → {note}</p>
+    </div>
+  );
+}
+
+// Audio waveform types
+export function WaveformTypesMini() {
+  const [type, setType] = useState<'sine' | 'square' | 'saw'>('sine');
+
+  const getPath = () => {
+    switch (type) {
+      case 'sine': return 'M 0 20 Q 12.5 0, 25 20 Q 37.5 40, 50 20 Q 62.5 0, 75 20 Q 87.5 40, 100 20';
+      case 'square': return 'M 0 35 L 0 5 L 25 5 L 25 35 L 50 35 L 50 5 L 75 5 L 75 35 L 100 35';
+      case 'saw': return 'M 0 35 L 25 5 L 25 35 L 50 5 L 50 35 L 75 5 L 75 35 L 100 5';
+    }
+  };
+
+  return (
+    <div className="space-y-3">
+      <svg width="100" height="40" viewBox="0 0 100 40" className="w-full">
+        <path d={getPath()} fill="none" stroke="#8b5cf6" strokeWidth="2" />
+      </svg>
+      <div className="flex gap-1 justify-center">
+        {(['sine', 'square', 'saw'] as const).map((t) => (
+          <button key={t} onClick={() => setType(t)} className={`px-2 py-1 rounded text-xs ${type === t ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{t}</button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Lip sync weights
+export function LipSyncWeightsMini() {
+  const [viseme, setViseme] = useState<'AA' | 'EE' | 'OO' | 'MM'>('AA');
+  const shapes = {
+    AA: { jaw: 0.8, upperLip: 0.2, lowerLip: 0.4, mouthWidth: 0.6 },
+    EE: { jaw: 0.3, upperLip: 0.5, lowerLip: 0.3, mouthWidth: 0.9 },
+    OO: { jaw: 0.5, upperLip: 0.4, lowerLip: 0.4, mouthWidth: 0.3 },
+    MM: { jaw: 0.1, upperLip: 0.8, lowerLip: 0.8, mouthWidth: 0.4 },
+  };
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-1 justify-center">
+        {(Object.keys(shapes) as Array<keyof typeof shapes>).map((v) => (
+          <button key={v} onClick={() => setViseme(v)} className={`px-2 py-1 rounded text-xs ${viseme === v ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{v}</button>
+        ))}
+      </div>
+      <div className="grid grid-cols-2 gap-1 text-xs">
+        {Object.entries(shapes[viseme]).map(([k, v]) => (
+          <div key={k} className="flex items-center gap-1">
+            <span className="w-12 text-[var(--muted)]">{k}</span>
+            <div className="flex-1 h-2 bg-[var(--card-bg-alt)] rounded">
+              <div className="h-full bg-purple-500 rounded" style={{ width: `${v * 100}%` }} />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ============ COMPRESSION / ENCODING ============
+
+// DCT visualization
+export function DCTVisualizationMini() {
+  const [frequency, setFrequency] = useState(2);
+
+  return (
+    <div className="space-y-3">
+      <div className="grid grid-cols-8 gap-0">
+        {Array(64).fill(0).map((_, i) => {
+          const x = i % 8;
+          const y = Math.floor(i / 8);
+          const val = Math.cos((x * frequency * Math.PI) / 8) * Math.cos((y * frequency * Math.PI) / 8);
+          return (
+            <div
+              key={i}
+              className="aspect-square"
+              style={{ backgroundColor: `rgb(${128 + val * 127}, ${128 + val * 127}, ${128 + val * 127})` }}
+            />
+          );
+        })}
+      </div>
+      <input type="range" min="0" max="7" value={frequency} onChange={(e) => setFrequency(parseInt(e.target.value))} className="w-full" />
+      <p className="text-xs text-center text-[var(--muted)]">DCT frequency: {frequency}</p>
+    </div>
+  );
+}
+
+// Quantization levels
+export function QuantizationMini() {
+  const [bits, setBits] = useState(4);
+  const levels = Math.pow(2, bits);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-0 justify-center h-12">
+        {Array(16).fill(0).map((_, i) => {
+          const original = i / 15;
+          const quantized = Math.round(original * (levels - 1)) / (levels - 1);
+          return (
+            <div key={i} className="flex-1 flex flex-col justify-end">
+              <div className="bg-purple-500" style={{ height: `${quantized * 100}%` }} />
+            </div>
+          );
+        })}
+      </div>
+      <input type="range" min="1" max="8" value={bits} onChange={(e) => setBits(parseInt(e.target.value))} className="w-full" />
+      <p className="text-xs text-center text-[var(--muted)]">{bits}-bit = {levels} levels</p>
+    </div>
+  );
+}
+
+// ============ COLOR / LIGHTING ============
+
+// Color space conversion
+export function ColorSpaceMini() {
+  const [space, setSpace] = useState<'RGB' | 'HSL' | 'YUV'>('RGB');
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-2 justify-center">
+        {space === 'RGB' && (
+          <>
+            <div className="w-8 h-8 bg-red-500 rounded" />
+            <div className="w-8 h-8 bg-green-500 rounded" />
+            <div className="w-8 h-8 bg-blue-500 rounded" />
+          </>
+        )}
+        {space === 'HSL' && (
+          <>
+            <div className="w-8 h-8 rounded" style={{ background: 'conic-gradient(red, yellow, lime, aqua, blue, magenta, red)' }} />
+            <div className="w-8 h-8 rounded" style={{ background: 'linear-gradient(to right, gray, white)' }} />
+            <div className="w-8 h-8 rounded" style={{ background: 'linear-gradient(to right, black, white)' }} />
+          </>
+        )}
+        {space === 'YUV' && (
+          <>
+            <div className="w-8 h-8 rounded bg-gray-400" />
+            <div className="w-8 h-8 rounded" style={{ background: 'linear-gradient(to right, blue, yellow)' }} />
+            <div className="w-8 h-8 rounded" style={{ background: 'linear-gradient(to right, red, cyan)' }} />
+          </>
+        )}
+      </div>
+      <div className="flex gap-1 justify-center">
+        {(['RGB', 'HSL', 'YUV'] as const).map((s) => (
+          <button key={s} onClick={() => setSpace(s)} className={`px-2 py-1 rounded text-xs ${space === s ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{s}</button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Ambient occlusion
+export function AmbientOcclusionMini() {
+  const [aoEnabled, setAoEnabled] = useState(true);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-4 justify-center">
+        <div className="relative w-16 h-16">
+          <div className="absolute inset-0 rounded-lg bg-gray-400" />
+          <div className="absolute inset-1 rounded-lg bg-gray-300" />
+          {aoEnabled && (
+            <div className="absolute inset-0 rounded-lg" style={{ boxShadow: 'inset 3px 3px 8px rgba(0,0,0,0.4), inset -1px -1px 4px rgba(255,255,255,0.2)' }} />
+          )}
+        </div>
+      </div>
+      <button
+        onClick={() => setAoEnabled(!aoEnabled)}
+        className={`w-full text-xs py-1 rounded ${aoEnabled ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+      >
+        AO: {aoEnabled ? 'ON' : 'OFF'}
+      </button>
+    </div>
+  );
+}
+
+// ============ GEOMETRY PROCESSING ============
+
+// Mesh subdivision
+export function MeshSubdivisionMini() {
+  const [level, setLevel] = useState(0);
+  const tris = Math.pow(4, level);
+
+  return (
+    <div className="space-y-3">
+      <svg width="80" height="70" viewBox="0 0 80 70" className="w-full max-w-[80px] mx-auto">
+        <polygon points="40,5 75,65 5,65" fill="none" stroke="#8b5cf6" strokeWidth="2" />
+        {level >= 1 && (
+          <>
+            <line x1="22.5" y1="35" x2="57.5" y2="35" stroke="#8b5cf6" strokeWidth="1" />
+            <line x1="40" y1="5" x2="40" y2="65" stroke="#8b5cf6" strokeWidth="1" />
+            <line x1="22.5" y1="35" x2="5" y2="65" stroke="#8b5cf6" strokeWidth="1" />
+            <line x1="57.5" y1="35" x2="75" y2="65" stroke="#8b5cf6" strokeWidth="1" />
+          </>
+        )}
+        {level >= 2 && (
+          <>
+            <line x1="31.25" y1="20" x2="48.75" y2="20" stroke="#8b5cf6" strokeWidth="0.5" />
+            <line x1="13.75" y1="50" x2="31.25" y2="50" stroke="#8b5cf6" strokeWidth="0.5" />
+            <line x1="48.75" y1="50" x2="66.25" y2="50" stroke="#8b5cf6" strokeWidth="0.5" />
+          </>
+        )}
+      </svg>
+      <input type="range" min="0" max="2" value={level} onChange={(e) => setLevel(parseInt(e.target.value))} className="w-full" />
+      <p className="text-xs text-center text-[var(--muted)]">Level {level}: {tris} triangles</p>
+    </div>
+  );
+}
+
+// Normal calculation
+export function NormalCalculationMini() {
+  const [showNormals, setShowNormals] = useState(true);
+
+  return (
+    <div className="space-y-3">
+      <svg width="100" height="60" viewBox="0 0 100 60" className="w-full">
+        <polygon points="10,50 50,10 90,50" fill="#8b5cf6" opacity="0.5" stroke="#8b5cf6" strokeWidth="2" />
+        {showNormals && (
+          <>
+            <line x1="50" y1="37" x2="50" y2="17" stroke="#22c55e" strokeWidth="2" markerEnd="url(#arrow)" />
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="#22c55e" />
+              </marker>
+            </defs>
+          </>
+        )}
+      </svg>
+      <button
+        onClick={() => setShowNormals(!showNormals)}
+        className={`w-full text-xs py-1 rounded ${showNormals ? 'bg-green-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+      >
+        Normals: {showNormals ? 'Visible' : 'Hidden'}
+      </button>
+    </div>
+  );
+}
+
+// ============ TEMPORAL MECHANISMS ============
+
+// Motion blur
+export function MotionBlurMini() {
+  const [blurAmount, setBlurAmount] = useState(5);
+
+  return (
+    <div className="space-y-3">
+      <div className="relative h-12 bg-[var(--card-bg-alt)] rounded overflow-hidden">
+        <div
+          className="absolute top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-purple-500"
+          style={{
+            left: '60%',
+            filter: `blur(${blurAmount}px)`,
+            transform: `translateY(-50%) scaleX(${1 + blurAmount / 5})`,
+          }}
+        />
+      </div>
+      <input type="range" min="0" max="15" value={blurAmount} onChange={(e) => setBlurAmount(parseInt(e.target.value))} className="w-full" />
+      <p className="text-xs text-center text-[var(--muted)]">Blur: {blurAmount}px</p>
+    </div>
+  );
+}
+
+// Frame rate comparison
+export function FrameRateComparisonMini() {
+  const [fps, setFps] = useState(30);
+  const frameTime = 1000 / fps;
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-1 justify-center">
+        {Array(8).fill(0).map((_, i) => (
+          <div key={i} className={`w-6 h-10 rounded ${i < Math.floor(fps / 10) ? 'bg-green-500' : 'bg-[var(--card-bg-alt)]'}`} />
+        ))}
+      </div>
+      <input type="range" min="10" max="60" step="10" value={fps} onChange={(e) => setFps(parseInt(e.target.value))} className="w-full" />
+      <p className="text-xs text-center text-[var(--muted)]">{fps} FPS = {frameTime.toFixed(1)}ms/frame</p>
+    </div>
+  );
+}
+
+// ============ FINAL 8 MECHANISMS TO REACH 100 ============
+
+// Texture filtering modes
+export function TextureFilteringMini() {
+  const [mode, setMode] = useState<'nearest' | 'bilinear' | 'trilinear'>('bilinear');
+
+  return (
+    <div className="space-y-3">
+      <div className="flex justify-center">
+        <div
+          className="w-16 h-16 rounded"
+          style={{
+            background: 'linear-gradient(45deg, #8b5cf6 25%, #a78bfa 25%, #a78bfa 50%, #8b5cf6 50%, #8b5cf6 75%, #a78bfa 75%)',
+            backgroundSize: mode === 'nearest' ? '16px 16px' : '8px 8px',
+            filter: mode === 'nearest' ? 'none' : mode === 'bilinear' ? 'blur(0.5px)' : 'blur(1px)',
+            imageRendering: mode === 'nearest' ? 'pixelated' : 'auto',
+          }}
+        />
+      </div>
+      <div className="flex gap-1 justify-center">
+        {(['nearest', 'bilinear', 'trilinear'] as const).map((m) => (
+          <button key={m} onClick={() => setMode(m)} className={`px-1 py-1 rounded text-xs ${mode === m ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{m}</button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Vertex shader transform
+export function VertexShaderMini() {
+  const [scale, setScale] = useState(1);
+  const [rotation, setRotation] = useState(0);
+
+  return (
+    <div className="space-y-3">
+      <svg width="80" height="60" viewBox="0 0 80 60" className="w-full max-w-[80px] mx-auto">
+        <g transform={`translate(40, 30) rotate(${rotation}) scale(${scale})`}>
+          <polygon points="-15,-15 15,-15 15,15 -15,15" fill="none" stroke="#8b5cf6" strokeWidth="2" />
+          <circle cx="-15" cy="-15" r="2" fill="#22c55e" />
+          <circle cx="15" cy="-15" r="2" fill="#22c55e" />
+          <circle cx="15" cy="15" r="2" fill="#22c55e" />
+          <circle cx="-15" cy="15" r="2" fill="#22c55e" />
+        </g>
+      </svg>
+      <div className="grid grid-cols-2 gap-1 text-xs">
+        <div>Scale<input type="range" min="0.5" max="1.5" step="0.1" value={scale} onChange={(e) => setScale(parseFloat(e.target.value))} className="w-full" /></div>
+        <div>Rot<input type="range" min="0" max="90" value={rotation} onChange={(e) => setRotation(parseInt(e.target.value))} className="w-full" /></div>
+      </div>
+    </div>
+  );
+}
+
+// Fragment/Pixel shader
+export function FragmentShaderMini() {
+  const [effect, setEffect] = useState<'color' | 'gradient' | 'pattern'>('color');
+
+  const getStyle = () => {
+    switch (effect) {
+      case 'color': return { background: '#8b5cf6' };
+      case 'gradient': return { background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)' };
+      case 'pattern': return { background: 'repeating-linear-gradient(45deg, #8b5cf6 0, #8b5cf6 10px, #a78bfa 10px, #a78bfa 20px)' };
+    }
+  };
+
+  return (
+    <div className="space-y-3">
+      <div className="flex justify-center">
+        <div className="w-16 h-16 rounded" style={getStyle()} />
+      </div>
+      <div className="flex gap-1 justify-center">
+        {(['color', 'gradient', 'pattern'] as const).map((e) => (
+          <button key={e} onClick={() => setEffect(e)} className={`px-2 py-1 rounded text-xs ${effect === e ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{e}</button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// UV mapping coordinates
+export function UVMappingMini() {
+  const [tileU, setTileU] = useState(1);
+  const [tileV, setTileV] = useState(1);
+
+  return (
+    <div className="space-y-3">
+      <div
+        className="w-16 h-16 mx-auto rounded"
+        style={{
+          background: `repeating-linear-gradient(0deg, #8b5cf6 0, #8b5cf6 ${100/tileV}%, #a78bfa ${100/tileV}%, #a78bfa ${200/tileV}%),
+                       repeating-linear-gradient(90deg, transparent 0, transparent ${100/tileU}%, rgba(0,0,0,0.3) ${100/tileU}%, rgba(0,0,0,0.3) ${200/tileU}%)`,
+          backgroundBlendMode: 'normal',
+        }}
+      />
+      <div className="grid grid-cols-2 gap-1 text-xs">
+        <div>U<input type="range" min="1" max="4" value={tileU} onChange={(e) => setTileU(parseInt(e.target.value))} className="w-full" /></div>
+        <div>V<input type="range" min="1" max="4" value={tileV} onChange={(e) => setTileV(parseInt(e.target.value))} className="w-full" /></div>
+      </div>
+    </div>
+  );
+}
+
+// Tone mapping / HDR
+export function ToneMappingMini() {
+  const [exposure, setExposure] = useState(1);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-2 justify-center">
+        {[0.3, 0.6, 0.9].map((brightness, i) => (
+          <div
+            key={i}
+            className="w-10 h-10 rounded"
+            style={{
+              backgroundColor: `rgb(${Math.min(255, brightness * 255 * exposure)}, ${Math.min(255, brightness * 200 * exposure)}, ${Math.min(255, brightness * 150 * exposure)})`,
+            }}
+          />
+        ))}
+      </div>
+      <input type="range" min="0.5" max="2" step="0.1" value={exposure} onChange={(e) => setExposure(parseFloat(e.target.value))} className="w-full" />
+      <p className="text-xs text-center text-[var(--muted)]">Exposure: {exposure.toFixed(1)}</p>
+    </div>
+  );
+}
+
+// Bézier curve interpolation
+export function BezierCurveMini() {
+  const [control, setControl] = useState(0.5);
+
+  return (
+    <div className="space-y-3">
+      <svg width="100" height="60" viewBox="0 0 100 60" className="w-full">
+        <path
+          d={`M 10 50 Q ${10 + control * 80} 10, 90 50`}
+          fill="none"
+          stroke="#8b5cf6"
+          strokeWidth="2"
+        />
+        <circle cx="10" cy="50" r="3" fill="#22c55e" />
+        <circle cx="90" cy="50" r="3" fill="#22c55e" />
+        <circle cx={10 + control * 80} cy="10" r="3" fill="#ef4444" />
+        <line x1="10" y1="50" x2={10 + control * 80} y2="10" stroke="#ef4444" strokeWidth="1" strokeDasharray="3" />
+        <line x1={10 + control * 80} y1="10" x2="90" y2="50" stroke="#ef4444" strokeWidth="1" strokeDasharray="3" />
+      </svg>
+      <input type="range" min="0" max="1" step="0.05" value={control} onChange={(e) => setControl(parseFloat(e.target.value))} className="w-full" />
+    </div>
+  );
+}
+
+// Noise generation types
+export function NoiseGenerationMini() {
+  const [type, setType] = useState<'white' | 'perlin' | 'simplex'>('perlin');
+
+  return (
+    <div className="space-y-3">
+      <div className="grid grid-cols-8 gap-0">
+        {Array(64).fill(0).map((_, i) => {
+          const x = i % 8;
+          const y = Math.floor(i / 8);
+          let val: number;
+          if (type === 'white') {
+            val = Math.random();
+          } else if (type === 'perlin') {
+            val = (Math.sin(x * 0.5) * Math.cos(y * 0.5) + 1) / 2;
+          } else {
+            val = (Math.sin(x * 0.3 + y * 0.3) + 1) / 2;
+          }
+          return (
+            <div
+              key={i}
+              className="aspect-square"
+              style={{ backgroundColor: `rgb(${val * 255}, ${val * 255}, ${val * 255})` }}
+            />
+          );
+        })}
+      </div>
+      <div className="flex gap-1 justify-center">
+        {(['white', 'perlin', 'simplex'] as const).map((t) => (
+          <button key={t} onClick={() => setType(t)} className={`px-2 py-1 rounded text-xs ${type === t ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{t}</button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Anti-aliasing comparison
+export function AntiAliasingMini() {
+  const [aaEnabled, setAaEnabled] = useState(true);
+
+  return (
+    <div className="space-y-3">
+      <svg width="80" height="60" viewBox="0 0 80 60" className="w-full max-w-[80px] mx-auto" style={{ shapeRendering: aaEnabled ? 'auto' : 'crispEdges' }}>
+        <line x1="10" y1="50" x2="70" y2="10" stroke="#8b5cf6" strokeWidth={aaEnabled ? '2' : '2'} />
+        <circle cx="40" cy="30" r="15" fill="none" stroke="#8b5cf6" strokeWidth="2" />
+      </svg>
+      <button
+        onClick={() => setAaEnabled(!aaEnabled)}
+        className={`w-full text-xs py-1 rounded ${aaEnabled ? 'bg-green-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+      >
+        AA: {aaEnabled ? 'ON (smooth)' : 'OFF (jagged)'}
+      </button>
+    </div>
+  );
+}
