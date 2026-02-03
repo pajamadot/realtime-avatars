@@ -4,8 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/generative-video.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
-import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo, TemporalConsistencyDemo, SamplerComparisonDemo, FaceEncoderDemo, VAEDemo, MotionFieldDemo } from '../components/demos/generative';
-import { ConvolutionDemo, ActivationFunctionsDemo, BackpropagationDemo, PoolingLayerDemo, DropoutDemo } from '../components/demos/fundamentals';
+import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo, TemporalConsistencyDemo, SamplerComparisonDemo, FaceEncoderDemo, VAEDemo, MotionFieldDemo, AttentionMechanismDemo } from '../components/demos/generative';
+import { ConvolutionDemo, ActivationFunctionsDemo, BackpropagationDemo, PoolingLayerDemo, DropoutDemo, BatchNormalizationDemo } from '../components/demos/fundamentals';
 import { GradientDescentDemo, NeuralNetworkDemo } from '../components/demos/fundamentals';
 
 const sections = [
@@ -285,6 +285,24 @@ export default function GenerativeVideoPage() {
             Prevent overfitting by randomly deactivating neurons during training. Watch the network learn redundant representations.
           </p>
           <DropoutDemo />
+        </div>
+
+        {/* Batch Normalization Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Batch Normalization</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Normalize activations to stabilize training. See how BatchNorm transforms the distribution of layer outputs.
+          </p>
+          <BatchNormalizationDemo />
+        </div>
+
+        {/* Attention Mechanism Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Attention Mechanism</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Explore self-attention and cross-attention. These mechanisms allow models to focus on relevant parts of the input.
+          </p>
+          <AttentionMechanismDemo />
         </div>
       </section>
 

@@ -11,3 +11,4 @@ export { CorrectiveBlendshapesDemo } from './CorrectiveBlendshapesDemo';
 export { JointConstraintsDemo } from './JointConstraintsDemo';
 export { EyeGazeDemo } from './EyeGazeDemo';
 export { HairSimulationDemo } from './HairSimulationDemo';
+export { SecondaryMotionDemo } from './SecondaryMotionDemo';

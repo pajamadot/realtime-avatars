@@ -8,3 +8,4 @@ export { BitrateAdaptationDemo } from './BitrateAdaptationDemo';
 export { SimulcastDemo } from './SimulcastDemo';
 export { LatencyBreakdownDemo } from './LatencyBreakdownDemo';
 export { FrameInterpolationDemo } from './FrameInterpolationDemo';
+export { PacketLossRecoveryDemo } from './PacketLossRecoveryDemo';

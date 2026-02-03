@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/metahuman.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
-import { BlendshapeDemo, SkinningWeightDemo, FaceTrackingDemo, AudioToExpressionDemo, BoneHierarchyDemo, BlendshapeMixerDemo, InverseKinematicsDemo, LODDemo, WrinkleMapDemo, CorrectiveBlendshapesDemo, JointConstraintsDemo, EyeGazeDemo, HairSimulationDemo } from '../components/demos/metahuman';
+import { BlendshapeDemo, SkinningWeightDemo, FaceTrackingDemo, AudioToExpressionDemo, BoneHierarchyDemo, BlendshapeMixerDemo, InverseKinematicsDemo, LODDemo, WrinkleMapDemo, CorrectiveBlendshapesDemo, JointConstraintsDemo, EyeGazeDemo, HairSimulationDemo, SecondaryMotionDemo } from '../components/demos/metahuman';
 
 const sections = [
   { id: 'intro', label: 'Introduction' },
@@ -179,6 +179,11 @@ export default function MetaHumanPage() {
         {/* Hair Simulation Demo */}
         <div className="mt-8">
           <HairSimulationDemo />
+        </div>
+
+        {/* Secondary Motion Demo */}
+        <div className="mt-8">
+          <SecondaryMotionDemo />
         </div>
       </section>
 
