@@ -3,7 +3,10 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/streaming-avatars.json';
-import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget, LatencyStack, PacketOrdering } from '../components/core';
+import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget,
+  LatencyStack, PacketOrdering, ICECandidatesMini, BitrateAdaptationMini, SimulcastMini,
+  FECRecoveryMini, RTTMeasurementMini, CodecComparisonMini, WSvsWebRTCMini, SFUTopologyMini
+} from '../components/core';
 import { LatencyDemo, ICEConnectionDemo, VADDemo, SFUComparisonDemo, ProviderComparisonDemo, JitterBufferDemo, BitrateAdaptationDemo, SimulcastDemo, LatencyBreakdownDemo, FrameInterpolationDemo, PacketLossRecoveryDemo, CongestionControlDemo } from '../components/demos/streaming';
 
 const sections = [
@@ -126,14 +129,59 @@ export default function StreamingAvatarsPage() {
           faster generation often means lower quality, and network conditions add unpredictable delays.
         </KeyInsight>
 
-        {/* Mechanism Nuggets */}
-        <div className="grid md:grid-cols-2 gap-4 mt-6">
-          <MechanismNugget title="Latency Stack" description="Each component adds to total response time">
+        {/* Mechanism Nuggets - Latency */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Latency & Timing</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <MechanismNugget title="Latency Stack" description="Each component adds response time">
             <LatencyStack />
           </MechanismNugget>
 
-          <MechanismNugget title="Packet Jitter" description="Network causes out-of-order arrival, buffer reorders">
+          <MechanismNugget title="RTT Measurement" description="Round-trip time ping test">
+            <RTTMeasurementMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Packet Jitter" description="Out-of-order arrival handling">
             <PacketOrdering />
+          </MechanismNugget>
+        </div>
+
+        {/* Mechanism Nuggets - Network */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Network Architecture</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <MechanismNugget title="ICE Candidates" description="Connection path selection">
+            <ICECandidatesMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="SFU Topology" description="Mesh vs selective forwarding">
+            <SFUTopologyMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="WS vs WebRTC" description="Protocol comparison">
+            <WSvsWebRTCMini />
+          </MechanismNugget>
+        </div>
+
+        {/* Mechanism Nuggets - Quality */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Quality Adaptation</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <MechanismNugget title="Bitrate Adaptation" description="Quality vs bandwidth tradeoff">
+            <BitrateAdaptationMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Simulcast Layers" description="Multi-resolution encoding">
+            <SimulcastMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Codec Comparison" description="H.264 vs VP9 vs AV1">
+            <CodecComparisonMini />
+          </MechanismNugget>
+        </div>
+
+        {/* Mechanism Nuggets - Reliability */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Error Recovery</h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <MechanismNugget title="FEC Recovery" description="Forward Error Correction">
+            <FECRecoveryMini />
           </MechanismNugget>
         </div>
       </section>

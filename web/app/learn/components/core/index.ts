@@ -8,4 +8,19 @@ export { default as KeyInsight } from './KeyInsight';
 export { default as InteractiveTooltip } from './InteractiveTooltip';
 export { default as QuickQuiz } from './QuickQuiz';
 export { default as DemoWrapper } from './DemoWrapper';
-export { default as MechanismNugget, AlphaBlendMath, GaussianCurve, MatrixTransformMini, DiffusionNoiseLevels, BoneHierarchyMini, BlendshapeInterpolation, LatencyStack, PacketOrdering } from './MechanismNugget';
+export { default as MechanismNugget,
+  // Gaussian Splatting
+  AlphaBlendMath, GaussianCurve, MatrixTransformMini, DepthSortingMini, TileRasterizationMini,
+  ScreenProjectionMini, OpacityAccumulation, SphericalHarmonicsBands, GradientFlowMini, AdaptiveDensityMini,
+  // Neural Networks
+  NeuronMini, ActivationFunctionsMini, ConvolutionMini, PoolingMini, DropoutMini,
+  LossLandscape, LearningRateMini, BatchNormMini,
+  // MetaHuman
+  BoneHierarchyMini, BlendshapeInterpolation, SkinningWeightsMini, FKvsIKMini, LODMini, FACSMini, WrinkleMapMini,
+  // Generative Video
+  DiffusionNoiseLevels, UNetSkipMini, AttentionHeatmapMini, VAELatentMini, CFGStrengthMini,
+  NoiseScheduleMini, TemporalConsistencyMini,
+  // Streaming
+  LatencyStack, PacketOrdering, ICECandidatesMini, BitrateAdaptationMini, SimulcastMini,
+  FECRecoveryMini, RTTMeasurementMini, CodecComparisonMini, WSvsWebRTCMini, SFUTopologyMini
+} from './MechanismNugget';

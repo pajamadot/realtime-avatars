@@ -4,7 +4,10 @@ import { useState } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import content from '../data/content/gaussian-splatting.json';
-import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget, AlphaBlendMath, GaussianCurve, MatrixTransformMini } from '../components/core';
+import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget,
+  AlphaBlendMath, GaussianCurve, MatrixTransformMini, DepthSortingMini, TileRasterizationMini,
+  ScreenProjectionMini, OpacityAccumulation, SphericalHarmonicsBands, GradientFlowMini, AdaptiveDensityMini
+} from '../components/core';
 
 // Dynamically import heavy 3D demos
 const SingleGaussianDemo = dynamic(
@@ -160,8 +163,9 @@ export default function GaussianSplattingPage() {
           The tradeoff? More memory usage (~1-2GB for typical scenes) compared to NeRF's compact MLP weights.
         </KeyInsight>
 
-        {/* Mechanism Nuggets */}
-        <div className="grid md:grid-cols-3 gap-4 mt-6">
+        {/* Mechanism Nuggets - Row 1 */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Core Mechanisms</h3>
+        <div className="grid md:grid-cols-3 gap-4">
           <MechanismNugget title="Gaussian Function" description="The bell curve that defines each splat's falloff">
             <GaussianCurve />
           </MechanismNugget>
@@ -172,6 +176,46 @@ export default function GaussianSplattingPage() {
 
           <MechanismNugget title="Matrix Transform" description="How rotation + scale create ellipsoid shapes">
             <MatrixTransformMini />
+          </MechanismNugget>
+        </div>
+
+        {/* Mechanism Nuggets - Row 2 */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Rendering Pipeline</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <MechanismNugget title="Depth Sorting" description="Back-to-front order for correct transparency">
+            <DepthSortingMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Tile Rasterization" description="GPU-parallel screen-space rendering">
+            <TileRasterizationMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Screen Projection" description="3D to 2D via perspective transform">
+            <ScreenProjectionMini />
+          </MechanismNugget>
+        </div>
+
+        {/* Mechanism Nuggets - Row 3 */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Advanced Concepts</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <MechanismNugget title="Opacity Accumulation" description="Multiple Gaussians add up to opaque">
+            <OpacityAccumulation />
+          </MechanismNugget>
+
+          <MechanismNugget title="Spherical Harmonics" description="View-dependent color encoding">
+            <SphericalHarmonicsBands />
+          </MechanismNugget>
+
+          <MechanismNugget title="Gradient Flow" description="How backprop optimizes Gaussian params">
+            <GradientFlowMini />
+          </MechanismNugget>
+        </div>
+
+        {/* Mechanism Nuggets - Row 4 */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Training Dynamics</h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <MechanismNugget title="Adaptive Density" description="Clone, split, or prune Gaussians">
+            <AdaptiveDensityMini />
           </MechanismNugget>
         </div>
       </section>

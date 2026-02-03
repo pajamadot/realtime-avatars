@@ -3,7 +3,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/metahuman.json';
-import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget, BoneHierarchyMini, BlendshapeInterpolation } from '../components/core';
+import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget,
+  BoneHierarchyMini, BlendshapeInterpolation, SkinningWeightsMini, FKvsIKMini, LODMini, FACSMini, WrinkleMapMini
+} from '../components/core';
 import { BlendshapeDemo, SkinningWeightDemo, FaceTrackingDemo, AudioToExpressionDemo, BoneHierarchyDemo, BlendshapeMixerDemo, InverseKinematicsDemo, LODDemo, WrinkleMapDemo, CorrectiveBlendshapesDemo, JointConstraintsDemo, EyeGazeDemo, HairSimulationDemo, SecondaryMotionDemo, MuscleSystemDemo } from '../components/demos/metahuman';
 
 const sections = [
@@ -122,14 +124,43 @@ export default function MetaHumanPage() {
           and <strong>no training required</strong>. The tradeoff is the need for expensive motion capture or manual animation.
         </KeyInsight>
 
-        {/* Mechanism Nuggets */}
-        <div className="grid md:grid-cols-2 gap-4 mt-6">
-          <MechanismNugget title="Bone Hierarchy" description="Child bones inherit parent transforms automatically">
+        {/* Mechanism Nuggets - Skeletal Animation */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Skeletal Animation</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <MechanismNugget title="Bone Hierarchy" description="Child bones inherit parent transforms">
             <BoneHierarchyMini />
           </MechanismNugget>
 
-          <MechanismNugget title="Blendshape Interpolation" description="Expressions blend linearly between stored poses">
+          <MechanismNugget title="Skinning Weights" description="Vertices follow bones based on weight">
+            <SkinningWeightsMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="FK vs IK" description="Forward vs Inverse Kinematics">
+            <FKvsIKMini />
+          </MechanismNugget>
+        </div>
+
+        {/* Mechanism Nuggets - Facial Animation */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Facial Animation</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <MechanismNugget title="Blendshape Interpolation" description="Linear blend between stored poses">
             <BlendshapeInterpolation />
+          </MechanismNugget>
+
+          <MechanismNugget title="FACS Action Units" description="Anatomical facial muscle controls">
+            <FACSMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Wrinkle Maps" description="Dynamic skin detail based on expression">
+            <WrinkleMapMini />
+          </MechanismNugget>
+        </div>
+
+        {/* Mechanism Nuggets - Optimization */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Performance Optimization</h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <MechanismNugget title="LOD Switching" description="Detail level based on camera distance">
+            <LODMini />
           </MechanismNugget>
         </div>
 

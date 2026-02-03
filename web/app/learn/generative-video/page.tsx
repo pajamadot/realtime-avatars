@@ -3,7 +3,11 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/generative-video.json';
-import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget, DiffusionNoiseLevels, GaussianCurve } from '../components/core';
+import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget,
+  DiffusionNoiseLevels, GaussianCurve, UNetSkipMini, AttentionHeatmapMini, VAELatentMini, CFGStrengthMini,
+  NoiseScheduleMini, TemporalConsistencyMini, NeuronMini, ActivationFunctionsMini, ConvolutionMini,
+  PoolingMini, DropoutMini, LossLandscape, LearningRateMini, BatchNormMini
+} from '../components/core';
 import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo, TemporalConsistencyDemo, SamplerComparisonDemo, FaceEncoderDemo, VAEDemo, MotionFieldDemo, AttentionMechanismDemo, EmbeddingSpaceDemo } from '../components/demos/generative';
 import { ConvolutionDemo, ActivationFunctionsDemo, BackpropagationDemo, PoolingLayerDemo, DropoutDemo, BatchNormalizationDemo, LossFunctionDemo } from '../components/demos/fundamentals';
 import { GradientDescentDemo, NeuralNetworkDemo } from '../components/demos/fundamentals';
@@ -124,14 +128,89 @@ export default function GenerativeVideoPage() {
           The cost? Generation requires 20-50 network passes instead of just one, making real-time video challenging.
         </KeyInsight>
 
-        {/* Mechanism Nuggets */}
-        <div className="grid md:grid-cols-2 gap-4 mt-6">
-          <MechanismNugget title="Noise Levels" description="Forward process adds noise, reverse process removes it">
+        {/* Mechanism Nuggets - Diffusion Core */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Diffusion Fundamentals</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <MechanismNugget title="Noise Levels" description="Forward adds noise, reverse removes it">
             <DiffusionNoiseLevels />
           </MechanismNugget>
 
-          <MechanismNugget title="Gaussian Noise" description="The bell curve distribution used for adding noise">
+          <MechanismNugget title="Gaussian Noise" description="Bell curve distribution for noise">
             <GaussianCurve />
+          </MechanismNugget>
+
+          <MechanismNugget title="Noise Schedule" description="Linear vs cosine noise timing">
+            <NoiseScheduleMini />
+          </MechanismNugget>
+        </div>
+
+        {/* Mechanism Nuggets - Architecture */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Model Architecture</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <MechanismNugget title="U-Net Skip Connections" description="Encoder-decoder with shortcuts">
+            <UNetSkipMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Attention Heatmap" description="Where the model focuses">
+            <AttentionHeatmapMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="VAE Latent Space" description="Compress/decompress images">
+            <VAELatentMini />
+          </MechanismNugget>
+        </div>
+
+        {/* Mechanism Nuggets - Generation Control */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Generation Control</h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <MechanismNugget title="CFG Strength" description="Conditioning guidance scale">
+            <CFGStrengthMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Temporal Consistency" description="Frame-to-frame stability">
+            <TemporalConsistencyMini />
+          </MechanismNugget>
+        </div>
+
+        {/* Mechanism Nuggets - Neural Network Basics */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Neural Network Basics</h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <MechanismNugget title="Single Neuron" description="Weighted sum + activation">
+            <NeuronMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Activation Functions" description="ReLU, Sigmoid, Tanh">
+            <ActivationFunctionsMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Convolution Kernel" description="Edge/blur/sharpen filters">
+            <ConvolutionMini />
+          </MechanismNugget>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-4 mt-4">
+          <MechanismNugget title="Pooling Layers" description="Max/Avg downsampling">
+            <PoolingMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Dropout" description="Regularization by random deactivation">
+            <DropoutMini />
+          </MechanismNugget>
+
+          <MechanismNugget title="Batch Normalization" description="Normalize layer outputs">
+            <BatchNormMini />
+          </MechanismNugget>
+        </div>
+
+        {/* Mechanism Nuggets - Training */}
+        <h3 className="text-lg font-semibold mt-8 mb-4">Training Dynamics</h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <MechanismNugget title="Loss Landscape" description="Optimization surface">
+            <LossLandscape />
+          </MechanismNugget>
+
+          <MechanismNugget title="Learning Rate" description="Step size affects convergence">
+            <LearningRateMini />
           </MechanismNugget>
         </div>
 
