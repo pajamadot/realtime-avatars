@@ -15,6 +15,7 @@ const concepts: Record<string, typeof arkitBlendshapes> = {
   'skinning-weights': skinningWeights,
   'lumen-nanite': lumenNanite,
   'audio2face-network': audio2faceNetwork,
+  'arkit-protocol': arkitBlendshapes, // Alias - arkit protocol is covered in blendshapes
 };
 
 const color = 'var(--color-metahuman)';

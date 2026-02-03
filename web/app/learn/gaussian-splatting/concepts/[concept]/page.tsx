@@ -11,6 +11,8 @@ import alphaCompositing from '../../../data/concepts/alpha-compositing.json';
 import splattingProcess from '../../../data/concepts/splatting-process.json';
 import densificationPruning from '../../../data/concepts/densification-pruning.json';
 import differentiableRendering from '../../../data/concepts/differentiable-rendering.json';
+import gradientDescent from '../../../data/concepts/gradient-descent.json';
+import transformationMatrices from '../../../data/concepts/transformation-matrices.json';
 
 const concepts: Record<string, typeof covarianceMatrix> = {
   'covariance-matrix': covarianceMatrix,
@@ -19,6 +21,8 @@ const concepts: Record<string, typeof covarianceMatrix> = {
   'splatting-process': splattingProcess,
   'densification-pruning': densificationPruning,
   'differentiable-rendering': differentiableRendering,
+  'gradient-descent': gradientDescent,
+  'matrix-math': transformationMatrices,
 };
 
 const color = 'var(--color-gaussian)';
