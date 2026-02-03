@@ -4,8 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/generative-video.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
-import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo, TemporalConsistencyDemo, SamplerComparisonDemo } from '../components/demos/generative';
-import { ConvolutionDemo } from '../components/demos/fundamentals';
+import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo, TemporalConsistencyDemo, SamplerComparisonDemo, FaceEncoderDemo } from '../components/demos/generative';
+import { ConvolutionDemo, ActivationFunctionsDemo, BackpropagationDemo } from '../components/demos/fundamentals';
 import { GradientDescentDemo, NeuralNetworkDemo } from '../components/demos/fundamentals';
 
 const sections = [
@@ -222,6 +222,33 @@ export default function GenerativeVideoPage() {
             Compare DDPM, DDIM, Euler, and DPM++ samplers. See how modern samplers achieve quality in 20 steps vs 1000.
           </p>
           <SamplerComparisonDemo />
+        </div>
+
+        {/* Face Encoder Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Face Encoder Architecture</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            See how face encoders extract identity, expression, and pose into a compact latent code for conditioning.
+          </p>
+          <FaceEncoderDemo />
+        </div>
+
+        {/* Activation Functions Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Activation Functions</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Explore ReLU, Sigmoid, Tanh, and GELU - the non-linearities that enable neural networks to learn.
+          </p>
+          <ActivationFunctionsDemo />
+        </div>
+
+        {/* Backpropagation Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Backpropagation</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Watch the training algorithm in action: forward pass, backward pass, and weight updates.
+          </p>
+          <BackpropagationDemo />
         </div>
       </section>
 
