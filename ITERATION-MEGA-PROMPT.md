@@ -321,6 +321,7 @@ Suggest improvements or corrections.
 3. ✅ **Add concept linking** - All concept pages import their JSON files
 4. ✅ **Content review** - All tracks reviewed and polished
 5. ✅ **Polish and test** - Build passes, navigation complete with CrossTrackNav
+6. ✅ **Optimize Gaussian Splat loading** - Lazy loading with IntersectionObserver, animated loading placeholder
 
 ## Potential Future Enhancements
 
