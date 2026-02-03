@@ -7,3 +7,4 @@ export { TrainingProgressDemo } from './TrainingProgressDemo';
 export { DifferentiableRenderingDemo } from './DifferentiableRenderingDemo';
 export { PointCloudDemo } from './PointCloudDemo';
 export { TileRasterizationDemo } from './TileRasterizationDemo';
+export { AdaptiveDensityDemo } from './AdaptiveDensityDemo';

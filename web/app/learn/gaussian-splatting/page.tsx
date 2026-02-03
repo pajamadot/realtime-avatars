@@ -52,6 +52,11 @@ const TileRasterizationDemo = dynamic(
   { ssr: false, loading: () => <DemoPlaceholder label="Loading tile rasterization demo..." /> }
 );
 
+const AdaptiveDensityDemo = dynamic(
+  () => import('../components/demos/gaussian/AdaptiveDensityDemo'),
+  { ssr: false, loading: () => <DemoPlaceholder label="Loading adaptive density demo..." /> }
+);
+
 function DemoPlaceholder({ label }: { label: string }) {
   return (
     <div className="h-[300px] bg-[var(--card-bg-alt)] rounded-lg flex items-center justify-center text-[var(--muted)]">
@@ -279,6 +284,15 @@ export default function GaussianSplattingPage() {
             See how 3DGS divides the screen into tiles for parallel GPU processing. Click tiles to see which Gaussians they contain.
           </p>
           <TileRasterizationDemo />
+        </div>
+
+        {/* Demo 10: Adaptive Density Control */}
+        <div id="demo-adaptive-density" className="mb-8">
+          <h3 className="text-xl font-semibold mb-3">Demo 10: Adaptive Density Control</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Watch how 3DGS dynamically adjusts Gaussian count during training through densification and pruning.
+          </p>
+          <AdaptiveDensityDemo />
         </div>
       </section>
 

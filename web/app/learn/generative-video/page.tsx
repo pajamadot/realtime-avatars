@@ -4,7 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/generative-video.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
-import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo } from '../components/demos/generative';
+import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo, TemporalConsistencyDemo } from '../components/demos/generative';
+import { ConvolutionDemo } from '../components/demos/fundamentals';
 import { GradientDescentDemo, NeuralNetworkDemo } from '../components/demos/fundamentals';
 
 const sections = [
@@ -194,6 +195,24 @@ export default function GenerativeVideoPage() {
             CFG controls how strongly the model follows conditioning. Too low = blurry, too high = artifacts. Find the sweet spot.
           </p>
           <CFGStrengthDemo />
+        </div>
+
+        {/* Temporal Consistency Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Temporal Consistency</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Video generation requires frame-to-frame coherence. Compare raw output vs temporally smoothed output.
+          </p>
+          <TemporalConsistencyDemo />
+        </div>
+
+        {/* Convolution Demo - Fundamental */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Convolution Operation</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            The fundamental operation behind CNNs. Watch how kernels slide over images to extract features for face encoding.
+          </p>
+          <ConvolutionDemo />
         </div>
       </section>
 
