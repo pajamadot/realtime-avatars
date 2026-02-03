@@ -294,16 +294,30 @@ Suggest improvements or corrections.
 
 ### Completed Demos
 
+**Gaussian Splatting (5 demos):**
 1. **SingleGaussianDemo** - 3D Gaussian manipulator (Three.js)
 2. **AlphaBlendingDemo** - Drag-and-drop layer ordering
-3. **DenoisingDemo** - Diffusion step visualizer
-4. **BlendshapeDemo** - ARKit 52 blendshape playground
-5. **LatencyDemo** - Voice AI pipeline latency visualizer
-6. **SphericalHarmonicsDemo** - SH coefficient playground (Three.js)
-7. **ICEConnectionDemo** - WebRTC ICE candidate gathering visualizer
-8. **DiffusionStepsDemo** - 4-step vs 50-step quality comparison
-9. **SkinningWeightDemo** - Skeletal skinning weights visualizer
-10. **FaceTrackingDemo** - Simulated ARKit face tracking with blendshape output
+3. **SphericalHarmonicsDemo** - SH coefficient playground (Three.js)
+4. **MatrixTransformDemo** - 2D scale/rotation matrix visualizer
+5. **CovarianceShapeDemo** - 3D ellipsoid covariance shape manipulator
+
+**MetaHuman (4 demos):**
+6. **BlendshapeDemo** - ARKit 52 blendshape playground
+7. **SkinningWeightDemo** - Skeletal skinning weights visualizer
+8. **FaceTrackingDemo** - Simulated ARKit face tracking
+9. **AudioToExpressionDemo** - Phoneme-to-viseme lip sync demo
+
+**Generative Video (2 demos):**
+10. **DenoisingDemo** - Diffusion step visualizer
+11. **DiffusionStepsDemo** - 4-step vs 50-step quality comparison
+
+**Streaming Avatars (3 demos):**
+12. **LatencyDemo** - Voice AI pipeline latency visualizer
+13. **ICEConnectionDemo** - WebRTC ICE candidate gathering visualizer
+14. **VADDemo** - Voice activity detection simulation
+
+**End-to-End (1 demo):**
+15. **PipelineFlowDemo** - Animated data flow through voice AI pipeline
 
 ### Missing Concepts (To Create)
 
@@ -333,6 +347,8 @@ Suggest improvements or corrections.
 5. ✅ **Polish and test** - Build passes, navigation complete with CrossTrackNav
 6. ✅ **Optimize Gaussian Splat loading** - Lazy loading with IntersectionObserver, animated loading placeholder
 7. ✅ **End-to-End Guide** - Complete system architecture showing all four approaches with code examples
+8. ✅ **Additional drill-down concepts** - matrix-math, arkit-protocol, voice-activity-detection, audio-to-expression
+9. ✅ **More interactive demos** - 5 new demos (MatrixTransform, CovarianceShape, VAD, AudioToExpression, PipelineFlow)
 
 ## Potential Future Enhancements
 
