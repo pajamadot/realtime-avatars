@@ -4,3 +4,4 @@ export { ConvolutionDemo } from './ConvolutionDemo';
 export { ActivationFunctionsDemo } from './ActivationFunctionsDemo';
 export { BackpropagationDemo } from './BackpropagationDemo';
 export { PoolingLayerDemo } from './PoolingLayerDemo';
+export { DropoutDemo } from './DropoutDemo';

@@ -10,3 +10,4 @@ export { WrinkleMapDemo } from './WrinkleMapDemo';
 export { CorrectiveBlendshapesDemo } from './CorrectiveBlendshapesDemo';
 export { JointConstraintsDemo } from './JointConstraintsDemo';
 export { EyeGazeDemo } from './EyeGazeDemo';
+export { HairSimulationDemo } from './HairSimulationDemo';

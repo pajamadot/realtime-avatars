@@ -7,3 +7,4 @@ export { JitterBufferDemo } from './JitterBufferDemo';
 export { BitrateAdaptationDemo } from './BitrateAdaptationDemo';
 export { SimulcastDemo } from './SimulcastDemo';
 export { LatencyBreakdownDemo } from './LatencyBreakdownDemo';
+export { FrameInterpolationDemo } from './FrameInterpolationDemo';

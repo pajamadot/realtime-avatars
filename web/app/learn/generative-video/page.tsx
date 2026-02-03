@@ -4,8 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import content from '../data/content/generative-video.json';
 import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav } from '../components/core';
-import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo, TemporalConsistencyDemo, SamplerComparisonDemo, FaceEncoderDemo, VAEDemo } from '../components/demos/generative';
-import { ConvolutionDemo, ActivationFunctionsDemo, BackpropagationDemo, PoolingLayerDemo } from '../components/demos/fundamentals';
+import { DenoisingDemo, DiffusionStepsDemo, LatentSpaceDemo, LipSyncPlaygroundDemo, IdentityLockDemo, CrossAttentionDemo, UNetArchitectureDemo, NoiseScheduleDemo, CFGStrengthDemo, TemporalConsistencyDemo, SamplerComparisonDemo, FaceEncoderDemo, VAEDemo, MotionFieldDemo } from '../components/demos/generative';
+import { ConvolutionDemo, ActivationFunctionsDemo, BackpropagationDemo, PoolingLayerDemo, DropoutDemo } from '../components/demos/fundamentals';
 import { GradientDescentDemo, NeuralNetworkDemo } from '../components/demos/fundamentals';
 
 const sections = [
@@ -267,6 +267,24 @@ export default function GenerativeVideoPage() {
             Stable Diffusion operates in VAE latent space. Understand how images are compressed and reconstructed.
           </p>
           <VAEDemo />
+        </div>
+
+        {/* Motion Field Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Motion Field (Optical Flow)</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Visualize per-pixel motion vectors. Motion fields help video models understand and predict movement patterns.
+          </p>
+          <MotionFieldDemo />
+        </div>
+
+        {/* Dropout Demo */}
+        <div className="mt-8">
+          <h3 className="text-xl font-semibold mb-3">Dropout Regularization</h3>
+          <p className="text-sm text-[var(--muted)] mb-4">
+            Prevent overfitting by randomly deactivating neurons during training. Watch the network learn redundant representations.
+          </p>
+          <DropoutDemo />
         </div>
       </section>
 
