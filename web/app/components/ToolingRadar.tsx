@@ -44,7 +44,7 @@ export default function ToolingRadar({ className = '' }: { className?: string })
   return (
     <div className={className}>
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
-        <p className="text-sm text-[var(--muted)]">
+        <p className="text-sm text-[var(--text-muted)]">
           Tooling radar (source: {feed.source}).{updated ? ` Last refresh: ${updated}.` : ''}
         </p>
         <code>npm run tooling:update</code>
@@ -58,7 +58,7 @@ export default function ToolingRadar({ className = '' }: { className?: string })
               <span className="badge">GitHub</span>
             </div>
             {q.q ? (
-              <p className="text-xs text-[var(--muted)] mb-3">
+              <p className="text-xs text-[var(--text-muted)] mb-3">
                 Query: <code>{q.q}</code>
               </p>
             ) : null}
@@ -71,16 +71,16 @@ export default function ToolingRadar({ className = '' }: { className?: string })
                     href={it.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block p-3 bg-[var(--card-bg-alt)] rounded border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors"
+                    className="block p-3 bg-[var(--surface-2)] rounded border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <p className="font-medium text-sm leading-snug">{it.name}</p>
-                      <span className="text-xs text-[var(--muted)] whitespace-nowrap">
+                      <span className="text-xs text-[var(--text-muted)] whitespace-nowrap">
                         {formatStars(it.stars)}★
                       </span>
                     </div>
                     {it.description ? (
-                      <p className="text-xs text-[var(--muted)] mt-1 line-clamp-3">{it.description}</p>
+                      <p className="text-xs text-[var(--text-muted)] mt-1 line-clamp-3">{it.description}</p>
                     ) : null}
                     <div className="mt-2 flex flex-wrap gap-1">
                       {it.language ? (
@@ -96,7 +96,7 @@ export default function ToolingRadar({ className = '' }: { className?: string })
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-[var(--muted)]">
+              <p className="text-sm text-[var(--text-muted)]">
                 No items yet. Run <code>npm run tooling:update</code> to populate this section.
               </p>
             )}

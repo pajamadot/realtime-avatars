@@ -215,7 +215,7 @@ export function BlendshapeMixerDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Expression Blending Mixer</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Mix multiple expressions together. Real faces blend emotions - you can be
         happy-surprised or sad-angry. Blendshapes add linearly then clamp to [0,1].
       </p>
@@ -227,7 +227,7 @@ export function BlendshapeMixerDemo() {
             ref={canvasRef}
             width={250}
             height={280}
-            className="w-full rounded-lg border border-[var(--border)] bg-[var(--card-bg-alt)]"
+            className="w-full rounded-lg border border-[var(--border)] bg-[var(--surface-2)]"
           />
 
           {/* Presets */}
@@ -257,7 +257,7 @@ export function BlendshapeMixerDemo() {
         {/* Mixer controls */}
         <div className="space-y-4">
           {/* Expression sliders */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-3">Expression Mix</p>
             {EXPRESSIONS.map(expr => (
               <div key={expr.name} className="mb-3">
@@ -283,12 +283,12 @@ export function BlendshapeMixerDemo() {
           </div>
 
           {/* Blendshape output */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between items-center mb-2">
               <span className="font-medium text-sm">Final Blendshapes</span>
               <button
                 onClick={() => setShowContributions(!showContributions)}
-                className="text-xs text-[var(--muted)]"
+                className="text-xs text-[var(--text-muted)]"
               >
                 {showContributions ? 'Hide' : 'Show'} Details
               </button>
@@ -297,7 +297,7 @@ export function BlendshapeMixerDemo() {
               {ALL_BLENDSHAPES.filter(bs => finalBlendshapes[bs] > 0.01).map(bs => (
                 <div key={bs} className="flex items-center gap-2 text-xs">
                   <span className="w-24 truncate">{bs}</span>
-                  <div className="flex-1 h-2 bg-[var(--card-bg)] rounded overflow-hidden">
+                  <div className="flex-1 h-2 bg-[var(--surface-0)] rounded overflow-hidden">
                     <div
                       className="h-full bg-[var(--accent)]"
                       style={{ width: `${(finalBlendshapes[bs] || 0) * 100}%` }}
@@ -307,7 +307,7 @@ export function BlendshapeMixerDemo() {
                 </div>
               ))}
               {ALL_BLENDSHAPES.filter(bs => finalBlendshapes[bs] > 0.01).length === 0 && (
-                <p className="text-[var(--muted)] text-center py-4">No active blendshapes</p>
+                <p className="text-[var(--text-muted)] text-center py-4">No active blendshapes</p>
               )}
             </div>
           </div>
@@ -315,12 +315,12 @@ export function BlendshapeMixerDemo() {
       </div>
 
       {/* Explanation */}
-      <div className="mt-6 p-4 bg-[var(--card-bg-alt)] rounded">
+      <div className="mt-6 p-4 bg-[var(--surface-2)] rounded">
         <p className="font-medium mb-2">How Expression Blending Works</p>
         <code className="text-xs block mb-2 font-mono">
           final_blendshape[i] = clamp(Σ(expression_weight × blendshape_value), 0, 1)
         </code>
-        <p className="text-xs text-[var(--muted)]">
+        <p className="text-xs text-[var(--text-muted)]">
           Each expression defines target values for relevant blendshapes. When you mix expressions,
           the blendshape values add together (then clamp). This is how MetaHuman and ARKit
           create nuanced expressions from simple building blocks.

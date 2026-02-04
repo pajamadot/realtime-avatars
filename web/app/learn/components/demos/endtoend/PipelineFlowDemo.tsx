@@ -173,13 +173,13 @@ export default function PipelineFlowDemo() {
           <button
             onClick={() => { if (!isRunning) spawnPacket(); }}
             disabled={isRunning}
-            className="px-3 py-1 text-xs bg-[var(--card-bg-alt)] rounded hover:bg-[var(--border)] disabled:opacity-50"
+            className="px-3 py-1 text-xs bg-[var(--surface-2)] rounded hover:bg-[var(--border)] disabled:opacity-50"
           >
             Send Message
           </button>
           <button
             onClick={reset}
-            className="px-3 py-1 text-xs bg-[var(--card-bg-alt)] rounded hover:bg-[var(--border)]"
+            className="px-3 py-1 text-xs bg-[var(--surface-2)] rounded hover:bg-[var(--border)]"
           >
             Reset
           </button>
@@ -206,7 +206,7 @@ export default function PipelineFlowDemo() {
                 )}
               </div>
               <span className="text-xs mt-2 font-medium">{stage.name}</span>
-              <span className="text-xs text-[var(--muted)]">
+              <span className="text-xs text-[var(--text-muted)]">
                 {stage.latency.min}-{stage.latency.max}ms
               </span>
             </div>
@@ -269,14 +269,14 @@ export default function PipelineFlowDemo() {
         </div>
 
         {/* Stats */}
-        <div className="text-sm text-[var(--muted)]">
+        <div className="text-sm text-[var(--text-muted)]">
           <p>Last latency: <span className="text-[var(--foreground)]">{totalLatency.toFixed(0)}ms</span></p>
           <p>Completed: <span className="text-[var(--foreground)]">{completedPackets}</span></p>
         </div>
       </div>
 
       {/* Stage breakdown */}
-      <div className="mt-4 p-3 bg-[var(--card-bg-alt)] rounded">
+      <div className="mt-4 p-3 bg-[var(--surface-2)] rounded">
         <p className="text-xs font-medium mb-2">Latency Breakdown (typical):</p>
         <div className="flex flex-wrap gap-2">
           {stages.slice(1).map(stage => (
@@ -286,13 +286,13 @@ export default function PipelineFlowDemo() {
             </div>
           ))}
         </div>
-        <p className="text-xs text-[var(--muted)] mt-2">
+        <p className="text-xs text-[var(--text-muted)] mt-2">
           Total: {stages.slice(1).reduce((a, s) => a + s.latency.min, 0)}-
           {stages.slice(1).reduce((a, s) => a + s.latency.max, 0)}ms
         </p>
       </div>
 
-      <p className="text-xs text-[var(--muted)] mt-4">
+      <p className="text-xs text-[var(--text-muted)] mt-4">
         Watch data packets flow through the pipeline. Each stage adds latency.
         Streaming mode processes data in parallel where possible.
       </p>

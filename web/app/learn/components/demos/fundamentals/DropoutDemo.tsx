@@ -206,7 +206,7 @@ export function DropoutDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Dropout Regularization</h3>
-      <p className="text-sm text-[var(--muted)] mb-4">
+      <p className="text-sm text-[var(--text-muted)] mb-4">
         Dropout randomly deactivates neurons during training to prevent overfitting. Watch neurons get "dropped" each iteration.
       </p>
 
@@ -219,7 +219,7 @@ export function DropoutDemo() {
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Dropout Rate: {(dropoutRate * 100).toFixed(0)}%</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Dropout Rate: {(dropoutRate * 100).toFixed(0)}%</label>
           <input
             type="range"
             min="0"
@@ -243,7 +243,7 @@ export function DropoutDemo() {
         <div className="flex items-end">
           <button
             onClick={applyDropout}
-            className="px-3 py-1.5 text-sm bg-[var(--card-bg)] border border-[var(--border)] rounded hover:border-[var(--border-strong)]"
+            className="px-3 py-1.5 text-sm bg-[var(--surface-0)] border border-[var(--border)] rounded hover:border-[var(--border-strong)]"
           >
             Resample
           </button>
@@ -251,13 +251,13 @@ export function DropoutDemo() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-3 text-xs">
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Training</p>
-          <p className="text-[var(--muted)]">Random neurons deactivated each forward pass. Forces network to learn redundant representations.</p>
+          <p className="text-[var(--text-muted)]">Random neurons deactivated each forward pass. Forces network to learn redundant representations.</p>
         </div>
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Inference</p>
-          <p className="text-[var(--muted)]">All neurons active, but outputs scaled by (1-p) to match expected training statistics.</p>
+          <p className="text-[var(--text-muted)]">All neurons active, but outputs scaled by (1-p) to match expected training statistics.</p>
         </div>
       </div>
     </div>

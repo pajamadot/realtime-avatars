@@ -34,7 +34,7 @@ export default function ConceptPage() {
   return (
     <div>
       {/* Breadcrumb */}
-      <nav className="mb-8 flex items-center gap-2 text-sm text-[var(--muted)]">
+      <nav className="mb-8 flex items-center gap-2 text-sm text-[var(--text-muted)]">
         <Link href="/learn" className="hover:text-[var(--accent)]">Learn</Link>
         <span>/</span>
         <Link href="/learn/streaming-avatars" className="hover:text-[var(--accent)]">Streaming Avatars</Link>
@@ -51,7 +51,7 @@ export default function ConceptPage() {
           >
             Level {concept.level}
           </span>
-          <span className="text-sm text-[var(--muted)]">Drill-down concept</span>
+          <span className="text-sm text-[var(--text-muted)]">Drill-down concept</span>
         </div>
         <h1 className="text-3xl font-semibold mb-4">{concept.title}</h1>
       </section>
@@ -60,7 +60,7 @@ export default function ConceptPage() {
       <section className="mb-8">
         <div className="card-alt p-5">
           <p className="font-medium mb-2">What the parent explanation assumed you knew:</p>
-          <p className="text-[var(--muted)]">{concept.explanation.level3Assumes}</p>
+          <p className="text-[var(--text-muted)]">{concept.explanation.level3Assumes}</p>
         </div>
       </section>
 
@@ -68,7 +68,7 @@ export default function ConceptPage() {
       <section className="mb-8">
         <div className="highlight-box">
           <p className="font-medium mb-2">What this page explains:</p>
-          <p className="text-[var(--muted)]">{concept.explanation.thisExplains}</p>
+          <p className="text-[var(--text-muted)]">{concept.explanation.thisExplains}</p>
         </div>
       </section>
 
@@ -81,7 +81,7 @@ export default function ConceptPage() {
             if (paragraph.startsWith('```')) {
               const code = paragraph.replace(/```\w*\n?/g, '').trim();
               return (
-                <pre key={i} className="code p-4 rounded-lg bg-[var(--card-bg-alt)] overflow-x-auto">
+                <pre key={i} className="code p-4 rounded-lg bg-[var(--surface-2)] overflow-x-auto">
                   <code>{code}</code>
                 </pre>
               );
@@ -100,7 +100,7 @@ export default function ConceptPage() {
                   )}
                   <ul className="space-y-1">
                     {(title.startsWith('-') || title.match(/^\d\./) ? [title, ...items] : items).map((item, j) => (
-                      <li key={j} className="flex items-start gap-2 text-[var(--muted)]">
+                      <li key={j} className="flex items-start gap-2 text-[var(--text-muted)]">
                         <span className="text-[var(--accent)]">•</span>
                         {item.replace(/^[-\d.]\s*/, '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}
                       </li>
@@ -114,11 +114,11 @@ export default function ConceptPage() {
             return (
               <p
                 key={i}
-                className="text-[var(--muted)] mb-4 leading-relaxed"
+                className="text-[var(--text-muted)] mb-4 leading-relaxed"
                 dangerouslySetInnerHTML={{
                   __html: paragraph
                     .replace(/\*\*(.*?)\*\*/g, '<strong class="text-[var(--foreground)]">$1</strong>')
-                    .replace(/`(.*?)`/g, '<code class="px-1 py-0.5 bg-[var(--card-bg-alt)] rounded text-sm">$1</code>')
+                    .replace(/`(.*?)`/g, '<code class="px-1 py-0.5 bg-[var(--surface-2)] rounded text-sm">$1</code>')
                 }}
               />
             );
@@ -133,7 +133,7 @@ export default function ConceptPage() {
           <div className="card p-6">
             {concept.visual.type === 'interactive' && concept.visual.demoId && (
               <div className="text-center py-8">
-                <p className="text-[var(--muted)] mb-4">{concept.visual.caption}</p>
+                <p className="text-[var(--text-muted)] mb-4">{concept.visual.caption}</p>
                 <Link
                   href={`/learn/streaming-avatars#demo-${concept.visual.demoId}`}
                   className="badge hover:border-[var(--border-strong)]"
@@ -158,14 +158,14 @@ export default function ConceptPage() {
       {concept.prerequisites && concept.prerequisites.length > 0 && (
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">Go Even Deeper</h2>
-          <p className="text-[var(--muted)] mb-4">
+          <p className="text-[var(--text-muted)] mb-4">
             This explanation assumes you understand these fundamentals. Click to learn more:
           </p>
           <div className="grid md:grid-cols-3 gap-4">
             {concept.prerequisites.map((prereq) => (
               <div key={prereq} className="card p-4">
                 <p className="font-medium capitalize">{prereq.replace(/-/g, ' ')}</p>
-                <p className="text-xs text-[var(--muted)] mt-1">Level 1 fundamental</p>
+                <p className="text-xs text-[var(--text-muted)] mt-1">Level 1 fundamental</p>
               </div>
             ))}
           </div>

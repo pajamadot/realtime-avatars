@@ -272,7 +272,7 @@ export function VAEDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Variational Autoencoder (VAE)</h3>
-      <p className="text-sm text-[var(--muted)] mb-4">
+      <p className="text-sm text-[var(--text-muted)] mb-4">
         VAEs learn a compressed latent representation. Adjust the latent dimensions to see how they affect the output.
       </p>
 
@@ -285,7 +285,7 @@ export function VAEDemo() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Latent z₁: {latentDim1.toFixed(2)}</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Latent z₁: {latentDim1.toFixed(2)}</label>
           <input
             type="range"
             min="-1"
@@ -297,7 +297,7 @@ export function VAEDemo() {
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Latent z₂: {latentDim2.toFixed(2)}</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Latent z₂: {latentDim2.toFixed(2)}</label>
           <input
             type="range"
             min="-1"
@@ -321,17 +321,17 @@ export function VAEDemo() {
       </div>
 
       <div className="grid md:grid-cols-3 gap-3 text-xs">
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Encoder q(z|x)</p>
-          <p className="text-[var(--muted)]">Maps input to mean μ and variance σ² of the latent distribution.</p>
+          <p className="text-[var(--text-muted)]">Maps input to mean μ and variance σ² of the latent distribution.</p>
         </div>
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Reparameterization</p>
-          <p className="text-[var(--muted)]">z = μ + σ·ε enables backprop through sampling (ε ~ N(0,1)).</p>
+          <p className="text-[var(--text-muted)]">z = μ + σ·ε enables backprop through sampling (ε ~ N(0,1)).</p>
         </div>
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Decoder p(x|z)</p>
-          <p className="text-[var(--muted)]">Reconstructs the input from the sampled latent vector z.</p>
+          <p className="text-[var(--text-muted)]">Reconstructs the input from the sampled latent vector z.</p>
         </div>
       </div>
     </div>

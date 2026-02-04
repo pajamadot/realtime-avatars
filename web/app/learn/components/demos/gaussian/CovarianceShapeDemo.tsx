@@ -234,7 +234,7 @@ export default function CovarianceShapeDemo() {
           <button
             onClick={() => setAutoRotate(!autoRotate)}
             className={`px-3 py-1 text-xs rounded ${
-              autoRotate ? 'bg-green-500/20 text-green-400' : 'bg-[var(--card-bg-alt)]'
+              autoRotate ? 'bg-green-500/20 text-green-400' : 'bg-[var(--surface-2)]'
             }`}
           >
             {autoRotate ? 'Stop' : 'Rotate'}
@@ -259,7 +259,7 @@ export default function CovarianceShapeDemo() {
               onChange={(e) => setShowAxes(e.target.checked)}
               className="rounded"
             />
-            <label htmlFor="showAxes" className="text-xs text-[var(--muted)]">
+            <label htmlFor="showAxes" className="text-xs text-[var(--text-muted)]">
               Show coordinate axes
             </label>
           </div>
@@ -275,7 +275,7 @@ export default function CovarianceShapeDemo() {
                 <button
                   key={key}
                   onClick={() => applyPreset(key as keyof typeof presets)}
-                  className="px-3 py-1 text-xs bg-[var(--card-bg-alt)] rounded hover:bg-[var(--border)]"
+                  className="px-3 py-1 text-xs bg-[var(--surface-2)] rounded hover:bg-[var(--border)]"
                 >
                   {preset.label}
                 </button>
@@ -351,27 +351,27 @@ export default function CovarianceShapeDemo() {
           </div>
 
           {/* Covariance matrix */}
-          <div className="p-3 bg-[var(--card-bg-alt)] rounded">
-            <p className="text-xs text-[var(--muted)] mb-2">Covariance Matrix (diagonal):</p>
+          <div className="p-3 bg-[var(--surface-2)] rounded">
+            <p className="text-xs text-[var(--text-muted)] mb-2">Covariance Matrix (diagonal):</p>
             <div className="grid grid-cols-3 gap-1 text-center font-mono text-xs">
-              <div className="p-1 bg-[var(--card-bg)] rounded">{covMatrix[0][0].toFixed(2)}</div>
-              <div className="p-1 bg-[var(--card-bg)] rounded text-[var(--muted)]">0</div>
-              <div className="p-1 bg-[var(--card-bg)] rounded text-[var(--muted)]">0</div>
-              <div className="p-1 bg-[var(--card-bg)] rounded text-[var(--muted)]">0</div>
-              <div className="p-1 bg-[var(--card-bg)] rounded">{covMatrix[1][1].toFixed(2)}</div>
-              <div className="p-1 bg-[var(--card-bg)] rounded text-[var(--muted)]">0</div>
-              <div className="p-1 bg-[var(--card-bg)] rounded text-[var(--muted)]">0</div>
-              <div className="p-1 bg-[var(--card-bg)] rounded text-[var(--muted)]">0</div>
-              <div className="p-1 bg-[var(--card-bg)] rounded">{covMatrix[2][2].toFixed(2)}</div>
+              <div className="p-1 bg-[var(--surface-0)] rounded">{covMatrix[0][0].toFixed(2)}</div>
+              <div className="p-1 bg-[var(--surface-0)] rounded text-[var(--text-muted)]">0</div>
+              <div className="p-1 bg-[var(--surface-0)] rounded text-[var(--text-muted)]">0</div>
+              <div className="p-1 bg-[var(--surface-0)] rounded text-[var(--text-muted)]">0</div>
+              <div className="p-1 bg-[var(--surface-0)] rounded">{covMatrix[1][1].toFixed(2)}</div>
+              <div className="p-1 bg-[var(--surface-0)] rounded text-[var(--text-muted)]">0</div>
+              <div className="p-1 bg-[var(--surface-0)] rounded text-[var(--text-muted)]">0</div>
+              <div className="p-1 bg-[var(--surface-0)] rounded text-[var(--text-muted)]">0</div>
+              <div className="p-1 bg-[var(--surface-0)] rounded">{covMatrix[2][2].toFixed(2)}</div>
             </div>
-            <p className="text-xs text-[var(--muted)] mt-2">
+            <p className="text-xs text-[var(--text-muted)] mt-2">
               Diagonal values = scale² (variance along each axis)
             </p>
           </div>
         </div>
       </div>
 
-      <p className="text-xs text-[var(--muted)] mt-4">
+      <p className="text-xs text-[var(--text-muted)] mt-4">
         This shows how a 3D Gaussian's shape is defined by its covariance matrix.
         The diagonal values control stretching along each axis, creating spheres, pancakes, or needles.
       </p>

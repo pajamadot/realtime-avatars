@@ -182,7 +182,7 @@ export function IdentityLockDemo() {
       ctx.setLineDash([]);
 
       // Labels
-      ctx.fillStyle = 'var(--muted)';
+      ctx.fillStyle = 'var(--text-muted)';
       ctx.font = '12px sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('Without Identity Lock', halfWidth / 2, 20);
@@ -209,7 +209,7 @@ export function IdentityLockDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Identity Preservation Demo</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         See how identity lock maintains facial features while allowing expression/motion changes.
         Without identity lock, the face drifts to an average appearance.
       </p>
@@ -221,7 +221,7 @@ export function IdentityLockDemo() {
             ref={canvasRef}
             width={400}
             height={250}
-            className="w-full rounded-lg border border-[var(--border)] bg-[var(--card-bg-alt)]"
+            className="w-full rounded-lg border border-[var(--border)] bg-[var(--surface-2)]"
           />
 
           {/* Controls */}
@@ -263,7 +263,7 @@ export function IdentityLockDemo() {
               onChange={(e) => setIdentityStrength(Number(e.target.value))}
               className="w-full"
             />
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               Lower values allow more drift toward average face
             </p>
           </div>
@@ -296,9 +296,9 @@ export function IdentityLockDemo() {
       </div>
 
       {/* Explanation */}
-      <div className="mt-6 p-4 bg-[var(--card-bg-alt)] rounded">
+      <div className="mt-6 p-4 bg-[var(--surface-2)] rounded">
         <p className="font-medium mb-2">How Identity Lock Works</p>
-        <div className="grid md:grid-cols-3 gap-4 text-sm text-[var(--muted)]">
+        <div className="grid md:grid-cols-3 gap-4 text-sm text-[var(--text-muted)]">
           <div>
             <p className="font-medium text-[var(--foreground)] mb-1">1. Extract Identity</p>
             <p>Encoder captures facial features (eye spacing, nose shape, etc.) as a latent vector</p>

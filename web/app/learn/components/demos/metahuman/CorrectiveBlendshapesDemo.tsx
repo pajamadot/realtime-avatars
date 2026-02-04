@@ -182,7 +182,7 @@ export function CorrectiveBlendshapesDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Corrective Blendshapes</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         When multiple blendshapes activate together, their deformations can combine incorrectly.
         Corrective blendshapes fix these artifacts automatically.
       </p>
@@ -211,14 +211,14 @@ export function CorrectiveBlendshapesDemo() {
             </button>
           </div>
 
-          <p className="mt-2 text-xs text-[var(--muted)] text-center">
+          <p className="mt-2 text-xs text-[var(--text-muted)] text-center">
             Toggle correctives and combine both sliders to see the artifact
           </p>
         </div>
 
         {/* Controls */}
         <div className="space-y-4">
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-2">
               <span>Blendshape A: Blink</span>
               <span className="font-mono">{(blendshapeA * 100).toFixed(0)}%</span>
@@ -234,7 +234,7 @@ export function CorrectiveBlendshapesDemo() {
             />
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-2">
               <span>Blendshape B: Look Down</span>
               <span className="font-mono">{(blendshapeB * 100).toFixed(0)}%</span>
@@ -250,9 +250,9 @@ export function CorrectiveBlendshapesDemo() {
             />
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">How It Works</p>
-            <div className="space-y-2 text-xs text-[var(--muted)]">
+            <div className="space-y-2 text-xs text-[var(--text-muted)]">
               <p>
                 <span className="font-medium text-[var(--foreground)]">Problem:</span>{' '}
                 Blink moves eyelids down. Look down also moves eye region down.
@@ -266,12 +266,12 @@ export function CorrectiveBlendshapesDemo() {
             </div>
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Corrective Formula</p>
-            <code className="text-xs block font-mono text-[var(--muted)]">
+            <code className="text-xs block font-mono text-[var(--text-muted)]">
               corrective_weight = blendA × blendB
             </code>
-            <p className="text-xs text-[var(--muted)] mt-2">
+            <p className="text-xs text-[var(--text-muted)] mt-2">
               The corrective is sculpted to exactly cancel the artifact when both blendshapes
               are at 100%, and scales proportionally for partial activations.
             </p>
@@ -279,7 +279,7 @@ export function CorrectiveBlendshapesDemo() {
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">MetaHuman Usage</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               MetaHuman has hundreds of corrective shapes for common expression combinations:
               smile+blink, frown+jawOpen, etc. These are pre-computed and activate automatically.
             </p>

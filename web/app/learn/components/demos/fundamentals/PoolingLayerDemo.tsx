@@ -225,7 +225,7 @@ export function PoolingLayerDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Pooling Layers</h3>
-      <p className="text-sm text-[var(--muted)] mb-4">
+      <p className="text-sm text-[var(--text-muted)] mb-4">
         Pooling reduces spatial dimensions while preserving important features. Hover over output cells to see the pooling window.
       </p>
 
@@ -240,11 +240,11 @@ export function PoolingLayerDemo() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Pooling Type</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Pooling Type</label>
           <select
             value={poolingType}
             onChange={(e) => setPoolingType(e.target.value as PoolingType)}
-            className="w-full px-2 py-1 rounded bg-[var(--card-bg)] border border-[var(--border)] text-sm"
+            className="w-full px-2 py-1 rounded bg-[var(--surface-0)] border border-[var(--border)] text-sm"
           >
             <option value="max">Max Pooling</option>
             <option value="average">Average Pooling</option>
@@ -256,7 +256,7 @@ export function PoolingLayerDemo() {
         {!poolingType.startsWith('global') && (
           <>
             <div>
-              <label className="text-xs text-[var(--muted)] block mb-1">Pool Size: {poolSize}×{poolSize}</label>
+              <label className="text-xs text-[var(--text-muted)] block mb-1">Pool Size: {poolSize}×{poolSize}</label>
               <input
                 type="range"
                 min="2"
@@ -267,7 +267,7 @@ export function PoolingLayerDemo() {
               />
             </div>
             <div>
-              <label className="text-xs text-[var(--muted)] block mb-1">Stride: {stride}</label>
+              <label className="text-xs text-[var(--text-muted)] block mb-1">Stride: {stride}</label>
               <input
                 type="range"
                 min="1"
@@ -282,13 +282,13 @@ export function PoolingLayerDemo() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-4 text-xs">
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Max Pooling</p>
-          <p className="text-[var(--muted)]">Takes the maximum value in each window. Preserves the strongest activations and provides translation invariance.</p>
+          <p className="text-[var(--text-muted)]">Takes the maximum value in each window. Preserves the strongest activations and provides translation invariance.</p>
         </div>
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Average Pooling</p>
-          <p className="text-[var(--muted)]">Takes the mean of values. Smoother downsampling, often used in final layers before classification.</p>
+          <p className="text-[var(--text-muted)]">Takes the mean of values. Smoother downsampling, often used in final layers before classification.</p>
         </div>
       </div>
     </div>

@@ -54,7 +54,7 @@ export default function LearnPage() {
           The Four Paths to<br />
           Real-Time Avatars
         </h1>
-        <p className="text-lg text-[var(--muted)] max-w-2xl mb-8">
+        <p className="text-lg text-[var(--text-muted)] max-w-2xl mb-8">
           From fundamentals to implementation. Each track builds from core concepts
           to working code, with interactive demos along the way. Choose your path
           based on your goals.
@@ -64,30 +64,30 @@ export default function LearnPage() {
         <div className="highlight-box">
           <p className="font-medium mb-4">Which path is right for you?</p>
           <div className="grid md:grid-cols-2 gap-4 text-sm">
-            <div className="p-4 bg-[var(--card-bg)] rounded border border-[var(--border)]">
+            <div className="p-4 bg-[var(--surface-0)] rounded border border-[var(--border)]">
               <p className="font-medium mb-2">Want photorealism of a specific person?</p>
-              <p className="text-[var(--muted)]">
+              <p className="text-[var(--text-muted)]">
                 Start with <span className="text-[var(--color-gaussian)]">Gaussian Splatting</span> —
                 capture once, render in real-time forever.
               </p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded border border-[var(--border)]">
+            <div className="p-4 bg-[var(--surface-0)] rounded border border-[var(--border)]">
               <p className="font-medium mb-2">Need precise animation control?</p>
-              <p className="text-[var(--muted)]">
+              <p className="text-[var(--text-muted)]">
                 Start with <span className="text-[var(--color-metahuman)]">MetaHuman</span> —
                 industry-standard rigs with live face tracking.
               </p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded border border-[var(--border)]">
+            <div className="p-4 bg-[var(--surface-0)] rounded border border-[var(--border)]">
               <p className="font-medium mb-2">Want any face from one photo?</p>
-              <p className="text-[var(--muted)]">
+              <p className="text-[var(--text-muted)]">
                 Start with <span className="text-[var(--color-generative)]">Generative Video</span> —
                 one-shot synthesis from a single image.
               </p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded border border-[var(--border)]">
+            <div className="p-4 bg-[var(--surface-0)] rounded border border-[var(--border)]">
               <p className="font-medium mb-2">Building a production app fast?</p>
-              <p className="text-[var(--muted)]">
+              <p className="text-[var(--text-muted)]">
                 Start with <span className="text-[var(--color-streaming)]">Streaming Avatars</span> —
                 use hosted providers via WebRTC.
               </p>
@@ -107,12 +107,12 @@ export default function LearnPage() {
             <span className="badge bg-[var(--accent)]/10 text-[var(--accent)] border-[var(--accent)]/20">
               Start Here
             </span>
-            <span className="text-xs text-[var(--muted)]">30 min</span>
+            <span className="text-xs text-[var(--text-muted)]">30 min</span>
           </div>
           <h2 className="text-2xl font-semibold mb-2 group-hover:text-[var(--accent)] transition-colors">
             End-to-End Real-Time Avatar
           </h2>
-          <p className="text-[var(--muted)] mb-4 max-w-2xl">
+          <p className="text-[var(--text-muted)] mb-4 max-w-2xl">
             Build a complete conversational avatar system from scratch. Learn how audio flows through
             STT → LLM → TTS → Avatar rendering, with working code for each of the four approaches.
           </p>
@@ -144,15 +144,15 @@ export default function LearnPage() {
                   style={{ backgroundColor: track.color }}
                 />
                 <span className="badge">{track.difficulty}</span>
-                <span className="text-xs text-[var(--muted)]">{track.time}</span>
+                <span className="text-xs text-[var(--text-muted)]">{track.time}</span>
               </div>
 
               <h3 className="text-xl font-semibold mb-1 group-hover:text-[var(--accent)] transition-colors">
                 {track.title}
               </h3>
-              <p className="text-sm text-[var(--muted)] mb-4">{track.subtitle}</p>
+              <p className="text-sm text-[var(--text-muted)] mb-4">{track.subtitle}</p>
 
-              <p className="text-sm text-[var(--muted)] mb-4">{track.description}</p>
+              <p className="text-sm text-[var(--text-muted)] mb-4">{track.description}</p>
 
               <div className="flex flex-wrap gap-2">
                 {track.concepts.map((concept) => (
@@ -179,7 +179,7 @@ export default function LearnPage() {
               <BookOpen size={20} className="text-[var(--accent)]" />
             </div>
             <h3 className="font-semibold mb-2">Level 3: Practical Start</h3>
-            <p className="text-sm text-[var(--muted)]">
+            <p className="text-sm text-[var(--text-muted)]">
               Each track starts with "what does this do?" — practical explanations
               you can understand in 60 seconds. No prerequisites beyond basic programming.
             </p>
@@ -189,7 +189,7 @@ export default function LearnPage() {
               <Search size={20} className="text-[var(--accent)]" />
             </div>
             <h3 className="font-semibold mb-2">Level 2: Drill Down</h3>
-            <p className="text-sm text-[var(--muted)]">
+            <p className="text-sm text-[var(--text-muted)]">
               Curious about the math? Click any concept to drill deeper.
               Each explanation links to its prerequisites, so you can go as deep as needed.
             </p>
@@ -199,7 +199,7 @@ export default function LearnPage() {
               <Gamepad2 size={20} className="text-[var(--accent)]" />
             </div>
             <h3 className="font-semibold mb-2">Interactive Demos</h3>
-            <p className="text-sm text-[var(--muted)]">
+            <p className="text-sm text-[var(--text-muted)]">
               Every concept has tweakable parameters. Manipulate a Gaussian,
               reorder alpha layers, watch diffusion denoise — learning by doing.
             </p>
@@ -259,7 +259,7 @@ export default function LearnPage() {
       <section className="mb-16">
         <div className="card p-6 text-center">
           <h3 className="font-semibold mb-2">See It In Action</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Experience a streaming avatar demo built with LiveKit and Hedra.
             Talk to an AI-powered avatar in real-time.
           </p>
@@ -276,7 +276,7 @@ export default function LearnPage() {
       <section>
         <div className="research-note">
           <p className="font-medium mb-2">These approaches are converging</p>
-          <p className="text-sm text-[var(--muted)]">
+          <p className="text-sm text-[var(--text-muted)]">
             The future isn't picking one approach — it's combining them. MetaHumans enhanced
             by generative models. Gaussian avatars driven by parametric rigs. Understanding
             all four paths helps you build hybrid systems that take the best of each.

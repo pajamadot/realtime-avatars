@@ -133,7 +133,7 @@ export function TemporalConsistencyDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Temporal Consistency</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Video generation requires frame-to-frame coherence. Without temporal consistency,
         each frame flickers independently. With it, changes are smooth and natural.
       </p>
@@ -168,20 +168,20 @@ export function TemporalConsistencyDemo() {
 
           {/* Comparison info */}
           <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
-            <div className="p-2 bg-[var(--card-bg-alt)] rounded text-center">
+            <div className="p-2 bg-[var(--surface-2)] rounded text-center">
               <p className="font-medium">Left: Raw Output</p>
-              <p className="text-[var(--muted)]">Each frame independent</p>
+              <p className="text-[var(--text-muted)]">Each frame independent</p>
             </div>
-            <div className="p-2 bg-[var(--card-bg-alt)] rounded text-center">
+            <div className="p-2 bg-[var(--surface-2)] rounded text-center">
               <p className="font-medium">Right: Temporally Smoothed</p>
-              <p className="text-[var(--muted)]">Blended with previous</p>
+              <p className="text-[var(--text-muted)]">Blended with previous</p>
             </div>
           </div>
         </div>
 
         {/* Parameters */}
         <div className="space-y-4">
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-2">
               <span>Temporal Weight</span>
               <span className="font-mono">{temporalWeight.toFixed(2)}</span>
@@ -195,28 +195,28 @@ export function TemporalConsistencyDemo() {
               onChange={(e) => setTemporalWeight(Number(e.target.value))}
               className="w-full"
             />
-            <div className="flex justify-between text-xs text-[var(--muted)] mt-1">
+            <div className="flex justify-between text-xs text-[var(--text-muted)] mt-1">
               <span>No smoothing</span>
               <span>Heavy smoothing</span>
             </div>
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Techniques Used</p>
-            <div className="space-y-2 text-xs text-[var(--muted)]">
-              <div className="p-2 bg-[var(--card-bg)] rounded">
+            <div className="space-y-2 text-xs text-[var(--text-muted)]">
+              <div className="p-2 bg-[var(--surface-0)] rounded">
                 <span className="font-medium text-[var(--foreground)]">Latent Blending:</span>
                 <span> Interpolate latent codes between frames</span>
               </div>
-              <div className="p-2 bg-[var(--card-bg)] rounded">
+              <div className="p-2 bg-[var(--surface-0)] rounded">
                 <span className="font-medium text-[var(--foreground)]">Cross-Frame Attention:</span>
                 <span> Attend to previous frame features</span>
               </div>
-              <div className="p-2 bg-[var(--card-bg)] rounded">
+              <div className="p-2 bg-[var(--surface-0)] rounded">
                 <span className="font-medium text-[var(--foreground)]">Motion Prior:</span>
                 <span> Predict expected change from audio</span>
               </div>
-              <div className="p-2 bg-[var(--card-bg)] rounded">
+              <div className="p-2 bg-[var(--surface-0)] rounded">
                 <span className="font-medium text-[var(--foreground)]">Optical Flow:</span>
                 <span> Warp previous frame as initialization</span>
               </div>
@@ -225,7 +225,7 @@ export function TemporalConsistencyDemo() {
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">For Talking Heads</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               Avatar systems must balance temporal consistency with responsiveness.
               Too much smoothing = laggy lip sync. Too little = jittery video.
               Most systems use ~0.6-0.8 weight with audio-aware adjustments.

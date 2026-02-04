@@ -231,7 +231,7 @@ export function DifferentiableRenderingDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Differentiable Rendering</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         See how gradients flow backward through the rendering process. Click to set a target pixel -
         the Gaussian will learn to cover it. This is how 3DGS learns from photos.
       </p>
@@ -276,12 +276,12 @@ export function DifferentiableRenderingDemo() {
         {/* Parameters */}
         <div className="space-y-4">
           {/* Loss display */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between items-center">
               <span className="font-medium">Loss (L2)</span>
               <span className="font-mono text-lg">{loss.toFixed(1)}</span>
             </div>
-            <div className="mt-2 h-2 bg-[var(--card-bg)] rounded overflow-hidden">
+            <div className="mt-2 h-2 bg-[var(--surface-0)] rounded overflow-hidden">
               <div
                 className="h-full bg-gradient-to-r from-green-500 to-red-500"
                 style={{ width: `${Math.min(100, loss / 500 * 100)}%` }}
@@ -290,7 +290,7 @@ export function DifferentiableRenderingDemo() {
           </div>
 
           {/* Gaussian parameters */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded space-y-3">
+          <div className="p-4 bg-[var(--surface-2)] rounded space-y-3">
             <p className="font-medium text-sm">Gaussian Parameters</p>
 
             <div>
@@ -357,7 +357,7 @@ export function DifferentiableRenderingDemo() {
           </div>
 
           {/* Gradients display */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Gradients (∂Loss/∂param)</p>
             <div className="grid grid-cols-2 gap-2 text-xs">
               <div>∂x: <span className="font-mono">{gradients.x?.toFixed(3) || 0}</span></div>
@@ -370,9 +370,9 @@ export function DifferentiableRenderingDemo() {
       </div>
 
       {/* Explanation */}
-      <div className="mt-6 p-4 bg-[var(--card-bg-alt)] rounded">
+      <div className="mt-6 p-4 bg-[var(--surface-2)] rounded">
         <p className="font-medium mb-2">Why Differentiable Rendering Matters</p>
-        <p className="text-xs text-[var(--muted)]">
+        <p className="text-xs text-[var(--text-muted)]">
           Traditional rendering (rasterization, ray tracing) can't compute gradients because they use
           discrete operations. 3D Gaussian Splatting uses smooth, differentiable operations so we can
           ask: "How should I move/scale/rotate this Gaussian to make the rendered image look more like

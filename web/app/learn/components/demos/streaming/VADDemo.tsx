@@ -240,7 +240,7 @@ export default function VADDemo() {
           </button>
           <button
             onClick={reset}
-            className="px-3 py-1 text-xs bg-[var(--card-bg-alt)] rounded hover:bg-[var(--border)]"
+            className="px-3 py-1 text-xs bg-[var(--surface-2)] rounded hover:bg-[var(--border)]"
           >
             Reset
           </button>
@@ -267,7 +267,7 @@ export default function VADDemo() {
              vadState === 'endpoint' ? 'Endpoint (User Done)' : 'Silence'}
           </span>
         </div>
-        <div className="text-sm text-[var(--muted)]">
+        <div className="text-sm text-[var(--text-muted)]">
           Time: {currentTime.toFixed(0)}ms
         </div>
       </div>
@@ -286,7 +286,7 @@ export default function VADDemo() {
                   className={`px-3 py-1 text-xs rounded ${
                     speechPattern === pattern
                       ? 'bg-[var(--accent)] text-white'
-                      : 'bg-[var(--card-bg-alt)] hover:bg-[var(--border)]'
+                      : 'bg-[var(--surface-2)] hover:bg-[var(--border)]'
                   }`}
                 >
                   {pattern}
@@ -310,7 +310,7 @@ export default function VADDemo() {
               onChange={(e) => setVadThreshold(parseFloat(e.target.value))}
               className="w-full"
             />
-            <p className="text-xs text-[var(--muted)]">Higher = more aggressive filtering</p>
+            <p className="text-xs text-[var(--text-muted)]">Higher = more aggressive filtering</p>
           </div>
 
           {/* Endpoint Delay */}
@@ -328,15 +328,15 @@ export default function VADDemo() {
               onChange={(e) => setEndpointDelay(parseInt(e.target.value))}
               className="w-full"
             />
-            <p className="text-xs text-[var(--muted)]">Silence before considering user done</p>
+            <p className="text-xs text-[var(--text-muted)]">Silence before considering user done</p>
           </div>
         </div>
 
         {/* Legend */}
         <div className="space-y-3">
-          <div className="p-3 bg-[var(--card-bg-alt)] rounded text-sm">
+          <div className="p-3 bg-[var(--surface-2)] rounded text-sm">
             <p className="font-medium mb-2">How VAD Works:</p>
-            <ol className="list-decimal list-inside space-y-1 text-[var(--muted)]">
+            <ol className="list-decimal list-inside space-y-1 text-[var(--text-muted)]">
               <li>Audio amplitude compared to threshold</li>
               <li>Above threshold = speech detected</li>
               <li>Below threshold for endpoint delay = user done</li>
@@ -352,7 +352,7 @@ export default function VADDemo() {
         </div>
       </div>
 
-      <p className="text-xs text-[var(--muted)] mt-4">
+      <p className="text-xs text-[var(--text-muted)] mt-4">
         Try different thresholds and endpoint delays to see how they affect detection.
         Too aggressive cuts off speech; too lenient adds latency.
       </p>

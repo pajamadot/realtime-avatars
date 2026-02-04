@@ -310,7 +310,7 @@ export function SkinningWeightDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Skinning Weight Visualizer</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         See how skinning weights determine mesh deformation. Click a bone to select it,
         then rotate to see how weights blend the deformation.
       </p>
@@ -322,7 +322,7 @@ export function SkinningWeightDemo() {
             ref={canvasRef}
             width={400}
             height={400}
-            className="border border-[var(--border)] rounded-lg bg-[var(--card-bg-alt)] cursor-pointer"
+            className="border border-[var(--border)] rounded-lg bg-[var(--surface-2)] cursor-pointer"
             onClick={handleCanvasClick}
           />
 
@@ -347,7 +347,7 @@ export function SkinningWeightDemo() {
         <div>
           {/* Selected bone info */}
           {selectedBone !== null && (
-            <div className="mb-4 p-4 bg-[var(--card-bg-alt)] rounded">
+            <div className="mb-4 p-4 bg-[var(--surface-2)] rounded">
               <div className="flex items-center gap-2 mb-3">
                 <span
                   className="w-4 h-4 rounded-full"
@@ -358,11 +358,11 @@ export function SkinningWeightDemo() {
 
               <div className="space-y-3">
                 <div>
-                  <label className="text-xs text-[var(--muted)]">Rotation</label>
+                  <label className="text-xs text-[var(--text-muted)]">Rotation</label>
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => rotateBone(selectedBone, -0.1)}
-                      className="px-3 py-1 bg-[var(--card-bg)] rounded hover:bg-[var(--border)]"
+                      className="px-3 py-1 bg-[var(--surface-0)] rounded hover:bg-[var(--border)]"
                     >
                       -
                     </button>
@@ -371,7 +371,7 @@ export function SkinningWeightDemo() {
                     </span>
                     <button
                       onClick={() => rotateBone(selectedBone, 0.1)}
-                      className="px-3 py-1 bg-[var(--card-bg)] rounded hover:bg-[var(--border)]"
+                      className="px-3 py-1 bg-[var(--surface-0)] rounded hover:bg-[var(--border)]"
                     >
                       +
                     </button>
@@ -393,7 +393,7 @@ export function SkinningWeightDemo() {
             </label>
             {paintMode && (
               <div className="mt-2 pl-6">
-                <label className="text-xs text-[var(--muted)]">Paint Weight: {paintWeight.toFixed(2)}</label>
+                <label className="text-xs text-[var(--text-muted)]">Paint Weight: {paintWeight.toFixed(2)}</label>
                 <input
                   type="range"
                   min={0}
@@ -430,7 +430,7 @@ export function SkinningWeightDemo() {
                   className={`w-full flex items-center gap-2 p-2 rounded text-left text-sm transition-colors ${
                     selectedBone === i
                       ? 'bg-[var(--accent)] text-white'
-                      : 'hover:bg-[var(--card-bg-alt)]'
+                      : 'hover:bg-[var(--surface-2)]'
                   }`}
                 >
                   <span
@@ -445,7 +445,7 @@ export function SkinningWeightDemo() {
 
           {/* Selected vertex weights */}
           {selectedVertex !== null && (
-            <div className="mt-4 p-3 bg-[var(--card-bg-alt)] rounded text-xs">
+            <div className="mt-4 p-3 bg-[var(--surface-2)] rounded text-xs">
               <p className="font-medium mb-2">Vertex {selectedVertex} Weights:</p>
               <div className="space-y-1">
                 {bones.map((bone, i) => {
@@ -472,19 +472,19 @@ export function SkinningWeightDemo() {
       </div>
 
       {/* Weight scale legend */}
-      <div className="mt-6 p-4 bg-[var(--card-bg-alt)] rounded text-sm">
+      <div className="mt-6 p-4 bg-[var(--surface-2)] rounded text-sm">
         <p className="font-medium mb-2">Weight Color Scale</p>
         <div className="flex items-center gap-4">
           <div className="flex-1 h-4 rounded" style={{
             background: 'linear-gradient(to right, blue, purple, red)'
           }} />
-          <div className="flex gap-4 text-xs text-[var(--muted)]">
+          <div className="flex gap-4 text-xs text-[var(--text-muted)]">
             <span>0% (Blue)</span>
             <span>50%</span>
             <span>100% (Red)</span>
           </div>
         </div>
-        <p className="text-xs text-[var(--muted)] mt-2">
+        <p className="text-xs text-[var(--text-muted)] mt-2">
           Vertices with higher weight for the selected bone move more when that bone rotates.
           Weights are normalized so they sum to 1 per vertex.
         </p>

@@ -40,9 +40,15 @@ export default function ConceptCard({
   const [isHovered, setIsHovered] = useState(false);
 
   const difficultyColors = {
-    beginner: '#66ff66',
-    intermediate: '#ffaa66',
-    advanced: '#ff6666',
+    beginner: 'var(--difficulty-beginner)',
+    intermediate: 'var(--difficulty-intermediate)',
+    advanced: 'var(--difficulty-advanced)',
+  };
+
+  const difficultyBgColors = {
+    beginner: 'var(--difficulty-beginner-bg)',
+    intermediate: 'var(--difficulty-intermediate-bg)',
+    advanced: 'var(--difficulty-advanced-bg)',
   };
 
   const difficultyLabels = {
@@ -73,12 +79,12 @@ export default function ConceptCard({
       <div className="absolute -top-2 right-3 flex items-center gap-2">
         <span
           className="text-xs px-2 py-0.5 rounded-full font-medium"
-          style={{ backgroundColor: difficultyColors[difficulty] + '30', color: difficultyColors[difficulty] }}
+          style={{ backgroundColor: difficultyBgColors[difficulty], color: difficultyColors[difficulty] }}
         >
           {difficultyLabels[difficulty]}
         </span>
         {timeEstimate && (
-          <span className="text-xs text-[var(--muted)] bg-[var(--card-bg-alt)] px-2 py-0.5 rounded-full">
+          <span className="text-xs text-[var(--text-muted)] bg-[var(--surface-2)] px-2 py-0.5 rounded-full">
             {timeEstimate}
           </span>
         )}
@@ -88,10 +94,10 @@ export default function ConceptCard({
         <h3 className="font-semibold text-lg mb-2 flex items-center gap-2">
           {title}
           {isHovered && (
-            <span className="text-sm font-normal text-[var(--muted)] animate-pulse">→</span>
+            <span className="text-sm font-normal text-[var(--text-muted)] animate-pulse">→</span>
           )}
         </h3>
-        <p className="text-sm text-[var(--muted)] mb-4 leading-relaxed">{summary}</p>
+        <p className="text-sm text-[var(--text-muted)] mb-4 leading-relaxed">{summary}</p>
 
         {/* Key Insight - Always visible if provided */}
         {keyInsight && (
@@ -99,7 +105,7 @@ export default function ConceptCard({
             className="p-3 rounded mb-4 text-sm border-l-4 transition-all duration-300"
             style={{
               borderColor: color,
-              backgroundColor: isHovered ? color + '15' : 'var(--card-bg-alt)',
+              backgroundColor: isHovered ? color + '15' : 'var(--surface-2)',
             }}
           >
             <span className="font-semibold" style={{ color }}>Key insight:</span>{' '}
@@ -113,7 +119,7 @@ export default function ConceptCard({
             <button
               type="button"
               onClick={() => setShowPrereqs(!showPrereqs)}
-              className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] mb-2 flex items-center gap-2 transition-colors"
+              className="text-sm text-[var(--text-muted)] hover:text-[var(--foreground)] mb-2 flex items-center gap-2 transition-colors"
             >
               <span className={`transition-transform duration-200 ${showPrereqs ? 'rotate-90' : ''}`}>▶</span>
               <span>Prerequisites ({prerequisites.length})</span>
@@ -124,7 +130,7 @@ export default function ConceptCard({
                 {prerequisites.map((prereq) => (
                   <span
                     key={prereq}
-                    className="text-xs bg-[var(--card-bg-alt)] px-2 py-1 rounded border border-[var(--border)]"
+                    className="text-xs bg-[var(--surface-2)] px-2 py-1 rounded border border-[var(--border)]"
                   >
                     {prereq}
                   </span>
@@ -147,7 +153,7 @@ export default function ConceptCard({
 
         <div className={`overflow-hidden transition-all duration-300 ${showMetaphor ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
           <div
-            className="p-3 bg-[var(--card-bg-alt)] rounded text-sm text-[var(--muted)] mb-4 border-l-2 flex items-start gap-2"
+            className="p-3 bg-[var(--surface-2)] rounded text-sm text-[var(--text-muted)] mb-4 border-l-2 flex items-start gap-2"
             style={{ borderColor: color }}
           >
             <Lightbulb size={16} className="flex-shrink-0 mt-0.5" style={{ color }} />

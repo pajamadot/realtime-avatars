@@ -75,7 +75,7 @@ export default function QuickQuiz({
             {percentage}%
           </div>
 
-          <p className="text-[var(--muted)] mb-4">
+          <p className="text-[var(--text-muted)] mb-4">
             You got {score} out of {questions.length} questions correct!
           </p>
 
@@ -105,13 +105,13 @@ export default function QuickQuiz({
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-semibold">{title}</h3>
-        <span className="text-sm text-[var(--muted)]">
+        <span className="text-sm text-[var(--text-muted)]">
           Question {currentQuestion + 1} of {questions.length}
         </span>
       </div>
 
       {/* Progress bar */}
-      <div className="h-1 bg-[var(--card-bg-alt)] rounded-full mb-6 overflow-hidden">
+      <div className="h-1 bg-[var(--surface-2)] rounded-full mb-6 overflow-hidden">
         <div
           className="h-full transition-all duration-300"
           style={{
@@ -127,7 +127,7 @@ export default function QuickQuiz({
       {/* Options */}
       <div className="space-y-3 mb-6">
         {question.options.map((option, index) => {
-          let optionStyle = 'bg-[var(--card-bg-alt)] border-[var(--border)] hover:border-[var(--border-strong)]';
+          let optionStyle = 'bg-[var(--surface-2)] border-[var(--border)] hover:border-[var(--border-strong)]';
 
           if (selectedAnswer !== null) {
             if (index === question.correctIndex) {
@@ -177,7 +177,7 @@ export default function QuickQuiz({
           <p className={`font-semibold mb-2 flex items-center gap-1 ${isCorrect ? 'text-green-500' : 'text-red-500'}`}>
             {isCorrect ? <><Check size={16} /> Correct!</> : <><X size={16} /> Not quite</>}
           </p>
-          <p className="text-sm text-[var(--muted)]">{question.explanation}</p>
+          <p className="text-sm text-[var(--text-muted)]">{question.explanation}</p>
         </div>
       )}
 

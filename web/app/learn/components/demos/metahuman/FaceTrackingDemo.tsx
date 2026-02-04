@@ -314,7 +314,7 @@ export function FaceTrackingDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Face Tracking Simulator</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Simulate how ARKit extracts 52 blendshapes from face tracking.
         Move your mouse over the canvas to control head pose, and use the sliders for expressions.
       </p>
@@ -326,7 +326,7 @@ export function FaceTrackingDemo() {
             ref={canvasRef}
             width={300}
             height={300}
-            className="border border-[var(--border)] rounded-lg bg-[var(--card-bg-alt)] cursor-crosshair"
+            className="border border-[var(--border)] rounded-lg bg-[var(--surface-2)] cursor-crosshair"
           />
 
           {/* Start/Stop button */}
@@ -341,7 +341,7 @@ export function FaceTrackingDemo() {
             {isTracking ? 'Stop Tracking' : 'Start Tracking'}
           </button>
 
-          <p className="text-xs text-[var(--muted)] mt-2 text-center">
+          <p className="text-xs text-[var(--text-muted)] mt-2 text-center">
             {isTracking
               ? 'Move mouse to control gaze direction'
               : 'Click to start simulated tracking'}
@@ -361,7 +361,7 @@ export function FaceTrackingDemo() {
                   className={`px-3 py-1 text-xs rounded capitalize transition-colors ${
                     expression === exp
                       ? 'bg-[var(--color-metahuman)] text-white'
-                      : 'bg-[var(--card-bg-alt)] hover:bg-[var(--border)]'
+                      : 'bg-[var(--surface-2)] hover:bg-[var(--border)]'
                   }`}
                 >
                   {exp}
@@ -423,7 +423,7 @@ export function FaceTrackingDemo() {
             <div className="max-h-[200px] overflow-y-auto space-y-1 text-xs">
               {displayedBlendshapes.map((bs) => (
                 <div key={bs.name} className="flex items-center gap-2">
-                  <span className="w-28 truncate text-[var(--muted)]">{bs.name}</span>
+                  <span className="w-28 truncate text-[var(--text-muted)]">{bs.name}</span>
                   <div className="flex-1 h-2 bg-[var(--border)] rounded overflow-hidden">
                     <div
                       className="h-full bg-[var(--color-metahuman)] transition-all"
@@ -453,7 +453,7 @@ export function FaceTrackingDemo() {
       </div>
 
       {/* Info */}
-      <div className="mt-4 p-4 bg-[var(--card-bg-alt)] rounded text-sm text-[var(--muted)]">
+      <div className="mt-4 p-4 bg-[var(--surface-2)] rounded text-sm text-[var(--text-muted)]">
         <p className="font-medium mb-2">How Real Face Tracking Works</p>
         <ul className="space-y-1 text-xs">
           <li>• iPhone TrueDepth projects 30,000 infrared dots onto your face</li>

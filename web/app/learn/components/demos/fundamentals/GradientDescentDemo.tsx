@@ -219,7 +219,7 @@ export function GradientDescentDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Gradient Descent Visualizer</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Watch how neural networks learn by following the gradient downhill.
         Click anywhere on the landscape to set a starting point.
       </p>
@@ -260,16 +260,16 @@ export function GradientDescentDemo() {
         <div className="space-y-4">
           {/* Metrics */}
           <div className="grid grid-cols-3 gap-2">
-            <div className="p-3 bg-[var(--card-bg-alt)] rounded text-center">
-              <p className="text-xs text-[var(--muted)]">Loss</p>
+            <div className="p-3 bg-[var(--surface-2)] rounded text-center">
+              <p className="text-xs text-[var(--text-muted)]">Loss</p>
               <p className="font-mono text-lg">{currentLoss.toFixed(3)}</p>
             </div>
-            <div className="p-3 bg-[var(--card-bg-alt)] rounded text-center">
-              <p className="text-xs text-[var(--muted)]">Steps</p>
+            <div className="p-3 bg-[var(--surface-2)] rounded text-center">
+              <p className="text-xs text-[var(--text-muted)]">Steps</p>
               <p className="font-mono text-lg">{stepCount}</p>
             </div>
-            <div className="p-3 bg-[var(--card-bg-alt)] rounded text-center">
-              <p className="text-xs text-[var(--muted)]">Position</p>
+            <div className="p-3 bg-[var(--surface-2)] rounded text-center">
+              <p className="text-xs text-[var(--text-muted)]">Position</p>
               <p className="font-mono text-sm">({position.x.toFixed(2)}, {position.y.toFixed(2)})</p>
             </div>
           </div>
@@ -289,7 +289,7 @@ export function GradientDescentDemo() {
               onChange={(e) => setLearningRate(Number(e.target.value))}
               className="w-full"
             />
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               {learningRate < 0.1 ? 'Slow but stable' : learningRate > 0.3 ? 'Fast but may overshoot' : 'Balanced'}
             </p>
           </div>
@@ -309,7 +309,7 @@ export function GradientDescentDemo() {
               onChange={(e) => setMomentum(Number(e.target.value))}
               className="w-full"
             />
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               {momentum === 0 ? 'No momentum (vanilla SGD)' : momentum > 0.7 ? 'High momentum - escapes local minima' : 'Moderate momentum'}
             </p>
           </div>
@@ -372,7 +372,7 @@ export function GradientDescentDemo() {
             <code className="text-xs block mb-2 font-mono">
               w = w - lr * gradient + momentum * velocity
             </code>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               This is how diffusion models, face encoders, and all neural networks learn.
               The gradient points uphill; we go downhill.
             </p>

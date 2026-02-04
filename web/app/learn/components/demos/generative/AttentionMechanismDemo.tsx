@@ -173,7 +173,7 @@ export function AttentionMechanismDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Attention Mechanism</h3>
-      <p className="text-sm text-[var(--muted)] mb-4">
+      <p className="text-sm text-[var(--text-muted)] mb-4">
         Attention allows models to focus on relevant parts of the input. Click different query tokens to see attention patterns.
       </p>
 
@@ -186,7 +186,7 @@ export function AttentionMechanismDemo() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Query Token: [{queryIndex}]</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Query Token: [{queryIndex}]</label>
           <input
             type="range"
             min="0"
@@ -197,18 +197,18 @@ export function AttentionMechanismDemo() {
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Attention Type</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Attention Type</label>
           <select
             value={attentionType}
             onChange={(e) => setAttentionType(e.target.value as 'self' | 'cross')}
-            className="w-full px-2 py-1 rounded bg-[var(--card-bg)] border border-[var(--border)] text-sm"
+            className="w-full px-2 py-1 rounded bg-[var(--surface-0)] border border-[var(--border)] text-sm"
           >
             <option value="self">Self-Attention</option>
             <option value="cross">Cross-Attention</option>
           </select>
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Temperature: {temperature.toFixed(1)}</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Temperature: {temperature.toFixed(1)}</label>
           <input
             type="range"
             min="0.1"
@@ -232,13 +232,13 @@ export function AttentionMechanismDemo() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-3 text-xs">
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Self-Attention</p>
-          <p className="text-[var(--muted)]">Each token attends to all other tokens in the same sequence. Used in transformers for context understanding.</p>
+          <p className="text-[var(--text-muted)]">Each token attends to all other tokens in the same sequence. Used in transformers for context understanding.</p>
         </div>
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Cross-Attention</p>
-          <p className="text-[var(--muted)]">Query attends to different sequence (e.g., audio → video). Used for conditioning generation on external signals.</p>
+          <p className="text-[var(--text-muted)]">Query attends to different sequence (e.g., audio → video). Used for conditioning generation on external signals.</p>
         </div>
       </div>
     </div>

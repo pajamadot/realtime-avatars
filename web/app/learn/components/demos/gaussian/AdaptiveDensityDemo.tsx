@@ -187,7 +187,7 @@ export function AdaptiveDensityDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Adaptive Density Control</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         3DGS dynamically adjusts Gaussian count during training. High gradient areas get more Gaussians (densification),
         while low-contribution ones are removed (pruning).
       </p>
@@ -242,7 +242,7 @@ export function AdaptiveDensityDemo() {
 
         {/* Parameters */}
         <div className="space-y-4">
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-2">
               <span>Densify Threshold</span>
               <span className="font-mono">{densifyThreshold.toFixed(2)}</span>
@@ -256,12 +256,12 @@ export function AdaptiveDensityDemo() {
               onChange={(e) => setDensifyThreshold(Number(e.target.value))}
               className="w-full"
             />
-            <p className="text-xs text-[var(--muted)] mt-1">
+            <p className="text-xs text-[var(--text-muted)] mt-1">
               Gaussians with gradient {">"} threshold will split
             </p>
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-2">
               <span>Prune Threshold</span>
               <span className="font-mono">{pruneThreshold.toFixed(2)}</span>
@@ -275,14 +275,14 @@ export function AdaptiveDensityDemo() {
               onChange={(e) => setPruneThreshold(Number(e.target.value))}
               className="w-full"
             />
-            <p className="text-xs text-[var(--muted)] mt-1">
+            <p className="text-xs text-[var(--text-muted)] mt-1">
               Gaussians with opacity {"<"} threshold will be removed
             </p>
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Adaptive Density Process</p>
-            <ol className="text-xs text-[var(--muted)] space-y-1">
+            <ol className="text-xs text-[var(--text-muted)] space-y-1">
               <li>1. Compute reconstruction loss gradient per Gaussian</li>
               <li>2. Large gradient + large scale → split into 2 smaller</li>
               <li>3. Large gradient + small scale → clone nearby</li>
@@ -293,7 +293,7 @@ export function AdaptiveDensityDemo() {
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">Why This Matters</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               Without adaptive density, you'd need to manually choose Gaussian count.
               Too few = blurry, too many = slow. The algorithm automatically concentrates
               detail where the scene needs it (edges, textures) and saves memory elsewhere.

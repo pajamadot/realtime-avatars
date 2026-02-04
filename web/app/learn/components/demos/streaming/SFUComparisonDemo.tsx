@@ -286,7 +286,7 @@ export function SFUComparisonDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Media Routing Architecture Comparison</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Compare P2P, SFU, and MCU architectures for real-time media streaming.
         Watch how data packets flow differently in each architecture.
       </p>
@@ -305,7 +305,7 @@ export function SFUComparisonDemo() {
                 className={`flex-1 px-3 py-2 rounded text-sm font-medium transition-colors ${
                   architecture === arch
                     ? 'bg-[var(--accent)] text-white'
-                    : 'bg-[var(--card-bg-alt)] hover:bg-[var(--border)]'
+                    : 'bg-[var(--surface-2)] hover:bg-[var(--border)]'
                 }`}
               >
                 {arch.toUpperCase()}
@@ -317,7 +317,7 @@ export function SFUComparisonDemo() {
             ref={canvasRef}
             width={350}
             height={300}
-            className="w-full rounded-lg border border-[var(--border)] bg-[var(--card-bg-alt)]"
+            className="w-full rounded-lg border border-[var(--border)] bg-[var(--surface-2)]"
           />
 
           {/* Controls */}
@@ -325,7 +325,7 @@ export function SFUComparisonDemo() {
             <div>
               <div className="flex justify-between text-sm mb-1">
                 <span>Participants</span>
-                <span className="text-[var(--muted)]">{participantCount}</span>
+                <span className="text-[var(--text-muted)]">{participantCount}</span>
               </div>
               <input
                 type="range"
@@ -361,21 +361,21 @@ export function SFUComparisonDemo() {
         <div className="space-y-4">
           <div>
             <h4 className="font-medium">{info.name}</h4>
-            <p className="text-sm text-[var(--muted)]">{info.description}</p>
+            <p className="text-sm text-[var(--text-muted)]">{info.description}</p>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-2 text-sm">
-            <div className="p-2 bg-[var(--card-bg-alt)] rounded text-center">
-              <p className="text-[var(--muted)] text-xs">Latency</p>
+            <div className="p-2 bg-[var(--surface-2)] rounded text-center">
+              <p className="text-[var(--text-muted)] text-xs">Latency</p>
               <p className="font-mono">{info.latency}</p>
             </div>
-            <div className="p-2 bg-[var(--card-bg-alt)] rounded text-center">
-              <p className="text-[var(--muted)] text-xs">Server Load</p>
+            <div className="p-2 bg-[var(--surface-2)] rounded text-center">
+              <p className="text-[var(--text-muted)] text-xs">Server Load</p>
               <p className="font-mono text-xs">{info.serverLoad}</p>
             </div>
-            <div className="p-2 bg-[var(--card-bg-alt)] rounded text-center">
-              <p className="text-[var(--muted)] text-xs">Connections</p>
+            <div className="p-2 bg-[var(--surface-2)] rounded text-center">
+              <p className="text-[var(--text-muted)] text-xs">Connections</p>
               <p className="font-mono">{getConnectionCount()}</p>
             </div>
           </div>
@@ -384,7 +384,7 @@ export function SFUComparisonDemo() {
           <div className="grid grid-cols-2 gap-4">
             <div>
               <p className="text-sm font-medium text-green-600 mb-1">Pros</p>
-              <ul className="text-xs text-[var(--muted)] space-y-1">
+              <ul className="text-xs text-[var(--text-muted)] space-y-1">
                 {info.pros.map((pro, i) => (
                   <li key={i} className="flex items-start gap-1">
                     <span className="text-green-500">+</span>
@@ -395,7 +395,7 @@ export function SFUComparisonDemo() {
             </div>
             <div>
               <p className="text-sm font-medium text-red-600 mb-1">Cons</p>
-              <ul className="text-xs text-[var(--muted)] space-y-1">
+              <ul className="text-xs text-[var(--text-muted)] space-y-1">
                 {info.cons.map((con, i) => (
                   <li key={i} className="flex items-start gap-1">
                     <span className="text-red-500">-</span>
@@ -411,7 +411,7 @@ export function SFUComparisonDemo() {
             <p className="text-sm font-medium mb-1">Best For</p>
             <div className="flex flex-wrap gap-1">
               {info.useCases.map((useCase, i) => (
-                <span key={i} className="text-xs px-2 py-1 bg-[var(--card-bg-alt)] rounded">
+                <span key={i} className="text-xs px-2 py-1 bg-[var(--surface-2)] rounded">
                   {useCase}
                 </span>
               ))}
@@ -419,7 +419,7 @@ export function SFUComparisonDemo() {
           </div>
 
           {/* Legend */}
-          <div className="p-3 bg-[var(--card-bg-alt)] rounded text-xs">
+          <div className="p-3 bg-[var(--surface-2)] rounded text-xs">
             <p className="font-medium mb-2">Legend</p>
             <div className="flex flex-wrap gap-3">
               <div className="flex items-center gap-1">

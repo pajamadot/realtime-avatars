@@ -250,7 +250,7 @@ export function NoiseScheduleDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Noise Schedule Comparison</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Different schedules control how quickly noise is added/removed. The schedule
         significantly affects generation quality and speed.
       </p>
@@ -337,16 +337,16 @@ export function NoiseScheduleDemo() {
                     <div className="w-3 h-3 rounded-full" style={{ backgroundColor: s.color }} />
                     <span className="font-medium text-sm">{s.name}</span>
                   </div>
-                  <p className="text-xs text-[var(--muted)]">{s.description}</p>
+                  <p className="text-xs text-[var(--text-muted)]">{s.description}</p>
                 </button>
               );
             })}
           </div>
 
           {/* Current schedule info */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">{schedule.name} Schedule</p>
-            <code className="text-xs block mb-2 font-mono text-[var(--muted)]">
+            <code className="text-xs block mb-2 font-mono text-[var(--text-muted)]">
               {schedule.formula}
             </code>
             <div className="flex justify-between text-sm">
@@ -357,7 +357,7 @@ export function NoiseScheduleDemo() {
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">Best Practices</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               Cosine schedule is preferred for most diffusion models (used in DDPM, Stable Diffusion).
               It preserves more signal at the start, allowing fine details to emerge gradually.
             </p>

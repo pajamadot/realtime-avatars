@@ -216,7 +216,7 @@ export function BitrateAdaptationDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Adaptive Bitrate Streaming</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         ABR algorithms select video quality based on network bandwidth and buffer health.
         Watch the system adapt to changing conditions in real-time.
       </p>
@@ -272,18 +272,18 @@ export function BitrateAdaptationDemo() {
                 {currentLevel.name}
               </span>
             </div>
-            <p className="text-xs text-[var(--muted)] mt-1">
+            <p className="text-xs text-[var(--text-muted)] mt-1">
               {currentLevel.resolution} @ {currentLevel.bitrate} kbps
             </p>
           </div>
 
           {/* Buffer health */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-2">
               <span>Buffer Health</span>
               <span className="font-mono">{bufferHealth.toFixed(0)}%</span>
             </div>
-            <div className="h-2 bg-[var(--card-bg)] rounded overflow-hidden">
+            <div className="h-2 bg-[var(--surface-0)] rounded overflow-hidden">
               <div
                 className="h-full transition-all duration-200"
                 style={{
@@ -296,13 +296,13 @@ export function BitrateAdaptationDemo() {
           </div>
 
           {/* Algorithm selector */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">ABR Algorithm</p>
             <div className="flex gap-2">
               <button
                 onClick={() => setAlgorithm('simple')}
                 className={`flex-1 py-2 rounded text-xs ${
-                  algorithm === 'simple' ? 'bg-[var(--accent)] text-white' : 'bg-[var(--card-bg)]'
+                  algorithm === 'simple' ? 'bg-[var(--accent)] text-white' : 'bg-[var(--surface-0)]'
                 }`}
               >
                 Simple
@@ -310,13 +310,13 @@ export function BitrateAdaptationDemo() {
               <button
                 onClick={() => setAlgorithm('buffer-based')}
                 className={`flex-1 py-2 rounded text-xs ${
-                  algorithm === 'buffer-based' ? 'bg-[var(--accent)] text-white' : 'bg-[var(--card-bg)]'
+                  algorithm === 'buffer-based' ? 'bg-[var(--accent)] text-white' : 'bg-[var(--surface-0)]'
                 }`}
               >
                 Buffer-Based
               </button>
             </div>
-            <p className="text-xs text-[var(--muted)] mt-2">
+            <p className="text-xs text-[var(--text-muted)] mt-2">
               {algorithm === 'simple'
                 ? 'Picks highest quality ≤ 80% bandwidth'
                 : 'Adjusts based on buffer: conservative when low, aggressive when high'}
@@ -325,7 +325,7 @@ export function BitrateAdaptationDemo() {
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">For Avatars</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               Real-time avatars use similar techniques. Buffer-based ABR helps maintain
               smooth playback even with network jitter, choosing quality that keeps the pipeline fed.
             </p>

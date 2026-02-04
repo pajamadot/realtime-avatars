@@ -280,7 +280,7 @@ export function InverseKinematicsDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Inverse vs Forward Kinematics</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         FK: Set joint angles → calculate end position. IK: Set target position → solve for angles.
         MetaHuman uses IK for realistic hand/foot placement.
       </p>
@@ -304,7 +304,7 @@ export function InverseKinematicsDemo() {
             <button
               onClick={() => setMode('ik')}
               className={`flex-1 py-2 rounded font-medium text-sm transition-colors ${
-                mode === 'ik' ? 'bg-[#ff6b6b] text-white' : 'bg-[var(--card-bg-alt)]'
+                mode === 'ik' ? 'bg-[#ff6b6b] text-white' : 'bg-[var(--surface-2)]'
               }`}
             >
               Inverse Kinematics
@@ -312,7 +312,7 @@ export function InverseKinematicsDemo() {
             <button
               onClick={() => setMode('fk')}
               className={`flex-1 py-2 rounded font-medium text-sm transition-colors ${
-                mode === 'fk' ? 'bg-[#4ecdc4] text-white' : 'bg-[var(--card-bg-alt)]'
+                mode === 'fk' ? 'bg-[#4ecdc4] text-white' : 'bg-[var(--surface-2)]'
               }`}
             >
               Forward Kinematics
@@ -340,15 +340,15 @@ export function InverseKinematicsDemo() {
         <div className="space-y-4">
           {mode === 'ik' ? (
             <>
-              <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+              <div className="p-4 bg-[var(--surface-2)] rounded">
                 <p className="font-medium text-sm mb-2">IK Mode</p>
-                <p className="text-xs text-[var(--muted)]">
+                <p className="text-xs text-[var(--text-muted)]">
                   Drag anywhere to move the target. The arm automatically solves
                   for joint angles using the FABRIK algorithm.
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+              <div className="p-4 bg-[var(--surface-2)] rounded">
                 <div className="flex justify-between text-sm mb-2">
                   <span>Solver Iterations</span>
                   <span className="font-mono">{iterations}</span>
@@ -361,22 +361,22 @@ export function InverseKinematicsDemo() {
                   onChange={(e) => setIterations(Number(e.target.value))}
                   className="w-full"
                 />
-                <p className="text-xs text-[var(--muted)] mt-1">
+                <p className="text-xs text-[var(--text-muted)] mt-1">
                   More iterations = more accurate but slower
                 </p>
               </div>
             </>
           ) : (
             <>
-              <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+              <div className="p-4 bg-[var(--surface-2)] rounded">
                 <p className="font-medium text-sm mb-2">FK Mode</p>
-                <p className="text-xs text-[var(--muted)]">
+                <p className="text-xs text-[var(--text-muted)]">
                   Click and drag joints to rotate them. Child joints follow
                   their parents automatically.
                 </p>
               </div>
 
-              <div className="p-4 bg-[var(--card-bg-alt)] rounded space-y-3">
+              <div className="p-4 bg-[var(--surface-2)] rounded space-y-3">
                 <p className="font-medium text-sm">Joint Angles</p>
                 {joints.map((joint, i) => (
                   <div key={i}>
@@ -403,12 +403,12 @@ export function InverseKinematicsDemo() {
             </>
           )}
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Comparison</p>
             <div className="grid grid-cols-2 gap-4 text-xs">
               <div>
                 <p className="font-medium text-[#4ecdc4]">FK</p>
-                <ul className="text-[var(--muted)] mt-1 space-y-1">
+                <ul className="text-[var(--text-muted)] mt-1 space-y-1">
                   <li>• Simple to compute</li>
                   <li>• Direct control</li>
                   <li>• Animation curves</li>
@@ -416,7 +416,7 @@ export function InverseKinematicsDemo() {
               </div>
               <div>
                 <p className="font-medium text-[#ff6b6b]">IK</p>
-                <ul className="text-[var(--muted)] mt-1 space-y-1">
+                <ul className="text-[var(--text-muted)] mt-1 space-y-1">
                   <li>• Goal-oriented</li>
                   <li>• Foot placement</li>
                   <li>• Hand targets</li>

@@ -1,11 +1,13 @@
 'use client';
 
-import { ReactNode, forwardRef, HTMLAttributes } from 'react';
+import { ReactNode, forwardRef, HTMLAttributes, CSSProperties } from 'react';
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'alt' | 'inset' | 'raised';
   padding?: 'none' | 'sm' | 'md' | 'lg';
   interactive?: boolean;
+  glow?: boolean;
+  accentColor?: string;
   children: ReactNode;
 }
 
@@ -15,8 +17,11 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       variant = 'default',
       padding = 'md',
       interactive = false,
+      glow = false,
+      accentColor,
       children,
       className = '',
+      style,
       ...props
     },
     ref
@@ -35,12 +40,21 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       lg: 'p-6',
     };
 
+    const combinedStyle: CSSProperties = {
+      ...style,
+      ...(accentColor && {
+        borderLeftWidth: '3px',
+        borderLeftColor: accentColor,
+      }),
+    };
+
     return (
       <div
         ref={ref}
         className={`${variantClasses[variant]} ${paddingClasses[padding]} ${
           interactive ? 'card-interactive' : ''
-        } ${className}`}
+        } ${glow ? 'card-glow' : ''} ${className}`}
+        style={combinedStyle}
         {...props}
       >
         {children}

@@ -245,7 +245,7 @@ export function UNetArchitectureDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">U-Net Architecture Explorer</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         The U-Net is the backbone of Stable Diffusion. It compresses the image (encoder),
         processes it (middle), then expands back (decoder). Skip connections preserve detail.
       </p>
@@ -259,7 +259,7 @@ export function UNetArchitectureDemo() {
             height={300}
             onMouseMove={handleCanvasMove}
             onMouseLeave={() => setHoveredLayer(null)}
-            className="w-full rounded-lg border border-[var(--border)] bg-[var(--card-bg-alt)] cursor-crosshair"
+            className="w-full rounded-lg border border-[var(--border)] bg-[var(--surface-2)] cursor-crosshair"
           />
 
           {/* Controls */}
@@ -295,14 +295,14 @@ export function UNetArchitectureDemo() {
         {/* Info panel */}
         <div className="space-y-4">
           {/* Hovered layer info */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">
               {hoveredLayer ? hoveredLayer.name : 'Hover over a layer'}
             </p>
             {hoveredLayer && (
               <div className="space-y-2 text-xs">
                 <div className="flex justify-between">
-                  <span className="text-[var(--muted)]">Type</span>
+                  <span className="text-[var(--text-muted)]">Type</span>
                   <span
                     className="px-2 py-0.5 rounded text-white"
                     style={{ backgroundColor: TYPE_COLORS[hoveredLayer.type] }}
@@ -311,11 +311,11 @@ export function UNetArchitectureDemo() {
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[var(--muted)]">Channels</span>
+                  <span className="text-[var(--text-muted)]">Channels</span>
                   <span className="font-mono">{hoveredLayer.channels}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[var(--muted)]">Spatial Size</span>
+                  <span className="text-[var(--text-muted)]">Spatial Size</span>
                   <span className="font-mono">{hoveredLayer.size}×{hoveredLayer.size}</span>
                 </div>
               </div>
@@ -323,7 +323,7 @@ export function UNetArchitectureDemo() {
           </div>
 
           {/* Legend */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Layer Types</p>
             <div className="space-y-1">
               {Object.entries(TYPE_COLORS).map(([type, color]) => (
@@ -338,7 +338,7 @@ export function UNetArchitectureDemo() {
           {/* Key insight */}
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">Why U-Net?</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               The "U" shape allows: (1) Compression to capture global context,
               (2) Skip connections to preserve fine detail, (3) Attention layers
               to incorporate conditioning (text/audio). Height = spatial resolution,

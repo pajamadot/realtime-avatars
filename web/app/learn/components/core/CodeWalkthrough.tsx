@@ -50,11 +50,11 @@ export default function CodeWalkthrough({
       return (
         <div
           key={i}
-          className={`flex transition-colors ${isHighlighted ? 'bg-yellow-500/20' : 'hover:bg-[var(--card-bg)]'}`}
+          className={`flex transition-colors ${isHighlighted ? 'bg-yellow-500/20' : 'hover:bg-[var(--surface-0)]'}`}
         >
           {showLineNumbers && (
             <span
-              className={`select-none w-10 text-right pr-4 text-[var(--muted)] ${
+              className={`select-none w-10 text-right pr-4 text-[var(--text-muted)] ${
                 isHighlighted ? 'text-yellow-500 font-bold' : ''
               }`}
             >
@@ -76,7 +76,7 @@ export default function CodeWalkthrough({
   return (
     <div className="card overflow-hidden">
       {/* Progress indicator */}
-      <div className="h-1 bg-[var(--card-bg-alt)]">
+      <div className="h-1 bg-[var(--surface-2)]">
         <div
           className="h-full transition-all duration-300"
           style={{
@@ -104,7 +104,7 @@ export default function CodeWalkthrough({
                   ? 'border-current'
                   : isCompleted
                     ? 'border-green-500 text-green-500'
-                    : 'border-transparent text-[var(--muted)] hover:text-[var(--foreground)]'
+                    : 'border-transparent text-[var(--text-muted)] hover:text-[var(--foreground)]'
                 }
               `}
               style={isActive ? { color, borderColor: color } : undefined}
@@ -129,7 +129,7 @@ export default function CodeWalkthrough({
       {/* Step content */}
       <div className="p-6">
         {/* Description */}
-        <p className="text-sm text-[var(--muted)] mb-4 leading-relaxed">
+        <p className="text-sm text-[var(--text-muted)] mb-4 leading-relaxed">
           {currentStep?.description}
         </p>
 
@@ -152,7 +152,7 @@ export default function CodeWalkthrough({
         {currentStep?.code && (
           <div className="relative group">
             {/* Code header */}
-            <div className="flex items-center justify-between px-4 py-2 bg-[var(--card-bg)] border-b border-[var(--border)] rounded-t-lg">
+            <div className="flex items-center justify-between px-4 py-2 bg-[var(--surface-0)] border-b border-[var(--border)] rounded-t-lg">
               <div className="flex items-center gap-2">
                 {/* Traffic light dots */}
                 <div className="flex gap-1.5">
@@ -160,13 +160,13 @@ export default function CodeWalkthrough({
                   <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
                   <div className="w-3 h-3 rounded-full bg-green-500/50" />
                 </div>
-                <span className="text-xs text-[var(--muted)] ml-2">
+                <span className="text-xs text-[var(--text-muted)] ml-2">
                   {currentStep?.language || 'code'}
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
-                <span className="text-xs text-[var(--muted)]">
+                <span className="text-xs text-[var(--text-muted)]">
                   {codeLines} lines
                 </span>
 
@@ -178,7 +178,7 @@ export default function CodeWalkthrough({
                     px-3 py-1 text-xs rounded transition-all
                     ${copied
                       ? 'bg-green-500 text-white'
-                      : 'bg-[var(--card-bg-alt)] hover:bg-[var(--border)] text-[var(--muted)]'
+                      : 'bg-[var(--surface-2)] hover:bg-[var(--border)] text-[var(--text-muted)]'
                     }
                   `}
                 >
@@ -193,13 +193,13 @@ export default function CodeWalkthrough({
                 shouldCollapse ? 'max-h-[400px]' : ''
               }`}
             >
-              <pre className="code overflow-x-auto text-sm p-4 rounded-b-lg bg-[var(--card-bg-alt)] font-mono">
+              <pre className="code overflow-x-auto text-sm p-4 rounded-b-lg bg-[var(--surface-2)] font-mono">
                 <code>{renderCodeWithLineNumbers(currentStep.code, currentStep.highlightLines)}</code>
               </pre>
 
               {/* Collapse gradient */}
               {shouldCollapse && (
-                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[var(--card-bg-alt)] to-transparent pointer-events-none" />
+                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[var(--surface-2)] to-transparent pointer-events-none" />
               )}
             </div>
 
@@ -208,7 +208,7 @@ export default function CodeWalkthrough({
               <button
                 type="button"
                 onClick={() => setExpandedCode(!expandedCode)}
-                className="w-full py-2 text-sm text-[var(--muted)] hover:text-[var(--foreground)] bg-[var(--card-bg-alt)] border-t border-[var(--border)] transition-colors"
+                className="w-full py-2 text-sm text-[var(--text-muted)] hover:text-[var(--foreground)] bg-[var(--surface-2)] border-t border-[var(--border)] transition-colors"
               >
                 {expandedCode ? <><ChevronUp size={14} className="inline mr-1" /> Show less</> : <><ChevronDown size={14} className="inline mr-1" /> Show all {codeLines} lines</>}
               </button>
@@ -257,7 +257,7 @@ export default function CodeWalkthrough({
         </div>
 
         {/* Step indicator */}
-        <p className="text-center text-xs text-[var(--muted)] mt-3">
+        <p className="text-center text-xs text-[var(--text-muted)] mt-3">
           Step {activeStep + 1} of {steps.length}
           {activeStep === steps.length - 1 && (
             <span className="ml-2 text-green-500 inline-flex items-center gap-1"><Check size={12} /> Complete!</span>

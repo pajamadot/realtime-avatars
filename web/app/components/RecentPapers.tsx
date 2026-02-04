@@ -55,7 +55,7 @@ export default function RecentPapers({
           <div className="approach-dot" style={{ backgroundColor: dot }} aria-hidden="true" />
           <p className="font-medium">Recent papers</p>
         </div>
-        <a href="#living-feed" className="text-xs text-[var(--muted)] hover:text-[var(--foreground)]">
+        <a href="#living-feed" className="text-xs text-[var(--text-muted)] hover:text-[var(--foreground)]">
           View all
         </a>
       </div>
@@ -67,11 +67,11 @@ export default function RecentPapers({
             href={it.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="block p-3 bg-[var(--card-bg-alt)] rounded border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors"
+            className="block p-3 bg-[var(--surface-2)] rounded border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors"
           >
             <div className="flex items-start justify-between gap-3">
               <p className="font-medium text-sm leading-snug">{it.title}</p>
-              <span className="text-xs text-[var(--muted)] whitespace-nowrap">
+              <span className="text-xs text-[var(--text-muted)] whitespace-nowrap">
                 {formatISODate(it.published)}
               </span>
             </div>

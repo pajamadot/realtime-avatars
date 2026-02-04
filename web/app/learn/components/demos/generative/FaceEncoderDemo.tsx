@@ -237,7 +237,7 @@ export function FaceEncoderDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Face Encoder Architecture</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Face encoders extract identity, expression, and pose into a compact latent code.
         This enables identity-preserving generation and expression transfer.
       </p>
@@ -278,9 +278,9 @@ export function FaceEncoderDemo() {
 
         {/* Info */}
         <div className="space-y-4">
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Encoder Pipeline</p>
-            <ol className="text-xs text-[var(--muted)] space-y-1">
+            <ol className="text-xs text-[var(--text-muted)] space-y-1">
               <li className={encoderStage === 'input' ? 'text-[#3498db]' : ''}>
                 1. Input: 256×256 RGB face image
               </li>
@@ -299,27 +299,27 @@ export function FaceEncoderDemo() {
             </ol>
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Disentanglement</p>
             <div className="grid grid-cols-3 gap-2 text-xs">
               <div className="p-2 bg-[#3498db]/20 rounded text-center">
                 <p className="font-medium text-[#3498db]">Identity</p>
-                <p className="text-[var(--muted)]">Who the person is</p>
+                <p className="text-[var(--text-muted)]">Who the person is</p>
               </div>
               <div className="p-2 bg-[#2ecc71]/20 rounded text-center">
                 <p className="font-medium text-[#2ecc71]">Expression</p>
-                <p className="text-[var(--muted)]">Facial state</p>
+                <p className="text-[var(--text-muted)]">Facial state</p>
               </div>
               <div className="p-2 bg-[#f1c40f]/20 rounded text-center">
                 <p className="font-medium text-[#f1c40f]">Pose</p>
-                <p className="text-[var(--muted)]">Head orientation</p>
+                <p className="text-[var(--text-muted)]">Head orientation</p>
               </div>
             </div>
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Common Architectures</p>
-            <div className="space-y-1 text-xs text-[var(--muted)]">
+            <div className="space-y-1 text-xs text-[var(--text-muted)]">
               <p><span className="font-medium text-[var(--foreground)]">ArcFace:</span> Identity-focused, used for recognition</p>
               <p><span className="font-medium text-[var(--foreground)]">DECA:</span> 3DMM parameter prediction</p>
               <p><span className="font-medium text-[var(--foreground)]">InsightFace:</span> Fast, good for real-time</p>
@@ -328,7 +328,7 @@ export function FaceEncoderDemo() {
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">For Avatar Generation</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               The identity code is used to condition the diffusion model, ensuring
               the generated face looks like the reference. Expression codes drive animation.
             </p>

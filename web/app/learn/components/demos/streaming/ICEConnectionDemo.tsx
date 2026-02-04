@@ -225,7 +225,7 @@ export function ICEConnectionDemo() {
             ? 'border-green-500 bg-green-500/20 ring-2 ring-green-500'
             : candidate.status === 'failed'
             ? 'border-red-500/50 bg-red-500/10 opacity-50'
-            : 'border-[var(--border)] bg-[var(--card-bg-alt)]'
+            : 'border-[var(--border)] bg-[var(--surface-2)]'
         }`}
       >
         <div className="flex items-center gap-2 mb-1">
@@ -235,11 +235,11 @@ export function ICEConnectionDemo() {
           />
           <span className="font-medium">{typeInfo.label}</span>
           {candidate.latency && (
-            <span className="text-[var(--muted)]">{candidate.latency}ms</span>
+            <span className="text-[var(--text-muted)]">{candidate.latency}ms</span>
           )}
         </div>
         {showTechnical && (
-          <p className="text-[var(--muted)] truncate">
+          <p className="text-[var(--text-muted)] truncate">
             {candidate.protocol}://{candidate.address}:{candidate.port}
           </p>
         )}
@@ -250,18 +250,18 @@ export function ICEConnectionDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">ICE Connection Visualizer</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Watch how WebRTC establishes peer-to-peer connections by gathering and testing ICE candidates.
       </p>
 
       {/* Controls */}
       <div className="flex flex-wrap gap-4 mb-6">
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">NAT Type</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">NAT Type</label>
           <select
             value={natType}
             onChange={(e) => setNatType(e.target.value as typeof natType)}
-            className="bg-[var(--card-bg-alt)] border border-[var(--border)] rounded px-3 py-1 text-sm"
+            className="bg-[var(--surface-2)] border border-[var(--border)] rounded px-3 py-1 text-sm"
             disabled={state.phase !== 'idle'}
           >
             <option value="open">Open (No NAT)</option>
@@ -309,7 +309,7 @@ export function ICEConnectionDemo() {
           </p>
           <div className="space-y-2">
             {state.localCandidates.length === 0 ? (
-              <div className="p-4 border border-dashed border-[var(--border)] rounded text-center text-xs text-[var(--muted)]">
+              <div className="p-4 border border-dashed border-[var(--border)] rounded text-center text-xs text-[var(--text-muted)]">
                 No candidates yet
               </div>
             ) : (
@@ -333,7 +333,7 @@ export function ICEConnectionDemo() {
                 : state.phase === 'failed'
                 ? 'bg-red-500/20 text-red-500'
                 : state.phase === 'idle'
-                ? 'bg-[var(--card-bg-alt)] text-[var(--muted)]'
+                ? 'bg-[var(--surface-2)] text-[var(--text-muted)]'
                 : 'bg-yellow-500/20 text-yellow-500 animate-pulse'
             }`}
           >
@@ -341,7 +341,7 @@ export function ICEConnectionDemo() {
           </div>
           <p className="text-sm font-medium capitalize">{state.phase}</p>
           {state.selectedPair && (
-            <p className="text-xs text-[var(--muted)] text-center mt-1">
+            <p className="text-xs text-[var(--text-muted)] text-center mt-1">
               via {state.localCandidates.find(c => c.id === state.selectedPair?.local)?.type}
             </p>
           )}
@@ -355,7 +355,7 @@ export function ICEConnectionDemo() {
           </p>
           <div className="space-y-2">
             {state.remoteCandidates.length === 0 ? (
-              <div className="p-4 border border-dashed border-[var(--border)] rounded text-center text-xs text-[var(--muted)]">
+              <div className="p-4 border border-dashed border-[var(--border)] rounded text-center text-xs text-[var(--text-muted)]">
                 No candidates yet
               </div>
             ) : (
@@ -377,7 +377,7 @@ export function ICEConnectionDemo() {
           <div key={key} className="flex items-center gap-2">
             <span className="w-3 h-3 rounded" style={{ backgroundColor: info.color }} />
             <span className="font-medium">{info.label}:</span>
-            <span className="text-[var(--muted)]">{info.desc}</span>
+            <span className="text-[var(--text-muted)]">{info.desc}</span>
           </div>
         ))}
       </div>
@@ -392,7 +392,7 @@ export function ICEConnectionDemo() {
       )}
 
       {/* Insight */}
-      <div className="mt-4 p-4 bg-[var(--card-bg-alt)] rounded text-sm text-[var(--muted)] flex items-start gap-2">
+      <div className="mt-4 p-4 bg-[var(--surface-2)] rounded text-sm text-[var(--text-muted)] flex items-start gap-2">
         <Lightbulb size={16} className="text-yellow-500 flex-shrink-0 mt-0.5" />
         <span><strong>Try this:</strong> Set NAT type to &quot;Strict&quot; and start a connection.
         Notice how it falls back to TURN relay when direct connections fail — this adds latency but ensures connectivity!</span>

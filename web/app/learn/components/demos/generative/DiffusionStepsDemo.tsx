@@ -189,7 +189,7 @@ export function DiffusionStepsDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Diffusion Steps Comparison</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Compare image quality at different denoising step counts.
         More steps = better quality but slower generation.
       </p>
@@ -210,7 +210,7 @@ export function DiffusionStepsDemo() {
         >
           New Seed
         </button>
-        <span className="text-xs text-[var(--muted)] self-center">
+        <span className="text-xs text-[var(--text-muted)] self-center">
           Seed: {seed}
         </span>
       </div>
@@ -219,7 +219,7 @@ export function DiffusionStepsDemo() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
         {STEP_CONFIGS.map((config) => (
           <div key={config.steps} className="text-center">
-            <div className="relative aspect-square mb-2 bg-[var(--card-bg-alt)] rounded-lg overflow-hidden border border-[var(--border)]">
+            <div className="relative aspect-square mb-2 bg-[var(--surface-2)] rounded-lg overflow-hidden border border-[var(--border)]">
               <canvas
                 ref={setCanvasRef(config.steps)}
                 width={imageSize}
@@ -233,20 +233,20 @@ export function DiffusionStepsDemo() {
                 </div>
               )}
               {!generating && !images.has(config.steps) && (
-                <div className="absolute inset-0 flex items-center justify-center text-xs text-[var(--muted)]">
+                <div className="absolute inset-0 flex items-center justify-center text-xs text-[var(--text-muted)]">
                   Click Generate
                 </div>
               )}
             </div>
             <p className="font-medium text-sm">{config.label}</p>
-            <p className="text-xs text-[var(--muted)]">{config.desc}</p>
-            <p className="text-xs text-[var(--muted)]">~{config.timeMs}ms</p>
+            <p className="text-xs text-[var(--text-muted)]">{config.desc}</p>
+            <p className="text-xs text-[var(--text-muted)]">~{config.timeMs}ms</p>
           </div>
         ))}
       </div>
 
       {/* Quality vs Speed chart */}
-      <div className="p-4 bg-[var(--card-bg-alt)] rounded mb-4">
+      <div className="p-4 bg-[var(--surface-2)] rounded mb-4">
         <p className="font-medium text-sm mb-3">Quality vs Speed Trade-off</p>
         <div className="relative h-8 bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 rounded overflow-hidden">
           {STEP_CONFIGS.map((config, i) => (
@@ -264,7 +264,7 @@ export function DiffusionStepsDemo() {
             </div>
           ))}
         </div>
-        <div className="flex justify-between text-xs text-[var(--muted)] mt-1">
+        <div className="flex justify-between text-xs text-[var(--text-muted)] mt-1">
           <span>Fastest / Lowest Quality</span>
           <span>Slowest / Highest Quality</span>
         </div>
@@ -272,18 +272,18 @@ export function DiffusionStepsDemo() {
 
       {/* Technical explanation */}
       <div className="grid md:grid-cols-2 gap-4 text-sm">
-        <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-4 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-2">Why Fewer Steps = Lower Quality?</p>
-          <ul className="space-y-1 text-xs text-[var(--muted)]">
+          <ul className="space-y-1 text-xs text-[var(--text-muted)]">
             <li>• Each step removes a small amount of noise</li>
             <li>• Fewer steps = larger noise jumps = artifacts</li>
             <li>• Fine details emerge in later steps</li>
             <li>• Blocky/blurry results from skipped refinement</li>
           </ul>
         </div>
-        <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-4 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-2">For Real-Time Avatars</p>
-          <ul className="space-y-1 text-xs text-[var(--muted)]">
+          <ul className="space-y-1 text-xs text-[var(--text-muted)]">
             <li>• 4-8 steps typical for interactive use</li>
             <li>• Consistency models enable 1-4 step generation</li>
             <li>• Distillation transfers quality to fewer steps</li>
@@ -293,7 +293,7 @@ export function DiffusionStepsDemo() {
       </div>
 
       {/* Insight */}
-      <div className="mt-4 p-4 bg-[var(--card-bg-alt)] rounded text-sm text-[var(--muted)] flex items-start gap-2">
+      <div className="mt-4 p-4 bg-[var(--surface-2)] rounded text-sm text-[var(--text-muted)] flex items-start gap-2">
         <Lightbulb size={16} className="text-yellow-500 flex-shrink-0 mt-0.5" />
         <span><strong>Try this:</strong> Generate with different seeds and compare the 4-step vs 50-step results.
         Notice how the basic structure is there in 4 steps, but fine details like eye highlights are missing!</span>

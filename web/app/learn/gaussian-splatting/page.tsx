@@ -70,7 +70,7 @@ const DepthSortingDemo = dynamic(
 
 function DemoPlaceholder({ label }: { label: string }) {
   return (
-    <div className="h-[300px] bg-[var(--card-bg-alt)] rounded-lg flex items-center justify-center text-[var(--muted)]">
+    <div className="h-[300px] bg-[var(--surface-2)] rounded-lg flex items-center justify-center text-[var(--text-muted)]">
       {label}
     </div>
   );
@@ -96,10 +96,10 @@ export default function GaussianSplattingPage() {
         <div className="flex items-center gap-3 mb-4">
           <div className="w-4 h-4 rounded-full" style={{ backgroundColor: color }} />
           <span className="badge">Neural 3D Rendering</span>
-          <span className="text-sm text-[var(--muted)]">~45 min</span>
+          <span className="text-sm text-[var(--text-muted)]">~45 min</span>
         </div>
         <h1 className="text-3xl font-semibold mb-2">{content.title}</h1>
-        <p className="text-lg text-[var(--muted)]">{content.subtitle}</p>
+        <p className="text-lg text-[var(--text-muted)]">{content.subtitle}</p>
       </section>
 
       {/* Progress tracker */}
@@ -112,7 +112,7 @@ export default function GaussianSplattingPage() {
               onClick={() => setCurrentSection(section.id)}
               className={`
                 flex items-center gap-2 px-3 py-1.5 rounded-full text-sm whitespace-nowrap transition-colors
-                ${section.id === currentSection ? 'font-medium text-white' : 'text-[var(--muted)] hover:text-[var(--foreground)]'}
+                ${section.id === currentSection ? 'font-medium text-white' : 'text-[var(--text-muted)] hover:text-[var(--foreground)]'}
               `}
               style={section.id === currentSection ? { backgroundColor: color } : undefined}
             >
@@ -133,7 +133,7 @@ export default function GaussianSplattingPage() {
         <h2 className="text-2xl font-semibold mb-4">What is Gaussian Splatting?</h2>
 
         <div className="prose prose-neutral max-w-none">
-          <p className="text-lg text-[var(--muted)] leading-relaxed mb-6">
+          <p className="text-lg text-[var(--text-muted)] leading-relaxed mb-6">
             {content.intro.text}
           </p>
         </div>
@@ -142,21 +142,21 @@ export default function GaussianSplattingPage() {
         <div className="highlight-box">
           <p className="font-medium mb-4">The Core Idea in 30 Seconds</p>
           <div className="grid md:grid-cols-3 gap-4 text-center">
-            <div className="p-4 bg-[var(--card-bg)] rounded-lg">
+            <div className="p-4 bg-[var(--surface-0)] rounded-lg">
               <div className="w-10 h-10 rounded-full bg-[var(--color-gaussian-light)] flex items-center justify-center mx-auto mb-3">
                 <Circle size={24} className="text-[var(--color-gaussian)]" strokeWidth={1.5} />
               </div>
               <p className="font-medium">Millions of Fuzzy Blobs</p>
               <p className="text-sm text-[var(--text-muted)]">Each is a 3D Gaussian with position, shape, color, opacity</p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded-lg">
+            <div className="p-4 bg-[var(--surface-0)] rounded-lg">
               <div className="w-10 h-10 rounded-full bg-[var(--color-gaussian-light)] flex items-center justify-center mx-auto mb-3">
                 <Layers size={24} className="text-[var(--color-gaussian)]" strokeWidth={1.5} />
               </div>
               <p className="font-medium">Splat to Screen</p>
               <p className="text-sm text-[var(--text-muted)]">Project each blob to 2D, sort by depth, blend together</p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded-lg">
+            <div className="p-4 bg-[var(--surface-0)] rounded-lg">
               <div className="w-10 h-10 rounded-full bg-[var(--color-gaussian-light)] flex items-center justify-center mx-auto mb-3">
                 <Zap size={24} className="text-[var(--color-gaussian)]" strokeWidth={1.5} />
               </div>
@@ -274,7 +274,7 @@ export default function GaussianSplattingPage() {
       {/* Section 2: Pipeline */}
       <section id="pipeline" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">The Processing Pipeline</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           From multi-view capture to real-time rendering, here's how the data flows through the system.
         </p>
 
@@ -292,7 +292,7 @@ export default function GaussianSplattingPage() {
       {/* Section 3: Key Concepts */}
       <section id="concepts" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">Key Concepts</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           Master these five concepts and you'll understand how Gaussian Splatting works.
           Click "Go deeper" on any card to drill into the math.
         </p>
@@ -320,7 +320,7 @@ export default function GaussianSplattingPage() {
       {/* Section 4: Interactive Demos */}
       <section id="demos" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">Interactive Demos</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           Learn by doing. Manipulate parameters and see immediate visual feedback.
         </p>
 
@@ -394,7 +394,7 @@ export default function GaussianSplattingPage() {
         {/* Demo 4: Matrix Transform */}
         <div id="demo-matrix-transform" className="mb-8">
           <h3 className="text-xl font-semibold mb-3">Demo 4: Matrix Transformations</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             See how scale and rotation matrices transform a unit circle into an ellipse—the foundation of Gaussian covariance.
           </p>
           <MatrixTransformDemo />
@@ -403,7 +403,7 @@ export default function GaussianSplattingPage() {
         {/* Demo 5: Covariance Shape */}
         <div id="demo-covariance-shape" className="mb-8">
           <h3 className="text-xl font-semibold mb-3">Demo 5: 3D Covariance Shapes</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Manipulate scale along each axis to create spheres, pancakes, or needles—the building blocks of 3D Gaussian Splatting.
           </p>
           <CovarianceShapeDemo />
@@ -412,7 +412,7 @@ export default function GaussianSplattingPage() {
         {/* Demo 6: Training Progress */}
         <div id="demo-training-progress" className="mb-8">
           <h3 className="text-xl font-semibold mb-3">Demo 6: Training Progress</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Watch how 3DGS training evolves over 30K iterations: Gaussian count, PSNR quality, and key milestones.
           </p>
           <TrainingProgressDemo />
@@ -421,7 +421,7 @@ export default function GaussianSplattingPage() {
         {/* Demo 7: Differentiable Rendering */}
         <div id="demo-differentiable-rendering" className="mb-8">
           <h3 className="text-xl font-semibold mb-3">Demo 7: Differentiable Rendering</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             See how gradients flow backward through rendering. Click to set a target - the Gaussian learns to cover it.
           </p>
           <DifferentiableRenderingDemo />
@@ -430,7 +430,7 @@ export default function GaussianSplattingPage() {
         {/* Demo 8: Point Cloud to Gaussians */}
         <div id="demo-point-cloud" className="mb-8">
           <h3 className="text-xl font-semibold mb-3">Demo 8: Point Cloud to Gaussians</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             3DGS starts from SfM point cloud and initializes Gaussians at each point. Drag to rotate, toggle to see how points become splats.
           </p>
           <PointCloudDemo />
@@ -439,7 +439,7 @@ export default function GaussianSplattingPage() {
         {/* Demo 9: Tile-Based Rasterization */}
         <div id="demo-tile-rasterization" className="mb-8">
           <h3 className="text-xl font-semibold mb-3">Demo 9: Tile-Based Rasterization</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             See how 3DGS divides the screen into tiles for parallel GPU processing. Click tiles to see which Gaussians they contain.
           </p>
           <TileRasterizationDemo />
@@ -448,7 +448,7 @@ export default function GaussianSplattingPage() {
         {/* Demo 10: Adaptive Density Control */}
         <div id="demo-adaptive-density" className="mb-8">
           <h3 className="text-xl font-semibold mb-3">Demo 10: Adaptive Density Control</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Watch how 3DGS dynamically adjusts Gaussian count during training through densification and pruning.
           </p>
           <AdaptiveDensityDemo />
@@ -457,7 +457,7 @@ export default function GaussianSplattingPage() {
         {/* Demo 11: Depth Sorting */}
         <div id="demo-depth-sorting" className="mb-8">
           <h3 className="text-xl font-semibold mb-3">Demo 11: Depth Sorting for Alpha Blending</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Transparent objects must be rendered back-to-front. Watch the sorting algorithm in action.
           </p>
           <DepthSortingDemo />
@@ -469,7 +469,7 @@ export default function GaussianSplattingPage() {
       {/* Section 5: Implementation */}
       <section id="implementation" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">Build It Yourself</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           Get started with the official implementation. Here's a step-by-step walkthrough.
         </p>
 
@@ -495,7 +495,7 @@ export default function GaussianSplattingPage() {
                 </span>
                 <div>
                   <p className="font-medium text-sm">{resource.title}</p>
-                  <p className="text-xs text-[var(--muted)]">{resource.type}</p>
+                  <p className="text-xs text-[var(--text-muted)]">{resource.type}</p>
                 </div>
               </a>
             ))}
@@ -512,7 +512,7 @@ export default function GaussianSplattingPage() {
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div className="card-alt p-5">
             <p className="font-medium mb-3 text-green-600 flex items-center gap-1"><Check size={16} /> Use When</p>
-            <ul className="space-y-2 text-sm text-[var(--muted)]">
+            <ul className="space-y-2 text-sm text-[var(--text-muted)]">
               {content.tradeoffs.when.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <span className="text-green-500">+</span>
@@ -523,7 +523,7 @@ export default function GaussianSplattingPage() {
           </div>
           <div className="card-alt p-5">
             <p className="font-medium mb-3 text-red-600 flex items-center gap-1"><X size={16} /> Avoid When</p>
-            <ul className="space-y-2 text-sm text-[var(--muted)]">
+            <ul className="space-y-2 text-sm text-[var(--text-muted)]">
               {content.tradeoffs.whenNot.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <span className="text-red-500">−</span>
@@ -536,7 +536,7 @@ export default function GaussianSplattingPage() {
 
         <div className="highlight-box">
           <p className="font-medium mb-2">Best Use Case</p>
-          <p className="text-[var(--muted)]">{content.tradeoffs.bestFor}</p>
+          <p className="text-[var(--text-muted)]">{content.tradeoffs.bestFor}</p>
         </div>
       </section>
 
@@ -551,7 +551,7 @@ export default function GaussianSplattingPage() {
               </p>
               <p className="text-sm mt-2">
                 <span className="text-green-600 font-medium">Actually:</span>{' '}
-                <span className="text-[var(--muted)]">{item.correct}</span>
+                <span className="text-[var(--text-muted)]">{item.correct}</span>
               </p>
             </div>
           ))}
@@ -562,7 +562,7 @@ export default function GaussianSplattingPage() {
       <section>
         <div className="card p-6 text-center">
           <h3 className="font-semibold mb-2">Ready to Go Deeper?</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Explore the math behind each concept, or see how Gaussian Splatting compares to other approaches.
           </p>
           <div className="flex items-center justify-center gap-4">

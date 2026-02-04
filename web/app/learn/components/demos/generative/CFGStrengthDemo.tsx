@@ -142,7 +142,7 @@ export function CFGStrengthDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Classifier-Free Guidance (CFG)</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         CFG controls how strongly the model follows the conditioning (audio/text).
         Low values = blurry/generic, High values = artifacts/oversaturation. Sweet spot: 5-9.
       </p>
@@ -164,7 +164,7 @@ export function CFGStrengthDemo() {
                 key={p}
                 onClick={() => setPrompt(p)}
                 className={`flex-1 py-2 rounded font-medium text-sm transition-colors capitalize ${
-                  prompt === p ? 'bg-[var(--accent)] text-white' : 'bg-[var(--card-bg-alt)]'
+                  prompt === p ? 'bg-[var(--accent)] text-white' : 'bg-[var(--surface-2)]'
                 }`}
               >
                 {p}
@@ -175,7 +175,7 @@ export function CFGStrengthDemo() {
 
         {/* Controls */}
         <div className="space-y-4">
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-2">
               <span>CFG Scale</span>
               <span className="font-mono">{cfgScale.toFixed(1)}</span>
@@ -189,48 +189,48 @@ export function CFGStrengthDemo() {
               onChange={(e) => setCfgScale(Number(e.target.value))}
               className="w-full"
             />
-            <div className="flex justify-between text-xs text-[var(--muted)] mt-1">
+            <div className="flex justify-between text-xs text-[var(--text-muted)] mt-1">
               <span>Ignore prompt</span>
               <span>Follow strictly</span>
             </div>
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">The Math</p>
-            <code className="text-xs block font-mono text-[var(--muted)] mb-2">
+            <code className="text-xs block font-mono text-[var(--text-muted)] mb-2">
               output = uncond + cfg * (cond - uncond)
             </code>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               CFG scales the difference between conditioned and unconditioned predictions.
               Higher values amplify prompt influence but can overshoot.
             </p>
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Recommended Values</p>
             <div className="grid grid-cols-2 gap-2 text-xs">
-              <div className="p-2 bg-[var(--card-bg)] rounded">
+              <div className="p-2 bg-[var(--surface-0)] rounded">
                 <span className="font-medium">Stable Diffusion:</span>
-                <span className="text-[var(--muted)]"> 7-8</span>
+                <span className="text-[var(--text-muted)]"> 7-8</span>
               </div>
-              <div className="p-2 bg-[var(--card-bg)] rounded">
+              <div className="p-2 bg-[var(--surface-0)] rounded">
                 <span className="font-medium">SDXL:</span>
-                <span className="text-[var(--muted)]"> 5-7</span>
+                <span className="text-[var(--text-muted)]"> 5-7</span>
               </div>
-              <div className="p-2 bg-[var(--card-bg)] rounded">
+              <div className="p-2 bg-[var(--surface-0)] rounded">
                 <span className="font-medium">Face gen:</span>
-                <span className="text-[var(--muted)]"> 3-5</span>
+                <span className="text-[var(--text-muted)]"> 3-5</span>
               </div>
-              <div className="p-2 bg-[var(--card-bg)] rounded">
+              <div className="p-2 bg-[var(--surface-0)] rounded">
                 <span className="font-medium">Artistic:</span>
-                <span className="text-[var(--muted)]"> 10-12</span>
+                <span className="text-[var(--text-muted)]"> 10-12</span>
               </div>
             </div>
           </div>
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">For Avatars</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               Talking head models typically use CFG 3-6. Lower values preserve identity better,
               higher values give more pronounced expressions but risk artifacts.
             </p>

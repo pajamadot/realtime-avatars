@@ -219,7 +219,7 @@ export function BatchNormalizationDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Batch Normalization</h3>
-      <p className="text-sm text-[var(--muted)] mb-4">
+      <p className="text-sm text-[var(--text-muted)] mb-4">
         BatchNorm normalizes layer inputs to stabilize training. See how it transforms the distribution of activations.
       </p>
 
@@ -232,7 +232,7 @@ export function BatchNormalizationDemo() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Batch Size: {batchSize}</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Batch Size: {batchSize}</label>
           <input
             type="range"
             min="4"
@@ -243,7 +243,7 @@ export function BatchNormalizationDemo() {
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Gamma (γ): {gamma.toFixed(2)}</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Gamma (γ): {gamma.toFixed(2)}</label>
           <input
             type="range"
             min="0.1"
@@ -255,7 +255,7 @@ export function BatchNormalizationDemo() {
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Beta (β): {beta.toFixed(2)}</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Beta (β): {beta.toFixed(2)}</label>
           <input
             type="range"
             min="-2"
@@ -269,7 +269,7 @@ export function BatchNormalizationDemo() {
         <div className="flex items-end">
           <button
             onClick={regenerate}
-            className="px-3 py-1.5 text-sm bg-[var(--card-bg)] border border-[var(--border)] rounded hover:border-[var(--border-strong)]"
+            className="px-3 py-1.5 text-sm bg-[var(--surface-0)] border border-[var(--border)] rounded hover:border-[var(--border-strong)]"
           >
             New Batch
           </button>
@@ -296,13 +296,13 @@ export function BatchNormalizationDemo() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-3 text-xs">
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Training</p>
-          <p className="text-[var(--muted)]">Uses batch statistics (μ, σ). Learnable γ and β allow the network to undo normalization if needed.</p>
+          <p className="text-[var(--text-muted)]">Uses batch statistics (μ, σ). Learnable γ and β allow the network to undo normalization if needed.</p>
         </div>
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Inference</p>
-          <p className="text-[var(--muted)]">Uses running averages computed during training. No dependency on batch size at test time.</p>
+          <p className="text-[var(--text-muted)]">Uses running averages computed during training. No dependency on batch size at test time.</p>
         </div>
       </div>
     </div>

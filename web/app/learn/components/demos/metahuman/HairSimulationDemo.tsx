@@ -257,7 +257,7 @@ export function HairSimulationDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Hair Simulation</h3>
-      <p className="text-sm text-[var(--muted)] mb-4">
+      <p className="text-sm text-[var(--text-muted)] mb-4">
         Real-time hair dynamics using simplified physics. Each strand responds to wind, gravity, and stiffness.
       </p>
 
@@ -270,7 +270,7 @@ export function HairSimulationDemo() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Wind: {windStrength.toFixed(1)}</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Wind: {windStrength.toFixed(1)}</label>
           <input
             type="range"
             min="0"
@@ -282,7 +282,7 @@ export function HairSimulationDemo() {
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Gravity: {gravity.toFixed(1)}</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Gravity: {gravity.toFixed(1)}</label>
           <input
             type="range"
             min="0"
@@ -294,7 +294,7 @@ export function HairSimulationDemo() {
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Stiffness: {stiffness.toFixed(1)}</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Stiffness: {stiffness.toFixed(1)}</label>
           <input
             type="range"
             min="0"
@@ -306,11 +306,11 @@ export function HairSimulationDemo() {
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Density</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Density</label>
           <select
             value={hairDensity}
             onChange={(e) => setHairDensity(e.target.value as typeof hairDensity)}
-            className="w-full px-2 py-1 rounded bg-[var(--card-bg)] border border-[var(--border)] text-sm"
+            className="w-full px-2 py-1 rounded bg-[var(--surface-0)] border border-[var(--border)] text-sm"
           >
             <option value="sparse">Sparse (25)</option>
             <option value="medium">Medium (50)</option>
@@ -330,9 +330,9 @@ export function HairSimulationDemo() {
         </label>
       </div>
 
-      <div className="p-3 bg-[var(--card-bg-alt)] rounded text-xs">
+      <div className="p-3 bg-[var(--surface-2)] rounded text-xs">
         <p className="font-medium mb-1">In MetaHuman</p>
-        <p className="text-[var(--muted)]">
+        <p className="text-[var(--text-muted)]">
           Real hair simulation uses thousands of guide strands with interpolation, collision detection,
           and GPU-accelerated physics. Groom assets define the hair's look and behavior.
         </p>

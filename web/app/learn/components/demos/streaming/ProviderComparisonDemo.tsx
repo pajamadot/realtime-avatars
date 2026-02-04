@@ -135,7 +135,7 @@ export function ProviderComparisonDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Avatar Provider Comparison</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Compare streaming avatar providers by latency, quality, and features.
         Click a provider for detailed information.
       </p>
@@ -147,7 +147,7 @@ export function ProviderComparisonDemo() {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as SortKey)}
-            className="px-3 py-1.5 rounded border border-[var(--border)] bg-[var(--card-bg)] text-sm"
+            className="px-3 py-1.5 rounded border border-[var(--border)] bg-[var(--surface-0)] text-sm"
           >
             <option value="latency">Latency (lowest first)</option>
             <option value="quality">Quality (highest first)</option>
@@ -160,7 +160,7 @@ export function ProviderComparisonDemo() {
           <select
             value={filterType}
             onChange={(e) => setFilterType(e.target.value)}
-            className="px-3 py-1.5 rounded border border-[var(--border)] bg-[var(--card-bg)] text-sm"
+            className="px-3 py-1.5 rounded border border-[var(--border)] bg-[var(--surface-0)] text-sm"
           >
             <option value="all">All Types</option>
             <option value="diffusion">Diffusion</option>
@@ -191,7 +191,7 @@ export function ProviderComparisonDemo() {
                   />
                   <span className="font-medium">{provider.name}</span>
                 </div>
-                <span className="text-xs px-2 py-0.5 bg-[var(--card-bg-alt)] rounded">
+                <span className="text-xs px-2 py-0.5 bg-[var(--surface-2)] rounded">
                   {provider.type}
                 </span>
               </div>
@@ -199,19 +199,19 @@ export function ProviderComparisonDemo() {
               {/* Mini metrics */}
               <div className="grid grid-cols-4 gap-2 text-xs">
                 <div>
-                  <span className="text-[var(--muted)]">Latency</span>
+                  <span className="text-[var(--text-muted)]">Latency</span>
                   <p className="font-mono">{provider.latency}ms</p>
                 </div>
                 <div>
-                  <span className="text-[var(--muted)]">Quality</span>
+                  <span className="text-[var(--text-muted)]">Quality</span>
                   <p className="font-mono">{provider.quality}%</p>
                 </div>
                 <div>
-                  <span className="text-[var(--muted)]">Custom</span>
+                  <span className="text-[var(--text-muted)]">Custom</span>
                   <p className="font-mono">{provider.customization}%</p>
                 </div>
                 <div>
-                  <span className="text-[var(--muted)]">Cost</span>
+                  <span className="text-[var(--text-muted)]">Cost</span>
                   <p className="font-mono">{'$'.repeat(provider.cost)}</p>
                 </div>
               </div>
@@ -220,7 +220,7 @@ export function ProviderComparisonDemo() {
         </div>
 
         {/* Detail Panel */}
-        <div className="p-4 bg-[var(--card-bg-alt)] rounded-lg">
+        <div className="p-4 bg-[var(--surface-2)] rounded-lg">
           {selectedProvider ? (
             <div>
               <div className="flex items-center gap-3 mb-4">
@@ -259,20 +259,20 @@ export function ProviderComparisonDemo() {
               {/* Details */}
               <div className="space-y-3 text-sm">
                 <div>
-                  <span className="text-[var(--muted)]">Input:</span>
+                  <span className="text-[var(--text-muted)]">Input:</span>
                   <span className="ml-2">{selectedProvider.input.join(', ')}</span>
                 </div>
                 <div>
-                  <span className="text-[var(--muted)]">Output:</span>
+                  <span className="text-[var(--text-muted)]">Output:</span>
                   <span className="ml-2">{selectedProvider.output}</span>
                 </div>
                 <div>
-                  <span className="text-[var(--muted)]">Features:</span>
+                  <span className="text-[var(--text-muted)]">Features:</span>
                   <div className="flex flex-wrap gap-1 mt-1">
                     {selectedProvider.features.map((feature, i) => (
                       <span
                         key={i}
-                        className="text-xs px-2 py-0.5 bg-[var(--card-bg)] rounded"
+                        className="text-xs px-2 py-0.5 bg-[var(--surface-0)] rounded"
                       >
                         {feature}
                       </span>
@@ -280,13 +280,13 @@ export function ProviderComparisonDemo() {
                   </div>
                 </div>
                 <div className="pt-2 border-t border-[var(--border)]">
-                  <span className="text-[var(--muted)]">Best for:</span>
+                  <span className="text-[var(--text-muted)]">Best for:</span>
                   <p className="mt-1">{selectedProvider.bestFor}</p>
                 </div>
               </div>
             </div>
           ) : (
-            <div className="h-full flex items-center justify-center text-[var(--muted)]">
+            <div className="h-full flex items-center justify-center text-[var(--text-muted)]">
               <p>Select a provider to see details</p>
             </div>
           )}
@@ -294,20 +294,20 @@ export function ProviderComparisonDemo() {
       </div>
 
       {/* Decision Guide */}
-      <div className="mt-6 p-4 bg-[var(--card-bg-alt)] rounded">
+      <div className="mt-6 p-4 bg-[var(--surface-2)] rounded">
         <p className="font-medium mb-3">Quick Decision Guide</p>
         <div className="grid md:grid-cols-3 gap-4 text-sm">
           <div>
             <p className="font-medium text-[var(--foreground)]">Lowest Latency</p>
-            <p className="text-[var(--muted)]">Simli (~100ms) for real-time conversation</p>
+            <p className="text-[var(--text-muted)]">Simli (~100ms) for real-time conversation</p>
           </div>
           <div>
             <p className="font-medium text-[var(--foreground)]">Best Quality</p>
-            <p className="text-[var(--muted)]">Hedra for photorealistic output</p>
+            <p className="text-[var(--text-muted)]">Hedra for photorealistic output</p>
           </div>
           <div>
             <p className="font-medium text-[var(--foreground)]">Most Customizable</p>
-            <p className="text-[var(--muted)]">Tavus for personalized clones</p>
+            <p className="text-[var(--text-muted)]">Tavus for personalized clones</p>
           </div>
         </div>
       </div>

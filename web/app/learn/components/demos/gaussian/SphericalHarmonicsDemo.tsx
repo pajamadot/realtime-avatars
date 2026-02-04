@@ -167,7 +167,7 @@ export default function SphericalHarmonicsDemo() {
         {/* Controls */}
         <div className="p-4 border-l border-[var(--border)]">
           <h3 className="font-semibold mb-2">Spherical Harmonics Playground</h3>
-          <p className="text-xs text-[var(--muted)] mb-4">
+          <p className="text-xs text-[var(--text-muted)] mb-4">
             Adjust SH coefficients to change how color varies across the sphere surface.
             This is how 3D Gaussian Splatting encodes view-dependent color.
           </p>
@@ -181,7 +181,7 @@ export default function SphericalHarmonicsDemo() {
                 className={`px-3 py-1 text-xs rounded capitalize transition-colors ${
                   preset === name
                     ? 'bg-[var(--color-gaussian)] text-white'
-                    : 'bg-[var(--card-bg-alt)] text-[var(--muted)] hover:text-[var(--foreground)]'
+                    : 'bg-[var(--surface-2)] text-[var(--text-muted)] hover:text-[var(--foreground)]'
                 }`}
               >
                 {name}
@@ -198,7 +198,7 @@ export default function SphericalHarmonicsDemo() {
                 className={`flex-1 py-1 text-sm rounded uppercase font-medium transition-colors ${
                   activeChannel === ch
                     ? `text-white`
-                    : 'bg-[var(--card-bg-alt)] text-[var(--muted)]'
+                    : 'bg-[var(--surface-2)] text-[var(--text-muted)]'
                 }`}
                 style={activeChannel === ch ? { backgroundColor: { r: '#ef4444', g: '#22c55e', b: '#3b82f6' }[ch] } : {}}
               >
@@ -210,7 +210,7 @@ export default function SphericalHarmonicsDemo() {
           {/* SH coefficient sliders */}
           <div className="space-y-3 max-h-[200px] overflow-y-auto pr-2">
             <div>
-              <p className="text-xs text-[var(--muted)] mb-1">c₀₀ (Base brightness)</p>
+              <p className="text-xs text-[var(--text-muted)] mb-1">c₀₀ (Base brightness)</p>
               <ParameterSlider
                 label=""
                 value={coeffs.c00[channelIndex]}
@@ -221,7 +221,7 @@ export default function SphericalHarmonicsDemo() {
               />
             </div>
             <div>
-              <p className="text-xs text-[var(--muted)] mb-1">c₁₋₁ (Y-direction gradient)</p>
+              <p className="text-xs text-[var(--text-muted)] mb-1">c₁₋₁ (Y-direction gradient)</p>
               <ParameterSlider
                 label=""
                 value={coeffs.c1_1[channelIndex]}
@@ -232,7 +232,7 @@ export default function SphericalHarmonicsDemo() {
               />
             </div>
             <div>
-              <p className="text-xs text-[var(--muted)] mb-1">c₁₀ (Z-direction gradient)</p>
+              <p className="text-xs text-[var(--text-muted)] mb-1">c₁₀ (Z-direction gradient)</p>
               <ParameterSlider
                 label=""
                 value={coeffs.c10[channelIndex]}
@@ -243,7 +243,7 @@ export default function SphericalHarmonicsDemo() {
               />
             </div>
             <div>
-              <p className="text-xs text-[var(--muted)] mb-1">c₁₁ (X-direction gradient)</p>
+              <p className="text-xs text-[var(--text-muted)] mb-1">c₁₁ (X-direction gradient)</p>
               <ParameterSlider
                 label=""
                 value={coeffs.c11[channelIndex]}
@@ -256,15 +256,15 @@ export default function SphericalHarmonicsDemo() {
           </div>
 
           {/* Formula */}
-          <div className="mt-4 p-3 bg-[var(--card-bg-alt)] rounded text-xs font-mono">
-            <p className="text-[var(--muted)] mb-1">Color at direction (x,y,z):</p>
+          <div className="mt-4 p-3 bg-[var(--surface-2)] rounded text-xs font-mono">
+            <p className="text-[var(--text-muted)] mb-1">Color at direction (x,y,z):</p>
             <p>c = c₀₀·Y₀₀ + c₁₋₁·Y₁₋₁ + c₁₀·Y₁₀ + c₁₁·Y₁₁</p>
           </div>
         </div>
       </div>
 
       {/* Insight */}
-      <div className="p-4 bg-[var(--card-bg-alt)] border-t border-[var(--border)] text-sm text-[var(--muted)] flex items-start gap-2">
+      <div className="p-4 bg-[var(--surface-2)] border-t border-[var(--border)] text-sm text-[var(--text-muted)] flex items-start gap-2">
         <Lightbulb size={16} className="text-yellow-500 flex-shrink-0 mt-0.5" />
         <span><strong>Try this:</strong> Select the &quot;gradient&quot; preset and rotate the sphere.
         Notice how color changes based on viewing direction — this is how 3DGS captures specular highlights!</span>

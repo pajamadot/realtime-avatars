@@ -217,7 +217,7 @@ export function SamplerComparisonDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Sampler Comparison</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Different samplers trade off speed vs quality. Modern samplers like DPM++ achieve
         high quality in 20 steps vs 1000 for original DDPM.
       </p>
@@ -244,7 +244,7 @@ export function SamplerComparisonDemo() {
           </div>
 
           {/* Steps slider */}
-          <div className="mt-4 p-3 bg-[var(--card-bg-alt)] rounded">
+          <div className="mt-4 p-3 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-1">
               <span>Steps</span>
               <span className="font-mono">{steps}</span>
@@ -291,30 +291,30 @@ export function SamplerComparisonDemo() {
                 >
                   <div className="flex items-center justify-between mb-1">
                     <span className="font-medium text-sm">{s.name}</span>
-                    <span className="text-xs text-[var(--muted)]">~{s.stepsNeeded} steps</span>
+                    <span className="text-xs text-[var(--text-muted)]">~{s.stepsNeeded} steps</span>
                   </div>
-                  <p className="text-xs text-[var(--muted)]">{s.description}</p>
+                  <p className="text-xs text-[var(--text-muted)]">{s.description}</p>
                 </button>
               );
             })}
           </div>
 
           {/* Current sampler info */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-1" style={{ color: sampler.color }}>
               {sampler.fullName}
             </p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               Recommended steps: {sampler.stepsNeeded}
             </p>
-            <p className="text-xs text-[var(--muted)] mt-2">
+            <p className="text-xs text-[var(--text-muted)] mt-2">
               Current noise level: {(noiseLevel * 100).toFixed(1)}%
             </p>
           </div>
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">For Real-Time Avatars</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               DPM++ or Euler with 4-8 steps is common for real-time face generation.
               Quality is acceptable, and speed meets the ~100ms budget for talking heads.
             </p>

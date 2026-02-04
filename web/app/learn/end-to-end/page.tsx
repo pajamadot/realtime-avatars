@@ -50,10 +50,10 @@ export default function EndToEndPage() {
         <div className="flex items-center gap-3 mb-4">
           <div className="w-4 h-4 rounded-full bg-gradient-to-r from-[var(--color-gaussian)] via-[var(--color-generative)] to-[var(--color-streaming)]" />
           <span className="badge">Complete System</span>
-          <span className="text-sm text-[var(--muted)]">~30 min</span>
+          <span className="text-sm text-[var(--text-muted)]">~30 min</span>
         </div>
         <h1 className="text-3xl font-semibold mb-2">{content.title}</h1>
-        <p className="text-lg text-[var(--muted)]">{content.subtitle}</p>
+        <p className="text-lg text-[var(--text-muted)]">{content.subtitle}</p>
       </section>
 
       {/* Progress tracker */}
@@ -66,7 +66,7 @@ export default function EndToEndPage() {
               onClick={() => setCurrentSection(section.id)}
               className={`
                 flex items-center gap-2 px-3 py-1.5 rounded-full text-sm whitespace-nowrap transition-colors
-                ${section.id === currentSection ? 'font-medium text-white' : 'text-[var(--muted)] hover:text-[var(--foreground)]'}
+                ${section.id === currentSection ? 'font-medium text-white' : 'text-[var(--text-muted)] hover:text-[var(--foreground)]'}
               `}
               style={section.id === currentSection ? { backgroundColor: color } : undefined}
             >
@@ -87,7 +87,7 @@ export default function EndToEndPage() {
         <h2 className="text-2xl font-semibold mb-4">The Complete Picture</h2>
 
         <div className="prose prose-neutral max-w-none">
-          <p className="text-lg text-[var(--muted)] leading-relaxed mb-6">
+          <p className="text-lg text-[var(--text-muted)] leading-relaxed mb-6">
             {content.intro.text}
           </p>
         </div>
@@ -96,33 +96,33 @@ export default function EndToEndPage() {
         <div className="highlight-box">
           <p className="font-medium mb-4">What Makes a Real-Time Avatar?</p>
           <div className="grid md:grid-cols-4 gap-4 text-center">
-            <div className="p-4 bg-[var(--card-bg)] rounded">
+            <div className="p-4 bg-[var(--surface-0)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center">
                 <Ear size={24} className="text-[var(--accent)]" />
               </div>
               <p className="font-medium">Listen</p>
-              <p className="text-sm text-[var(--muted)]">Capture and transcribe speech</p>
+              <p className="text-sm text-[var(--text-muted)]">Capture and transcribe speech</p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded">
+            <div className="p-4 bg-[var(--surface-0)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center">
                 <Brain size={24} className="text-[var(--accent)]" />
               </div>
               <p className="font-medium">Think</p>
-              <p className="text-sm text-[var(--muted)]">Generate intelligent response</p>
+              <p className="text-sm text-[var(--text-muted)]">Generate intelligent response</p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded">
+            <div className="p-4 bg-[var(--surface-0)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center">
                 <MessageCircle size={24} className="text-[var(--accent)]" />
               </div>
               <p className="font-medium">Speak</p>
-              <p className="text-sm text-[var(--muted)]">Synthesize natural speech</p>
+              <p className="text-sm text-[var(--text-muted)]">Synthesize natural speech</p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded">
+            <div className="p-4 bg-[var(--surface-0)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center">
                 <Drama size={24} className="text-[var(--accent)]" />
               </div>
               <p className="font-medium">Animate</p>
-              <p className="text-sm text-[var(--muted)]">Render talking avatar</p>
+              <p className="text-sm text-[var(--text-muted)]">Render talking avatar</p>
             </div>
           </div>
         </div>
@@ -133,7 +133,7 @@ export default function EndToEndPage() {
       {/* Section 2: Pipeline */}
       <section id="pipeline" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">The Voice AI Pipeline</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           Every conversational avatar follows this flow. Understanding each stage
           helps you optimize for latency and choose the right tools.
         </p>
@@ -161,7 +161,7 @@ export default function EndToEndPage() {
                 </span>
                 <span className="font-medium">{step.label}</span>
               </div>
-              <p className="text-sm text-[var(--muted)]">{step.description}</p>
+              <p className="text-sm text-[var(--text-muted)]">{step.description}</p>
             </div>
           ))}
         </div>
@@ -172,7 +172,7 @@ export default function EndToEndPage() {
       {/* Section 3: Approaches */}
       <section id="approaches" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">Four Paths to Real-Time Avatars</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           Each approach offers different tradeoffs. Click to explore the architecture and code for each.
         </p>
 
@@ -196,11 +196,11 @@ export default function EndToEndPage() {
                   style={{ backgroundColor: approachColors[approach.id] }}
                 />
                 <span className="badge">{approach.complexity} complexity</span>
-                <span className="text-xs text-[var(--muted)]">{approach.latency}</span>
+                <span className="text-xs text-[var(--text-muted)]">{approach.latency}</span>
               </div>
               <h3 className="text-lg font-semibold mb-1">{approach.title}</h3>
-              <p className="text-sm text-[var(--muted)] mb-3">{approach.subtitle}</p>
-              <p className="text-sm text-[var(--muted)]">{approach.summary}</p>
+              <p className="text-sm text-[var(--text-muted)] mb-3">{approach.subtitle}</p>
+              <p className="text-sm text-[var(--text-muted)]">{approach.summary}</p>
 
               <div className="mt-4 flex items-center gap-2">
                 <Link
@@ -210,8 +210,8 @@ export default function EndToEndPage() {
                 >
                   Learn more →
                 </Link>
-                <span className="text-xs text-[var(--muted)]">|</span>
-                <span className="text-xs text-[var(--muted)]">
+                <span className="text-xs text-[var(--text-muted)]">|</span>
+                <span className="text-xs text-[var(--text-muted)]">
                   {selectedApproach === approach.id ? 'Click to collapse' : 'Click to expand'}
                 </span>
               </div>
@@ -232,24 +232,24 @@ export default function EndToEndPage() {
                 <div className="mb-6">
                   <h4 className="font-medium mb-3">Architecture</h4>
                   <div className="grid md:grid-cols-3 gap-4">
-                    <div className="p-4 bg-[var(--card-bg-alt)] rounded">
-                      <p className="text-xs text-[var(--muted)] mb-2">CLIENT</p>
+                    <div className="p-4 bg-[var(--surface-2)] rounded">
+                      <p className="text-xs text-[var(--text-muted)] mb-2">CLIENT</p>
                       <ul className="text-sm space-y-1">
                         {approach.architecture.client.map((item, i) => (
                           <li key={i}>• {item}</li>
                         ))}
                       </ul>
                     </div>
-                    <div className="p-4 bg-[var(--card-bg-alt)] rounded">
-                      <p className="text-xs text-[var(--muted)] mb-2">SERVER</p>
+                    <div className="p-4 bg-[var(--surface-2)] rounded">
+                      <p className="text-xs text-[var(--text-muted)] mb-2">SERVER</p>
                       <ul className="text-sm space-y-1">
                         {approach.architecture.server.map((item, i) => (
                           <li key={i}>• {item}</li>
                         ))}
                       </ul>
                     </div>
-                    <div className="p-4 bg-[var(--card-bg-alt)] rounded">
-                      <p className="text-xs text-[var(--muted)] mb-2">AVATAR</p>
+                    <div className="p-4 bg-[var(--surface-2)] rounded">
+                      <p className="text-xs text-[var(--text-muted)] mb-2">AVATAR</p>
                       <ul className="text-sm space-y-1">
                         {approach.architecture.avatar.map((item, i) => (
                           <li key={i}>• {item}</li>
@@ -267,7 +267,7 @@ export default function EndToEndPage() {
                       {approach.pros.map((pro, i) => (
                         <li key={i} className="flex items-start gap-2">
                           <span className="text-green-500">+</span>
-                          <span className="text-[var(--muted)]">{pro}</span>
+                          <span className="text-[var(--text-muted)]">{pro}</span>
                         </li>
                       ))}
                     </ul>
@@ -278,7 +278,7 @@ export default function EndToEndPage() {
                       {approach.cons.map((con, i) => (
                         <li key={i} className="flex items-start gap-2">
                           <span className="text-red-500">-</span>
-                          <span className="text-[var(--muted)]">{con}</span>
+                          <span className="text-[var(--text-muted)]">{con}</span>
                         </li>
                       ))}
                     </ul>
@@ -288,7 +288,7 @@ export default function EndToEndPage() {
                 {/* Code example */}
                 <div>
                   <h4 className="font-medium mb-3">{approach.code.title}</h4>
-                  <pre className="bg-[var(--card-bg-alt)] p-4 rounded overflow-x-auto text-sm">
+                  <pre className="bg-[var(--surface-2)] p-4 rounded overflow-x-auto text-sm">
                     <code>{approach.code.snippet}</code>
                   </pre>
                 </div>
@@ -315,7 +315,7 @@ export default function EndToEndPage() {
                   <td>{row.quality}</td>
                   <td>{row.setupTime}</td>
                   <td>{row.cost}</td>
-                  <td className="text-[var(--muted)]">{row.bestFor}</td>
+                  <td className="text-[var(--text-muted)]">{row.bestFor}</td>
                 </tr>
               ))}
             </tbody>
@@ -328,7 +328,7 @@ export default function EndToEndPage() {
       {/* Section 4: Latency */}
       <section id="latency" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">{content.latencyBreakdown.title}</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           Target: <span className="font-medium text-[var(--foreground)]">{content.latencyBreakdown.target}</span> for natural conversation
         </p>
 
@@ -342,8 +342,8 @@ export default function EndToEndPage() {
 
               return (
                 <div key={component.name} className="flex items-center gap-4">
-                  <div className="w-40 text-sm text-right text-[var(--muted)]">{component.name}</div>
-                  <div className="flex-1 h-6 bg-[var(--card-bg-alt)] rounded relative">
+                  <div className="w-40 text-sm text-right text-[var(--text-muted)]">{component.name}</div>
+                  <div className="flex-1 h-6 bg-[var(--surface-2)] rounded relative">
                     <div
                       className="absolute h-full rounded bg-[var(--accent)]/30"
                       style={{ width: `${maxPct}%` }}
@@ -370,7 +370,7 @@ export default function EndToEndPage() {
                 <span className="text-lg font-semibold">
                   {content.latencyBreakdown.components.reduce((sum, c) => sum + c.max, 0)}ms
                 </span>
-                <span className="text-[var(--muted)] ml-2">
+                <span className="text-[var(--text-muted)] ml-2">
                   (best: {content.latencyBreakdown.components.reduce((sum, c) => sum + c.min, 0)}ms)
                 </span>
               </div>
@@ -385,7 +385,7 @@ export default function EndToEndPage() {
             {content.latencyBreakdown.tips.map((tip, i) => (
               <li key={i} className="flex items-start gap-2 text-sm">
                 <span className="text-[var(--accent)]">→</span>
-                <span className="text-[var(--muted)]">{tip}</span>
+                <span className="text-[var(--text-muted)]">{tip}</span>
               </li>
             ))}
           </ul>
@@ -402,7 +402,7 @@ export default function EndToEndPage() {
       {/* Section 5: Implementation */}
       <section id="implementation" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">Build It Yourself</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           Follow these steps to deploy a complete real-time avatar system using LiveKit.
         </p>
 
@@ -428,7 +428,7 @@ export default function EndToEndPage() {
                 </span>
                 <div>
                   <p className="font-medium text-sm">{resource.title}</p>
-                  <p className="text-xs text-[var(--muted)]">{resource.type}</p>
+                  <p className="text-xs text-[var(--text-muted)]">{resource.type}</p>
                 </div>
               </a>
             ))}
@@ -474,22 +474,22 @@ export default function EndToEndPage() {
           <Link href="/learn/streaming-avatars" className="card p-4 hover:border-[var(--color-streaming)] text-center">
             <div className="w-3 h-3 rounded-full mx-auto mb-2" style={{ backgroundColor: 'var(--color-streaming)' }} />
             <p className="font-medium text-sm">Streaming</p>
-            <p className="text-xs text-[var(--muted)]">Fastest to deploy</p>
+            <p className="text-xs text-[var(--text-muted)]">Fastest to deploy</p>
           </Link>
           <Link href="/learn/generative-video" className="card p-4 hover:border-[var(--color-generative)] text-center">
             <div className="w-3 h-3 rounded-full mx-auto mb-2" style={{ backgroundColor: 'var(--color-generative)' }} />
             <p className="font-medium text-sm">Generative</p>
-            <p className="text-xs text-[var(--muted)]">Best quality</p>
+            <p className="text-xs text-[var(--text-muted)]">Best quality</p>
           </Link>
           <Link href="/learn/metahuman" className="card p-4 hover:border-[var(--color-metahuman)] text-center">
             <div className="w-3 h-3 rounded-full mx-auto mb-2" style={{ backgroundColor: 'var(--color-metahuman)' }} />
             <p className="font-medium text-sm">MetaHuman</p>
-            <p className="text-xs text-[var(--muted)]">Most control</p>
+            <p className="text-xs text-[var(--text-muted)]">Most control</p>
           </Link>
           <Link href="/learn/gaussian-splatting" className="card p-4 hover:border-[var(--color-gaussian)] text-center">
             <div className="w-3 h-3 rounded-full mx-auto mb-2" style={{ backgroundColor: 'var(--color-gaussian)' }} />
             <p className="font-medium text-sm">Gaussian</p>
-            <p className="text-xs text-[var(--muted)]">Cutting edge</p>
+            <p className="text-xs text-[var(--text-muted)]">Cutting edge</p>
           </Link>
         </div>
       </section>
@@ -498,7 +498,7 @@ export default function EndToEndPage() {
       <section className="mb-16">
         <div className="card p-6 text-center bg-gradient-to-r from-[var(--color-gaussian)]/10 via-[var(--color-generative)]/10 to-[var(--color-streaming)]/10">
           <h3 className="font-semibold mb-2">See It In Action</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Experience a complete real-time avatar system using the Streaming approach
             with LiveKit and Hedra.
           </p>
@@ -518,7 +518,7 @@ export default function EndToEndPage() {
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div className="card-alt p-5">
             <p className="font-medium mb-3 text-green-600">Good Use Cases</p>
-            <ul className="space-y-2 text-sm text-[var(--muted)]">
+            <ul className="space-y-2 text-sm text-[var(--text-muted)]">
               {content.tradeoffs.when.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <span className="text-green-500">+</span>
@@ -529,7 +529,7 @@ export default function EndToEndPage() {
           </div>
           <div className="card-alt p-5">
             <p className="font-medium mb-3 text-red-600">Consider Alternatives</p>
-            <ul className="space-y-2 text-sm text-[var(--muted)]">
+            <ul className="space-y-2 text-sm text-[var(--text-muted)]">
               {content.tradeoffs.whenNot.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <span className="text-red-500">-</span>
@@ -542,7 +542,7 @@ export default function EndToEndPage() {
 
         <div className="highlight-box">
           <p className="font-medium mb-2">Best Use Case</p>
-          <p className="text-[var(--muted)]">{content.tradeoffs.bestFor}</p>
+          <p className="text-[var(--text-muted)]">{content.tradeoffs.bestFor}</p>
         </div>
       </section>
     </div>

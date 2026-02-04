@@ -82,7 +82,7 @@ export default function ToolingHighlights({
     <div className={className}>
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
         <p className="section-label">Tooling Radar</p>
-        <p className="text-xs text-[var(--muted)]">
+        <p className="text-xs text-[var(--text-muted)]">
           {updated ? `Updated ${updated}.` : 'Not updated yet.'} See <a href="#tooling-radar" className="hover:underline">tooling</a>
         </p>
       </div>
@@ -94,7 +94,7 @@ export default function ToolingHighlights({
             href={row.item.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-start gap-3 p-3 bg-[var(--card-bg)] rounded border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors"
+            className="flex items-start gap-3 p-3 bg-[var(--surface-0)] rounded border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors"
           >
             <div
               className="approach-dot mt-1"
@@ -105,16 +105,16 @@ export default function ToolingHighlights({
               <div className="flex items-start justify-between gap-3">
                 <p className="font-medium text-sm leading-snug truncate">{row.item.name}</p>
                 <div className="flex items-center gap-2 flex-shrink-0">
-                  <span className="text-xs text-[var(--muted)] whitespace-nowrap">
+                  <span className="text-xs text-[var(--text-muted)] whitespace-nowrap">
                     {formatStars(row.item.stars)}★
                   </span>
-                  <span className="text-xs text-[var(--muted)] whitespace-nowrap">
+                  <span className="text-xs text-[var(--text-muted)] whitespace-nowrap">
                     {formatISODate(row.item.pushedAt)}
                   </span>
                 </div>
               </div>
               <div className="mt-1 flex items-center justify-between gap-3">
-                <p className="text-xs text-[var(--muted)] truncate">{row.queryLabel}</p>
+                <p className="text-xs text-[var(--text-muted)] truncate">{row.queryLabel}</p>
                 {row.item.language ? (
                   <span className="badge text-[0.6875rem] py-0.5 px-2">{row.item.language}</span>
                 ) : null}

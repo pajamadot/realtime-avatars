@@ -234,7 +234,7 @@ export function ActivationFunctionsDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Activation Functions</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Activation functions introduce non-linearity, enabling neural networks to learn complex patterns.
         Each has different properties for training stability and gradient flow.
       </p>
@@ -250,7 +250,7 @@ export function ActivationFunctionsDemo() {
           />
 
           {/* Input slider */}
-          <div className="mt-4 p-3 bg-[var(--card-bg-alt)] rounded">
+          <div className="mt-4 p-3 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-1">
               <span>Input (x)</span>
               <span className="font-mono">{inputValue.toFixed(2)}</span>
@@ -304,30 +304,30 @@ export function ActivationFunctionsDemo() {
                 >
                   <div className="flex items-center justify-between mb-1">
                     <span className="font-medium text-sm">{a.name}</span>
-                    <code className="text-xs text-[var(--muted)]">{a.formula}</code>
+                    <code className="text-xs text-[var(--text-muted)]">{a.formula}</code>
                   </div>
-                  <p className="text-xs text-[var(--muted)]">{a.description}</p>
+                  <p className="text-xs text-[var(--text-muted)]">{a.description}</p>
                 </button>
               );
             })}
           </div>
 
           {/* Current values */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Current Values</p>
             <div className="grid grid-cols-3 gap-2 text-xs">
-              <div className="p-2 bg-[var(--card-bg)] rounded text-center">
-                <p className="text-[var(--muted)]">Input</p>
+              <div className="p-2 bg-[var(--surface-0)] rounded text-center">
+                <p className="text-[var(--text-muted)]">Input</p>
                 <p className="font-mono">{inputValue.toFixed(2)}</p>
               </div>
-              <div className="p-2 bg-[var(--card-bg)] rounded text-center">
-                <p className="text-[var(--muted)]">Output</p>
+              <div className="p-2 bg-[var(--surface-0)] rounded text-center">
+                <p className="text-[var(--text-muted)]">Output</p>
                 <p className="font-mono" style={{ color: activation.color }}>
                   {outputValue.toFixed(3)}
                 </p>
               </div>
-              <div className="p-2 bg-[var(--card-bg)] rounded text-center">
-                <p className="text-[var(--muted)]">Gradient</p>
+              <div className="p-2 bg-[var(--surface-0)] rounded text-center">
+                <p className="text-[var(--text-muted)]">Gradient</p>
                 <p className="font-mono">{derivativeValue.toFixed(3)}</p>
               </div>
             </div>
@@ -335,7 +335,7 @@ export function ActivationFunctionsDemo() {
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">For Avatar Models</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               Face encoders typically use ReLU or LeakyReLU. Transformers (in diffusion models)
               use GELU. The final layer often uses Sigmoid or Tanh to bound outputs.
             </p>

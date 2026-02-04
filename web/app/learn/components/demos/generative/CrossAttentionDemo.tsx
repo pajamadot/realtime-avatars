@@ -170,7 +170,7 @@ export function CrossAttentionDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Cross-Attention Visualizer</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         See how audio tokens guide which parts of the image to modify. This is how diffusion models
         know to move the mouth when you say "ah" but keep the eyes still.
       </p>
@@ -182,7 +182,7 @@ export function CrossAttentionDemo() {
             ref={canvasRef}
             width={400}
             height={320}
-            className="w-full rounded-lg border border-[var(--border)] bg-[var(--card-bg-alt)]"
+            className="w-full rounded-lg border border-[var(--border)] bg-[var(--surface-2)]"
           />
 
           {/* Controls */}
@@ -210,7 +210,7 @@ export function CrossAttentionDemo() {
         {/* Controls panel */}
         <div className="space-y-4">
           {/* Temperature */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-2">
               <span className="font-medium">Attention Temperature</span>
               <span className="font-mono">{temperature.toFixed(1)}</span>
@@ -224,13 +224,13 @@ export function CrossAttentionDemo() {
               onChange={(e) => setTemperature(Number(e.target.value))}
               className="w-full"
             />
-            <p className="text-xs text-[var(--muted)] mt-1">
+            <p className="text-xs text-[var(--text-muted)] mt-1">
               Low = sharp focus on few tokens, High = diffuse attention
             </p>
           </div>
 
           {/* Token selectors */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Select Image Region</p>
             <div className="flex flex-wrap gap-1">
               {IMAGE_TOKENS.map((token, i) => (
@@ -240,7 +240,7 @@ export function CrossAttentionDemo() {
                   className={`px-2 py-1 rounded text-xs transition-colors ${
                     selectedImageToken === i
                       ? 'bg-[#ff6b6b] text-white'
-                      : 'bg-[var(--card-bg)] hover:bg-[var(--border)]'
+                      : 'bg-[var(--surface-0)] hover:bg-[var(--border)]'
                   }`}
                 >
                   {token}
@@ -249,7 +249,7 @@ export function CrossAttentionDemo() {
             </div>
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Select Audio Token</p>
             <div className="flex flex-wrap gap-1">
               {AUDIO_TOKENS.map((token, j) => (
@@ -259,7 +259,7 @@ export function CrossAttentionDemo() {
                   className={`px-2 py-1 rounded text-xs transition-colors ${
                     selectedAudioToken === j
                       ? 'bg-[#ffd93d] text-black'
-                      : 'bg-[var(--card-bg)] hover:bg-[var(--border)]'
+                      : 'bg-[var(--surface-0)] hover:bg-[var(--border)]'
                   }`}
                 >
                   {token}
@@ -270,7 +270,7 @@ export function CrossAttentionDemo() {
 
           {/* Attention matrix */}
           {selectedImageToken !== null && (
-            <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+            <div className="p-4 bg-[var(--surface-2)] rounded">
               <p className="font-medium text-sm mb-2">
                 Attention for "{IMAGE_TOKENS[selectedImageToken]}"
               </p>
@@ -278,7 +278,7 @@ export function CrossAttentionDemo() {
                 {AUDIO_TOKENS.map((token, j) => (
                   <div key={j} className="flex items-center gap-2 text-xs">
                     <span className="w-12">{token}</span>
-                    <div className="flex-1 h-3 bg-[var(--card-bg)] rounded overflow-hidden">
+                    <div className="flex-1 h-3 bg-[var(--surface-0)] rounded overflow-hidden">
                       <div
                         className="h-full bg-[var(--accent)]"
                         style={{ width: `${(attentionWeights[selectedImageToken]?.[j] || 0) * 100}%` }}
@@ -296,9 +296,9 @@ export function CrossAttentionDemo() {
       </div>
 
       {/* Explanation */}
-      <div className="mt-6 p-4 bg-[var(--card-bg-alt)] rounded">
+      <div className="mt-6 p-4 bg-[var(--surface-2)] rounded">
         <p className="font-medium mb-2">How Cross-Attention Works</p>
-        <div className="grid md:grid-cols-3 gap-4 text-sm text-[var(--muted)]">
+        <div className="grid md:grid-cols-3 gap-4 text-sm text-[var(--text-muted)]">
           <div>
             <p className="font-medium text-[var(--foreground)] mb-1">Query (Image)</p>
             <p>"What information do I need?" - each image region asks what audio to attend to</p>

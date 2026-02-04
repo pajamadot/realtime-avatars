@@ -197,7 +197,7 @@ export function MotionFieldDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Motion Field Visualization</h3>
-      <p className="text-sm text-[var(--muted)] mb-4">
+      <p className="text-sm text-[var(--text-muted)] mb-4">
         Optical flow shows per-pixel motion vectors. This is how video models understand and predict movement.
       </p>
 
@@ -210,11 +210,11 @@ export function MotionFieldDemo() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Motion Type</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Motion Type</label>
           <select
             value={motionType}
             onChange={(e) => setMotionType(e.target.value as typeof motionType)}
-            className="w-full px-2 py-1 rounded bg-[var(--card-bg)] border border-[var(--border)] text-sm"
+            className="w-full px-2 py-1 rounded bg-[var(--surface-0)] border border-[var(--border)] text-sm"
           >
             <option value="speaking">Speaking</option>
             <option value="nodding">Head Nod</option>
@@ -246,7 +246,7 @@ export function MotionFieldDemo() {
       {motionType === 'custom' && (
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="text-xs text-[var(--muted)] block mb-1">X Motion: {customMotion.x.toFixed(1)}</label>
+            <label className="text-xs text-[var(--text-muted)] block mb-1">X Motion: {customMotion.x.toFixed(1)}</label>
             <input
               type="range"
               min="-1"
@@ -258,7 +258,7 @@ export function MotionFieldDemo() {
             />
           </div>
           <div>
-            <label className="text-xs text-[var(--muted)] block mb-1">Y Motion: {customMotion.y.toFixed(1)}</label>
+            <label className="text-xs text-[var(--text-muted)] block mb-1">Y Motion: {customMotion.y.toFixed(1)}</label>
             <input
               type="range"
               min="-1"
@@ -272,9 +272,9 @@ export function MotionFieldDemo() {
         </div>
       )}
 
-      <div className="p-3 bg-[var(--card-bg-alt)] rounded text-xs">
+      <div className="p-3 bg-[var(--surface-2)] rounded text-xs">
         <p className="font-medium mb-1">In Video Generation</p>
-        <p className="text-[var(--muted)]">
+        <p className="text-[var(--text-muted)]">
           Motion fields help maintain temporal consistency. The model predicts motion vectors from audio,
           then warps the previous frame accordingly before refining with diffusion.
         </p>

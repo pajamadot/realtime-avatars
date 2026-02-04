@@ -187,7 +187,7 @@ export function WrinkleMapDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Wrinkle Map System</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         MetaHuman uses wrinkle maps for facial detail. Each expression drives specific wrinkle regions
         that blend on top of the base skin texture.
       </p>
@@ -209,7 +209,7 @@ export function WrinkleMapDemo() {
                 key={p}
                 onClick={() => setPreset(p)}
                 className={`py-2 rounded font-medium text-xs capitalize transition-colors ${
-                  preset === p ? 'bg-[var(--accent)] text-white' : 'bg-[var(--card-bg-alt)]'
+                  preset === p ? 'bg-[var(--accent)] text-white' : 'bg-[var(--surface-2)]'
                 }`}
               >
                 {p}
@@ -230,7 +230,7 @@ export function WrinkleMapDemo() {
 
         {/* Controls */}
         <div className="space-y-4">
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-2">
               <span>Global Wrinkle Strength</span>
               <span className="font-mono">{wrinkleStrength.toFixed(1)}x</span>
@@ -246,7 +246,7 @@ export function WrinkleMapDemo() {
             />
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded space-y-3">
+          <div className="p-4 bg-[var(--surface-2)] rounded space-y-3">
             <p className="font-medium text-sm">Expression Drivers</p>
             {Object.entries(expressions).map(([key, value]) => (
               <div key={key}>
@@ -272,7 +272,7 @@ export function WrinkleMapDemo() {
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">Texture Layers</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               MetaHuman blends multiple texture layers: base albedo, normal map, roughness,
               and wrinkle maps. Wrinkle maps are driven by blendshape values, creating
               realistic skin deformation during expressions.

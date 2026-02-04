@@ -80,7 +80,7 @@ function SceneContent({ source, onLoaded }: { source: string; onLoaded?: () => v
 // Loading placeholder with animated gradient
 function LoadingPlaceholder({ isLoading }: { isLoading: boolean }) {
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[var(--card-bg)] transition-opacity duration-500"
+    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[var(--surface-0)] transition-opacity duration-500"
          style={{ opacity: isLoading ? 1 : 0, pointerEvents: isLoading ? 'auto' : 'none' }}>
       <div className="relative w-24 h-24 mb-4">
         {/* Animated gaussian-like circles */}
@@ -92,8 +92,8 @@ function LoadingPlaceholder({ isLoading }: { isLoading: boolean }) {
           <span className="text-xs font-medium text-white">3D</span>
         </div>
       </div>
-      <p className="text-sm text-[var(--muted)]">Loading Gaussian Splat...</p>
-      <p className="text-xs text-[var(--muted)] mt-1 opacity-60">Streaming point cloud data</p>
+      <p className="text-sm text-[var(--text-muted)]">Loading Gaussian Splat...</p>
+      <p className="text-xs text-[var(--text-muted)] mt-1 opacity-60">Streaming point cloud data</p>
     </div>
   );
 }
@@ -147,10 +147,10 @@ export default function GaussianSplatViewer({
 
   if (error) {
     return (
-      <div ref={containerRef} className={`bg-[var(--card-bg)] rounded-lg flex items-center justify-center ${className}`}>
+      <div ref={containerRef} className={`bg-[var(--surface-0)] rounded-lg flex items-center justify-center ${className}`}>
         <div className="text-center p-4">
           <p className="text-red-500 mb-2">{error}</p>
-          <p className="text-xs text-[var(--muted)]">WebGL is required for 3D visualization</p>
+          <p className="text-xs text-[var(--text-muted)]">WebGL is required for 3D visualization</p>
         </div>
       </div>
     );
@@ -175,7 +175,7 @@ export default function GaussianSplatViewer({
 
       {/* Controls hint - only show when loaded */}
       <div
-        className="absolute bottom-3 left-3 text-xs text-[var(--muted)] bg-[var(--card-bg)]/80 px-2 py-1 rounded transition-opacity duration-500"
+        className="absolute bottom-3 left-3 text-xs text-[var(--text-muted)] bg-[var(--surface-0)]/80 px-2 py-1 rounded transition-opacity duration-500"
         style={{ opacity: isLoading ? 0 : 1 }}
       >
         Drag to rotate | Scroll to zoom

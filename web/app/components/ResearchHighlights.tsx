@@ -68,7 +68,7 @@ export default function ResearchHighlights({
     <div className={className}>
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
         <p className="section-label">Living Research Feed</p>
-        <p className="text-xs text-[var(--muted)]">
+        <p className="text-xs text-[var(--text-muted)]">
           {updated ? `Updated ${updated}.` : 'Not updated yet.'} Run <code>npm run research:update</code>
         </p>
       </div>
@@ -80,7 +80,7 @@ export default function ResearchHighlights({
             href={row.item.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-start gap-3 p-3 bg-[var(--card-bg)] rounded border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors"
+            className="flex items-start gap-3 p-3 bg-[var(--surface-0)] rounded border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors"
           >
             <div
               className="approach-dot mt-1"
@@ -90,11 +90,11 @@ export default function ResearchHighlights({
             <div className="min-w-0">
               <div className="flex items-start justify-between gap-3">
                 <p className="font-medium text-sm leading-snug truncate">{row.item.title}</p>
-                <span className="text-xs text-[var(--muted)] whitespace-nowrap">
+                <span className="text-xs text-[var(--text-muted)] whitespace-nowrap">
                   {formatISODate(row.item.published)}
                 </span>
               </div>
-              <p className="text-xs text-[var(--muted)] mt-1">{row.methodLabel}</p>
+              <p className="text-xs text-[var(--text-muted)] mt-1">{row.methodLabel}</p>
               {row.item.tags?.length ? (
                 <div className="mt-2 flex flex-wrap gap-1">
                   {row.item.tags.slice(0, 4).map((t) => (

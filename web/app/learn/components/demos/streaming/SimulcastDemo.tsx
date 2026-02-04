@@ -223,7 +223,7 @@ export function SimulcastDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Simulcast Streaming</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Simulcast encodes video at multiple quality levels. Each receiver gets the best quality
         their bandwidth supports. Compare to single-quality streaming.
       </p>
@@ -274,7 +274,7 @@ export function SimulcastDemo() {
 
         {/* Bandwidth controls */}
         <div className="space-y-4">
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-3">Participant Bandwidth</p>
             {participants.map(p => {
               const layer = LAYERS.find(l => l.id === p.selectedLayer) || LAYERS[2];
@@ -293,7 +293,7 @@ export function SimulcastDemo() {
                     onChange={(e) => updateBandwidth(p.id, Number(e.target.value))}
                     className="w-full"
                   />
-                  <div className="flex justify-between text-xs text-[var(--muted)]">
+                  <div className="flex justify-between text-xs text-[var(--text-muted)]">
                     <span>Receiving:</span>
                     <span style={{ color: simulcastEnabled ? layer.color : LAYERS[0].color }}>
                       {simulcastEnabled ? layer.resolution : LAYERS[0].resolution}
@@ -304,23 +304,23 @@ export function SimulcastDemo() {
             })}
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Simulcast vs Single Stream</p>
             <div className="grid grid-cols-2 gap-2 text-xs">
-              <div className="p-2 bg-[var(--card-bg)] rounded">
+              <div className="p-2 bg-[var(--surface-0)] rounded">
                 <p className="font-medium text-[#2ecc71]">Simulcast</p>
-                <p className="text-[var(--muted)]">Each user gets optimal quality</p>
+                <p className="text-[var(--text-muted)]">Each user gets optimal quality</p>
               </div>
-              <div className="p-2 bg-[var(--card-bg)] rounded">
+              <div className="p-2 bg-[var(--surface-0)] rounded">
                 <p className="font-medium text-[#e74c3c]">Single</p>
-                <p className="text-[var(--muted)]">One quality for all (wasteful or insufficient)</p>
+                <p className="text-[var(--text-muted)]">One quality for all (wasteful or insufficient)</p>
               </div>
             </div>
           </div>
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">For Avatar Streaming</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               Avatar providers often use simulcast so mobile users on cellular get 360p
               while desktop users on fiber get 1080p. The SFU selects the best layer per client.
             </p>

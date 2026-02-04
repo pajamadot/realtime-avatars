@@ -167,7 +167,7 @@ export function LipSyncPlaygroundDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Lip Sync Playground</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Explore how audio phonemes map to visual mouth shapes (visemes).
         Click visemes or play phrases to see the lip sync in action.
       </p>
@@ -181,32 +181,32 @@ export function LipSyncPlaygroundDemo() {
               ref={canvasRef}
               width={300}
               height={200}
-              className="rounded-lg border border-[var(--border)] bg-[var(--card-bg-alt)]"
+              className="rounded-lg border border-[var(--border)] bg-[var(--surface-2)]"
             />
 
             {/* Current viseme info */}
-            <div className="mt-4 p-3 bg-[var(--card-bg-alt)] rounded text-sm w-full">
+            <div className="mt-4 p-3 bg-[var(--surface-2)] rounded text-sm w-full">
               <div className="flex justify-between items-center">
                 <span className="font-medium">Current: {currentViseme.id}</span>
-                <span className="text-[var(--muted)]">{currentViseme.mouthShape}</span>
+                <span className="text-[var(--text-muted)]">{currentViseme.mouthShape}</span>
               </div>
-              <p className="text-xs text-[var(--muted)] mt-1">
+              <p className="text-xs text-[var(--text-muted)] mt-1">
                 Phonemes: {currentViseme.phonemes.join(', ')}
               </p>
             </div>
 
             {/* Parameters display */}
             <div className="mt-2 grid grid-cols-3 gap-2 w-full text-xs">
-              <div className="p-2 bg-[var(--card-bg-alt)] rounded text-center">
-                <p className="text-[var(--muted)]">Jaw Open</p>
+              <div className="p-2 bg-[var(--surface-2)] rounded text-center">
+                <p className="text-[var(--text-muted)]">Jaw Open</p>
                 <p className="font-mono">{currentViseme.jawOpen.toFixed(2)}</p>
               </div>
-              <div className="p-2 bg-[var(--card-bg-alt)] rounded text-center">
-                <p className="text-[var(--muted)]">Lip Width</p>
+              <div className="p-2 bg-[var(--surface-2)] rounded text-center">
+                <p className="text-[var(--text-muted)]">Lip Width</p>
                 <p className="font-mono">{currentViseme.lipWidth.toFixed(2)}</p>
               </div>
-              <div className="p-2 bg-[var(--card-bg-alt)] rounded text-center">
-                <p className="text-[var(--muted)]">Lip Round</p>
+              <div className="p-2 bg-[var(--surface-2)] rounded text-center">
+                <p className="text-[var(--text-muted)]">Lip Round</p>
                 <p className="font-mono">{currentViseme.lipRound.toFixed(2)}</p>
               </div>
             </div>
@@ -226,7 +226,7 @@ export function LipSyncPlaygroundDemo() {
                   className={`p-2 rounded text-xs font-mono transition-colors ${
                     currentViseme.id === viseme.id
                       ? 'bg-[var(--accent)] text-white'
-                      : 'bg-[var(--card-bg-alt)] hover:bg-[var(--border)]'
+                      : 'bg-[var(--surface-2)] hover:bg-[var(--border)]'
                   }`}
                   title={`${viseme.mouthShape}: ${viseme.phonemes.join(', ')}`}
                 >
@@ -248,7 +248,7 @@ export function LipSyncPlaygroundDemo() {
                   className={`p-3 rounded text-sm transition-colors ${
                     playingPhrase === phrase.text
                       ? 'bg-[var(--accent)] text-white'
-                      : 'bg-[var(--card-bg-alt)] hover:bg-[var(--border)]'
+                      : 'bg-[var(--surface-2)] hover:bg-[var(--border)]'
                   } ${isPlaying ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   {phrase.text}
@@ -262,7 +262,7 @@ export function LipSyncPlaygroundDemo() {
             <div>
               <div className="flex justify-between text-sm mb-1">
                 <span>Smoothing</span>
-                <span className="text-[var(--muted)]">{smoothing.toFixed(2)}</span>
+                <span className="text-[var(--text-muted)]">{smoothing.toFixed(2)}</span>
               </div>
               <input
                 type="range"
@@ -273,7 +273,7 @@ export function LipSyncPlaygroundDemo() {
                 onChange={(e) => setSmoothing(Number(e.target.value))}
                 className="w-full"
               />
-              <p className="text-xs text-[var(--muted)]">
+              <p className="text-xs text-[var(--text-muted)]">
                 Higher = smoother transitions, lower = snappier
               </p>
             </div>
@@ -281,7 +281,7 @@ export function LipSyncPlaygroundDemo() {
             <div>
               <div className="flex justify-between text-sm mb-1">
                 <span>Speed</span>
-                <span className="text-[var(--muted)]">{speed}x</span>
+                <span className="text-[var(--text-muted)]">{speed}x</span>
               </div>
               <input
                 type="range"
@@ -298,9 +298,9 @@ export function LipSyncPlaygroundDemo() {
       </div>
 
       {/* Explanation */}
-      <div className="mt-6 p-4 bg-[var(--card-bg-alt)] rounded">
+      <div className="mt-6 p-4 bg-[var(--surface-2)] rounded">
         <p className="font-medium mb-2">Audio-to-Lip-Sync Pipeline</p>
-        <div className="grid md:grid-cols-4 gap-4 text-sm text-[var(--muted)]">
+        <div className="grid md:grid-cols-4 gap-4 text-sm text-[var(--text-muted)]">
           <div className="text-center">
             <div className="w-10 h-10 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
               <Mic size={20} className="text-[var(--color-generative)]" />

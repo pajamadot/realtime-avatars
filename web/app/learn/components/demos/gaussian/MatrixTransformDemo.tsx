@@ -232,7 +232,7 @@ export default function MatrixTransformDemo() {
           </button>
           <button
             onClick={reset}
-            className="px-3 py-1 text-xs bg-[var(--card-bg-alt)] rounded hover:bg-[var(--border)]"
+            className="px-3 py-1 text-xs bg-[var(--surface-2)] rounded hover:bg-[var(--border)]"
           >
             Reset
           </button>
@@ -256,7 +256,7 @@ export default function MatrixTransformDemo() {
               onChange={(e) => setShowSteps(e.target.checked)}
               className="rounded"
             />
-            <label htmlFor="showSteps" className="text-xs text-[var(--muted)]">
+            <label htmlFor="showSteps" className="text-xs text-[var(--text-muted)]">
               Show intermediate step (scale only)
             </label>
           </div>
@@ -316,26 +316,26 @@ export default function MatrixTransformDemo() {
           </div>
 
           {/* Matrix Display */}
-          <div className="p-3 bg-[var(--card-bg-alt)] rounded text-sm font-mono">
-            <p className="text-xs text-[var(--muted)] mb-2">Combined Matrix (R × S):</p>
+          <div className="p-3 bg-[var(--surface-2)] rounded text-sm font-mono">
+            <p className="text-xs text-[var(--text-muted)] mb-2">Combined Matrix (R × S):</p>
             <div className="grid grid-cols-2 gap-1 text-center">
-              <div className="p-1 bg-[var(--card-bg)] rounded">
+              <div className="p-1 bg-[var(--surface-0)] rounded">
                 {(parseFloat(cos) * scaleX).toFixed(2)}
               </div>
-              <div className="p-1 bg-[var(--card-bg)] rounded">
+              <div className="p-1 bg-[var(--surface-0)] rounded">
                 {(parseFloat(negSin) * scaleY).toFixed(2)}
               </div>
-              <div className="p-1 bg-[var(--card-bg)] rounded">
+              <div className="p-1 bg-[var(--surface-0)] rounded">
                 {(parseFloat(sin) * scaleX).toFixed(2)}
               </div>
-              <div className="p-1 bg-[var(--card-bg)] rounded">
+              <div className="p-1 bg-[var(--surface-0)] rounded">
                 {(parseFloat(cos) * scaleY).toFixed(2)}
               </div>
             </div>
           </div>
 
           {/* Legend */}
-          <div className="text-xs text-[var(--muted)] space-y-1">
+          <div className="text-xs text-[var(--text-muted)] space-y-1">
             <p><span className="text-[#ff6b6b]">—</span> Transformed X axis</p>
             <p><span className="text-[#6bcb77]">—</span> Transformed Y axis</p>
             <p><span className="text-[#ffd93d]">- -</span> Original circle</p>
@@ -343,7 +343,7 @@ export default function MatrixTransformDemo() {
         </div>
       </div>
 
-      <p className="text-xs text-[var(--muted)] mt-4">
+      <p className="text-xs text-[var(--text-muted)] mt-4">
         Watch how scaling stretches the circle into an ellipse, then rotation reorients it.
         This is exactly how Gaussian Splatting builds covariance matrices from scale and rotation parameters.
       </p>

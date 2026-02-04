@@ -171,7 +171,7 @@ export function TileRasterizationDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Tile-Based Rasterization</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         3DGS uses tile-based rasterization for parallelization. Each tile processes only gaussians
         that overlap it. Click a tile to see which gaussians it needs to render.
       </p>
@@ -213,22 +213,22 @@ export function TileRasterizationDemo() {
           <div className="mt-3 flex flex-wrap gap-3 text-xs">
             <div className="flex items-center gap-1">
               <span className="text-[#2ecc71]">0-5</span>
-              <span className="text-[var(--muted)]">Low load</span>
+              <span className="text-[var(--text-muted)]">Low load</span>
             </div>
             <div className="flex items-center gap-1">
               <span className="text-[#ffd93d]">6-10</span>
-              <span className="text-[var(--muted)]">Medium load</span>
+              <span className="text-[var(--text-muted)]">Medium load</span>
             </div>
             <div className="flex items-center gap-1">
               <span className="text-[#ff6b6b]">11+</span>
-              <span className="text-[var(--muted)]">High load</span>
+              <span className="text-[var(--text-muted)]">High load</span>
             </div>
           </div>
         </div>
 
         {/* Controls */}
         <div className="space-y-4">
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-2">
               <span>Tile Size</span>
               <span className="font-mono">{tileSize}px</span>
@@ -242,12 +242,12 @@ export function TileRasterizationDemo() {
               onChange={(e) => setTileSize(Number(e.target.value))}
               className="w-full"
             />
-            <p className="text-xs text-[var(--muted)] mt-1">
+            <p className="text-xs text-[var(--text-muted)] mt-1">
               {totalTiles} tiles ({tilesX} × {tilesY})
             </p>
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-2">
               <span>Gaussian Count</span>
               <span className="font-mono">{gaussianCount}</span>
@@ -268,15 +268,15 @@ export function TileRasterizationDemo() {
               <p className="font-medium text-sm mb-2">
                 Selected Tile ({selectedTile.x}, {selectedTile.y})
               </p>
-              <p className="text-sm text-[var(--muted)]">
+              <p className="text-sm text-[var(--text-muted)]">
                 This tile processes <span className="font-mono font-bold">{selectedCount}</span> gaussians.
               </p>
             </div>
           )}
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">How It Works</p>
-            <ol className="text-xs text-[var(--muted)] space-y-1">
+            <ol className="text-xs text-[var(--text-muted)] space-y-1">
               <li>1. Project 3D gaussians to 2D screen space</li>
               <li>2. Compute each gaussian's bounding box</li>
               <li>3. Assign gaussians to overlapping tiles</li>
@@ -287,7 +287,7 @@ export function TileRasterizationDemo() {
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">Performance Impact</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               Smaller tiles = more parallelism but more overhead per gaussian.
               Larger tiles = less overhead but uneven workload distribution.
               16×16 is typical for modern GPUs.

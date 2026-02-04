@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { X, RefreshCw } from 'lucide-react';
+import { X, RefreshCw, Cog } from 'lucide-react';
 
 interface MechanismNuggetProps {
   title: string;
@@ -16,17 +16,29 @@ export default function MechanismNugget({
   children,
   color = 'var(--accent)',
 }: MechanismNuggetProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div className="card overflow-hidden my-6">
+    <div
+      className="card overflow-hidden my-6 transition-shadow duration-200"
+      style={{
+        boxShadow: isHovered ? 'var(--shadow-card-hover)' : undefined,
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div
-        className="px-4 py-2 border-b border-[var(--border)] flex items-center gap-2"
-        style={{ backgroundColor: `color-mix(in srgb, ${color} 10%, transparent)` }}
+        className="px-4 py-2.5 border-b border-[var(--border)] flex items-center gap-2.5"
+        style={{
+          backgroundColor: `color-mix(in srgb, ${color} 20%, transparent)`,
+          borderLeft: `3px solid ${color}`,
+        }}
       >
-        <span className="text-sm" style={{ color }}>⚙️</span>
+        <Cog size={16} strokeWidth={2} style={{ color }} className="flex-shrink-0" />
         <span className="text-sm font-medium">{title}</span>
       </div>
       {description && (
-        <p className="text-xs text-[var(--muted)] px-4 pt-3">{description}</p>
+        <p className="text-xs text-[var(--text-muted)] px-4 pt-3">{description}</p>
       )}
       <div className="p-4">
         {children}
@@ -76,7 +88,7 @@ export function AlphaBlendMath() {
         onChange={(e) => setAlpha(parseFloat(e.target.value))}
         className="w-full"
       />
-      <p className="text-xs text-center text-[var(--muted)] font-mono">
+      <p className="text-xs text-center text-[var(--text-muted)] font-mono">
         C_out = C_front × α + C_back × (1-α)
       </p>
     </div>
@@ -141,9 +153,9 @@ export function GaussianCurve() {
 
   return (
     <div className="space-y-3">
-      <canvas ref={canvasRef} width={200} height={100} className="w-full rounded bg-[var(--card-bg-alt)]" />
+      <canvas ref={canvasRef} width={200} height={100} className="w-full rounded bg-[var(--surface-2)]" />
       <div className="flex items-center gap-3">
-        <span className="text-xs text-[var(--muted)]">σ</span>
+        <span className="text-xs text-[var(--text-muted)]">σ</span>
         <input
           type="range"
           min="0.3"
@@ -155,7 +167,7 @@ export function GaussianCurve() {
         />
         <span className="text-xs font-mono w-8">{sigma.toFixed(1)}</span>
       </div>
-      <p className="text-xs text-center text-[var(--muted)] font-mono">
+      <p className="text-xs text-center text-[var(--text-muted)] font-mono">
         G(x) = e^(-x²/2σ²)
       </p>
     </div>
@@ -214,10 +226,10 @@ export function MatrixTransformMini() {
 
   return (
     <div className="space-y-3">
-      <canvas ref={canvasRef} width={150} height={150} className="w-full max-w-[150px] mx-auto rounded bg-[var(--card-bg-alt)]" />
+      <canvas ref={canvasRef} width={150} height={150} className="w-full max-w-[150px] mx-auto rounded bg-[var(--surface-2)]" />
       <div className="grid grid-cols-2 gap-2 text-xs">
         <div>
-          <span className="text-[var(--muted)]">Rotation</span>
+          <span className="text-[var(--text-muted)]">Rotation</span>
           <input
             type="range"
             min="0"
@@ -228,7 +240,7 @@ export function MatrixTransformMini() {
           />
         </div>
         <div>
-          <span className="text-[var(--muted)]">Scale X</span>
+          <span className="text-[var(--text-muted)]">Scale X</span>
           <input
             type="range"
             min="0.5"
@@ -269,7 +281,7 @@ export function DiffusionNoiseLevels() {
           );
         })}
       </div>
-      <div className="flex justify-between text-xs text-[var(--muted)]">
+      <div className="flex justify-between text-xs text-[var(--text-muted)]">
         <span>t=0 (clean)</span>
         <span>t=T (noise)</span>
       </div>
@@ -281,7 +293,7 @@ export function DiffusionNoiseLevels() {
         onChange={(e) => setStep(parseInt(e.target.value))}
         className="w-full"
       />
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         {step === 0 ? 'Original image' : step === steps ? 'Pure Gaussian noise' : `${Math.round((step/steps)*100)}% noise added`}
       </p>
     </div>
@@ -353,9 +365,9 @@ export function BoneHierarchyMini() {
 
   return (
     <div className="space-y-3">
-      <canvas ref={canvasRef} width={150} height={120} className="w-full max-w-[150px] mx-auto rounded bg-[var(--card-bg-alt)]" />
+      <canvas ref={canvasRef} width={150} height={120} className="w-full max-w-[150px] mx-auto rounded bg-[var(--surface-2)]" />
       <div className="flex items-center gap-2">
-        <span className="text-xs text-[var(--muted)]">Shoulder</span>
+        <span className="text-xs text-[var(--text-muted)]">Shoulder</span>
         <input
           type="range"
           min="-45"
@@ -365,7 +377,7 @@ export function BoneHierarchyMini() {
           className="flex-1"
         />
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         Child bones inherit parent transforms
       </p>
     </div>
@@ -388,7 +400,7 @@ export function BlendshapeInterpolation() {
     <div className="space-y-3">
       <div className="flex items-center justify-center gap-6">
         {/* Simplified face */}
-        <svg width="60" height="60" viewBox="0 0 60 60" className="rounded-full bg-[var(--card-bg-alt)]">
+        <svg width="60" height="60" viewBox="0 0 60 60" className="rounded-full bg-[var(--surface-2)]">
           {/* Face outline */}
           <circle cx="30" cy="30" r="25" fill="none" stroke="#666" strokeWidth="2" />
           {/* Left eye */}
@@ -426,7 +438,7 @@ export function BlendshapeInterpolation() {
         onChange={(e) => setWeight(parseFloat(e.target.value))}
         className="w-full"
       />
-      <div className="flex justify-between text-xs text-[var(--muted)]">
+      <div className="flex justify-between text-xs text-[var(--text-muted)]">
         <span>Neutral</span>
         <span className="font-mono">{(weight * 100).toFixed(0)}%</span>
         <span>Smile</span>
@@ -452,8 +464,8 @@ export function LatencyStack() {
     <div className="space-y-2">
       {components.map((comp, i) => (
         <div key={comp.name} className="flex items-center gap-2">
-          <span className="text-xs w-14 text-[var(--muted)]">{comp.name}</span>
-          <div className="flex-1 h-4 bg-[var(--card-bg-alt)] rounded overflow-hidden">
+          <span className="text-xs w-14 text-[var(--text-muted)]">{comp.name}</span>
+          <div className="flex-1 h-4 bg-[var(--surface-2)] rounded overflow-hidden">
             <div
               className="h-full transition-all"
               style={{
@@ -473,7 +485,7 @@ export function LatencyStack() {
       </div>
       <button
         onClick={() => setValues(components.map(c => c.min + Math.random() * (c.max - c.min)))}
-        className="w-full text-xs py-1 rounded bg-[var(--card-bg-alt)] hover:bg-[var(--border)] transition-colors"
+        className="w-full text-xs py-1 rounded bg-[var(--surface-2)] hover:bg-[var(--border)] transition-colors"
       >
         Randomize
       </button>
@@ -514,18 +526,18 @@ export function PacketOrdering() {
       <div className="flex gap-2 justify-center">
         <button
           onClick={shuffle}
-          className="text-xs px-3 py-1 rounded bg-[var(--card-bg-alt)] hover:bg-[var(--border)] transition-colors"
+          className="text-xs px-3 py-1 rounded bg-[var(--surface-2)] hover:bg-[var(--border)] transition-colors"
         >
           Simulate Jitter
         </button>
         <button
           onClick={reorder}
-          className="text-xs px-3 py-1 rounded bg-[var(--card-bg-alt)] hover:bg-[var(--border)] transition-colors"
+          className="text-xs px-3 py-1 rounded bg-[var(--surface-2)] hover:bg-[var(--border)] transition-colors"
         >
           Reorder (Buffer)
         </button>
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         {jittered ? 'Packets arrived out of order!' : 'Packets in correct sequence'}
       </p>
     </div>
@@ -566,11 +578,11 @@ export function DepthSortingMini() {
       </div>
       <button
         onClick={() => setSorted(!sorted)}
-        className="w-full text-xs py-1 rounded bg-[var(--card-bg-alt)] hover:bg-[var(--border)]"
+        className="w-full text-xs py-1 rounded bg-[var(--surface-2)] hover:bg-[var(--border)]"
       >
         {sorted ? 'Scramble Order' : 'Sort by Depth'}
       </button>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         {sorted ? 'Back-to-front order for correct blending' : 'Wrong order causes artifacts!'}
       </p>
     </div>
@@ -590,14 +602,14 @@ export function TileRasterizationMini() {
           <div
             key={i}
             className={`aspect-square rounded cursor-pointer transition-all flex items-center justify-center text-xs font-mono
-              ${activeTile === i ? 'ring-2 ring-purple-500 bg-purple-500/30' : 'bg-[var(--card-bg-alt)] hover:bg-[var(--border)]'}`}
+              ${activeTile === i ? 'ring-2 ring-purple-500 bg-purple-500/30' : 'bg-[var(--surface-2)] hover:bg-[var(--border)]'}`}
             onClick={() => setActiveTile(activeTile === i ? null : i)}
           >
             {gaussiansPerTile[i]}
           </div>
         ))}
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         {activeTile !== null
           ? `Tile ${activeTile}: ${gaussiansPerTile[activeTile]} Gaussians to blend`
           : 'Click tile to see Gaussian count'}
@@ -662,9 +674,9 @@ export function ScreenProjectionMini() {
 
   return (
     <div className="space-y-3">
-      <canvas ref={canvasRef} width={150} height={100} className="w-full rounded bg-[var(--card-bg-alt)]" />
+      <canvas ref={canvasRef} width={150} height={100} className="w-full rounded bg-[var(--surface-2)]" />
       <div className="flex items-center gap-2">
-        <span className="text-xs text-[var(--muted)]">FOV</span>
+        <span className="text-xs text-[var(--text-muted)]">FOV</span>
         <input
           type="range"
           min="30"
@@ -709,7 +721,7 @@ export function OpacityAccumulation() {
         onChange={(e) => setCount(parseInt(e.target.value))}
         className="w-full"
       />
-      <p className="text-xs text-center text-[var(--muted)] font-mono">
+      <p className="text-xs text-center text-[var(--text-muted)] font-mono">
         T = 1 - (1-α)^n = {(accumulated * 100).toFixed(0)}%
       </p>
     </div>
@@ -733,7 +745,7 @@ export function SphericalHarmonicsBands() {
           <div
             key={i}
             className={`px-3 py-2 rounded text-xs cursor-pointer transition-all
-              ${degree >= i ? 'bg-purple-500/30 text-purple-300' : 'bg-[var(--card-bg-alt)] text-[var(--muted)]'}`}
+              ${degree >= i ? 'bg-purple-500/30 text-purple-300' : 'bg-[var(--surface-2)] text-[var(--text-muted)]'}`}
             onClick={() => setDegree(i)}
           >
             L{b.d}
@@ -742,9 +754,9 @@ export function SphericalHarmonicsBands() {
       </div>
       <div className="text-center">
         <p className="text-sm font-medium">{bands[degree].coeffs} coefficients</p>
-        <p className="text-xs text-[var(--muted)]">{bands[degree].desc}</p>
+        <p className="text-xs text-[var(--text-muted)]">{bands[degree].desc}</p>
       </div>
-      <div className="h-2 bg-[var(--card-bg-alt)] rounded overflow-hidden">
+      <div className="h-2 bg-[var(--surface-2)] rounded overflow-hidden">
         <div
           className="h-full bg-purple-500 transition-all"
           style={{ width: `${(bands[degree].coeffs / 16) * 100}%` }}
@@ -803,7 +815,7 @@ export function GradientFlowMini() {
 
   return (
     <div className="space-y-3">
-      <canvas ref={canvasRef} width={150} height={80} className="w-full rounded bg-[var(--card-bg-alt)]" />
+      <canvas ref={canvasRef} width={150} height={80} className="w-full rounded bg-[var(--surface-2)]" />
       <input
         type="range"
         min="0"
@@ -812,7 +824,7 @@ export function GradientFlowMini() {
         onChange={(e) => setStep(parseInt(e.target.value))}
         className="w-full"
       />
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         Step {step}: Following negative gradient
       </p>
     </div>
@@ -830,7 +842,7 @@ export function AdaptiveDensityMini() {
           <button
             key={m}
             onClick={() => setMode(m)}
-            className={`px-3 py-1 rounded text-xs capitalize ${mode === m ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+            className={`px-3 py-1 rounded text-xs capitalize ${mode === m ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}
           >
             {m}
           </button>
@@ -861,7 +873,7 @@ export function AdaptiveDensityMini() {
           </>
         )}
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         {mode === 'clone' && 'High gradient → duplicate for detail'}
         {mode === 'split' && 'Too large → divide into smaller'}
         {mode === 'prune' && 'Low opacity → remove redundant'}
@@ -887,7 +899,7 @@ export function NeuronMini() {
           {inputs.map((inp, i) => (
             <div key={i} className="flex items-center gap-1 text-xs">
               <span className="w-6 text-right text-blue-400">{inp}</span>
-              <span className="text-[var(--muted)]">×</span>
+              <span className="text-[var(--text-muted)]">×</span>
               <input
                 type="range"
                 min="-1"
@@ -910,7 +922,7 @@ export function NeuronMini() {
           <span className="text-xs font-mono">{output.toFixed(2)}</span>
         </div>
       </div>
-      <p className="text-xs text-center text-[var(--muted)] font-mono">
+      <p className="text-xs text-center text-[var(--text-muted)] font-mono">
         σ(Σwᵢxᵢ + b) = {output.toFixed(3)}
       </p>
     </div>
@@ -966,13 +978,13 @@ export function ActivationFunctionsMini() {
           <button
             key={f}
             onClick={() => setFunc(f)}
-            className={`px-2 py-1 rounded text-xs uppercase ${func === f ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+            className={`px-2 py-1 rounded text-xs uppercase ${func === f ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}
           >
             {f}
           </button>
         ))}
       </div>
-      <canvas ref={canvasRef} width={120} height={80} className="w-full rounded bg-[var(--card-bg-alt)]" />
+      <canvas ref={canvasRef} width={120} height={80} className="w-full rounded bg-[var(--surface-2)]" />
     </div>
   );
 }
@@ -993,7 +1005,7 @@ export function ConvolutionMini() {
           <button
             key={k}
             onClick={() => setKernelType(k)}
-            className={`px-2 py-1 rounded text-xs capitalize ${kernelType === k ? 'bg-blue-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+            className={`px-2 py-1 rounded text-xs capitalize ${kernelType === k ? 'bg-blue-500 text-white' : 'bg-[var(--surface-2)]'}`}
           >
             {k}
           </button>
@@ -1004,13 +1016,13 @@ export function ConvolutionMini() {
           <div
             key={i}
             className={`aspect-square rounded text-xs flex items-center justify-center font-mono
-              ${v > 0 ? 'bg-green-500/30' : v < 0 ? 'bg-red-500/30' : 'bg-[var(--card-bg-alt)]'}`}
+              ${v > 0 ? 'bg-green-500/30' : v < 0 ? 'bg-red-500/30' : 'bg-[var(--surface-2)]'}`}
           >
             {typeof v === 'number' ? v.toFixed(1).replace('0.', '.') : v}
           </div>
         ))}
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         3×3 kernel slides over image
       </p>
     </div>
@@ -1047,7 +1059,7 @@ export function PoolingMini() {
           <button
             key={p}
             onClick={() => setPoolType(p)}
-            className={`px-2 py-1 rounded text-xs uppercase ${poolType === p ? 'bg-green-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+            className={`px-2 py-1 rounded text-xs uppercase ${poolType === p ? 'bg-green-500 text-white' : 'bg-[var(--surface-2)]'}`}
           >
             {p}
           </button>
@@ -1056,7 +1068,7 @@ export function PoolingMini() {
       <div className="flex items-center justify-center gap-3">
         <div className="grid grid-cols-4 gap-0.5">
           {input.flat().map((v, i) => (
-            <div key={i} className="w-6 h-6 bg-[var(--card-bg-alt)] text-xs flex items-center justify-center">{v}</div>
+            <div key={i} className="w-6 h-6 bg-[var(--surface-2)] text-xs flex items-center justify-center">{v}</div>
           ))}
         </div>
         <span>→</span>
@@ -1068,7 +1080,7 @@ export function PoolingMini() {
           ))}
         </div>
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         4×4 → 2×2 ({poolType === 'max' ? 'take maximum' : 'average values'})
       </p>
     </div>
@@ -1098,7 +1110,7 @@ export function DropoutMini() {
         ))}
       </div>
       <div className="flex items-center gap-2">
-        <span className="text-xs text-[var(--muted)]">Drop</span>
+        <span className="text-xs text-[var(--text-muted)]">Drop</span>
         <input
           type="range"
           min="0"
@@ -1112,7 +1124,7 @@ export function DropoutMini() {
       </div>
       <button
         onClick={randomize}
-        className="w-full text-xs py-1 rounded bg-[var(--card-bg-alt)] hover:bg-[var(--border)]"
+        className="w-full text-xs py-1 rounded bg-[var(--surface-2)] hover:bg-[var(--border)]"
       >
         Re-sample
       </button>
@@ -1179,7 +1191,7 @@ export function LossLandscape() {
           });
         }}
       />
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         Click to place optimizer (yellow = minimum)
       </p>
     </div>
@@ -1228,9 +1240,9 @@ export function LearningRateMini() {
 
   return (
     <div className="space-y-3">
-      <canvas ref={canvasRef} width={150} height={80} className="w-full rounded bg-[var(--card-bg-alt)]" />
+      <canvas ref={canvasRef} width={150} height={80} className="w-full rounded bg-[var(--surface-2)]" />
       <div className="flex items-center gap-2">
-        <span className="text-xs text-[var(--muted)]">LR</span>
+        <span className="text-xs text-[var(--text-muted)]">LR</span>
         <input
           type="range"
           min="0.05"
@@ -1242,7 +1254,7 @@ export function LearningRateMini() {
         />
         <span className="text-xs font-mono">{lr.toFixed(2)}</span>
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         {lr < 0.3 ? 'Slow convergence' : lr > 1 ? 'Diverging!' : 'Good convergence'}
       </p>
     </div>
@@ -1273,7 +1285,7 @@ export function BatchNormMini() {
       </div>
       <button
         onClick={() => setNormalized(!normalized)}
-        className={`w-full text-xs py-1 rounded ${normalized ? 'bg-green-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+        className={`w-full text-xs py-1 rounded ${normalized ? 'bg-green-500 text-white' : 'bg-[var(--surface-2)]'}`}
       >
         {normalized ? 'Normalized (μ=0, σ=1)' : 'Raw activations'}
       </button>
@@ -1290,7 +1302,7 @@ export function SkinningWeightsMini() {
 
   return (
     <div className="space-y-3">
-      <div className="relative h-16 bg-[var(--card-bg-alt)] rounded">
+      <div className="relative h-16 bg-[var(--surface-2)] rounded">
         {/* Mesh line */}
         <svg className="absolute inset-0 w-full h-full">
           <path
@@ -1332,7 +1344,7 @@ export function SkinningWeightsMini() {
         onChange={(e) => setBonePos(parseFloat(e.target.value))}
         className="w-full"
       />
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         Vertices follow bone based on weight (purple = high)
       </p>
     </div>
@@ -1350,18 +1362,18 @@ export function FKvsIKMini() {
       <div className="flex gap-2 justify-center">
         <button
           onClick={() => setMode('fk')}
-          className={`px-3 py-1 rounded text-xs ${mode === 'fk' ? 'bg-blue-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+          className={`px-3 py-1 rounded text-xs ${mode === 'fk' ? 'bg-blue-500 text-white' : 'bg-[var(--surface-2)]'}`}
         >
           Forward K
         </button>
         <button
           onClick={() => setMode('ik')}
-          className={`px-3 py-1 rounded text-xs ${mode === 'ik' ? 'bg-green-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+          className={`px-3 py-1 rounded text-xs ${mode === 'ik' ? 'bg-green-500 text-white' : 'bg-[var(--surface-2)]'}`}
         >
           Inverse K
         </button>
       </div>
-      <div className="relative h-24 bg-[var(--card-bg-alt)] rounded">
+      <div className="relative h-24 bg-[var(--surface-2)] rounded">
         <svg className="w-full h-full">
           {mode === 'fk' ? (
             <>
@@ -1394,7 +1406,7 @@ export function FKvsIKMini() {
           className="w-full"
         />
       )}
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         {mode === 'fk' ? 'Rotate joints → end position' : 'Set target → compute angles'}
       </p>
     </div>
@@ -1417,10 +1429,10 @@ export function LODMini() {
         {lods.map((lod, i) => (
           <div
             key={i}
-            className={`px-3 py-2 rounded text-center ${currentLOD === i ? 'bg-purple-500/30 ring-2 ring-purple-500' : 'bg-[var(--card-bg-alt)]'}`}
+            className={`px-3 py-2 rounded text-center ${currentLOD === i ? 'bg-purple-500/30 ring-2 ring-purple-500' : 'bg-[var(--surface-2)]'}`}
           >
             <div className="text-xs font-bold">{lod.detail}</div>
-            <div className="text-xs text-[var(--muted)]">{lod.tris}</div>
+            <div className="text-xs text-[var(--text-muted)]">{lod.tris}</div>
           </div>
         ))}
       </div>
@@ -1436,7 +1448,7 @@ export function LODMini() {
         />
         <span className="text-xs">Far</span>
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         Distance: {distance}m → LOD{currentLOD}
       </p>
     </div>
@@ -1472,7 +1484,7 @@ export function FACSMini() {
       <div className="grid grid-cols-2 gap-1 text-xs">
         {Object.entries(aus).map(([au, val]) => (
           <div key={au} className="flex items-center gap-1">
-            <span className="w-10 text-[var(--muted)]">{au}</span>
+            <span className="w-10 text-[var(--text-muted)]">{au}</span>
             <input
               type="range"
               min="0"
@@ -1495,14 +1507,14 @@ export function WrinkleMapMini() {
 
   return (
     <div className="space-y-3">
-      <div className="relative w-20 h-20 mx-auto rounded-full bg-[var(--card-bg-alt)] overflow-hidden">
+      <div className="relative w-20 h-20 mx-auto rounded-full bg-[var(--surface-2)] overflow-hidden">
         <div
           className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent"
           style={{
             backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent ${10 - expression * 3}px, rgba(0,0,0,${expression * 0.3}) ${10 - expression * 3}px, rgba(0,0,0,${expression * 0.3}) ${11 - expression * 3}px)`,
           }}
         />
-        <div className="absolute top-1/4 left-1/4 w-1/2 text-center text-xs text-[var(--muted)]">
+        <div className="absolute top-1/4 left-1/4 w-1/2 text-center text-xs text-[var(--text-muted)]">
           Forehead
         </div>
       </div>
@@ -1515,7 +1527,7 @@ export function WrinkleMapMini() {
         onChange={(e) => setExpression(parseFloat(e.target.value))}
         className="w-full"
       />
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         Wrinkle intensity: {(expression * 100).toFixed(0)}%
       </p>
     </div>
@@ -1564,7 +1576,7 @@ export function UNetSkipMini() {
       </div>
       <button
         onClick={() => setShowSkip(!showSkip)}
-        className={`w-full text-xs py-1 rounded ${showSkip ? 'bg-yellow-500 text-black' : 'bg-[var(--card-bg-alt)]'}`}
+        className={`w-full text-xs py-1 rounded ${showSkip ? 'bg-yellow-500 text-black' : 'bg-[var(--surface-2)]'}`}
       >
         {showSkip ? 'Skip connections ON' : 'Skip connections OFF'}
       </button>
@@ -1593,7 +1605,7 @@ export function AttentionHeatmapMini() {
           />
         ))}
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         Click token to see its attention
       </p>
     </div>
@@ -1613,11 +1625,11 @@ export function VAELatentMini() {
       </div>
       <button
         onClick={() => setCompressed(!compressed)}
-        className="w-full text-xs py-1 rounded bg-[var(--card-bg-alt)] hover:bg-[var(--border)]"
+        className="w-full text-xs py-1 rounded bg-[var(--surface-2)] hover:bg-[var(--border)]"
       >
         {compressed ? 'Decode (expand)' : 'Encode (compress)'}
       </button>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         {compressed ? '64×64×4 latent' : '512×512×3 image'}
       </p>
     </div>
@@ -1655,7 +1667,7 @@ export function CFGStrengthMini() {
         onChange={(e) => setCfg(parseInt(e.target.value))}
         className="w-full"
       />
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         CFG: {cfg} {cfg < 5 ? '(blurry)' : cfg > 15 ? '(artifacts)' : '(good)'}
       </p>
     </div>
@@ -1702,14 +1714,14 @@ export function NoiseScheduleMini() {
           <button
             key={s}
             onClick={() => setSchedule(s)}
-            className={`px-3 py-1 rounded text-xs capitalize ${schedule === s ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+            className={`px-3 py-1 rounded text-xs capitalize ${schedule === s ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}
           >
             {s}
           </button>
         ))}
       </div>
-      <canvas ref={canvasRef} width={120} height={60} className="w-full rounded bg-[var(--card-bg-alt)]" />
-      <p className="text-xs text-center text-[var(--muted)]">
+      <canvas ref={canvasRef} width={120} height={60} className="w-full rounded bg-[var(--surface-2)]" />
+      <p className="text-xs text-center text-[var(--text-muted)]">
         {schedule === 'cosine' ? 'Slower start, faster end' : 'Constant rate'}
       </p>
     </div>
@@ -1731,7 +1743,7 @@ export function TemporalConsistencyMini() {
 
   return (
     <div className="space-y-3">
-      <div className="h-16 bg-[var(--card-bg-alt)] rounded flex items-center justify-center">
+      <div className="h-16 bg-[var(--surface-2)] rounded flex items-center justify-center">
         <div
           className="w-12 h-12 rounded-full bg-purple-500 transition-transform"
           style={{ transform: `translateX(${jitter}px)` }}
@@ -1765,7 +1777,7 @@ export function ICECandidatesMini() {
           <button
             key={c}
             onClick={() => setSelected(c)}
-            className={`px-2 py-1 rounded text-xs ${selected === c ? 'text-white' : 'bg-[var(--card-bg-alt)]'}`}
+            className={`px-2 py-1 rounded text-xs ${selected === c ? 'text-white' : 'bg-[var(--surface-2)]'}`}
             style={selected === c ? { backgroundColor: candidates[c].color } : {}}
           >
             {c}
@@ -1776,9 +1788,9 @@ export function ICECandidatesMini() {
         <div className="text-lg font-mono" style={{ color: candidates[selected].color }}>
           {candidates[selected].latency}
         </div>
-        <div className="text-xs text-[var(--muted)]">{candidates[selected].desc}</div>
+        <div className="text-xs text-[var(--text-muted)]">{candidates[selected].desc}</div>
       </div>
-      <div className="h-2 bg-[var(--card-bg-alt)] rounded overflow-hidden">
+      <div className="h-2 bg-[var(--surface-2)] rounded overflow-hidden">
         <div
           className="h-full transition-all"
           style={{
@@ -1802,7 +1814,7 @@ export function BitrateAdaptationMini() {
       <div className="flex items-center justify-center gap-4">
         <div className="text-center">
           <div className="text-2xl font-mono">{quality}</div>
-          <div className="text-xs text-[var(--muted)]">{bitrate} Mbps</div>
+          <div className="text-xs text-[var(--text-muted)]">{bitrate} Mbps</div>
         </div>
         <div
           className={`w-16 h-12 rounded ${bandwidth < 2 ? 'bg-red-500/50' : bandwidth < 4 ? 'bg-yellow-500/50' : 'bg-green-500/50'}`}
@@ -1853,9 +1865,9 @@ export function SimulcastMini() {
       </div>
       <div className="text-center">
         <div className="text-sm font-medium">{layers[activeLayer].res} @ {layers[activeLayer].fps}fps</div>
-        <div className="text-xs text-[var(--muted)]">{layers[activeLayer].bps}</div>
+        <div className="text-xs text-[var(--text-muted)]">{layers[activeLayer].bps}</div>
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         SFU selects layer based on receiver bandwidth
       </p>
     </div>
@@ -1881,7 +1893,7 @@ export function FECRecoveryMini() {
           </div>
         ))}
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         {lostPacket !== null && lostPacket < 4
           ? `Lost ${packets[lostPacket]} → Recovered via FEC!`
           : lostPacket === 4
@@ -1918,12 +1930,12 @@ export function RTTMeasurementMini() {
       </div>
       <div className="text-center">
         <span className="text-2xl font-mono">{rtt.toFixed(0)}</span>
-        <span className="text-sm text-[var(--muted)]">ms RTT</span>
+        <span className="text-sm text-[var(--text-muted)]">ms RTT</span>
       </div>
       <button
         onClick={measure}
         disabled={measuring}
-        className="w-full text-xs py-1 rounded bg-[var(--card-bg-alt)] hover:bg-[var(--border)] disabled:opacity-50"
+        className="w-full text-xs py-1 rounded bg-[var(--surface-2)] hover:bg-[var(--border)] disabled:opacity-50"
       >
         {measuring ? 'Measuring...' : 'Ping'}
       </button>
@@ -1947,7 +1959,7 @@ export function CodecComparisonMini() {
           <button
             key={c}
             onClick={() => setCodec(c)}
-            className={`px-2 py-1 rounded text-xs uppercase ${codec === c ? 'bg-blue-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+            className={`px-2 py-1 rounded text-xs uppercase ${codec === c ? 'bg-blue-500 text-white' : 'bg-[var(--surface-2)]'}`}
           >
             {c}
           </button>
@@ -1955,19 +1967,19 @@ export function CodecComparisonMini() {
       </div>
       <div className="space-y-1">
         <div className="flex items-center gap-2 text-xs">
-          <span className="w-16 text-[var(--muted)]">Efficiency</span>
-          <div className="flex-1 h-2 bg-[var(--card-bg-alt)] rounded">
+          <span className="w-16 text-[var(--text-muted)]">Efficiency</span>
+          <div className="flex-1 h-2 bg-[var(--surface-2)] rounded">
             <div className="h-full bg-green-500 rounded" style={{ width: `${codecs[codec].efficiency / 2 * 100}%` }} />
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs">
-          <span className="w-16 text-[var(--muted)]">Speed</span>
-          <div className="flex-1 h-2 bg-[var(--card-bg-alt)] rounded">
+          <span className="w-16 text-[var(--text-muted)]">Speed</span>
+          <div className="flex-1 h-2 bg-[var(--surface-2)] rounded">
             <div className="h-full bg-blue-500 rounded" style={{ width: `${codecs[codec].speed * 100}%` }} />
           </div>
         </div>
         <div className="flex items-center gap-2 text-xs">
-          <span className="w-16 text-[var(--muted)]">Support</span>
+          <span className="w-16 text-[var(--text-muted)]">Support</span>
           <span className="font-mono">{codecs[codec].support}</span>
         </div>
       </div>
@@ -1984,25 +1996,25 @@ export function WSvsWebRTCMini() {
       <div className="flex gap-2 justify-center">
         <button
           onClick={() => setProtocol('ws')}
-          className={`px-3 py-1 rounded text-xs ${protocol === 'ws' ? 'bg-orange-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+          className={`px-3 py-1 rounded text-xs ${protocol === 'ws' ? 'bg-orange-500 text-white' : 'bg-[var(--surface-2)]'}`}
         >
           WebSocket
         </button>
         <button
           onClick={() => setProtocol('webrtc')}
-          className={`px-3 py-1 rounded text-xs ${protocol === 'webrtc' ? 'bg-green-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+          className={`px-3 py-1 rounded text-xs ${protocol === 'webrtc' ? 'bg-green-500 text-white' : 'bg-[var(--surface-2)]'}`}
         >
           WebRTC
         </button>
       </div>
       <div className="grid grid-cols-2 gap-2 text-xs">
-        <div className="text-right text-[var(--muted)]">Transport</div>
+        <div className="text-right text-[var(--text-muted)]">Transport</div>
         <div>{protocol === 'ws' ? 'TCP' : 'UDP (SCTP)'}</div>
-        <div className="text-right text-[var(--muted)]">Latency</div>
+        <div className="text-right text-[var(--text-muted)]">Latency</div>
         <div>{protocol === 'ws' ? '~100ms' : '~30ms'}</div>
-        <div className="text-right text-[var(--muted)]">Media</div>
+        <div className="text-right text-[var(--text-muted)]">Media</div>
         <div>{protocol === 'ws' ? 'Manual' : 'Native'}</div>
-        <div className="text-right text-[var(--muted)]">P2P</div>
+        <div className="text-right text-[var(--text-muted)]">P2P</div>
         <div>{protocol === 'ws' ? 'No' : 'Yes'}</div>
       </div>
     </div>
@@ -2018,13 +2030,13 @@ export function SFUTopologyMini() {
       <div className="flex gap-2 justify-center">
         <button
           onClick={() => setTopology('mesh')}
-          className={`px-3 py-1 rounded text-xs ${topology === 'mesh' ? 'bg-red-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+          className={`px-3 py-1 rounded text-xs ${topology === 'mesh' ? 'bg-red-500 text-white' : 'bg-[var(--surface-2)]'}`}
         >
           Mesh
         </button>
         <button
           onClick={() => setTopology('sfu')}
-          className={`px-3 py-1 rounded text-xs ${topology === 'sfu' ? 'bg-green-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+          className={`px-3 py-1 rounded text-xs ${topology === 'sfu' ? 'bg-green-500 text-white' : 'bg-[var(--surface-2)]'}`}
         >
           SFU
         </button>
@@ -2059,7 +2071,7 @@ export function SFUTopologyMini() {
           </svg>
         )}
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         {topology === 'mesh' ? '6 connections (n²)' : '4 connections (n)'}
       </p>
     </div>
@@ -2097,7 +2109,7 @@ export function SoftmaxMini() {
           </div>
         ))}
       </div>
-      <p className="text-xs text-center text-[var(--muted)] font-mono">
+      <p className="text-xs text-center text-[var(--text-muted)] font-mono">
         softmax(z)ᵢ = eᶻⁱ / Σeᶻʲ
       </p>
     </div>
@@ -2117,7 +2129,7 @@ export function EmbeddingSpaceMini() {
 
   return (
     <div className="space-y-3">
-      <div className="relative h-24 bg-[var(--card-bg-alt)] rounded">
+      <div className="relative h-24 bg-[var(--surface-2)] rounded">
         {words.map((w, i) => (
           <div
             key={i}
@@ -2128,7 +2140,7 @@ export function EmbeddingSpaceMini() {
           </div>
         ))}
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         Similar concepts cluster together in vector space
       </p>
     </div>
@@ -2159,7 +2171,7 @@ export function PositionalEncodingMini() {
           })
         )}
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         Sinusoidal patterns encode position info
       </p>
     </div>
@@ -2188,7 +2200,7 @@ export function ResidualConnectionMini() {
       </div>
       <button
         onClick={() => setUseResidual(!useResidual)}
-        className={`w-full text-xs py-1 rounded ${useResidual ? 'bg-yellow-500 text-black' : 'bg-[var(--card-bg-alt)]'}`}
+        className={`w-full text-xs py-1 rounded ${useResidual ? 'bg-yellow-500 text-black' : 'bg-[var(--surface-2)]'}`}
       >
         {useResidual ? 'y = F(x) + x (skip)' : 'y = F(x) (no skip)'}
       </button>
@@ -2217,7 +2229,7 @@ export function LayerNormMini() {
       </div>
       <button
         onClick={() => setNormalized(!normalized)}
-        className={`w-full text-xs py-1 rounded ${normalized ? 'bg-green-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+        className={`w-full text-xs py-1 rounded ${normalized ? 'bg-green-500 text-white' : 'bg-[var(--surface-2)]'}`}
       >
         {normalized ? 'Layer Normalized' : 'Original values'}
       </button>
@@ -2250,7 +2262,7 @@ export function MultiHeadAttentionMini() {
         onChange={(e) => setHeads(parseInt(e.target.value))}
         className="w-full"
       />
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         {heads} heads × {Math.floor(64/heads)}d = 64d total
       </p>
     </div>
@@ -2288,7 +2300,7 @@ export function GradientClippingMini() {
         onChange={(e) => setClipValue(parseFloat(e.target.value))}
         className="w-full"
       />
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         Clip threshold: ±{clipValue}
       </p>
     </div>
@@ -2316,12 +2328,12 @@ export function NormalMappingMini() {
                 : 'none',
             }}
           />
-          <span className="text-xs text-[var(--muted)]">Surface</span>
+          <span className="text-xs text-[var(--text-muted)]">Surface</span>
         </div>
       </div>
       <button
         onClick={() => setUseNormals(!useNormals)}
-        className={`w-full text-xs py-1 rounded ${useNormals ? 'bg-blue-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+        className={`w-full text-xs py-1 rounded ${useNormals ? 'bg-blue-500 text-white' : 'bg-[var(--surface-2)]'}`}
       >
         {useNormals ? 'Normal map ON' : 'Normal map OFF'}
       </button>
@@ -2350,7 +2362,7 @@ export function PBRMaterialMini() {
       </div>
       <div className="grid grid-cols-2 gap-2 text-xs">
         <div>
-          <span className="text-[var(--muted)]">Rough</span>
+          <span className="text-[var(--text-muted)]">Rough</span>
           <input
             type="range"
             min="0"
@@ -2362,7 +2374,7 @@ export function PBRMaterialMini() {
           />
         </div>
         <div>
-          <span className="text-[var(--muted)]">Metal</span>
+          <span className="text-[var(--text-muted)]">Metal</span>
           <input
             type="range"
             min="0"
@@ -2397,7 +2409,7 @@ export function FrustumCullingMini() {
 
   return (
     <div className="space-y-3">
-      <div className="relative h-20 bg-[var(--card-bg-alt)] rounded overflow-hidden">
+      <div className="relative h-20 bg-[var(--surface-2)] rounded overflow-hidden">
         {/* Frustum */}
         <div
           className="absolute bottom-0 left-1/2 -translate-x-1/2 border-l-2 border-r-2 border-t-2 border-green-500/50"
@@ -2425,7 +2437,7 @@ export function FrustumCullingMini() {
         onChange={(e) => setFov(parseInt(e.target.value))}
         className="w-full"
       />
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         {objects.filter(inFrustum).length} of {objects.length} visible
       </p>
     </div>
@@ -2438,7 +2450,7 @@ export function ZBufferMini() {
 
   return (
     <div className="space-y-3">
-      <div className="relative h-20 bg-[var(--card-bg-alt)] rounded overflow-hidden">
+      <div className="relative h-20 bg-[var(--surface-2)] rounded overflow-hidden">
         {showBuffer ? (
           <div className="absolute inset-0 grid grid-cols-8 grid-rows-4 gap-0.5 p-1">
             {Array(32).fill(0).map((_, i) => (
@@ -2459,7 +2471,7 @@ export function ZBufferMini() {
       </div>
       <button
         onClick={() => setShowBuffer(!showBuffer)}
-        className={`w-full text-xs py-1 rounded ${showBuffer ? 'bg-gray-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+        className={`w-full text-xs py-1 rounded ${showBuffer ? 'bg-gray-500 text-white' : 'bg-[var(--surface-2)]'}`}
       >
         {showBuffer ? 'View: Depth Buffer' : 'View: Color Output'}
       </button>
@@ -2489,7 +2501,7 @@ export function MipmapMini() {
           />
         ))}
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         Level {level}: {sizes[level]}×{sizes[level]}px
       </p>
     </div>
@@ -2524,7 +2536,7 @@ export function MelSpectrogramMini() {
           );
         })}
       </div>
-      <div className="flex justify-between text-xs text-[var(--muted)]">
+      <div className="flex justify-between text-xs text-[var(--text-muted)]">
         <span>Low freq</span>
         <span>Time →</span>
         <span>High freq</span>
@@ -2550,7 +2562,7 @@ export function PhonemeVisemeMini() {
           <button
             key={p}
             onClick={() => setPhoneme(p)}
-            className={`w-8 h-8 rounded font-mono ${phoneme === p ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+            className={`w-8 h-8 rounded font-mono ${phoneme === p ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}
           >
             {p}
           </button>
@@ -2567,7 +2579,7 @@ export function PhonemeVisemeMini() {
           strokeWidth="2"
         />
       </svg>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         /{phoneme}/ → jaw: {(visemes[phoneme].jaw * 100).toFixed(0)}%, lips: {(visemes[phoneme].lips * 100).toFixed(0)}%
       </p>
     </div>
@@ -2609,13 +2621,13 @@ export function AudioEnvelopeMini() {
 
   return (
     <div className="space-y-3">
-      <canvas ref={canvasRef} width={120} height={50} className="w-full rounded bg-[var(--card-bg-alt)]" />
+      <canvas ref={canvasRef} width={120} height={50} className="w-full rounded bg-[var(--surface-2)]" />
       <div className="flex gap-1 justify-center">
         {(['A', 'D', 'S', 'R'] as const).map((p) => (
           <button
             key={p}
             onClick={() => setPhase(p)}
-            className={`px-2 py-1 rounded text-xs ${phase === p ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+            className={`px-2 py-1 rounded text-xs ${phase === p ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}
           >
             {p === 'A' ? 'Attack' : p === 'D' ? 'Decay' : p === 'S' ? 'Sustain' : 'Release'}
           </button>
@@ -2645,7 +2657,7 @@ export function FrameInterpolationMini() {
       </div>
       <button
         onClick={() => setInterpolated(!interpolated)}
-        className={`w-full text-xs py-1 rounded ${interpolated ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+        className={`w-full text-xs py-1 rounded ${interpolated ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}
       >
         {interpolated ? '60fps (interpolated)' : '30fps (original)'}
       </button>
@@ -2689,8 +2701,8 @@ export function MotionVectorsMini() {
 
   return (
     <div className="space-y-3">
-      <canvas ref={canvasRef} width={120} height={80} className="w-full rounded bg-[var(--card-bg-alt)]" />
-      <p className="text-xs text-center text-[var(--muted)]">
+      <canvas ref={canvasRef} width={120} height={80} className="w-full rounded bg-[var(--surface-2)]" />
+      <p className="text-xs text-center text-[var(--text-muted)]">
         Per-block motion vectors for prediction
       </p>
     </div>
@@ -2717,7 +2729,7 @@ export function KeyframeMini() {
           </div>
         ))}
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">
+      <p className="text-xs text-center text-[var(--text-muted)]">
         {frameType === 'I' ? 'Keyframe: full image' : frameType === 'P' ? 'P-frame: predicted from previous' : 'B-frame: bidirectional'}
       </p>
     </div>
@@ -2767,7 +2779,7 @@ export function OverfittingMini() {
 
   return (
     <div className="space-y-3">
-      <canvas ref={canvasRef} width={120} height={60} className="w-full rounded bg-[var(--card-bg-alt)]" />
+      <canvas ref={canvasRef} width={120} height={60} className="w-full rounded bg-[var(--surface-2)]" />
       <div className="flex justify-between text-xs">
         <span className="text-green-500">Train</span>
         <span className="text-red-500">Val</span>
@@ -2785,7 +2797,7 @@ export function DotProductMini() {
 
   return (
     <div className="space-y-3">
-      <svg width="100" height="100" viewBox="-1.5 -1.5 3 3" className="w-full max-w-[100px] mx-auto bg-[var(--card-bg-alt)] rounded">
+      <svg width="100" height="100" viewBox="-1.5 -1.5 3 3" className="w-full max-w-[100px] mx-auto bg-[var(--surface-2)] rounded">
         <circle cx="0" cy="0" r="1" fill="none" stroke="#666" strokeWidth="0.02" />
         <line x1="0" y1="0" x2="1" y2="0" stroke="#22c55e" strokeWidth="0.08" />
         <line x1="0" y1="0" x2={Math.cos(angle * Math.PI / 180)} y2={-Math.sin(angle * Math.PI / 180)} stroke="#3b82f6" strokeWidth="0.08" />
@@ -2805,7 +2817,7 @@ export function QuaternionMini() {
     <div className="space-y-3">
       <div className="flex gap-1 justify-center">
         {(['x', 'y', 'z'] as const).map((a) => (
-          <button key={a} onClick={() => setAxis(a)} className={`w-8 h-8 rounded text-xs font-bold ${axis === a ? (a === 'x' ? 'bg-red-500' : a === 'y' ? 'bg-green-500' : 'bg-blue-500') + ' text-white' : 'bg-[var(--card-bg-alt)]'}`}>{a.toUpperCase()}</button>
+          <button key={a} onClick={() => setAxis(a)} className={`w-8 h-8 rounded text-xs font-bold ${axis === a ? (a === 'x' ? 'bg-red-500' : a === 'y' ? 'bg-green-500' : 'bg-blue-500') + ' text-white' : 'bg-[var(--surface-2)]'}`}>{a.toUpperCase()}</button>
         ))}
       </div>
       <div className="flex justify-center">
@@ -2826,10 +2838,10 @@ export function InterpolationMini() {
     <div className="space-y-3">
       <div className="flex gap-1 justify-center">
         {(['linear', 'ease', 'step'] as const).map((i) => (
-          <button key={i} onClick={() => setType(i)} className={`px-2 py-1 rounded text-xs ${type === i ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{i}</button>
+          <button key={i} onClick={() => setType(i)} className={`px-2 py-1 rounded text-xs ${type === i ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}>{i}</button>
         ))}
       </div>
-      <div className="relative h-8 bg-[var(--card-bg-alt)] rounded">
+      <div className="relative h-8 bg-[var(--surface-2)] rounded">
         <div className="absolute top-0 bottom-0 bg-purple-500 rounded-l" style={{ width: `${val * 100}%` }} />
       </div>
       <input type="range" min="0" max="1" step="0.05" value={t} onChange={(e) => setT(parseFloat(e.target.value))} className="w-full" />
@@ -2847,7 +2859,7 @@ export function CovarianceMatrixMini() {
 
   return (
     <div className="space-y-3">
-      <svg width="100" height="100" viewBox="-2 -2 4 4" className="w-full max-w-[100px] mx-auto bg-[var(--card-bg-alt)] rounded">
+      <svg width="100" height="100" viewBox="-2 -2 4 4" className="w-full max-w-[100px] mx-auto bg-[var(--surface-2)] rounded">
         <ellipse
           cx="0" cy="0"
           rx={scaleX} ry={scaleY}
@@ -2874,7 +2886,7 @@ export function PointCloudToSplatMini() {
 
   return (
     <div className="space-y-3">
-      <div className="relative h-24 bg-[var(--card-bg-alt)] rounded">
+      <div className="relative h-24 bg-[var(--surface-2)] rounded">
         {points.map((p, i) => (
           <div
             key={i}
@@ -2893,7 +2905,7 @@ export function PointCloudToSplatMini() {
       </div>
       <button
         onClick={() => setSplatted(!splatted)}
-        className={`w-full text-xs py-1 rounded ${splatted ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+        className={`w-full text-xs py-1 rounded ${splatted ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}
       >
         {splatted ? 'Splatted' : 'Point Cloud'}
       </button>
@@ -2917,7 +2929,7 @@ export function ViewDependentColorMini() {
         />
       </div>
       <input type="range" min="0" max="360" value={angle} onChange={(e) => setAngle(parseInt(e.target.value))} className="w-full" />
-      <p className="text-xs text-center text-[var(--muted)]">View angle: {angle}°</p>
+      <p className="text-xs text-center text-[var(--text-muted)]">View angle: {angle}°</p>
     </div>
   );
 }
@@ -2952,7 +2964,7 @@ export function BackpropagationMini() {
       </svg>
       <div className="flex gap-1 justify-center">
         {['Forward', 'Loss', 'Backward'].map((s, i) => (
-          <button key={i} onClick={() => setStep(i)} className={`px-2 py-1 rounded text-xs ${step === i ? (i === 2 ? 'bg-red-500' : 'bg-purple-500') + ' text-white' : 'bg-[var(--card-bg-alt)]'}`}>{s}</button>
+          <button key={i} onClick={() => setStep(i)} className={`px-2 py-1 rounded text-xs ${step === i ? (i === 2 ? 'bg-red-500' : 'bg-purple-500') + ' text-white' : 'bg-[var(--surface-2)]'}`}>{s}</button>
         ))}
       </div>
     </div>
@@ -2982,7 +2994,7 @@ export function AttentionMechanismMini() {
           </div>
         ))}
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">Query attends to keys</p>
+      <p className="text-xs text-center text-[var(--text-muted)]">Query attends to keys</p>
     </div>
   );
 }
@@ -3006,7 +3018,7 @@ export function WeightInitMini() {
       </div>
       <div className="flex gap-1 justify-center">
         {(['zeros', 'random', 'xavier'] as const).map((m) => (
-          <button key={m} onClick={() => setMethod(m)} className={`px-2 py-1 rounded text-xs ${method === m ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{m}</button>
+          <button key={m} onClick={() => setMethod(m)} className={`px-2 py-1 rounded text-xs ${method === m ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}>{m}</button>
         ))}
       </div>
     </div>
@@ -3029,7 +3041,7 @@ export function VanishingGradientMini() {
         ))}
       </div>
       <input type="range" min="3" max="10" value={depth} onChange={(e) => setDepth(parseInt(e.target.value))} className="w-full" />
-      <p className="text-xs text-center text-[var(--muted)]">{depth} layers → gradient shrinks</p>
+      <p className="text-xs text-center text-[var(--text-muted)]">{depth} layers → gradient shrinks</p>
     </div>
   );
 }
@@ -3049,7 +3061,7 @@ export function AdamOptimizerMini() {
       </svg>
       <button
         onClick={() => setMomentum(!momentum)}
-        className={`w-full text-xs py-1 rounded ${momentum ? 'bg-green-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+        className={`w-full text-xs py-1 rounded ${momentum ? 'bg-green-500 text-white' : 'bg-[var(--surface-2)]'}`}
       >
         {momentum ? 'Adam (momentum)' : 'SGD (no momentum)'}
       </button>
@@ -3077,7 +3089,7 @@ export function BoneTransformMini() {
         </g>
       </svg>
       <input type="range" min="-45" max="45" value={parentRotation} onChange={(e) => setParentRotation(parseInt(e.target.value))} className="w-full" />
-      <p className="text-xs text-center text-[var(--muted)]">Parent rotation: {parentRotation}°</p>
+      <p className="text-xs text-center text-[var(--text-muted)]">Parent rotation: {parentRotation}°</p>
     </div>
   );
 }
@@ -3134,7 +3146,7 @@ export function JointLimitsMini() {
         <circle cx="50" cy="50" r="5" fill="#8b5cf6" />
       </svg>
       <input type="range" min="-60" max="150" value={angle} onChange={(e) => setAngle(parseInt(e.target.value))} className="w-full" />
-      <p className="text-xs text-center" style={{ color: isLimited ? '#ef4444' : 'var(--muted)' }}>
+      <p className="text-xs text-center" style={{ color: isLimited ? '#ef4444' : 'var(--text-muted)' }}>
         {isLimited ? 'Limited!' : `${clampedAngle}°`} (range: {minAngle}° to {maxAngle}°)
       </p>
     </div>
@@ -3155,7 +3167,7 @@ export function BufferManagementMini() {
           <div
             key={i}
             className={`w-6 h-8 rounded text-xs flex items-center justify-center
-              ${i < playhead ? 'bg-gray-600' : i < playhead + bufferSize ? 'bg-green-500' : 'bg-[var(--card-bg-alt)]'}`}
+              ${i < playhead ? 'bg-gray-600' : i < playhead + bufferSize ? 'bg-green-500' : 'bg-[var(--surface-2)]'}`}
           >
             {i === playhead && '▶'}
           </div>
@@ -3189,7 +3201,7 @@ export function NetworkJitterMini() {
         })}
       </div>
       <input type="range" min="0" max="40" value={jitter} onChange={(e) => setJitter(parseInt(e.target.value))} className="w-full" />
-      <p className="text-xs text-center text-[var(--muted)]">Jitter: ±{jitter}ms</p>
+      <p className="text-xs text-center text-[var(--text-muted)]">Jitter: ±{jitter}ms</p>
     </div>
   );
 }
@@ -3239,12 +3251,12 @@ export function SamplingMethodMini() {
       </div>
       <div className="flex gap-2 justify-center">
         {(['ddpm', 'ddim'] as const).map((m) => (
-          <button key={m} onClick={() => setMethod(m)} className={`px-3 py-1 rounded text-xs ${method === m ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>
+          <button key={m} onClick={() => setMethod(m)} className={`px-3 py-1 rounded text-xs ${method === m ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}>
             {m.toUpperCase()}
           </button>
         ))}
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">{steps} steps</p>
+      <p className="text-xs text-center text-[var(--text-muted)]">{steps} steps</p>
     </div>
   );
 }
@@ -3258,7 +3270,7 @@ export function TextEmbeddingMini() {
     <div className="space-y-3">
       <div className="flex gap-1 justify-center">
         {(['cat', 'dog', 'bird'] as const).map((p) => (
-          <button key={p} onClick={() => setPrompt(p)} className={`px-2 py-1 rounded text-xs ${prompt === p ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{p}</button>
+          <button key={p} onClick={() => setPrompt(p)} className={`px-2 py-1 rounded text-xs ${prompt === p ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}>{p}</button>
         ))}
       </div>
       <div className="flex gap-2 justify-center items-end h-12">
@@ -3266,7 +3278,7 @@ export function TextEmbeddingMini() {
           <div key={i} className="w-8 rounded-t bg-purple-500 transition-all" style={{ height: `${v * 100}%` }} />
         ))}
       </div>
-      <p className="text-xs text-center text-[var(--muted)]">Token embedding dims</p>
+      <p className="text-xs text-center text-[var(--text-muted)]">Token embedding dims</p>
     </div>
   );
 }
@@ -3280,15 +3292,15 @@ export function CFGScaleMini() {
       <div className="flex gap-2 justify-center">
         <div className="text-center">
           <div className="w-12 h-12 rounded bg-gray-500" style={{ filter: `blur(${Math.max(0, 3 - scale / 5)}px)` }} />
-          <span className="text-xs text-[var(--muted)]">Low</span>
+          <span className="text-xs text-[var(--text-muted)]">Low</span>
         </div>
         <div className="text-center">
           <div className="w-12 h-12 rounded bg-purple-500" style={{ filter: `contrast(${0.8 + scale / 20})` }} />
-          <span className="text-xs text-[var(--muted)]">High</span>
+          <span className="text-xs text-[var(--text-muted)]">High</span>
         </div>
       </div>
       <input type="range" min="1" max="20" step="0.5" value={scale} onChange={(e) => setScale(parseFloat(e.target.value))} className="w-full" />
-      <p className="text-xs text-center text-[var(--muted)]">CFG Scale: {scale}</p>
+      <p className="text-xs text-center text-[var(--text-muted)]">CFG Scale: {scale}</p>
     </div>
   );
 }
@@ -3315,7 +3327,7 @@ export function PitchDetectionMini() {
         />
       </svg>
       <input type="range" min="200" max="800" value={frequency} onChange={(e) => setFrequency(parseInt(e.target.value))} className="w-full" />
-      <p className="text-xs text-center text-[var(--muted)]">{frequency}Hz → {note}</p>
+      <p className="text-xs text-center text-[var(--text-muted)]">{frequency}Hz → {note}</p>
     </div>
   );
 }
@@ -3339,7 +3351,7 @@ export function WaveformTypesMini() {
       </svg>
       <div className="flex gap-1 justify-center">
         {(['sine', 'square', 'saw'] as const).map((t) => (
-          <button key={t} onClick={() => setType(t)} className={`px-2 py-1 rounded text-xs ${type === t ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{t}</button>
+          <button key={t} onClick={() => setType(t)} className={`px-2 py-1 rounded text-xs ${type === t ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}>{t}</button>
         ))}
       </div>
     </div>
@@ -3360,14 +3372,14 @@ export function LipSyncWeightsMini() {
     <div className="space-y-3">
       <div className="flex gap-1 justify-center">
         {(Object.keys(shapes) as Array<keyof typeof shapes>).map((v) => (
-          <button key={v} onClick={() => setViseme(v)} className={`px-2 py-1 rounded text-xs ${viseme === v ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{v}</button>
+          <button key={v} onClick={() => setViseme(v)} className={`px-2 py-1 rounded text-xs ${viseme === v ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}>{v}</button>
         ))}
       </div>
       <div className="grid grid-cols-2 gap-1 text-xs">
         {Object.entries(shapes[viseme]).map(([k, v]) => (
           <div key={k} className="flex items-center gap-1">
-            <span className="w-12 text-[var(--muted)]">{k}</span>
-            <div className="flex-1 h-2 bg-[var(--card-bg-alt)] rounded">
+            <span className="w-12 text-[var(--text-muted)]">{k}</span>
+            <div className="flex-1 h-2 bg-[var(--surface-2)] rounded">
               <div className="h-full bg-purple-500 rounded" style={{ width: `${v * 100}%` }} />
             </div>
           </div>
@@ -3400,7 +3412,7 @@ export function DCTVisualizationMini() {
         })}
       </div>
       <input type="range" min="0" max="7" value={frequency} onChange={(e) => setFrequency(parseInt(e.target.value))} className="w-full" />
-      <p className="text-xs text-center text-[var(--muted)]">DCT frequency: {frequency}</p>
+      <p className="text-xs text-center text-[var(--text-muted)]">DCT frequency: {frequency}</p>
     </div>
   );
 }
@@ -3424,7 +3436,7 @@ export function QuantizationMini() {
         })}
       </div>
       <input type="range" min="1" max="8" value={bits} onChange={(e) => setBits(parseInt(e.target.value))} className="w-full" />
-      <p className="text-xs text-center text-[var(--muted)]">{bits}-bit = {levels} levels</p>
+      <p className="text-xs text-center text-[var(--text-muted)]">{bits}-bit = {levels} levels</p>
     </div>
   );
 }
@@ -3462,7 +3474,7 @@ export function ColorSpaceMini() {
       </div>
       <div className="flex gap-1 justify-center">
         {(['RGB', 'HSL', 'YUV'] as const).map((s) => (
-          <button key={s} onClick={() => setSpace(s)} className={`px-2 py-1 rounded text-xs ${space === s ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{s}</button>
+          <button key={s} onClick={() => setSpace(s)} className={`px-2 py-1 rounded text-xs ${space === s ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}>{s}</button>
         ))}
       </div>
     </div>
@@ -3486,7 +3498,7 @@ export function AmbientOcclusionMini() {
       </div>
       <button
         onClick={() => setAoEnabled(!aoEnabled)}
-        className={`w-full text-xs py-1 rounded ${aoEnabled ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+        className={`w-full text-xs py-1 rounded ${aoEnabled ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}
       >
         AO: {aoEnabled ? 'ON' : 'OFF'}
       </button>
@@ -3522,7 +3534,7 @@ export function MeshSubdivisionMini() {
         )}
       </svg>
       <input type="range" min="0" max="2" value={level} onChange={(e) => setLevel(parseInt(e.target.value))} className="w-full" />
-      <p className="text-xs text-center text-[var(--muted)]">Level {level}: {tris} triangles</p>
+      <p className="text-xs text-center text-[var(--text-muted)]">Level {level}: {tris} triangles</p>
     </div>
   );
 }
@@ -3548,7 +3560,7 @@ export function NormalCalculationMini() {
       </svg>
       <button
         onClick={() => setShowNormals(!showNormals)}
-        className={`w-full text-xs py-1 rounded ${showNormals ? 'bg-green-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+        className={`w-full text-xs py-1 rounded ${showNormals ? 'bg-green-500 text-white' : 'bg-[var(--surface-2)]'}`}
       >
         Normals: {showNormals ? 'Visible' : 'Hidden'}
       </button>
@@ -3564,7 +3576,7 @@ export function MotionBlurMini() {
 
   return (
     <div className="space-y-3">
-      <div className="relative h-12 bg-[var(--card-bg-alt)] rounded overflow-hidden">
+      <div className="relative h-12 bg-[var(--surface-2)] rounded overflow-hidden">
         <div
           className="absolute top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-purple-500"
           style={{
@@ -3575,7 +3587,7 @@ export function MotionBlurMini() {
         />
       </div>
       <input type="range" min="0" max="15" value={blurAmount} onChange={(e) => setBlurAmount(parseInt(e.target.value))} className="w-full" />
-      <p className="text-xs text-center text-[var(--muted)]">Blur: {blurAmount}px</p>
+      <p className="text-xs text-center text-[var(--text-muted)]">Blur: {blurAmount}px</p>
     </div>
   );
 }
@@ -3589,11 +3601,11 @@ export function FrameRateComparisonMini() {
     <div className="space-y-3">
       <div className="flex gap-1 justify-center">
         {Array(8).fill(0).map((_, i) => (
-          <div key={i} className={`w-6 h-10 rounded ${i < Math.floor(fps / 10) ? 'bg-green-500' : 'bg-[var(--card-bg-alt)]'}`} />
+          <div key={i} className={`w-6 h-10 rounded ${i < Math.floor(fps / 10) ? 'bg-green-500' : 'bg-[var(--surface-2)]'}`} />
         ))}
       </div>
       <input type="range" min="10" max="60" step="10" value={fps} onChange={(e) => setFps(parseInt(e.target.value))} className="w-full" />
-      <p className="text-xs text-center text-[var(--muted)]">{fps} FPS = {frameTime.toFixed(1)}ms/frame</p>
+      <p className="text-xs text-center text-[var(--text-muted)]">{fps} FPS = {frameTime.toFixed(1)}ms/frame</p>
     </div>
   );
 }
@@ -3619,7 +3631,7 @@ export function TextureFilteringMini() {
       </div>
       <div className="flex gap-1 justify-center">
         {(['nearest', 'bilinear', 'trilinear'] as const).map((m) => (
-          <button key={m} onClick={() => setMode(m)} className={`px-1 py-1 rounded text-xs ${mode === m ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{m}</button>
+          <button key={m} onClick={() => setMode(m)} className={`px-1 py-1 rounded text-xs ${mode === m ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}>{m}</button>
         ))}
       </div>
     </div>
@@ -3669,7 +3681,7 @@ export function FragmentShaderMini() {
       </div>
       <div className="flex gap-1 justify-center">
         {(['color', 'gradient', 'pattern'] as const).map((e) => (
-          <button key={e} onClick={() => setEffect(e)} className={`px-2 py-1 rounded text-xs ${effect === e ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{e}</button>
+          <button key={e} onClick={() => setEffect(e)} className={`px-2 py-1 rounded text-xs ${effect === e ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}>{e}</button>
         ))}
       </div>
     </div>
@@ -3717,7 +3729,7 @@ export function ToneMappingMini() {
         ))}
       </div>
       <input type="range" min="0.5" max="2" step="0.1" value={exposure} onChange={(e) => setExposure(parseFloat(e.target.value))} className="w-full" />
-      <p className="text-xs text-center text-[var(--muted)]">Exposure: {exposure.toFixed(1)}</p>
+      <p className="text-xs text-center text-[var(--text-muted)]">Exposure: {exposure.toFixed(1)}</p>
     </div>
   );
 }
@@ -3775,7 +3787,7 @@ export function NoiseGenerationMini() {
       </div>
       <div className="flex gap-1 justify-center">
         {(['white', 'perlin', 'simplex'] as const).map((t) => (
-          <button key={t} onClick={() => setType(t)} className={`px-2 py-1 rounded text-xs ${type === t ? 'bg-purple-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}>{t}</button>
+          <button key={t} onClick={() => setType(t)} className={`px-2 py-1 rounded text-xs ${type === t ? 'bg-purple-500 text-white' : 'bg-[var(--surface-2)]'}`}>{t}</button>
         ))}
       </div>
     </div>
@@ -3794,7 +3806,7 @@ export function AntiAliasingMini() {
       </svg>
       <button
         onClick={() => setAaEnabled(!aaEnabled)}
-        className={`w-full text-xs py-1 rounded ${aaEnabled ? 'bg-green-500 text-white' : 'bg-[var(--card-bg-alt)]'}`}
+        className={`w-full text-xs py-1 rounded ${aaEnabled ? 'bg-green-500 text-white' : 'bg-[var(--surface-2)]'}`}
       >
         AA: {aaEnabled ? 'ON (smooth)' : 'OFF (jagged)'}
       </button>

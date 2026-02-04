@@ -272,7 +272,7 @@ export function CongestionControlDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Congestion Control</h3>
-      <p className="text-sm text-[var(--muted)] mb-4">
+      <p className="text-sm text-[var(--text-muted)] mb-4">
         Congestion control adapts send rate to network conditions. Compare TCP, GCC (WebRTC), and BBR algorithms.
       </p>
 
@@ -285,11 +285,11 @@ export function CongestionControlDemo() {
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Algorithm</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Algorithm</label>
           <select
             value={algorithm}
             onChange={(e) => setAlgorithm(e.target.value as typeof algorithm)}
-            className="w-full px-2 py-1 rounded bg-[var(--card-bg)] border border-[var(--border)] text-sm"
+            className="w-full px-2 py-1 rounded bg-[var(--surface-0)] border border-[var(--border)] text-sm"
           >
             <option value="tcp">TCP Reno</option>
             <option value="gcc">GCC (WebRTC)</option>
@@ -297,11 +297,11 @@ export function CongestionControlDemo() {
           </select>
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Network</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Network</label>
           <select
             value={networkCondition}
             onChange={(e) => setNetworkCondition(e.target.value as typeof networkCondition)}
-            className="w-full px-2 py-1 rounded bg-[var(--card-bg)] border border-[var(--border)] text-sm"
+            className="w-full px-2 py-1 rounded bg-[var(--surface-0)] border border-[var(--border)] text-sm"
           >
             <option value="stable">Stable</option>
             <option value="fluctuating">Fluctuating</option>
@@ -311,17 +311,17 @@ export function CongestionControlDemo() {
       </div>
 
       <div className="grid md:grid-cols-3 gap-3 text-xs">
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">TCP Reno</p>
-          <p className="text-[var(--muted)]">Loss-based. Slow start + AIMD. Reactive to packet loss.</p>
+          <p className="text-[var(--text-muted)]">Loss-based. Slow start + AIMD. Reactive to packet loss.</p>
         </div>
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">GCC</p>
-          <p className="text-[var(--muted)]">Delay-based. Used in WebRTC. Proactive, detects congestion early.</p>
+          <p className="text-[var(--text-muted)]">Delay-based. Used in WebRTC. Proactive, detects congestion early.</p>
         </div>
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">BBR</p>
-          <p className="text-[var(--muted)]">Model-based. Estimates bottleneck bandwidth. Best for long RTT.</p>
+          <p className="text-[var(--text-muted)]">Model-based. Estimates bottleneck bandwidth. Best for long RTT.</p>
         </div>
       </div>
     </div>

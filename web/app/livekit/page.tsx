@@ -6,7 +6,7 @@ export default function LiveKitPage() {
     <div className="min-h-screen relative">
       <div className="paper-texture fixed inset-0" />
 
-      <header className="border-b border-[var(--border)] bg-[var(--card-bg)]">
+      <header className="border-b border-[var(--border)] bg-[var(--surface-0)]">
         <div className="mx-auto max-w-4xl px-6">
           <nav className="flex items-center justify-between h-14">
             <Link href="/" className="font-semibold text-sm hover:underline">
@@ -30,7 +30,7 @@ export default function LiveKitPage() {
           <h1 className="text-3xl md:text-4xl font-semibold mb-4 leading-tight">
             LiveKit Streaming Avatar
           </h1>
-          <p className="text-lg text-[var(--muted)] max-w-2xl">
+          <p className="text-lg text-[var(--text-muted)] max-w-2xl">
             A WebRTC streaming demo for real-time avatars. This page connects to a LiveKit room
             and renders the avatar video stream published by an avatar worker (e.g., Hedra).
           </p>
@@ -40,7 +40,7 @@ export default function LiveKitPage() {
 
         <div className="card p-5 mt-6">
           <p className="font-medium mb-2">Required environment</p>
-          <div className="text-sm text-[var(--muted)] space-y-2">
+          <div className="text-sm text-[var(--text-muted)] space-y-2">
             <p>
               Set these on the server (Vercel / local env):
             </p>

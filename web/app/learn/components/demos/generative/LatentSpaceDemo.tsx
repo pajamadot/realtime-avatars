@@ -159,7 +159,7 @@ export function LatentSpaceDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Latent Space Explorer</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Explore how VAEs compress images into a low-dimensional latent space.
         Click and drag in the space to interpolate between expressions.
       </p>
@@ -170,7 +170,7 @@ export function LatentSpaceDemo() {
           <p className="text-sm font-medium mb-2">2D Latent Space</p>
           <div
             ref={spaceRef}
-            className="relative w-full aspect-square bg-[var(--card-bg-alt)] rounded-lg border border-[var(--border)] cursor-crosshair overflow-hidden"
+            className="relative w-full aspect-square bg-[var(--surface-2)] rounded-lg border border-[var(--border)] cursor-crosshair overflow-hidden"
             onClick={handleSpaceClick}
             onMouseDown={() => setIsDragging(true)}
             onMouseUp={() => setIsDragging(false)}
@@ -219,10 +219,10 @@ export function LatentSpaceDemo() {
             />
 
             {/* Axis labels */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs text-[var(--muted)]">
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs text-[var(--text-muted)]">
               Expression (Positive → Serious)
             </div>
-            <div className="absolute left-2 top-1/2 -translate-y-1/2 -rotate-90 text-xs text-[var(--muted)] whitespace-nowrap">
+            <div className="absolute left-2 top-1/2 -translate-y-1/2 -rotate-90 text-xs text-[var(--text-muted)] whitespace-nowrap">
               Arousal (Calm → Excited)
             </div>
           </div>
@@ -240,7 +240,7 @@ export function LatentSpaceDemo() {
             />
 
             {/* Latent coordinates display */}
-            <div className="mt-4 p-3 bg-[var(--card-bg-alt)] rounded text-sm w-full">
+            <div className="mt-4 p-3 bg-[var(--surface-2)] rounded text-sm w-full">
               <p className="font-medium mb-2">Latent Vector z</p>
               <code className="text-xs block font-mono">
                 z = [{latentX.toFixed(3)}, {latentY.toFixed(3)}]
@@ -248,10 +248,10 @@ export function LatentSpaceDemo() {
             </div>
 
             {/* Compression info */}
-            <div className="mt-4 p-3 bg-[var(--card-bg-alt)] rounded text-sm w-full">
+            <div className="mt-4 p-3 bg-[var(--surface-2)] rounded text-sm w-full">
               <div className="flex justify-between items-center mb-2">
                 <span className="font-medium">Compression Ratio</span>
-                <span className="text-[var(--muted)]">{compressionRatio}x</span>
+                <span className="text-[var(--text-muted)]">{compressionRatio}x</span>
               </div>
               <input
                 type="range"
@@ -261,7 +261,7 @@ export function LatentSpaceDemo() {
                 onChange={(e) => setCompressionRatio(Number(e.target.value))}
                 className="w-full"
               />
-              <div className="flex justify-between text-xs text-[var(--muted)] mt-2">
+              <div className="flex justify-between text-xs text-[var(--text-muted)] mt-2">
                 <span>512×512×3 pixels</span>
                 <span>→</span>
                 <span>{Math.round(512/compressionRatio)}×{Math.round(512/compressionRatio)}×4 latent</span>
@@ -272,9 +272,9 @@ export function LatentSpaceDemo() {
       </div>
 
       {/* Explanation */}
-      <div className="mt-6 p-4 bg-[var(--card-bg-alt)] rounded">
+      <div className="mt-6 p-4 bg-[var(--surface-2)] rounded">
         <p className="font-medium mb-2">How VAE Latent Space Works</p>
-        <div className="grid md:grid-cols-3 gap-4 text-sm text-[var(--muted)]">
+        <div className="grid md:grid-cols-3 gap-4 text-sm text-[var(--text-muted)]">
           <div>
             <p className="font-medium text-[var(--foreground)] mb-1">Encode</p>
             <p>Compress 512×512 image → small latent vector (e.g., 64×64×4)</p>

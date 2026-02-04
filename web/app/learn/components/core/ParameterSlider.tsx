@@ -29,7 +29,7 @@ export default function ParameterSlider({
     <div className="mb-4">
       <div className="flex items-center justify-between mb-1">
         <label className="text-sm font-medium">{label}</label>
-        <span className="text-sm text-[var(--muted)] font-mono">
+        <span className="text-sm text-[var(--text-muted)] font-mono">
           {value.toFixed(2)}{unit}
         </span>
       </div>
@@ -50,7 +50,7 @@ export default function ParameterSlider({
       </div>
 
       {description && (
-        <p className="text-xs text-[var(--muted)] mt-1">{description}</p>
+        <p className="text-xs text-[var(--text-muted)] mt-1">{description}</p>
       )}
     </div>
   );

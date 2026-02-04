@@ -97,14 +97,14 @@ export function QualityLatencyDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Quality vs Latency Tradeoff</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Configure each component of the voice AI pipeline to see how choices affect
         total latency, quality, and cost. Find the right balance for your use case.
       </p>
 
       {/* Presets */}
       <div className="flex flex-wrap gap-2 mb-6">
-        <span className="text-sm text-[var(--muted)]">Presets:</span>
+        <span className="text-sm text-[var(--text-muted)]">Presets:</span>
         {Object.entries(PRESETS).map(([key, _]) => (
           <button
             key={key}
@@ -120,10 +120,10 @@ export function QualityLatencyDemo() {
         {/* Configuration */}
         <div className="space-y-4">
           {/* STT */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between items-center mb-2">
               <span className="font-medium text-sm">Speech-to-Text</span>
-              <span className="text-xs text-[var(--muted)]">{COMPONENTS.stt[config.stt].latency}ms</span>
+              <span className="text-xs text-[var(--text-muted)]">{COMPONENTS.stt[config.stt].latency}ms</span>
             </div>
             <div className="flex gap-2">
               {(['fast', 'balanced', 'accurate'] as const).map(opt => (
@@ -133,21 +133,21 @@ export function QualityLatencyDemo() {
                   className={`flex-1 py-1.5 px-2 rounded text-xs transition-colors ${
                     config.stt === opt
                       ? 'bg-[var(--accent)] text-white'
-                      : 'bg-[var(--card-bg)] hover:bg-[var(--border)]'
+                      : 'bg-[var(--surface-0)] hover:bg-[var(--border)]'
                   }`}
                 >
                   {opt}
                 </button>
               ))}
             </div>
-            <p className="text-xs text-[var(--muted)] mt-2">{COMPONENTS.stt[config.stt].description}</p>
+            <p className="text-xs text-[var(--text-muted)] mt-2">{COMPONENTS.stt[config.stt].description}</p>
           </div>
 
           {/* LLM */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between items-center mb-2">
               <span className="font-medium text-sm">Language Model</span>
-              <span className="text-xs text-[var(--muted)]">{COMPONENTS.llm[config.llm].latency}ms</span>
+              <span className="text-xs text-[var(--text-muted)]">{COMPONENTS.llm[config.llm].latency}ms</span>
             </div>
             <div className="flex gap-2">
               {(['small', 'medium', 'large'] as const).map(opt => (
@@ -157,21 +157,21 @@ export function QualityLatencyDemo() {
                   className={`flex-1 py-1.5 px-2 rounded text-xs transition-colors ${
                     config.llm === opt
                       ? 'bg-[var(--accent)] text-white'
-                      : 'bg-[var(--card-bg)] hover:bg-[var(--border)]'
+                      : 'bg-[var(--surface-0)] hover:bg-[var(--border)]'
                   }`}
                 >
                   {opt}
                 </button>
               ))}
             </div>
-            <p className="text-xs text-[var(--muted)] mt-2">{COMPONENTS.llm[config.llm].description}</p>
+            <p className="text-xs text-[var(--text-muted)] mt-2">{COMPONENTS.llm[config.llm].description}</p>
           </div>
 
           {/* TTS */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between items-center mb-2">
               <span className="font-medium text-sm">Text-to-Speech</span>
-              <span className="text-xs text-[var(--muted)]">{COMPONENTS.tts[config.tts].latency}ms</span>
+              <span className="text-xs text-[var(--text-muted)]">{COMPONENTS.tts[config.tts].latency}ms</span>
             </div>
             <div className="flex gap-2">
               {(['streaming', 'buffered'] as const).map(opt => (
@@ -181,21 +181,21 @@ export function QualityLatencyDemo() {
                   className={`flex-1 py-1.5 px-2 rounded text-xs transition-colors ${
                     config.tts === opt
                       ? 'bg-[var(--accent)] text-white'
-                      : 'bg-[var(--card-bg)] hover:bg-[var(--border)]'
+                      : 'bg-[var(--surface-0)] hover:bg-[var(--border)]'
                   }`}
                 >
                   {opt}
                 </button>
               ))}
             </div>
-            <p className="text-xs text-[var(--muted)] mt-2">{COMPONENTS.tts[config.tts].description}</p>
+            <p className="text-xs text-[var(--text-muted)] mt-2">{COMPONENTS.tts[config.tts].description}</p>
           </div>
 
           {/* Avatar */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between items-center mb-2">
               <span className="font-medium text-sm">Avatar Rendering</span>
-              <span className="text-xs text-[var(--muted)]">{COMPONENTS.avatar[config.avatar].latency}ms</span>
+              <span className="text-xs text-[var(--text-muted)]">{COMPONENTS.avatar[config.avatar].latency}ms</span>
             </div>
             <div className="flex gap-2">
               {(['simple', 'diffusion', 'metahuman'] as const).map(opt => (
@@ -205,14 +205,14 @@ export function QualityLatencyDemo() {
                   className={`flex-1 py-1.5 px-2 rounded text-xs transition-colors ${
                     config.avatar === opt
                       ? 'bg-[var(--accent)] text-white'
-                      : 'bg-[var(--card-bg)] hover:bg-[var(--border)]'
+                      : 'bg-[var(--surface-0)] hover:bg-[var(--border)]'
                   }`}
                 >
                   {opt}
                 </button>
               ))}
             </div>
-            <p className="text-xs text-[var(--muted)] mt-2">{COMPONENTS.avatar[config.avatar].description}</p>
+            <p className="text-xs text-[var(--text-muted)] mt-2">{COMPONENTS.avatar[config.avatar].description}</p>
           </div>
         </div>
 
@@ -220,8 +220,8 @@ export function QualityLatencyDemo() {
         <div className="space-y-4">
           {/* Main metrics */}
           <div className="grid grid-cols-3 gap-3">
-            <div className="p-4 bg-[var(--card-bg-alt)] rounded text-center">
-              <p className="text-xs text-[var(--muted)] mb-1">Total Latency</p>
+            <div className="p-4 bg-[var(--surface-2)] rounded text-center">
+              <p className="text-xs text-[var(--text-muted)] mb-1">Total Latency</p>
               <p
                 className="text-2xl font-bold"
                 style={{ color: getLatencyColor(metrics.totalLatency) }}
@@ -235,8 +235,8 @@ export function QualityLatencyDemo() {
                 {getLatencyLabel(metrics.totalLatency)}
               </p>
             </div>
-            <div className="p-4 bg-[var(--card-bg-alt)] rounded text-center">
-              <p className="text-xs text-[var(--muted)] mb-1">Avg Quality</p>
+            <div className="p-4 bg-[var(--surface-2)] rounded text-center">
+              <p className="text-xs text-[var(--text-muted)] mb-1">Avg Quality</p>
               <p className="text-2xl font-bold text-[var(--foreground)]">
                 {metrics.avgQuality.toFixed(0)}%
               </p>
@@ -247,24 +247,24 @@ export function QualityLatencyDemo() {
                 />
               </div>
             </div>
-            <div className="p-4 bg-[var(--card-bg-alt)] rounded text-center">
-              <p className="text-xs text-[var(--muted)] mb-1">Cost Index</p>
+            <div className="p-4 bg-[var(--surface-2)] rounded text-center">
+              <p className="text-xs text-[var(--text-muted)] mb-1">Cost Index</p>
               <p className="text-2xl font-bold text-[var(--foreground)]">
                 {'$'.repeat(Math.ceil(metrics.totalCost / 3))}
               </p>
-              <p className="text-xs text-[var(--muted)] mt-1">
+              <p className="text-xs text-[var(--text-muted)] mt-1">
                 {metrics.totalCost}/20 units
               </p>
             </div>
           </div>
 
           {/* Latency breakdown */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between items-center mb-3">
               <span className="font-medium text-sm">Latency Breakdown</span>
               <button
                 onClick={() => setShowBreakdown(!showBreakdown)}
-                className="text-xs text-[var(--muted)]"
+                className="text-xs text-[var(--text-muted)]"
               >
                 {showBreakdown ? 'Hide' : 'Show'}
               </button>
@@ -281,7 +281,7 @@ export function QualityLatencyDemo() {
                 ].map(item => (
                   <div key={item.name} className="flex items-center gap-2">
                     <span className="text-xs w-14">{item.name}</span>
-                    <div className="flex-1 h-4 bg-[var(--card-bg)] rounded overflow-hidden">
+                    <div className="flex-1 h-4 bg-[var(--surface-0)] rounded overflow-hidden">
                       <div
                         className="h-full transition-all duration-300"
                         style={{
@@ -298,9 +298,9 @@ export function QualityLatencyDemo() {
           </div>
 
           {/* Timeline visualization */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-3">Response Timeline</p>
-            <div className="relative h-8 bg-[var(--card-bg)] rounded overflow-hidden">
+            <div className="relative h-8 bg-[var(--surface-0)] rounded overflow-hidden">
               {[
                 { name: 'STT', start: 0, width: metrics.components.stt.latency, color: '#e74c3c' },
                 { name: 'LLM', start: metrics.components.stt.latency, width: metrics.components.llm.latency, color: '#9b59b6' },
@@ -320,7 +320,7 @@ export function QualityLatencyDemo() {
                 </div>
               ))}
             </div>
-            <div className="flex justify-between text-xs text-[var(--muted)] mt-1">
+            <div className="flex justify-between text-xs text-[var(--text-muted)] mt-1">
               <span>0ms</span>
               <span>User speaks</span>
               <span>Avatar responds</span>
@@ -331,7 +331,7 @@ export function QualityLatencyDemo() {
           {/* Recommendation */}
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">Recommendation</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               {metrics.totalLatency <= 300 && 'Great for real-time conversation. Users won\'t notice delay.'}
               {metrics.totalLatency > 300 && metrics.totalLatency <= 500 && 'Good for most use cases. Slight noticeable pause.'}
               {metrics.totalLatency > 500 && metrics.totalLatency <= 800 && 'Consider for quality-focused applications only.'}

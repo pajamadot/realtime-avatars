@@ -54,7 +54,7 @@ export default function LivingResearchFeed({ className = '' }: { className?: str
   return (
     <div className={className}>
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
-        <p className="text-sm text-[var(--muted)]">
+        <p className="text-sm text-[var(--text-muted)]">
           Auto-updating research feed (source: {feed.source}).{updated ? ` Last refresh: ${updated}.` : ''}
         </p>
         <code>npm run research:update</code>
@@ -66,7 +66,7 @@ export default function LivingResearchFeed({ className = '' }: { className?: str
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Filter by title, author, summary, or tag..."
-            className="w-full bg-[var(--card-bg)] border border-[var(--border)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--border-strong)]"
+            className="w-full bg-[var(--surface-0)] border border-[var(--border)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--border-strong)]"
           />
           {query ? (
             <button
@@ -88,7 +88,7 @@ export default function LivingResearchFeed({ className = '' }: { className?: str
               <span className="badge">arXiv</span>
             </div>
             {method.query ? (
-              <p className="text-xs text-[var(--muted)] mb-3">
+              <p className="text-xs text-[var(--text-muted)] mb-3">
                 Query: <code>{method.query}</code>
               </p>
             ) : null}
@@ -101,19 +101,19 @@ export default function LivingResearchFeed({ className = '' }: { className?: str
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block p-3 bg-[var(--card-bg-alt)] rounded border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors"
+                    className="block p-3 bg-[var(--surface-2)] rounded border border-[var(--border)] hover:border-[var(--border-strong)] transition-colors"
                   >
                     <div className="flex items-start justify-between gap-3">
                       <p className="font-medium text-sm leading-snug">{item.title}</p>
-                      <span className="text-xs text-[var(--muted)] whitespace-nowrap">
+                      <span className="text-xs text-[var(--text-muted)] whitespace-nowrap">
                         {formatISODate(item.published)}
                       </span>
                     </div>
                     {item.authors ? (
-                      <p className="text-xs text-[var(--muted)] mt-1">{item.authors}</p>
+                      <p className="text-xs text-[var(--text-muted)] mt-1">{item.authors}</p>
                     ) : null}
                     {item.summary ? (
-                      <p className="text-xs text-[var(--muted)] mt-2 line-clamp-3">{item.summary}</p>
+                      <p className="text-xs text-[var(--text-muted)] mt-2 line-clamp-3">{item.summary}</p>
                     ) : null}
                     {item.tags?.length ? (
                       <div className="mt-2 flex flex-wrap gap-1">
@@ -128,7 +128,7 @@ export default function LivingResearchFeed({ className = '' }: { className?: str
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-[var(--muted)]">
+              <p className="text-sm text-[var(--text-muted)]">
                 No items yet. Run <code>npm run research:update</code> to populate this section.
               </p>
             )}

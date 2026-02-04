@@ -42,10 +42,10 @@ export default function StreamingAvatarsPage() {
         <div className="flex items-center gap-3 mb-4">
           <div className="w-4 h-4 rounded-full" style={{ backgroundColor: color }} />
           <span className="badge">Infrastructure</span>
-          <span className="text-sm text-[var(--muted)]">~25 min</span>
+          <span className="text-sm text-[var(--text-muted)]">~25 min</span>
         </div>
         <h1 className="text-3xl font-semibold mb-2">{content.title}</h1>
-        <p className="text-lg text-[var(--muted)]">{content.subtitle}</p>
+        <p className="text-lg text-[var(--text-muted)]">{content.subtitle}</p>
       </section>
 
       {/* Progress tracker */}
@@ -58,7 +58,7 @@ export default function StreamingAvatarsPage() {
               onClick={() => setCurrentSection(section.id)}
               className={`
                 flex items-center gap-2 px-3 py-1.5 rounded-full text-sm whitespace-nowrap transition-colors
-                ${section.id === currentSection ? 'font-medium text-white' : 'text-[var(--muted)] hover:text-[var(--foreground)]'}
+                ${section.id === currentSection ? 'font-medium text-white' : 'text-[var(--text-muted)] hover:text-[var(--foreground)]'}
               `}
               style={section.id === currentSection ? { backgroundColor: color } : undefined}
             >
@@ -79,7 +79,7 @@ export default function StreamingAvatarsPage() {
         <h2 className="text-2xl font-semibold mb-4">What are Streaming Avatars?</h2>
 
         <div className="prose prose-neutral max-w-none">
-          <p className="text-lg text-[var(--muted)] leading-relaxed mb-6">
+          <p className="text-lg text-[var(--text-muted)] leading-relaxed mb-6">
             {content.intro.text}
           </p>
         </div>
@@ -88,26 +88,26 @@ export default function StreamingAvatarsPage() {
         <div className="highlight-box">
           <p className="font-medium mb-4">The Core Idea in 30 Seconds</p>
           <div className="grid md:grid-cols-3 gap-4 text-center">
-            <div className="p-4 bg-[var(--card-bg)] rounded">
+            <div className="p-4 bg-[var(--surface-0)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-streaming-light)] flex items-center justify-center">
                 <Globe size={24} className="text-[var(--color-streaming)]" />
               </div>
               <p className="font-medium">WebRTC Transport</p>
-              <p className="text-sm text-[var(--muted)]">Encrypted, real-time, no plugins needed</p>
+              <p className="text-sm text-[var(--text-muted)]">Encrypted, real-time, no plugins needed</p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded">
+            <div className="p-4 bg-[var(--surface-0)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-streaming-light)] flex items-center justify-center">
                 <Drama size={24} className="text-[var(--color-streaming)]" />
               </div>
               <p className="font-medium">Cloud Avatar</p>
-              <p className="text-sm text-[var(--muted)]">GPU rendering happens server-side</p>
+              <p className="text-sm text-[var(--text-muted)]">GPU rendering happens server-side</p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded">
+            <div className="p-4 bg-[var(--surface-0)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-streaming-light)] flex items-center justify-center">
                 <Smartphone size={24} className="text-[var(--color-streaming)]" />
               </div>
               <p className="font-medium">Any Device</p>
-              <p className="text-sm text-[var(--muted)]">Works on web, mobile, low-end hardware</p>
+              <p className="text-sm text-[var(--text-muted)]">Works on web, mobile, low-end hardware</p>
             </div>
           </div>
         </div>
@@ -115,38 +115,38 @@ export default function StreamingAvatarsPage() {
         {/* Architecture diagram */}
         <div className="card p-6 mt-6">
           <h3 className="font-semibold mb-3">The Puppeteer Metaphor</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Avatar providers are like puppeteers hidden behind the stage. You send them audio (the script),
             they perform the show (generate video). The audience only sees the puppet, never the puppeteer.
           </p>
           <div className="grid md:grid-cols-4 gap-4">
-            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
+            <div className="text-center p-4 bg-[var(--surface-2)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-streaming-light)] flex items-center justify-center">
                 <Mic size={24} className="text-[var(--color-streaming)]" />
               </div>
               <p className="text-sm font-medium">Your Audio</p>
-              <p className="text-xs text-[var(--muted)]">The script</p>
+              <p className="text-xs text-[var(--text-muted)]">The script</p>
             </div>
-            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
+            <div className="text-center p-4 bg-[var(--surface-2)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-streaming-light)] flex items-center justify-center">
                 <Drama size={24} className="text-[var(--color-streaming)]" />
               </div>
               <p className="text-sm font-medium">Avatar Provider</p>
-              <p className="text-xs text-[var(--muted)]">The hidden puppeteer</p>
+              <p className="text-xs text-[var(--text-muted)]">The hidden puppeteer</p>
             </div>
-            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
+            <div className="text-center p-4 bg-[var(--surface-2)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-streaming-light)] flex items-center justify-center">
                 <Video size={24} className="text-[var(--color-streaming)]" />
               </div>
               <p className="text-sm font-medium">Video Stream</p>
-              <p className="text-xs text-[var(--muted)]">The performance</p>
+              <p className="text-xs text-[var(--text-muted)]">The performance</p>
             </div>
-            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
+            <div className="text-center p-4 bg-[var(--surface-2)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-streaming-light)] flex items-center justify-center">
                 <Eye size={24} className="text-[var(--color-streaming)]" />
               </div>
               <p className="text-sm font-medium">Your User</p>
-              <p className="text-xs text-[var(--muted)]">The audience</p>
+              <p className="text-xs text-[var(--text-muted)]">The audience</p>
             </div>
           </div>
         </div>
@@ -253,7 +253,7 @@ export default function StreamingAvatarsPage() {
       {/* Section 2: Pipeline */}
       <section id="pipeline" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">The Voice AI Pipeline</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           Speech flows through STT, LLM, TTS, and finally avatar rendering.
           Each component adds latency - the goal is to minimize total round-trip time.
         </p>
@@ -330,21 +330,21 @@ export default function StreamingAvatarsPage() {
         <div className="card p-5 mt-6">
           <p className="font-medium mb-4">Latency Budget (Target: ~500ms)</p>
           <div className="grid md:grid-cols-4 gap-4 text-sm">
-            <div className="p-3 bg-[var(--card-bg-alt)] rounded text-center">
+            <div className="p-3 bg-[var(--surface-2)] rounded text-center">
               <div className="font-semibold mb-1">STT</div>
-              <div className="text-[var(--muted)]">90-200ms</div>
+              <div className="text-[var(--text-muted)]">90-200ms</div>
             </div>
-            <div className="p-3 bg-[var(--card-bg-alt)] rounded text-center">
+            <div className="p-3 bg-[var(--surface-2)] rounded text-center">
               <div className="font-semibold mb-1">LLM</div>
-              <div className="text-[var(--muted)]">75-300ms</div>
+              <div className="text-[var(--text-muted)]">75-300ms</div>
             </div>
-            <div className="p-3 bg-[var(--card-bg-alt)] rounded text-center">
+            <div className="p-3 bg-[var(--surface-2)] rounded text-center">
               <div className="font-semibold mb-1">TTS</div>
-              <div className="text-[var(--muted)]">100-200ms</div>
+              <div className="text-[var(--text-muted)]">100-200ms</div>
             </div>
-            <div className="p-3 bg-[var(--card-bg-alt)] rounded text-center">
+            <div className="p-3 bg-[var(--surface-2)] rounded text-center">
               <div className="font-semibold mb-1">Network</div>
-              <div className="text-[var(--muted)]">50-100ms</div>
+              <div className="text-[var(--text-muted)]">50-100ms</div>
             </div>
           </div>
         </div>
@@ -355,7 +355,7 @@ export default function StreamingAvatarsPage() {
       {/* Section 3: Key Concepts */}
       <section id="concepts" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">Key Concepts</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           Understand these five pillars of streaming avatar infrastructure.
         </p>
 
@@ -382,7 +382,7 @@ export default function StreamingAvatarsPage() {
       {/* Section 4: Implementation */}
       <section id="implementation" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">Build It Yourself</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           Deploy a streaming avatar with LiveKit and Hedra in under an hour.
         </p>
 
@@ -408,7 +408,7 @@ export default function StreamingAvatarsPage() {
                 </span>
                 <div>
                   <p className="font-medium text-sm">{resource.title}</p>
-                  <p className="text-xs text-[var(--muted)]">{resource.type}</p>
+                  <p className="text-xs text-[var(--text-muted)]">{resource.type}</p>
                 </div>
               </a>
             ))}
@@ -425,7 +425,7 @@ export default function StreamingAvatarsPage() {
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div className="card-alt p-5">
             <p className="font-medium mb-3 text-green-600 flex items-center gap-1"><Check size={16} /> Use When</p>
-            <ul className="space-y-2 text-sm text-[var(--muted)]">
+            <ul className="space-y-2 text-sm text-[var(--text-muted)]">
               {content.tradeoffs.when.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <span className="text-green-500">+</span>
@@ -436,7 +436,7 @@ export default function StreamingAvatarsPage() {
           </div>
           <div className="card-alt p-5">
             <p className="font-medium mb-3 text-red-600 flex items-center gap-1"><X size={16} /> Avoid When</p>
-            <ul className="space-y-2 text-sm text-[var(--muted)]">
+            <ul className="space-y-2 text-sm text-[var(--text-muted)]">
               {content.tradeoffs.whenNot.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <span className="text-red-500">−</span>
@@ -449,7 +449,7 @@ export default function StreamingAvatarsPage() {
 
         <div className="highlight-box">
           <p className="font-medium mb-2">Best Use Case</p>
-          <p className="text-[var(--muted)]">{content.tradeoffs.bestFor}</p>
+          <p className="text-[var(--text-muted)]">{content.tradeoffs.bestFor}</p>
         </div>
       </section>
 
@@ -471,8 +471,8 @@ export default function StreamingAvatarsPage() {
                 <tr key={provider.name}>
                   <td className="font-medium">{provider.name}</td>
                   <td>{provider.latency}</td>
-                  <td className="text-[var(--muted)]">{provider.input}</td>
-                  <td className="text-[var(--muted)]">{provider.bestFor}</td>
+                  <td className="text-[var(--text-muted)]">{provider.input}</td>
+                  <td className="text-[var(--text-muted)]">{provider.bestFor}</td>
                 </tr>
               ))}
             </tbody>
@@ -491,7 +491,7 @@ export default function StreamingAvatarsPage() {
               </p>
               <p className="text-sm mt-2">
                 <span className="text-green-600 font-medium">Actually:</span>{' '}
-                <span className="text-[var(--muted)]">{item.correct}</span>
+                <span className="text-[var(--text-muted)]">{item.correct}</span>
               </p>
             </div>
           ))}
@@ -502,7 +502,7 @@ export default function StreamingAvatarsPage() {
       <section className="mb-16">
         <div className="card p-6">
           <h3 className="font-semibold mb-2">Try the Live Demo</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Experience a streaming avatar in action. The demo uses LiveKit and Hedra
             to create a real-time conversational avatar.
           </p>
@@ -519,7 +519,7 @@ export default function StreamingAvatarsPage() {
       <section>
         <div className="card p-6 text-center">
           <h3 className="font-semibold mb-2">Ready to Go Deeper?</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Explore WebRTC internals or compare streaming with other approaches.
           </p>
           <div className="flex items-center justify-center gap-4">

@@ -21,6 +21,7 @@ interface DemoWrapperProps {
   tips?: string[];
   relatedConcepts?: { name: string; link: string }[];
   difficulty?: 'beginner' | 'intermediate' | 'advanced';
+  isActive?: boolean;
 }
 
 export default function DemoWrapper({
@@ -33,14 +34,15 @@ export default function DemoWrapper({
   tips = [],
   relatedConcepts = [],
   difficulty = 'intermediate',
+  isActive = false,
 }: DemoWrapperProps) {
   const [showInsights, setShowInsights] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   const difficultyConfig = {
-    beginner: { color: 'var(--success)', bg: 'var(--success-light)' },
-    intermediate: { color: 'var(--warning)', bg: 'var(--warning-light)' },
-    advanced: { color: 'var(--error)', bg: 'var(--error-light)' },
+    beginner: { color: 'var(--difficulty-beginner)', bg: 'var(--difficulty-beginner-bg)' },
+    intermediate: { color: 'var(--difficulty-intermediate)', bg: 'var(--difficulty-intermediate-bg)' },
+    advanced: { color: 'var(--difficulty-advanced)', bg: 'var(--difficulty-advanced-bg)' },
   };
 
   const config = difficultyConfig[difficulty];
@@ -52,8 +54,17 @@ export default function DemoWrapper({
         isFullscreen ? 'fixed inset-4 z-50 overflow-auto' : ''
       }`}
     >
-      {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-[var(--border)] bg-[var(--surface-0)]">
+      {/* Accent line at top */}
+      <div
+        className="h-0.5"
+        style={{ background: 'var(--accent)' }}
+      />
+
+      {/* Header with gradient */}
+      <div
+        className="flex items-center justify-between p-4 border-b border-[var(--border)]"
+        style={{ background: 'var(--surface-warm-gradient)' }}
+      >
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center text-[var(--accent)]">
             <Gamepad2 size={18} strokeWidth={1.75} />
@@ -61,6 +72,9 @@ export default function DemoWrapper({
           <div>
             <h3 className="font-semibold flex items-center gap-2">
               {title}
+              {isActive && (
+                <span className="activity-indicator" title="Demo is active" />
+              )}
               <span
                 className="text-xs px-2 py-0.5 rounded-full font-medium"
                 style={{

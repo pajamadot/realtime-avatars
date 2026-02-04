@@ -237,7 +237,7 @@ export function SecondaryMotionDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Secondary Motion</h3>
-      <p className="text-sm text-[var(--muted)] mb-4">
+      <p className="text-sm text-[var(--text-muted)] mb-4">
         Secondary motion adds physics-based follow-through to primary animation. Watch earrings and hair react to head movement.
       </p>
 
@@ -250,7 +250,7 @@ export function SecondaryMotionDemo() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Spring: {springStiffness.toFixed(2)}</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Spring: {springStiffness.toFixed(2)}</label>
           <input
             type="range"
             min="0.01"
@@ -262,7 +262,7 @@ export function SecondaryMotionDemo() {
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Damping: {damping.toFixed(2)}</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Damping: {damping.toFixed(2)}</label>
           <input
             type="range"
             min="0.5"
@@ -274,7 +274,7 @@ export function SecondaryMotionDemo() {
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Drag: {dragAmount.toFixed(2)}</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Drag: {dragAmount.toFixed(2)}</label>
           <input
             type="range"
             min="0"
@@ -297,9 +297,9 @@ export function SecondaryMotionDemo() {
         </div>
       </div>
 
-      <div className="p-3 bg-[var(--card-bg-alt)] rounded text-xs">
+      <div className="p-3 bg-[var(--surface-2)] rounded text-xs">
         <p className="font-medium mb-1">Animation Principles</p>
-        <p className="text-[var(--muted)]">
+        <p className="text-[var(--text-muted)]">
           Secondary motion follows Disney's principles: drag, overlap, and follow-through.
           Spring physics creates natural-looking motion that reacts to the primary animation.
         </p>

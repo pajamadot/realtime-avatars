@@ -272,7 +272,7 @@ export function PacketLossRecoveryDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Packet Loss Recovery</h3>
-      <p className="text-sm text-[var(--muted)] mb-4">
+      <p className="text-sm text-[var(--text-muted)] mb-4">
         Real-time streaming must handle packet loss. See how FEC (Forward Error Correction) and NACK (retransmission) recover lost data.
       </p>
 
@@ -285,7 +285,7 @@ export function PacketLossRecoveryDemo() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Loss Rate: {(lossRate * 100).toFixed(0)}%</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Loss Rate: {(lossRate * 100).toFixed(0)}%</label>
           <input
             type="range"
             min="0"
@@ -297,11 +297,11 @@ export function PacketLossRecoveryDemo() {
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Recovery Method</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Recovery Method</label>
           <select
             value={recoveryMethod}
             onChange={(e) => setRecoveryMethod(e.target.value as typeof recoveryMethod)}
-            className="w-full px-2 py-1 rounded bg-[var(--card-bg)] border border-[var(--border)] text-sm"
+            className="w-full px-2 py-1 rounded bg-[var(--surface-0)] border border-[var(--border)] text-sm"
           >
             <option value="none">None</option>
             <option value="fec">FEC Only</option>
@@ -311,7 +311,7 @@ export function PacketLossRecoveryDemo() {
         </div>
         {(recoveryMethod === 'fec' || recoveryMethod === 'both') && (
           <div>
-            <label className="text-xs text-[var(--muted)] block mb-1">FEC Ratio: 1:{fecRatio}</label>
+            <label className="text-xs text-[var(--text-muted)] block mb-1">FEC Ratio: 1:{fecRatio}</label>
             <input
               type="range"
               min="2"
@@ -325,13 +325,13 @@ export function PacketLossRecoveryDemo() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-3 text-xs">
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">FEC (Forward Error Correction)</p>
-          <p className="text-[var(--muted)]">Adds redundant data so receiver can reconstruct lost packets without retransmission. Low latency but uses more bandwidth.</p>
+          <p className="text-[var(--text-muted)]">Adds redundant data so receiver can reconstruct lost packets without retransmission. Low latency but uses more bandwidth.</p>
         </div>
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">NACK (Negative Acknowledgment)</p>
-          <p className="text-[var(--muted)]">Receiver requests retransmission of lost packets. Efficient bandwidth but adds RTT latency.</p>
+          <p className="text-[var(--text-muted)]">Receiver requests retransmission of lost packets. Efficient bandwidth but adds RTT latency.</p>
         </div>
       </div>
     </div>

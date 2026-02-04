@@ -115,14 +115,14 @@ export function LatencyDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-4">Voice AI Latency Visualizer</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Understand how latency accumulates across the voice AI pipeline.
         Adjust individual stages to see the impact on total round-trip time.
       </p>
 
       {/* Total latency display */}
-      <div className="mb-6 p-4 bg-[var(--card-bg-alt)] rounded-lg text-center">
-        <p className="text-sm text-[var(--muted)] mb-1">Total Round-Trip Latency</p>
+      <div className="mb-6 p-4 bg-[var(--surface-2)] rounded-lg text-center">
+        <p className="text-sm text-[var(--text-muted)] mb-1">Total Round-Trip Latency</p>
         <p className={`text-4xl font-bold ${getLatencyColor(totalLatency)}`}>
           {totalLatency}ms
         </p>
@@ -219,7 +219,7 @@ export function LatencyDemo() {
                 <span className="font-medium" style={{ color: stage.color }}>
                   {stage.name}
                 </span>
-                <span className="text-[var(--muted)]">
+                <span className="text-[var(--text-muted)]">
                   {stage.currentLatency}ms ({stage.minLatency}-{stage.maxLatency})
                 </span>
               </div>
@@ -239,28 +239,28 @@ export function LatencyDemo() {
 
       {/* Budget breakdown */}
       <div className="mt-6 grid grid-cols-4 gap-2 text-center text-xs">
-        <div className="p-2 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-2 bg-[var(--surface-2)] rounded">
           <p className="font-medium">Target</p>
           <p className="text-green-500">~500ms</p>
         </div>
-        <div className="p-2 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-2 bg-[var(--surface-2)] rounded">
           <p className="font-medium">Acceptable</p>
           <p className="text-yellow-500">~700ms</p>
         </div>
-        <div className="p-2 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-2 bg-[var(--surface-2)] rounded">
           <p className="font-medium">Noticeable</p>
           <p className="text-orange-500">~1000ms</p>
         </div>
-        <div className="p-2 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-2 bg-[var(--surface-2)] rounded">
           <p className="font-medium">Poor</p>
           <p className="text-red-500">&gt;1000ms</p>
         </div>
       </div>
 
       {/* Optimization tips */}
-      <div className="mt-6 p-4 bg-[var(--card-bg-alt)] rounded text-sm">
+      <div className="mt-6 p-4 bg-[var(--surface-2)] rounded text-sm">
         <p className="font-medium mb-2">Optimization Strategies</p>
-        <ul className="space-y-1 text-xs text-[var(--muted)]">
+        <ul className="space-y-1 text-xs text-[var(--text-muted)]">
           <li>• <strong>Streaming STT:</strong> Start processing before user finishes speaking</li>
           <li>• <strong>Streaming TTS:</strong> Begin playback before full response generated</li>
           <li>• <strong>Edge deployment:</strong> Reduce network latency with regional servers</li>

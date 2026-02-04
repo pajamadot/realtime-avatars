@@ -210,7 +210,7 @@ export function PointCloudDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Point Cloud to Gaussians</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         3DGS starts from SfM point cloud and initializes Gaussians at each point.
         Drag to rotate. Toggle to see how points become splats.
       </p>
@@ -234,7 +234,7 @@ export function PointCloudDemo() {
             <button
               onClick={() => setShowGaussians(!showGaussians)}
               className={`flex-1 py-2 rounded font-medium text-sm transition-colors ${
-                showGaussians ? 'bg-[var(--accent)] text-white' : 'bg-[var(--card-bg-alt)]'
+                showGaussians ? 'bg-[var(--accent)] text-white' : 'bg-[var(--surface-2)]'
               }`}
             >
               {showGaussians ? 'Gaussian Splats' : 'Point Cloud'}
@@ -250,7 +250,7 @@ export function PointCloudDemo() {
 
         {/* Controls */}
         <div className="space-y-4">
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-2">
               <span>Point Size</span>
               <span className="font-mono">{pointSize}px</span>
@@ -266,7 +266,7 @@ export function PointCloudDemo() {
           </div>
 
           {showGaussians && (
-            <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+            <div className="p-4 bg-[var(--surface-2)] rounded">
               <div className="flex justify-between text-sm mb-2">
                 <span>Gaussian Scale</span>
                 <span className="font-mono">{gaussianScale.toFixed(1)}x</span>
@@ -283,7 +283,7 @@ export function PointCloudDemo() {
             </div>
           )}
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-3">SfM → Gaussian Pipeline</p>
             <div className="space-y-2 text-xs">
               <div className="flex items-center gap-2">
@@ -307,7 +307,7 @@ export function PointCloudDemo() {
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">Key Insight</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               Each SfM point becomes a Gaussian with learnable parameters.
               During training, Gaussians can split (densify) or merge (prune)
               to better represent the scene.

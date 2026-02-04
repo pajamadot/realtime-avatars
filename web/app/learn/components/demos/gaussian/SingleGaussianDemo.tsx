@@ -148,7 +148,7 @@ export default function SingleGaussianDemo() {
                   px-3 py-1 text-sm rounded transition-colors
                   ${activeTab === tab
                     ? 'bg-[var(--color-gaussian)] text-white'
-                    : 'bg-[var(--card-bg-alt)] text-[var(--muted)] hover:text-[var(--foreground)]'
+                    : 'bg-[var(--surface-2)] text-[var(--text-muted)] hover:text-[var(--foreground)]'
                   }
                 `}
               >
@@ -267,8 +267,8 @@ export default function SingleGaussianDemo() {
 
           {/* Covariance matrix display */}
           <div className="mt-4 pt-4 border-t border-[var(--border)]">
-            <p className="text-xs text-[var(--muted)] mb-2">Covariance Matrix (Σ = RSS'R')</p>
-            <div className="font-mono text-xs bg-[var(--card-bg-alt)] p-2 rounded">
+            <p className="text-xs text-[var(--text-muted)] mb-2">Covariance Matrix (Σ = RSS'R')</p>
+            <div className="font-mono text-xs bg-[var(--surface-2)] p-2 rounded">
               <div className="grid grid-cols-3 gap-1 text-center">
                 {covMatrix.map((row, i) => (
                   row.map((val, j) => (
@@ -293,7 +293,7 @@ export default function SingleGaussianDemo() {
       </div>
 
       {/* Insight */}
-      <div className="p-4 bg-[var(--card-bg-alt)] border-t border-[var(--border)] text-sm text-[var(--muted)] flex items-start gap-2">
+      <div className="p-4 bg-[var(--surface-2)] border-t border-[var(--border)] text-sm text-[var(--text-muted)] flex items-start gap-2">
         <Lightbulb size={16} className="text-yellow-500 flex-shrink-0 mt-0.5" />
         <span><strong>Try this:</strong> Set X Scale to 2 and Y Scale to 0.5, then rotate around Z.
         Watch how the covariance matrix changes — this is exactly how 3DGS stores shape information!</span>

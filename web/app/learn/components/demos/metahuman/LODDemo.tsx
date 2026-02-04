@@ -193,7 +193,7 @@ export function LODDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Level of Detail (LOD) System</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         MetaHuman uses LOD to maintain performance. Closer = more triangles and higher textures.
         Far away = simplified mesh. The transition is seamless.
       </p>
@@ -213,7 +213,7 @@ export function LODDemo() {
             <button
               onClick={() => setShowWireframe(!showWireframe)}
               className={`flex-1 py-2 rounded font-medium text-sm transition-colors ${
-                showWireframe ? 'bg-[#4ecdc4] text-white' : 'bg-[var(--card-bg-alt)]'
+                showWireframe ? 'bg-[#4ecdc4] text-white' : 'bg-[var(--surface-2)]'
               }`}
             >
               {showWireframe ? 'Wireframe' : 'Solid'}
@@ -229,7 +229,7 @@ export function LODDemo() {
 
         {/* Controls */}
         <div className="space-y-4">
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-2">
               <span>Camera Distance</span>
               <span className="font-mono">{distance.toFixed(1)}m</span>
@@ -246,7 +246,7 @@ export function LODDemo() {
           </div>
 
           {!autoLOD && (
-            <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+            <div className="p-4 bg-[var(--surface-2)] rounded">
               <div className="flex justify-between text-sm mb-2">
                 <span>Manual LOD Level</span>
                 <span className="font-mono">{manualLOD}</span>
@@ -264,30 +264,30 @@ export function LODDemo() {
           )}
 
           {/* LOD info */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-3">Current LOD Stats</p>
             <div className="grid grid-cols-2 gap-2 text-xs">
-              <div className="p-2 bg-[var(--card-bg)] rounded">
-                <span className="text-[var(--muted)]">Triangles:</span>
+              <div className="p-2 bg-[var(--surface-0)] rounded">
+                <span className="text-[var(--text-muted)]">Triangles:</span>
                 <span className="font-mono ml-1">{lodInfo.triangles.toLocaleString()}</span>
               </div>
-              <div className="p-2 bg-[var(--card-bg)] rounded">
-                <span className="text-[var(--muted)]">Vertices:</span>
+              <div className="p-2 bg-[var(--surface-0)] rounded">
+                <span className="text-[var(--text-muted)]">Vertices:</span>
                 <span className="font-mono ml-1">{lodInfo.vertices.toLocaleString()}</span>
               </div>
-              <div className="p-2 bg-[var(--card-bg)] rounded">
-                <span className="text-[var(--muted)]">Texture:</span>
+              <div className="p-2 bg-[var(--surface-0)] rounded">
+                <span className="text-[var(--text-muted)]">Texture:</span>
                 <span className="font-mono ml-1">{lodInfo.textureSize}</span>
               </div>
-              <div className="p-2 bg-[var(--card-bg)] rounded">
-                <span className="text-[var(--muted)]">Range:</span>
+              <div className="p-2 bg-[var(--surface-0)] rounded">
+                <span className="text-[var(--text-muted)]">Range:</span>
                 <span className="font-mono ml-1">{lodInfo.distance}</span>
               </div>
             </div>
           </div>
 
           {/* LOD levels table */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">All LOD Levels</p>
             <div className="space-y-1 text-xs">
               {LOD_LEVELS.map((lod, i) => (
@@ -298,7 +298,7 @@ export function LODDemo() {
                   }`}
                 >
                   <span className="font-medium">{lod.name}</span>
-                  <span className="text-[var(--muted)]">
+                  <span className="text-[var(--text-muted)]">
                     {lod.triangles.toLocaleString()} tris @ {lod.distance}
                   </span>
                 </div>
@@ -308,7 +308,7 @@ export function LODDemo() {
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">Performance Impact</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               LOD 0 to LOD 4 is a 100x reduction in triangles. In a scene with multiple
               MetaHumans, this is essential for maintaining 60 FPS.
             </p>

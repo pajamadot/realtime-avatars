@@ -42,7 +42,7 @@ export function CrossTrackNav({ currentTrack }: CrossTrackNavProps) {
                 {track.title}
               </span>
             </div>
-            <p className="text-xs text-[var(--muted)]">{track.subtitle}</p>
+            <p className="text-xs text-[var(--text-muted)]">{track.subtitle}</p>
           </Link>
         ))}
       </div>

@@ -234,7 +234,7 @@ export function BoneHierarchyDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Bone Hierarchy Explorer</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Explore how skeletal animation works. Click bones to select them,
         then adjust rotation. Notice how child bones inherit parent transformations.
       </p>
@@ -247,7 +247,7 @@ export function BoneHierarchyDemo() {
             width={400}
             height={350}
             onClick={handleCanvasClick}
-            className="w-full rounded-lg border border-[var(--border)] bg-[var(--card-bg-alt)] cursor-pointer"
+            className="w-full rounded-lg border border-[var(--border)] bg-[var(--surface-2)] cursor-pointer"
           />
 
           {/* Pose buttons */}
@@ -274,10 +274,10 @@ export function BoneHierarchyDemo() {
         <div className="space-y-4">
           {/* Selected bone info */}
           {selectedBone ? (
-            <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+            <div className="p-4 bg-[var(--surface-2)] rounded">
               <div className="flex justify-between items-center mb-3">
                 <span className="font-medium">{SKELETON[selectedBone].name}</span>
-                <span className="text-xs text-[var(--muted)]">
+                <span className="text-xs text-[var(--text-muted)]">
                   Parent: {SKELETON[selectedBone].parent || 'None'}
                 </span>
               </div>
@@ -306,24 +306,24 @@ export function BoneHierarchyDemo() {
               {/* Children list */}
               {SKELETON[selectedBone].children.length > 0 && (
                 <div className="mt-3 text-xs">
-                  <span className="text-[var(--muted)]">Children: </span>
+                  <span className="text-[var(--text-muted)]">Children: </span>
                   {SKELETON[selectedBone].children.map(c => SKELETON[c].name).join(', ')}
                 </div>
               )}
             </div>
           ) : (
-            <div className="p-4 bg-[var(--card-bg-alt)] rounded text-center text-[var(--muted)]">
+            <div className="p-4 bg-[var(--surface-2)] rounded text-center text-[var(--text-muted)]">
               Click a bone joint to select it
             </div>
           )}
 
           {/* Hierarchy tree */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between items-center mb-3">
               <span className="font-medium text-sm">Bone Hierarchy</span>
               <button
                 onClick={() => setShowHierarchy(!showHierarchy)}
-                className="text-xs text-[var(--muted)]"
+                className="text-xs text-[var(--text-muted)]"
               >
                 {showHierarchy ? 'Hide Labels' : 'Show Labels'}
               </button>
@@ -377,7 +377,7 @@ export function BoneHierarchyDemo() {
           {/* Key insight */}
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">Key Insight</p>
-            <p className="text-[var(--muted)] text-xs">
+            <p className="text-[var(--text-muted)] text-xs">
               When you rotate a parent bone, all children follow. This is
               <strong> forward kinematics</strong>. MetaHuman uses 700+ bones
               with this hierarchy to create lifelike movement.

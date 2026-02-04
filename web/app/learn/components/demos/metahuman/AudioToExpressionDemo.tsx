@@ -314,7 +314,7 @@ export default function AudioToExpressionDemo() {
           </button>
           <button
             onClick={reset}
-            className="px-3 py-1 text-xs bg-[var(--card-bg-alt)] rounded hover:bg-[var(--border)]"
+            className="px-3 py-1 text-xs bg-[var(--surface-2)] rounded hover:bg-[var(--border)]"
           >
             Reset
           </button>
@@ -346,7 +346,7 @@ export default function AudioToExpressionDemo() {
                   className={`px-3 py-1 text-xs rounded ${
                     currentPhrase === phrase
                       ? 'bg-[var(--accent)] text-white'
-                      : 'bg-[var(--card-bg-alt)] hover:bg-[var(--border)]'
+                      : 'bg-[var(--surface-2)] hover:bg-[var(--border)]'
                   }`}
                 >
                   {phrases[phrase].text}
@@ -368,7 +368,7 @@ export default function AudioToExpressionDemo() {
                   className={`px-2 py-1 text-xs rounded ${
                     currentViseme === v
                       ? 'bg-[var(--accent)] text-white'
-                      : 'bg-[var(--card-bg-alt)] hover:bg-[var(--border)]'
+                      : 'bg-[var(--surface-2)] hover:bg-[var(--border)]'
                   }`}
                 >
                   {v}
@@ -392,17 +392,17 @@ export default function AudioToExpressionDemo() {
               onChange={(e) => setSmoothing(parseFloat(e.target.value))}
               className="w-full"
             />
-            <p className="text-xs text-[var(--muted)]">Higher = smoother transitions</p>
+            <p className="text-xs text-[var(--text-muted)]">Higher = smoother transitions</p>
           </div>
 
           {/* Blendshape values */}
-          <div className="p-3 bg-[var(--card-bg-alt)] rounded">
-            <p className="text-xs text-[var(--muted)] mb-2">Current Blendshapes:</p>
+          <div className="p-3 bg-[var(--surface-2)] rounded">
+            <p className="text-xs text-[var(--text-muted)] mb-2">Current Blendshapes:</p>
             <div className="space-y-1">
               {Object.entries(blendshapes).map(([key, value]) => (
                 <div key={key} className="flex items-center gap-2">
                   <span className="text-xs w-24">{key}</span>
-                  <div className="flex-1 h-2 bg-[var(--card-bg)] rounded">
+                  <div className="flex-1 h-2 bg-[var(--surface-0)] rounded">
                     <div
                       className="h-full bg-[var(--accent)] rounded"
                       style={{ width: `${value * 100}%` }}
@@ -416,7 +416,7 @@ export default function AudioToExpressionDemo() {
         </div>
       </div>
 
-      <p className="text-xs text-[var(--muted)] mt-4">
+      <p className="text-xs text-[var(--text-muted)] mt-4">
         This demonstrates how phonemes (speech sounds) map to visemes (mouth shapes).
         Neural audio-to-expression models learn these mappings from video data automatically.
       </p>

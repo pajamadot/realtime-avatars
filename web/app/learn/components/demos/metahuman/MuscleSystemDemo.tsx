@@ -234,7 +234,7 @@ export function MuscleSystemDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Facial Muscle System</h3>
-      <p className="text-sm text-[var(--muted)] mb-4">
+      <p className="text-sm text-[var(--text-muted)] mb-4">
         Anatomically-based facial animation. Click muscles to activate them and create expressions.
       </p>
 
@@ -248,10 +248,10 @@ export function MuscleSystemDemo() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Preset Expression</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Preset Expression</label>
           <select
             onChange={(e) => applyPreset(e.target.value)}
-            className="w-full px-2 py-1 rounded bg-[var(--card-bg)] border border-[var(--border)] text-sm"
+            className="w-full px-2 py-1 rounded bg-[var(--surface-0)] border border-[var(--border)] text-sm"
           >
             <option value="neutral">Neutral</option>
             <option value="smile">Smile</option>
@@ -262,7 +262,7 @@ export function MuscleSystemDemo() {
         </div>
         {selectedMuscleData && (
           <div>
-            <label className="text-xs text-[var(--muted)] block mb-1">
+            <label className="text-xs text-[var(--text-muted)] block mb-1">
               {selectedMuscleData.name}: {(selectedMuscleData.activation * 100).toFixed(0)}%
             </label>
             <input
@@ -298,9 +298,9 @@ export function MuscleSystemDemo() {
         </div>
       </div>
 
-      <div className="p-3 bg-[var(--card-bg-alt)] rounded text-xs">
+      <div className="p-3 bg-[var(--surface-2)] rounded text-xs">
         <p className="font-medium mb-1">Muscle-Based Animation</p>
-        <p className="text-[var(--muted)]">
+        <p className="text-[var(--text-muted)]">
           FACS (Facial Action Coding System) maps muscle activations to Action Units.
           MetaHuman uses this for physically plausible facial animation driven by blendshapes.
         </p>

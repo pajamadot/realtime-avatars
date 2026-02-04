@@ -57,14 +57,28 @@
   --color-streaming: #5a7d9a;
   --color-streaming-light: #e8f0f5;
 
-  /* Shadows */
-  --shadow-xs: 0 1px 2px rgba(45, 42, 38, 0.04);
-  --shadow-sm: 0 1px 3px rgba(45, 42, 38, 0.06), 0 1px 2px rgba(45, 42, 38, 0.04);
-  --shadow-md: 0 4px 6px -1px rgba(45, 42, 38, 0.06), 0 2px 4px -1px rgba(45, 42, 38, 0.04);
-  --shadow-lg: 0 10px 15px -3px rgba(45, 42, 38, 0.06), 0 4px 6px -2px rgba(45, 42, 38, 0.04);
-  --shadow-xl: 0 20px 25px -5px rgba(45, 42, 38, 0.08), 0 10px 10px -5px rgba(45, 42, 38, 0.04);
-  --shadow-inner: inset 0 2px 4px rgba(45, 42, 38, 0.04);
+  /* Shadows - Warm brown-tinted */
+  --shadow-xs: 0 1px 2px rgba(139, 90, 43, 0.06);
+  --shadow-sm: 0 1px 3px rgba(139, 90, 43, 0.08), 0 1px 2px rgba(139, 90, 43, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(139, 90, 43, 0.10), 0 2px 4px -1px rgba(139, 90, 43, 0.08);
+  --shadow-lg: 0 10px 15px -3px rgba(139, 90, 43, 0.10), 0 4px 6px -2px rgba(139, 90, 43, 0.08);
+  --shadow-xl: 0 20px 25px -5px rgba(139, 90, 43, 0.12), 0 10px 10px -5px rgba(139, 90, 43, 0.08);
+  --shadow-inner: inset 0 2px 4px rgba(139, 90, 43, 0.06);
   --shadow-focus: 0 0 0 3px rgba(196, 113, 59, 0.15);
+  --shadow-glow: 0 0 20px rgba(196, 113, 59, 0.15);
+  --shadow-card-hover: 0 8px 16px -4px rgba(139, 90, 43, 0.12), 0 4px 8px -2px rgba(139, 90, 43, 0.08);
+
+  /* Gradients */
+  --surface-warm-gradient: linear-gradient(135deg, var(--surface-0) 0%, var(--surface-2) 100%);
+  --surface-highlight-gradient: linear-gradient(135deg, #fff9e6 0%, #f5efe4 100%);
+
+  /* Difficulty Colors (for consistent theming) */
+  --difficulty-beginner: #5d8a66;
+  --difficulty-beginner-bg: rgba(93, 138, 102, 0.15);
+  --difficulty-intermediate: #c49a3b;
+  --difficulty-intermediate-bg: rgba(196, 154, 59, 0.15);
+  --difficulty-advanced: #b85c4a;
+  --difficulty-advanced-bg: rgba(184, 92, 74, 0.15);
 
   /* Border Radius */
   --radius-xs: 0.25rem;
@@ -110,10 +124,7 @@
   --line-height-relaxed: 1.625;
   --line-height-loose: 1.75;
 
-  /* Legacy variables for compatibility */
-  --card-bg: var(--surface-0);
-  --card-bg-alt: var(--surface-2);
-  --muted: var(--text-muted);
+  /* Legacy variables - use standard tokens */
   --highlight: #fff9e6;
   --link: var(--accent-dark);
 }
@@ -252,7 +263,7 @@ a:hover {
 
 .card:hover {
   border-color: var(--border-strong);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .card-interactive {
@@ -260,11 +271,17 @@ a:hover {
 }
 
 .card-interactive:hover {
-  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent-light);
 }
 
 .card-interactive:active {
-  transform: translateY(1px);
+  transform: translateY(0);
+}
+
+.card-glow:hover {
+  box-shadow: var(--shadow-card-hover), var(--shadow-glow);
 }
 
 .card-alt {
@@ -1080,4 +1097,184 @@ pre code {
   border-radius: var(--radius-md);
   padding: var(--space-4);
   overflow-x: auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   EDITOR-STYLE COMPONENTS
+   ═══════════════════════════════════════════════════════════════ */
+
+.editor-panel {
+  background: var(--surface-0);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.editor-panel-header {
+  background: var(--surface-warm-gradient);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.editor-gutter {
+  background: var(--surface-2);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-mono), monospace;
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  text-align: right;
+  user-select: none;
+  border-right: 1px solid var(--border);
+  line-height: var(--line-height-relaxed);
+}
+
+.editor-content {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--font-size-sm);
+  padding: var(--space-4);
+  background: var(--surface-0);
+  line-height: var(--line-height-relaxed);
+}
+
+.window-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.window-dots::before,
+.window-dots::after,
+.window-dots span {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+}
+
+.window-dots::before {
+  background: #ff5f57;
+}
+
+.window-dots::after {
+  background: #28c840;
+}
+
+.window-dots span {
+  background: #febc2e;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GRADIENT DIVIDERS & SECTION HEADERS
+   ═══════════════════════════════════════════════════════════════ */
+
+.divider-gradient {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+  margin: var(--space-8) 0;
+}
+
+.divider-accent {
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent-light) 20%, var(--accent-light) 80%, transparent 100%);
+  margin: var(--space-8) 0;
+}
+
+.section-header {
+  position: relative;
+  display: inline-block;
+  padding-bottom: var(--space-2);
+}
+
+.section-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: var(--radius-full);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MICRO-INTERACTIONS & ANIMATIONS
+   ═══════════════════════════════════════════════════════════════ */
+
+.animate-scale-in {
+  animation: scaleIn var(--transition-slow) ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight var(--transition-slow) ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hover-lift {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-pulse:hover {
+  animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.focus-ring-warm:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-lighter), 0 0 0 5px var(--accent);
+}
+
+/* Activity indicator (pulsing dot) */
+.activity-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--success);
+  animation: activityPulse 2s ease-in-out infinite;
+}
+
+@keyframes activityPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
 }

@@ -68,16 +68,32 @@ export default function KeyInsight({
   defaultExpanded = true,
 }: KeyInsightProps) {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
+  const [isHovered, setIsHovered] = useState(false);
 
   const config = typeConfig[type];
   const { Icon } = config;
 
   return (
-    <div className={`${config.bg} border-l-4 ${config.border} rounded-r-lg p-4 my-4`}>
+    <div
+      className={`${config.bg} border-l-4 ${config.border} rounded-r-lg p-4 my-4 transition-shadow duration-200 relative overflow-hidden`}
+      style={{
+        boxShadow: isHovered ? 'var(--shadow-md)' : undefined,
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Subtle gradient overlay for depth */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.3) 100%)',
+          opacity: 0.5,
+        }}
+      />
       <button
         type="button"
         onClick={() => expandable && setIsExpanded(!isExpanded)}
-        className={`flex items-center gap-2 font-semibold ${config.color} ${
+        className={`relative z-10 flex items-center gap-2 font-semibold ${config.color} ${
           expandable ? 'cursor-pointer hover:opacity-80' : 'cursor-default'
         } transition-opacity`}
       >
@@ -93,7 +109,7 @@ export default function KeyInsight({
       </button>
 
       <div
-        className={`overflow-hidden transition-all duration-300 ${
+        className={`relative z-10 overflow-hidden transition-all duration-300 ${
           isExpanded ? 'max-h-[500px] opacity-100 mt-3' : 'max-h-0 opacity-0'
         }`}
       >

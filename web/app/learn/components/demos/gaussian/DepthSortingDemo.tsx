@@ -171,7 +171,7 @@ export function DepthSortingDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Depth Sorting for Alpha Blending</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Transparent objects must be rendered back-to-front for correct blending.
         3DGS sorts Gaussians by depth before compositing. Watch the sorting process.
       </p>
@@ -190,7 +190,7 @@ export function DepthSortingDemo() {
           <div className="mt-4 flex gap-2">
             <button
               onClick={shuffleSplats}
-              className="flex-1 py-2 rounded font-medium text-sm bg-[var(--card-bg-alt)]"
+              className="flex-1 py-2 rounded font-medium text-sm bg-[var(--surface-2)]"
             >
               Shuffle Depths
             </button>
@@ -222,7 +222,7 @@ export function DepthSortingDemo() {
         {/* Info */}
         <div className="space-y-4">
           {/* Sort order visualization */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Current Render Order</p>
             <div className="flex flex-wrap gap-1">
               {sortingIndices.map((idx, i) => {
@@ -239,14 +239,14 @@ export function DepthSortingDemo() {
                 );
               })}
             </div>
-            <p className="text-xs text-[var(--muted)] mt-2">
+            <p className="text-xs text-[var(--text-muted)] mt-2">
               {sortingEnabled ? 'Sorted: far (high z) → near (low z)' : 'Unsorted: original order'}
             </p>
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Why Sorting Matters</p>
-            <div className="space-y-2 text-xs text-[var(--muted)]">
+            <div className="space-y-2 text-xs text-[var(--text-muted)]">
               <p>
                 <span className="font-medium text-[var(--foreground)]">Without sorting:</span>{' '}
                 Near objects may be drawn first, then far objects paint over them incorrectly.
@@ -258,9 +258,9 @@ export function DepthSortingDemo() {
             </div>
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">3DGS Sorting Strategy</p>
-            <ol className="text-xs text-[var(--muted)] space-y-1">
+            <ol className="text-xs text-[var(--text-muted)] space-y-1">
               <li>1. Project all Gaussians to screen space</li>
               <li>2. Compute view-space depth for each</li>
               <li>3. GPU radix sort by depth (O(n) parallel)</li>
@@ -270,7 +270,7 @@ export function DepthSortingDemo() {
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">Performance Note</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               Sorting millions of Gaussians per frame is expensive. 3DGS uses GPU radix sort
               which runs in parallel. Per-tile sorting reduces the problem size further.
             </p>

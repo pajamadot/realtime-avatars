@@ -257,7 +257,7 @@ export function BackpropagationDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Backpropagation</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         The algorithm that trains neural networks. Forward pass computes output,
         backward pass computes gradients, then weights update to reduce error.
       </p>
@@ -284,7 +284,7 @@ export function BackpropagationDemo() {
             <button
               onClick={() => setIsAnimating(!isAnimating)}
               className={`flex-1 py-2 rounded font-medium text-sm ${
-                isAnimating ? 'bg-red-500 text-white' : 'bg-[var(--card-bg-alt)]'
+                isAnimating ? 'bg-red-500 text-white' : 'bg-[var(--surface-2)]'
               }`}
             >
               {isAnimating ? 'Stop' : 'Auto'}
@@ -313,7 +313,7 @@ export function BackpropagationDemo() {
 
         {/* Parameters */}
         <div className="space-y-4">
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-2">
               <span>Input</span>
               <span className="font-mono">{input.toFixed(2)}</span>
@@ -329,7 +329,7 @@ export function BackpropagationDemo() {
             />
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-2">
               <span>Target</span>
               <span className="font-mono">{target.toFixed(2)}</span>
@@ -345,7 +345,7 @@ export function BackpropagationDemo() {
             />
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between text-sm mb-2">
               <span>Learning Rate</span>
               <span className="font-mono">{learningRate.toFixed(2)}</span>
@@ -361,9 +361,9 @@ export function BackpropagationDemo() {
             />
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">The Algorithm</p>
-            <ol className="text-xs text-[var(--muted)] space-y-1">
+            <ol className="text-xs text-[var(--text-muted)] space-y-1">
               <li className={phase === 'forward' ? 'text-[#2ecc71]' : ''}>
                 1. Forward: Compute activations layer by layer
               </li>
@@ -378,7 +378,7 @@ export function BackpropagationDemo() {
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">For Diffusion Models</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               The U-Net denoiser is trained with backpropagation. Gradients flow from
               the reconstruction loss back through millions of parameters, updating
               each weight to predict noise better.

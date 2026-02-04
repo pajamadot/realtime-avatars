@@ -184,7 +184,7 @@ export function JointConstraintsDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Joint Constraints</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Real joints have physical limits. Elbows can't bend backward. MetaHuman enforces these
         constraints to prevent unnatural poses.
       </p>
@@ -206,7 +206,7 @@ export function JointConstraintsDemo() {
                 key={j.id}
                 onClick={() => setSelectedJoint(j.id)}
                 className={`flex-1 py-2 rounded font-medium text-sm transition-colors ${
-                  selectedJoint === j.id ? 'bg-[var(--accent)] text-white' : 'bg-[var(--card-bg-alt)]'
+                  selectedJoint === j.id ? 'bg-[var(--accent)] text-white' : 'bg-[var(--surface-2)]'
                 }`}
               >
                 {j.name}
@@ -233,7 +233,7 @@ export function JointConstraintsDemo() {
         {/* Controls */}
         <div className="space-y-4">
           {selectedJointData && (
-            <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+            <div className="p-4 bg-[var(--surface-2)] rounded">
               <div className="flex justify-between text-sm mb-2">
                 <span>{selectedJointData.name} Angle</span>
                 <span className="font-mono">{selectedJointData.angle.toFixed(0)}°</span>
@@ -246,20 +246,20 @@ export function JointConstraintsDemo() {
                 onChange={(e) => updateJointAngle(selectedJoint, Number(e.target.value))}
                 className="w-full"
               />
-              <div className="flex justify-between text-xs text-[var(--muted)] mt-1">
+              <div className="flex justify-between text-xs text-[var(--text-muted)] mt-1">
                 <span>Limit: {selectedJointData.limits.min}°</span>
                 <span>Limit: {selectedJointData.limits.max}°</span>
               </div>
             </div>
           )}
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Joint Limits</p>
             <div className="space-y-2 text-xs">
               {joints.map(j => (
-                <div key={j.id} className="flex justify-between p-2 bg-[var(--card-bg)] rounded">
+                <div key={j.id} className="flex justify-between p-2 bg-[var(--surface-0)] rounded">
                   <span className="font-medium">{j.name}</span>
-                  <span className="text-[var(--muted)]">
+                  <span className="text-[var(--text-muted)]">
                     {j.limits.min}° to {j.limits.max}°
                   </span>
                 </div>
@@ -267,9 +267,9 @@ export function JointConstraintsDemo() {
             </div>
           </div>
 
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Constraint Types</p>
-            <div className="space-y-2 text-xs text-[var(--muted)]">
+            <div className="space-y-2 text-xs text-[var(--text-muted)]">
               <p><span className="font-medium text-[var(--foreground)]">Hinge:</span> Single axis rotation (elbow, knee)</p>
               <p><span className="font-medium text-[var(--foreground)]">Ball:</span> Multi-axis with cone limits (shoulder, hip)</p>
               <p><span className="font-medium text-[var(--foreground)]">Saddle:</span> Two-axis with asymmetric limits (thumb)</p>
@@ -278,7 +278,7 @@ export function JointConstraintsDemo() {
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">In Animation</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               Constraints prevent impossible poses during IK solving and motion retargeting.
               They also help with collision avoidance (elbow not going through torso).
             </p>

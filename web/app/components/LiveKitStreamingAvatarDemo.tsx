@@ -40,7 +40,7 @@ function AvatarStage() {
           className="h-full w-full object-cover"
         />
       ) : (
-        <div className="text-sm text-[var(--muted)]">
+        <div className="text-sm text-[var(--text-muted)]">
           Waiting for an avatar video track...
         </div>
       )}
@@ -53,12 +53,12 @@ function AgentStatus() {
 
   return (
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-      <p className="text-xs text-[var(--muted)]">
+      <p className="text-xs text-[var(--text-muted)]">
         Voice assistant state: <span className="font-medium">{state}</span>
       </p>
       {audioTrack ? (
         <div className="flex items-center gap-3">
-          <span className="text-xs text-[var(--muted)]">Audio</span>
+          <span className="text-xs text-[var(--text-muted)]">Audio</span>
           <BarVisualizer
             state={state}
             barCount={18}
@@ -67,7 +67,7 @@ function AgentStatus() {
           />
         </div>
       ) : (
-        <p className="text-xs text-[var(--muted)]">
+        <p className="text-xs text-[var(--text-muted)]">
           (No agent audio track yet)
         </p>
       )}
@@ -178,7 +178,7 @@ export default function LiveKitStreamingAvatarDemo({
     <div className={className}>
       <div className="card p-5 mb-4">
         <p className="font-medium mb-2">LiveKit Streaming Avatar Demo</p>
-        <p className="text-sm text-[var(--muted)]">
+        <p className="text-sm text-[var(--text-muted)]">
           This page connects to a LiveKit room and renders the first remote video track (your
           avatar worker). To make this fully interactive, run a LiveKit Agent with an avatar
           integration (e.g., Hedra) under the same <code>agentName</code>.
@@ -188,29 +188,29 @@ export default function LiveKitStreamingAvatarDemo({
       <div className="card p-5 mb-4">
         <div className="grid md:grid-cols-3 gap-4">
           <label className="text-sm">
-            <div className="text-xs text-[var(--muted)] mb-1">Room</div>
+            <div className="text-xs text-[var(--text-muted)] mb-1">Room</div>
             <input
               value={roomName}
               onChange={(e) => setRoomName(e.target.value)}
-              className="w-full bg-[var(--card-bg)] border border-[var(--border)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--border-strong)]"
+              className="w-full bg-[var(--surface-0)] border border-[var(--border)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--border-strong)]"
               placeholder="realtime-avatar-demo"
             />
           </label>
           <label className="text-sm">
-            <div className="text-xs text-[var(--muted)] mb-1">Agent name (optional)</div>
+            <div className="text-xs text-[var(--text-muted)] mb-1">Agent name (optional)</div>
             <input
               value={agentName}
               onChange={(e) => setAgentName(e.target.value)}
-              className="w-full bg-[var(--card-bg)] border border-[var(--border)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--border-strong)]"
+              className="w-full bg-[var(--surface-0)] border border-[var(--border)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--border-strong)]"
               placeholder="avatar-agent"
             />
           </label>
           <label className="text-sm">
-            <div className="text-xs text-[var(--muted)] mb-1">Display name</div>
+            <div className="text-xs text-[var(--text-muted)] mb-1">Display name</div>
             <input
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
-              className="w-full bg-[var(--card-bg)] border border-[var(--border)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--border-strong)]"
+              className="w-full bg-[var(--surface-0)] border border-[var(--border)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--border-strong)]"
               placeholder="web-user"
             />
           </label>
@@ -218,7 +218,7 @@ export default function LiveKitStreamingAvatarDemo({
 
         <div className="mt-6 pt-5 border-t border-[var(--border)]">
           <p className="text-sm font-medium mb-2">Avatar (fal.ai)</p>
-          <p className="text-xs text-[var(--muted)] mb-3">
+          <p className="text-xs text-[var(--text-muted)] mb-3">
             Generate a face image, then we pass the image URL to the agent via LiveKit dispatch
             metadata (<code>avatarImageUrl</code>). The fal key stays server-side via the proxy
             route.
@@ -226,12 +226,12 @@ export default function LiveKitStreamingAvatarDemo({
 
           <div className="grid md:grid-cols-3 gap-4">
             <label className="text-sm md:col-span-2">
-              <div className="text-xs text-[var(--muted)] mb-1">Prompt</div>
+              <div className="text-xs text-[var(--text-muted)] mb-1">Prompt</div>
               <textarea
                 value={avatarPrompt}
                 onChange={(e) => setAvatarPrompt(e.target.value)}
                 rows={3}
-                className="w-full bg-[var(--card-bg)] border border-[var(--border)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--border-strong)] resize-y"
+                className="w-full bg-[var(--surface-0)] border border-[var(--border)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--border-strong)] resize-y"
                 placeholder="Describe your digital human..."
               />
             </label>
@@ -247,11 +247,11 @@ export default function LiveKitStreamingAvatarDemo({
               </button>
 
               <label className="text-sm">
-                <div className="text-xs text-[var(--muted)] mb-1">Or paste image URL</div>
+                <div className="text-xs text-[var(--text-muted)] mb-1">Or paste image URL</div>
                 <input
                   value={avatarImageUrl}
                   onChange={(e) => setAvatarImageUrl(e.target.value)}
-                  className="w-full bg-[var(--card-bg)] border border-[var(--border)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--border-strong)]"
+                  className="w-full bg-[var(--surface-0)] border border-[var(--border)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--border-strong)]"
                   placeholder="https://..."
                 />
               </label>
@@ -265,7 +265,7 @@ export default function LiveKitStreamingAvatarDemo({
                 alt="Generated avatar"
                 className="h-24 w-24 rounded border border-[var(--border)] object-cover"
               />
-              <p className="text-xs text-[var(--muted)] break-all">
+              <p className="text-xs text-[var(--text-muted)] break-all">
                 Using: <code>{avatarImageUrl}</code>
               </p>
             </div>
@@ -293,7 +293,7 @@ export default function LiveKitStreamingAvatarDemo({
           >
             Leave
           </button>
-          <p className="text-xs text-[var(--muted)]">
+          <p className="text-xs text-[var(--text-muted)]">
             Identity: <code>{identity}</code>
           </p>
         </div>

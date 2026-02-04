@@ -198,7 +198,7 @@ export function NeuralNetworkDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Neural Network Forward Pass</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Watch data flow through a neural network. Each neuron computes a weighted sum of inputs,
         adds a bias, then applies an activation function.
       </p>
@@ -210,7 +210,7 @@ export function NeuralNetworkDemo() {
             ref={canvasRef}
             width={500}
             height={300}
-            className="w-full rounded-lg border border-[var(--border)] bg-[var(--card-bg-alt)]"
+            className="w-full rounded-lg border border-[var(--border)] bg-[var(--surface-2)]"
           />
 
           {/* Controls */}
@@ -220,7 +220,7 @@ export function NeuralNetworkDemo() {
               disabled={isForwardPassing}
               className={`px-4 py-2 rounded font-medium text-sm transition-colors ${
                 isForwardPassing
-                  ? 'bg-[var(--border)] text-[var(--muted)]'
+                  ? 'bg-[var(--border)] text-[var(--text-muted)]'
                   : 'bg-[var(--accent)] text-white'
               }`}
             >
@@ -244,7 +244,7 @@ export function NeuralNetworkDemo() {
         {/* Controls panel */}
         <div className="space-y-4">
           {/* Input values */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-3">Input Values</p>
             {inputValues.map((val, i) => (
               <div key={i} className="mb-2">
@@ -270,7 +270,7 @@ export function NeuralNetworkDemo() {
           </div>
 
           {/* Activation function */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-3">Activation Function</p>
             <div className="space-y-2">
               {Object.entries(ACTIVATION_FUNCTIONS).map(([key, { name, formula }]) => (
@@ -280,7 +280,7 @@ export function NeuralNetworkDemo() {
                   className={`w-full p-2 rounded text-left text-sm transition-colors ${
                     activationFn === key
                       ? 'bg-[var(--accent)] text-white'
-                      : 'bg-[var(--card-bg)] hover:bg-[var(--border)]'
+                      : 'bg-[var(--surface-0)] hover:bg-[var(--border)]'
                   }`}
                 >
                   <span className="font-medium">{name}</span>
@@ -292,12 +292,12 @@ export function NeuralNetworkDemo() {
 
           {/* Output */}
           {layers.length > 0 && (
-            <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+            <div className="p-4 bg-[var(--surface-2)] rounded">
               <p className="font-medium text-sm mb-2">Output</p>
               <div className="grid grid-cols-2 gap-2">
                 {layers[layers.length - 1]?.neurons.map((n, i) => (
-                  <div key={i} className="p-2 bg-[var(--card-bg)] rounded text-center">
-                    <p className="text-xs text-[var(--muted)]">y{i + 1}</p>
+                  <div key={i} className="p-2 bg-[var(--surface-0)] rounded text-center">
+                    <p className="text-xs text-[var(--text-muted)]">y{i + 1}</p>
                     <p className="font-mono font-bold">{n.activated.toFixed(3)}</p>
                   </div>
                 ))}
@@ -308,12 +308,12 @@ export function NeuralNetworkDemo() {
       </div>
 
       {/* Explanation */}
-      <div className="mt-6 p-4 bg-[var(--card-bg-alt)] rounded">
+      <div className="mt-6 p-4 bg-[var(--surface-2)] rounded">
         <p className="font-medium mb-2">The Forward Pass Equation</p>
         <code className="text-sm block mb-2 font-mono">
           output = activation(Σ(weight × input) + bias)
         </code>
-        <p className="text-xs text-[var(--muted)]">
+        <p className="text-xs text-[var(--text-muted)]">
           Green connections = positive weights (amplify signal), Red = negative weights (inhibit signal).
           Line thickness shows weight magnitude. This is how diffusion U-Nets, face encoders, and LLMs process data.
         </p>

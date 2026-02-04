@@ -226,7 +226,7 @@ export function EyeGazeDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Eye Gaze & Tracking</h3>
-      <p className="text-sm text-[var(--muted)] mb-4">
+      <p className="text-sm text-[var(--text-muted)] mb-4">
         Eyes are crucial for believable avatars. Control gaze direction, blink, and pupil dilation.
       </p>
 
@@ -240,7 +240,7 @@ export function EyeGazeDemo() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Gaze X: {gazeX.toFixed(2)}</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Gaze X: {gazeX.toFixed(2)}</label>
           <input
             type="range"
             min="-1"
@@ -253,7 +253,7 @@ export function EyeGazeDemo() {
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Gaze Y: {gazeY.toFixed(2)}</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Gaze Y: {gazeY.toFixed(2)}</label>
           <input
             type="range"
             min="-1"
@@ -266,7 +266,7 @@ export function EyeGazeDemo() {
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Blink: {(blinkAmount * 100).toFixed(0)}%</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Blink: {(blinkAmount * 100).toFixed(0)}%</label>
           <input
             type="range"
             min="0"
@@ -278,7 +278,7 @@ export function EyeGazeDemo() {
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Pupil: {(pupilDilation * 100).toFixed(0)}%</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Pupil: {(pupilDilation * 100).toFixed(0)}%</label>
           <input
             type="range"
             min="0.2"
@@ -311,13 +311,13 @@ export function EyeGazeDemo() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-3 text-xs">
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Gaze Direction</p>
-          <p className="text-[var(--muted)]">Controlled by eye bone rotation. ARKit provides eyeLookIn/Out/Up/Down blendshapes for detailed control.</p>
+          <p className="text-[var(--text-muted)]">Controlled by eye bone rotation. ARKit provides eyeLookIn/Out/Up/Down blendshapes for detailed control.</p>
         </div>
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Pupil Response</p>
-          <p className="text-[var(--muted)]">Dilates with emotion and lighting. Small detail that adds significant realism to digital humans.</p>
+          <p className="text-[var(--text-muted)]">Dilates with emotion and lighting. Small detail that adds significant realism to digital humans.</p>
         </div>
       </div>
     </div>

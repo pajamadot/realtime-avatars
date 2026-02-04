@@ -48,10 +48,10 @@ export default function GenerativeVideoPage() {
         <div className="flex items-center gap-3 mb-4">
           <div className="w-4 h-4 rounded-full" style={{ backgroundColor: color }} />
           <span className="badge">Diffusion / Transformer</span>
-          <span className="text-sm text-[var(--muted)]">~60 min</span>
+          <span className="text-sm text-[var(--text-muted)]">~60 min</span>
         </div>
         <h1 className="text-3xl font-semibold mb-2">{content.title}</h1>
-        <p className="text-lg text-[var(--muted)]">{content.subtitle}</p>
+        <p className="text-lg text-[var(--text-muted)]">{content.subtitle}</p>
       </section>
 
       {/* Progress tracker */}
@@ -64,7 +64,7 @@ export default function GenerativeVideoPage() {
               onClick={() => setCurrentSection(section.id)}
               className={`
                 flex items-center gap-2 px-3 py-1.5 rounded-full text-sm whitespace-nowrap transition-colors
-                ${section.id === currentSection ? 'font-medium text-white' : 'text-[var(--muted)] hover:text-[var(--foreground)]'}
+                ${section.id === currentSection ? 'font-medium text-white' : 'text-[var(--text-muted)] hover:text-[var(--foreground)]'}
               `}
               style={section.id === currentSection ? { backgroundColor: color } : undefined}
             >
@@ -85,7 +85,7 @@ export default function GenerativeVideoPage() {
         <h2 className="text-2xl font-semibold mb-4">What is Generative Video?</h2>
 
         <div className="prose prose-neutral max-w-none">
-          <p className="text-lg text-[var(--muted)] leading-relaxed mb-6">
+          <p className="text-lg text-[var(--text-muted)] leading-relaxed mb-6">
             {content.intro.text}
           </p>
         </div>
@@ -94,26 +94,26 @@ export default function GenerativeVideoPage() {
         <div className="highlight-box">
           <p className="font-medium mb-4">The Core Idea in 30 Seconds</p>
           <div className="grid md:grid-cols-3 gap-4 text-center">
-            <div className="p-4 bg-[var(--card-bg)] rounded">
+            <div className="p-4 bg-[var(--surface-0)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
                 <Monitor size={24} className="text-[var(--color-generative)]" />
               </div>
               <p className="font-medium">Add Noise → Learn to Reverse</p>
-              <p className="text-sm text-[var(--muted)]">Train on clear→noisy, generate noisy→clear</p>
+              <p className="text-sm text-[var(--text-muted)]">Train on clear→noisy, generate noisy→clear</p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded">
+            <div className="p-4 bg-[var(--surface-0)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
                 <Mic size={24} className="text-[var(--color-generative)]" />
               </div>
               <p className="font-medium">Audio Drives Motion</p>
-              <p className="text-sm text-[var(--muted)]">Sound patterns map to mouth shapes automatically</p>
+              <p className="text-sm text-[var(--text-muted)]">Sound patterns map to mouth shapes automatically</p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded">
+            <div className="p-4 bg-[var(--surface-0)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
                 <Image size={24} className="text-[var(--color-generative)]" />
               </div>
               <p className="font-medium">One Photo → Any Voice</p>
-              <p className="text-sm text-[var(--muted)]">No per-person training, works on any face</p>
+              <p className="text-sm text-[var(--text-muted)]">No per-person training, works on any face</p>
             </div>
           </div>
         </div>
@@ -122,33 +122,33 @@ export default function GenerativeVideoPage() {
         <div className="card p-6 mt-6">
           <h3 className="font-semibold mb-3">The Marble Sculpture Metaphor</h3>
           <div className="grid md:grid-cols-4 gap-4">
-            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
+            <div className="text-center p-4 bg-[var(--surface-2)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
                 <Box size={24} className="text-[var(--color-generative)]" />
               </div>
               <p className="text-sm font-medium">1. Perfect Sculpture</p>
-              <p className="text-xs text-[var(--muted)]">Start with a clear image</p>
+              <p className="text-xs text-[var(--text-muted)]">Start with a clear image</p>
             </div>
-            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
+            <div className="text-center p-4 bg-[var(--surface-2)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
                 <Layers size={24} className="text-[var(--color-generative)]" />
               </div>
               <p className="text-sm font-medium">2. Sandpaper 1000x</p>
-              <p className="text-xs text-[var(--muted)]">Add noise until unrecognizable</p>
+              <p className="text-xs text-[var(--text-muted)]">Add noise until unrecognizable</p>
             </div>
-            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
+            <div className="text-center p-4 bg-[var(--surface-2)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
                 <Paintbrush size={24} className="text-[var(--color-generative)]" />
               </div>
               <p className="text-sm font-medium">3. Train Restorer</p>
-              <p className="text-xs text-[var(--muted)]">Learn to undo one stroke</p>
+              <p className="text-xs text-[var(--text-muted)]">Learn to undo one stroke</p>
             </div>
-            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded">
+            <div className="text-center p-4 bg-[var(--surface-2)] rounded">
               <div className="w-12 h-12 mx-auto mb-2 rounded-lg bg-[var(--color-generative-light)] flex items-center justify-center">
                 <Sparkles size={24} className="text-[var(--color-generative)]" />
               </div>
               <p className="text-sm font-medium">4. Generate</p>
-              <p className="text-xs text-[var(--muted)]">Rough block → sculpture emerges</p>
+              <p className="text-xs text-[var(--text-muted)]">Rough block → sculpture emerges</p>
             </div>
           </div>
         </div>
@@ -335,7 +335,7 @@ export default function GenerativeVideoPage() {
         {/* Gradient Descent Demo - Fundamental */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">How Neural Networks Learn</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Diffusion models learn to denoise through gradient descent. This fundamental algorithm drives all deep learning.
           </p>
           <GradientDescentDemo />
@@ -344,7 +344,7 @@ export default function GenerativeVideoPage() {
         {/* Neural Network Demo - Fundamental */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Neural Network Forward Pass</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Watch data flow through layers of neurons. This is the basic building block of diffusion models and face encoders.
           </p>
           <NeuralNetworkDemo />
@@ -353,7 +353,7 @@ export default function GenerativeVideoPage() {
         {/* U-Net Architecture Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">U-Net Architecture</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             The U-Net is the denoising backbone of Stable Diffusion. Explore its encoder-decoder structure with skip connections.
           </p>
           <UNetArchitectureDemo />
@@ -362,7 +362,7 @@ export default function GenerativeVideoPage() {
         {/* Cross-Attention Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Cross-Attention Mechanism</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             See how audio tokens guide which parts of the image to modify. This is how the model knows to move the mouth when speaking.
           </p>
           <CrossAttentionDemo />
@@ -371,7 +371,7 @@ export default function GenerativeVideoPage() {
         {/* Noise Schedule Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Noise Schedule Comparison</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Different schedules control how quickly noise is added/removed. The schedule significantly affects generation quality and speed.
           </p>
           <NoiseScheduleDemo />
@@ -380,7 +380,7 @@ export default function GenerativeVideoPage() {
         {/* CFG Strength Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Classifier-Free Guidance</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             CFG controls how strongly the model follows conditioning. Too low = blurry, too high = artifacts. Find the sweet spot.
           </p>
           <CFGStrengthDemo />
@@ -389,7 +389,7 @@ export default function GenerativeVideoPage() {
         {/* Temporal Consistency Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Temporal Consistency</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Video generation requires frame-to-frame coherence. Compare raw output vs temporally smoothed output.
           </p>
           <TemporalConsistencyDemo />
@@ -398,7 +398,7 @@ export default function GenerativeVideoPage() {
         {/* Convolution Demo - Fundamental */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Convolution Operation</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             The fundamental operation behind CNNs. Watch how kernels slide over images to extract features for face encoding.
           </p>
           <ConvolutionDemo />
@@ -407,7 +407,7 @@ export default function GenerativeVideoPage() {
         {/* Sampler Comparison Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Sampler Comparison</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Compare DDPM, DDIM, Euler, and DPM++ samplers. See how modern samplers achieve quality in 20 steps vs 1000.
           </p>
           <SamplerComparisonDemo />
@@ -416,7 +416,7 @@ export default function GenerativeVideoPage() {
         {/* Face Encoder Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Face Encoder Architecture</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             See how face encoders extract identity, expression, and pose into a compact latent code for conditioning.
           </p>
           <FaceEncoderDemo />
@@ -425,7 +425,7 @@ export default function GenerativeVideoPage() {
         {/* Activation Functions Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Activation Functions</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Explore ReLU, Sigmoid, Tanh, and GELU - the non-linearities that enable neural networks to learn.
           </p>
           <ActivationFunctionsDemo />
@@ -434,7 +434,7 @@ export default function GenerativeVideoPage() {
         {/* Backpropagation Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Backpropagation</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Watch the training algorithm in action: forward pass, backward pass, and weight updates.
           </p>
           <BackpropagationDemo />
@@ -443,7 +443,7 @@ export default function GenerativeVideoPage() {
         {/* Pooling Layers Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Pooling Layers</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Pooling reduces spatial dimensions while preserving important features. Essential for building efficient encoders.
           </p>
           <PoolingLayerDemo />
@@ -452,7 +452,7 @@ export default function GenerativeVideoPage() {
         {/* VAE Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Variational Autoencoder (VAE)</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Stable Diffusion operates in VAE latent space. Understand how images are compressed and reconstructed.
           </p>
           <VAEDemo />
@@ -461,7 +461,7 @@ export default function GenerativeVideoPage() {
         {/* Motion Field Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Motion Field (Optical Flow)</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Visualize per-pixel motion vectors. Motion fields help video models understand and predict movement patterns.
           </p>
           <MotionFieldDemo />
@@ -470,7 +470,7 @@ export default function GenerativeVideoPage() {
         {/* Dropout Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Dropout Regularization</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Prevent overfitting by randomly deactivating neurons during training. Watch the network learn redundant representations.
           </p>
           <DropoutDemo />
@@ -479,7 +479,7 @@ export default function GenerativeVideoPage() {
         {/* Batch Normalization Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Batch Normalization</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Normalize activations to stabilize training. See how BatchNorm transforms the distribution of layer outputs.
           </p>
           <BatchNormalizationDemo />
@@ -488,7 +488,7 @@ export default function GenerativeVideoPage() {
         {/* Attention Mechanism Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Attention Mechanism</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Explore self-attention and cross-attention. These mechanisms allow models to focus on relevant parts of the input.
           </p>
           <AttentionMechanismDemo />
@@ -497,7 +497,7 @@ export default function GenerativeVideoPage() {
         {/* Loss Function Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Loss Functions</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Loss functions measure prediction errors. Compare MSE, MAE, BCE, and Huber loss for different training scenarios.
           </p>
           <LossFunctionDemo />
@@ -506,7 +506,7 @@ export default function GenerativeVideoPage() {
         {/* Embedding Space Demo */}
         <div className="mt-8">
           <h3 className="text-xl font-semibold mb-3">Embedding Space</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Explore how neural networks learn meaningful vector representations. Similar concepts cluster together in embedding space.
           </p>
           <EmbeddingSpaceDemo />
@@ -518,7 +518,7 @@ export default function GenerativeVideoPage() {
       {/* Section 2: Pipeline */}
       <section id="pipeline" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">The Generation Pipeline</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           Audio comes in, identity reference is extracted, and through iterative denoising,
           a photorealistic talking video emerges.
         </p>
@@ -534,7 +534,7 @@ export default function GenerativeVideoPage() {
         {/* Architecture note */}
         <div className="research-note mt-6">
           <p className="font-medium mb-2">Key Architectural Insight</p>
-          <p className="text-sm text-[var(--muted)]">
+          <p className="text-sm text-[var(--text-muted)]">
             The magic happens in the U-Net or Transformer denoiser, which receives conditioning
             from both the audio (what motion to generate) and the reference image (what identity
             to preserve). Cross-attention layers let these signals guide the denoising process.
@@ -547,7 +547,7 @@ export default function GenerativeVideoPage() {
       {/* Section 3: Key Concepts */}
       <section id="concepts" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">Key Concepts</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           Understanding these five pillars will give you a complete mental model of how
           diffusion-based talking heads work.
         </p>
@@ -575,7 +575,7 @@ export default function GenerativeVideoPage() {
       {/* Section 4: Implementation */}
       <section id="implementation" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">Build It Yourself</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           Start with SadTalker for quick results, then explore more advanced options.
         </p>
 
@@ -601,7 +601,7 @@ export default function GenerativeVideoPage() {
                 </span>
                 <div>
                   <p className="font-medium text-sm">{resource.title}</p>
-                  <p className="text-xs text-[var(--muted)]">{resource.type}</p>
+                  <p className="text-xs text-[var(--text-muted)]">{resource.type}</p>
                 </div>
               </a>
             ))}
@@ -618,7 +618,7 @@ export default function GenerativeVideoPage() {
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div className="card-alt p-5">
             <p className="font-medium mb-3 text-green-600 flex items-center gap-1"><Check size={16} /> Use When</p>
-            <ul className="space-y-2 text-sm text-[var(--muted)]">
+            <ul className="space-y-2 text-sm text-[var(--text-muted)]">
               {content.tradeoffs.when.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <span className="text-green-500">+</span>
@@ -629,7 +629,7 @@ export default function GenerativeVideoPage() {
           </div>
           <div className="card-alt p-5">
             <p className="font-medium mb-3 text-red-600 flex items-center gap-1"><X size={16} /> Avoid When</p>
-            <ul className="space-y-2 text-sm text-[var(--muted)]">
+            <ul className="space-y-2 text-sm text-[var(--text-muted)]">
               {content.tradeoffs.whenNot.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <span className="text-red-500">−</span>
@@ -642,7 +642,7 @@ export default function GenerativeVideoPage() {
 
         <div className="highlight-box">
           <p className="font-medium mb-2">Best Use Case</p>
-          <p className="text-[var(--muted)]">{content.tradeoffs.bestFor}</p>
+          <p className="text-[var(--text-muted)]">{content.tradeoffs.bestFor}</p>
         </div>
       </section>
 
@@ -657,7 +657,7 @@ export default function GenerativeVideoPage() {
               </p>
               <p className="text-sm mt-2">
                 <span className="text-green-600 font-medium">Actually:</span>{' '}
-                <span className="text-[var(--muted)]">{item.correct}</span>
+                <span className="text-[var(--text-muted)]">{item.correct}</span>
               </p>
             </div>
           ))}
@@ -681,9 +681,9 @@ export default function GenerativeVideoPage() {
               {content.avatarApplications.approaches.map((approach) => (
                 <tr key={approach.name}>
                   <td className="font-medium">{approach.name}</td>
-                  <td className="text-[var(--muted)]">{approach.description}</td>
+                  <td className="text-[var(--text-muted)]">{approach.description}</td>
                   <td>{approach.example}</td>
-                  <td className="text-[var(--muted)]">
+                  <td className="text-[var(--text-muted)]">
                     {approach.name === '2D Warping' && 'Quick prototypes'}
                     {approach.name === '3DMM-based' && 'Controllable animation'}
                     {approach.name === 'NeRF-based' && 'Multi-view synthesis'}
@@ -700,7 +700,7 @@ export default function GenerativeVideoPage() {
       <section>
         <div className="card p-6 text-center">
           <h3 className="font-semibold mb-2">Ready to Go Deeper?</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Explore the math behind diffusion, or see how this compares to other avatar approaches.
           </p>
           <div className="flex items-center justify-center gap-4">

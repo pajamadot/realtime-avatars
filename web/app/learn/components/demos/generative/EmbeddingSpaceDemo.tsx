@@ -227,7 +227,7 @@ export function EmbeddingSpaceDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Embedding Space</h3>
-      <p className="text-sm text-[var(--muted)] mb-4">
+      <p className="text-sm text-[var(--text-muted)] mb-4">
         Neural networks learn to map concepts to vectors. Click to query nearest neighbors or select points.
       </p>
 
@@ -258,20 +258,20 @@ export function EmbeddingSpaceDemo() {
         </label>
         <button
           onClick={() => { setQueryPoint(null); setSelectedPoint(null); }}
-          className="px-3 py-1 text-sm bg-[var(--card-bg)] border border-[var(--border)] rounded hover:border-[var(--border-strong)]"
+          className="px-3 py-1 text-sm bg-[var(--surface-0)] border border-[var(--border)] rounded hover:border-[var(--border-strong)]"
         >
           Clear
         </button>
       </div>
 
       <div className="grid md:grid-cols-2 gap-3 text-xs">
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Vector Similarity</p>
-          <p className="text-[var(--muted)]">Similar concepts have similar vectors. Cosine similarity or Euclidean distance measures closeness.</p>
+          <p className="text-[var(--text-muted)]">Similar concepts have similar vectors. Cosine similarity or Euclidean distance measures closeness.</p>
         </div>
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">In Generative Models</p>
-          <p className="text-[var(--muted)]">Face encoders, CLIP, and audio embeddings all learn meaningful spaces for conditioning generation.</p>
+          <p className="text-[var(--text-muted)]">Face encoders, CLIP, and audio embeddings all learn meaningful spaces for conditioning generation.</p>
         </div>
       </div>
     </div>

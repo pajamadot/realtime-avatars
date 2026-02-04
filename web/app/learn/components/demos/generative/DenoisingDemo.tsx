@@ -119,7 +119,7 @@ export function DenoisingDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-4">Denoising Visualizer</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Watch how diffusion models progressively remove noise to reveal an image.
         Each step predicts and subtracts a small amount of noise.
       </p>
@@ -131,10 +131,10 @@ export function DenoisingDemo() {
             ref={canvasRef}
             width={imageSize}
             height={imageSize}
-            className="border border-[var(--border)] rounded-lg bg-[var(--card-bg-alt)]"
+            className="border border-[var(--border)] rounded-lg bg-[var(--surface-2)]"
             style={{ imageRendering: 'pixelated' }}
           />
-          <p className="text-sm text-[var(--muted)] mt-3 text-center">
+          <p className="text-sm text-[var(--text-muted)] mt-3 text-center">
             {getCurrentDescription()}
           </p>
         </div>
@@ -144,7 +144,7 @@ export function DenoisingDemo() {
           <div>
             <div className="flex justify-between items-center mb-2">
               <span className="text-sm font-medium">Denoising Step</span>
-              <span className="text-sm text-[var(--muted)]">{50 - currentStep} / 50</span>
+              <span className="text-sm text-[var(--text-muted)]">{50 - currentStep} / 50</span>
             </div>
             <input
               type="range"
@@ -176,12 +176,12 @@ export function DenoisingDemo() {
           </div>
 
           {/* Math explanation */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded text-sm">
+          <div className="p-4 bg-[var(--surface-2)] rounded text-sm">
             <p className="font-medium mb-2">The Math</p>
             <code className="text-xs block mb-2">
               x_(t-1) = x_t - noise_predicted(x_t, t)
             </code>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               At each step t, the model predicts what noise was added,
               then subtracts it to get a slightly cleaner image.
             </p>

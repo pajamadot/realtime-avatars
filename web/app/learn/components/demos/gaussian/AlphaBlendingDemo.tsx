@@ -110,7 +110,7 @@ export default function AlphaBlendingDemo() {
       <div className="grid md:grid-cols-2">
         {/* Visual representation */}
         <div className="p-6 bg-black/5">
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Drag layers to reorder (front to back):
           </p>
 
@@ -151,7 +151,7 @@ export default function AlphaBlendingDemo() {
               className="absolute right-0 bottom-0 w-20 h-20 rounded-lg border-2 border-dashed border-[var(--border)]"
               style={{ backgroundColor: blendResult.color }}
             >
-              <div className="absolute -top-6 left-0 text-xs text-[var(--muted)]">Result</div>
+              <div className="absolute -top-6 left-0 text-xs text-[var(--text-muted)]">Result</div>
             </div>
           </div>
 
@@ -166,16 +166,16 @@ export default function AlphaBlendingDemo() {
                 onDragEnd={handleDragEnd}
                 className={`
                   flex items-center gap-3 p-2 rounded cursor-move
-                  ${draggedId === layer.id ? 'bg-[var(--card-bg-alt)]' : 'hover:bg-[var(--card-bg-alt)]'}
+                  ${draggedId === layer.id ? 'bg-[var(--surface-2)]' : 'hover:bg-[var(--surface-2)]'}
                 `}
               >
-                <span className="text-[var(--muted)]">☰</span>
+                <span className="text-[var(--text-muted)]">☰</span>
                 <div
                   className="w-4 h-4 rounded"
                   style={{ backgroundColor: layer.color }}
                 />
                 <span className="text-sm flex-1">{i === 0 ? 'Front' : i === layers.length - 1 ? 'Back' : `Layer ${i + 1}`}</span>
-                <span className="text-xs text-[var(--muted)]">α={layer.alpha.toFixed(1)}</span>
+                <span className="text-xs text-[var(--text-muted)]">α={layer.alpha.toFixed(1)}</span>
               </div>
             ))}
           </div>
@@ -226,14 +226,14 @@ export default function AlphaBlendingDemo() {
             </button>
 
             {showFormula && (
-              <div className="mt-4 p-4 bg-[var(--card-bg-alt)] rounded text-sm font-mono">
-                <p className="text-[var(--muted)] mb-2">Alpha Compositing (front-to-back):</p>
+              <div className="mt-4 p-4 bg-[var(--surface-2)] rounded text-sm font-mono">
+                <p className="text-[var(--text-muted)] mb-2">Alpha Compositing (front-to-back):</p>
                 <p className="mb-4">C = Σ(cᵢ × αᵢ × Tᵢ)</p>
-                <p className="text-[var(--muted)] mb-2">where Tᵢ = transmittance:</p>
+                <p className="text-[var(--text-muted)] mb-2">where Tᵢ = transmittance:</p>
                 <p>Tᵢ = Π(1 - αⱼ) for j &lt; i</p>
 
                 <div className="mt-4 pt-4 border-t border-[var(--border)]">
-                  <p className="text-[var(--muted)] mb-2">Current calculation:</p>
+                  <p className="text-[var(--text-muted)] mb-2">Current calculation:</p>
                   {blendResult.steps.map((step, i) => (
                     <p key={step.layer.id} className="text-xs">
                       Layer {i + 1}: T={step.transmittance.toFixed(2)}, contribution={step.contribution.toFixed(2)}
@@ -250,7 +250,7 @@ export default function AlphaBlendingDemo() {
       </div>
 
       {/* Insight */}
-      <div className="p-4 bg-[var(--card-bg-alt)] border-t border-[var(--border)] text-sm text-[var(--muted)] flex items-start gap-2">
+      <div className="p-4 bg-[var(--surface-2)] border-t border-[var(--border)] text-sm text-[var(--text-muted)] flex items-start gap-2">
         <Lightbulb size={16} className="text-yellow-500 flex-shrink-0 mt-0.5" />
         <span><strong>Key insight:</strong> Order matters! Swap the front and back layers and notice how the result changes.
         This is why 3DGS must sort all Gaussians by depth before rendering each frame.</span>

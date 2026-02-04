@@ -34,7 +34,7 @@ export default function ProgressTracker({
                 transition-colors
                 ${isActive
                   ? 'font-medium'
-                  : 'text-[var(--muted)] hover:text-[var(--foreground)]'
+                  : 'text-[var(--text-muted)] hover:text-[var(--foreground)]'
                 }
               `}
               style={isActive ? { backgroundColor: color, color: 'white' } : undefined}

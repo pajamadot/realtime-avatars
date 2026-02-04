@@ -31,10 +31,10 @@ export default function MetaHumanPage() {
         <div className="flex items-center gap-3 mb-4">
           <div className="w-4 h-4 rounded-full" style={{ backgroundColor: color }} />
           <span className="badge">Graphics-based</span>
-          <span className="text-sm text-[var(--muted)]">~30 min</span>
+          <span className="text-sm text-[var(--text-muted)]">~30 min</span>
         </div>
         <h1 className="text-3xl font-semibold mb-2">{content.title}</h1>
-        <p className="text-lg text-[var(--muted)]">{content.subtitle}</p>
+        <p className="text-lg text-[var(--text-muted)]">{content.subtitle}</p>
       </section>
 
       {/* Progress tracker */}
@@ -47,7 +47,7 @@ export default function MetaHumanPage() {
               onClick={() => setCurrentSection(section.id)}
               className={`
                 flex items-center gap-2 px-3 py-1.5 rounded-full text-sm whitespace-nowrap transition-colors
-                ${section.id === currentSection ? 'font-medium text-white' : 'text-[var(--muted)] hover:text-[var(--foreground)]'}
+                ${section.id === currentSection ? 'font-medium text-white' : 'text-[var(--text-muted)] hover:text-[var(--foreground)]'}
               `}
               style={section.id === currentSection ? { backgroundColor: color } : undefined}
             >
@@ -68,7 +68,7 @@ export default function MetaHumanPage() {
         <h2 className="text-2xl font-semibold mb-4">What is MetaHuman?</h2>
 
         <div className="prose prose-neutral max-w-none">
-          <p className="text-lg text-[var(--muted)] leading-relaxed mb-6">
+          <p className="text-lg text-[var(--text-muted)] leading-relaxed mb-6">
             {content.intro.text}
           </p>
         </div>
@@ -77,21 +77,21 @@ export default function MetaHumanPage() {
         <div className="highlight-box">
           <p className="font-medium mb-4">The Core Idea in 30 Seconds</p>
           <div className="grid md:grid-cols-3 gap-4 text-center">
-            <div className="p-4 bg-[var(--card-bg)] rounded-lg">
+            <div className="p-4 bg-[var(--surface-0)] rounded-lg">
               <div className="w-10 h-10 rounded-full bg-[var(--color-metahuman-light)] flex items-center justify-center mx-auto mb-3">
                 <Bone size={24} className="text-[var(--color-metahuman)]" strokeWidth={1.5} />
               </div>
               <p className="font-medium">Skeletal Rig</p>
               <p className="text-sm text-[var(--text-muted)]">700+ bones control mesh deformation hierarchically</p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded-lg">
+            <div className="p-4 bg-[var(--surface-0)] rounded-lg">
               <div className="w-10 h-10 rounded-full bg-[var(--color-metahuman-light)] flex items-center justify-center mx-auto mb-3">
                 <Smile size={24} className="text-[var(--color-metahuman)]" strokeWidth={1.5} />
               </div>
               <p className="font-medium">52 Blendshapes</p>
               <p className="text-sm text-[var(--text-muted)]">ARKit standard for facial expressions at 60 FPS</p>
             </div>
-            <div className="p-4 bg-[var(--card-bg)] rounded-lg">
+            <div className="p-4 bg-[var(--surface-0)] rounded-lg">
               <div className="w-10 h-10 rounded-full bg-[var(--color-metahuman-light)] flex items-center justify-center mx-auto mb-3">
                 <Smartphone size={24} className="text-[var(--color-metahuman)]" strokeWidth={1.5} />
               </div>
@@ -105,28 +105,28 @@ export default function MetaHumanPage() {
         <div className="card p-6 mt-6">
           <h3 className="font-semibold mb-3">The Marionette Metaphor</h3>
           <div className="grid md:grid-cols-4 gap-4">
-            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded-lg">
+            <div className="text-center p-4 bg-[var(--surface-2)] rounded-lg">
               <div className="w-10 h-10 rounded-full bg-[var(--surface-0)] flex items-center justify-center mx-auto mb-2">
                 <Palette size={20} className="text-[var(--color-metahuman)]" strokeWidth={1.5} />
               </div>
               <p className="text-sm font-medium">Bones</p>
               <p className="text-xs text-[var(--text-muted)]">Wooden crossbars</p>
             </div>
-            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded-lg">
+            <div className="text-center p-4 bg-[var(--surface-2)] rounded-lg">
               <div className="w-10 h-10 rounded-full bg-[var(--surface-0)] flex items-center justify-center mx-auto mb-2">
                 <Link2 size={20} className="text-[var(--color-metahuman)]" strokeWidth={1.5} />
               </div>
               <p className="text-sm font-medium">Joints</p>
               <p className="text-xs text-[var(--text-muted)]">Strings connecting bars</p>
             </div>
-            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded-lg">
+            <div className="text-center p-4 bg-[var(--surface-2)] rounded-lg">
               <div className="w-10 h-10 rounded-full bg-[var(--surface-0)] flex items-center justify-center mx-auto mb-2">
                 <Shirt size={20} className="text-[var(--color-metahuman)]" strokeWidth={1.5} />
               </div>
               <p className="text-sm font-medium">Mesh</p>
               <p className="text-xs text-[var(--text-muted)]">Puppet's cloth/skin</p>
             </div>
-            <div className="text-center p-4 bg-[var(--card-bg-alt)] rounded-lg">
+            <div className="text-center p-4 bg-[var(--surface-2)] rounded-lg">
               <div className="w-10 h-10 rounded-full bg-[var(--surface-0)] flex items-center justify-center mx-auto mb-2">
                 <Sparkles size={20} className="text-[var(--color-metahuman)]" strokeWidth={1.5} />
               </div>
@@ -323,7 +323,7 @@ export default function MetaHumanPage() {
       {/* Section 2: Pipeline */}
       <section id="pipeline" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">The Animation Pipeline</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           From iPhone face tracking to rendered MetaHuman, here's how data flows.
         </p>
 
@@ -341,7 +341,7 @@ export default function MetaHumanPage() {
       {/* Section 3: Key Concepts */}
       <section id="concepts" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">Key Concepts</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           Master these five building blocks of the MetaHuman system.
         </p>
 
@@ -368,7 +368,7 @@ export default function MetaHumanPage() {
       {/* Section 4: Implementation */}
       <section id="implementation" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">Build It Yourself</h2>
-        <p className="text-[var(--muted)] mb-6">
+        <p className="text-[var(--text-muted)] mb-6">
           Set up MetaHuman with Live Link face tracking in Unreal Engine 5.
         </p>
 
@@ -394,7 +394,7 @@ export default function MetaHumanPage() {
                 </span>
                 <div>
                   <p className="font-medium text-sm">{resource.title}</p>
-                  <p className="text-xs text-[var(--muted)]">{resource.type}</p>
+                  <p className="text-xs text-[var(--text-muted)]">{resource.type}</p>
                 </div>
               </a>
             ))}
@@ -411,7 +411,7 @@ export default function MetaHumanPage() {
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div className="card-alt p-5">
             <p className="font-medium mb-3 text-green-600 flex items-center gap-1"><Check size={16} /> Use When</p>
-            <ul className="space-y-2 text-sm text-[var(--muted)]">
+            <ul className="space-y-2 text-sm text-[var(--text-muted)]">
               {content.tradeoffs.when.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <span className="text-green-500">+</span>
@@ -422,7 +422,7 @@ export default function MetaHumanPage() {
           </div>
           <div className="card-alt p-5">
             <p className="font-medium mb-3 text-red-600 flex items-center gap-1"><X size={16} /> Avoid When</p>
-            <ul className="space-y-2 text-sm text-[var(--muted)]">
+            <ul className="space-y-2 text-sm text-[var(--text-muted)]">
               {content.tradeoffs.whenNot.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <span className="text-red-500">−</span>
@@ -435,7 +435,7 @@ export default function MetaHumanPage() {
 
         <div className="highlight-box">
           <p className="font-medium mb-2">Best Use Case</p>
-          <p className="text-[var(--muted)]">{content.tradeoffs.bestFor}</p>
+          <p className="text-[var(--text-muted)]">{content.tradeoffs.bestFor}</p>
         </div>
       </section>
 
@@ -450,7 +450,7 @@ export default function MetaHumanPage() {
               </p>
               <p className="text-sm mt-2">
                 <span className="text-green-600 font-medium">Actually:</span>{' '}
-                <span className="text-[var(--muted)]">{item.correct}</span>
+                <span className="text-[var(--text-muted)]">{item.correct}</span>
               </p>
             </div>
           ))}
@@ -461,7 +461,7 @@ export default function MetaHumanPage() {
       <section>
         <div className="card p-6 text-center">
           <h3 className="font-semibold mb-2">Ready to Go Deeper?</h3>
-          <p className="text-sm text-[var(--muted)] mb-4">
+          <p className="text-sm text-[var(--text-muted)] mb-4">
             Explore ARKit blendshapes or see how MetaHuman compares to other approaches.
           </p>
           <div className="flex items-center justify-center gap-4">

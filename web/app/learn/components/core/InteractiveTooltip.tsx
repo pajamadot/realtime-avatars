@@ -41,10 +41,10 @@ export default function InteractiveTooltip({
   };
 
   const arrowClasses = {
-    top: 'top-full left-1/2 -translate-x-1/2 border-t-[var(--card-bg)] border-l-transparent border-r-transparent border-b-transparent',
-    bottom: 'bottom-full left-1/2 -translate-x-1/2 border-b-[var(--card-bg)] border-l-transparent border-r-transparent border-t-transparent',
-    left: 'left-full top-1/2 -translate-y-1/2 border-l-[var(--card-bg)] border-t-transparent border-b-transparent border-r-transparent',
-    right: 'right-full top-1/2 -translate-y-1/2 border-r-[var(--card-bg)] border-t-transparent border-b-transparent border-l-transparent',
+    top: 'top-full left-1/2 -translate-x-1/2 border-t-[var(--surface-0)] border-l-transparent border-r-transparent border-b-transparent',
+    bottom: 'bottom-full left-1/2 -translate-x-1/2 border-b-[var(--surface-0)] border-l-transparent border-r-transparent border-t-transparent',
+    left: 'left-full top-1/2 -translate-y-1/2 border-l-[var(--surface-0)] border-t-transparent border-b-transparent border-r-transparent',
+    right: 'right-full top-1/2 -translate-y-1/2 border-r-[var(--surface-0)] border-t-transparent border-b-transparent border-l-transparent',
   };
 
   const handleTrigger = () => {
@@ -70,7 +70,7 @@ export default function InteractiveTooltip({
           ref={tooltipRef}
           className={`
             absolute z-50 ${positionClasses[position]}
-            bg-[var(--card-bg)] border border-[var(--border)] rounded-lg shadow-lg
+            bg-[var(--surface-0)] border border-[var(--border)] rounded-lg shadow-lg
             p-3 text-sm max-w-xs
             animate-fadeIn
           `}

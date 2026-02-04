@@ -226,7 +226,7 @@ export function ConvolutionDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Convolution Operation</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Convolution slides a kernel (filter) over the image, computing weighted sums.
         This is the core operation in CNNs used for face recognition and image generation.
       </p>
@@ -236,7 +236,7 @@ export function ConvolutionDemo() {
         <div>
           <div className="flex gap-4 mb-4">
             <div>
-              <p className="text-xs text-[var(--muted)] mb-1 text-center">Input</p>
+              <p className="text-xs text-[var(--text-muted)] mb-1 text-center">Input</p>
               <canvas
                 ref={inputCanvasRef}
                 width={gridSize * cellSize}
@@ -245,7 +245,7 @@ export function ConvolutionDemo() {
               />
             </div>
             <div>
-              <p className="text-xs text-[var(--muted)] mb-1 text-center">Output</p>
+              <p className="text-xs text-[var(--text-muted)] mb-1 text-center">Output</p>
               <canvas
                 ref={outputCanvasRef}
                 width={gridSize * cellSize}
@@ -275,8 +275,8 @@ export function ConvolutionDemo() {
 
           {/* Calculation */}
           {showCalculation && (
-            <div className="mt-3 p-3 bg-[var(--card-bg-alt)] rounded text-xs font-mono">
-              <p className="text-[var(--muted)] mb-1">At position ({kx}, {ky}):</p>
+            <div className="mt-3 p-3 bg-[var(--surface-2)] rounded text-xs font-mono">
+              <p className="text-[var(--text-muted)] mb-1">At position ({kx}, {ky}):</p>
               <p className="break-all">{calculation}</p>
               <p className="mt-1 font-bold">= {Math.round(Math.max(0, Math.min(255, sum)))}</p>
             </div>
@@ -299,14 +299,14 @@ export function ConvolutionDemo() {
                   }`}
                 >
                   <p className="font-medium text-sm">{k.name}</p>
-                  <p className="text-xs text-[var(--muted)]">{k.description}</p>
+                  <p className="text-xs text-[var(--text-muted)]">{k.description}</p>
                 </button>
               );
             })}
           </div>
 
           {/* Kernel visualization */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <p className="font-medium text-sm mb-2">Kernel Values</p>
             <div className="grid grid-cols-3 gap-1 w-fit mx-auto">
               {KERNELS[selectedKernel].values.flat().map((v, i) => (
@@ -327,7 +327,7 @@ export function ConvolutionDemo() {
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">In Neural Networks</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               CNNs learn kernel values through backpropagation. Early layers detect edges,
               later layers detect complex patterns like eyes or noses. This is how face
               encoders extract identity features.

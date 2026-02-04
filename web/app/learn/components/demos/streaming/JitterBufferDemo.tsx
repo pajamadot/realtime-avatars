@@ -203,7 +203,7 @@ export function JitterBufferDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Jitter Buffer Simulation</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Network jitter causes packets to arrive at irregular intervals. The jitter buffer
         smooths this out by adding delay. Too small = glitches, too large = latency.
       </p>
@@ -256,7 +256,7 @@ export function JitterBufferDemo() {
         {/* Parameters */}
         <div className="space-y-4">
           {/* Buffer state */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded">
+          <div className="p-4 bg-[var(--surface-2)] rounded">
             <div className="flex justify-between items-center">
               <span className="font-medium text-sm">Buffer State</span>
               <span
@@ -270,26 +270,26 @@ export function JitterBufferDemo() {
 
           {/* Stats */}
           <div className="grid grid-cols-4 gap-2">
-            <div className="p-2 bg-[var(--card-bg-alt)] rounded text-center">
-              <p className="text-xs text-[var(--muted)]">Received</p>
+            <div className="p-2 bg-[var(--surface-2)] rounded text-center">
+              <p className="text-xs text-[var(--text-muted)]">Received</p>
               <p className="font-mono">{stats.received}</p>
             </div>
-            <div className="p-2 bg-[var(--card-bg-alt)] rounded text-center">
-              <p className="text-xs text-[var(--muted)]">Played</p>
+            <div className="p-2 bg-[var(--surface-2)] rounded text-center">
+              <p className="text-xs text-[var(--text-muted)]">Played</p>
               <p className="font-mono text-green-500">{stats.played}</p>
             </div>
-            <div className="p-2 bg-[var(--card-bg-alt)] rounded text-center">
-              <p className="text-xs text-[var(--muted)]">Dropped</p>
+            <div className="p-2 bg-[var(--surface-2)] rounded text-center">
+              <p className="text-xs text-[var(--text-muted)]">Dropped</p>
               <p className="font-mono text-red-500">{stats.dropped}</p>
             </div>
-            <div className="p-2 bg-[var(--card-bg-alt)] rounded text-center">
-              <p className="text-xs text-[var(--muted)]">Late</p>
+            <div className="p-2 bg-[var(--surface-2)] rounded text-center">
+              <p className="text-xs text-[var(--text-muted)]">Late</p>
               <p className="font-mono text-yellow-500">{stats.late}</p>
             </div>
           </div>
 
           {/* Parameters */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded space-y-3">
+          <div className="p-4 bg-[var(--surface-2)] rounded space-y-3">
             <div>
               <div className="flex justify-between text-sm mb-1">
                 <span>Buffer Size</span>
@@ -341,7 +341,7 @@ export function JitterBufferDemo() {
 
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">Tradeoff</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               Larger buffer = more latency but fewer glitches.
               For real-time avatars, target 50-100ms buffer with adaptive sizing
               based on measured jitter.

@@ -211,7 +211,7 @@ export function TrainingProgressDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">3DGS Training Progress</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Watch how Gaussian Splatting training evolves: Gaussians multiply through densification,
         then get pruned for efficiency. PSNR (quality) improves as loss decreases.
       </p>
@@ -228,7 +228,7 @@ export function TrainingProgressDemo() {
 
           {/* Timeline */}
           <div className="mt-4">
-            <div className="flex justify-between text-xs text-[var(--muted)] mb-1">
+            <div className="flex justify-between text-xs text-[var(--text-muted)] mb-1">
               <span>0</span>
               <span>{(currentIter / 1000).toFixed(1)}K</span>
               <span>{(maxIter / 1000)}K iterations</span>
@@ -271,7 +271,7 @@ export function TrainingProgressDemo() {
             <select
               value={speed}
               onChange={(e) => setSpeed(Number(e.target.value))}
-              className="px-3 py-1 rounded border border-[var(--border)] bg-[var(--card-bg)] text-sm"
+              className="px-3 py-1 rounded border border-[var(--border)] bg-[var(--surface-0)] text-sm"
             >
               <option value={0.5}>0.5x</option>
               <option value={1}>1x</option>
@@ -285,32 +285,32 @@ export function TrainingProgressDemo() {
         <div className="space-y-4">
           {/* Current metrics */}
           <div className="grid grid-cols-2 gap-3">
-            <div className="p-3 bg-[var(--card-bg-alt)] rounded">
-              <p className="text-xs text-[var(--muted)]">PSNR</p>
+            <div className="p-3 bg-[var(--surface-2)] rounded">
+              <p className="text-xs text-[var(--text-muted)]">PSNR</p>
               <p className="text-xl font-bold text-[#4ecdc4]">{state.psnr.toFixed(1)} dB</p>
             </div>
-            <div className="p-3 bg-[var(--card-bg-alt)] rounded">
-              <p className="text-xs text-[var(--muted)]">Loss</p>
+            <div className="p-3 bg-[var(--surface-2)] rounded">
+              <p className="text-xs text-[var(--text-muted)]">Loss</p>
               <p className="text-xl font-bold">{state.loss.toFixed(4)}</p>
             </div>
-            <div className="p-3 bg-[var(--card-bg-alt)] rounded">
-              <p className="text-xs text-[var(--muted)]">Gaussians</p>
+            <div className="p-3 bg-[var(--surface-2)] rounded">
+              <p className="text-xs text-[var(--text-muted)]">Gaussians</p>
               <p className="text-xl font-bold text-[#ff6b6b]">{(state.numGaussians / 1000).toFixed(0)}K</p>
             </div>
-            <div className="p-3 bg-[var(--card-bg-alt)] rounded">
-              <p className="text-xs text-[var(--muted)]">Progress</p>
+            <div className="p-3 bg-[var(--surface-2)] rounded">
+              <p className="text-xs text-[var(--text-muted)]">Progress</p>
               <p className="text-xl font-bold">{((currentIter / maxIter) * 100).toFixed(0)}%</p>
             </div>
           </div>
 
           {/* Current event */}
           <div className="p-3 bg-[var(--accent)]/20 rounded border border-[var(--accent)]/30">
-            <p className="text-xs text-[var(--muted)]">Current Phase</p>
+            <p className="text-xs text-[var(--text-muted)]">Current Phase</p>
             <p className="font-medium">{currentEvent}</p>
           </div>
 
           {/* Training milestones */}
-          <div className="p-4 bg-[var(--card-bg-alt)] rounded max-h-48 overflow-y-auto">
+          <div className="p-4 bg-[var(--surface-2)] rounded max-h-48 overflow-y-auto">
             <p className="font-medium text-sm mb-3">Training Milestones</p>
             <div className="space-y-2">
               {TRAINING_MILESTONES.map((milestone, i) => (
@@ -326,7 +326,7 @@ export function TrainingProgressDemo() {
                     }`}
                   />
                   <span className="font-mono w-12">{(milestone.iter / 1000)}K</span>
-                  <span className="text-[var(--muted)]">{milestone.event}</span>
+                  <span className="text-[var(--text-muted)]">{milestone.event}</span>
                 </div>
               ))}
             </div>
@@ -335,7 +335,7 @@ export function TrainingProgressDemo() {
           {/* Key insight */}
           <div className="p-3 border border-[var(--border)] rounded text-sm">
             <p className="font-medium mb-1">Key Insight</p>
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-xs text-[var(--text-muted)]">
               Gaussian count peaks mid-training due to densification (splitting large gradients),
               then decreases as tiny/transparent Gaussians get pruned. Quality keeps improving
               even as count drops.

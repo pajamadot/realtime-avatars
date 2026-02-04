@@ -262,7 +262,7 @@ export function LatencyBreakdownDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Latency Breakdown</h3>
-      <p className="text-sm text-[var(--muted)] mb-4">
+      <p className="text-sm text-[var(--text-muted)] mb-4">
         Understanding where latency comes from is key to optimizing real-time systems. Hover over components to highlight them.
       </p>
 
@@ -277,7 +277,7 @@ export function LatencyBreakdownDemo() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Network Quality</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Network Quality</label>
           <input
             type="range"
             min="0"
@@ -287,14 +287,14 @@ export function LatencyBreakdownDemo() {
             onChange={(e) => setNetworkQuality(Number(e.target.value))}
             className="w-full"
           />
-          <span className="text-xs text-[var(--muted)]">{networkQuality < 0.3 ? 'Poor' : networkQuality < 0.7 ? 'Average' : 'Good'}</span>
+          <span className="text-xs text-[var(--text-muted)]">{networkQuality < 0.3 ? 'Poor' : networkQuality < 0.7 ? 'Average' : 'Good'}</span>
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Encoder Preset</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Encoder Preset</label>
           <select
             value={encoderPreset}
             onChange={(e) => setEncoderPreset(e.target.value as typeof encoderPreset)}
-            className="w-full px-2 py-1 rounded bg-[var(--card-bg)] border border-[var(--border)] text-sm"
+            className="w-full px-2 py-1 rounded bg-[var(--surface-0)] border border-[var(--border)] text-sm"
           >
             <option value="ultrafast">Ultrafast</option>
             <option value="fast">Fast</option>
@@ -302,7 +302,7 @@ export function LatencyBreakdownDemo() {
           </select>
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Jitter Buffer: {jitterBufferSize}ms</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Jitter Buffer: {jitterBufferSize}ms</label>
           <input
             type="range"
             min="20"
@@ -314,7 +314,7 @@ export function LatencyBreakdownDemo() {
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Frame Rate: {frameRate} FPS</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Frame Rate: {frameRate} FPS</label>
           <input
             type="range"
             min="15"
@@ -327,9 +327,9 @@ export function LatencyBreakdownDemo() {
         </div>
       </div>
 
-      <div className="p-3 bg-[var(--card-bg-alt)] rounded text-xs">
+      <div className="p-3 bg-[var(--surface-2)] rounded text-xs">
         <p className="font-medium mb-1">Optimization Targets</p>
-        <p className="text-[var(--muted)]">
+        <p className="text-[var(--text-muted)]">
           For real-time avatars, aim for &lt;200ms total latency. Network is often the largest factor.
           Use SFU topology, reduce jitter buffer, and choose faster encoder presets for lower latency
           (at the cost of quality/bandwidth).

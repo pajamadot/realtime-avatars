@@ -220,7 +220,7 @@ export function BlendshapeDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-4">ARKit Blendshape Playground</h3>
-      <p className="text-sm text-[var(--muted)] mb-6">
+      <p className="text-sm text-[var(--text-muted)] mb-6">
         Manipulate individual blendshapes to understand how the 52 ARKit parameters combine to create facial expressions.
       </p>
 
@@ -231,7 +231,7 @@ export function BlendshapeDemo() {
             ref={canvasRef}
             width={300}
             height={350}
-            className="border border-[var(--border)] rounded-lg bg-[var(--card-bg-alt)]"
+            className="border border-[var(--border)] rounded-lg bg-[var(--surface-2)]"
           />
 
           {/* Presets */}
@@ -262,7 +262,7 @@ export function BlendshapeDemo() {
                 className={`text-xs px-2 py-1 rounded ${
                   activeCategory === cat
                     ? 'bg-[var(--accent)] text-white'
-                    : 'bg-[var(--card-bg-alt)] hover:bg-[var(--border)]'
+                    : 'bg-[var(--surface-2)] hover:bg-[var(--border)]'
                 }`}
               >
                 {cat === 'all' ? 'All' : cat}
@@ -276,7 +276,7 @@ export function BlendshapeDemo() {
               <div key={bs.name}>
                 <div className="flex justify-between text-xs mb-1">
                   <span className="font-medium">{bs.name}</span>
-                  <span className="text-[var(--muted)]">{bs.value.toFixed(2)}</span>
+                  <span className="text-[var(--text-muted)]">{bs.value.toFixed(2)}</span>
                 </div>
                 <input
                   type="range"
@@ -287,7 +287,7 @@ export function BlendshapeDemo() {
                   onChange={(e) => updateBlendshape(bs.name, parseFloat(e.target.value))}
                   className="w-full h-2"
                 />
-                <p className="text-xs text-[var(--muted)] mt-0.5">{bs.description}</p>
+                <p className="text-xs text-[var(--text-muted)] mt-0.5">{bs.description}</p>
               </div>
             ))}
           </div>
@@ -295,9 +295,9 @@ export function BlendshapeDemo() {
       </div>
 
       {/* Current values as JSON */}
-      <div className="mt-6 p-4 bg-[var(--card-bg-alt)] rounded text-xs">
+      <div className="mt-6 p-4 bg-[var(--surface-2)] rounded text-xs">
         <p className="font-medium mb-2">Active Blendshapes (non-zero)</p>
-        <code className="text-[var(--muted)]">
+        <code className="text-[var(--text-muted)]">
           {JSON.stringify(
             Object.fromEntries(
               blendshapes

@@ -85,7 +85,7 @@ export default function AnimatedDiagram({
   return (
     <div className="card p-6">
       {/* Progress bar */}
-      <div className="h-1 bg-[var(--card-bg-alt)] rounded-full mb-4 overflow-hidden">
+      <div className="h-1 bg-[var(--surface-2)] rounded-full mb-4 overflow-hidden">
         <div
           className="h-full transition-all duration-300 rounded-full"
           style={{ backgroundColor: color, width: `${progress}%` }}
@@ -94,11 +94,11 @@ export default function AnimatedDiagram({
 
       {/* Step counter and speed control */}
       <div className="flex items-center justify-between mb-4 text-sm">
-        <span className="text-[var(--muted)]">
+        <span className="text-[var(--text-muted)]">
           Step {activeStep + 1} of {steps.length}
         </span>
         <div className="flex items-center gap-2">
-          <span className="text-[var(--muted)]">Speed:</span>
+          <span className="text-[var(--text-muted)]">Speed:</span>
           {[0.5, 1, 2].map((s) => (
             <button
               key={s}
@@ -107,7 +107,7 @@ export default function AnimatedDiagram({
               className={`px-2 py-0.5 rounded text-xs transition-colors ${
                 speed === s
                   ? 'text-white'
-                  : 'text-[var(--muted)] hover:text-[var(--foreground)]'
+                  : 'text-[var(--text-muted)] hover:text-[var(--foreground)]'
               }`}
               style={speed === s ? { backgroundColor: color } : undefined}
             >
@@ -133,7 +133,7 @@ export default function AnimatedDiagram({
                 onMouseLeave={() => setHoveredStep(null)}
                 className={`
                   flex flex-col items-center p-3 rounded-lg transition-all min-w-[100px] relative
-                  ${isActive ? 'scale-110 shadow-lg' : 'hover:bg-[var(--card-bg-alt)]'}
+                  ${isActive ? 'scale-110 shadow-lg' : 'hover:bg-[var(--surface-2)]'}
                   ${isHovered && !isActive ? 'scale-105' : ''}
                 `}
                 style={isActive ? { backgroundColor: color, color: 'white' } : undefined}
@@ -144,7 +144,7 @@ export default function AnimatedDiagram({
                     w-12 h-12 rounded-full flex items-center justify-center mb-2 text-xl
                     transition-all duration-300
                     ${!isActive && isCompleted ? 'bg-green-500 text-white' : ''}
-                    ${!isActive && !isCompleted ? 'bg-[var(--card-bg-alt)] border-2 border-[var(--border)]' : ''}
+                    ${!isActive && !isCompleted ? 'bg-[var(--surface-2)] border-2 border-[var(--border)]' : ''}
                   `}
                   style={isActive ? { backgroundColor: 'rgba(255,255,255,0.2)' } : undefined}
                 >
@@ -157,7 +157,7 @@ export default function AnimatedDiagram({
 
                 <span
                   className={`text-xs font-medium text-center transition-colors ${
-                    isActive ? '' : 'text-[var(--muted)]'
+                    isActive ? '' : 'text-[var(--text-muted)]'
                   }`}
                 >
                   {step.label}
@@ -167,7 +167,7 @@ export default function AnimatedDiagram({
                 {step.duration && (
                   <span
                     className={`text-[10px] mt-1 px-1.5 py-0.5 rounded ${
-                      isActive ? 'bg-white/20' : 'bg-[var(--card-bg-alt)]'
+                      isActive ? 'bg-white/20' : 'bg-[var(--surface-2)]'
                     }`}
                   >
                     {step.duration}
@@ -176,7 +176,7 @@ export default function AnimatedDiagram({
 
                 {/* Hover tooltip */}
                 {isHovered && !isActive && (
-                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-[var(--card-bg)] border border-[var(--border)] rounded px-2 py-1 text-xs whitespace-nowrap z-10 shadow-lg">
+                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-[var(--surface-0)] border border-[var(--border)] rounded px-2 py-1 text-xs whitespace-nowrap z-10 shadow-lg">
                     Click to view
                   </div>
                 )}
@@ -215,14 +215,14 @@ export default function AnimatedDiagram({
 
       {/* Active step description */}
       <div
-        className="p-5 bg-[var(--card-bg-alt)] rounded-lg min-h-[100px] transition-all duration-300"
+        className="p-5 bg-[var(--surface-2)] rounded-lg min-h-[100px] transition-all duration-300"
         style={{ borderLeft: `4px solid ${color}` }}
       >
         <h4 className="font-semibold mb-2 flex items-center gap-2" style={{ color }}>
           <span className="text-lg">{steps[activeStep]?.icon}</span>
           {steps[activeStep]?.label}
         </h4>
-        <p className="text-sm text-[var(--muted)] leading-relaxed">
+        <p className="text-sm text-[var(--text-muted)] leading-relaxed">
           {steps[activeStep]?.description}
         </p>
 
@@ -230,7 +230,7 @@ export default function AnimatedDiagram({
         {showDetails && steps[activeStep]?.details && steps[activeStep].details!.length > 0 && (
           <ul className="mt-3 space-y-1">
             {steps[activeStep].details!.map((detail, i) => (
-              <li key={i} className="text-xs text-[var(--muted)] flex items-start gap-2">
+              <li key={i} className="text-xs text-[var(--text-muted)] flex items-start gap-2">
                 <span style={{ color }}>•</span>
                 {detail}
               </li>
@@ -291,7 +291,7 @@ export default function AnimatedDiagram({
       </div>
 
       {/* Keyboard hint */}
-      <p className="text-center text-xs text-[var(--muted)] mt-3">
+      <p className="text-center text-xs text-[var(--text-muted)] mt-3">
         Use ← → arrow keys to navigate, Space to play/pause
       </p>
 

@@ -188,7 +188,7 @@ export function LossFunctionDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Loss Functions</h3>
-      <p className="text-sm text-[var(--muted)] mb-4">
+      <p className="text-sm text-[var(--text-muted)] mb-4">
         Loss functions measure how wrong predictions are. Different losses have different properties for training.
       </p>
 
@@ -201,11 +201,11 @@ export function LossFunctionDemo() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Loss Function</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Loss Function</label>
           <select
             value={lossType}
             onChange={(e) => setLossType(e.target.value as LossType)}
-            className="w-full px-2 py-1 rounded bg-[var(--card-bg)] border border-[var(--border)] text-sm"
+            className="w-full px-2 py-1 rounded bg-[var(--surface-0)] border border-[var(--border)] text-sm"
           >
             <option value="mse">MSE (L2)</option>
             <option value="mae">MAE (L1)</option>
@@ -214,7 +214,7 @@ export function LossFunctionDemo() {
           </select>
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Prediction: {prediction.toFixed(2)}</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Prediction: {prediction.toFixed(2)}</label>
           <input
             type="range"
             min="0"
@@ -226,7 +226,7 @@ export function LossFunctionDemo() {
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Target: {target.toFixed(2)}</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Target: {target.toFixed(2)}</label>
           <input
             type="range"
             min="0"
@@ -239,7 +239,7 @@ export function LossFunctionDemo() {
         </div>
         {lossType === 'huber' && (
           <div>
-            <label className="text-xs text-[var(--muted)] block mb-1">Huber δ: {huberDelta.toFixed(1)}</label>
+            <label className="text-xs text-[var(--text-muted)] block mb-1">Huber δ: {huberDelta.toFixed(1)}</label>
             <input
               type="range"
               min="0.1"
@@ -254,13 +254,13 @@ export function LossFunctionDemo() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-3 text-xs">
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">MSE vs MAE</p>
-          <p className="text-[var(--muted)]">MSE penalizes large errors more heavily (quadratic). MAE is more robust to outliers (linear).</p>
+          <p className="text-[var(--text-muted)]">MSE penalizes large errors more heavily (quadratic). MAE is more robust to outliers (linear).</p>
         </div>
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Huber Loss</p>
-          <p className="text-[var(--muted)]">Combines MSE and MAE: quadratic for small errors, linear for large ones. Best of both worlds.</p>
+          <p className="text-[var(--text-muted)]">Combines MSE and MAE: quadratic for small errors, linear for large ones. Best of both worlds.</p>
         </div>
       </div>
     </div>

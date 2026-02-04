@@ -225,7 +225,7 @@ export function FrameInterpolationDemo() {
   return (
     <div className="card p-6">
       <h3 className="font-semibold mb-2">Frame Interpolation</h3>
-      <p className="text-sm text-[var(--muted)] mb-4">
+      <p className="text-sm text-[var(--text-muted)] mb-4">
         Generate intermediate frames to increase framerate. Essential for smooth streaming with limited bandwidth.
       </p>
 
@@ -238,7 +238,7 @@ export function FrameInterpolationDemo() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Interpolation: {(interpolationFactor * 100).toFixed(0)}%</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Interpolation: {(interpolationFactor * 100).toFixed(0)}%</label>
           <input
             type="range"
             min="0"
@@ -250,11 +250,11 @@ export function FrameInterpolationDemo() {
           />
         </div>
         <div>
-          <label className="text-xs text-[var(--muted)] block mb-1">Method</label>
+          <label className="text-xs text-[var(--text-muted)] block mb-1">Method</label>
           <select
             value={interpolationType}
             onChange={(e) => setInterpolationType(e.target.value as typeof interpolationType)}
-            className="w-full px-2 py-1 rounded bg-[var(--card-bg)] border border-[var(--border)] text-sm"
+            className="w-full px-2 py-1 rounded bg-[var(--surface-0)] border border-[var(--border)] text-sm"
           >
             <option value="none">None (Frame Hold)</option>
             <option value="linear">Linear Blend</option>
@@ -284,17 +284,17 @@ export function FrameInterpolationDemo() {
       </div>
 
       <div className="grid md:grid-cols-3 gap-3 text-xs">
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Frame Hold</p>
-          <p className="text-[var(--muted)]">Repeat previous frame. Simple but causes stuttering at low FPS.</p>
+          <p className="text-[var(--text-muted)]">Repeat previous frame. Simple but causes stuttering at low FPS.</p>
         </div>
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Linear Blend</p>
-          <p className="text-[var(--muted)]">Cross-fade between frames. Creates ghosting on fast motion.</p>
+          <p className="text-[var(--text-muted)]">Cross-fade between frames. Creates ghosting on fast motion.</p>
         </div>
-        <div className="p-3 bg-[var(--card-bg-alt)] rounded">
+        <div className="p-3 bg-[var(--surface-2)] rounded">
           <p className="font-medium mb-1">Motion-Compensated</p>
-          <p className="text-[var(--muted)]">Warp based on optical flow. Best quality, GPU-intensive.</p>
+          <p className="text-[var(--text-muted)]">Warp based on optical flow. Best quality, GPU-intensive.</p>
         </div>
       </div>
     </div>
