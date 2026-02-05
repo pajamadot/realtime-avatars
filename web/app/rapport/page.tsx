@@ -54,17 +54,21 @@ export default function RapportPage() {
         </div>
 
         {/* Rapport iframe embed */}
-        <div className="card p-0 overflow-hidden">
-          <div className="relative w-full" style={{ paddingBottom: '100%', maxHeight: '600px' }}>
-            <iframe
-              src="https://accounts.rapport.cloud/avatar-iframe?projectId=a75078e8-6f32-405a-913f-c85dc430125d&projectToken=8a4038a7-c12b-4479-b9a5-71694f174cb2&aiUserId=25b90290-ee16-4063-8917-e1055040bcae&buttonLabel=Start%20Demo"
-              title="Rapport MetaHuman Avatar"
-              allow="microphone"
-              className="absolute inset-0 w-full h-full"
-              style={{ border: 0, background: '#87CFFF', maxWidth: '600px', maxHeight: '600px' }}
-            />
-          </div>
+        <div className="card p-0 overflow-hidden flex justify-center bg-[#87CFFF]">
+          <iframe
+            src="https://accounts.rapport.cloud/avatar-iframe?projectId=a75078e8-6f32-405a-913f-c85dc430125d&projectToken=8a4038a7-c12b-4479-b9a5-71694f174cb2&aiUserId=25b90290-ee16-4063-8917-e1055040bcae&buttonLabel=Start%20Demo"
+            title="Rapport MetaHuman Avatar"
+            allow="microphone; camera; autoplay; fullscreen"
+            referrerPolicy="no-referrer-when-downgrade"
+            loading="lazy"
+            width="600"
+            height="600"
+            style={{ border: 0, maxWidth: '100%', maxHeight: '100vh' }}
+          />
         </div>
+        <p className="text-xs text-[var(--text-muted)] mt-2 text-center">
+          Powered by <a href="https://www.rapport.cloud/" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">Rapport</a> · Click &ldquo;Start Demo&rdquo; and allow microphone access to interact
+        </p>
 
         {/* How it works */}
         <div className="card p-5 mt-6">
