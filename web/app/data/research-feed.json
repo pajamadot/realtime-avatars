@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-03T10:51:41.925Z",
+  "updatedAt": "2026-02-05T10:51:51.526Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -265,6 +265,17 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head))",
       "items": [
         {
+          "title": "JOintGS: Joint Optimization of Cameras, Bodies and 3D Gaussians for In-the-Wild Monocular Reconstruction",
+          "link": "https://arxiv.org/abs/2602.04317v1",
+          "published": "2026-02-04T08:33:51.000Z",
+          "authors": "Zihan Lou",
+          "summary": "Reconstructing high-fidelity animatable 3D human avatars from monocular RGB videos remains challenging, particularly in unconstrained in-the-wild scenarios where camera parameters and human poses from off-the-shelf methods (e.g., COLMAP, HMR2.0) are often inaccurate. Splatting...",
+          "tags": [
+            "gaussian",
+            "monocular"
+          ]
+        },
+        {
           "title": "VRGaussianAvatar: Integrating 3D Gaussian Avatars into VR",
           "link": "https://arxiv.org/abs/2602.01674v1",
           "published": "2026-02-02T05:42:40.000Z",
@@ -379,16 +390,6 @@
           "published": "2026-01-04T20:42:06.000Z",
           "authors": "Aymen Mir",
           "summary": "We present a method for consistent lighting and shadows when animated 3D Gaussian Splatting (3DGS) avatars interact with 3DGS scenes or with dynamic objects inserted into otherwise static scenes. Our key contribution is Deep Gaussian Shadow Maps (DGSM), a modern analogue of th...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "FLEG: Feed-Forward Language Embedded Gaussian Splatting from Any Views",
-          "link": "https://arxiv.org/abs/2512.17541v1",
-          "published": "2025-12-19T13:04:13.000Z",
-          "authors": "Qijian Tian",
-          "summary": "We present FLEG, a feed-forward network that reconstructs language-embedded 3D Gaussians from any views. Previous straightforward solutions combine feed-forward reconstruction with Gaussian heads but suffer from fixed input views and insufficient 3D training data. In contrast,...",
           "tags": [
             "gaussian"
           ]
