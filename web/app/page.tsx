@@ -305,6 +305,17 @@ export default function Home() {
             <p className="figure-caption">Figure 1: MetaHuman real-time animation pipeline</p>
           </div>
 
+          <div className="card p-5 mt-6">
+            <p className="font-medium mb-4">Interactive Demo: Rapport MetaHuman Avatar</p>
+            <p className="text-sm text-[var(--text-muted)] mb-4">
+              Experience a real-time MetaHuman avatar powered by Unreal Engine pixel streaming.
+              Cloud-rendered photorealistic avatar with voice interaction capabilities.
+            </p>
+            <a href="/rapport" className="badge hover:border-[var(--border-strong)]">
+              Open Rapport demo →
+            </a>
+          </div>
+
           <RecentPapers methodKey="metahuman" className="mt-6" />
         </section>
 
@@ -694,14 +705,30 @@ export default function Home() {
           </div>
 
           <div className="card p-5 mt-6">
-            <p className="font-medium mb-4">Interactive Demo: LiveKit Streaming Avatar</p>
+            <p className="font-medium mb-4">Interactive Demos</p>
             <p className="text-sm text-[var(--text-muted)] mb-4">
-              Launch a WebRTC room that can display an avatar worker video stream (and optionally
-              dispatch an agent on join). Requires LiveKit credentials and a running avatar agent.
+              Try real-time avatar streaming with different providers and architectures.
             </p>
-            <a href="/livekit" className="badge hover:border-[var(--border-strong)]">
-              Open LiveKit demo →
-            </a>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="p-4 bg-[var(--surface-2)] rounded-lg">
+                <p className="font-medium text-sm mb-2">LiveKit + Hedra</p>
+                <p className="text-xs text-[var(--text-muted)] mb-3">
+                  WebRTC room with diffusion-based avatar worker. Requires LiveKit credentials.
+                </p>
+                <a href="/livekit" className="badge hover:border-[var(--border-strong)]">
+                  Open demo →
+                </a>
+              </div>
+              <div className="p-4 bg-[var(--surface-2)] rounded-lg">
+                <p className="font-medium text-sm mb-2">Rapport MetaHuman</p>
+                <p className="text-xs text-[var(--text-muted)] mb-3">
+                  Unreal Engine pixel streaming with cloud-rendered photorealistic avatar.
+                </p>
+                <a href="/rapport" className="badge hover:border-[var(--border-strong)]">
+                  Open demo →
+                </a>
+              </div>
+            </div>
           </div>
 
           <RecentPapers methodKey="streaming" className="mt-6" />
