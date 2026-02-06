@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-05T10:51:51.526Z",
+  "updatedAt": "2026-02-06T10:50:56.445Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -265,6 +265,16 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head))",
       "items": [
         {
+          "title": "PoseGaussian: Pose-Driven Novel View Synthesis for Robust 3D Human Reconstruction",
+          "link": "https://arxiv.org/abs/2602.05190v1",
+          "published": "2026-02-05T01:34:52.000Z",
+          "authors": "Ju Shen",
+          "summary": "We propose PoseGaussian, a pose-guided Gaussian Splatting framework for high-fidelity human novel view synthesis. Human body pose serves a dual purpose in our design: as a structural prior, it is fused with a color encoder to refine depth estimation; as a temporal cue, it is p...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
           "title": "JOintGS: Joint Optimization of Cameras, Bodies and 3D Gaussians for In-the-Wild Monocular Reconstruction",
           "link": "https://arxiv.org/abs/2602.04317v1",
           "published": "2026-02-04T08:33:51.000Z",
@@ -381,16 +391,6 @@
           "summary": "Most current audio-driven facial animation research primarily focuses on generating videos with neutral emotions. While some studies have addressed the generation of facial videos driven by emotional audio, efficiently generating high-quality talking head videos that integrate...",
           "tags": [
             "audio-driven",
-            "gaussian"
-          ]
-        },
-        {
-          "title": "Animated 3DGS Avatars in Diverse Scenes with Consistent Lighting and Shadows",
-          "link": "https://arxiv.org/abs/2601.01660v1",
-          "published": "2026-01-04T20:42:06.000Z",
-          "authors": "Aymen Mir",
-          "summary": "We present a method for consistent lighting and shadows when animated 3D Gaussian Splatting (3DGS) avatars interact with 3DGS scenes or with dynamic objects inserted into otherwise static scenes. Our key contribution is Deep Gaussian Shadow Maps (DGSM), a modern analogue of th...",
-          "tags": [
             "gaussian"
           ]
         }
