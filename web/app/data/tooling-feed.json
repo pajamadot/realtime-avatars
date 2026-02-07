@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-06T10:50:59.144Z",
+  "updatedAt": "2026-02-07T10:40:29.844Z",
   "source": "GitHub Search",
   "queries": {
     "metahuman": {
@@ -104,7 +104,7 @@
           "name": "OpenTalker/video-retalking",
           "link": "https://github.com/OpenTalker/video-retalking",
           "description": "[SIGGRAPH Asia 2022] VideoReTalking: Audio-based Lip Synchronization for Talking Head Video Editing In the Wild",
-          "stars": 7211,
+          "stars": 7212,
           "pushedAt": "2024-08-05T05:59:59.000Z",
           "language": "Python"
         },
@@ -112,7 +112,7 @@
           "name": "Kedreamix/Linly-Talker",
           "link": "https://github.com/Kedreamix/Linly-Talker",
           "description": "Digital Avatar Conversational System - Linly-Talker.  Linly-Talker is an intelligent AI system that combines large language models (LLMs) with visual models to create a novel human-AI interaction method.  It integrates various technologies like Whisper, Linly, Microsoft Speech Services, and SadTalker talking head generation system. ",
-          "stars": 3125,
+          "stars": 3126,
           "pushedAt": "2025-02-24T05:40:05.000Z",
           "language": "Python"
         },
@@ -120,8 +120,8 @@
           "name": "yuyuyzl/EasyVtuber",
           "link": "https://github.com/yuyuyzl/EasyVtuber",
           "description": "Based on Talking-head-anime 3, works like Vtube Studio.",
-          "stars": 2589,
-          "pushedAt": "2025-08-17T00:58:25.000Z",
+          "stars": 2588,
+          "pushedAt": "2026-02-07T06:37:01.000Z",
           "language": "Python"
         },
         {
@@ -152,7 +152,7 @@
           "name": "ZiqiaoPeng/SyncTalk",
           "link": "https://github.com/ZiqiaoPeng/SyncTalk",
           "description": "[CVPR 2024] This is the official source for our paper \"SyncTalk: The Devil is in the Synchronization for Talking Head Synthesis\"",
-          "stars": 1612,
+          "stars": 1611,
           "pushedAt": "2025-09-18T15:00:06.000Z",
           "language": "Python"
         },
@@ -182,7 +182,7 @@
           "name": "graphdeco-inria/gaussian-splatting",
           "link": "https://github.com/graphdeco-inria/gaussian-splatting",
           "description": "Original reference implementation of \"3D Gaussian Splatting for Real-Time Radiance Field Rendering\"",
-          "stars": 20611,
+          "stars": 20618,
           "pushedAt": "2025-10-17T14:28:15.000Z",
           "language": "Python"
         },
@@ -190,7 +190,7 @@
           "name": "nerfstudio-project/gsplat",
           "link": "https://github.com/nerfstudio-project/gsplat",
           "description": "CUDA accelerated rasterization of gaussian splatting",
-          "stars": 4458,
+          "stars": 4462,
           "pushedAt": "2026-01-28T01:39:03.000Z",
           "language": "Python"
         },
@@ -206,7 +206,7 @@
           "name": "hbb1/2d-gaussian-splatting",
           "link": "https://github.com/hbb1/2d-gaussian-splatting",
           "description": "[SIGGRAPH'24] 2D Gaussian Splatting for Geometrically Accurate Radiance Fields",
-          "stars": 3027,
+          "stars": 3030,
           "pushedAt": "2025-11-24T15:26:53.000Z",
           "language": "Python"
         },
@@ -214,7 +214,7 @@
           "name": "Awesome3DGS/3D-Gaussian-Splatting-Papers",
           "link": "https://github.com/Awesome3DGS/3D-Gaussian-Splatting-Papers",
           "description": "3D",
-          "stars": 2695,
+          "stars": 2698,
           "pushedAt": "2026-02-02T12:54:15.000Z",
           "language": "Python"
         },
@@ -222,7 +222,7 @@
           "name": "muskie82/MonoGS",
           "link": "https://github.com/muskie82/MonoGS",
           "description": "[CVPR'24 Highlight & Best Demo Award] Gaussian Splatting SLAM",
-          "stars": 1989,
+          "stars": 1987,
           "pushedAt": "2024-08-07T14:15:29.000Z",
           "language": "Python"
         },
@@ -230,7 +230,7 @@
           "name": "NVlabs/InstantSplat",
           "link": "https://github.com/NVlabs/InstantSplat",
           "description": "InstantSplat: Sparse-view SfM-free Gaussian Splatting in Seconds",
-          "stars": 1614,
+          "stars": 1615,
           "pushedAt": "2025-05-05T19:25:53.000Z",
           "language": "Python"
         },
@@ -254,7 +254,7 @@
           "name": "autonomousvision/mip-splatting",
           "link": "https://github.com/autonomousvision/mip-splatting",
           "description": "[CVPR'24 Best Student Paper] Mip-Splatting: Alias-free 3D Gaussian Splatting",
-          "stars": 1403,
+          "stars": 1404,
           "pushedAt": "2024-12-17T10:42:50.000Z",
           "language": "Python"
         }
