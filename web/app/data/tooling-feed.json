@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-07T10:40:29.844Z",
+  "updatedAt": "2026-02-08T10:41:48.240Z",
   "source": "GitHub Search",
   "queries": {
     "metahuman": {
@@ -18,7 +18,7 @@
           "name": "EpicGames/MetaHuman-DNA-Calibration",
           "link": "https://github.com/EpicGames/MetaHuman-DNA-Calibration",
           "description": "",
-          "stars": 566,
+          "stars": 567,
           "pushedAt": "2025-06-20T07:14:51.000Z",
           "language": "Mathematica"
         },
@@ -96,7 +96,7 @@
           "name": "AIGC-Audio/AudioGPT",
           "link": "https://github.com/AIGC-Audio/AudioGPT",
           "description": "AudioGPT: Understanding and Generating Speech, Music, Sound, and Talking Head",
-          "stars": 10211,
+          "stars": 10210,
           "pushedAt": "2024-07-06T21:35:18.000Z",
           "language": "Python"
         },
@@ -128,7 +128,7 @@
           "name": "tencent-ailab/V-Express",
           "link": "https://github.com/tencent-ailab/V-Express",
           "description": "V-Express aims to generate a talking head video under the control of a reference image, an audio, and a sequence of V-Kps images.",
-          "stars": 2364,
+          "stars": 2365,
           "pushedAt": "2025-01-24T14:40:41.000Z",
           "language": "Python"
         },
@@ -182,7 +182,7 @@
           "name": "graphdeco-inria/gaussian-splatting",
           "link": "https://github.com/graphdeco-inria/gaussian-splatting",
           "description": "Original reference implementation of \"3D Gaussian Splatting for Real-Time Radiance Field Rendering\"",
-          "stars": 20618,
+          "stars": 20626,
           "pushedAt": "2025-10-17T14:28:15.000Z",
           "language": "Python"
         },
@@ -190,7 +190,7 @@
           "name": "nerfstudio-project/gsplat",
           "link": "https://github.com/nerfstudio-project/gsplat",
           "description": "CUDA accelerated rasterization of gaussian splatting",
-          "stars": 4462,
+          "stars": 4466,
           "pushedAt": "2026-01-28T01:39:03.000Z",
           "language": "Python"
         },
@@ -206,7 +206,7 @@
           "name": "hbb1/2d-gaussian-splatting",
           "link": "https://github.com/hbb1/2d-gaussian-splatting",
           "description": "[SIGGRAPH'24] 2D Gaussian Splatting for Geometrically Accurate Radiance Fields",
-          "stars": 3030,
+          "stars": 3031,
           "pushedAt": "2025-11-24T15:26:53.000Z",
           "language": "Python"
         },
@@ -214,7 +214,7 @@
           "name": "Awesome3DGS/3D-Gaussian-Splatting-Papers",
           "link": "https://github.com/Awesome3DGS/3D-Gaussian-Splatting-Papers",
           "description": "3D",
-          "stars": 2698,
+          "stars": 2700,
           "pushedAt": "2026-02-02T12:54:15.000Z",
           "language": "Python"
         },
@@ -254,7 +254,7 @@
           "name": "autonomousvision/mip-splatting",
           "link": "https://github.com/autonomousvision/mip-splatting",
           "description": "[CVPR'24 Best Student Paper] Mip-Splatting: Alias-free 3D Gaussian Splatting",
-          "stars": 1404,
+          "stars": 1405,
           "pushedAt": "2024-12-17T10:42:50.000Z",
           "language": "Python"
         }
