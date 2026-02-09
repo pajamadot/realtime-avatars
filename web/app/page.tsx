@@ -60,7 +60,7 @@ export default function Home() {
         {/* Abstract / Key Findings */}
         <section className="highlight-box mb-12">
           <p className="section-label mb-3">Key Findings (2026)</p>
-          <div className="grid md:grid-cols-5 gap-6 text-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 text-center">
             <div>
               <div className="text-2xl font-semibold mb-1">60+ FPS</div>
               <div className="text-sm text-[var(--text-muted)]">MetaHuman rendering</div>
@@ -120,6 +120,25 @@ export default function Home() {
             Achieving a convincing digital human requires balancing visual realism, low latency,
             precise controllability, and feasible deployment.
           </p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4 text-sm">
+            <div className="p-3 bg-[var(--surface-2)] rounded text-center">
+              <p className="font-medium mb-1">Gaming</p>
+              <p className="text-xs text-[var(--text-muted)]">NPC companions & quest givers</p>
+            </div>
+            <div className="p-3 bg-[var(--surface-2)] rounded text-center">
+              <p className="font-medium mb-1">Customer Service</p>
+              <p className="text-xs text-[var(--text-muted)]">AI support agents with a face</p>
+            </div>
+            <div className="p-3 bg-[var(--surface-2)] rounded text-center">
+              <p className="font-medium mb-1">Education</p>
+              <p className="text-xs text-[var(--text-muted)]">Interactive tutors & presenters</p>
+            </div>
+            <div className="p-3 bg-[var(--surface-2)] rounded text-center">
+              <p className="font-medium mb-1">Telepresence</p>
+              <p className="text-xs text-[var(--text-muted)]">VR/AR meeting avatars</p>
+            </div>
+          </div>
           <p className="text-[var(--text-muted)] mb-4">
             Recent advances (2023–2026) have produced several distinct approaches to real-time
             responsive avatars. This survey examines four primary methods, each with unique
@@ -135,7 +154,7 @@ export default function Home() {
 
           <div className="card p-5 mt-6">
             <p className="font-medium mb-4">Latency Budget (Rule of Thumb)</p>
-            <div className="grid md:grid-cols-5 gap-3 text-sm">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 text-sm">
               {[
                 { k: "Capture", v: "10–30ms", d: "cam / mic" },
                 { k: "Tracking", v: "10–40ms", d: "pose / face" },
@@ -493,7 +512,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="card p-5">
+          <div className="card p-5 mb-6">
             <p className="font-medium mb-4">Performance Benchmarks</p>
             <div className="grid md:grid-cols-3 gap-4 text-sm">
               <div className="text-center p-4 bg-[var(--surface-2)] rounded">
@@ -508,6 +527,42 @@ export default function Home() {
                 <div className="text-xl font-semibold mb-1">~32 FPS</div>
                 <div className="text-[var(--text-muted)]">SoulX-LiveTalk 14B (8× H800)</div>
               </div>
+            </div>
+          </div>
+
+          <div className="card p-5">
+            <p className="font-medium mb-4">Model Size vs. Hardware Requirements</p>
+            <div className="overflow-x-auto">
+              <table className="research-table text-sm">
+                <thead>
+                  <tr>
+                    <th>Model</th>
+                    <th>Parameters</th>
+                    <th>VRAM</th>
+                    <th>FPS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="font-medium">SadTalker</td>
+                    <td>~200M</td>
+                    <td>8 GB</td>
+                    <td>~15</td>
+                  </tr>
+                  <tr>
+                    <td className="font-medium">LiveTalk 1.3B</td>
+                    <td>1.3B</td>
+                    <td>24 GB (A100)</td>
+                    <td>24-25</td>
+                  </tr>
+                  <tr>
+                    <td className="font-medium">SoulX-LiveTalk 14B</td>
+                    <td>14B</td>
+                    <td>8× 80 GB (H800)</td>
+                    <td>~32</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
@@ -1300,6 +1355,20 @@ export default function Home() {
                 in generative models. And the compute cost of photorealistic real-time avatars still
                 limits deployment to cloud-rendered streaming rather than on-device.
               </p>
+            </div>
+          </div>
+
+          <div className="card p-5">
+            <p className="font-medium mb-3">What to Watch in 2026</p>
+            <div className="grid md:grid-cols-2 gap-4 text-sm text-[var(--text-muted)]">
+              <div>
+                <p className="font-medium text-[var(--foreground)] mb-1">On-Device Avatars</p>
+                <p>Mobile NPUs and dedicated AI chips may enable lightweight avatar inference directly on phones, eliminating cloud dependency for simple use cases.</p>
+              </div>
+              <div>
+                <p className="font-medium text-[var(--foreground)] mb-1">Multi-Modal Agents</p>
+                <p>Tighter coupling between LLMs, TTS, and avatar rendering will create end-to-end systems where the avatar understands context, not just speaks words.</p>
+              </div>
             </div>
           </div>
         </section>
