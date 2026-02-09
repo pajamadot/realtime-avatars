@@ -40,7 +40,7 @@ const jsonLd = [
     datePublished: '2026-01-01',
     dateModified: '2026-02-09',
     inLanguage: 'en',
-    version: '2.0',
+    version: '2.1',
     keywords:
       'real-time avatars, MetaHuman, generative video, Gaussian splatting, streaming avatars, digital humans',
   },
@@ -185,8 +185,8 @@ export default function Home() {
               <div className="text-sm text-[var(--text-muted)]">MetaHuman rendering</div>
             </div>
             <div>
-              <div className="text-2xl font-semibold mb-1">&lt;100ms</div>
-              <div className="text-sm text-[var(--text-muted)]">Gaussian splatting</div>
+              <div className="text-2xl font-semibold mb-1">563 FPS</div>
+              <div className="text-sm text-[var(--text-muted)]">Gaussian (LAM, A100)</div>
             </div>
             <div>
               <div className="text-2xl font-semibold mb-1">~32 FPS</div>
@@ -866,11 +866,11 @@ export default function Home() {
               </div>
             </div>
             <div className="p-3 bg-[var(--surface-2)] rounded border border-[var(--color-gaussian)]">
-              <p className="text-xs text-[var(--text-muted)] mb-2 font-medium">One-Shot (feed-forward)</p>
+              <p className="text-xs text-[var(--text-muted)] mb-2 font-medium">One-Shot (feed-forward, LAM)</p>
               <div className="grid grid-cols-3 gap-2">
                 <div><div className="font-semibold font-mono">1 photo</div><div className="text-xs text-[var(--text-muted)]">Input needed</div></div>
-                <div><div className="font-semibold font-mono">&lt;10s</div><div className="text-xs text-[var(--text-muted)]">Avatar creation</div></div>
-                <div><div className="font-semibold font-mono">100+ FPS</div><div className="text-xs text-[var(--text-muted)]">Inference</div></div>
+                <div><div className="font-semibold font-mono">~1.4s</div><div className="text-xs text-[var(--text-muted)]">Avatar creation</div></div>
+                <div><div className="font-semibold font-mono">563 FPS</div><div className="text-xs text-[var(--text-muted)]">A100 / 110 FPS mobile</div></div>
               </div>
             </div>
           </div>
@@ -897,9 +897,10 @@ export default function Home() {
               <div>
                 <p className="font-medium mb-1">LAM (Alibaba, SIGGRAPH 2025)</p>
                 <p className="text-[var(--text-muted)]">
-                  Large Avatar Model — a feed-forward model that creates an animatable 3D Gaussian
-                  avatar from a single photo in seconds, no per-subject training needed. Ships with a
-                  WebGL renderer and Audio2Expression module for real-time conversation.
+                  Large Avatar Model — creates an animatable 3D Gaussian avatar from a single photo
+                  in ~1.4 seconds via a single forward pass. Renders at 563 FPS on A100 and 110 FPS on
+                  mobile (Xiaomi 14). Ecosystem includes LAM_WebRender (WebGL, npm), LAM_Audio2Expression
+                  (real-time ARKit blendshapes via Wav2Vec), and OpenAvatarChat integration.
                 </p>
               </div>
               <div>
@@ -908,6 +909,21 @@ export default function Home() {
                   Full-stack conversational avatar SDK integrating VAD → ASR → LLM → TTS → Avatar
                   in one pipeline. Supports LAM (3D Gaussian), MuseTalk, and 2D backends with
                   WebRTC delivery and ~2.2s end-to-end latency.
+                </p>
+              </div>
+              <div>
+                <p className="font-medium mb-1">GaussianTalker (KAIST, ACM MM 2024)</p>
+                <p className="text-[var(--text-muted)]">
+                  Audio-driven talking head that deforms a canonical 3DGS representation in sync
+                  with speech. Reaches 120 FPS after per-subject training from 3-5 min of video.
+                </p>
+              </div>
+              <div>
+                <p className="font-medium mb-1">TaoAvatar (Alibaba, CVPR 2025)</p>
+                <p className="text-[var(--text-muted)]">
+                  Full-body talking avatar using 3DGS + SMPL-X. Handles loose clothing and hair
+                  with a hybrid parametric representation. Runs at 90 FPS on Apple Vision Pro
+                  with on-device inference via MNN.
                 </p>
               </div>
             </div>
@@ -1725,7 +1741,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-4 text-sm text-[var(--text-muted)]">
               <div>
                 <p className="font-medium text-[var(--foreground)] mb-1">On-Device Avatars</p>
-                <p>Mobile NPUs and dedicated AI chips may enable lightweight avatar inference directly on phones, eliminating cloud dependency for simple use cases.</p>
+                <p>Already happening: TaoAvatar runs full-body 3DGS avatars at 90 FPS on Apple Vision Pro and offline on Android via MNN. LAM renders at 110 FPS on Xiaomi 14. On-device conversational avatars will soon be standard.</p>
               </div>
               <div>
                 <p className="font-medium text-[var(--foreground)] mb-1">Multi-Modal Agents</p>
@@ -1839,6 +1855,26 @@ export default function Home() {
                 title: "Visionary (WebGPU)",
                 desc: "WebGPU Gaussian splatting engine — 60-135x faster than WebGL",
                 url: "https://github.com/Visionary-Laboratory/visionary",
+              },
+              {
+                title: "GaussianTalker (ACM MM 2024)",
+                desc: "Audio-driven 3DGS talking head — 120 FPS from 3-5 min training video",
+                url: "https://github.com/cvlab-kaist/GaussianTalker",
+              },
+              {
+                title: "TaoAvatar (CVPR 2025)",
+                desc: "Full-body 3DGS + SMPL-X avatar — 90 FPS on Apple Vision Pro, on-device via MNN",
+                url: "https://github.com/alibaba/Taobao3D",
+              },
+              {
+                title: "LAM WebRender",
+                desc: "Browser-native WebGL renderer for LAM Gaussian avatars (npm package)",
+                url: "https://github.com/aigc3d/LAM_WebRender",
+              },
+              {
+                title: "LAM Audio2Expression",
+                desc: "Real-time audio to ARKit blendshapes via Wav2Vec for LAM avatars",
+                url: "https://github.com/aigc3d/LAM_Audio2Expression",
               },
               {
                 title: "Awesome Talking Head Generation",

@@ -25,6 +25,7 @@ const terms = [
   { term: 'SfM', def: 'Structure from Motion — a photogrammetry technique that extracts 3D point clouds and camera poses from overlapping 2D images, used to initialize Gaussian splatting scenes.' },
   { term: 'One-Shot Avatar', def: 'A 3D avatar generated from a single photo via a feed-forward neural network (e.g., LAM), bypassing multi-view capture and per-subject training entirely.' },
   { term: 'OpenAvatarChat', def: 'An open-source conversational avatar SDK that integrates VAD, ASR, LLM, TTS, and Audio2Expression into a single pipeline driving Gaussian or 2D avatar backends via WebRTC.' },
+  { term: 'SMPL-X', def: 'Expressive parametric body model encoding full-body pose, hand articulation, and facial expression as blend shapes — used by TaoAvatar and D3GA to drive Gaussian body avatars.' },
 ];
 
 export default function Glossary({ className = '' }: { className?: string }) {

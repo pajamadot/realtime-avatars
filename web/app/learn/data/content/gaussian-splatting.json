@@ -1,7 +1,7 @@
 {
   "id": "gaussian-splatting",
   "title": "Gaussian Splatting",
-  "subtitle": "3D Gaussian primitives for real-time photorealistic rendering",
+  "subtitle": "3D Gaussian primitives for real-time photorealistic rendering and conversation",
   "color": "var(--color-gaussian)",
 
   "intro": {
@@ -168,6 +168,21 @@
         "title": "OpenAvatarChat (Conversational Pipeline)",
         "url": "https://github.com/HumanAIGC-Engineering/OpenAvatarChat",
         "type": "github"
+      },
+      {
+        "title": "GaussianTalker (Audio-Driven, 120 FPS)",
+        "url": "https://github.com/cvlab-kaist/GaussianTalker",
+        "type": "github"
+      },
+      {
+        "title": "TaoAvatar (Full-Body 3DGS + SMPL-X)",
+        "url": "https://github.com/alibaba/Taobao3D",
+        "type": "github"
+      },
+      {
+        "title": "LAM Audio2Expression (Real-Time Blendshapes)",
+        "url": "https://github.com/aigc3d/LAM_Audio2Expression",
+        "type": "github"
       }
     ]
   },
@@ -242,7 +257,7 @@
       }
     ],
     "performance": {
-      "rendering": "50-300+ FPS depending on complexity",
+      "rendering": "50-563 FPS depending on model and hardware (LAM: 563 FPS on A100, 110 FPS on mobile)",
       "training": "30 minutes to several hours per identity",
       "memory": "More compact than voxels for equivalent detail"
     }
