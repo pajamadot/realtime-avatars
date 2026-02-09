@@ -275,6 +275,7 @@ h4 { font-size: var(--font-size-lg); }
 a {
   color: var(--accent-dark);
   text-decoration: none;
+  text-underline-offset: 2px;
   transition: var(--transition-colors);
 }
 

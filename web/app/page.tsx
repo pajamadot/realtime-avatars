@@ -111,7 +111,7 @@ export default function Home() {
       <header className="border-b border-[var(--border)] bg-[var(--surface-0)] relative">
         <div className="mx-auto max-w-4xl px-6">
           <nav className="flex items-center justify-between h-14" aria-label="Main navigation">
-            <span className="font-semibold text-sm">Real-Time Avatars</span>
+            <span className="font-semibold text-sm" aria-current="page">Real-Time Avatars</span>
             <div className="hidden md:flex items-center gap-6">
               <a href="#methods" className="nav-link">Methods</a>
               <a href="#comparison" className="nav-link">Comparison</a>
@@ -198,14 +198,14 @@ export default function Home() {
 
         <nav className="mb-8 text-sm" aria-label="Table of contents">
           <div className="flex flex-wrap gap-x-4 gap-y-1 text-[var(--text-muted)]">
-            <a href="#methods" className="hover:text-[var(--accent)]">Methods</a>
-            <a href="#comparison" className="hover:text-[var(--accent)]">Comparison</a>
-            <a href="#hybrids" className="hover:text-[var(--accent)]">Hybrids</a>
-            <a href="#implementation" className="hover:text-[var(--accent)]">Implementation</a>
-            <a href="#discussion" className="hover:text-[var(--accent)]">Discussion</a>
-            <a href="#glossary" className="hover:text-[var(--accent)]">Glossary</a>
-            <a href="#faq" className="hover:text-[var(--accent)]">FAQ</a>
-            <a href="#living-feed" className="hover:text-[var(--accent)]">Feed</a>
+            <a href="#methods" className="hover:text-[var(--accent)] hover:underline">Methods</a>
+            <a href="#comparison" className="hover:text-[var(--accent)] hover:underline">Comparison</a>
+            <a href="#hybrids" className="hover:text-[var(--accent)] hover:underline">Hybrids</a>
+            <a href="#implementation" className="hover:text-[var(--accent)] hover:underline">Implementation</a>
+            <a href="#discussion" className="hover:text-[var(--accent)] hover:underline">Discussion</a>
+            <a href="#glossary" className="hover:text-[var(--accent)] hover:underline">Glossary</a>
+            <a href="#faq" className="hover:text-[var(--accent)] hover:underline">FAQ</a>
+            <a href="#living-feed" className="hover:text-[var(--accent)] hover:underline">Feed</a>
           </div>
         </nav>
 
@@ -1656,7 +1656,7 @@ export default function Home() {
 
         {/* References / Resources */}
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-balance">7. References, Resources & Living Feed</h2>
+          <h2 id="references" className="text-2xl font-semibold mb-6 text-balance scroll-mt-16">7. References, Resources & Living Feed</h2>
 
           <div className="grid md:grid-cols-2 gap-4">
             {[
