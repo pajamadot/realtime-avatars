@@ -684,17 +684,18 @@ export default function Home() {
             <p className="font-medium mb-4">Supported Providers</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
               {[
-                { name: "Tavus", desc: "Photorealistic digital twins" },
-                { name: "Hedra", desc: "Expressive character avatars" },
-                { name: "Simli", desc: "Real-time lip-sync" },
-                { name: "Anam", desc: "Natural gesture avatars" },
-                { name: "Beyond Presence", desc: "Enterprise-grade" },
-                { name: "bitHuman", desc: "Hyper-realistic faces" },
+                { name: "Tavus", desc: "Photorealistic digital twins", color: "var(--color-streaming)" },
+                { name: "Hedra", desc: "Expressive character avatars", color: "var(--color-streaming)" },
+                { name: "Rapport", desc: "MetaHuman pixel streaming", color: "var(--color-metahuman)" },
+                { name: "Simli", desc: "Real-time lip-sync", color: "var(--color-streaming)" },
+                { name: "Anam", desc: "Natural gesture avatars", color: "var(--color-streaming)" },
+                { name: "Beyond Presence", desc: "Enterprise-grade", color: "var(--color-streaming)" },
+                { name: "bitHuman", desc: "Hyper-realistic faces", color: "var(--color-streaming)" },
               ].map((p) => (
                 <div key={p.name} className="flex items-center gap-2">
                   <div
                     className="approach-dot"
-                    style={{ backgroundColor: "var(--color-streaming)" }}
+                    style={{ backgroundColor: p.color }}
                   />
                   <div>
                     <span className="font-medium">{p.name}</span>

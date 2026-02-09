@@ -102,6 +102,20 @@ const PROVIDERS: Provider[] = [
     bestFor: 'Real-time conversation with minimal delay',
     color: '#1abc9c',
   },
+  {
+    id: 'rapport',
+    name: 'Rapport',
+    type: 'metahuman',
+    latency: 120,
+    quality: 94,
+    customization: 95,
+    cost: 4,
+    input: ['Audio', 'Text'],
+    output: 'Pixel stream',
+    features: ['MetaHuman', 'UE5 rendering', 'Pixel streaming', 'Full body'],
+    bestFor: 'Highest fidelity with full artistic control via Unreal Engine',
+    color: '#7c6a9c',
+  },
 ];
 
 type SortKey = 'latency' | 'quality' | 'customization' | 'cost';
@@ -165,6 +179,7 @@ export function ProviderComparisonDemo() {
             <option value="all">All Types</option>
             <option value="diffusion">Diffusion</option>
             <option value="neural">Neural Network</option>
+            <option value="metahuman">MetaHuman</option>
             <option value="hybrid">Hybrid</option>
           </select>
         </div>
@@ -307,7 +322,7 @@ export function ProviderComparisonDemo() {
           </div>
           <div>
             <p className="font-medium text-[var(--foreground)]">Most Customizable</p>
-            <p className="text-[var(--text-muted)]">Tavus for personalized clones</p>
+            <p className="text-[var(--text-muted)]">Rapport for full MetaHuman control</p>
           </div>
         </div>
       </div>
