@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element */
 
-import { useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { fal } from '@fal-ai/client';
 import '@livekit/components-styles';
 import {
@@ -30,7 +30,7 @@ function safeRandomId() {
 }
 
 function AvatarStage() {
-  const { videoTrack } = useVoiceAssistant();
+  const { videoTrack, state } = useVoiceAssistant();
 
   return (
     <div className="relative h-[420px] w-full bg-black/20 rounded border border-[var(--border)] overflow-hidden flex items-center justify-center">
@@ -40,8 +40,21 @@ function AvatarStage() {
           className="h-full w-full object-cover"
         />
       ) : (
-        <div className="text-sm text-[var(--text-muted)]">
-          Waiting for an avatar video track...
+        <div className="text-center px-6">
+          <p className="text-sm text-[var(--text-muted)] mb-2">
+            {state === 'disconnected'
+              ? 'Not connected'
+              : state === 'connecting'
+                ? 'Connecting to room...'
+                : 'Waiting for avatar agent to join and publish video...'}
+          </p>
+          {state !== 'disconnected' && state !== 'connecting' && (
+            <p className="text-xs text-[var(--text-muted)] max-w-sm mx-auto">
+              The Python agent (<code>agents/livekit-hedra-avatar/agent.py</code>) must be
+              running and connected to the same LiveKit project. Run{' '}
+              <code>python agent.py dev</code> locally or deploy to LiveKit Cloud.
+            </p>
+          )}
         </div>
       )}
     </div>
@@ -49,13 +62,26 @@ function AvatarStage() {
 }
 
 function AgentStatus() {
-  const { state, audioTrack } = useVoiceAssistant();
+  const { state, audioTrack, agent } = useVoiceAssistant();
 
   return (
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-      <p className="text-xs text-[var(--text-muted)]">
-        Voice assistant state: <span className="font-medium">{state}</span>
-      </p>
+      <div className="flex items-center gap-3">
+        <p className="text-xs text-[var(--text-muted)]">
+          Voice assistant state: <span className="font-medium">{state}</span>
+        </p>
+        {agent ? (
+          <span className="inline-flex items-center gap-1 text-xs" style={{ color: 'var(--success)' }}>
+            <span className="w-1.5 h-1.5 rounded-full bg-current" />
+            Agent connected
+          </span>
+        ) : (
+          <span className="inline-flex items-center gap-1 text-xs" style={{ color: 'var(--error)' }}>
+            <span className="w-1.5 h-1.5 rounded-full bg-current" />
+            No agent in room
+          </span>
+        )}
+      </div>
       {audioTrack ? (
         <div className="flex items-center gap-3">
           <span className="text-xs text-[var(--text-muted)]">Audio</span>
@@ -80,7 +106,8 @@ export default function LiveKitStreamingAvatarDemo({
 }: {
   className?: string;
 }) {
-  const identity = useMemo(() => safeRandomId(), []);
+  const [identity, setIdentity] = useState('');
+  useEffect(() => { setIdentity(safeRandomId()); }, []);
   const tokenEndpoint =
     process.env.NEXT_PUBLIC_LIVEKIT_TOKEN_ENDPOINT || '/api/livekit/token';
 
@@ -279,7 +306,7 @@ export default function LiveKitStreamingAvatarDemo({
         <div className="flex flex-col md:flex-row md:items-center gap-3 mt-4">
           <button
             type="button"
-            disabled={busy || connect}
+            disabled={busy || connect || !identity}
             onClick={join}
             className="badge hover:border-[var(--border-strong)] disabled:opacity-60 disabled:cursor-not-allowed"
           >
@@ -294,7 +321,7 @@ export default function LiveKitStreamingAvatarDemo({
             Leave
           </button>
           <p className="text-xs text-[var(--text-muted)]">
-            Identity: <code>{identity}</code>
+            Identity: <code suppressHydrationWarning>{identity || '...'}</code>
           </p>
         </div>
 
