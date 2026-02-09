@@ -496,19 +496,35 @@ export default function EndToEndPage() {
 
       {/* Try it */}
       <section className="mb-16">
-        <div className="card p-6 text-center bg-gradient-to-r from-[var(--color-gaussian)]/10 via-[var(--color-generative)]/10 to-[var(--color-streaming)]/10">
-          <h3 className="font-semibold mb-2">See It In Action</h3>
-          <p className="text-sm text-[var(--text-muted)] mb-4">
-            Experience a complete real-time avatar system using the Streaming approach
-            with LiveKit and Hedra.
+        <div className="card p-6 bg-gradient-to-r from-[var(--color-gaussian)]/10 via-[var(--color-generative)]/10 to-[var(--color-streaming)]/10">
+          <h3 className="font-semibold mb-2 text-center">See It In Action</h3>
+          <p className="text-sm text-[var(--text-muted)] mb-4 text-center">
+            Experience complete real-time avatar systems using two different approaches.
           </p>
-          <Link
-            href="/livekit"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--accent)] text-white rounded-lg hover:opacity-90 transition-opacity"
-          >
-            Launch Live Demo
-            <span>→</span>
-          </Link>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="p-4 bg-[var(--bg)]/60 rounded-lg text-center">
+              <div className="w-3 h-3 rounded-full mx-auto mb-2" style={{ backgroundColor: 'var(--color-streaming)' }} />
+              <p className="font-medium text-sm mb-1">Diffusion + WebRTC</p>
+              <p className="text-xs text-[var(--text-muted)] mb-3">LiveKit + Hedra streaming avatar</p>
+              <Link
+                href="/livekit"
+                className="badge hover:border-[var(--border-strong)]"
+              >
+                Launch Demo →
+              </Link>
+            </div>
+            <div className="p-4 bg-[var(--bg)]/60 rounded-lg text-center">
+              <div className="w-3 h-3 rounded-full mx-auto mb-2" style={{ backgroundColor: 'var(--color-metahuman)' }} />
+              <p className="font-medium text-sm mb-1">MetaHuman + Pixel Streaming</p>
+              <p className="text-xs text-[var(--text-muted)] mb-3">Rapport UE5 cloud-rendered avatar</p>
+              <Link
+                href="/rapport"
+                className="badge hover:border-[var(--border-strong)]"
+              >
+                Launch Demo →
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

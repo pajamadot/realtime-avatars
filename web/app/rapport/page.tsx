@@ -106,7 +106,7 @@ export default function RapportPage() {
         </div>
 
         {/* Links */}
-        <div className="flex flex-wrap gap-4 mt-6">
+        <div className="grid md:grid-cols-3 gap-4 mt-6">
           <a
             href="https://www.rapport.cloud/"
             target="_blank"
@@ -127,6 +127,16 @@ export default function RapportPage() {
             <div>
               <p className="font-medium text-sm">LiveKit Demo</p>
               <p className="text-xs text-[var(--text-muted)]">Hedra streaming avatar</p>
+            </div>
+          </Link>
+          <Link
+            href="/learn/metahuman"
+            className="card p-4 flex items-center gap-3 hover:border-[var(--border-strong)]"
+          >
+            <Cpu size={18} className="text-[var(--accent)]" />
+            <div>
+              <p className="font-medium text-sm">MetaHuman Track</p>
+              <p className="text-xs text-[var(--text-muted)]">Learn how it works</p>
             </div>
           </Link>
         </div>
