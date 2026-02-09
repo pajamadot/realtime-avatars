@@ -1,0 +1,16 @@
+# Models (downloaded via setup.sh, too large for git)
+models/
+
+# SSL certificates (generated via setup.sh)
+ssl_certs/
+
+# TURN server data
+coturn-data/
+
+# Environment variables (contains API keys)
+.env
+
+# Docker build artifacts
+build/
+exp/
+resource/

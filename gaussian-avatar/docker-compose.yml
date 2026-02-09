@@ -1,0 +1,70 @@
+##############################################################################
+# Gaussian Avatar — Real-Time Conversation via OpenAvatarChat + LAM
+#
+# Stack: SileroVAD → SenseVoice ASR → LLM (OpenAI) → TTS → LAM Audio2Expression
+# Avatar rendering: client-side Gaussian splatting in the browser (WebGL)
+#
+# Quick start:
+#   1. cp .env.example .env   # fill in your API keys
+#   2. bash scripts/setup.sh  # download models + generate SSL certs
+#   3. docker compose up --build
+#   4. Open https://localhost:8282 in your browser
+##############################################################################
+
+services:
+  # -------------------------------------------------------------------
+  # TURN server — required for WebRTC when accessing from LAN / internet
+  # If running localhost-only you can comment this out.
+  # -------------------------------------------------------------------
+  coturn:
+    image: coturn/coturn:latest
+    container_name: gaussian-avatar-coturn
+    command: >
+      --log-file=stdout
+    environment:
+      - DETECT_EXTERNAL_IP=yes
+      - DETECT_RELAY_IP=yes
+    volumes:
+      - ./coturn-data/turnserver.conf:/etc/coturn/turnserver.conf:ro
+      - ./ssl_certs/localhost.crt:/etc/turn_cert.pem:ro
+      - ./ssl_certs/localhost.key:/etc/turn_key.pem:ro
+    network_mode: host
+    restart: unless-stopped
+
+  # -------------------------------------------------------------------
+  # OpenAvatarChat + LAM — main avatar conversation server
+  # -------------------------------------------------------------------
+  avatar:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        CONFIG_FILE: config/chat_with_lam.yaml
+    image: gaussian-avatar:latest
+    container_name: gaussian-avatar
+    env_file: .env
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility,video
+    command: >
+      --config /app/config/chat_with_lam.yaml
+    volumes:
+      - ./models:/app/models
+      - ./ssl_certs:/app/ssl_certs:ro
+      - ./config:/app/config:ro
+      - ./.env:/app/.env:ro
+    ports:
+      - "8282:8282"
+    shm_size: "2gb"
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    depends_on:
+      - coturn
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

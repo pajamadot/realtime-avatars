@@ -482,31 +482,35 @@ export default function GaussianSplattingPage() {
 
         <div className="divider" />
 
-        <h3 className="font-semibold mb-4">Conversational Avatar Quickstart (One-Shot)</h3>
+        <h3 className="font-semibold mb-4">Conversational Avatar Quickstart (Docker)</h3>
         <p className="text-sm text-[var(--text-muted)] mb-4">
-          Create a talking Gaussian avatar from a single photo using LAM + OpenAvatarChat.
+          Deploy a talking Gaussian avatar from a single photo using OpenAvatarChat + LAM in Docker.
+          Server needs ~4-6 GB VRAM; the avatar renders client-side in the browser via WebGL.
         </p>
         <div className="space-y-3 mb-8">
           <div className="card p-4">
-            <p className="font-medium text-sm mb-1">1. Clone OpenAvatarChat</p>
-            <div className="code text-xs mt-2">git clone https://github.com/HumanAIGC-Engineering/OpenAvatarChat.git</div>
+            <p className="font-medium text-sm mb-1">1. Clone and setup</p>
+            <div className="code text-xs mt-2">cd gaussian-avatar && bash scripts/setup.sh</div>
+            <p className="text-xs text-[var(--text-muted)] mt-1">Downloads models (~2 GB): wav2vec2, LAM Audio2Expression, SenseVoice ASR. Generates SSL certs for WebRTC.</p>
           </div>
           <div className="card p-4">
-            <p className="font-medium text-sm mb-1">2. Install LAM + Audio2Expression</p>
-            <div className="code text-xs mt-2">pip install -r requirements.txt</div>
+            <p className="font-medium text-sm mb-1">2. Add your API key</p>
+            <div className="code text-xs mt-2">cp .env.example .env && nano .env</div>
+            <p className="text-xs text-[var(--text-muted)] mt-1">Set <code>OPENAI_API_KEY</code> for the LLM. Or use the Ollama config for fully local operation (no keys needed).</p>
           </div>
           <div className="card p-4">
-            <p className="font-medium text-sm mb-1">3. Provide a single face photo</p>
-            <p className="text-xs text-[var(--text-muted)]">LAM generates the 3D Gaussian avatar in seconds — no multi-view capture needed.</p>
+            <p className="font-medium text-sm mb-1">3. Build and run</p>
+            <div className="code text-xs mt-2">docker compose up --build</div>
+            <p className="text-xs text-[var(--text-muted)] mt-1">Builds the OpenAvatarChat image with CUDA 12.2 + Python 3.11, starts the avatar server + TURN relay.</p>
           </div>
           <div className="card p-4">
-            <p className="font-medium text-sm mb-1">4. Configure AI backends</p>
-            <p className="text-xs text-[var(--text-muted)]">Set up ASR (Whisper), LLM (Qwen/GPT), and TTS (edge_tts) in the config file.</p>
+            <p className="font-medium text-sm mb-1">4. Open browser</p>
+            <div className="code text-xs mt-2">https://localhost:8282</div>
+            <p className="text-xs text-[var(--text-muted)] mt-1">Accept the self-signed cert, allow microphone access. The Gaussian avatar renders at 60+ FPS via WebGL.</p>
           </div>
           <div className="card p-4">
-            <p className="font-medium text-sm mb-1">5. Launch and talk</p>
-            <div className="code text-xs mt-2">python run.py --avatar lam --photo face.jpg</div>
-            <p className="text-xs text-[var(--text-muted)] mt-1">Opens browser with WebRTC connection. ~2.2s end-to-end latency on RTX 4090.</p>
+            <p className="font-medium text-sm mb-1">5. Custom avatar (optional)</p>
+            <p className="text-xs text-[var(--text-muted)]">Generate a Gaussian avatar from any photo using LAM, export as <code>.zip</code>, and set <code>asset_path</code> in the config. Supports up to 5 concurrent sessions.</p>
           </div>
         </div>
 
@@ -644,10 +648,10 @@ export default function GaussianSplattingPage() {
         </div>
 
         <KeyInsight type="insight" title="The Conversation Pipeline">
-          OpenAvatarChat combines VAD, ASR (Whisper), LLM (Qwen), TTS, and Audio2Expression
-          into a single pipeline that drives a LAM Gaussian avatar. The server handles AI inference
-          while the browser renders the 3D avatar locally via WebGL. End-to-end latency: ~2.2 seconds
-          on an RTX 4090. All components are Apache 2.0 licensed.
+          OpenAvatarChat combines SileroVAD, SenseVoice ASR, an OpenAI-compatible LLM, EdgeTTS (or CosyVoice),
+          and LAM Audio2Expression into a single pipeline driving a Gaussian avatar. The server needs only
+          ~4-6 GB VRAM while the browser renders the 3D avatar at 60+ FPS via WebGL. End-to-end latency:
+          ~2.2s on RTX 4090. Supports 5+ concurrent sessions. Deploy with Docker. All Apache 2.0 licensed.
         </KeyInsight>
 
         <div className="card p-5 mt-6">
@@ -656,15 +660,15 @@ export default function GaussianSplattingPage() {
             <div className="p-3 bg-[var(--surface-2)] rounded">
               <p className="font-medium text-[var(--foreground)] mb-1">Browser (Client)</p>
               <p className="text-[var(--text-muted)]">
-                LAM WebRender (WebGL/WebGPU) renders the 3D Gaussian avatar locally.
-                Expression coefficients arrive via WebRTC data channel. No GPU needed on client side.
+                LAM WebRender (WebGL) renders the 3D Gaussian avatar locally at 60-563 FPS.
+                52 ARKit blendshape coefficients arrive via WebSocket. No GPU needed on client.
               </p>
             </div>
             <div className="p-3 bg-[var(--surface-2)] rounded">
-              <p className="font-medium text-[var(--foreground)] mb-1">Server (GPU)</p>
+              <p className="font-medium text-[var(--foreground)] mb-1">Server (Docker + GPU)</p>
               <p className="text-[var(--text-muted)]">
-                Runs the AI pipeline: VAD detects speech, Whisper transcribes, LLM generates response,
-                TTS synthesizes audio, Audio2Expression converts to ARKit blendshapes.
+                SileroVAD detects speech, SenseVoice transcribes, LLM generates response,
+                TTS synthesizes audio, Audio2Expression maps to ARKit blendshapes. Deploy via <code className="text-xs">docker compose up</code>.
               </p>
             </div>
           </div>
