@@ -79,6 +79,24 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Getting Started callout */}
+        <div className="card p-5 mb-12 bg-gradient-to-r from-[var(--color-gaussian)]/5 via-[var(--color-generative)]/5 to-[var(--color-streaming)]/5">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <p className="font-medium mb-1">New to real-time avatars?</p>
+              <p className="text-sm text-[var(--text-muted)]">
+                Start with our interactive learning paths — hands-on demos and step-by-step guides for each approach.
+              </p>
+            </div>
+            <a
+              href="/learn"
+              className="badge hover:border-[var(--border-strong)] whitespace-nowrap px-4 py-2"
+            >
+              Start Learning →
+            </a>
+          </div>
+        </div>
+
         <div className="divider" />
 
         {/* Introduction */}
