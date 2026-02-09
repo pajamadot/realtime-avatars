@@ -23,6 +23,18 @@ const faqs = [
     q: 'Do I need ML expertise to build a real-time avatar?',
     a: 'Not necessarily. Streaming avatar APIs abstract away the ML complexity. MetaHuman Creator is a visual tool. Only generative video and Gaussian splatting approaches require ML knowledge for training custom models.',
   },
+  {
+    q: 'What hardware do I need to get started?',
+    a: 'It depends on the approach. Streaming avatars work from any device with a browser. MetaHuman requires a gaming GPU (RTX 3060+) for Unreal Engine. Generative video needs an A100 or H100 GPU. Gaussian splatting trains on an RTX 4090 but can render on lower-end GPUs.',
+  },
+  {
+    q: 'Can I create an avatar that looks like a specific person?',
+    a: 'Yes. Gaussian splatting creates photorealistic digital twins from multi-view video capture. Generative models can animate a single photo. MetaHuman Creator allows manual sculpting. Always ensure you have consent when creating likenesses of real people.',
+  },
+  {
+    q: 'How do hybrid approaches combine different methods?',
+    a: 'Hybrids take the best of each: e.g., a MetaHuman rig for control with a neural renderer for realism (GeneFace++), or Gaussian splatting driven by parametric face models (D3GA). This combines precision with photorealism while keeping latency manageable.',
+  },
 ];
 
 export default function FAQ({ className = '' }: { className?: string }) {

@@ -12,7 +12,13 @@ const terms = [
   { term: 'SFU', def: 'Selective Forwarding Unit — a WebRTC server that routes media streams between participants without decoding.' },
   { term: 'STT/TTS', def: 'Speech-to-Text and Text-to-Speech — the audio conversion layers in a voice AI pipeline.' },
   { term: 'VAD', def: 'Voice Activity Detection — algorithm that determines when a user is speaking vs. silent.' },
+  { term: 'VAE', def: 'Variational Autoencoder — a neural network that compresses data into a latent space and reconstructs it, used in diffusion pipelines.' },
   { term: 'WebRTC', def: 'Web Real-Time Communication — browser API for peer-to-peer audio, video, and data streaming.' },
+  { term: 'FLAME', def: 'Faces Learned with an Articulated Model and Expressions — a parametric 3D face model used to drive Gaussian and NeRF avatars.' },
+  { term: 'Latent Space', def: 'A compressed mathematical representation where generative models operate, encoding high-dimensional data (images, video) into compact vectors.' },
+  { term: 'LoRA', def: 'Low-Rank Adaptation — a parameter-efficient fine-tuning method that adapts large models to new identities or styles with minimal compute.' },
+  { term: 'Distillation', def: 'Training a smaller, faster model to replicate a larger model\'s outputs, enabling real-time inference from expensive teacher models.' },
+  { term: 'ARKit', def: 'Apple\'s augmented reality framework providing 52 facial blendshape coefficients for real-time face tracking on iPhone.' },
 ];
 
 export default function Glossary({ className = '' }: { className?: string }) {

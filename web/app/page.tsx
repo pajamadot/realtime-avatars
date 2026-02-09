@@ -24,6 +24,14 @@ export const metadata: Metadata = {
 const jsonLd = [
   {
     '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://realtime-avatars.vercel.app' },
+      { '@type': 'ListItem', position: 2, name: 'Survey', item: 'https://realtime-avatars.vercel.app/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
     '@type': 'TechArticle',
     headline: 'Real-Time Avatar Systems: A Comparative Analysis',
     description:
@@ -62,6 +70,22 @@ const jsonLd = [
         acceptedAnswer: {
           '@type': 'Answer',
           text: 'Not necessarily. Streaming avatar APIs abstract away the ML complexity. Only generative video and Gaussian splatting approaches require ML knowledge for training custom models.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What hardware do I need to get started?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Streaming avatars work from any device with a browser. MetaHuman requires a gaming GPU for Unreal Engine. Generative video needs an A100 or H100 GPU. Gaussian splatting trains on an RTX 4090 but can render on lower-end GPUs.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I create an avatar that looks like a specific person?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. Gaussian splatting creates photorealistic digital twins from multi-view video capture. Generative models can animate a single photo. MetaHuman Creator allows manual sculpting. Always ensure you have consent.',
         },
       },
     ],
@@ -227,6 +251,25 @@ export default function Home() {
             to the combination of these techniques.&rdquo;
           </div>
 
+          <details className="mt-6 text-sm">
+            <summary className="font-medium cursor-pointer text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
+              Methodology
+            </summary>
+            <div className="mt-3 text-[var(--text-muted)] space-y-2">
+              <p>
+                This survey synthesizes findings from 50+ papers published between 2023–2026,
+                primarily sourced from arXiv, CVPR, ICCV, SIGGRAPH, and NeurIPS proceedings.
+                Performance benchmarks are drawn from original publications and replicated where
+                hardware was available. Cost estimates reflect 2026 cloud pricing from AWS, Azure,
+                and provider-published rate cards.
+              </p>
+              <p>
+                The living research feed updates weekly via automated keyword searches across
+                arXiv and GitHub, surfacing new work for manual triage into the curated sections.
+              </p>
+            </div>
+          </details>
+
           <div className="card p-5 mt-6">
             <p className="font-medium mb-4">Latency Budget (Rule of Thumb)</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 text-sm">
@@ -295,6 +338,7 @@ export default function Home() {
                   <div
                     className="approach-dot"
                     style={{ backgroundColor: method.color }}
+                    aria-hidden="true"
                   />
                   <span className="text-sm text-[var(--text-muted)]">{method.num}</span>
                   <span className="badge">{method.type}</span>
@@ -436,17 +480,17 @@ export default function Home() {
                 <div className="font-medium">Input</div>
                 <div className="text-xs text-[var(--text-muted)]">Camera / Audio</div>
               </div>
-              <span className="text-[var(--text-muted)]">→</span>
+              <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>
               <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
                 <div className="font-medium">Tracking</div>
                 <div className="text-xs text-[var(--text-muted)]">ARKit / LiveLink</div>
               </div>
-              <span className="text-[var(--text-muted)]">→</span>
+              <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>
               <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
                 <div className="font-medium">Animation</div>
                 <div className="text-xs text-[var(--text-muted)]">Blendshapes</div>
               </div>
-              <span className="text-[var(--text-muted)]">→</span>
+              <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>
               <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
                 <div className="font-medium">Render</div>
                 <div className="text-xs text-[var(--text-muted)]">Unreal Engine</div>
@@ -649,22 +693,22 @@ export default function Home() {
                 <div className="font-medium">Photo</div>
                 <div className="text-xs text-[var(--text-muted)]">Reference face</div>
               </div>
-              <span className="text-[var(--text-muted)]">→</span>
+              <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>
               <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
                 <div className="font-medium">Audio</div>
                 <div className="text-xs text-[var(--text-muted)]">Speech / TTS</div>
               </div>
-              <span className="text-[var(--text-muted)]">→</span>
+              <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>
               <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
                 <div className="font-medium">Diffusion</div>
                 <div className="text-xs text-[var(--text-muted)]">Denoise latents</div>
               </div>
-              <span className="text-[var(--text-muted)]">→</span>
+              <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>
               <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
                 <div className="font-medium">Decode</div>
                 <div className="text-xs text-[var(--text-muted)]">VAE → frames</div>
               </div>
-              <span className="text-[var(--text-muted)]">→</span>
+              <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>
               <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
                 <div className="font-medium">Stream</div>
                 <div className="text-xs text-[var(--text-muted)]">WebRTC output</div>
@@ -898,17 +942,17 @@ export default function Home() {
                 <div className="font-medium">Agent Session</div>
                 <div className="text-xs text-[var(--text-muted)]">Python / Node.js</div>
               </div>
-              <span className="text-[var(--text-muted)]">→</span>
+              <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>
               <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
                 <div className="font-medium">Avatar Worker</div>
                 <div className="text-xs text-[var(--text-muted)]">Provider API</div>
               </div>
-              <span className="text-[var(--text-muted)]">→</span>
+              <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>
               <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
                 <div className="font-medium">LiveKit Room</div>
                 <div className="text-xs text-[var(--text-muted)]">WebRTC</div>
               </div>
-              <span className="text-[var(--text-muted)]">→</span>
+              <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>
               <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
                 <div className="font-medium">Client</div>
                 <div className="text-xs text-[var(--text-muted)]">Web / Mobile</div>
@@ -934,6 +978,7 @@ export default function Home() {
                   <div
                     className="approach-dot"
                     style={{ backgroundColor: p.color }}
+                    aria-hidden="true"
                   />
                   <div>
                     <span className="font-medium">{p.name}</span>
@@ -1117,7 +1162,7 @@ export default function Home() {
               ].map((item) => (
                 <div key={item.label} className="bg-[var(--surface-2)] rounded p-3 text-center">
                   <div className="flex items-center justify-center gap-2 mb-2">
-                    <div className="approach-dot" style={{ backgroundColor: item.color }} />
+                    <div className="approach-dot" style={{ backgroundColor: item.color }} aria-hidden="true" />
                     <span className="font-medium">{item.label}</span>
                   </div>
                   <p className="text-lg font-semibold">{item.cost}</p>
@@ -1131,7 +1176,7 @@ export default function Home() {
 
         <div className="card-alt p-5 mt-8 mb-12 rounded-lg border border-[var(--border)]">
           <p className="font-medium mb-4">Quick Decision Guide</p>
-          <div className="grid md:grid-cols-2 gap-3 text-sm">
+          <div className="grid md:grid-cols-2 gap-3 text-sm" role="list">
             {[
               { need: 'Fastest time to production', pick: 'Streaming', color: 'var(--color-streaming)' },
               { need: 'Highest visual fidelity', pick: 'MetaHuman', color: 'var(--color-metahuman)' },
@@ -1140,10 +1185,10 @@ export default function Home() {
               { need: 'Full creative control over rig', pick: 'MetaHuman', color: 'var(--color-metahuman)' },
               { need: 'Lowest per-unit cost', pick: 'Gaussian Splatting', color: 'var(--color-gaussian)' },
             ].map((item) => (
-              <div key={item.need} className="flex items-center gap-3 p-2 bg-[var(--surface-0)] rounded border border-[var(--border)]">
+              <div key={item.need} role="listitem" className="flex items-center gap-3 p-2 bg-[var(--surface-0)] rounded border border-[var(--border)]">
                 <span className="text-[var(--text-muted)] flex-1">{item.need}</span>
                 <span className="flex items-center gap-1.5 font-medium whitespace-nowrap">
-                  <span className="inline-block w-2 h-2 rounded-full" style={{ backgroundColor: item.color }} />
+                  <span className="inline-block w-2 h-2 rounded-full" style={{ backgroundColor: item.color }} aria-hidden="true" />
                   {item.pick}
                 </span>
               </div>
@@ -1166,9 +1211,9 @@ export default function Home() {
           <div className="grid gap-6 mb-6">
             <div className="card p-5">
               <div className="flex items-center gap-3 mb-3">
-                <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} />
+                <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} aria-hidden="true" />
                 <span className="text-[var(--accent)]">+</span>
-                <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} />
+                <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} aria-hidden="true" />
                 <h4 className="font-semibold">4.1 MetaHuman + Generative Enhancement</h4>
               </div>
               <p className="text-sm text-[var(--text-muted)] mb-4">
@@ -1190,7 +1235,7 @@ export default function Home() {
 
             <div className="card p-5">
               <div className="flex items-center gap-3 mb-3">
-                <div className="approach-dot" style={{ backgroundColor: "var(--color-gaussian)" }} />
+                <div className="approach-dot" style={{ backgroundColor: "var(--color-gaussian)" }} aria-hidden="true" />
                 <span className="text-[var(--accent)]">+</span>
                 <span className="badge">Parametric</span>
                 <h4 className="font-semibold">4.2 Gaussian + Parametric Driver</h4>
@@ -1214,7 +1259,7 @@ export default function Home() {
 
             <div className="card p-5">
               <div className="flex items-center gap-3 mb-3">
-                <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} />
+                <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} aria-hidden="true" />
                 <span className="text-[var(--accent)]">+</span>
                 <span className="badge">Animation</span>
                 <h4 className="font-semibold">4.3 Generative Motion + Traditional Rendering</h4>
@@ -1267,7 +1312,7 @@ export default function Home() {
                 { stage: 'WebRTC Delivery', ms: '~50ms' },
               ].map((item, i) => (
                 <span key={item.stage} className="contents">
-                  {i > 0 && <span className="text-[var(--text-muted)]">→</span>}
+                  {i > 0 && <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>}
                   <span className="bg-[var(--surface-2)] rounded px-3 py-1.5">
                     <span className="font-medium">{item.stage}</span>{' '}
                     <span className="text-[var(--text-muted)]">{item.ms}</span>
@@ -1281,7 +1326,7 @@ export default function Home() {
           {/* MetaHuman Implementation */}
           <div className="card p-6 mb-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} />
+              <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} aria-hidden="true" />
               <h4 className="font-semibold">5.1 MetaHuman + Live Link</h4>
               <span className="badge text-xs ml-auto">Intermediate</span>
             </div>
@@ -1305,7 +1350,7 @@ export default function Home() {
           {/* Generative Implementation */}
           <div className="card p-6 mb-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} />
+              <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} aria-hidden="true" />
               <h4 className="font-semibold">5.2 SadTalker (Diffusion-based)</h4>
               <span className="badge text-xs ml-auto">Beginner</span>
             </div>
@@ -1335,7 +1380,7 @@ export default function Home() {
           {/* GeneFace++ Implementation */}
           <div className="card p-6 mb-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} />
+              <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} aria-hidden="true" />
               <h4 className="font-semibold">5.3 GeneFace++ (Hybrid NeRF)</h4>
               <span className="badge text-xs ml-auto">Advanced</span>
             </div>
@@ -1355,7 +1400,7 @@ export default function Home() {
           {/* Gaussian Implementation */}
           <div className="card p-6 mb-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="approach-dot" style={{ backgroundColor: "var(--color-gaussian)" }} />
+              <div className="approach-dot" style={{ backgroundColor: "var(--color-gaussian)" }} aria-hidden="true" />
               <h4 className="font-semibold">5.4 D3GA (Gaussian Avatars)</h4>
               <span className="badge text-xs ml-auto">Advanced</span>
             </div>
@@ -1375,7 +1420,7 @@ export default function Home() {
           {/* Streaming Implementation */}
           <div className="card p-6 mb-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="approach-dot" style={{ backgroundColor: "var(--color-streaming)" }} />
+              <div className="approach-dot" style={{ backgroundColor: "var(--color-streaming)" }} aria-hidden="true" />
               <h4 className="font-semibold">5.5 LiveKit Agents + Avatar</h4>
               <span className="badge text-xs ml-auto">Beginner</span>
             </div>
@@ -1403,9 +1448,9 @@ export default function Home() {
           {/* Pixel Streaming Implementation */}
           <div className="card p-6 mb-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} />
+              <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} aria-hidden="true" />
               <span className="text-[var(--accent)]">+</span>
-              <div className="approach-dot" style={{ backgroundColor: "var(--color-streaming)" }} />
+              <div className="approach-dot" style={{ backgroundColor: "var(--color-streaming)" }} aria-hidden="true" />
               <h4 className="font-semibold">5.6 Pixel Streaming (Rapport / UE5)</h4>
               <span className="badge text-xs ml-auto">Intermediate</span>
             </div>
@@ -1535,6 +1580,14 @@ export default function Home() {
               <div>
                 <p className="font-medium text-[var(--foreground)] mb-1">Multi-Modal Agents</p>
                 <p>Tighter coupling between LLMs, TTS, and avatar rendering will create end-to-end systems where the avatar understands context, not just speaks words.</p>
+              </div>
+              <div>
+                <p className="font-medium text-[var(--foreground)] mb-1">Emotion-Aware Avatars</p>
+                <p>Sentiment analysis from user voice and text will drive dynamic avatar expressions—an avatar that looks concerned when you describe a problem, or excited when sharing good news.</p>
+              </div>
+              <div>
+                <p className="font-medium text-[var(--foreground)] mb-1">Real-Time Translation Avatars</p>
+                <p>Combining avatar systems with speech translation and voice cloning will enable cross-language conversations where the avatar speaks in your language with the other person&apos;s likeness and voice.</p>
               </div>
             </div>
           </div>
