@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0.0",
+  "genes": [
+    {
+      "id": "gene_repair_build",
+      "category": "repair",
+      "priority": 1,
+      "triggers": ["build_error", "typescript_error", "import_error"],
+      "description": "Fix TypeScript compilation or Next.js build errors",
+      "max_files": 3,
+      "approach": "Read build output → identify error source → apply minimal fix → rebuild"
+    },
+    {
+      "id": "gene_repair_layout",
+      "category": "repair",
+      "priority": 2,
+      "triggers": ["broken_layout", "css_error", "responsive_break"],
+      "description": "Fix CSS, layout, or responsive design issues",
+      "max_files": 3,
+      "approach": "Identify broken component → check design system tokens → fix styling → verify"
+    },
+    {
+      "id": "gene_refresh_feeds",
+      "category": "optimize",
+      "priority": 3,
+      "triggers": ["stale_feeds", "outdated_data"],
+      "description": "Run feed updater scripts to refresh arXiv and GitHub data",
+      "max_files": 2,
+      "approach": "Check feed timestamps → run update scripts → verify JSON output → rebuild"
+    },
+    {
+      "id": "gene_tune_queries",
+      "category": "optimize",
+      "priority": 4,
+      "triggers": ["config_stale", "low_results", "missing_keywords"],
+      "description": "Improve arXiv/GitHub search queries for better feed coverage",
+      "max_files": 2,
+      "approach": "Review current queries → research trending terms → update config → test"
+    },
+    {
+      "id": "gene_expand_content",
+      "category": "optimize",
+      "priority": 5,
+      "triggers": ["content_shallow", "missing_content", "section_imbalance"],
+      "description": "Deepen thin sections with research insights, comparisons, or examples",
+      "max_files": 5,
+      "approach": "Compare section depth across methods → identify gaps → add substantive content"
+    },
+    {
+      "id": "gene_polish_design",
+      "category": "optimize",
+      "priority": 6,
+      "triggers": ["design_drift", "inconsistent_tokens", "accessibility_gap"],
+      "description": "Align components with design system, improve consistency",
+      "max_files": 5,
+      "approach": "Audit component styles → replace hard-coded values → ensure token usage"
+    },
+    {
+      "id": "gene_add_demo",
+      "category": "innovate",
+      "priority": 7,
+      "triggers": ["demo_gap", "missing_interactive"],
+      "description": "Create new interactive demo for an under-served method or concept",
+      "max_files": 8,
+      "approach": "Identify method lacking demos → design minimal interactive → implement in React"
+    },
+    {
+      "id": "gene_add_provider",
+      "category": "innovate",
+      "priority": 8,
+      "triggers": ["new_provider", "market_update"],
+      "description": "Add coverage for a new avatar provider or technology",
+      "max_files": 8,
+      "approach": "Research provider → create page or section → link from main page → add to comparisons"
+    },
+    {
+      "id": "gene_enhance_learn",
+      "category": "innovate",
+      "priority": 9,
+      "triggers": ["learn_gap", "concept_missing"],
+      "description": "Add mechanism nuggets, demos, or concepts to learning tracks",
+      "max_files": 8,
+      "approach": "Audit learn tracks → identify concept gaps → add nuggets or demos"
+    }
+  ]
+}

@@ -255,20 +255,35 @@ export default function LearnPage() {
         </div>
       </section>
 
-      {/* Try the Demo */}
+      {/* Try the Demos */}
       <section className="mb-16">
-        <div className="card p-6 text-center">
-          <h3 className="font-semibold mb-2">See It In Action</h3>
-          <p className="text-sm text-[var(--text-muted)] mb-4">
-            Experience a streaming avatar demo built with LiveKit and Hedra.
-            Talk to an AI-powered avatar in real-time.
+        <div className="card p-6">
+          <h3 className="font-semibold mb-2 text-center">See It In Action</h3>
+          <p className="text-sm text-[var(--text-muted)] mb-4 text-center">
+            Try real-time avatar demos spanning different approaches.
           </p>
-          <Link
-            href="/livekit"
-            className="badge hover:border-[var(--border-strong)] inline-flex"
-          >
-            Launch Live Demo →
-          </Link>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="p-4 bg-[var(--surface-2)] rounded-lg text-center">
+              <p className="font-medium text-sm mb-1">LiveKit + Hedra</p>
+              <p className="text-xs text-[var(--text-muted)] mb-3">Diffusion-based streaming avatar with voice</p>
+              <Link
+                href="/livekit"
+                className="badge hover:border-[var(--border-strong)] inline-flex"
+              >
+                Launch Demo →
+              </Link>
+            </div>
+            <div className="p-4 bg-[var(--surface-2)] rounded-lg text-center">
+              <p className="font-medium text-sm mb-1">Rapport MetaHuman</p>
+              <p className="text-xs text-[var(--text-muted)] mb-3">Unreal Engine pixel-streamed avatar</p>
+              <Link
+                href="/rapport"
+                className="badge hover:border-[var(--border-strong)] inline-flex"
+              >
+                Launch Demo →
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

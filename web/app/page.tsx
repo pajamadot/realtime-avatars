@@ -23,6 +23,7 @@ export default function Home() {
               <a href="#implementation" className="nav-link">Implementation</a>
               <a href="#living-feed" className="nav-link">Feed</a>
               <a href="#tooling-radar" className="nav-link">Tooling</a>
+              <a href="#demos" className="nav-link font-medium">Demos</a>
             </div>
           </nav>
         </div>
@@ -704,7 +705,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="card p-5 mt-6">
+          <div id="demos" className="card p-5 mt-6 scroll-mt-20">
             <p className="font-medium mb-4">Interactive Demos</p>
             <p className="text-sm text-[var(--text-muted)] mb-4">
               Try real-time avatar streaming with different providers and architectures.
@@ -1080,14 +1081,56 @@ export default function Home() {
             sound human but also act and react in a human-like loop.&rdquo;
           </div>
 
-          <div className="card p-5">
-            <p className="font-medium mb-3">Ethical Considerations</p>
-            <p className="text-sm text-[var(--text-muted)]">
-              With photoreal digital humans come concerns: deepfake misuse, identity theft, and
-              recreating someone without consent. Real-time deepfakes are practically possible—an
-              avatar could mimic a celebrity in a live call. The community is developing watermarking,
-              gatekeeping models, and consent requirements as necessary norms.
+          <div className="card p-5 mb-6">
+            <p className="font-medium mb-4">Convergence Timeline</p>
+            <p className="text-sm text-[var(--text-muted)] mb-4">
+              Rather than one method winning, we see convergence — each approach absorbs
+              strengths from the others.
             </p>
+            <div className="grid md:grid-cols-3 gap-4 text-sm">
+              <div className="p-3 bg-[var(--surface-2)] rounded">
+                <p className="font-medium mb-1">2023-2024</p>
+                <p className="text-[var(--text-muted)]">
+                  Separate silos. MetaHumans are CGI, diffusion models produce video,
+                  Gaussians need multi-view capture. Each has clear tradeoffs.
+                </p>
+              </div>
+              <div className="p-3 bg-[var(--surface-2)] rounded">
+                <p className="font-medium mb-1">2025</p>
+                <p className="text-[var(--text-muted)]">
+                  Hybrids emerge. GeneFace++ blends rigs with neural renderers. D3GA layers
+                  Gaussians on deformable cages. Distillation makes diffusion real-time.
+                </p>
+              </div>
+              <div className="p-3 bg-[var(--surface-2)] rounded">
+                <p className="font-medium mb-1">2026+</p>
+                <p className="text-[var(--text-muted)]">
+                  Full convergence. MetaHumans with neural skin rendering. One-shot Gaussian
+                  avatars from a single photo. Sub-200ms end-to-end conversational loops.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div className="card p-5">
+              <p className="font-medium mb-3">Ethical Considerations</p>
+              <p className="text-sm text-[var(--text-muted)]">
+                With photoreal digital humans come concerns: deepfake misuse, identity theft, and
+                recreating someone without consent. Real-time deepfakes are practically possible—an
+                avatar could mimic a celebrity in a live call. The community is developing watermarking,
+                gatekeeping models, and consent requirements as necessary norms.
+              </p>
+            </div>
+            <div className="card p-5">
+              <p className="font-medium mb-3">Open Problems</p>
+              <p className="text-sm text-[var(--text-muted)]">
+                Full-body coherence remains unsolved—most systems handle faces well but struggle
+                with hands and torso gestures. Long-form identity consistency drifts after 5+ minutes
+                in generative models. And the compute cost of photorealistic real-time avatars still
+                limits deployment to cloud-rendered streaming rather than on-device.
+              </p>
+            </div>
           </div>
         </section>
 
