@@ -16,7 +16,10 @@
         "livelink",
         "unreal",
         "performance capture",
-        "animation"
+        "animation",
+        "pixel streaming",
+        "cloud rendering",
+        "audio2face"
       ],
       "excludeAny": [
         "diagnosis",
@@ -40,7 +43,12 @@
         "avatar",
         "diffusion",
         "transformer",
-        "video-to-video"
+        "video-to-video",
+        "distillation",
+        "avatar forcing",
+        "self-forcing",
+        "one-shot",
+        "streaming generation"
       ],
       "excludeAny": [
         "heat transfer",
@@ -62,7 +70,10 @@
         "human",
         "telepresence",
         "relight",
-        "compression"
+        "compression",
+        "animatable",
+        "drivable",
+        "neural radiance"
       ],
       "excludeAny": [
         "garment",
@@ -84,7 +95,10 @@
         "streaming",
         "codec",
         "compression",
-        "avatar"
+        "avatar",
+        "pixel streaming",
+        "cloud gaming",
+        "interactive streaming"
       ],
       "excludeAny": [
         "educational metaverse",

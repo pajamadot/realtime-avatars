@@ -1039,6 +1039,37 @@ export default function Home() {
               <li>Deploy frontend using LiveKit React hooks for video display</li>
             </ol>
           </div>
+
+          {/* Pixel Streaming Implementation */}
+          <div className="card p-6 mb-6">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} />
+              <span className="text-[var(--accent)]">+</span>
+              <div className="approach-dot" style={{ backgroundColor: "var(--color-streaming)" }} />
+              <h4 className="font-semibold">5.6 Pixel Streaming (Rapport / UE5)</h4>
+            </div>
+            <p className="text-sm text-[var(--text-muted)] mb-4">
+              Pixel streaming bridges MetaHuman quality with browser-based delivery by rendering
+              on cloud GPUs and streaming video via WebRTC.
+            </p>
+            <ol className="numbered-list text-sm text-[var(--text-muted)]">
+              <li>Design MetaHuman in Unreal Engine 5 with conversation blueprint</li>
+              <li>Enable Pixel Streaming plugin in UE5 project settings</li>
+              <li>Deploy UE5 instance to cloud GPU (AWS g5, Azure NV-series, or Rapport Cloud)</li>
+              <li>
+                <div>
+                  Embed in web app via iframe or WebRTC signaling
+                  <div className="code mt-2">&lt;iframe src=&quot;https://your-pixel-stream-url&quot; allow=&quot;microphone&quot; /&gt;</div>
+                </div>
+              </li>
+              <li>Connect audio pipeline for real-time lip sync and conversation</li>
+            </ol>
+            <div className="mt-4">
+              <a href="/rapport" className="badge hover:border-[var(--border-strong)]">
+                See live Rapport demo →
+              </a>
+            </div>
+          </div>
         </section>
 
         <div className="divider" />

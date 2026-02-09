@@ -9,11 +9,11 @@
     },
     "generative": {
       "label": "Generative Talking Heads (repos)",
-      "q": "\"talking head\" (realtime OR real-time OR streaming OR webrtc OR diffusion) language:Python"
+      "q": "\"talking head\" (realtime OR real-time OR streaming OR webrtc OR diffusion)"
     },
     "gaussian": {
       "label": "Gaussian Avatars / 3DGS (repos)",
-      "q": "\"gaussian splatting\" (avatar OR head OR human) language:Python"
+      "q": "\"gaussian splatting\" (avatar OR head OR human OR animatable OR drivable)"
     },
     "streaming": {
       "label": "Streaming Avatars / WebRTC (repos)",
