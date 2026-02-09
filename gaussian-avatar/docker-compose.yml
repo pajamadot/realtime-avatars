@@ -46,13 +46,15 @@ services:
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=compute,utility,video
+      # Handler reads DASHSCOPE_API_KEY by default; map from OPENAI_API_KEY
+      - DASHSCOPE_API_KEY=${OPENAI_API_KEY}
     command: >
       --config /app/config/chat_with_lam.yaml
     volumes:
       - ./models:/app/models
       - ./ssl_certs:/app/ssl_certs:ro
       - ./config:/app/config:ro
-      - ./.env:/app/.env:ro
+      # .env is injected via env_file above; no need to mount it as a volume
     ports:
       - "8282:8282"
     shm_size: "2gb"

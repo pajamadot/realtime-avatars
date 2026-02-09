@@ -66,19 +66,23 @@ fi
 # 2. Download LAM Audio2Expression model (audio -> ARKit blendshapes)
 ##############################################################################
 A2E_DIR="${MODELS_DIR}/LAM_audio2exp"
-A2E_TAR="${A2E_DIR}/LAM_audio2exp_streaming.tar"
-if [ -d "$A2E_DIR" ] && [ -f "$A2E_DIR/config.yaml" -o -d "$A2E_DIR/checkpoints" ]; then
-    info "LAM_audio2exp already downloaded, skipping."
+A2E_WEIGHT="${A2E_DIR}/pretrained_models/lam_audio2exp_streaming.tar"
+if [ -f "$A2E_WEIGHT" ]; then
+    info "LAM_audio2exp checkpoint already exists, skipping."
 else
-    info "Downloading LAM_audio2exp_streaming (~500 MB)..."
+    info "Downloading LAM_audio2exp_streaming (~360 MB compressed)..."
     mkdir -p "$A2E_DIR"
-    wget -q --show-progress -O "$A2E_TAR" \
+    # Download is gzip-compressed tar containing pretrained_models/lam_audio2exp_streaming.tar
+    # The inner .tar is a PyTorch checkpoint (zip format) — do NOT extract it further.
+    wget -q --show-progress -O "${A2E_DIR}/download.tar.gz" \
         "https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/aigc3d/data/LAM/LAM_audio2exp_streaming.tar" \
         || fail "Failed to download LAM_audio2exp_streaming.tar"
 
-    info "Extracting LAM_audio2exp_streaming..."
-    tar -xf "$A2E_TAR" -C "$A2E_DIR" && rm -f "$A2E_TAR"
-    success "LAM_audio2exp extracted."
+    info "Extracting LAM_audio2exp archive..."
+    gunzip "${A2E_DIR}/download.tar.gz"
+    tar -xf "${A2E_DIR}/download.tar" -C "$A2E_DIR"
+    rm -f "${A2E_DIR}/download.tar"
+    success "LAM_audio2exp checkpoint at pretrained_models/lam_audio2exp_streaming.tar"
 fi
 
 ##############################################################################
