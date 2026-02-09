@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-06T10:50:56.445Z",
+  "updatedAt": "2026-02-09T06:31:29.234Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -75,6 +75,16 @@
           ]
         },
         {
+          "title": "CartoonAlive: Towards Expressive Live2D Modeling from Single Portraits",
+          "link": "https://arxiv.org/abs/2507.17327v1",
+          "published": "2025-07-23T08:52:48.000Z",
+          "authors": "Chao He",
+          "summary": "With the rapid advancement of large foundation models, AIGC, cloud rendering, and real-time motion capture technologies, digital humans are now capable of achieving synchronized facial expressions and body movements, engaging in intelligent dialogues driven by natural language...",
+          "tags": [
+            "real-time"
+          ]
+        },
+        {
           "title": "AU-Blendshape for Fine-grained Stylized 3D Facial Expression Manipulation",
           "link": "https://arxiv.org/abs/2507.12001v1",
           "published": "2025-07-16T07:56:25.000Z",
@@ -110,17 +120,6 @@
             "gaussian",
             "monocular",
             "real-time"
-          ]
-        },
-        {
-          "title": "EmoDiffusion: Enhancing Emotional 3D Facial Animation with Latent Diffusion Models",
-          "link": "https://arxiv.org/abs/2503.11028v1",
-          "published": "2025-03-14T02:54:22.000Z",
-          "authors": "Yixuan Zhang",
-          "summary": "Speech-driven 3D facial animation seeks to produce lifelike facial expressions that are synchronized with the speech content and its emotional nuances, finding applications in various multimedia fields. However, previous methods often overlook emotional facial expressions or f...",
-          "tags": [
-            "audio-driven",
-            "diffusion"
           ]
         }
       ]
@@ -216,7 +215,7 @@
         },
         {
           "title": "SyncAnyone: Implicit Disentanglement via Progressive Self-Correction for Lip-Syncing in the wild",
-          "link": "https://arxiv.org/abs/2512.21736v2",
+          "link": "https://arxiv.org/abs/2512.21736v3",
           "published": "2025-12-25T16:49:40.000Z",
           "authors": "Xindi Zhang",
           "summary": "High-quality AI-powered video dubbing demands precise audio-lip synchronization, high-fidelity visual generation, and faithful preservation of identity and background. Most existing methods rely on a mask-based training strategy, where the mouth region is masked in talking-hea...",
@@ -264,6 +263,25 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head))",
       "items": [
+        {
+          "title": "Uncertainty-Aware 4D Gaussian Splatting for Monocular Occluded Human Rendering",
+          "link": "https://arxiv.org/abs/2602.06343v1",
+          "published": "2026-02-06T03:14:37.000Z",
+          "authors": "Weiquan Wang",
+          "summary": "High-fidelity rendering of dynamic humans from monocular videos typically degrades catastrophically under occlusions. Existing solutions incorporate external priors-either hallucinating missing content via generative models, which induces severe temporal flickering, or imposin...",
+          "tags": [
+            "gaussian",
+            "monocular"
+          ]
+        },
+        {
+          "title": "From Blurry to Believable: Enhancing Low-quality Talking Heads with 3D Generative Priors",
+          "link": "https://arxiv.org/abs/2602.06122v1",
+          "published": "2026-02-05T19:00:50.000Z",
+          "authors": "Ding-Jiun Huang",
+          "summary": "Creating high-fidelity, animatable 3D talking heads is crucial for immersive applications, yet often hindered by the prevalence of low-quality image or video sources, which yield poor 3D reconstructions. In this paper, we introduce SuperHead, a novel framework for enhancing lo...",
+          "tags": []
+        },
         {
           "title": "PoseGaussian: Pose-Driven Novel View Synthesis for Robust 3D Human Reconstruction",
           "link": "https://arxiv.org/abs/2602.05190v1",
@@ -370,29 +388,6 @@
             "real-time",
             "relighting"
           ]
-        },
-        {
-          "title": "InpaintHuman: Reconstructing Occluded Humans with Multi-Scale UV Mapping and Identity-Preserving Diffusion Inpainting",
-          "link": "https://arxiv.org/abs/2601.02098v1",
-          "published": "2026-01-05T13:26:02.000Z",
-          "authors": "Jinlong Fan",
-          "summary": "Reconstructing complete and animatable 3D human avatars from monocular videos remains challenging, particularly under severe occlusions. While 3D Gaussian Splatting has enabled photorealistic human rendering, existing methods struggle with incomplete observations, often produc...",
-          "tags": [
-            "diffusion",
-            "gaussian",
-            "monocular"
-          ]
-        },
-        {
-          "title": "ESGaussianFace: Emotional and Stylized Audio-Driven Facial Animation via 3D Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2601.01847v1",
-          "published": "2026-01-05T07:19:38.000Z",
-          "authors": "Chuhang Ma",
-          "summary": "Most current audio-driven facial animation research primarily focuses on generating videos with neutral emotions. While some studies have addressed the generation of facial videos driven by emotional audio, efficiently generating high-quality talking head videos that integrate...",
-          "tags": [
-            "audio-driven",
-            "gaussian"
-          ]
         }
       ]
     },
@@ -410,6 +405,16 @@
             "gaussian",
             "monocular",
             "telepresence"
+          ]
+        },
+        {
+          "title": "Adaptive Receiver-Side Scheduling for Smooth Interactive Delivery",
+          "link": "https://arxiv.org/abs/2511.16902v1",
+          "published": "2025-11-21T02:32:33.000Z",
+          "authors": "Michael Luby",
+          "summary": "Interactive applications such as cloud gaming, XR streaming, and real-time inference depend on data objects arriving at a steady cadence. In practice, network delay variation and recovery dynamics at the receiver distort this cadence even when transports deliver all packets co...",
+          "tags": [
+            "real-time"
           ]
         },
         {
