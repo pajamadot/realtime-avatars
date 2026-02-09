@@ -828,6 +828,20 @@ export default function Home() {
                   <td>Per-minute pricing</td>
                 </tr>
                 <tr>
+                  <td className="font-medium">Deployment Ease</td>
+                  <td>Hard (UE5 + GPU)</td>
+                  <td>Medium (Python + GPU)</td>
+                  <td>Hard (capture rig)</td>
+                  <td>Easy (API key)</td>
+                </tr>
+                <tr>
+                  <td className="font-medium">Open Source</td>
+                  <td>Partial (MetaHuman Creator free)</td>
+                  <td>Yes (SadTalker, GeneFace++)</td>
+                  <td>Yes (3DGS, D3GA)</td>
+                  <td>Partial (LiveKit OSS, providers closed)</td>
+                </tr>
+                <tr>
                   <td className="font-medium">Best Use Case</td>
                   <td>Production control</td>
                   <td>Quick deployment</td>
@@ -957,6 +971,14 @@ export default function Home() {
               <li>Enable Live Link plugin and connect ARKit face data to MetaHuman blueprint</li>
               <li>Optionally integrate NVIDIA Audio2Face for audio-driven lip-sync</li>
             </ol>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <a href="https://www.unrealengine.com/en-US/metahuman" target="_blank" rel="noopener noreferrer" className="badge hover:border-[var(--border-strong)]">
+                MetaHuman Creator →
+              </a>
+              <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/live-link-plugin-development-in-unreal-engine" target="_blank" rel="noopener noreferrer" className="badge hover:border-[var(--border-strong)]">
+                Live Link Docs →
+              </a>
+            </div>
           </div>
 
           {/* Generative Implementation */}
@@ -1043,6 +1065,14 @@ export default function Home() {
               <li>Create AgentSession and AvatarSession in Python</li>
               <li>Deploy frontend using LiveKit React hooks for video display</li>
             </ol>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <a href="https://docs.livekit.io/agents/" target="_blank" rel="noopener noreferrer" className="badge hover:border-[var(--border-strong)]">
+                LiveKit Agents Docs →
+              </a>
+              <a href="/livekit" className="badge hover:border-[var(--border-strong)]">
+                See live demo →
+              </a>
+            </div>
           </div>
 
           {/* Pixel Streaming Implementation */}

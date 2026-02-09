@@ -1,5 +1,12 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BookOpen, Search, Gamepad2 } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Learn — Real-Time Avatars',
+  description:
+    'Interactive learning paths for the four approaches to real-time avatars: Gaussian Splatting, MetaHuman Pipeline, Generative Video, and Streaming Avatars.',
+};
 
 const tracks = [
   {

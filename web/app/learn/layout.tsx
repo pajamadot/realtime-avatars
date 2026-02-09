@@ -23,6 +23,10 @@ export default function LearnLayout({
               </Link>
             </div>
             <div className="flex items-center gap-4">
+              <Link href="/learn/end-to-end" className="nav-link text-sm font-medium">
+                End-to-End
+              </Link>
+              <span className="text-[var(--border)]">|</span>
               <Link href="/learn/gaussian-splatting" className="nav-link text-sm">
                 <span className="inline-block w-2 h-2 rounded-full bg-[var(--color-gaussian)] mr-2" />
                 Gaussian

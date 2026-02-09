@@ -1,5 +1,12 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import LiveKitStreamingAvatarDemo from '../components/LiveKitStreamingAvatarDemo';
+
+export const metadata: Metadata = {
+  title: 'LiveKit + Hedra Demo — Real-Time Avatars',
+  description:
+    'Interactive demo of a diffusion-based streaming avatar using LiveKit and Hedra. Experience real-time voice conversation with a generative video avatar.',
+};
 
 export default function LiveKitPage() {
   return (
@@ -25,6 +32,14 @@ export default function LiveKitPage() {
       </header>
 
       <main className="mx-auto max-w-4xl px-6 py-12 relative">
+        <nav aria-label="Breadcrumb" className="text-xs text-[var(--text-muted)] mb-6">
+          <Link href="/" className="hover:underline">Home</Link>
+          <span className="mx-1.5">/</span>
+          <Link href="/#demos" className="hover:underline">Demos</Link>
+          <span className="mx-1.5">/</span>
+          <span>LiveKit + Hedra</span>
+        </nav>
+
         <article className="mb-8">
           <p className="section-label mb-4">Interactive Demo</p>
           <h1 className="text-3xl md:text-4xl font-semibold mb-4 leading-tight">
