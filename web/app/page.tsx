@@ -3,11 +3,13 @@ import BackToTop from './components/BackToTop';
 import CopyButton from './components/CopyButton';
 import FAQ from './components/FAQ';
 import GaussianSplatDemo from './components/GaussianSplatDemo';
+import Glossary from './components/Glossary';
 import LazySection from './components/LazySection';
 import LivingResearchFeed from './components/LivingResearchFeed';
 import MobileNav from './components/MobileNav';
 import ReadingProgress from './components/ReadingProgress';
 import RecentPapers from './components/RecentPapers';
+import ShareButton from './components/ShareButton';
 import ResearchHighlights from './components/ResearchHighlights';
 import ToolingHighlights from './components/ToolingHighlights';
 import ToolingRadar from './components/ToolingRadar';
@@ -29,6 +31,8 @@ const jsonLd = [
     author: { '@type': 'Organization', name: 'PajamaDot Research' },
     datePublished: '2026-01-01',
     dateModified: '2026-02-09',
+    inLanguage: 'en',
+    version: '2.0',
     keywords:
       'real-time avatars, MetaHuman, generative video, Gaussian splatting, streaming avatars, digital humans',
   },
@@ -102,10 +106,12 @@ export default function Home() {
       <main id="main-content" className="mx-auto max-w-4xl px-6 py-12 relative">
         {/* Title Section */}
         <article className="mb-12">
-          <p className="section-label mb-4">Research Survey · February 2026 · ~25 min read</p>
-          <h1 className="text-3xl md:text-4xl font-semibold mb-4 leading-tight">
-            Real-Time Avatar Systems:<br />
-            A Comparative Analysis
+          <div className="flex items-center justify-between mb-4">
+            <p className="section-label">Research Survey · February 2026 · ~25 min read</p>
+            <ShareButton />
+          </div>
+          <h1 className="text-3xl md:text-4xl font-semibold mb-4 leading-tight text-balance">
+            Real-Time Avatar Systems: A Comparative Analysis
           </h1>
           <p className="text-lg text-[var(--text-muted)] max-w-2xl">
             A comprehensive survey of four approaches to building interactive digital humans,
@@ -801,7 +807,9 @@ export default function Home() {
               keep the presence feeling alive. This keeps the demo aligned with real-time avatar
               experiences while staying fully browser-native.
             </p>
-            <GaussianSplatDemo className="h-[400px] bg-black/20" />
+            <LazySection rootMargin="100px">
+              <GaussianSplatDemo className="h-[400px] bg-black/20" />
+            </LazySection>
             <p className="text-xs text-[var(--text-muted)] mt-3 text-center">
               Powered by <a href="https://lumalabs.ai" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">Luma AI</a> WebGL renderer
             </p>
@@ -1507,6 +1515,14 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </section>
+
+        <div className="divider" />
+
+        {/* Glossary */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-6">Glossary</h2>
+          <Glossary />
         </section>
 
         <div className="divider" />
