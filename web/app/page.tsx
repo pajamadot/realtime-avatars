@@ -110,7 +110,7 @@ export default function Home() {
       {/* Header */}
       <header className="border-b border-[var(--border)] bg-[var(--surface-0)] relative">
         <div className="mx-auto max-w-4xl px-6">
-          <nav className="flex items-center justify-between h-14">
+          <nav className="flex items-center justify-between h-14" aria-label="Main navigation">
             <span className="font-semibold text-sm">Real-Time Avatars</span>
             <div className="hidden md:flex items-center gap-6">
               <a href="#methods" className="nav-link">Methods</a>
@@ -1025,8 +1025,8 @@ export default function Home() {
         <section id="comparison" className="mb-12 scroll-mt-16">
           <h2 className="text-2xl font-semibold mb-6">3. Comparison</h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 text-sm text-center">
-            <div className="p-3 bg-[var(--surface-2)] rounded border-l-2" style={{ borderLeftColor: 'var(--color-metahuman)' }}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 text-sm text-center" role="list" aria-label="Best-for summary by approach">
+            <div className="p-3 bg-[var(--surface-2)] rounded border-l-2" role="listitem" style={{ borderLeftColor: 'var(--color-metahuman)' }}>
               <p className="font-semibold">MetaHuman</p>
               <p className="text-[var(--text-muted)]">Best for <strong>control</strong></p>
             </div>
@@ -1209,7 +1209,7 @@ export default function Home() {
           </p>
 
           <div className="grid gap-6 mb-6">
-            <div className="card p-5">
+            <div className="card p-5 border-l-2" style={{ borderLeftColor: 'var(--color-metahuman)' }}>
               <div className="flex items-center gap-3 mb-3">
                 <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} aria-hidden="true" />
                 <span className="text-[var(--accent)]">+</span>
@@ -1233,7 +1233,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="card p-5">
+            <div className="card p-5 border-l-2" style={{ borderLeftColor: 'var(--color-gaussian)' }}>
               <div className="flex items-center gap-3 mb-3">
                 <div className="approach-dot" style={{ backgroundColor: "var(--color-gaussian)" }} aria-hidden="true" />
                 <span className="text-[var(--accent)]">+</span>
@@ -1257,7 +1257,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="card p-5">
+            <div className="card p-5 border-l-2" style={{ borderLeftColor: 'var(--color-generative)' }}>
               <div className="flex items-center gap-3 mb-3">
                 <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} aria-hidden="true" />
                 <span className="text-[var(--accent)]">+</span>
@@ -1300,6 +1300,16 @@ export default function Home() {
             implementations are open-source or freely available.
           </p>
 
+          <div className="card-alt p-4 mb-8 text-sm">
+            <p className="font-medium mb-2">Prerequisites</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-[var(--text-muted)]">
+              <span>Python 3.10+</span>
+              <span>Basic command line</span>
+              <span>NVIDIA GPU (varies)</span>
+              <span>Git for cloning repos</span>
+            </div>
+          </div>
+
           <div className="card p-5 mb-8">
             <p className="font-medium mb-4">End-to-End Audio Pipeline Latency</p>
             <div className="flex flex-wrap items-center gap-2 text-sm">
@@ -1324,7 +1334,7 @@ export default function Home() {
           </div>
 
           {/* MetaHuman Implementation */}
-          <div className="card p-6 mb-6">
+          <div className="card p-6 mb-6 border-l-2" style={{ borderLeftColor: 'var(--color-metahuman)' }}>
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} aria-hidden="true" />
               <h4 className="font-semibold">5.1 MetaHuman + Live Link</h4>
@@ -1348,7 +1358,7 @@ export default function Home() {
           </div>
 
           {/* Generative Implementation */}
-          <div className="card p-6 mb-6">
+          <div className="card p-6 mb-6 border-l-2" style={{ borderLeftColor: 'var(--color-generative)' }}>
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} aria-hidden="true" />
               <h4 className="font-semibold">5.2 SadTalker (Diffusion-based)</h4>
@@ -1378,7 +1388,7 @@ export default function Home() {
           </div>
 
           {/* GeneFace++ Implementation */}
-          <div className="card p-6 mb-6">
+          <div className="card p-6 mb-6 border-l-2" style={{ borderLeftColor: 'var(--color-generative)' }}>
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} aria-hidden="true" />
               <h4 className="font-semibold">5.3 GeneFace++ (Hybrid NeRF)</h4>
@@ -1398,7 +1408,7 @@ export default function Home() {
           </div>
 
           {/* Gaussian Implementation */}
-          <div className="card p-6 mb-6">
+          <div className="card p-6 mb-6 border-l-2" style={{ borderLeftColor: 'var(--color-gaussian)' }}>
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-gaussian)" }} aria-hidden="true" />
               <h4 className="font-semibold">5.4 D3GA (Gaussian Avatars)</h4>
@@ -1418,7 +1428,7 @@ export default function Home() {
           </div>
 
           {/* Streaming Implementation */}
-          <div className="card p-6 mb-6">
+          <div className="card p-6 mb-6 border-l-2" style={{ borderLeftColor: 'var(--color-streaming)' }}>
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-streaming)" }} aria-hidden="true" />
               <h4 className="font-semibold">5.5 LiveKit Agents + Avatar</h4>
@@ -1446,7 +1456,7 @@ export default function Home() {
           </div>
 
           {/* Pixel Streaming Implementation */}
-          <div className="card p-6 mb-6">
+          <div className="card p-6 mb-6 border-l-2" style={{ borderLeftColor: 'var(--color-metahuman)' }}>
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} aria-hidden="true" />
               <span className="text-[var(--accent)]">+</span>

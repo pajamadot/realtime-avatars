@@ -20,7 +20,7 @@ export default function RapportPage() {
 
       <header className="border-b border-[var(--border)] bg-[var(--surface-0)]">
         <div className="mx-auto max-w-4xl px-6">
-          <nav className="flex items-center justify-between h-14">
+          <nav className="flex items-center justify-between h-14" aria-label="Rapport demo navigation">
             <Link href="/" className="font-semibold text-sm hover:underline">
               Real-Time Avatars
             </Link>

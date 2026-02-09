@@ -17,7 +17,7 @@ export default function LearnLayout({
       {/* Header */}
       <header className="border-b border-[var(--border)] bg-[var(--surface-0)] sticky top-0 z-50">
         <div className="mx-auto max-w-5xl px-6">
-          <nav className="flex items-center justify-between h-14">
+          <nav className="flex items-center justify-between h-14" aria-label="Learn hub navigation">
             <div className="flex items-center gap-6">
               <Link href="/" className="font-semibold text-sm hover:text-[var(--accent)]">
                 Real-Time Avatars
