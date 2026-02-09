@@ -174,13 +174,13 @@ export default function Home() {
 
         <nav className="mb-8 text-sm" aria-label="Table of contents">
           <div className="flex flex-wrap gap-x-4 gap-y-1 text-[var(--text-muted)]">
-            <a href="#methods" className="hover:text-[var(--accent)]">1. Introduction</a>
-            <a href="#methods" className="hover:text-[var(--accent)]">2. Methods</a>
-            <a href="#comparison" className="hover:text-[var(--accent)]">3. Comparison</a>
-            <a href="#hybrids" className="hover:text-[var(--accent)]">4. Hybrid Strategies</a>
-            <a href="#implementation" className="hover:text-[var(--accent)]">5. Implementation</a>
+            <a href="#methods" className="hover:text-[var(--accent)]">Methods</a>
+            <a href="#comparison" className="hover:text-[var(--accent)]">Comparison</a>
+            <a href="#hybrids" className="hover:text-[var(--accent)]">Hybrids</a>
+            <a href="#implementation" className="hover:text-[var(--accent)]">Implementation</a>
+            <a href="#discussion" className="hover:text-[var(--accent)]">Discussion</a>
             <a href="#faq" className="hover:text-[var(--accent)]">FAQ</a>
-            <a href="#living-feed" className="hover:text-[var(--accent)]">7. References & Feed</a>
+            <a href="#living-feed" className="hover:text-[var(--accent)]">Feed</a>
           </div>
         </nav>
 
@@ -977,29 +977,29 @@ export default function Home() {
           <h2 className="text-2xl font-semibold mb-6">3. Comparison</h2>
 
           <div className="overflow-x-auto">
-            <table className="research-table">
+            <table className="research-table" aria-label="Comparison of real-time avatar approaches">
               <thead>
                 <tr>
-                  <th>Characteristic</th>
-                  <th>
+                  <th scope="col">Characteristic</th>
+                  <th scope="col">
                     <div className="flex items-center gap-2">
                       <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} />
                       MetaHuman
                     </div>
                   </th>
-                  <th>
+                  <th scope="col">
                     <div className="flex items-center gap-2">
                       <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} />
                       Generative
                     </div>
                   </th>
-                  <th>
+                  <th scope="col">
                     <div className="flex items-center gap-2">
                       <div className="approach-dot" style={{ backgroundColor: "var(--color-gaussian)" }} />
                       Gaussian
                     </div>
                   </th>
-                  <th>
+                  <th scope="col">
                     <div className="flex items-center gap-2">
                       <div className="approach-dot" style={{ backgroundColor: "var(--color-streaming)" }} />
                       Streaming
@@ -1413,7 +1413,7 @@ export default function Home() {
         <div className="divider" />
 
         {/* Discussion */}
-        <section className="mb-12">
+        <section id="discussion" className="mb-12 scroll-mt-16">
           <h2 className="text-2xl font-semibold mb-6">6. Discussion & Outlook</h2>
 
           <p className="text-[var(--text-muted)] mb-4">
@@ -1656,8 +1656,10 @@ https://realtime-avatars.vercel.app`}
             <div className="flex items-center gap-4">
               <a href="/learn" className="footer-text hover:text-[var(--accent)]">Learn Hub</a>
               <span className="footer-text">·</span>
+              <a href="#faq" className="footer-text hover:text-[var(--accent)]">FAQ</a>
+              <span className="footer-text">·</span>
               <p className="footer-text">
-                PajamaDot Research · 2023–2026 · Last updated February 2026
+                PajamaDot Research · v2.0 · February 2026
               </p>
             </div>
           </div>
