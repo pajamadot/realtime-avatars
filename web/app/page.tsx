@@ -1,5 +1,13 @@
+import type { Metadata } from 'next';
 import GaussianSplatDemo from './components/GaussianSplatDemo';
 import LivingResearchFeed from './components/LivingResearchFeed';
+
+export const metadata: Metadata = {
+  title: 'Real-Time Avatar Systems: A Comparative Analysis',
+  description:
+    'Comprehensive survey comparing MetaHuman pipelines, generative video, Gaussian splatting, and streaming avatars for building interactive digital humans.',
+  keywords: ['real-time avatars', 'MetaHuman', 'generative video', 'Gaussian splatting', 'streaming avatars', 'digital humans', 'WebRTC'],
+};
 import ResearchHighlights from './components/ResearchHighlights';
 import RecentPapers from './components/RecentPapers';
 import ToolingHighlights from './components/ToolingHighlights';
@@ -613,6 +621,21 @@ export default function Home() {
                   Tooling less mature than game engines
                 </li>
               </ul>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-3 mb-6 text-center text-sm">
+            <div className="p-3 bg-[var(--surface-2)] rounded">
+              <div className="font-semibold">50-200</div>
+              <div className="text-xs text-[var(--text-muted)]">Multi-view images needed</div>
+            </div>
+            <div className="p-3 bg-[var(--surface-2)] rounded">
+              <div className="font-semibold">2-8 hrs</div>
+              <div className="text-xs text-[var(--text-muted)]">Training time (RTX 4090)</div>
+            </div>
+            <div className="p-3 bg-[var(--surface-2)] rounded">
+              <div className="font-semibold">~100 FPS</div>
+              <div className="text-xs text-[var(--text-muted)]">Inference speed</div>
             </div>
           </div>
 

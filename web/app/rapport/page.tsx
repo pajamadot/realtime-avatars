@@ -6,12 +6,17 @@ export const metadata: Metadata = {
   title: 'Rapport MetaHuman Demo — Real-Time Avatars',
   description:
     'Interactive demo of a cloud-rendered MetaHuman avatar powered by Unreal Engine 5 pixel streaming. Experience photorealistic real-time conversation with WebRTC delivery.',
+  keywords: ['MetaHuman', 'Unreal Engine 5', 'pixel streaming', 'real-time avatar', 'Rapport', 'WebRTC', 'conversational AI'],
 };
 
 export default function RapportPage() {
   return (
     <div className="min-h-screen relative">
       <div className="paper-texture fixed inset-0" />
+
+      <a href="#rapport-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-3 focus:bg-[var(--accent)] focus:text-white focus:rounded">
+        Skip to content
+      </a>
 
       <header className="border-b border-[var(--border)] bg-[var(--surface-0)]">
         <div className="mx-auto max-w-4xl px-6">
@@ -31,7 +36,7 @@ export default function RapportPage() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-4xl px-6 py-12 relative">
+      <main id="rapport-content" className="mx-auto max-w-4xl px-6 py-12 relative">
         <nav aria-label="Breadcrumb" className="text-xs text-[var(--text-muted)] mb-6">
           <Link href="/" className="hover:underline">Home</Link>
           <span className="mx-1.5">/</span>
