@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import BackToTop from './components/BackToTop';
+import FAQ from './components/FAQ';
 import GaussianSplatDemo from './components/GaussianSplatDemo';
 import LazySection from './components/LazySection';
 import LivingResearchFeed from './components/LivingResearchFeed';
 import MobileNav from './components/MobileNav';
+import ReadingProgress from './components/ReadingProgress';
 import RecentPapers from './components/RecentPapers';
 import ResearchHighlights from './components/ResearchHighlights';
 import ToolingHighlights from './components/ToolingHighlights';
@@ -16,18 +18,50 @@ export const metadata: Metadata = {
   keywords: ['real-time avatars', 'MetaHuman', 'generative video', 'Gaussian splatting', 'streaming avatars', 'digital humans', 'WebRTC'],
 };
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'TechArticle',
-  headline: 'Real-Time Avatar Systems: A Comparative Analysis',
-  description:
-    'Comprehensive survey comparing MetaHuman pipelines, generative video, Gaussian splatting, and streaming avatars for building interactive digital humans.',
-  author: { '@type': 'Organization', name: 'PajamaDot Research' },
-  datePublished: '2026-01-01',
-  dateModified: '2026-02-09',
-  keywords:
-    'real-time avatars, MetaHuman, generative video, Gaussian splatting, streaming avatars, digital humans',
-};
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: 'Real-Time Avatar Systems: A Comparative Analysis',
+    description:
+      'Comprehensive survey comparing MetaHuman pipelines, generative video, Gaussian splatting, and streaming avatars for building interactive digital humans.',
+    author: { '@type': 'Organization', name: 'PajamaDot Research' },
+    datePublished: '2026-01-01',
+    dateModified: '2026-02-09',
+    keywords:
+      'real-time avatars, MetaHuman, generative video, Gaussian splatting, streaming avatars, digital humans',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Which approach is best for low-latency conversational avatars?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Streaming avatar providers give you the fastest path to production. MetaHuman pipelines offer the highest fidelity but require Unreal Engine infrastructure.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I run a real-time avatar on mobile?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Streaming approaches work on mobile browsers via WebRTC. Gaussian splatting viewers are emerging for mobile. MetaHuman and generative video currently need server-side rendering.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do I need ML expertise to build a real-time avatar?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Not necessarily. Streaming avatar APIs abstract away the ML complexity. Only generative video and Gaussian splatting approaches require ML knowledge for training custom models.',
+        },
+      },
+    ],
+  },
+];
 
 export default function Home() {
   return (
@@ -36,6 +70,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <ReadingProgress />
       {/* Paper texture overlay */}
       <div className="paper-texture fixed inset-0" />
 
@@ -1396,6 +1431,14 @@ export default function Home() {
 
         <div className="divider" />
 
+        {/* FAQ */}
+        <section>
+          <h2 className="text-2xl font-semibold mb-6">Frequently Asked Questions</h2>
+          <FAQ />
+        </section>
+
+        <div className="divider" />
+
         {/* References / Resources */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">7. References, Resources & Living Feed</h2>
@@ -1515,7 +1558,7 @@ https://realtime-avatars.vercel.app`}
               <a href="/learn" className="footer-text hover:text-[var(--accent)]">Learn Hub</a>
               <span className="footer-text">·</span>
               <p className="footer-text">
-                Based on research from 2023–2026 · Last updated February 2026
+                PajamaDot Research · 2023–2026 · Last updated February 2026
               </p>
             </div>
           </div>

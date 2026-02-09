@@ -15,6 +15,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Real-Time Avatars: A Comparative Guide",
   description: "Compare four approaches to building real-time digital avatars: MetaHuman pipelines, generative video models, neural Gaussian splatting, and streaming avatar infrastructure.",
+  metadataBase: new URL("https://realtime-avatars.vercel.app"),
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Real-Time Avatars: A Comparative Guide",
     description: "Compare four approaches to building real-time digital avatars — from MetaHuman pipelines to generative video, Gaussian splatting, and streaming infrastructure.",
@@ -35,6 +37,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="dns-prefetch" href="https://accounts.rapport.cloud" />
+        <link rel="preconnect" href="https://accounts.rapport.cloud" crossOrigin="anonymous" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

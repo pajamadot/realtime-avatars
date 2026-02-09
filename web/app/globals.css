@@ -139,6 +139,36 @@ html {
   --link: var(--accent-dark);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1a1917;
+    --background-subtle: #1f1e1b;
+    --foreground: #e8e4dd;
+    --foreground-muted: #a8a29e;
+
+    --surface-0: #232220;
+    --surface-1: #1a1917;
+    --surface-2: #2a2926;
+    --surface-3: #33312e;
+    --surface-inset: #2a2926;
+
+    --border: #3a3835;
+    --border-muted: #2e2c29;
+    --border-strong: #4a4845;
+
+    --text-primary: #e8e4dd;
+    --text-secondary: #a8a29e;
+    --text-muted: #787268;
+
+    --highlight: #2a2517;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --shadow-card-hover: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -269,6 +299,7 @@ a:hover {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  contain: layout style;
 }
 
 .card:hover {
@@ -906,6 +937,25 @@ pre code {
 }
 .scrollbar-none::-webkit-scrollbar {
   display: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════════════════════════════════ */
+
+@media print {
+  .paper-texture,
+  header,
+  footer,
+  .back-to-top,
+  nav { display: none !important; }
+
+  main { padding: 0 !important; max-width: 100% !important; }
+
+  .card { border: 1px solid #ccc; break-inside: avoid; }
+
+  a[href]::after { content: ' (' attr(href) ')'; font-size: 0.75em; color: #666; }
+  a[href^="#"]::after { content: none; }
 }
 
 .status-indicator {
