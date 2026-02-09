@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-09T06:31:40.864Z",
+  "updatedAt": "2026-02-09T07:26:35.015Z",
   "source": "GitHub Search",
   "queries": {
     "metahuman": {
@@ -182,7 +182,7 @@
           "name": "graphdeco-inria/gaussian-splatting",
           "link": "https://github.com/graphdeco-inria/gaussian-splatting",
           "description": "Original reference implementation of \"3D Gaussian Splatting for Real-Time Radiance Field Rendering\"",
-          "stars": 20630,
+          "stars": 20631,
           "pushedAt": "2025-10-17T14:28:15.000Z",
           "language": "Python"
         },
@@ -214,7 +214,7 @@
           "name": "playcanvas/supersplat",
           "link": "https://github.com/playcanvas/supersplat",
           "description": "3D Gaussian Splat Editor",
-          "stars": 3572,
+          "stars": 3573,
           "pushedAt": "2026-02-04T14:25:12.000Z",
           "language": "TypeScript"
         },
@@ -230,7 +230,7 @@
           "name": "Anttwo/SuGaR",
           "link": "https://github.com/Anttwo/SuGaR",
           "description": "[CVPR 2024] Official PyTorch implementation of SuGaR: Surface-Aligned Gaussian Splatting for Efficient 3D Mesh Reconstruction and High-Quality Mesh Rendering",
-          "stars": 3192,
+          "stars": 3193,
           "pushedAt": "2024-09-24T15:13:31.000Z",
           "language": "C++"
         },

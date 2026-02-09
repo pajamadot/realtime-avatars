@@ -316,6 +316,7 @@ export default function Home() {
               style={{ backgroundColor: "var(--color-metahuman)" }}
             />
             <h3 className="text-xl font-semibold">2.1 MetaHuman Pipeline</h3>
+            <span className="ml-auto badge text-xs">~16ms/frame</span>
           </div>
 
           <p className="text-[var(--text-muted)] mb-4">
@@ -479,6 +480,7 @@ export default function Home() {
               style={{ backgroundColor: "var(--color-generative)" }}
             />
             <h3 className="text-xl font-semibold">2.2 Generative Video Models</h3>
+            <span className="ml-auto badge text-xs">~30ms/frame</span>
           </div>
 
           <p className="text-[var(--text-muted)] mb-4">
@@ -685,6 +687,7 @@ export default function Home() {
               style={{ backgroundColor: "var(--color-gaussian)" }}
             />
             <h3 className="text-xl font-semibold">2.3 Neural Gaussian Splatting</h3>
+            <span className="ml-auto badge text-xs">~10ms/frame</span>
           </div>
 
           <p className="text-[var(--text-muted)] mb-4">
@@ -826,6 +829,7 @@ export default function Home() {
               style={{ backgroundColor: "var(--color-streaming)" }}
             />
             <h3 className="text-xl font-semibold">2.4 Streaming Avatars (LiveKit)</h3>
+            <span className="ml-auto badge text-xs">~100-300ms E2E</span>
           </div>
 
           <p className="text-[var(--text-muted)] mb-6">
@@ -976,6 +980,25 @@ export default function Home() {
         <section id="comparison" className="mb-12 scroll-mt-16">
           <h2 className="text-2xl font-semibold mb-6">3. Comparison</h2>
 
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 text-sm text-center">
+            <div className="p-3 bg-[var(--surface-2)] rounded border-l-2" style={{ borderLeftColor: 'var(--color-metahuman)' }}>
+              <p className="font-semibold">MetaHuman</p>
+              <p className="text-[var(--text-muted)]">Best for <strong>control</strong></p>
+            </div>
+            <div className="p-3 bg-[var(--surface-2)] rounded border-l-2" style={{ borderLeftColor: 'var(--color-generative)' }}>
+              <p className="font-semibold">Generative</p>
+              <p className="text-[var(--text-muted)]">Best for <strong>realism</strong></p>
+            </div>
+            <div className="p-3 bg-[var(--surface-2)] rounded border-l-2" style={{ borderLeftColor: 'var(--color-gaussian)' }}>
+              <p className="font-semibold">Gaussian</p>
+              <p className="text-[var(--text-muted)]">Best for <strong>speed</strong></p>
+            </div>
+            <div className="p-3 bg-[var(--surface-2)] rounded border-l-2" style={{ borderLeftColor: 'var(--color-streaming)' }}>
+              <p className="font-semibold">Streaming</p>
+              <p className="text-[var(--text-muted)]">Best for <strong>deployment</strong></p>
+            </div>
+          </div>
+
           <div className="overflow-x-auto">
             <table className="research-table" aria-label="Comparison of real-time avatar approaches">
               <thead>
@@ -983,25 +1006,25 @@ export default function Home() {
                   <th scope="col">Characteristic</th>
                   <th scope="col">
                     <div className="flex items-center gap-2">
-                      <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} />
+                      <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} aria-hidden="true" />
                       MetaHuman
                     </div>
                   </th>
                   <th scope="col">
                     <div className="flex items-center gap-2">
-                      <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} />
+                      <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} aria-hidden="true" />
                       Generative
                     </div>
                   </th>
                   <th scope="col">
                     <div className="flex items-center gap-2">
-                      <div className="approach-dot" style={{ backgroundColor: "var(--color-gaussian)" }} />
+                      <div className="approach-dot" style={{ backgroundColor: "var(--color-gaussian)" }} aria-hidden="true" />
                       Gaussian
                     </div>
                   </th>
                   <th scope="col">
                     <div className="flex items-center gap-2">
-                      <div className="approach-dot" style={{ backgroundColor: "var(--color-streaming)" }} />
+                      <div className="approach-dot" style={{ backgroundColor: "var(--color-streaming)" }} aria-hidden="true" />
                       Streaming
                     </div>
                   </th>
