@@ -59,5 +59,3 @@ next-env.d.ts
 
 # avatar assets (keep user faces out of git)
 agents/livekit-hedra-avatar/avatar.*
-
-.vercel

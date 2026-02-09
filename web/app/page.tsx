@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import BackToTop from './components/BackToTop';
+import CopyButton from './components/CopyButton';
 import FAQ from './components/FAQ';
 import GaussianSplatDemo from './components/GaussianSplatDemo';
 import LazySection from './components/LazySection';
@@ -1061,7 +1062,51 @@ export default function Home() {
             </table>
           </div>
           <p className="figure-caption mt-4">Table 1: Comparative analysis of real-time avatar approaches</p>
+
+          <div className="card p-5 mt-6">
+            <p className="font-medium mb-4">Estimated Monthly Cost at Scale (1,000 hours/month)</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+              {[
+                { label: 'MetaHuman', color: 'var(--color-metahuman)', cost: '$730–3,650', note: 'GPU server rental' },
+                { label: 'Generative', color: 'var(--color-generative)', cost: '$1,500–5,000', note: 'A100 inference' },
+                { label: 'Gaussian', color: 'var(--color-gaussian)', cost: '$500–1,500', note: 'Consumer GPU host' },
+                { label: 'Streaming', color: 'var(--color-streaming)', cost: '$600–6,000', note: 'Per-minute API fees' },
+              ].map((item) => (
+                <div key={item.label} className="bg-[var(--surface-2)] rounded p-3 text-center">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <div className="approach-dot" style={{ backgroundColor: item.color }} />
+                    <span className="font-medium">{item.label}</span>
+                  </div>
+                  <p className="text-lg font-semibold">{item.cost}</p>
+                  <p className="text-xs text-[var(--text-muted)]">{item.note}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-[var(--text-muted)] mt-3">Estimates based on 2026 cloud pricing. Actual costs depend on resolution, concurrency, and provider.</p>
+          </div>
         </section>
+
+        <div className="card-alt p-5 mt-8 mb-12 rounded-lg border border-[var(--border)]">
+          <p className="font-medium mb-4">Quick Decision Guide</p>
+          <div className="grid md:grid-cols-2 gap-3 text-sm">
+            {[
+              { need: 'Fastest time to production', pick: 'Streaming', color: 'var(--color-streaming)' },
+              { need: 'Highest visual fidelity', pick: 'MetaHuman', color: 'var(--color-metahuman)' },
+              { need: 'Single-image identity creation', pick: 'Generative', color: 'var(--color-generative)' },
+              { need: 'VR/AR immersive experience', pick: 'Gaussian Splatting', color: 'var(--color-gaussian)' },
+              { need: 'Full creative control over rig', pick: 'MetaHuman', color: 'var(--color-metahuman)' },
+              { need: 'Lowest per-unit cost', pick: 'Gaussian Splatting', color: 'var(--color-gaussian)' },
+            ].map((item) => (
+              <div key={item.need} className="flex items-center gap-3 p-2 bg-[var(--surface-0)] rounded border border-[var(--border)]">
+                <span className="text-[var(--text-muted)] flex-1">{item.need}</span>
+                <span className="flex items-center gap-1.5 font-medium whitespace-nowrap">
+                  <span className="inline-block w-2 h-2 rounded-full" style={{ backgroundColor: item.color }} />
+                  {item.pick}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div className="divider" />
 
@@ -1536,7 +1581,10 @@ export default function Home() {
 
           <div className="divider" />
 
-          <h3 className="text-xl font-semibold mb-4">How to Cite</h3>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xl font-semibold">How to Cite</h3>
+            <CopyButton text="PajamaDot Research. (2026). Real-Time Avatar Systems: A Comparative Analysis. Retrieved from https://realtime-avatars.vercel.app" />
+          </div>
           <div className="card p-4">
             <code className="block text-xs leading-relaxed whitespace-pre-wrap text-[var(--text-secondary)]">
 {`PajamaDot Research. (2026). Real-Time Avatar Systems:
