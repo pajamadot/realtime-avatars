@@ -61,12 +61,15 @@ export default function LivingResearchFeed({ className = '' }: { className?: str
       </div>
 
       <div className="mb-4">
+        <label htmlFor="research-feed-filter" className="sr-only">Filter research papers</label>
         <div className="flex items-center gap-3">
           <input
+            id="research-feed-filter"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Filter by title, author, summary, or tag..."
-            className="w-full bg-[var(--surface-0)] border border-[var(--border)] rounded px-3 py-2 text-sm outline-none focus:border-[var(--border-strong)]"
+            aria-label="Filter research papers by title, author, summary, or tag"
+            className="w-full bg-[var(--surface-0)] border border-[var(--border)] rounded px-3 py-2 text-sm focus:outline-2 focus:outline-[var(--accent)] focus:outline-offset-1 focus:border-[var(--border-strong)]"
           />
           {query ? (
             <button

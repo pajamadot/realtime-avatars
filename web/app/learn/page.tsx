@@ -178,7 +178,7 @@ export default function LearnPage() {
             <div className="w-10 h-10 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center mb-3">
               <BookOpen size={20} className="text-[var(--accent)]" />
             </div>
-            <h3 className="font-semibold mb-2">Level 3: Practical Start</h3>
+            <h3 className="font-semibold mb-2">Level 1: Practical Start</h3>
             <p className="text-sm text-[var(--text-muted)]">
               Each track starts with "what does this do?" — practical explanations
               you can understand in 60 seconds. No prerequisites beyond basic programming.
@@ -188,7 +188,7 @@ export default function LearnPage() {
             <div className="w-10 h-10 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center mb-3">
               <Search size={20} className="text-[var(--accent)]" />
             </div>
-            <h3 className="font-semibold mb-2">Level 2: Drill Down</h3>
+            <h3 className="font-semibold mb-2">Level 2: Deep Dive</h3>
             <p className="text-sm text-[var(--text-muted)]">
               Curious about the math? Click any concept to drill deeper.
               Each explanation links to its prerequisites, so you can go as deep as needed.
@@ -198,7 +198,7 @@ export default function LearnPage() {
             <div className="w-10 h-10 rounded-lg bg-[var(--accent-subtle)] flex items-center justify-center mb-3">
               <Gamepad2 size={20} className="text-[var(--accent)]" />
             </div>
-            <h3 className="font-semibold mb-2">Interactive Demos</h3>
+            <h3 className="font-semibold mb-2">Level 3: Interactive Demos</h3>
             <p className="text-sm text-[var(--text-muted)]">
               Every concept has tweakable parameters. Manipulate a Gaussian,
               reorder alpha layers, watch diffusion denoise — learning by doing.

@@ -32,7 +32,7 @@ export default function Home() {
       <main className="mx-auto max-w-4xl px-6 py-12 relative">
         {/* Title Section */}
         <article className="mb-12">
-          <p className="section-label mb-4">Research Survey · January 2026</p>
+          <p className="section-label mb-4">Research Survey · February 2026</p>
           <h1 className="text-3xl md:text-4xl font-semibold mb-4 leading-tight">
             Real-Time Avatar Systems:<br />
             A Comparative Analysis
@@ -47,22 +47,26 @@ export default function Home() {
         {/* Abstract / Key Findings */}
         <section className="highlight-box mb-12">
           <p className="section-label mb-3">Key Findings (2026)</p>
-          <div className="grid md:grid-cols-4 gap-6 text-center">
+          <div className="grid md:grid-cols-5 gap-6 text-center">
             <div>
               <div className="text-2xl font-semibold mb-1">60+ FPS</div>
-              <div className="text-sm text-[var(--text-muted)]">Best-case rendering</div>
+              <div className="text-sm text-[var(--text-muted)]">MetaHuman rendering</div>
             </div>
             <div>
               <div className="text-2xl font-semibold mb-1">&lt;100ms</div>
-              <div className="text-sm text-[var(--text-muted)]">Achievable latency</div>
+              <div className="text-sm text-[var(--text-muted)]">Gaussian splatting</div>
             </div>
             <div>
-              <div className="text-2xl font-semibold mb-1">40x</div>
-              <div className="text-sm text-[var(--text-muted)]">Distillation speedup</div>
-            </div>
-            <div>
-              <div className="text-2xl font-semibold mb-1">24-32 FPS</div>
+              <div className="text-2xl font-semibold mb-1">~32 FPS</div>
               <div className="text-sm text-[var(--text-muted)]">Diffusion real-time</div>
+            </div>
+            <div>
+              <div className="text-2xl font-semibold mb-1">&lt;500ms</div>
+              <div className="text-sm text-[var(--text-muted)]">Avatar Forcing E2E</div>
+            </div>
+            <div>
+              <div className="text-2xl font-semibold mb-1">7+</div>
+              <div className="text-sm text-[var(--text-muted)]">Streaming providers</div>
             </div>
           </div>
         </section>
