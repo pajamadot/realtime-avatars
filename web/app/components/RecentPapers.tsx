@@ -1,4 +1,5 @@
 import researchFeed from '../data/research-feed.json';
+import { formatISODate, METHOD_COLOR } from '../lib/utils';
 
 type FeedItem = {
   title: string;
@@ -16,20 +17,6 @@ type ResearchFeed = {
   updatedAt: string;
   methods: Record<string, FeedMethod>;
 };
-
-const METHOD_COLOR: Record<string, string> = {
-  metahuman: 'var(--color-metahuman)',
-  generative: 'var(--color-generative)',
-  gaussian: 'var(--color-gaussian)',
-  streaming: 'var(--color-streaming)',
-};
-
-function formatISODate(iso?: string) {
-  if (!iso) return '';
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return '';
-  return d.toISOString().slice(0, 10);
-}
 
 export default function RecentPapers({
   methodKey,

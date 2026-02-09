@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import researchFeed from '../data/research-feed.json';
+import { formatISODate } from '../lib/utils';
 
 type FeedItem = {
   title: string;
@@ -23,13 +24,6 @@ type ResearchFeed = {
   source: string;
   methods: Record<string, FeedMethod>;
 };
-
-function formatISODate(iso?: string) {
-  if (!iso) return '';
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return '';
-  return d.toISOString().slice(0, 10);
-}
 
 export default function LivingResearchFeed({ className = '' }: { className?: string }) {
   const feed = researchFeed as unknown as ResearchFeed;

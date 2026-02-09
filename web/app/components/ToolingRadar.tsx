@@ -1,4 +1,5 @@
 import toolingFeed from '../data/tooling-feed.json';
+import { formatISODate, formatStars } from '../lib/utils';
 
 type ToolItem = {
   name: string;
@@ -20,19 +21,6 @@ type ToolingFeed = {
   source: string;
   queries: Record<string, ToolQuery>;
 };
-
-function formatISODate(iso?: string) {
-  if (!iso) return '';
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return '';
-  return d.toISOString().slice(0, 10);
-}
-
-function formatStars(n?: number) {
-  const v = Number(n ?? 0);
-  if (v >= 1000) return `${(v / 1000).toFixed(1).replace(/\\.0$/, '')}k`;
-  return String(v);
-}
 
 export default function ToolingRadar({ className = '' }: { className?: string }) {
   const feed = toolingFeed as unknown as ToolingFeed;
