@@ -479,6 +479,36 @@ export default function Home() {
             </div>
           </div>
 
+          <div className="figure mt-6">
+            <div className="flex items-center justify-center gap-4 text-sm flex-wrap">
+              <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
+                <div className="font-medium">Photo</div>
+                <div className="text-xs text-[var(--text-muted)]">Reference face</div>
+              </div>
+              <span className="text-[var(--text-muted)]">→</span>
+              <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
+                <div className="font-medium">Audio</div>
+                <div className="text-xs text-[var(--text-muted)]">Speech / TTS</div>
+              </div>
+              <span className="text-[var(--text-muted)]">→</span>
+              <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
+                <div className="font-medium">Diffusion</div>
+                <div className="text-xs text-[var(--text-muted)]">Denoise latents</div>
+              </div>
+              <span className="text-[var(--text-muted)]">→</span>
+              <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
+                <div className="font-medium">Decode</div>
+                <div className="text-xs text-[var(--text-muted)]">VAE → frames</div>
+              </div>
+              <span className="text-[var(--text-muted)]">→</span>
+              <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
+                <div className="font-medium">Stream</div>
+                <div className="text-xs text-[var(--text-muted)]">WebRTC output</div>
+              </div>
+            </div>
+            <p className="figure-caption">Figure 2: Generative video avatar pipeline</p>
+          </div>
+
           <RecentPapers methodKey="generative" className="mt-6" />
         </section>
 
@@ -700,7 +730,7 @@ export default function Home() {
                 <div className="text-xs text-[var(--text-muted)]">Web / Mobile</div>
               </div>
             </div>
-            <p className="figure-caption">Figure 2: LiveKit avatar streaming architecture</p>
+            <p className="figure-caption">Figure 3: LiveKit avatar streaming architecture</p>
           </div>
 
           <div className="card p-5 mt-6">

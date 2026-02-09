@@ -15,6 +15,17 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Real-Time Avatars: A Comparative Guide",
   description: "Compare four approaches to building real-time digital avatars: MetaHuman pipelines, generative video models, neural Gaussian splatting, and streaming avatar infrastructure.",
+  openGraph: {
+    title: "Real-Time Avatars: A Comparative Guide",
+    description: "Compare four approaches to building real-time digital avatars — from MetaHuman pipelines to generative video, Gaussian splatting, and streaming infrastructure.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Real-Time Avatars: A Comparative Guide",
+    description: "Compare four approaches to building real-time digital avatars — with interactive demos and implementation guides.",
+  },
 };
 
 export default function RootLayout({
