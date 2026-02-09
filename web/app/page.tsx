@@ -131,7 +131,7 @@ export default function Home() {
         {/* Title Section */}
         <article className="mb-12">
           <div className="flex items-center justify-between mb-4">
-            <p className="section-label">Research Survey · February 2026 · ~25 min read</p>
+            <p className="section-label">Research Survey · Updated February 9, 2026 · ~25 min read</p>
             <ShareButton />
           </div>
           <h1 className="text-3xl md:text-4xl font-semibold mb-4 leading-tight text-balance">
@@ -203,6 +203,7 @@ export default function Home() {
             <a href="#hybrids" className="hover:text-[var(--accent)]">Hybrids</a>
             <a href="#implementation" className="hover:text-[var(--accent)]">Implementation</a>
             <a href="#discussion" className="hover:text-[var(--accent)]">Discussion</a>
+            <a href="#glossary" className="hover:text-[var(--accent)]">Glossary</a>
             <a href="#faq" className="hover:text-[var(--accent)]">FAQ</a>
             <a href="#living-feed" className="hover:text-[var(--accent)]">Feed</a>
           </div>
@@ -212,7 +213,7 @@ export default function Home() {
 
         {/* Introduction */}
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-balance">1. Introduction</h2>
           <p className="text-[var(--text-muted)] mb-4">
             Interactive digital humans—realistic avatars that respond in near real-time to user
             input—are becoming central to virtual communication, gaming, and AI assistants.
@@ -282,7 +283,7 @@ export default function Home() {
               ].map((x) => (
                 <div key={x.k} className="p-3 bg-[var(--surface-2)] rounded">
                   <div className="text-xs text-[var(--text-muted)]">{x.k}</div>
-                  <div className="font-semibold">{x.v}</div>
+                  <div className="font-semibold font-mono">{x.v}</div>
                   <div className="text-xs text-[var(--text-muted)]">{x.d}</div>
                 </div>
               ))}
@@ -296,7 +297,7 @@ export default function Home() {
 
         {/* Methods Overview */}
         <section id="methods" className="mb-12 scroll-mt-16">
-          <h2 className="text-2xl font-semibold mb-6">2. Methods</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-balance">2. Methods</h2>
 
           <div className="grid md:grid-cols-2 gap-4 mb-8">
             {[
@@ -353,14 +354,14 @@ export default function Home() {
         <div className="divider" />
 
         {/* Section 2.1: MetaHuman */}
-        <section id="section-2.1" className="mb-12">
+        <section id="section-2.1" className="mb-12 scroll-mt-16">
           <div className="flex items-center gap-3 mb-4">
             <div
               className="approach-dot"
               style={{ backgroundColor: "var(--color-metahuman)" }}
             />
             <h3 className="text-xl font-semibold">2.1 MetaHuman Pipeline</h3>
-            <span className="ml-auto badge text-xs">~16ms/frame</span>
+            <span className="ml-auto badge text-xs font-mono">~16ms/frame</span>
           </div>
 
           <p className="text-[var(--text-muted)] mb-4">
@@ -512,19 +513,27 @@ export default function Home() {
           </div>
 
           <RecentPapers methodKey="metahuman" className="mt-6" />
+
+          <div className="card-inset p-4 mt-6 text-sm">
+            <p className="font-medium mb-1">Key Takeaway</p>
+            <p className="text-[var(--text-muted)]">
+              MetaHuman is the best choice when you need deterministic control, consistent 60+ FPS rendering,
+              and can invest in Unreal Engine infrastructure. Ideal for gaming, broadcast, and enterprise applications.
+            </p>
+          </div>
         </section>
 
         <div className="divider" />
 
         {/* Section 2.2: Generative */}
-        <section id="section-2.2" className="mb-12">
+        <section id="section-2.2" className="mb-12 scroll-mt-16">
           <div className="flex items-center gap-3 mb-4">
             <div
               className="approach-dot"
               style={{ backgroundColor: "var(--color-generative)" }}
             />
             <h3 className="text-xl font-semibold">2.2 Generative Video Models</h3>
-            <span className="ml-auto badge text-xs">~30ms/frame</span>
+            <span className="ml-auto badge text-xs font-mono">~30ms/frame</span>
           </div>
 
           <p className="text-[var(--text-muted)] mb-4">
@@ -719,19 +728,27 @@ export default function Home() {
           </div>
 
           <RecentPapers methodKey="generative" className="mt-6" />
+
+          <div className="card-inset p-4 mt-6 text-sm">
+            <p className="font-medium mb-1">Key Takeaway</p>
+            <p className="text-[var(--text-muted)]">
+              Generative video excels at creating photorealistic avatars from minimal input (one photo).
+              Best for rapid prototyping and when realism matters more than control. Expect 24-32 FPS with distillation.
+            </p>
+          </div>
         </section>
 
         <div className="divider" />
 
         {/* Section 2.3: Gaussian */}
-        <section id="section-2.3" className="mb-12">
+        <section id="section-2.3" className="mb-12 scroll-mt-16">
           <div className="flex items-center gap-3 mb-4">
             <div
               className="approach-dot"
               style={{ backgroundColor: "var(--color-gaussian)" }}
             />
             <h3 className="text-xl font-semibold">2.3 Neural Gaussian Splatting</h3>
-            <span className="ml-auto badge text-xs">~10ms/frame</span>
+            <span className="ml-auto badge text-xs font-mono">~10ms/frame</span>
           </div>
 
           <p className="text-[var(--text-muted)] mb-4">
@@ -861,19 +878,27 @@ export default function Home() {
               Powered by <a href="https://lumalabs.ai" target="_blank" rel="noopener noreferrer" className="text-[var(--accent)] hover:underline">Luma AI</a> WebGL renderer
             </p>
           </div>
+
+          <div className="card-inset p-4 mt-6 text-sm">
+            <p className="font-medium mb-1">Key Takeaway</p>
+            <p className="text-[var(--text-muted)]">
+              Gaussian splatting delivers the fastest rendering (100+ FPS) with photorealistic quality,
+              but requires multi-view capture and hours of training per identity. Best for VR/AR and telepresence.
+            </p>
+          </div>
         </section>
 
         <div className="divider" />
 
         {/* Section 2.4: Streaming */}
-        <section id="section-2.4" className="mb-12">
+        <section id="section-2.4" className="mb-12 scroll-mt-16">
           <div className="flex items-center gap-3 mb-4">
             <div
               className="approach-dot"
               style={{ backgroundColor: "var(--color-streaming)" }}
             />
             <h3 className="text-xl font-semibold">2.4 Streaming Avatars (LiveKit)</h3>
-            <span className="ml-auto badge text-xs">~100-300ms E2E</span>
+            <span className="ml-auto badge text-xs font-mono">~100-300ms E2E</span>
           </div>
 
           <p className="text-[var(--text-muted)] mb-6">
@@ -1017,13 +1042,21 @@ export default function Home() {
           </div>
 
           <RecentPapers methodKey="streaming" className="mt-6" />
+
+          <div className="card-inset p-4 mt-6 text-sm">
+            <p className="font-medium mb-1">Key Takeaway</p>
+            <p className="text-[var(--text-muted)]">
+              Streaming avatars offer the fastest path to production with no GPU required on the client.
+              Best for voice AI applications, customer service bots, and when deployment speed matters most.
+            </p>
+          </div>
         </section>
 
         <div className="divider" />
 
         {/* Comparison Table */}
         <section id="comparison" className="mb-12 scroll-mt-16">
-          <h2 className="text-2xl font-semibold mb-6">3. Comparison</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-balance">3. Comparison</h2>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 text-sm text-center" role="list" aria-label="Best-for summary by approach">
             <div className="p-3 bg-[var(--surface-2)] rounded border-l-2" role="listitem" style={{ borderLeftColor: 'var(--color-metahuman)' }}>
@@ -1200,7 +1233,7 @@ export default function Home() {
 
         {/* Hybrid Strategies */}
         <section id="hybrids" className="mb-12 scroll-mt-16">
-          <h2 className="text-2xl font-semibold mb-6">4. Hybrid Strategies</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-balance">4. Hybrid Strategies</h2>
 
           <p className="text-[var(--text-muted)] mb-6">
             Given the strengths and weaknesses of each approach, researchers are exploring hybrid
@@ -1293,7 +1326,7 @@ export default function Home() {
 
         {/* Implementation Guide */}
         <section id="implementation" className="mb-12 scroll-mt-16">
-          <h2 className="text-2xl font-semibold mb-6">5. Implementation</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-balance">5. Implementation</h2>
 
           <p className="text-[var(--text-muted)] mb-6">
             The following guides provide starting points for each approach. All referenced
@@ -1325,7 +1358,7 @@ export default function Home() {
                   {i > 0 && <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>}
                   <span className="bg-[var(--surface-2)] rounded px-3 py-1.5">
                     <span className="font-medium">{item.stage}</span>{' '}
-                    <span className="text-[var(--text-muted)]">{item.ms}</span>
+                    <span className="text-[var(--text-muted)] font-mono">{item.ms}</span>
                   </span>
                 </span>
               ))}
@@ -1492,7 +1525,7 @@ export default function Home() {
 
         {/* Discussion */}
         <section id="discussion" className="mb-12 scroll-mt-16">
-          <h2 className="text-2xl font-semibold mb-6">6. Discussion & Outlook</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-balance">6. Discussion & Outlook</h2>
 
           <p className="text-[var(--text-muted)] mb-4">
             The rapid progress in responsive digital human technologies is bringing us closer to
@@ -1607,7 +1640,7 @@ export default function Home() {
 
         {/* Glossary */}
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Glossary</h2>
+          <h2 id="glossary" className="text-2xl font-semibold mb-6 text-balance scroll-mt-16">Glossary</h2>
           <Glossary />
         </section>
 
@@ -1623,7 +1656,7 @@ export default function Home() {
 
         {/* References / Resources */}
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">7. References, Resources & Living Feed</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-balance">7. References, Resources & Living Feed</h2>
 
           <div className="grid md:grid-cols-2 gap-4">
             {[
@@ -1733,21 +1766,21 @@ https://realtime-avatars.vercel.app`}
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[var(--border)] bg-[var(--surface-0)]">
+      <footer className="border-t border-[var(--border)] bg-[var(--surface-0)]" role="contentinfo">
         <div className="mx-auto max-w-4xl px-6 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="footer-text">
               Real-Time Avatar Systems: A Comparative Analysis
             </p>
-            <div className="flex items-center gap-4">
+            <nav className="flex items-center gap-4" aria-label="Footer links">
               <a href="/learn" className="footer-text hover:text-[var(--accent)]">Learn Hub</a>
               <span className="footer-text">·</span>
               <a href="#faq" className="footer-text hover:text-[var(--accent)]">FAQ</a>
               <span className="footer-text">·</span>
               <p className="footer-text">
-                PajamaDot Research · v2.0 · February 2026
+                PajamaDot Research · v2.1 · February 2026
               </p>
-            </div>
+            </nav>
           </div>
         </div>
       </footer>
