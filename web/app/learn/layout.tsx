@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import LearnNav from './components/LearnNav';
 
 export default function LearnLayout({
   children,
@@ -26,28 +27,7 @@ export default function LearnLayout({
                 Learn
               </Link>
             </div>
-            <div className="flex items-center gap-4">
-              <Link href="/learn/end-to-end" className="nav-link text-sm font-medium">
-                End-to-End
-              </Link>
-              <span className="text-[var(--border)]">|</span>
-              <Link href="/learn/gaussian-splatting" className="nav-link text-sm">
-                <span className="inline-block w-2 h-2 rounded-full bg-[var(--color-gaussian)] mr-2" />
-                Gaussian
-              </Link>
-              <Link href="/learn/metahuman" className="nav-link text-sm">
-                <span className="inline-block w-2 h-2 rounded-full bg-[var(--color-metahuman)] mr-2" />
-                MetaHuman
-              </Link>
-              <Link href="/learn/generative-video" className="nav-link text-sm">
-                <span className="inline-block w-2 h-2 rounded-full bg-[var(--color-generative)] mr-2" />
-                Generative
-              </Link>
-              <Link href="/learn/streaming-avatars" className="nav-link text-sm">
-                <span className="inline-block w-2 h-2 rounded-full bg-[var(--color-streaming)] mr-2" />
-                Streaming
-              </Link>
-            </div>
+            <LearnNav />
           </nav>
         </div>
       </header>

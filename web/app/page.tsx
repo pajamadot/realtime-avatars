@@ -1,6 +1,13 @@
 import type { Metadata } from 'next';
+import BackToTop from './components/BackToTop';
 import GaussianSplatDemo from './components/GaussianSplatDemo';
+import LazySection from './components/LazySection';
 import LivingResearchFeed from './components/LivingResearchFeed';
+import MobileNav from './components/MobileNav';
+import RecentPapers from './components/RecentPapers';
+import ResearchHighlights from './components/ResearchHighlights';
+import ToolingHighlights from './components/ToolingHighlights';
+import ToolingRadar from './components/ToolingRadar';
 
 export const metadata: Metadata = {
   title: 'Real-Time Avatar Systems: A Comparative Analysis',
@@ -8,14 +15,27 @@ export const metadata: Metadata = {
     'Comprehensive survey comparing MetaHuman pipelines, generative video, Gaussian splatting, and streaming avatars for building interactive digital humans.',
   keywords: ['real-time avatars', 'MetaHuman', 'generative video', 'Gaussian splatting', 'streaming avatars', 'digital humans', 'WebRTC'],
 };
-import ResearchHighlights from './components/ResearchHighlights';
-import RecentPapers from './components/RecentPapers';
-import ToolingHighlights from './components/ToolingHighlights';
-import ToolingRadar from './components/ToolingRadar';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: 'Real-Time Avatar Systems: A Comparative Analysis',
+  description:
+    'Comprehensive survey comparing MetaHuman pipelines, generative video, Gaussian splatting, and streaming avatars for building interactive digital humans.',
+  author: { '@type': 'Organization', name: 'PajamaDot Research' },
+  datePublished: '2026-01-01',
+  dateModified: '2026-02-09',
+  keywords:
+    'real-time avatars, MetaHuman, generative video, Gaussian splatting, streaming avatars, digital humans',
+};
 
 export default function Home() {
   return (
     <div className="min-h-screen relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Paper texture overlay */}
       <div className="paper-texture fixed inset-0" />
 
@@ -24,11 +44,11 @@ export default function Home() {
       </a>
 
       {/* Header */}
-      <header className="border-b border-[var(--border)] bg-[var(--surface-0)]">
+      <header className="border-b border-[var(--border)] bg-[var(--surface-0)] relative">
         <div className="mx-auto max-w-4xl px-6">
           <nav className="flex items-center justify-between h-14">
             <span className="font-semibold text-sm">Real-Time Avatars</span>
-            <div className="flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-6">
               <a href="#methods" className="nav-link">Methods</a>
               <a href="#comparison" className="nav-link">Comparison</a>
               <a href="#hybrids" className="nav-link">Hybrids</a>
@@ -38,6 +58,7 @@ export default function Home() {
               <a href="#demos" className="nav-link font-medium">Demos</a>
               <a href="/learn" className="nav-link font-medium">Learn</a>
             </div>
+            <MobileNav />
           </nav>
         </div>
       </header>
@@ -45,7 +66,7 @@ export default function Home() {
       <main id="main-content" className="mx-auto max-w-4xl px-6 py-12 relative">
         {/* Title Section */}
         <article className="mb-12">
-          <p className="section-label mb-4">Research Survey · February 2026</p>
+          <p className="section-label mb-4">Research Survey · February 2026 · ~25 min read</p>
           <h1 className="text-3xl md:text-4xl font-semibold mb-4 leading-tight">
             Real-Time Avatar Systems:<br />
             A Comparative Analysis
@@ -1455,7 +1476,9 @@ export default function Home() {
             This section is generated from an updater script so the site can continuously evolve as new papers land.
             It is intentionally broad (keyword-based) to act as an inbox rather than a curated bibliography.
           </p>
-          <LivingResearchFeed />
+          <LazySection>
+            <LivingResearchFeed />
+          </LazySection>
 
           <div className="divider" />
 
@@ -1464,7 +1487,20 @@ export default function Home() {
             A lightweight GitHub search feed to surface useful repos (implementations, demos, and tooling)
             around real-time avatars. Treat it as discovery, then curate what matters into the main sections.
           </p>
-          <ToolingRadar />
+          <LazySection>
+            <ToolingRadar />
+          </LazySection>
+
+          <div className="divider" />
+
+          <h3 className="text-xl font-semibold mb-4">How to Cite</h3>
+          <div className="card p-4">
+            <code className="block text-xs leading-relaxed whitespace-pre-wrap text-[var(--text-secondary)]">
+{`PajamaDot Research. (2026). Real-Time Avatar Systems:
+A Comparative Analysis. Retrieved from
+https://realtime-avatars.vercel.app`}
+            </code>
+          </div>
         </section>
       </main>
 
@@ -1485,6 +1521,8 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      <BackToTop />
     </div>
   );
 }
