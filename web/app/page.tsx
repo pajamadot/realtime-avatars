@@ -88,6 +88,38 @@ const jsonLd = [
           text: 'Yes. Gaussian splatting creates photorealistic digital twins from multi-view video capture. Generative models can animate a single photo. MetaHuman Creator allows manual sculpting. Always ensure you have consent.',
         },
       },
+      {
+        '@type': 'Question',
+        name: 'Can Gaussian splatting avatars hold real-time conversations?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. Projects like LAM + OpenAvatarChat provide a complete pipeline from single photo to real-time conversational avatar. End-to-end latency is approximately 2.2 seconds on an RTX 4090.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is a one-shot avatar?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'A one-shot avatar is created from a single photo using a feed-forward neural network, with no multi-view capture or per-subject training needed. Models like LAM generate a full 3D Gaussian avatar in seconds.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do I make a Gaussian avatar hold a voice conversation?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Use OpenAvatarChat with a LAM backend. The server runs VAD, ASR (Whisper), LLM, TTS, and Audio2Expression. The browser renders the Gaussian avatar via WebGL while receiving expression blendshapes over WebRTC. Latency is ~2.2s on an RTX 4090.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the difference between traditional and one-shot Gaussian avatars?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Traditional Gaussian avatars need multi-view capture (50-200 images) and hours of per-subject optimization. One-shot models like LAM create animatable avatars from a single photo in seconds using a pretrained network.',
+        },
+      },
     ],
   },
 ];
@@ -754,15 +786,17 @@ export default function Home() {
           <p className="text-[var(--text-muted)] mb-4">
             3D Gaussian Splatting (3DGS), emerging in 2023, enables real-time rendering of
             photorealistic 3D scenes using clouds of Gaussian primitives instead of dense
-            neural networks. By capturing a person as textured 3D Gaussians that can be
+            neural networks. By representing a person as textured 3D Gaussians that can be
             transformed and animated, we obtain a streaming neural avatar that runs extremely
             fast and looks realistic.
           </p>
 
           <p className="text-[var(--text-muted)] mb-6">
-            Multi-view video capture of a person is used to optimize a Gaussian splatting model,
-            creating a personalized neural character—a digital asset that &ldquo;looks exactly like X.&rdquo;
-            Once trained, it can be driven by parametric rigs or audio/motion models.
+            Traditional approaches require multi-view video capture and hours of per-subject training.
+            However, feed-forward models like LAM (SIGGRAPH 2025) now create animatable Gaussian
+            avatars from a single photo in seconds — no per-subject optimization needed. Combined with
+            Audio2Expression models, these one-shot Gaussian avatars can be driven in real-time
+            for voice conversation, closing the gap between capture and deployment.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -789,6 +823,10 @@ export default function Home() {
                   <span className="marker-pro">+</span>
                   Lower runtime cost than diffusion
                 </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-pro">+</span>
+                  Browser-native via WebGL/WebGPU renderers
+                </li>
               </ul>
             </div>
             <div className="card-alt p-5">
@@ -796,15 +834,15 @@ export default function Home() {
               <ul className="space-y-2 text-sm text-[var(--text-muted)]">
                 <li className="flex items-start gap-2">
                   <span className="marker-con">−</span>
-                  Requires multi-view capture per person
+                  Traditional methods need multi-view capture (one-shot models emerging)
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="marker-con">−</span>
-                  Hours of training per identity
+                  Per-subject training takes hours (feed-forward models bypass this)
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="marker-con">−</span>
-                  Fixed identity (one model = one person)
+                  One-shot models trade some fidelity for convenience
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="marker-con">−</span>
@@ -812,24 +850,28 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="marker-con">−</span>
-                  Tooling less mature than game engines
+                  WebGPU/WebGL tooling still maturing for production use
                 </li>
               </ul>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-3 mb-6 text-center text-sm">
+          <div className="grid md:grid-cols-2 gap-3 mb-6 text-center text-sm">
             <div className="p-3 bg-[var(--surface-2)] rounded">
-              <div className="font-semibold">50-200</div>
-              <div className="text-xs text-[var(--text-muted)]">Multi-view images needed</div>
+              <p className="text-xs text-[var(--text-muted)] mb-2 font-medium">Traditional (per-subject)</p>
+              <div className="grid grid-cols-3 gap-2">
+                <div><div className="font-semibold font-mono">50-200</div><div className="text-xs text-[var(--text-muted)]">Multi-view images</div></div>
+                <div><div className="font-semibold font-mono">2-8 hrs</div><div className="text-xs text-[var(--text-muted)]">Training (RTX 4090)</div></div>
+                <div><div className="font-semibold font-mono">~100 FPS</div><div className="text-xs text-[var(--text-muted)]">Inference</div></div>
+              </div>
             </div>
-            <div className="p-3 bg-[var(--surface-2)] rounded">
-              <div className="font-semibold">2-8 hrs</div>
-              <div className="text-xs text-[var(--text-muted)]">Training time (RTX 4090)</div>
-            </div>
-            <div className="p-3 bg-[var(--surface-2)] rounded">
-              <div className="font-semibold">~100 FPS</div>
-              <div className="text-xs text-[var(--text-muted)]">Inference speed</div>
+            <div className="p-3 bg-[var(--surface-2)] rounded border border-[var(--color-gaussian)]">
+              <p className="text-xs text-[var(--text-muted)] mb-2 font-medium">One-Shot (feed-forward)</p>
+              <div className="grid grid-cols-3 gap-2">
+                <div><div className="font-semibold font-mono">1 photo</div><div className="text-xs text-[var(--text-muted)]">Input needed</div></div>
+                <div><div className="font-semibold font-mono">&lt;10s</div><div className="text-xs text-[var(--text-muted)]">Avatar creation</div></div>
+                <div><div className="font-semibold font-mono">100+ FPS</div><div className="text-xs text-[var(--text-muted)]">Inference</div></div>
+              </div>
             </div>
           </div>
 
@@ -852,6 +894,47 @@ export default function Home() {
                   perceptual losses.
                 </p>
               </div>
+              <div>
+                <p className="font-medium mb-1">LAM (Alibaba, SIGGRAPH 2025)</p>
+                <p className="text-[var(--text-muted)]">
+                  Large Avatar Model — a feed-forward model that creates an animatable 3D Gaussian
+                  avatar from a single photo in seconds, no per-subject training needed. Ships with a
+                  WebGL renderer and Audio2Expression module for real-time conversation.
+                </p>
+              </div>
+              <div>
+                <p className="font-medium mb-1">OpenAvatarChat (HumanAIGC, 2025)</p>
+                <p className="text-[var(--text-muted)]">
+                  Full-stack conversational avatar SDK integrating VAD → ASR → LLM → TTS → Avatar
+                  in one pipeline. Supports LAM (3D Gaussian), MuseTalk, and 2D backends with
+                  WebRTC delivery and ~2.2s end-to-end latency.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="card-alt p-5 mb-6">
+            <p className="font-medium mb-3">Real-Time Conversation Architecture (LAM + OpenAvatarChat)</p>
+            <div className="text-sm text-[var(--text-muted)] space-y-2">
+              <p>
+                The most viable open-source path to a real-time Gaussian conversational avatar:
+              </p>
+              <div className="grid md:grid-cols-2 gap-4 mt-3">
+                <div className="p-3 bg-[var(--surface-2)] rounded">
+                  <p className="font-medium text-[var(--foreground)] mb-1">Browser (Client)</p>
+                  <p>LAM WebRender (WebGL) renders the 3D Gaussian avatar locally. Expression
+                  coefficients arrive via WebRTC from the server. No GPU needed on client.</p>
+                </div>
+                <div className="p-3 bg-[var(--surface-2)] rounded">
+                  <p className="font-medium text-[var(--foreground)] mb-1">Server (GPU)</p>
+                  <p>OpenAvatarChat runs: VAD → ASR → LLM → TTS → Audio2Expression.
+                  Streams ARKit-compatible expression blendshapes back to the browser.</p>
+                </div>
+              </div>
+              <p className="text-xs mt-2">
+                End-to-end latency: ~2.2s (RTX 4090). Avatar creation: single photo, seconds.
+                All Apache 2.0 licensed.
+              </p>
             </div>
           </div>
 
@@ -882,8 +965,9 @@ export default function Home() {
           <div className="card-inset p-4 mt-6 text-sm">
             <p className="font-medium mb-1">Key Takeaway</p>
             <p className="text-[var(--text-muted)]">
-              Gaussian splatting delivers the fastest rendering (100+ FPS) with photorealistic quality,
-              but requires multi-view capture and hours of training per identity. Best for VR/AR and telepresence.
+              Gaussian splatting delivers the fastest rendering (100+ FPS) with photorealistic quality.
+              One-shot models like LAM now create avatars from a single photo in seconds, with full
+              conversation support via OpenAvatarChat. Best for VR/AR, telepresence, and real-time voice interaction.
             </p>
           </div>
         </section>
@@ -1127,21 +1211,21 @@ export default function Home() {
                   <td className="font-medium">Controllability</td>
                   <td>Fine-grained (rig)</td>
                   <td>Limited (audio)</td>
-                  <td>Moderate to high</td>
+                  <td>High (FLAME/ARKit)</td>
                   <td>API-based</td>
                 </tr>
                 <tr>
                   <td className="font-medium">New Identity Setup</td>
                   <td>3D modeling</td>
                   <td>Single image</td>
-                  <td>Capture + training</td>
+                  <td>Single photo (one-shot) or multi-view capture</td>
                   <td>Provider config</td>
                 </tr>
                 <tr>
                   <td className="font-medium">Training Required</td>
                   <td>None per character</td>
                   <td>Base model only</td>
-                  <td>Hours per subject</td>
+                  <td>None (feed-forward) or hours (per-subject)</td>
                   <td>None</td>
                 </tr>
                 <tr>
@@ -1162,21 +1246,21 @@ export default function Home() {
                   <td className="font-medium">Deployment Ease</td>
                   <td>Hard (UE5 + GPU)</td>
                   <td>Medium (Python + GPU)</td>
-                  <td>Hard (capture rig)</td>
+                  <td>Medium (one-shot) to Hard (capture rig)</td>
                   <td>Easy (API key)</td>
                 </tr>
                 <tr>
                   <td className="font-medium">Open Source</td>
                   <td>Partial (MetaHuman Creator free)</td>
                   <td>Yes (SadTalker, GeneFace++)</td>
-                  <td>Yes (3DGS, D3GA)</td>
+                  <td>Yes (LAM, OpenAvatarChat, D3GA)</td>
                   <td>Partial (LiveKit OSS, providers closed)</td>
                 </tr>
                 <tr>
                   <td className="font-medium">Best Use Case</td>
                   <td>Production control</td>
                   <td>Quick deployment</td>
-                  <td>VR/AR telepresence</td>
+                  <td>VR/AR, real-time conversation</td>
                   <td>Voice AI apps</td>
                 </tr>
               </tbody>
@@ -1444,20 +1528,43 @@ export default function Home() {
           <div className="card p-6 mb-6 border-l-2" style={{ borderLeftColor: 'var(--color-gaussian)' }}>
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-gaussian)" }} aria-hidden="true" />
-              <h4 className="font-semibold">5.4 D3GA (Gaussian Avatars)</h4>
-              <span className="badge text-xs ml-auto">Advanced</span>
+              <h4 className="font-semibold">5.4 LAM + OpenAvatarChat (Gaussian Conversation)</h4>
+              <span className="badge text-xs ml-auto">Intermediate</span>
             </div>
+            <p className="text-sm text-[var(--text-muted)] mb-4">
+              Create a real-time conversational Gaussian avatar from a single photo using
+              the LAM model and OpenAvatarChat pipeline.
+            </p>
             <ol className="numbered-list text-sm text-[var(--text-muted)]">
               <li>
                 <div>
-                  Clone repository
-                  <div className="code mt-2">git clone https://github.com/facebookresearch/D3GA.git</div>
+                  Clone OpenAvatarChat
+                  <div className="code mt-2">git clone https://github.com/HumanAIGC-Engineering/OpenAvatarChat.git</div>
                 </div>
               </li>
-              <li>Capture multi-view video of subject from multiple angles</li>
-              <li>Run training script with captured data (several hours)</li>
-              <li>Drive avatar with FLAME parameters, body poses, or audio input</li>
+              <li>
+                <div>
+                  Install LAM and Audio2Expression dependencies
+                  <div className="code mt-2">pip install -r requirements.txt  # includes LAM, Audio2Expr</div>
+                </div>
+              </li>
+              <li>Provide a single face photo — LAM generates the 3D Gaussian avatar in seconds</li>
+              <li>Configure ASR, LLM, and TTS backends (supports Whisper, Qwen, edge_tts)</li>
+              <li>
+                <div>
+                  Launch the server and connect via browser
+                  <div className="code mt-2">python run.py --avatar lam --photo face.jpg</div>
+                </div>
+              </li>
             </ol>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <a href="https://github.com/aigc3d/LAM" target="_blank" rel="noopener noreferrer" className="badge hover:border-[var(--border-strong)]">
+                LAM GitHub →
+              </a>
+              <a href="https://github.com/HumanAIGC-Engineering/OpenAvatarChat" target="_blank" rel="noopener noreferrer" className="badge hover:border-[var(--border-strong)]">
+                OpenAvatarChat GitHub →
+              </a>
+            </div>
           </div>
 
           {/* Streaming Implementation */}
@@ -1632,6 +1739,14 @@ export default function Home() {
                 <p className="font-medium text-[var(--foreground)] mb-1">Real-Time Translation Avatars</p>
                 <p>Combining avatar systems with speech translation and voice cloning will enable cross-language conversations where the avatar speaks in your language with the other person&apos;s likeness and voice.</p>
               </div>
+              <div>
+                <p className="font-medium text-[var(--foreground)] mb-1">One-Shot Gaussian Conversation</p>
+                <p>Feed-forward models like LAM create 3D Gaussian avatars from a single photo in seconds. Paired with Audio2Expression and browser-based WebGL/WebGPU rendering, this enables instant conversational avatars without per-subject training or capture rigs.</p>
+              </div>
+              <div>
+                <p className="font-medium text-[var(--foreground)] mb-1">WebGPU Avatar Rendering</p>
+                <p>WebGPU engines like Visionary achieve 60-135x speedup over WebGL for Gaussian splatting. As browser adoption grows, client-side rendering of photorealistic 3D avatars will become trivially fast — eliminating server-side GPU costs entirely.</p>
+              </div>
             </div>
           </div>
         </section>
@@ -1704,6 +1819,26 @@ export default function Home() {
                 title: "Rapport Cloud",
                 desc: "MetaHuman pixel streaming for conversational avatars",
                 url: "https://www.rapport.cloud/",
+              },
+              {
+                title: "LAM (SIGGRAPH 2025)",
+                desc: "Large Avatar Model — one-shot 3D Gaussian avatar from a single photo",
+                url: "https://github.com/aigc3d/LAM",
+              },
+              {
+                title: "OpenAvatarChat",
+                desc: "Full-stack conversational avatar SDK with ASR + LLM + TTS + Avatar pipeline",
+                url: "https://github.com/HumanAIGC-Engineering/OpenAvatarChat",
+              },
+              {
+                title: "Gaussian-VRM",
+                desc: "Instant skinned Gaussian avatars in three.js/WebXR (MIT licensed)",
+                url: "https://github.com/naruya/gaussian-vrm",
+              },
+              {
+                title: "Visionary (WebGPU)",
+                desc: "WebGPU Gaussian splatting engine — 60-135x faster than WebGL",
+                url: "https://github.com/Visionary-Laboratory/visionary",
               },
               {
                 title: "Awesome Talking Head Generation",

@@ -35,6 +35,22 @@ const faqs = [
     q: 'How do hybrid approaches combine different methods?',
     a: 'Hybrids take the best of each: e.g., a MetaHuman rig for control with a neural renderer for realism (GeneFace++), or Gaussian splatting driven by parametric face models (D3GA). This combines precision with photorealism while keeping latency manageable.',
   },
+  {
+    q: 'Can Gaussian splatting avatars hold real-time conversations?',
+    a: 'Yes. Projects like LAM + OpenAvatarChat provide a complete pipeline: a single photo creates a 3D Gaussian avatar, Audio2Expression converts speech to facial blendshapes, and the avatar renders in the browser via WebGL. End-to-end latency is ~2.2s on an RTX 4090.',
+  },
+  {
+    q: 'What is a one-shot avatar and how does it work?',
+    a: 'A one-shot avatar is created from a single photo using a feed-forward neural network — no multi-view capture or per-subject training needed. Models like LAM generate a full 3D Gaussian avatar in seconds by predicting geometry, appearance, and animation parameters from one image.',
+  },
+  {
+    q: 'How do I make a Gaussian avatar hold a voice conversation?',
+    a: 'Use OpenAvatarChat with a LAM backend. The server runs a pipeline of VAD (voice detection), ASR (Whisper), LLM (Qwen or GPT), TTS (edge_tts), and Audio2Expression. The browser renders the 3D Gaussian avatar via WebGL while receiving expression blendshapes over WebRTC. End-to-end latency is ~2.2 seconds on an RTX 4090.',
+  },
+  {
+    q: 'What is the difference between traditional and one-shot Gaussian avatars?',
+    a: 'Traditional Gaussian avatars require multi-view capture (50-200 images) and hours of per-subject optimization for maximum fidelity. One-shot models like LAM create an animatable avatar from a single photo in seconds using a large pretrained network, trading some fine detail for instant deployment.',
+  },
 ];
 
 export default function FAQ({ className = '' }: { className?: string }) {

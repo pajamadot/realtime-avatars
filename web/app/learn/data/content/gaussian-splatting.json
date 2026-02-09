@@ -5,7 +5,7 @@
   "color": "var(--color-gaussian)",
 
   "intro": {
-    "text": "Imagine representing a 3D scene not with triangles or pixels, but with millions of tiny, fuzzy, colored blobs floating in space. That's Gaussian Splatting. Each blob, called a Gaussian, has a position, a shape, a color that can change based on viewing angle, and transparency. When you look at the scene, these blobs are 'splatted' onto your screen like spray paint, blending together to create photorealistic images at 60+ frames per second. For avatars, this means we can capture a real person as a cloud of Gaussians, then animate and render them in real-time with quality that rivals photographs.",
+    "text": "Imagine representing a 3D scene not with triangles or pixels, but with millions of tiny, fuzzy, colored blobs floating in space. That's Gaussian Splatting. Each blob, called a Gaussian, has a position, a shape, a color that can change based on viewing angle, and transparency. When you look at the scene, these blobs are 'splatted' onto your screen like spray paint, blending together to create photorealistic images at 60+ frames per second. For avatars, this means we can capture a real person as a cloud of Gaussians, then animate and render them in real-time with quality that rivals photographs. Recent one-shot models like LAM (SIGGRAPH 2025) can create animatable Gaussian avatars from a single photo in seconds, and when paired with Audio2Expression pipelines, these avatars can hold real-time voice conversations in the browser.",
     "duration": "60s"
   },
 
@@ -158,6 +158,16 @@
         "title": "D3GA: Drivable 3D Gaussian Avatars",
         "url": "https://github.com/facebookresearch/D3GA",
         "type": "github"
+      },
+      {
+        "title": "LAM: Large Avatar Model (One-Shot)",
+        "url": "https://github.com/aigc3d/LAM",
+        "type": "github"
+      },
+      {
+        "title": "OpenAvatarChat (Conversational Pipeline)",
+        "url": "https://github.com/HumanAIGC-Engineering/OpenAvatarChat",
+        "type": "github"
       }
     ]
   },
@@ -171,13 +181,13 @@
       "You can afford per-person training time (hours)"
     ],
     "whenNot": [
-      "You need to render arbitrary people from a single photo (use Generative instead)",
+      "You need extreme variety of identities without any input images (consider Generative)",
       "You need to change lighting dynamically (lighting is baked in)",
       "You're constrained to web-only without GPU (consider Streaming)",
       "You need production-proven tools with mature ecosystems (consider MetaHuman)",
       "You need to handle complex clothing or loose hair motion"
     ],
-    "bestFor": "VR/AR telepresence where a specific person needs to be photorealistically rendered in real-time from any viewpoint"
+    "bestFor": "VR/AR telepresence, real-time voice conversation, and any use case requiring photorealistic rendering at 60+ FPS. One-shot models now enable instant avatar creation from a single photo."
   },
 
   "misconceptions": [
@@ -196,6 +206,10 @@
     {
       "wrong": "Spherical harmonics are just for lighting",
       "correct": "In 3DGS, SH encodes view-dependent color, not lighting calculations. The lighting is 'baked in' during training."
+    },
+    {
+      "wrong": "Gaussian avatars always require multi-view capture",
+      "correct": "Feed-forward models like LAM create animatable Gaussian avatars from a single photo in seconds. Multi-view capture gives higher fidelity, but one-shot models are now viable for real-time conversation."
     }
   ],
 
@@ -215,6 +229,16 @@
         "name": "Deformation Networks",
         "description": "Neural network predicts per-Gaussian offsets for each pose",
         "example": "3DGS-Avatar"
+      },
+      {
+        "name": "Feed-Forward (One-Shot)",
+        "description": "A single photo generates a full animatable Gaussian avatar in seconds via a large pretrained model — no per-subject training needed",
+        "example": "LAM (Large Avatar Model, SIGGRAPH 2025)"
+      },
+      {
+        "name": "Conversational Pipeline",
+        "description": "Gaussian avatar driven by Audio2Expression from a VAD → ASR → LLM → TTS pipeline, rendered in browser via WebGL/WebGPU",
+        "example": "LAM + OpenAvatarChat (~2.2s end-to-end latency)"
       }
     ],
     "performance": {

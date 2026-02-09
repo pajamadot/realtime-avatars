@@ -19,6 +19,12 @@ const terms = [
   { term: 'LoRA', def: 'Low-Rank Adaptation — a parameter-efficient fine-tuning method that adapts large models to new identities or styles with minimal compute.' },
   { term: 'Distillation', def: 'Training a smaller, faster model to replicate a larger model\'s outputs, enabling real-time inference from expensive teacher models.' },
   { term: 'ARKit', def: 'Apple\'s augmented reality framework providing 52 facial blendshape coefficients for real-time face tracking on iPhone.' },
+  { term: 'Audio2Expression', def: 'A model that converts speech audio into facial expression coefficients (e.g., ARKit blendshapes) in real-time, enabling voice-driven avatar animation.' },
+  { term: 'Feed-Forward Generation', def: 'Creating a 3D avatar in a single forward pass through a neural network, without iterative per-subject optimization — enabling instant avatar creation from a photo.' },
+  { term: 'WebGPU', def: 'Next-generation browser graphics API offering compute shaders and lower overhead than WebGL, enabling 60-135x faster Gaussian splatting in the browser.' },
+  { term: 'SfM', def: 'Structure from Motion — a photogrammetry technique that extracts 3D point clouds and camera poses from overlapping 2D images, used to initialize Gaussian splatting scenes.' },
+  { term: 'One-Shot Avatar', def: 'A 3D avatar generated from a single photo via a feed-forward neural network (e.g., LAM), bypassing multi-view capture and per-subject training entirely.' },
+  { term: 'OpenAvatarChat', def: 'An open-source conversational avatar SDK that integrates VAD, ASR, LLM, TTS, and Audio2Expression into a single pipeline driving Gaussian or 2D avatar backends via WebRTC.' },
 ];
 
 export default function Glossary({ className = '' }: { className?: string }) {

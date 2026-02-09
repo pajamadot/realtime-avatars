@@ -59,7 +59,7 @@
     },
     "gaussian": {
       "label": "Gaussian Splatting (3DGS)",
-      "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head))",
+      "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "minScore": 2,
       "includeAny": [
         "gaussian",
@@ -73,7 +73,20 @@
         "compression",
         "animatable",
         "drivable",
-        "neural radiance"
+        "neural radiance",
+        "one-shot",
+        "feed-forward",
+        "audio-driven",
+        "talking",
+        "conversational",
+        "webgl",
+        "webgpu",
+        "real-time",
+        "large avatar model",
+        "avatar chat",
+        "audio2expression",
+        "expression coefficients",
+        "skinned gaussian"
       ],
       "excludeAny": [
         "garment",

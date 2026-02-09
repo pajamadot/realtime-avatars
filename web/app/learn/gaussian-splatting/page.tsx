@@ -83,6 +83,7 @@ const sections = [
   { id: 'demos', label: 'Interactive Demos' },
   { id: 'implementation', label: 'Build It' },
   { id: 'tradeoffs', label: 'Trade-offs' },
+  { id: 'conversation', label: 'Conversation' },
 ];
 
 export default function GaussianSplattingPage() {
@@ -95,15 +96,15 @@ export default function GaussianSplattingPage() {
       <section className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-4 h-4 rounded-full" style={{ backgroundColor: color }} />
-          <span className="badge">Neural 3D Rendering</span>
-          <span className="text-sm text-[var(--text-muted)]">~45 min</span>
+          <span className="badge">Neural 3D Rendering + Conversation</span>
+          <span className="text-sm text-[var(--text-muted)]">~50 min</span>
         </div>
         <h1 className="text-3xl font-semibold mb-2">{content.title}</h1>
         <p className="text-lg text-[var(--text-muted)]">{content.subtitle}</p>
       </section>
 
       {/* Progress tracker */}
-      <nav className="sticky top-20 z-40 bg-[var(--bg)] py-3 border-b border-[var(--border)] mb-8 -mx-6 px-6">
+      <nav className="sticky top-20 z-40 bg-[var(--bg)] py-3 border-b border-[var(--border)] mb-8 -mx-6 px-6" aria-label="Section progress">
         <div className="flex items-center gap-2 overflow-x-auto pb-2">
           {sections.map((section, index) => (
             <a
@@ -473,10 +474,41 @@ export default function GaussianSplattingPage() {
           Get started with the official implementation. Here's a step-by-step walkthrough.
         </p>
 
+        <h3 className="font-semibold mb-4">Traditional 3DGS (Multi-View Capture)</h3>
         <CodeWalkthrough
           steps={content.implementation.steps}
           color={color}
         />
+
+        <div className="divider" />
+
+        <h3 className="font-semibold mb-4">Conversational Avatar Quickstart (One-Shot)</h3>
+        <p className="text-sm text-[var(--text-muted)] mb-4">
+          Create a talking Gaussian avatar from a single photo using LAM + OpenAvatarChat.
+        </p>
+        <div className="space-y-3 mb-8">
+          <div className="card p-4">
+            <p className="font-medium text-sm mb-1">1. Clone OpenAvatarChat</p>
+            <div className="code text-xs mt-2">git clone https://github.com/HumanAIGC-Engineering/OpenAvatarChat.git</div>
+          </div>
+          <div className="card p-4">
+            <p className="font-medium text-sm mb-1">2. Install LAM + Audio2Expression</p>
+            <div className="code text-xs mt-2">pip install -r requirements.txt</div>
+          </div>
+          <div className="card p-4">
+            <p className="font-medium text-sm mb-1">3. Provide a single face photo</p>
+            <p className="text-xs text-[var(--text-muted)]">LAM generates the 3D Gaussian avatar in seconds — no multi-view capture needed.</p>
+          </div>
+          <div className="card p-4">
+            <p className="font-medium text-sm mb-1">4. Configure AI backends</p>
+            <p className="text-xs text-[var(--text-muted)]">Set up ASR (Whisper), LLM (Qwen/GPT), and TTS (edge_tts) in the config file.</p>
+          </div>
+          <div className="card p-4">
+            <p className="font-medium text-sm mb-1">5. Launch and talk</p>
+            <div className="code text-xs mt-2">python run.py --avatar lam --photo face.jpg</div>
+            <p className="text-xs text-[var(--text-muted)] mt-1">Opens browser with WebRTC connection. ~2.2s end-to-end latency on RTX 4090.</p>
+          </div>
+        </div>
 
         {/* Resources */}
         <div className="mt-8">
@@ -511,22 +543,22 @@ export default function GaussianSplattingPage() {
 
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           <div className="card-alt p-5">
-            <p className="font-medium mb-3 text-green-600 flex items-center gap-1"><Check size={16} /> Use When</p>
+            <p className="font-medium mb-3 flex items-center gap-1" style={{ color: 'var(--success)' }}><Check size={16} /> Use When</p>
             <ul className="space-y-2 text-sm text-[var(--text-muted)]">
               {content.tradeoffs.when.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="text-green-500">+</span>
+                  <span style={{ color: 'var(--success)' }}>+</span>
                   {item}
                 </li>
               ))}
             </ul>
           </div>
           <div className="card-alt p-5">
-            <p className="font-medium mb-3 text-red-600 flex items-center gap-1"><X size={16} /> Avoid When</p>
+            <p className="font-medium mb-3 flex items-center gap-1" style={{ color: 'var(--error)' }}><X size={16} /> Avoid When</p>
             <ul className="space-y-2 text-sm text-[var(--text-muted)]">
               {content.tradeoffs.whenNot.map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="text-red-500">−</span>
+                  <span style={{ color: 'var(--error)' }}>−</span>
                   {item}
                 </li>
               ))}
@@ -547,10 +579,10 @@ export default function GaussianSplattingPage() {
           {content.misconceptions.map((item, i) => (
             <div key={i} className="card p-4">
               <p className="text-sm">
-                <span className="text-red-500 line-through">{item.wrong}</span>
+                <span className="line-through" style={{ color: 'var(--error)' }}>{item.wrong}</span>
               </p>
               <p className="text-sm mt-2">
-                <span className="text-green-600 font-medium">Actually:</span>{' '}
+                <span className="font-medium" style={{ color: 'var(--success)' }}>Actually:</span>{' '}
                 <span className="text-[var(--text-muted)]">{item.correct}</span>
               </p>
             </div>
@@ -558,19 +590,108 @@ export default function GaussianSplattingPage() {
         </div>
       </section>
 
+      {/* Section 7: Conversational Avatars */}
+      <section id="conversation" className="mb-16 scroll-mt-32">
+        <h2 className="text-2xl font-semibold mb-4">Real-Time Conversation with Gaussian Avatars</h2>
+        <p className="text-[var(--text-muted)] mb-6">
+          One-shot models and conversational pipelines have transformed Gaussian splatting from a static
+          capture technique into a viable real-time conversation platform.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-6 mb-6">
+          <div className="card-alt p-5">
+            <p className="font-medium mb-3">Traditional Path</p>
+            <ul className="space-y-2 text-sm text-[var(--text-muted)]">
+              <li className="flex items-start gap-2">
+                <span className="text-[var(--text-muted)]">1.</span>
+                Multi-view video capture (50-200 images)
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[var(--text-muted)]">2.</span>
+                Per-subject optimization (2-8 hours)
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[var(--text-muted)]">3.</span>
+                Rig with FLAME/blendshape driver
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[var(--text-muted)]">4.</span>
+                Deploy with custom rendering server
+              </li>
+            </ul>
+          </div>
+          <div className="card-alt p-5" style={{ borderColor: 'var(--color-gaussian)' }}>
+            <p className="font-medium mb-3" style={{ color: 'var(--color-gaussian)' }}>One-Shot Path (2025+)</p>
+            <ul className="space-y-2 text-sm text-[var(--text-muted)]">
+              <li className="flex items-start gap-2">
+                <span style={{ color: 'var(--color-gaussian)' }}>1.</span>
+                Single face photo as input
+              </li>
+              <li className="flex items-start gap-2">
+                <span style={{ color: 'var(--color-gaussian)' }}>2.</span>
+                LAM generates animatable avatar in seconds
+              </li>
+              <li className="flex items-start gap-2">
+                <span style={{ color: 'var(--color-gaussian)' }}>3.</span>
+                Audio2Expression maps speech to blendshapes
+              </li>
+              <li className="flex items-start gap-2">
+                <span style={{ color: 'var(--color-gaussian)' }}>4.</span>
+                WebGL/WebGPU renders in browser, no server GPU for rendering
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <KeyInsight type="insight" title="The Conversation Pipeline">
+          OpenAvatarChat combines VAD, ASR (Whisper), LLM (Qwen), TTS, and Audio2Expression
+          into a single pipeline that drives a LAM Gaussian avatar. The server handles AI inference
+          while the browser renders the 3D avatar locally via WebGL. End-to-end latency: ~2.2 seconds
+          on an RTX 4090. All components are Apache 2.0 licensed.
+        </KeyInsight>
+
+        <div className="card p-5 mt-6">
+          <p className="font-medium mb-3">Architecture: Browser + Server Split</p>
+          <div className="grid md:grid-cols-2 gap-4 text-sm">
+            <div className="p-3 bg-[var(--surface-2)] rounded">
+              <p className="font-medium text-[var(--foreground)] mb-1">Browser (Client)</p>
+              <p className="text-[var(--text-muted)]">
+                LAM WebRender (WebGL/WebGPU) renders the 3D Gaussian avatar locally.
+                Expression coefficients arrive via WebRTC data channel. No GPU needed on client side.
+              </p>
+            </div>
+            <div className="p-3 bg-[var(--surface-2)] rounded">
+              <p className="font-medium text-[var(--foreground)] mb-1">Server (GPU)</p>
+              <p className="text-[var(--text-muted)]">
+                Runs the AI pipeline: VAD detects speech, Whisper transcribes, LLM generates response,
+                TTS synthesizes audio, Audio2Expression converts to ARKit blendshapes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="divider" />
+
       {/* Next Steps */}
       <section>
         <div className="card p-6 text-center">
           <h3 className="font-semibold mb-2">Ready to Go Deeper?</h3>
           <p className="text-sm text-[var(--text-muted)] mb-4">
-            Explore the math behind each concept, or see how Gaussian Splatting compares to other approaches.
+            Explore the math behind each concept, build a conversational avatar, or compare approaches.
           </p>
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center justify-center gap-4 flex-wrap">
             <Link
               href="/learn/gaussian-splatting/concepts/covariance-matrix"
               className="badge hover:border-[var(--border-strong)]"
             >
               Dive into Covariance Matrix →
+            </Link>
+            <Link
+              href="/learn/end-to-end"
+              className="badge hover:border-[var(--border-strong)]"
+            >
+              End-to-End Pipeline →
             </Link>
             <Link
               href="/learn"
