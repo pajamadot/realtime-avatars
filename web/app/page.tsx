@@ -166,6 +166,18 @@ export default function Home() {
           </div>
         </div>
 
+        <nav className="mb-8 text-sm" aria-label="Table of contents">
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-[var(--text-muted)]">
+            <a href="#methods" className="hover:text-[var(--accent)]">1. Introduction</a>
+            <a href="#methods" className="hover:text-[var(--accent)]">2. Methods</a>
+            <a href="#comparison" className="hover:text-[var(--accent)]">3. Comparison</a>
+            <a href="#hybrids" className="hover:text-[var(--accent)]">4. Hybrid Strategies</a>
+            <a href="#implementation" className="hover:text-[var(--accent)]">5. Implementation</a>
+            <a href="#faq" className="hover:text-[var(--accent)]">FAQ</a>
+            <a href="#living-feed" className="hover:text-[var(--accent)]">7. References & Feed</a>
+          </div>
+        </nav>
+
         <div className="divider" />
 
         {/* Introduction */}
@@ -234,7 +246,7 @@ export default function Home() {
         </section>
 
         {/* Methods Overview */}
-        <section id="methods" className="mb-12">
+        <section id="methods" className="mb-12 scroll-mt-16">
           <h2 className="text-2xl font-semibold mb-6">2. Methods</h2>
 
           <div className="grid md:grid-cols-2 gap-4 mb-8">
@@ -953,7 +965,7 @@ export default function Home() {
         <div className="divider" />
 
         {/* Comparison Table */}
-        <section id="comparison" className="mb-12">
+        <section id="comparison" className="mb-12 scroll-mt-16">
           <h2 className="text-2xl font-semibold mb-6">3. Comparison</h2>
 
           <div className="overflow-x-auto">
@@ -1111,7 +1123,7 @@ export default function Home() {
         <div className="divider" />
 
         {/* Hybrid Strategies */}
-        <section id="hybrids" className="mb-12">
+        <section id="hybrids" className="mb-12 scroll-mt-16">
           <h2 className="text-2xl font-semibold mb-6">4. Hybrid Strategies</h2>
 
           <p className="text-[var(--text-muted)] mb-6">
@@ -1204,13 +1216,36 @@ export default function Home() {
         <div className="divider" />
 
         {/* Implementation Guide */}
-        <section id="implementation" className="mb-12">
+        <section id="implementation" className="mb-12 scroll-mt-16">
           <h2 className="text-2xl font-semibold mb-6">5. Implementation</h2>
 
           <p className="text-[var(--text-muted)] mb-6">
             The following guides provide starting points for each approach. All referenced
             implementations are open-source or freely available.
           </p>
+
+          <div className="card p-5 mb-8">
+            <p className="font-medium mb-4">End-to-End Audio Pipeline Latency</p>
+            <div className="flex flex-wrap items-center gap-2 text-sm">
+              {[
+                { stage: 'VAD', ms: '~20ms' },
+                { stage: 'STT', ms: '~150ms' },
+                { stage: 'LLM', ms: '~200ms' },
+                { stage: 'TTS', ms: '~100ms' },
+                { stage: 'Avatar Render', ms: '~30-300ms' },
+                { stage: 'WebRTC Delivery', ms: '~50ms' },
+              ].map((item, i) => (
+                <span key={item.stage} className="contents">
+                  {i > 0 && <span className="text-[var(--text-muted)]">→</span>}
+                  <span className="bg-[var(--surface-2)] rounded px-3 py-1.5">
+                    <span className="font-medium">{item.stage}</span>{' '}
+                    <span className="text-[var(--text-muted)]">{item.ms}</span>
+                  </span>
+                </span>
+              ))}
+            </div>
+            <p className="text-xs text-[var(--text-muted)] mt-3">Total: ~550-820ms from user speech to avatar response. Avatar render stage varies most by approach.</p>
+          </div>
 
           {/* MetaHuman Implementation */}
           <div className="card p-6 mb-6">
@@ -1478,7 +1513,7 @@ export default function Home() {
 
         {/* FAQ */}
         <section>
-          <h2 className="text-2xl font-semibold mb-6">Frequently Asked Questions</h2>
+          <h2 id="faq" className="text-2xl font-semibold mb-6 scroll-mt-20">Frequently Asked Questions</h2>
           <FAQ />
         </section>
 
@@ -1559,7 +1594,7 @@ export default function Home() {
 
           <div className="divider" />
 
-          <h3 id="living-feed" className="text-xl font-semibold mb-4">7.1 Living Research Feed (Auto-updating)</h3>
+          <h3 id="living-feed" className="text-xl font-semibold mb-4 scroll-mt-16">7.1 Living Research Feed (Auto-updating)</h3>
           <p className="text-sm text-[var(--text-muted)] mb-6">
             This section is generated from an updater script so the site can continuously evolve as new papers land.
             It is intentionally broad (keyword-based) to act as an inbox rather than a curated bibliography.
@@ -1570,7 +1605,7 @@ export default function Home() {
 
           <div className="divider" />
 
-          <h3 id="tooling-radar" className="text-xl font-semibold mb-4">7.2 Tooling Radar (Auto-updating)</h3>
+          <h3 id="tooling-radar" className="text-xl font-semibold mb-4 scroll-mt-16">7.2 Tooling Radar (Auto-updating)</h3>
           <p className="text-sm text-[var(--text-muted)] mb-6">
             A lightweight GitHub search feed to surface useful repos (implementations, demos, and tooling)
             around real-time avatars. Treat it as discovery, then curate what matters into the main sections.
