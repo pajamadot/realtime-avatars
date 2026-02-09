@@ -24,6 +24,7 @@ export default function Home() {
               <a href="#living-feed" className="nav-link">Feed</a>
               <a href="#tooling-radar" className="nav-link">Tooling</a>
               <a href="#demos" className="nav-link font-medium">Demos</a>
+              <a href="/learn" className="nav-link font-medium">Learn</a>
             </div>
           </nav>
         </div>
@@ -1264,7 +1265,7 @@ export default function Home() {
                 href={ref.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card p-4 flex items-start gap-3"
+                className="card p-4 flex items-start gap-3 hover:border-[var(--border-strong)] transition-colors"
               >
                 <span className="text-[var(--accent)]">↗</span>
                 <div>
@@ -1302,9 +1303,13 @@ export default function Home() {
             <p className="footer-text">
               Real-Time Avatar Systems: A Comparative Analysis
             </p>
-            <p className="footer-text">
-              Based on research from 2023–2026 · Last updated February 2026
-            </p>
+            <div className="flex items-center gap-4">
+              <a href="/learn" className="footer-text hover:text-[var(--accent)]">Learn Hub</a>
+              <span className="footer-text">·</span>
+              <p className="footer-text">
+                Based on research from 2023–2026 · Last updated February 2026
+              </p>
+            </div>
           </div>
         </div>
       </footer>
