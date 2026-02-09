@@ -48,7 +48,7 @@ default:
 
       EdgeTTS:
         enabled: true
-        module: tts/edgetts/tts_handler_edge_tts
+        module: tts/edgetts/tts_handler_edgetts
         voice: "en-US-AriaNeural"
 
       LLMOpenAICompatible:

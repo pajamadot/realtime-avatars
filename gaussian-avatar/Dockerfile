@@ -6,7 +6,7 @@
 # Config: chat_with_lam.yaml (LAM Gaussian avatar, client-side rendering)
 ##############################################################################
 
-FROM nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
+FROM nvidia/cuda:12.8.1-cudnn-devel-ubuntu22.04
 LABEL maintainer="realtime-avatars"
 LABEL description="OpenAvatarChat + LAM Gaussian avatar for real-time conversation"
 
@@ -18,13 +18,19 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONUTF8=1
 
-# System dependencies
+# System dependencies (includes ffmpeg 7 + pkg-config for PyAV/aiortc build)
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         software-properties-common \
         git git-lfs curl wget \
         libgl1 libglib2.0-0 \
-        openssl ca-certificates && \
+        openssl ca-certificates \
+        build-essential pkg-config && \
+    add-apt-repository ppa:ubuntuhandbook1/ffmpeg7 -y && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+        ffmpeg libavcodec-dev libavformat-dev libavdevice-dev \
+        libavutil-dev libswscale-dev libswresample-dev libavfilter-dev && \
     add-apt-repository ppa:deadsnakes/ppa && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -43,8 +49,15 @@ RUN git clone --depth 1 --branch ${OPENAVATAR_BRANCH} ${OPENAVATAR_REPO} . && \
     git submodule update --init --recursive
 
 # Install uv and core dependencies
+# Strip workspace members we don't need for LAM config to avoid
+# packages with broken build deps (cosyvoice->openai-whisper, musetalk->mmcv)
 RUN pip install uv && \
     uv venv --python 3.11.11 && \
+    python3.11 -c "\
+t = open('pyproject.toml').read();\
+[t := t.replace(f'    \"src/handlers/{p}\",\n', '') for p in [\
+'tts/cosyvoice','llm/minicpm','avatar/liteavatar','tts/bailian_tts','avatar/musetalk']];\
+open('pyproject.toml','w').write(t)" && \
     uv sync --no-install-workspace
 
 # Copy our custom config for the build-time dependency install

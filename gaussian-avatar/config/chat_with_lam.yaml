@@ -50,7 +50,7 @@ default:
       # Switch to CosyVoice below if you want higher quality.
       EdgeTTS:
         enabled: true
-        module: tts/edgetts/tts_handler_edge_tts
+        module: tts/edgetts/tts_handler_edgetts
         voice: "en-US-AriaNeural"
 
       # --- TTS alternative: CosyVoice via DashScope API ---

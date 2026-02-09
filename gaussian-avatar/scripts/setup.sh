@@ -82,11 +82,24 @@ else
 fi
 
 ##############################################################################
-# 3. Download SenseVoice ASR model (auto-downloaded at first run, but we
-#    pre-download for faster cold start)
+# 3. Download SenseVoice ASR model (required for speech-to-text)
 ##############################################################################
-info "SenseVoice model (iic/SenseVoiceSmall) will auto-download on first run."
-info "To pre-download, run: pip install funasr && python -c \"from funasr import AutoModel; AutoModel(model='iic/SenseVoiceSmall')\""
+SV_DIR="${MODELS_DIR}/iic/SenseVoiceSmall"
+if [ -d "$SV_DIR" ] && [ -f "$SV_DIR/config.yaml" -o -f "$SV_DIR/model.pt" ]; then
+    info "SenseVoiceSmall already downloaded, skipping."
+else
+    info "Downloading SenseVoiceSmall ASR model (~500 MB)..."
+    mkdir -p "${MODELS_DIR}/iic"
+
+    if git clone --depth 1 https://www.modelscope.cn/iic/SenseVoiceSmall.git "$SV_DIR" 2>/dev/null; then
+        success "SenseVoiceSmall downloaded from ModelScope."
+    else
+        info "ModelScope unavailable, trying HuggingFace..."
+        git clone --depth 1 https://huggingface.co/FunAudioLLM/SenseVoiceSmall "$SV_DIR" \
+            || fail "Failed to download SenseVoiceSmall from both sources."
+        success "SenseVoiceSmall downloaded from HuggingFace."
+    fi
+fi
 
 ##############################################################################
 # 4. Generate self-signed SSL certificates (required for WebRTC)
