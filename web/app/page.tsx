@@ -930,11 +930,11 @@ export default function Home() {
               </p>
               <div className="grid md:grid-cols-2 gap-4 text-sm">
                 <div className="p-3 bg-[var(--surface-2)] rounded">
-                  <p className="font-medium text-green-700 mb-1">Benefits</p>
+                  <p className="font-medium text-[var(--success)] mb-1">Benefits</p>
                   <p className="text-[var(--text-muted)]">Combines precision with realism. Rig enforces hard constraints while generative step adds rich detail.</p>
                 </div>
                 <div className="p-3 bg-[var(--surface-2)] rounded">
-                  <p className="font-medium text-red-700 mb-1">Challenges</p>
+                  <p className="font-medium text-[var(--error)] mb-1">Challenges</p>
                   <p className="text-[var(--text-muted)]">Complex pipeline. Risk of AI introducing unwanted movements. Additional latency from diffusion.</p>
                 </div>
               </div>
@@ -954,11 +954,11 @@ export default function Home() {
               </p>
               <div className="grid md:grid-cols-2 gap-4 text-sm">
                 <div className="p-3 bg-[var(--surface-2)] rounded">
-                  <p className="font-medium text-green-700 mb-1">Benefits</p>
+                  <p className="font-medium text-[var(--success)] mb-1">Benefits</p>
                   <p className="text-[var(--text-muted)]">Low latency (~10ms tracking + fast render). Allows existing animation data to drive neural avatars.</p>
                 </div>
                 <div className="p-3 bg-[var(--surface-2)] rounded">
-                  <p className="font-medium text-red-700 mb-1">Challenges</p>
+                  <p className="font-medium text-[var(--error)] mb-1">Challenges</p>
                   <p className="text-[var(--text-muted)]">Calibration between driver and avatar. Extrapolating beyond training data may cause artifacts.</p>
                 </div>
               </div>
@@ -978,11 +978,11 @@ export default function Home() {
               </p>
               <div className="grid md:grid-cols-2 gap-4 text-sm">
                 <div className="p-3 bg-[var(--surface-2)] rounded">
-                  <p className="font-medium text-green-700 mb-1">Benefits</p>
+                  <p className="font-medium text-[var(--success)] mb-1">Benefits</p>
                   <p className="text-[var(--text-muted)]">Interpretable output (animation curves). Human designers can adjust without retraining models.</p>
                 </div>
                 <div className="p-3 bg-[var(--surface-2)] rounded">
-                  <p className="font-medium text-red-700 mb-1">Challenges</p>
+                  <p className="font-medium text-[var(--error)] mb-1">Challenges</p>
                   <p className="text-[var(--text-muted)]">Bridging representation gaps between AI output and rig parameters. Motion retargeting complexity.</p>
                 </div>
               </div>

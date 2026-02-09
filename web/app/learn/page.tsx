@@ -230,28 +230,28 @@ export default function LearnPage() {
             </thead>
             <tbody>
               <tr>
-                <td className="font-medium" style={{ color: 'var(--color-gaussian)' }}>Gaussian Splatting</td>
+                <td className="font-medium"><span className="inline-block w-2 h-2 rounded-full mr-2 align-middle" style={{ backgroundColor: 'var(--color-gaussian)' }} />Gaussian Splatting</td>
                 <td>~16ms</td>
                 <td>Photorealistic</td>
                 <td>High (capture)</td>
                 <td>Static scenes, known identities</td>
               </tr>
               <tr>
-                <td className="font-medium" style={{ color: 'var(--color-metahuman)' }}>MetaHuman</td>
+                <td className="font-medium"><span className="inline-block w-2 h-2 rounded-full mr-2 align-middle" style={{ backgroundColor: 'var(--color-metahuman)' }} />MetaHuman</td>
                 <td>~16ms</td>
                 <td>High-quality 3D</td>
                 <td>Medium (setup)</td>
                 <td>Games, precise animation control</td>
               </tr>
               <tr>
-                <td className="font-medium" style={{ color: 'var(--color-generative)' }}>Generative Video</td>
+                <td className="font-medium"><span className="inline-block w-2 h-2 rounded-full mr-2 align-middle" style={{ backgroundColor: 'var(--color-generative)' }} />Generative Video</td>
                 <td>100-500ms</td>
                 <td>Photorealistic</td>
                 <td>Low (1 photo)</td>
                 <td>Any face, async content</td>
               </tr>
               <tr>
-                <td className="font-medium" style={{ color: 'var(--color-streaming)' }}>Streaming</td>
+                <td className="font-medium"><span className="inline-block w-2 h-2 rounded-full mr-2 align-middle" style={{ backgroundColor: 'var(--color-streaming)' }} />Streaming</td>
                 <td>300-800ms</td>
                 <td>Provider-dependent</td>
                 <td>Low (API key)</td>
