@@ -9,6 +9,10 @@ export default function LearnLayout({
     <div className="min-h-screen relative">
       <div className="paper-texture fixed inset-0" />
 
+      <a href="#learn-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-3 focus:bg-[var(--accent)] focus:text-white focus:rounded">
+        Skip to content
+      </a>
+
       {/* Header */}
       <header className="border-b border-[var(--border)] bg-[var(--surface-0)] sticky top-0 z-50">
         <div className="mx-auto max-w-5xl px-6">
@@ -48,7 +52,7 @@ export default function LearnLayout({
         </div>
       </header>
 
-      <main className="mx-auto max-w-5xl px-6 py-12 relative">
+      <main id="learn-content" className="mx-auto max-w-5xl px-6 py-12 relative">
         {children}
       </main>
 

@@ -11,6 +11,10 @@ export default function Home() {
       {/* Paper texture overlay */}
       <div className="paper-texture fixed inset-0" />
 
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-3 focus:bg-[var(--accent)] focus:text-white focus:rounded">
+        Skip to content
+      </a>
+
       {/* Header */}
       <header className="border-b border-[var(--border)] bg-[var(--surface-0)]">
         <div className="mx-auto max-w-4xl px-6">
@@ -30,7 +34,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-4xl px-6 py-12 relative">
+      <main id="main-content" className="mx-auto max-w-4xl px-6 py-12 relative">
         {/* Title Section */}
         <article className="mb-12">
           <p className="section-label mb-4">Research Survey · February 2026</p>
@@ -280,6 +284,25 @@ export default function Home() {
             </div>
           </div>
 
+          <div className="grid md:grid-cols-4 gap-3 mb-6 text-center text-sm">
+            <div className="p-3 bg-[var(--surface-2)] rounded">
+              <div className="font-semibold">~60K</div>
+              <div className="text-xs text-[var(--text-muted)]">Polygons per head</div>
+            </div>
+            <div className="p-3 bg-[var(--surface-2)] rounded">
+              <div className="font-semibold">4K</div>
+              <div className="text-xs text-[var(--text-muted)]">Texture resolution</div>
+            </div>
+            <div className="p-3 bg-[var(--surface-2)] rounded">
+              <div className="font-semibold">52</div>
+              <div className="text-xs text-[var(--text-muted)]">ARKit blendshapes</div>
+            </div>
+            <div className="p-3 bg-[var(--surface-2)] rounded">
+              <div className="font-semibold">~200MB</div>
+              <div className="text-xs text-[var(--text-muted)]">Memory per character</div>
+            </div>
+          </div>
+
           <div className="card p-5 mb-6">
             <p className="font-medium mb-4">Key Technologies</p>
             <div className="grid md:grid-cols-3 gap-4 text-sm">
@@ -326,6 +349,7 @@ export default function Home() {
                 <div className="text-xs text-[var(--text-muted)]">Unreal Engine</div>
               </div>
             </div>
+            <span className="sr-only">Pipeline: Input from Camera or Audio flows to Tracking via ARKit or LiveLink, then to Animation using Blendshapes, then to Rendering in Unreal Engine.</span>
             <p className="figure-caption">Figure 1: MetaHuman real-time animation pipeline</p>
           </div>
 
@@ -506,6 +530,7 @@ export default function Home() {
                 <div className="text-xs text-[var(--text-muted)]">WebRTC output</div>
               </div>
             </div>
+            <span className="sr-only">Pipeline: Reference photo and speech audio feed into the diffusion model to denoise latents, which are decoded by a VAE into video frames, then streamed via WebRTC.</span>
             <p className="figure-caption">Figure 2: Generative video avatar pipeline</p>
           </div>
 
@@ -730,6 +755,7 @@ export default function Home() {
                 <div className="text-xs text-[var(--text-muted)]">Web / Mobile</div>
               </div>
             </div>
+            <span className="sr-only">Architecture: Agent Session in Python or Node.js connects to Avatar Worker via Provider API, streams through LiveKit Room using WebRTC, and reaches the Client on Web or Mobile.</span>
             <p className="figure-caption">Figure 3: LiveKit avatar streaming architecture</p>
           </div>
 
@@ -1012,6 +1038,7 @@ export default function Home() {
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} />
               <h4 className="font-semibold">5.1 MetaHuman + Live Link</h4>
+              <span className="badge text-xs ml-auto">Intermediate</span>
             </div>
             <ol className="numbered-list text-sm text-[var(--text-muted)]">
               <li>Install Unreal Engine 5 from Epic Games Launcher</li>
@@ -1035,6 +1062,7 @@ export default function Home() {
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} />
               <h4 className="font-semibold">5.2 SadTalker (Diffusion-based)</h4>
+              <span className="badge text-xs ml-auto">Beginner</span>
             </div>
             <ol className="numbered-list text-sm text-[var(--text-muted)]">
               <li>
@@ -1064,6 +1092,7 @@ export default function Home() {
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} />
               <h4 className="font-semibold">5.3 GeneFace++ (Hybrid NeRF)</h4>
+              <span className="badge text-xs ml-auto">Advanced</span>
             </div>
             <ol className="numbered-list text-sm text-[var(--text-muted)]">
               <li>
@@ -1083,6 +1112,7 @@ export default function Home() {
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-gaussian)" }} />
               <h4 className="font-semibold">5.4 D3GA (Gaussian Avatars)</h4>
+              <span className="badge text-xs ml-auto">Advanced</span>
             </div>
             <ol className="numbered-list text-sm text-[var(--text-muted)]">
               <li>
@@ -1102,6 +1132,7 @@ export default function Home() {
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-streaming)" }} />
               <h4 className="font-semibold">5.5 LiveKit Agents + Avatar</h4>
+              <span className="badge text-xs ml-auto">Beginner</span>
             </div>
             <ol className="numbered-list text-sm text-[var(--text-muted)]">
               <li>
@@ -1131,6 +1162,7 @@ export default function Home() {
               <span className="text-[var(--accent)]">+</span>
               <div className="approach-dot" style={{ backgroundColor: "var(--color-streaming)" }} />
               <h4 className="font-semibold">5.6 Pixel Streaming (Rapport / UE5)</h4>
+              <span className="badge text-xs ml-auto">Intermediate</span>
             </div>
             <p className="text-sm text-[var(--text-muted)] mb-4">
               Pixel streaming bridges MetaHuman quality with browser-based delivery by rendering
