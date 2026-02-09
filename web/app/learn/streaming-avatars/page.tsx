@@ -501,17 +501,32 @@ export default function StreamingAvatarsPage() {
       {/* Try it */}
       <section className="mb-16">
         <div className="card p-6">
-          <h3 className="font-semibold mb-2">Try the Live Demo</h3>
+          <h3 className="font-semibold mb-2">Try the Live Demos</h3>
           <p className="text-sm text-[var(--text-muted)] mb-4">
-            Experience a streaming avatar in action. The demo uses LiveKit and Hedra
-            to create a real-time conversational avatar.
+            Experience streaming avatars in action with two different approaches.
           </p>
-          <Link
-            href="/livekit"
-            className="badge hover:border-[var(--border-strong)]"
-          >
-            Launch LiveKit Demo →
-          </Link>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="p-4 bg-[var(--surface-2)] rounded-lg">
+              <p className="font-medium text-sm mb-1">LiveKit + Hedra</p>
+              <p className="text-xs text-[var(--text-muted)] mb-3">Diffusion-based avatar streamed via WebRTC</p>
+              <Link
+                href="/livekit"
+                className="badge hover:border-[var(--border-strong)]"
+              >
+                Launch Demo →
+              </Link>
+            </div>
+            <div className="p-4 bg-[var(--surface-2)] rounded-lg">
+              <p className="font-medium text-sm mb-1">Rapport MetaHuman</p>
+              <p className="text-xs text-[var(--text-muted)] mb-3">Unreal Engine pixel-streamed avatar</p>
+              <Link
+                href="/rapport"
+                className="badge hover:border-[var(--border-strong)]"
+              >
+                Launch Demo →
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

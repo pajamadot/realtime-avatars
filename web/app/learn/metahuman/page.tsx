@@ -457,6 +457,23 @@ export default function MetaHumanPage() {
         </div>
       </section>
 
+      {/* Live Demo */}
+      <section className="mb-8">
+        <div className="card p-6">
+          <h3 className="font-semibold mb-2">See MetaHuman in Action</h3>
+          <p className="text-sm text-[var(--text-muted)] mb-4">
+            Try a real-time MetaHuman avatar powered by Unreal Engine pixel streaming.
+            Cloud-rendered on GPU and delivered to your browser via WebRTC.
+          </p>
+          <Link
+            href="/rapport"
+            className="badge hover:border-[var(--border-strong)]"
+          >
+            Launch Rapport Demo →
+          </Link>
+        </div>
+      </section>
+
       {/* Next Steps */}
       <section>
         <div className="card p-6 text-center">

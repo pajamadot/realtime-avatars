@@ -1214,6 +1214,11 @@ export default function Home() {
                 url: "https://github.com/livekit/agents",
               },
               {
+                title: "Rapport Cloud",
+                desc: "MetaHuman pixel streaming for conversational avatars",
+                url: "https://www.rapport.cloud/",
+              },
+              {
                 title: "Awesome Talking Head Generation",
                 desc: "Curated list of papers and implementations",
                 url: "https://github.com/harlanhong/awesome-talking-head-generation",
@@ -1263,7 +1268,7 @@ export default function Home() {
               Real-Time Avatar Systems: A Comparative Analysis
             </p>
             <p className="footer-text">
-              Based on research from 2023–2026 · Last updated January 2026
+              Based on research from 2023–2026 · Last updated February 2026
             </p>
           </div>
         </div>
