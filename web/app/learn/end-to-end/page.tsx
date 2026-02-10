@@ -25,15 +25,17 @@ const sections = [
 ];
 
 const approachColors: Record<string, string> = {
-  'streaming-approach': 'var(--color-streaming)',
+  'streaming-approach': 'var(--color-generative)',
   'generative-approach': 'var(--color-generative)',
+  'video-generation-approach': 'var(--color-generative)',
   'metahuman-approach': 'var(--color-metahuman)',
   'gaussian-approach': 'var(--color-gaussian)',
 };
 
 const approachLinks: Record<string, string> = {
-  'streaming-approach': '/learn/streaming-avatars',
-  'generative-approach': '/learn/generative-video',
+  'streaming-approach': '/learn/video-generation',
+  'generative-approach': '/learn/video-generation',
+  'video-generation-approach': '/learn/video-generation',
   'metahuman-approach': '/learn/metahuman',
   'gaussian-approach': '/learn/gaussian-splatting',
 };
@@ -48,7 +50,7 @@ export default function EndToEndPage() {
       {/* Header */}
       <section className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-4 h-4 rounded-full bg-gradient-to-r from-[var(--color-gaussian)] via-[var(--color-generative)] to-[var(--color-streaming)]" />
+          <div className="w-4 h-4 rounded-full bg-gradient-to-r from-[var(--color-gaussian)] to-[var(--color-generative)]" />
           <span className="badge">Complete System</span>
           <span className="text-sm text-[var(--text-muted)]">~30 min</span>
         </div>
@@ -171,7 +173,7 @@ export default function EndToEndPage() {
 
       {/* Section 3: Approaches */}
       <section id="approaches" className="mb-16 scroll-mt-32">
-        <h2 className="text-2xl font-semibold mb-4">Four Paths to Real-Time Avatars</h2>
+        <h2 className="text-2xl font-semibold mb-4">Three Paths to Real-Time Avatars</h2>
         <p className="text-[var(--text-muted)] mb-6">
           Each approach offers different tradeoffs. Click to explore the architecture and code for each.
         </p>
@@ -470,16 +472,11 @@ export default function EndToEndPage() {
         </div>
 
         {/* Quick links to each track */}
-        <div className="grid md:grid-cols-4 gap-4">
-          <Link href="/learn/streaming-avatars" className="card p-4 hover:border-[var(--color-streaming)] text-center">
-            <div className="w-3 h-3 rounded-full mx-auto mb-2" style={{ backgroundColor: 'var(--color-streaming)' }} />
-            <p className="font-medium text-sm">Streaming</p>
-            <p className="text-xs text-[var(--text-muted)]">Fastest to deploy</p>
-          </Link>
-          <Link href="/learn/generative-video" className="card p-4 hover:border-[var(--color-generative)] text-center">
+        <div className="grid md:grid-cols-3 gap-4">
+          <Link href="/learn/video-generation" className="card p-4 hover:border-[var(--color-generative)] text-center">
             <div className="w-3 h-3 rounded-full mx-auto mb-2" style={{ backgroundColor: 'var(--color-generative)' }} />
-            <p className="font-medium text-sm">Generative</p>
-            <p className="text-xs text-[var(--text-muted)]">Best quality</p>
+            <p className="font-medium text-sm">Video Generation</p>
+            <p className="text-xs text-[var(--text-muted)]">Diffusion & streaming</p>
           </Link>
           <Link href="/learn/metahuman" className="card p-4 hover:border-[var(--color-metahuman)] text-center">
             <div className="w-3 h-3 rounded-full mx-auto mb-2" style={{ backgroundColor: 'var(--color-metahuman)' }} />
@@ -496,14 +493,14 @@ export default function EndToEndPage() {
 
       {/* Try it */}
       <section className="mb-16">
-        <div className="card p-6 bg-gradient-to-r from-[var(--color-gaussian)]/10 via-[var(--color-generative)]/10 to-[var(--color-streaming)]/10">
+        <div className="card p-6 bg-gradient-to-r from-[var(--color-gaussian)]/10 to-[var(--color-generative)]/10">
           <h3 className="font-semibold mb-2 text-center">See It In Action</h3>
           <p className="text-sm text-[var(--text-muted)] mb-4 text-center">
             Experience complete real-time avatar systems using two different approaches.
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="p-4 bg-[var(--bg)]/60 rounded-lg text-center">
-              <div className="w-3 h-3 rounded-full mx-auto mb-2" style={{ backgroundColor: 'var(--color-streaming)' }} />
+              <div className="w-3 h-3 rounded-full mx-auto mb-2" style={{ backgroundColor: 'var(--color-generative)' }} />
               <p className="font-medium text-sm mb-1">Diffusion + WebRTC</p>
               <p className="text-xs text-[var(--text-muted)] mb-3">LiveKit + Hedra streaming avatar</p>
               <Link

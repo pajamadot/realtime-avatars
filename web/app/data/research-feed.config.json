@@ -95,7 +95,7 @@
       ]
     },
     "streaming": {
-      "label": "Streaming Avatars / Infrastructure",
+      "label": "Video Generation / Infrastructure",
       "query": "(cat:cs.NI OR cat:cs.CV) AND (all:webrtc AND (all:streaming OR all:low-latency OR all:conference OR all:sfu OR all:telepresence OR all:avatar))",
       "minScore": 2,
       "includeAny": [

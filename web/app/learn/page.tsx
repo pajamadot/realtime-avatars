@@ -5,7 +5,7 @@ import { BookOpen, Search, Gamepad2 } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Learn — Real-Time Avatars',
   description:
-    'Interactive learning paths for the four approaches to real-time avatars: Gaussian Splatting, MetaHuman Pipeline, Generative Video, and Streaming Avatars.',
+    'Interactive learning paths for the three approaches to real-time avatars: Gaussian Splatting, MetaHuman Pipeline, and Video Generation.',
 };
 
 const tracks = [
@@ -30,24 +30,14 @@ const tracks = [
     time: '30 min',
   },
   {
-    id: 'generative-video',
-    title: 'Generative Video Models',
-    subtitle: 'Diffusion-based photorealistic synthesis',
+    id: 'video-generation',
+    title: 'Video Generation',
+    subtitle: 'Diffusion synthesis and streaming infrastructure',
     color: 'var(--color-generative)',
-    description: 'Explore how diffusion models denoise random noise into photorealistic talking head videos, achieving real-time through distillation.',
-    concepts: ['Diffusion Process', 'Latent Space', 'Audio-to-Motion', 'Distillation'],
+    description: 'Explore diffusion-based talking head synthesis and the WebRTC streaming infrastructure that delivers avatars to any device in real time.',
+    concepts: ['Diffusion Process', 'Latent Space', 'WebRTC', 'Provider Integration'],
     difficulty: 'Advanced',
     time: '60 min',
-  },
-  {
-    id: 'streaming-avatars',
-    title: 'Streaming Avatars',
-    subtitle: 'WebRTC infrastructure for production deployment',
-    color: 'var(--color-streaming)',
-    description: 'Learn how WebRTC, LiveKit, and avatar providers work together to stream interactive avatars to any device.',
-    concepts: ['WebRTC', 'SFU Architecture', 'Voice AI Pipeline', 'Provider Integration'],
-    difficulty: 'Beginner',
-    time: '25 min',
   },
 ];
 
@@ -58,7 +48,7 @@ export default function LearnPage() {
       <section className="mb-16">
         <p className="section-label mb-4">Interactive Learning Path</p>
         <h1 className="text-3xl md:text-4xl font-semibold mb-4 leading-tight">
-          The Four Paths to<br />
+          Three Paths to<br />
           Real-Time Avatars
         </h1>
         <p className="text-lg text-[var(--text-muted)] max-w-2xl mb-8">
@@ -70,33 +60,26 @@ export default function LearnPage() {
         {/* Quick comparison */}
         <div className="highlight-box">
           <p className="font-medium mb-4">Which path is right for you?</p>
-          <div className="grid md:grid-cols-2 gap-4 text-sm">
+          <div className="grid md:grid-cols-3 gap-4 text-sm">
             <div className="p-4 bg-[var(--surface-0)] rounded border border-[var(--border)]">
               <p className="font-medium mb-2">Want photorealism of a specific person?</p>
               <p className="text-[var(--text-muted)]">
-                Start with <span className="text-[var(--color-gaussian)]">Gaussian Splatting</span> —
+                Start with <span className="text-[var(--color-gaussian)]">Gaussian Splatting</span> --
                 capture once, render in real-time forever.
               </p>
             </div>
             <div className="p-4 bg-[var(--surface-0)] rounded border border-[var(--border)]">
               <p className="font-medium mb-2">Need precise animation control?</p>
               <p className="text-[var(--text-muted)]">
-                Start with <span className="text-[var(--color-metahuman)]">MetaHuman</span> —
+                Start with <span className="text-[var(--color-metahuman)]">MetaHuman</span> --
                 industry-standard rigs with live face tracking.
               </p>
             </div>
             <div className="p-4 bg-[var(--surface-0)] rounded border border-[var(--border)]">
-              <p className="font-medium mb-2">Want any face from one photo?</p>
+              <p className="font-medium mb-2">Want any face from one photo, or building a production app?</p>
               <p className="text-[var(--text-muted)]">
-                Start with <span className="text-[var(--color-generative)]">Generative Video</span> —
-                one-shot synthesis from a single image.
-              </p>
-            </div>
-            <div className="p-4 bg-[var(--surface-0)] rounded border border-[var(--border)]">
-              <p className="font-medium mb-2">Building a production app fast?</p>
-              <p className="text-[var(--text-muted)]">
-                Start with <span className="text-[var(--color-streaming)]">Streaming Avatars</span> —
-                use hosted providers via WebRTC.
+                Start with <span className="text-[var(--color-generative)]">Video Generation</span> --
+                diffusion synthesis and streaming providers via WebRTC.
               </p>
             </div>
           </div>
@@ -107,10 +90,10 @@ export default function LearnPage() {
       <section className="mb-16">
         <Link
           href="/learn/end-to-end"
-          className="block card p-6 bg-gradient-to-r from-[var(--color-gaussian)]/5 via-[var(--color-generative)]/5 to-[var(--color-streaming)]/5 hover:from-[var(--color-gaussian)]/10 hover:via-[var(--color-generative)]/10 hover:to-[var(--color-streaming)]/10 transition-all group"
+          className="block card p-6 bg-gradient-to-r from-[var(--color-gaussian)]/5 to-[var(--color-generative)]/5 hover:from-[var(--color-gaussian)]/10 hover:to-[var(--color-generative)]/10 transition-all group"
         >
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-4 h-4 rounded-full bg-gradient-to-r from-[var(--color-gaussian)] via-[var(--color-generative)] to-[var(--color-streaming)]" />
+            <div className="w-4 h-4 rounded-full bg-gradient-to-r from-[var(--color-gaussian)] to-[var(--color-generative)]" />
             <span className="badge bg-[var(--accent)]/10 text-[var(--accent)] border-[var(--accent)]/20">
               Start Here
             </span>
@@ -121,7 +104,7 @@ export default function LearnPage() {
           </h2>
           <p className="text-[var(--text-muted)] mb-4 max-w-2xl">
             Build a complete conversational avatar system from scratch. Learn how audio flows through
-            STT → LLM → TTS → Avatar rendering, with working code for each of the four approaches.
+            STT, LLM, TTS, and avatar rendering, with working code for each of the three approaches.
           </p>
           <div className="flex flex-wrap gap-2 mb-4">
             <span className="badge text-xs">Voice AI Pipeline</span>
@@ -244,18 +227,11 @@ export default function LearnPage() {
                 <td>Games, precise animation control</td>
               </tr>
               <tr>
-                <td className="font-medium"><span className="inline-block w-2 h-2 rounded-full mr-2 align-middle" style={{ backgroundColor: 'var(--color-generative)' }} />Generative Video</td>
-                <td>100-500ms</td>
+                <td className="font-medium"><span className="inline-block w-2 h-2 rounded-full mr-2 align-middle" style={{ backgroundColor: 'var(--color-generative)' }} />Video Generation</td>
+                <td>100-800ms</td>
                 <td>Photorealistic</td>
-                <td>Low (1 photo)</td>
-                <td>Any face, async content</td>
-              </tr>
-              <tr>
-                <td className="font-medium"><span className="inline-block w-2 h-2 rounded-full mr-2 align-middle" style={{ backgroundColor: 'var(--color-streaming)' }} />Streaming</td>
-                <td>300-800ms</td>
-                <td>Provider-dependent</td>
-                <td>Low (API key)</td>
-                <td>Production apps, any device</td>
+                <td>Low (1 photo / API)</td>
+                <td>Any face, production apps</td>
               </tr>
             </tbody>
           </table>
@@ -299,9 +275,9 @@ export default function LearnPage() {
         <div className="research-note">
           <p className="font-medium mb-2">These approaches are converging</p>
           <p className="text-sm text-[var(--text-muted)]">
-            The future isn't picking one approach — it's combining them. MetaHumans enhanced
+            The future isn't picking one approach -- it's combining them. MetaHumans enhanced
             by generative models. Gaussian avatars driven by parametric rigs. Understanding
-            all four paths helps you build hybrid systems that take the best of each.
+            all three paths helps you build hybrid systems that take the best of each.
           </p>
         </div>
       </section>

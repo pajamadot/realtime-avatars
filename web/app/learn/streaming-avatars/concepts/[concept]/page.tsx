@@ -20,7 +20,7 @@ const concepts: Record<string, typeof iceProtocol> = {
   'agent-lifecycle': agentLifecycle,
 };
 
-const color = 'var(--color-streaming)';
+const color = 'var(--color-generative)';
 
 export default function ConceptPage() {
   const params = useParams();

@@ -25,8 +25,8 @@ export default function LiveKitPage() {
               Real-Time Avatars
             </Link>
             <div className="flex items-center gap-6">
-              <Link href="/#section-2.4" className="nav-link">
-                Back to Streaming Section
+              <Link href="/#section-2.2" className="nav-link">
+                Back to Video Generation
               </Link>
               <Link href="/#living-feed" className="nav-link">
                 Research Feed

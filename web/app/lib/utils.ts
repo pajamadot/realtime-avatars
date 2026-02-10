@@ -21,5 +21,5 @@ export const METHOD_COLOR: Record<string, string> = {
   metahuman: 'var(--color-metahuman)',
   generative: 'var(--color-generative)',
   gaussian: 'var(--color-gaussian)',
-  streaming: 'var(--color-streaming)',
+  streaming: 'var(--color-generative)',
 };

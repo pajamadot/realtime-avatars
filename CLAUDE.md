@@ -1,8 +1,8 @@
 # Real-Time Avatars - Project Guide
 
 ## What This Is
-A living research website comparing four approaches to building real-time digital humans:
-MetaHuman (graphics), Generative Video (diffusion), Gaussian Splatting (neural 3D), and Streaming Avatars (WebRTC).
+A living research website comparing three approaches to building real-time digital humans:
+MetaHuman (game-engine rigs), Video Generation (diffusion + streaming providers), and Gaussian Splatting (neural 3D).
 
 ## Tech Stack
 - **Framework**: Next.js 16 (App Router) + React 19 + TypeScript
@@ -14,7 +14,8 @@ MetaHuman (graphics), Generative Video (diffusion), Gaussian Splatting (neural 3
 
 ## Key Directories
 - `web/app/page.tsx` — Main survey page (~1170 lines)
-- `web/app/learn/` — Interactive learning tracks (4 methods + end-to-end)
+- `web/app/learn/` — Interactive learning tracks (3 methods + end-to-end)
+- `web/app/slides/` — Presentation slides for talks
 - `web/app/components/` — Shared components + UI primitives
 - `web/app/data/` — Auto-generated JSON feeds (arXiv + GitHub)
 - `web/scripts/` — Feed updater scripts (Node.js)
@@ -24,9 +25,8 @@ MetaHuman (graphics), Generative Video (diffusion), Gaussian Splatting (neural 3
 ## Design System
 Warm editor theme with method-specific colors:
 - MetaHuman: `--color-metahuman` (purple)
-- Generative: `--color-generative` (sage green)
+- Video Generation: `--color-generative` (sage green)
 - Gaussian: `--color-gaussian` (burnt orange)
-- Streaming: `--color-streaming` (dusty blue)
 
 ## Commands
 ```bash

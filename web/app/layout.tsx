@@ -14,19 +14,19 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Real-Time Avatars: A Comparative Guide",
-  description: "Compare four approaches to building real-time digital avatars: MetaHuman pipelines, generative video models, neural Gaussian splatting, and streaming avatar infrastructure.",
+  description: "Compare three approaches to building real-time digital avatars: MetaHuman pipelines, video generation models, and neural Gaussian splatting.",
   metadataBase: new URL("https://realtime-avatars.vercel.app"),
   alternates: { canonical: "/" },
   openGraph: {
     title: "Real-Time Avatars: A Comparative Guide",
-    description: "Compare four approaches to building real-time digital avatars — from MetaHuman pipelines to generative video, Gaussian splatting, and streaming infrastructure.",
+    description: "Compare three approaches to building real-time digital avatars — MetaHuman pipelines, video generation, and Gaussian splatting.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "Real-Time Avatars: A Comparative Guide",
-    description: "Compare four approaches to building real-time digital avatars — with interactive demos and implementation guides.",
+    description: "Compare three approaches to building real-time digital avatars — with interactive demos and implementation guides.",
   },
 };
 

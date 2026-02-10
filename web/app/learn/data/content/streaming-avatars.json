@@ -2,7 +2,7 @@
   "id": "streaming-avatars",
   "title": "Streaming Avatars",
   "subtitle": "WebRTC infrastructure for production deployment",
-  "color": "var(--color-streaming)",
+  "color": "var(--color-generative)",
 
   "intro": {
     "text": "Streaming avatars let you deploy real-time conversational AI without requiring GPUs on your users' devices. Your audio goes to the cloud, gets processed through a voice AI pipeline (speech-to-text, LLM, text-to-speech), and an avatar provider generates synchronized video that streams back via WebRTC. LiveKit acts as the traffic controller, routing media through their SFU (Selective Forwarding Unit) without ever seeing the content. The result: photorealistic talking avatars on any device with a web browser.",

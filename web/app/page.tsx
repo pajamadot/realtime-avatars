@@ -17,8 +17,8 @@ import ToolingRadar from './components/ToolingRadar';
 export const metadata: Metadata = {
   title: 'Real-Time Avatar Systems: A Comparative Analysis',
   description:
-    'Comprehensive survey comparing MetaHuman pipelines, generative video, Gaussian splatting, and streaming avatars for building interactive digital humans.',
-  keywords: ['real-time avatars', 'MetaHuman', 'generative video', 'Gaussian splatting', 'streaming avatars', 'digital humans', 'WebRTC'],
+    'Comprehensive survey comparing MetaHuman pipelines, video generation, and Gaussian splatting for building interactive digital humans.',
+  keywords: ['real-time avatars', 'MetaHuman', 'video generation', 'Gaussian splatting', 'digital humans', 'WebRTC'],
 };
 
 const jsonLd = [
@@ -35,14 +35,14 @@ const jsonLd = [
     '@type': 'TechArticle',
     headline: 'Real-Time Avatar Systems: A Comparative Analysis',
     description:
-      'Comprehensive survey comparing MetaHuman pipelines, generative video, Gaussian splatting, and streaming avatars for building interactive digital humans.',
+      'Comprehensive survey comparing MetaHuman pipelines, video generation, and Gaussian splatting for building interactive digital humans.',
     author: { '@type': 'Organization', name: 'PajamaDot Research' },
     datePublished: '2026-01-01',
-    dateModified: '2026-02-09',
+    dateModified: '2026-02-10',
     inLanguage: 'en',
     version: '2.1',
     keywords:
-      'real-time avatars, MetaHuman, generative video, Gaussian splatting, streaming avatars, digital humans',
+      'real-time avatars, MetaHuman, video generation, Gaussian splatting, digital humans',
   },
   {
     '@context': 'https://schema.org',
@@ -170,16 +170,16 @@ export default function Home() {
             Real-Time Avatar Systems: A Comparative Analysis
           </h1>
           <p className="text-lg text-[var(--text-muted)] max-w-2xl">
-            A comprehensive survey of four approaches to building interactive digital humans,
+            A comprehensive survey of three approaches to building interactive digital humans,
             examining trade-offs in latency, visual fidelity, controllability, and deployment
-            across graphics pipelines, generative models, neural rendering, and streaming infrastructure.
+            across graphics pipelines, generative models, and neural rendering.
           </p>
         </article>
 
         {/* Abstract / Key Findings */}
         <section className="highlight-box mb-12">
           <p className="section-label mb-3">Key Findings (2026)</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 text-center">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
               <div className="text-2xl font-semibold mb-1">60+ FPS</div>
               <div className="text-sm text-[var(--text-muted)]">MetaHuman rendering</div>
@@ -196,10 +196,6 @@ export default function Home() {
               <div className="text-2xl font-semibold mb-1">&lt;500ms</div>
               <div className="text-sm text-[var(--text-muted)]">Avatar Forcing E2E</div>
             </div>
-            <div>
-              <div className="text-2xl font-semibold mb-1">7+</div>
-              <div className="text-sm text-[var(--text-muted)]">Streaming providers</div>
-            </div>
           </div>
         </section>
 
@@ -211,7 +207,7 @@ export default function Home() {
         </section>
 
         {/* Getting Started callout */}
-        <div className="card p-5 mb-12 bg-gradient-to-r from-[var(--color-gaussian)]/5 via-[var(--color-generative)]/5 to-[var(--color-streaming)]/5">
+        <div className="card p-5 mb-12 bg-gradient-to-r from-[var(--color-gaussian)]/5 to-[var(--color-generative)]/5">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
               <p className="font-medium mb-1">New to real-time avatars?</p>
@@ -273,7 +269,7 @@ export default function Home() {
           </div>
           <p className="text-[var(--text-muted)] mb-4">
             Recent advances (2023–2026) have produced several distinct approaches to real-time
-            responsive avatars. This survey examines four primary methods, each with unique
+            responsive avatars. This survey examines three primary methods, each with unique
             characteristics suited to different use cases. Rather than one approach replacing
             the others, we are seeing convergence—future systems will likely combine elements
             from graphics, generative AI, and neural rendering.
@@ -342,10 +338,10 @@ export default function Home() {
               },
               {
                 num: "2.2",
-                title: "Generative Video Models",
-                type: "Diffusion / Transformer",
+                title: "Video Generation",
+                type: "Diffusion / Streaming",
                 color: "var(--color-generative)",
-                desc: "AI models synthesizing photorealistic video with 40x distillation speedup",
+                desc: "AI models and streaming providers for photorealistic video with one-shot generalization",
               },
               {
                 num: "2.3",
@@ -353,13 +349,6 @@ export default function Home() {
                 type: "Neural 3D Rendering",
                 color: "var(--color-gaussian)",
                 desc: "3D Gaussian primitives enabling real-time photorealistic rendering",
-              },
-              {
-                num: "2.4",
-                title: "Streaming Avatars",
-                type: "Infrastructure",
-                color: "var(--color-streaming)",
-                desc: "Production-ready WebRTC systems with multiple avatar providers",
               },
             ].map((method) => (
               <a
@@ -564,7 +553,7 @@ export default function Home() {
               className="approach-dot"
               style={{ backgroundColor: "var(--color-generative)" }}
             />
-            <h3 className="text-xl font-semibold">2.2 Generative Video Models</h3>
+            <h3 className="text-xl font-semibold">2.2 Video Generation</h3>
             <span className="ml-auto badge text-xs font-mono">~30ms/frame</span>
           </div>
 
@@ -766,6 +755,158 @@ export default function Home() {
             <p className="text-[var(--text-muted)]">
               Generative video excels at creating photorealistic avatars from minimal input (one photo).
               Best for rapid prototyping and when realism matters more than control. Expect 24-32 FPS with distillation.
+            </p>
+          </div>
+
+          <h4 className="text-lg font-semibold mt-8 mb-4">Streaming Providers & Infrastructure</h4>
+
+          <p className="text-[var(--text-muted)] mb-6">
+            LiveKit Agents provides production-ready infrastructure for deploying real-time
+            avatars at scale. Rather than implementing avatar rendering directly, it integrates
+            multiple third-party avatar providers through a unified API, handling WebRTC
+            streaming, synchronization, and voice AI pipelines automatically.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div className="card-alt p-5">
+              <p className="font-medium mb-3">Advantages</p>
+              <ul className="space-y-2 text-sm text-[var(--text-muted)]">
+                <li className="flex items-start gap-2">
+                  <span className="marker-pro">+</span>
+                  Multiple avatar providers available
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-pro">+</span>
+                  Built-in voice AI pipeline (STT + LLM + TTS)
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-pro">+</span>
+                  WebRTC-based low-latency streaming
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-pro">+</span>
+                  Cross-platform SDKs
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-pro">+</span>
+                  No local GPU required
+                </li>
+              </ul>
+            </div>
+            <div className="card-alt p-5">
+              <p className="font-medium mb-3">Limitations</p>
+              <ul className="space-y-2 text-sm text-[var(--text-muted)]">
+                <li className="flex items-start gap-2">
+                  <span className="marker-con">−</span>
+                  Requires third-party provider subscription
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-con">−</span>
+                  Less control over rendering pipeline
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-con">−</span>
+                  Dependent on provider capabilities
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-con">−</span>
+                  Per-minute or per-session pricing
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="marker-con">−</span>
+                  Network latency dependency
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="figure">
+            <div className="flex items-center justify-center gap-4 text-sm">
+              <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
+                <div className="font-medium">Agent Session</div>
+                <div className="text-xs text-[var(--text-muted)]">Python / Node.js</div>
+              </div>
+              <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>
+              <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
+                <div className="font-medium">Avatar Worker</div>
+                <div className="text-xs text-[var(--text-muted)]">Provider API</div>
+              </div>
+              <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>
+              <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
+                <div className="font-medium">LiveKit Room</div>
+                <div className="text-xs text-[var(--text-muted)]">WebRTC</div>
+              </div>
+              <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>
+              <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
+                <div className="font-medium">Client</div>
+                <div className="text-xs text-[var(--text-muted)]">Web / Mobile</div>
+              </div>
+            </div>
+            <span className="sr-only">Architecture: Agent Session in Python or Node.js connects to Avatar Worker via Provider API, streams through LiveKit Room using WebRTC, and reaches the Client on Web or Mobile.</span>
+            <p className="figure-caption">Figure 3: LiveKit avatar streaming architecture</p>
+          </div>
+
+          <div className="card p-5 mt-6">
+            <p className="font-medium mb-4">Supported Providers</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
+              {[
+                { name: "Tavus", desc: "Photorealistic digital twins", color: "var(--color-generative)" },
+                { name: "Hedra", desc: "Expressive character avatars", color: "var(--color-generative)" },
+                { name: "Rapport", desc: "MetaHuman pixel streaming", color: "var(--color-metahuman)" },
+                { name: "Simli", desc: "Real-time lip-sync", color: "var(--color-generative)" },
+                { name: "Anam", desc: "Natural gesture avatars", color: "var(--color-generative)" },
+                { name: "Beyond Presence", desc: "Enterprise-grade", color: "var(--color-generative)" },
+                { name: "bitHuman", desc: "Hyper-realistic faces", color: "var(--color-generative)" },
+              ].map((p) => (
+                <div key={p.name} className="flex items-center gap-2">
+                  <div
+                    className="approach-dot"
+                    style={{ backgroundColor: p.color }}
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <span className="font-medium">{p.name}</span>
+                    <span className="text-[var(--text-muted)]"> · {p.desc}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div id="demos" className="card p-5 mt-6 scroll-mt-20">
+            <p className="font-medium mb-4">Interactive Demos</p>
+            <p className="text-sm text-[var(--text-muted)] mb-4">
+              Try real-time avatar streaming with different providers and architectures.
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="p-4 bg-[var(--surface-2)] rounded-lg">
+                <p className="font-medium text-sm mb-2">LiveKit + Hedra</p>
+                <p className="text-xs text-[var(--text-muted)] mb-3">
+                  WebRTC room with diffusion-based avatar worker. Requires LiveKit credentials.
+                </p>
+                <a href="/livekit" className="badge hover:border-[var(--border-strong)]">
+                  Open demo →
+                </a>
+              </div>
+              <div className="p-4 bg-[var(--surface-2)] rounded-lg">
+                <p className="font-medium text-sm mb-2">Rapport MetaHuman</p>
+                <p className="text-xs text-[var(--text-muted)] mb-3">
+                  Unreal Engine pixel streaming with cloud-rendered photorealistic avatar.
+                </p>
+                <a href="/rapport" className="badge hover:border-[var(--border-strong)]">
+                  Open demo →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <RecentPapers methodKey="streaming" className="mt-6" />
+
+          <div className="card-inset p-4 mt-6 text-sm">
+            <p className="font-medium mb-1">Streaming Key Takeaway</p>
+            <p className="text-[var(--text-muted)]">
+              Streaming avatars offer the fastest path to production with no GPU required on the client.
+              Best for voice AI applications, customer service bots, and when deployment speed matters most.
             </p>
           </div>
         </section>
@@ -990,190 +1131,22 @@ export default function Home() {
 
         <div className="divider" />
 
-        {/* Section 2.4: Streaming */}
-        <section id="section-2.4" className="mb-12 scroll-mt-16">
-          <div className="flex items-center gap-3 mb-4">
-            <div
-              className="approach-dot"
-              style={{ backgroundColor: "var(--color-streaming)" }}
-            />
-            <h3 className="text-xl font-semibold">2.4 Streaming Avatars (LiveKit)</h3>
-            <span className="ml-auto badge text-xs font-mono">~100-300ms E2E</span>
-          </div>
-
-          <p className="text-[var(--text-muted)] mb-6">
-            LiveKit Agents provides production-ready infrastructure for deploying real-time
-            avatars at scale. Rather than implementing avatar rendering directly, it integrates
-            multiple third-party avatar providers through a unified API, handling WebRTC
-            streaming, synchronization, and voice AI pipelines automatically.
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div className="card-alt p-5">
-              <p className="font-medium mb-3">Advantages</p>
-              <ul className="space-y-2 text-sm text-[var(--text-muted)]">
-                <li className="flex items-start gap-2">
-                  <span className="marker-pro">+</span>
-                  Multiple avatar providers available
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="marker-pro">+</span>
-                  Built-in voice AI pipeline (STT + LLM + TTS)
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="marker-pro">+</span>
-                  WebRTC-based low-latency streaming
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="marker-pro">+</span>
-                  Cross-platform SDKs
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="marker-pro">+</span>
-                  No local GPU required
-                </li>
-              </ul>
-            </div>
-            <div className="card-alt p-5">
-              <p className="font-medium mb-3">Limitations</p>
-              <ul className="space-y-2 text-sm text-[var(--text-muted)]">
-                <li className="flex items-start gap-2">
-                  <span className="marker-con">−</span>
-                  Requires third-party provider subscription
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="marker-con">−</span>
-                  Less control over rendering pipeline
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="marker-con">−</span>
-                  Dependent on provider capabilities
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="marker-con">−</span>
-                  Per-minute or per-session pricing
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="marker-con">−</span>
-                  Network latency dependency
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="figure">
-            <div className="flex items-center justify-center gap-4 text-sm">
-              <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
-                <div className="font-medium">Agent Session</div>
-                <div className="text-xs text-[var(--text-muted)]">Python / Node.js</div>
-              </div>
-              <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>
-              <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
-                <div className="font-medium">Avatar Worker</div>
-                <div className="text-xs text-[var(--text-muted)]">Provider API</div>
-              </div>
-              <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>
-              <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
-                <div className="font-medium">LiveKit Room</div>
-                <div className="text-xs text-[var(--text-muted)]">WebRTC</div>
-              </div>
-              <span className="text-[var(--text-muted)]" aria-hidden="true">→</span>
-              <div className="text-center px-4 py-3 bg-[var(--surface-0)] rounded border border-[var(--border)]">
-                <div className="font-medium">Client</div>
-                <div className="text-xs text-[var(--text-muted)]">Web / Mobile</div>
-              </div>
-            </div>
-            <span className="sr-only">Architecture: Agent Session in Python or Node.js connects to Avatar Worker via Provider API, streams through LiveKit Room using WebRTC, and reaches the Client on Web or Mobile.</span>
-            <p className="figure-caption">Figure 3: LiveKit avatar streaming architecture</p>
-          </div>
-
-          <div className="card p-5 mt-6">
-            <p className="font-medium mb-4">Supported Providers</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
-              {[
-                { name: "Tavus", desc: "Photorealistic digital twins", color: "var(--color-streaming)" },
-                { name: "Hedra", desc: "Expressive character avatars", color: "var(--color-streaming)" },
-                { name: "Rapport", desc: "MetaHuman pixel streaming", color: "var(--color-metahuman)" },
-                { name: "Simli", desc: "Real-time lip-sync", color: "var(--color-streaming)" },
-                { name: "Anam", desc: "Natural gesture avatars", color: "var(--color-streaming)" },
-                { name: "Beyond Presence", desc: "Enterprise-grade", color: "var(--color-streaming)" },
-                { name: "bitHuman", desc: "Hyper-realistic faces", color: "var(--color-streaming)" },
-              ].map((p) => (
-                <div key={p.name} className="flex items-center gap-2">
-                  <div
-                    className="approach-dot"
-                    style={{ backgroundColor: p.color }}
-                    aria-hidden="true"
-                  />
-                  <div>
-                    <span className="font-medium">{p.name}</span>
-                    <span className="text-[var(--text-muted)]"> · {p.desc}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div id="demos" className="card p-5 mt-6 scroll-mt-20">
-            <p className="font-medium mb-4">Interactive Demos</p>
-            <p className="text-sm text-[var(--text-muted)] mb-4">
-              Try real-time avatar streaming with different providers and architectures.
-            </p>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-[var(--surface-2)] rounded-lg">
-                <p className="font-medium text-sm mb-2">LiveKit + Hedra</p>
-                <p className="text-xs text-[var(--text-muted)] mb-3">
-                  WebRTC room with diffusion-based avatar worker. Requires LiveKit credentials.
-                </p>
-                <a href="/livekit" className="badge hover:border-[var(--border-strong)]">
-                  Open demo →
-                </a>
-              </div>
-              <div className="p-4 bg-[var(--surface-2)] rounded-lg">
-                <p className="font-medium text-sm mb-2">Rapport MetaHuman</p>
-                <p className="text-xs text-[var(--text-muted)] mb-3">
-                  Unreal Engine pixel streaming with cloud-rendered photorealistic avatar.
-                </p>
-                <a href="/rapport" className="badge hover:border-[var(--border-strong)]">
-                  Open demo →
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <RecentPapers methodKey="streaming" className="mt-6" />
-
-          <div className="card-inset p-4 mt-6 text-sm">
-            <p className="font-medium mb-1">Key Takeaway</p>
-            <p className="text-[var(--text-muted)]">
-              Streaming avatars offer the fastest path to production with no GPU required on the client.
-              Best for voice AI applications, customer service bots, and when deployment speed matters most.
-            </p>
-          </div>
-        </section>
-
-        <div className="divider" />
-
         {/* Comparison Table */}
         <section id="comparison" className="mb-12 scroll-mt-16">
           <h2 className="text-2xl font-semibold mb-6 text-balance">3. Comparison</h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 text-sm text-center" role="list" aria-label="Best-for summary by approach">
+          <div className="grid grid-cols-3 md:grid-cols-3 gap-3 mb-6 text-sm text-center" role="list" aria-label="Best-for summary by approach">
             <div className="p-3 bg-[var(--surface-2)] rounded border-l-2" role="listitem" style={{ borderLeftColor: 'var(--color-metahuman)' }}>
               <p className="font-semibold">MetaHuman</p>
               <p className="text-[var(--text-muted)]">Best for <strong>control</strong></p>
             </div>
             <div className="p-3 bg-[var(--surface-2)] rounded border-l-2" style={{ borderLeftColor: 'var(--color-generative)' }}>
-              <p className="font-semibold">Generative</p>
-              <p className="text-[var(--text-muted)]">Best for <strong>realism</strong></p>
+              <p className="font-semibold">Video Generation</p>
+              <p className="text-[var(--text-muted)]">Best for <strong>realism & deployment</strong></p>
             </div>
             <div className="p-3 bg-[var(--surface-2)] rounded border-l-2" style={{ borderLeftColor: 'var(--color-gaussian)' }}>
               <p className="font-semibold">Gaussian</p>
               <p className="text-[var(--text-muted)]">Best for <strong>speed</strong></p>
-            </div>
-            <div className="p-3 bg-[var(--surface-2)] rounded border-l-2" style={{ borderLeftColor: 'var(--color-streaming)' }}>
-              <p className="font-semibold">Streaming</p>
-              <p className="text-[var(--text-muted)]">Best for <strong>deployment</strong></p>
             </div>
           </div>
 
@@ -1191,7 +1164,7 @@ export default function Home() {
                   <th scope="col">
                     <div className="flex items-center gap-2">
                       <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} aria-hidden="true" />
-                      Generative
+                      Video Generation
                     </div>
                   </th>
                   <th scope="col">
@@ -1200,84 +1173,68 @@ export default function Home() {
                       Gaussian
                     </div>
                   </th>
-                  <th scope="col">
-                    <div className="flex items-center gap-2">
-                      <div className="approach-dot" style={{ backgroundColor: "var(--color-streaming)" }} aria-hidden="true" />
-                      Streaming
-                    </div>
-                  </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td className="font-medium">Latency</td>
                   <td>~30-50ms</td>
-                  <td>~0.3-1s first frame</td>
+                  <td>~0.3-1s (diffusion) / ~100-300ms (streaming)</td>
                   <td>&lt;100ms</td>
-                  <td>~100-300ms</td>
                 </tr>
                 <tr>
                   <td className="font-medium">Visual Quality</td>
                   <td>High-quality CGI</td>
                   <td>Photorealistic</td>
                   <td>Photorealistic</td>
-                  <td>Provider-dependent</td>
                 </tr>
                 <tr>
                   <td className="font-medium">Controllability</td>
                   <td>Fine-grained (rig)</td>
-                  <td>Limited (audio)</td>
+                  <td>Limited (audio) / API-based (streaming)</td>
                   <td>High (FLAME/ARKit)</td>
-                  <td>API-based</td>
                 </tr>
                 <tr>
                   <td className="font-medium">New Identity Setup</td>
                   <td>3D modeling</td>
-                  <td>Single image</td>
+                  <td>Single image or provider config</td>
                   <td>Single photo (one-shot) or multi-view capture</td>
-                  <td>Provider config</td>
                 </tr>
                 <tr>
                   <td className="font-medium">Training Required</td>
                   <td>None per character</td>
-                  <td>Base model only</td>
+                  <td>Base model only / None (streaming)</td>
                   <td>None (feed-forward) or hours (per-subject)</td>
-                  <td>None</td>
                 </tr>
                 <tr>
                   <td className="font-medium">Hardware</td>
                   <td>Gaming GPU</td>
-                  <td>A100+ / Cloud</td>
+                  <td>A100+ (self-hosted) / Any (streaming)</td>
                   <td>Consumer GPU</td>
-                  <td>Any (cloud)</td>
                 </tr>
                 <tr>
                   <td className="font-medium">Runtime Cost</td>
                   <td>Low (local render)</td>
-                  <td>High (inference)</td>
+                  <td>High (inference) / Per-minute (streaming)</td>
                   <td>Low (splatting)</td>
-                  <td>Per-minute pricing</td>
                 </tr>
                 <tr>
                   <td className="font-medium">Deployment Ease</td>
                   <td>Hard (UE5 + GPU)</td>
-                  <td>Medium (Python + GPU)</td>
+                  <td>Medium (self-hosted) / Easy (streaming API)</td>
                   <td>Medium (one-shot) to Hard (capture rig)</td>
-                  <td>Easy (API key)</td>
                 </tr>
                 <tr>
                   <td className="font-medium">Open Source</td>
                   <td>Partial (MetaHuman Creator free)</td>
-                  <td>Yes (SadTalker, GeneFace++)</td>
+                  <td>Yes (SadTalker, GeneFace++) / Partial (LiveKit OSS)</td>
                   <td>Yes (LAM, OpenAvatarChat, D3GA)</td>
-                  <td>Partial (LiveKit OSS, providers closed)</td>
                 </tr>
                 <tr>
                   <td className="font-medium">Best Use Case</td>
                   <td>Production control</td>
-                  <td>Quick deployment</td>
+                  <td>Quick deployment, voice AI apps</td>
                   <td>VR/AR, real-time conversation</td>
-                  <td>Voice AI apps</td>
                 </tr>
               </tbody>
             </table>
@@ -1286,12 +1243,11 @@ export default function Home() {
 
           <div className="card p-5 mt-6">
             <p className="font-medium mb-4">Estimated Monthly Cost at Scale (1,000 hours/month)</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+            <div className="grid grid-cols-3 md:grid-cols-3 gap-4 text-sm">
               {[
                 { label: 'MetaHuman', color: 'var(--color-metahuman)', cost: '$730–3,650', note: 'GPU server rental' },
-                { label: 'Generative', color: 'var(--color-generative)', cost: '$1,500–5,000', note: 'A100 inference' },
+                { label: 'Video Generation', color: 'var(--color-generative)', cost: '$600–6,000', note: 'Self-hosted inference or streaming API' },
                 { label: 'Gaussian', color: 'var(--color-gaussian)', cost: '$500–1,500', note: 'Consumer GPU host' },
-                { label: 'Streaming', color: 'var(--color-streaming)', cost: '$600–6,000', note: 'Per-minute API fees' },
               ].map((item) => (
                 <div key={item.label} className="bg-[var(--surface-2)] rounded p-3 text-center">
                   <div className="flex items-center justify-center gap-2 mb-2">
@@ -1311,9 +1267,9 @@ export default function Home() {
           <p className="font-medium mb-4">Quick Decision Guide</p>
           <div className="grid md:grid-cols-2 gap-3 text-sm" role="list">
             {[
-              { need: 'Fastest time to production', pick: 'Streaming', color: 'var(--color-streaming)' },
+              { need: 'Fastest time to production', pick: 'Video Generation', color: 'var(--color-generative)' },
               { need: 'Highest visual fidelity', pick: 'MetaHuman', color: 'var(--color-metahuman)' },
-              { need: 'Single-image identity creation', pick: 'Generative', color: 'var(--color-generative)' },
+              { need: 'Single-image identity creation', pick: 'Video Generation', color: 'var(--color-generative)' },
               { need: 'VR/AR immersive experience', pick: 'Gaussian Splatting', color: 'var(--color-gaussian)' },
               { need: 'Full creative control over rig', pick: 'MetaHuman', color: 'var(--color-metahuman)' },
               { need: 'Lowest per-unit cost', pick: 'Gaussian Splatting', color: 'var(--color-gaussian)' },
@@ -1584,9 +1540,9 @@ export default function Home() {
           </div>
 
           {/* Streaming Implementation */}
-          <div className="card p-6 mb-6 border-l-2" style={{ borderLeftColor: 'var(--color-streaming)' }}>
+          <div className="card p-6 mb-6 border-l-2" style={{ borderLeftColor: 'var(--color-generative)' }}>
             <div className="flex items-center gap-3 mb-4">
-              <div className="approach-dot" style={{ backgroundColor: "var(--color-streaming)" }} aria-hidden="true" />
+              <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} aria-hidden="true" />
               <h4 className="font-semibold">5.5 LiveKit Agents + Avatar</h4>
               <span className="badge text-xs ml-auto">Beginner</span>
             </div>
@@ -1616,7 +1572,7 @@ export default function Home() {
             <div className="flex items-center gap-3 mb-4">
               <div className="approach-dot" style={{ backgroundColor: "var(--color-metahuman)" }} aria-hidden="true" />
               <span className="text-[var(--accent)]">+</span>
-              <div className="approach-dot" style={{ backgroundColor: "var(--color-streaming)" }} aria-hidden="true" />
+              <div className="approach-dot" style={{ backgroundColor: "var(--color-generative)" }} aria-hidden="true" />
               <h4 className="font-semibold">5.6 Pixel Streaming (Rapport / UE5)</h4>
               <span className="badge text-xs ml-auto">Intermediate</span>
             </div>

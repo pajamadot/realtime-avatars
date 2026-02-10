@@ -64,8 +64,7 @@ html {
   --color-generative-light: #e8f2ea;
   --color-gaussian: #c4713b;
   --color-gaussian-light: #f8ede5;
-  --color-streaming: #5a7d9a;
-  --color-streaming-light: #e8f0f5;
+  /* --color-streaming merged into generative (Video Generation) */
 
   /* Shadows - Warm brown-tinted */
   --shadow-xs: 0 1px 2px rgba(139, 90, 43, 0.06);

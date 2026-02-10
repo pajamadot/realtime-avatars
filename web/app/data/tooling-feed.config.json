@@ -16,7 +16,7 @@
       "q": "\"gaussian splatting\" (avatar OR head OR human OR animatable OR drivable)"
     },
     "streaming": {
-      "label": "Streaming Avatars / WebRTC (repos)",
+      "label": "Video Generation / WebRTC (repos)",
       "q": "webrtc (avatar OR telepresence OR \"video conferencing\") language:TypeScript OR language:Go OR language:Python"
     }
   }

@@ -12,8 +12,7 @@ interface Track {
 const TRACKS: Track[] = [
   { id: 'gaussian-splatting', title: 'Gaussian Splatting', color: 'var(--color-gaussian)', subtitle: 'Neural 3D rendering' },
   { id: 'metahuman', title: 'MetaHuman', color: 'var(--color-metahuman)', subtitle: 'Game engine rigs' },
-  { id: 'generative-video', title: 'Generative Video', color: 'var(--color-generative)', subtitle: 'Diffusion synthesis' },
-  { id: 'streaming-avatars', title: 'Streaming Avatars', color: 'var(--color-streaming)', subtitle: 'WebRTC infrastructure' },
+  { id: 'video-generation', title: 'Video Generation', color: 'var(--color-generative)', subtitle: 'Diffusion & streaming' },
 ];
 
 interface CrossTrackNavProps {
@@ -26,7 +25,7 @@ export function CrossTrackNav({ currentTrack }: CrossTrackNavProps) {
   return (
     <section className="mt-16 pt-8 border-t border-[var(--border)]">
       <h3 className="font-semibold mb-4">Explore Other Approaches</h3>
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-2 gap-4">
         {otherTracks.map((track) => (
           <Link
             key={track.id}

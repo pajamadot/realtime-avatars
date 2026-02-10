@@ -10,8 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/learn/end-to-end`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/learn/gaussian-splatting`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/learn/metahuman`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${baseUrl}/learn/generative-video`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${baseUrl}/learn/streaming-avatars`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/learn/video-generation`, lastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/slides`, lastModified, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/rapport`, lastModified, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/livekit`, lastModified, changeFrequency: 'monthly', priority: 0.7 },
   ];

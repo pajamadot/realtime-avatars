@@ -7,8 +7,7 @@ const tracks = [
   { href: '/learn/end-to-end', label: 'End-to-End', color: undefined, separator: true },
   { href: '/learn/gaussian-splatting', label: 'Gaussian', color: 'var(--color-gaussian)' },
   { href: '/learn/metahuman', label: 'MetaHuman', color: 'var(--color-metahuman)' },
-  { href: '/learn/generative-video', label: 'Generative', color: 'var(--color-generative)' },
-  { href: '/learn/streaming-avatars', label: 'Streaming', color: 'var(--color-streaming)' },
+  { href: '/learn/video-generation', label: 'Video Gen', color: 'var(--color-generative)' },
 ];
 
 export default function LearnNav() {
