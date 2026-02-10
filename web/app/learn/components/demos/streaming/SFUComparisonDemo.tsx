@@ -1,15 +1,17 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 type ArchitectureType = 'p2p' | 'sfu' | 'mcu';
 
-interface Packet {
+interface Particle {
   id: string;
   from: number;
   to: number;
   progress: number;
+  speed: number;
   viaServer?: boolean;
+  trail: { x: number; y: number }[];
 }
 
 interface ArchitectureInfo {
@@ -28,7 +30,7 @@ const ARCHITECTURES: Record<ArchitectureType, ArchitectureInfo> = {
     name: 'Peer-to-Peer (Mesh)',
     description: 'Each participant connects directly to every other participant',
     pros: ['Lowest latency', 'No server costs', 'Most private'],
-    cons: ['Scales poorly (N² connections)', 'High client bandwidth', 'NAT traversal issues'],
+    cons: ['Scales poorly (N\u00B2 connections)', 'High client bandwidth', 'NAT traversal issues'],
     useCases: ['1:1 calls', 'Small groups (2-4)'],
     latency: '~50ms',
     serverLoad: 'None',
@@ -59,229 +61,302 @@ const ARCHITECTURES: Record<ArchitectureType, ArchitectureInfo> = {
 export function SFUComparisonDemo() {
   const [architecture, setArchitecture] = useState<ArchitectureType>('sfu');
   const [participantCount, setParticipantCount] = useState(4);
-  const [packets, setPackets] = useState<Packet[]>([]);
   const [isAnimating, setIsAnimating] = useState(true);
-  const animationRef = useRef<number | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const particlesRef = useRef<Particle[]>([]);
+  const animRef = useRef<number | null>(null);
+  const lastSpawnRef = useRef(0);
+  const particleIdRef = useRef(0);
+  const timeRef = useRef(0);
 
-  // Calculate positions for participants
-  const getParticipantPositions = (count: number, width: number, height: number) => {
+  const getPositions = useCallback((count: number, w: number, h: number) => {
     const positions: { x: number; y: number }[] = [];
-    const centerX = width / 2;
-    const centerY = height / 2;
-    const radius = Math.min(width, height) * 0.35;
-
+    const cx = w / 2;
+    const cy = h / 2;
+    const radius = Math.min(w, h) * 0.35;
     for (let i = 0; i < count; i++) {
       const angle = (i * 2 * Math.PI) / count - Math.PI / 2;
       positions.push({
-        x: centerX + radius * Math.cos(angle),
-        y: centerY + radius * Math.sin(angle),
+        x: cx + radius * Math.cos(angle),
+        y: cy + radius * Math.sin(angle),
       });
     }
-
     return positions;
-  };
+  }, []);
 
-  // Animation loop
+  // Main animation loop
   useEffect(() => {
-    if (!isAnimating) return;
+    if (!isAnimating) {
+      if (animRef.current) cancelAnimationFrame(animRef.current);
+      return;
+    }
 
-    let lastSpawn = 0;
-    const spawnInterval = 500;
-
-    const animate = (timestamp: number) => {
-      // Spawn new packets
-      if (timestamp - lastSpawn > spawnInterval) {
-        lastSpawn = timestamp;
-        const from = Math.floor(Math.random() * participantCount);
-
-        if (architecture === 'p2p') {
-          // P2P: packet to each other participant
-          const newPackets: Packet[] = [];
-          for (let i = 0; i < participantCount; i++) {
-            if (i !== from) {
-              newPackets.push({
-                id: `${timestamp}-${from}-${i}`,
-                from,
-                to: i,
-                progress: 0,
-              });
-            }
-          }
-          setPackets(prev => [...prev.slice(-20), ...newPackets]);
-        } else if (architecture === 'sfu') {
-          // SFU: packet to server, then server to all others
-          const toServer: Packet = {
-            id: `${timestamp}-${from}-server`,
-            from,
-            to: -1, // -1 = server
-            progress: 0,
-          };
-          setPackets(prev => [...prev.slice(-20), toServer]);
-        } else {
-          // MCU: packet to server only (server handles mixing)
-          const toServer: Packet = {
-            id: `${timestamp}-${from}-server`,
-            from,
-            to: -1,
-            progress: 0,
-          };
-          setPackets(prev => [...prev.slice(-20), toServer]);
-        }
-      }
-
-      // Update packet positions
-      setPackets(prev => {
-        const updated = prev.map(p => ({
-          ...p,
-          progress: p.progress + (architecture === 'mcu' ? 0.015 : 0.025),
-        }));
-
-        // For SFU: spawn fan-out packets when reaching server
-        const newPackets: Packet[] = [];
-        updated.forEach(p => {
-          if (architecture === 'sfu' && p.to === -1 && p.progress >= 0.5 && p.progress < 0.52) {
-            for (let i = 0; i < participantCount; i++) {
-              if (i !== p.from) {
-                newPackets.push({
-                  id: `${p.id}-fanout-${i}`,
-                  from: -1,
-                  to: i,
-                  progress: 0.5,
-                  viaServer: true,
-                });
-              }
-            }
-          }
-          // For MCU: spawn mixed packet to all when reaching server
-          if (architecture === 'mcu' && p.to === -1 && p.progress >= 0.5 && p.progress < 0.52) {
-            for (let i = 0; i < participantCount; i++) {
-              newPackets.push({
-                id: `${p.id}-mixed-${i}`,
-                from: -1,
-                to: i,
-                progress: 0.5,
-                viaServer: true,
-              });
-            }
-          }
-        });
-
-        return [...updated.filter(p => p.progress < 1), ...newPackets];
-      });
-
-      animationRef.current = requestAnimationFrame(animate);
-    };
-
-    animationRef.current = requestAnimationFrame(animate);
-    return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
-    };
-  }, [isAnimating, architecture, participantCount]);
-
-  // Render
-  useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    const animate = (timestamp: number) => {
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
 
-    const width = canvas.width;
-    const height = canvas.height;
-    const positions = getParticipantPositions(participantCount, width, height);
-    const serverPos = { x: width / 2, y: height / 2 };
+      const w = canvas.width;
+      const h = canvas.height;
+      const positions = getPositions(participantCount, w, h);
+      const serverPos = { x: w / 2, y: h / 2 };
+      timeRef.current = timestamp;
 
-    ctx.clearRect(0, 0, width, height);
+      // Spawn particles
+      if (timestamp - lastSpawnRef.current > 600) {
+        lastSpawnRef.current = timestamp;
+        const from = Math.floor(Math.random() * participantCount);
+        const id = `p${particleIdRef.current++}`;
 
-    // Draw connections (faded)
-    ctx.strokeStyle = 'rgba(150, 150, 150, 0.2)';
-    ctx.lineWidth = 1;
-
-    if (architecture === 'p2p') {
-      // Mesh connections
-      for (let i = 0; i < positions.length; i++) {
-        for (let j = i + 1; j < positions.length; j++) {
-          ctx.beginPath();
-          ctx.moveTo(positions[i].x, positions[i].y);
-          ctx.lineTo(positions[j].x, positions[j].y);
-          ctx.stroke();
+        if (architecture === 'p2p') {
+          for (let i = 0; i < participantCount; i++) {
+            if (i !== from) {
+              particlesRef.current.push({
+                id: `${id}-${i}`,
+                from,
+                to: i,
+                progress: 0,
+                speed: 0.012 + Math.random() * 0.005,
+                trail: [],
+              });
+            }
+          }
+        } else {
+          particlesRef.current.push({
+            id,
+            from,
+            to: -1,
+            progress: 0,
+            speed: 0.015 + Math.random() * 0.005,
+            trail: [],
+          });
         }
       }
-    } else {
-      // Star connections to server
-      positions.forEach(pos => {
-        ctx.beginPath();
-        ctx.moveTo(pos.x, pos.y);
-        ctx.lineTo(serverPos.x, serverPos.y);
-        ctx.stroke();
+
+      // Update particles
+      const newParticles: Particle[] = [];
+      particlesRef.current.forEach(p => {
+        p.progress += p.speed;
+
+        // Calculate current position for trail
+        let startPos, endPos;
+        if (p.from === -1) {
+          startPos = serverPos;
+          endPos = positions[p.to];
+        } else if (p.to === -1) {
+          startPos = positions[p.from];
+          endPos = serverPos;
+        } else {
+          startPos = positions[p.from];
+          endPos = positions[p.to];
+        }
+
+        const prog = p.viaServer ? Math.min(1, (p.progress - 0.5) * 2) : Math.min(1, p.progress);
+        const px = startPos.x + (endPos.x - startPos.x) * prog;
+        const py = startPos.y + (endPos.y - startPos.y) * prog;
+
+        p.trail.push({ x: px, y: py });
+        if (p.trail.length > 12) p.trail.shift();
+
+        // SFU/MCU fan-out
+        if (p.to === -1 && p.progress >= 0.5 && p.progress < 0.52) {
+          for (let i = 0; i < participantCount; i++) {
+            if (architecture === 'sfu' && i === p.from) continue;
+            newParticles.push({
+              id: `${p.id}-fan-${i}`,
+              from: -1,
+              to: i,
+              progress: 0.5,
+              speed: architecture === 'mcu' ? 0.01 : 0.015,
+              viaServer: true,
+              trail: [],
+            });
+          }
+        }
       });
-    }
 
-    // Draw packets
-    packets.forEach(packet => {
-      let startPos, endPos;
+      particlesRef.current = [
+        ...particlesRef.current.filter(p => {
+          const maxProg = p.viaServer ? 1 : (p.to === -1 ? 0.55 : 1);
+          return p.progress < maxProg;
+        }),
+        ...newParticles,
+      ];
 
-      if (packet.from === -1) {
-        startPos = serverPos;
-        endPos = positions[packet.to];
-      } else if (packet.to === -1) {
-        startPos = positions[packet.from];
-        endPos = serverPos;
+      // --- DRAW ---
+      // Background
+      const bg = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w * 0.7);
+      bg.addColorStop(0, '#151528');
+      bg.addColorStop(1, '#0d0d1a');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, w, h);
+
+      // Connection lines (animated dashes)
+      const dashOffset = (timestamp * 0.02) % 20;
+
+      if (architecture === 'p2p') {
+        for (let i = 0; i < positions.length; i++) {
+          for (let j = i + 1; j < positions.length; j++) {
+            ctx.setLineDash([6, 6]);
+            ctx.lineDashOffset = -dashOffset;
+            ctx.strokeStyle = 'rgba(100,200,150,0.12)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(positions[i].x, positions[i].y);
+            ctx.lineTo(positions[j].x, positions[j].y);
+            ctx.stroke();
+          }
+        }
       } else {
-        startPos = positions[packet.from];
-        endPos = positions[packet.to];
+        positions.forEach(pos => {
+          ctx.setLineDash([6, 6]);
+          ctx.lineDashOffset = -dashOffset;
+          ctx.strokeStyle = 'rgba(100,180,255,0.12)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(pos.x, pos.y);
+          ctx.lineTo(serverPos.x, serverPos.y);
+          ctx.stroke();
+        });
+      }
+      ctx.setLineDash([]);
+
+      // Draw particle trails + particles
+      particlesRef.current.forEach(p => {
+        const isForwarded = p.viaServer;
+        const baseColor = isForwarded ? [78, 205, 196] : [255, 107, 107];
+
+        // Trail
+        if (p.trail.length > 1) {
+          for (let i = 1; i < p.trail.length; i++) {
+            const alpha = (i / p.trail.length) * 0.5;
+            const width = (i / p.trail.length) * 3;
+            ctx.strokeStyle = `rgba(${baseColor[0]},${baseColor[1]},${baseColor[2]},${alpha})`;
+            ctx.lineWidth = width;
+            ctx.beginPath();
+            ctx.moveTo(p.trail[i - 1].x, p.trail[i - 1].y);
+            ctx.lineTo(p.trail[i].x, p.trail[i].y);
+            ctx.stroke();
+          }
+        }
+
+        // Glowing particle
+        const last = p.trail[p.trail.length - 1];
+        if (last) {
+          const glow = ctx.createRadialGradient(last.x, last.y, 0, last.x, last.y, 10);
+          glow.addColorStop(0, `rgba(${baseColor[0]},${baseColor[1]},${baseColor[2]},0.9)`);
+          glow.addColorStop(0.5, `rgba(${baseColor[0]},${baseColor[1]},${baseColor[2]},0.3)`);
+          glow.addColorStop(1, `rgba(${baseColor[0]},${baseColor[1]},${baseColor[2]},0)`);
+          ctx.fillStyle = glow;
+          ctx.beginPath();
+          ctx.arc(last.x, last.y, 10, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Core
+          ctx.fillStyle = `rgb(${baseColor[0]},${baseColor[1]},${baseColor[2]})`;
+          ctx.beginPath();
+          ctx.arc(last.x, last.y, 3, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      });
+
+      // Server node (SFU/MCU)
+      if (architecture !== 'p2p') {
+        const serverColor = architecture === 'mcu' ? [155, 89, 182] : [52, 152, 219];
+        const pulse = Math.sin(timestamp * 0.004) * 0.2 + 0.8;
+
+        // Outer glow
+        const serverGlow = ctx.createRadialGradient(
+          serverPos.x, serverPos.y, 15,
+          serverPos.x, serverPos.y, 35
+        );
+        serverGlow.addColorStop(0, `rgba(${serverColor[0]},${serverColor[1]},${serverColor[2]},${0.3 * pulse})`);
+        serverGlow.addColorStop(1, `rgba(${serverColor[0]},${serverColor[1]},${serverColor[2]},0)`);
+        ctx.fillStyle = serverGlow;
+        ctx.beginPath();
+        ctx.arc(serverPos.x, serverPos.y, 35, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Body
+        const sGrad = ctx.createRadialGradient(
+          serverPos.x - 5, serverPos.y - 5, 2,
+          serverPos.x, serverPos.y, 22
+        );
+        sGrad.addColorStop(0, `rgb(${Math.min(255, serverColor[0] + 40)},${Math.min(255, serverColor[1] + 40)},${Math.min(255, serverColor[2] + 40)})`);
+        sGrad.addColorStop(1, `rgb(${serverColor[0]},${serverColor[1]},${serverColor[2]})`);
+        ctx.fillStyle = sGrad;
+        ctx.beginPath();
+        ctx.arc(serverPos.x, serverPos.y, 22, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 11px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(architecture.toUpperCase(), serverPos.x, serverPos.y);
       }
 
-      const progress = packet.viaServer ? (packet.progress - 0.5) * 2 : packet.progress;
-      const x = startPos.x + (endPos.x - startPos.x) * progress;
-      const y = startPos.y + (endPos.y - startPos.y) * progress;
+      // Participant nodes
+      positions.forEach((pos, i) => {
+        const hasActive = particlesRef.current.some(
+          p => (p.from === i && p.progress < 0.3) || (p.to === i && p.progress > 0.7)
+        );
+        const pulse = hasActive ? Math.sin(timestamp * 0.008) * 0.3 + 0.7 : 0;
 
-      ctx.fillStyle = packet.viaServer ? '#4ecdc4' : '#ff6b6b';
-      ctx.beginPath();
-      ctx.arc(x, y, 4, 0, Math.PI * 2);
-      ctx.fill();
-    });
+        // Glow ring
+        if (pulse > 0) {
+          const ring = ctx.createRadialGradient(pos.x, pos.y, 12, pos.x, pos.y, 28);
+          ring.addColorStop(0, `rgba(46,204,113,${0.3 * pulse})`);
+          ring.addColorStop(1, 'rgba(46,204,113,0)');
+          ctx.fillStyle = ring;
+          ctx.beginPath();
+          ctx.arc(pos.x, pos.y, 28, 0, Math.PI * 2);
+          ctx.fill();
+        }
 
-    // Draw server (if not P2P)
-    if (architecture !== 'p2p') {
-      ctx.fillStyle = architecture === 'mcu' ? '#9b59b6' : '#3498db';
-      ctx.beginPath();
-      ctx.arc(serverPos.x, serverPos.y, 20, 0, Math.PI * 2);
-      ctx.fill();
+        // Node body
+        const nGrad = ctx.createRadialGradient(pos.x - 3, pos.y - 3, 2, pos.x, pos.y, 16);
+        nGrad.addColorStop(0, '#5dde8f');
+        nGrad.addColorStop(1, '#2ecc71');
+        ctx.fillStyle = nGrad;
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, 16, 0, Math.PI * 2);
+        ctx.fill();
 
-      ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 12px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(architecture.toUpperCase(), serverPos.x, serverPos.y);
-    }
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 11px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(`P${i + 1}`, pos.x, pos.y);
+      });
 
-    // Draw participants
-    positions.forEach((pos, i) => {
-      ctx.fillStyle = '#2ecc71';
-      ctx.beginPath();
-      ctx.arc(pos.x, pos.y, 15, 0, Math.PI * 2);
-      ctx.fill();
+      // Connection count HUD
+      const connCount = architecture === 'p2p'
+        ? (participantCount * (participantCount - 1)) / 2
+        : participantCount;
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.fillRect(8, 8, 120, 20);
+      ctx.font = '10px monospace';
+      ctx.fillStyle = '#787268';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'top';
+      ctx.fillText(`Connections: ${connCount}`, 14, 13);
 
-      ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 11px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(`P${i + 1}`, pos.x, pos.y);
-    });
+      animRef.current = requestAnimationFrame(animate);
+    };
 
-  }, [packets, architecture, participantCount]);
+    animRef.current = requestAnimationFrame(animate);
+    return () => { if (animRef.current) cancelAnimationFrame(animRef.current); };
+  }, [isAnimating, architecture, participantCount, getPositions]);
+
+  // Clear particles on architecture change
+  useEffect(() => {
+    particlesRef.current = [];
+  }, [architecture, participantCount]);
 
   const info = ARCHITECTURES[architecture];
-
-  // Calculate connection counts
-  const getConnectionCount = () => {
-    if (architecture === 'p2p') {
-      return (participantCount * (participantCount - 1)) / 2;
-    }
-    return participantCount;
-  };
 
   return (
     <div className="card p-6">
@@ -292,16 +367,12 @@ export function SFUComparisonDemo() {
       </p>
 
       <div className="grid md:grid-cols-2 gap-6">
-        {/* Visualization */}
         <div>
           <div className="flex gap-2 mb-4">
             {(Object.keys(ARCHITECTURES) as ArchitectureType[]).map((arch) => (
               <button
                 key={arch}
-                onClick={() => {
-                  setArchitecture(arch);
-                  setPackets([]);
-                }}
+                onClick={() => setArchitecture(arch)}
                 className={`flex-1 px-3 py-2 rounded text-sm font-medium transition-colors ${
                   architecture === arch
                     ? 'bg-[var(--accent)] text-white'
@@ -315,12 +386,11 @@ export function SFUComparisonDemo() {
 
           <canvas
             ref={canvasRef}
-            width={350}
-            height={300}
-            className="w-full rounded-lg border border-[var(--border)] bg-[var(--surface-2)]"
+            width={400}
+            height={340}
+            className="w-full rounded-lg border border-[var(--border)]"
           />
 
-          {/* Controls */}
           <div className="mt-4 space-y-3">
             <div>
               <div className="flex justify-between text-sm mb-1">
@@ -332,10 +402,7 @@ export function SFUComparisonDemo() {
                 min={2}
                 max={8}
                 value={participantCount}
-                onChange={(e) => {
-                  setParticipantCount(Number(e.target.value));
-                  setPackets([]);
-                }}
+                onChange={(e) => setParticipantCount(Number(e.target.value))}
                 className="w-full"
               />
             </div>
@@ -348,7 +415,7 @@ export function SFUComparisonDemo() {
                 {isAnimating ? 'Pause' : 'Play'}
               </button>
               <button
-                onClick={() => setPackets([])}
+                onClick={() => { particlesRef.current = []; }}
                 className="flex-1 badge hover:border-[var(--border-strong)] justify-center"
               >
                 Clear
@@ -357,14 +424,12 @@ export function SFUComparisonDemo() {
           </div>
         </div>
 
-        {/* Info Panel */}
         <div className="space-y-4">
           <div>
             <h4 className="font-medium">{info.name}</h4>
             <p className="text-sm text-[var(--text-muted)]">{info.description}</p>
           </div>
 
-          {/* Stats */}
           <div className="grid grid-cols-3 gap-2 text-sm">
             <div className="p-2 bg-[var(--surface-2)] rounded text-center">
               <p className="text-[var(--text-muted)] text-xs">Latency</p>
@@ -375,12 +440,11 @@ export function SFUComparisonDemo() {
               <p className="font-mono text-xs">{info.serverLoad}</p>
             </div>
             <div className="p-2 bg-[var(--surface-2)] rounded text-center">
-              <p className="text-[var(--text-muted)] text-xs">Connections</p>
-              <p className="font-mono">{getConnectionCount()}</p>
+              <p className="text-[var(--text-muted)] text-xs">Bandwidth</p>
+              <p className="font-mono text-xs">{info.bandwidth}</p>
             </div>
           </div>
 
-          {/* Pros/Cons */}
           <div className="grid grid-cols-2 gap-4">
             <div>
               <p className="text-sm font-medium text-green-600 mb-1">Pros</p>
@@ -406,7 +470,6 @@ export function SFUComparisonDemo() {
             </div>
           </div>
 
-          {/* Use Cases */}
           <div>
             <p className="text-sm font-medium mb-1">Best For</p>
             <div className="flex flex-wrap gap-1">
@@ -418,7 +481,6 @@ export function SFUComparisonDemo() {
             </div>
           </div>
 
-          {/* Legend */}
           <div className="p-3 bg-[var(--surface-2)] rounded text-xs">
             <p className="font-medium mb-2">Legend</p>
             <div className="flex flex-wrap gap-3">
@@ -426,14 +488,12 @@ export function SFUComparisonDemo() {
                 <div className="w-3 h-3 rounded-full bg-[#2ecc71]" />
                 <span>Participant</span>
               </div>
-              <div className="flex items-center gap-1">
-                <div className="w-3 h-3 rounded-full bg-[#3498db]" />
-                <span>SFU Server</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <div className="w-3 h-3 rounded-full bg-[#9b59b6]" />
-                <span>MCU Server</span>
-              </div>
+              {architecture !== 'p2p' && (
+                <div className="flex items-center gap-1">
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: architecture === 'mcu' ? '#9b59b6' : '#3498db' }} />
+                  <span>{architecture.toUpperCase()} Server</span>
+                </div>
+              )}
               <div className="flex items-center gap-1">
                 <div className="w-3 h-3 rounded-full bg-[#ff6b6b]" />
                 <span>Outgoing</span>
