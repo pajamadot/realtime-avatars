@@ -26,18 +26,81 @@ import {
   Users,
   ChevronRight,
 } from 'lucide-react';
+import dynamic from 'next/dynamic';
+
+function DemoLoading() {
+  return (
+    <div className="flex items-center justify-center h-48 text-[#787268]">
+      <div className="w-6 h-6 border-2 border-current border-t-transparent rounded-full animate-spin" />
+    </div>
+  );
+}
+
+const BlendshapeDemo = dynamic(() => import('../learn/components/demos/metahuman/BlendshapeDemo'), { ssr: false, loading: () => <DemoLoading /> });
+const DenoisingDemo = dynamic(() => import('../learn/components/demos/generative/DenoisingDemo'), { ssr: false, loading: () => <DemoLoading /> });
+const PointCloudDemo = dynamic(() => import('../learn/components/demos/gaussian/PointCloudDemo'), { ssr: false, loading: () => <DemoLoading /> });
+const CovarianceShapeDemo = dynamic(() => import('../learn/components/demos/gaussian/CovarianceShapeDemo'), { ssr: false, loading: () => <DemoLoading /> });
+const SFUComparisonDemo = dynamic(() => import('../learn/components/demos/streaming/SFUComparisonDemo'), { ssr: false, loading: () => <DemoLoading /> });
+const PipelineFlowDemo = dynamic(() => import('../learn/components/demos/endtoend/PipelineFlowDemo'), { ssr: false, loading: () => <DemoLoading /> });
 
 /* ═══════════════════════════════════════════════════════════════
    CONSTANTS
    ═══════════════════════════════════════════════════════════════ */
 
-const TOTAL_SLIDES = 15;
+const TOTAL_SLIDES = 21;
 
 const METHOD_COLORS = {
   metahuman: '#7c6a9c',
   generative: '#5d8a66',
   gaussian: '#c4713b',
 } as const;
+
+function SlideDemoWrapper({ children, color }: { children: React.ReactNode; color?: string }) {
+  return (
+    <div
+      className="rounded-xl border border-[#3a3835] overflow-auto max-h-[480px]"
+      style={{
+        '--text-muted': '#787268',
+        '--text-primary': '#e8e4dd',
+        '--border': '#3a3835',
+        '--border-strong': '#5a5855',
+        '--surface-0': '#1a1917',
+        '--surface-1': '#1e1d1b',
+        '--surface-2': '#232220',
+        '--surface-3': '#2a2926',
+        '--background': '#1a1917',
+        '--accent': color || '#c4713b',
+        '--foreground': '#e8e4dd',
+      } as React.CSSProperties}
+    >
+      {children}
+    </div>
+  );
+}
+
+function FormulaBlock({ children, color, label }: { children: React.ReactNode; color: string; label?: string }) {
+  return (
+    <div className="rounded-lg p-3 bg-[#1e1d1b] border border-[#3a3835]">
+      {label && (
+        <div className="text-[10px] uppercase tracking-widest text-[#787268] mb-1.5">{label}</div>
+      )}
+      <div className="font-mono text-center text-base leading-relaxed" style={{ color }}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function SlideMethodBadge({ method, label, color }: { method: string; label?: string; color: string }) {
+  return (
+    <div className="flex items-center gap-2 mb-2">
+      <div className="w-2 h-2 rounded-full" style={{ background: color }} />
+      <span className="text-xs font-semibold uppercase tracking-widest" style={{ color }}>
+        {label || method}
+      </span>
+    </div>
+  );
+}
 
 /* ═══════════════════════════════════════════════════════════════
    INDIVIDUAL SLIDE COMPONENTS
@@ -71,12 +134,12 @@ function SlideTitle() {
 function SlideAboutMe() {
   const experiences = [
     { icon: Briefcase, text: 'Founder of PajamaDot, Co-founder of Cogix' },
-    { icon: Gamepad2, text: 'Former Epic Games developer relations engineer (UE4, Shanghai 2018-2020)' },
+    { icon: Gamepad2, text: 'Former Epic Games developer relations engineer (UE4/UE5, Shanghai 2018-2020)' },
     { icon: Video, text: 'Former Hedra software engineer (diffusion pipelines, 2024-2025)' },
     { icon: Headset, text: 'Co-founded UnrealLight Digital Tech for VR (2015-2017)' },
-    { icon: GraduationCap, text: 'Pursuing MCIT at University of Pennsylvania' },
+    { icon: GraduationCap, text: 'MCIT at University of Pennsylvania' },
     { icon: BookOpen, text: 'Psychology background (M.Ed + B.S., East China Normal University)' },
-    { icon: Palette, text: 'Art background — painting, digital media, and creative expression' },
+    { icon: Palette, text: 'Visual and Creative Art & Interactive Media at Sheridan College' },
   ];
 
   return (
@@ -287,6 +350,68 @@ function SlideMetahumanHow() {
   );
 }
 
+function SlideMetahumanMechanism() {
+  return (
+    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
+      <SlideMethodBadge method="MetaHuman" color={METHOD_COLORS.metahuman} />
+      <h2 className="text-3xl font-bold mb-2">Blendshapes & Facial Rigging</h2>
+      <div className="w-12 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.metahuman }} />
+
+      {/* Formula */}
+      <FormulaBlock color={METHOD_COLORS.metahuman} label="Linear Blend Model">
+        <span className="text-[#e8e4dd]">f</span> = <span className="text-[#e8e4dd]">x</span>
+        <sub>0</sub> + <span className="text-[#a8a29e]">&Sigma;</span>
+        <sub>i=1</sub><sup>52</sup>{' '}
+        <span style={{ color: METHOD_COLORS.metahuman }}>w</span>
+        <sub>i</sub> &middot; <span className="text-[#e8e4dd]">B</span>
+        <sub>i</sub>
+      </FormulaBlock>
+
+      <div className="grid grid-cols-2 gap-5 mt-5 items-start">
+        {/* Explanation */}
+        <div className="space-y-3">
+          {/* Key stats row */}
+          <div className="grid grid-cols-3 gap-2">
+            {[
+              { value: '52', unit: 'blendshapes', desc: 'ARKit basis vectors' },
+              { value: '60', unit: 'FPS', desc: 'tracking rate' },
+              { value: '<16', unit: 'ms', desc: 'mesh deform' },
+            ].map((s) => (
+              <div key={s.unit} className="rounded-lg p-2.5 border border-[#3a3835] bg-[#232220] text-center">
+                <div className="text-lg font-bold font-mono" style={{ color: METHOD_COLORS.metahuman }}>
+                  {s.value}<span className="text-xs ml-0.5 text-[#a8a29e]">{s.unit}</span>
+                </div>
+                <div className="text-[10px] text-[#787268] mt-0.5">{s.desc}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* How it works */}
+          <div className="rounded-xl p-4 border border-[#3a3835] bg-[#232220] space-y-2.5">
+            <div className="flex items-start gap-2.5">
+              <span className="text-xs font-bold px-1.5 py-0.5 rounded mt-0.5" style={{ background: `${METHOD_COLORS.metahuman}25`, color: METHOD_COLORS.metahuman }}>B<sub>i</sub></span>
+              <p className="text-xs text-[#a8a29e]">Each blendshape is a <span className="text-[#e8e4dd]">vertex displacement map</span> -- a basis vector describing how the mesh deforms for one facial action unit.</p>
+            </div>
+            <div className="flex items-start gap-2.5">
+              <span className="text-xs font-bold px-1.5 py-0.5 rounded mt-0.5" style={{ background: `${METHOD_COLORS.metahuman}25`, color: METHOD_COLORS.metahuman }}>w<sub>i</sub></span>
+              <p className="text-xs text-[#a8a29e]">Weights range <span className="font-mono text-[#e8e4dd]">[0, 1]</span>. ARKit extracts these from camera in real-time. LiveLink streams to Unreal Engine.</p>
+            </div>
+            <div className="flex items-start gap-2.5">
+              <span className="text-xs font-bold px-1.5 py-0.5 rounded mt-0.5" style={{ background: `${METHOD_COLORS.metahuman}25`, color: METHOD_COLORS.metahuman }}>&Sigma;</span>
+              <p className="text-xs text-[#a8a29e]">Any expression = weighted sum. Try the presets: <span className="text-[#e8e4dd]">smile</span>, <span className="text-[#e8e4dd]">surprise</span>, <span className="text-[#e8e4dd]">angry</span> -- then adjust individual sliders.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Demo */}
+        <SlideDemoWrapper color={METHOD_COLORS.metahuman}>
+          <BlendshapeDemo />
+        </SlideDemoWrapper>
+      </div>
+    </div>
+  );
+}
+
 function SlideMetahumanDemo() {
   return (
     <div className="flex flex-col justify-center h-full px-8 max-w-4xl mx-auto">
@@ -304,18 +429,19 @@ function SlideMetahumanDemo() {
         Cloud-rendered Unreal Engine avatar via pixel streaming
       </p>
 
-      <div className="rounded-xl border border-[#3a3835] overflow-hidden bg-[#1a1917] mb-4">
-        <iframe
-          src="https://app.rapport.cloud/?modal=true"
-          title="Rapport MetaHuman Demo"
-          className="w-full border-0"
-          style={{ height: '420px' }}
-          allow="camera; microphone; fullscreen"
-          loading="lazy"
-        />
-      </div>
+      <a
+        href="/rapport"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-3 px-8 py-4 rounded-xl text-lg font-semibold text-white transition-all hover:scale-105"
+        style={{ background: METHOD_COLORS.metahuman }}
+      >
+        <Monitor size={22} />
+        Open Rapport Demo
+        <ExternalLink size={16} />
+      </a>
 
-      <div className="flex items-center gap-2 text-xs text-[#787268]">
+      <div className="flex items-center gap-2 text-xs text-[#787268] mt-6">
         <Mic size={14} />
         <span>Requires microphone permission</span>
       </div>
@@ -391,6 +517,99 @@ function SlideGenerativeHow() {
             E2E with Avatar Forcing
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function SlideGenerativeMechanism() {
+  return (
+    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
+      <SlideMethodBadge method="Video Generation" color={METHOD_COLORS.generative} />
+      <h2 className="text-3xl font-bold mb-2">The Denoising Process</h2>
+      <div className="w-12 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.generative }} />
+
+      {/* DDPM reverse step formula */}
+      <FormulaBlock color={METHOD_COLORS.generative} label="DDPM Reverse Step">
+        <span className="text-[#e8e4dd]">x</span><sub>t-1</sub> ={' '}
+        <span className="text-[#a8a29e]">1/&radic;&alpha;</span><sub>t</sub>{' '}
+        <span className="text-[#787268]">(</span>{' '}
+        <span className="text-[#e8e4dd]">x</span><sub>t</sub> &minus;{' '}
+        <span className="text-[#a8a29e]">&beta;</span><sub>t</sub>
+        <span className="text-[#a8a29e]">/&radic;(1-&alpha;&#772;</span><sub>t</sub>
+        <span className="text-[#a8a29e]">)</span> &middot;{' '}
+        <span style={{ color: METHOD_COLORS.generative }}>&epsilon;</span>
+        <sub>&theta;</sub>
+        <span className="text-[#787268]">(x</span><sub>t</sub>
+        <span className="text-[#787268]">, t)</span>{' '}
+        <span className="text-[#787268]">)</span>
+      </FormulaBlock>
+
+      <div className="grid grid-cols-2 gap-5 mt-5 items-start">
+        {/* Explanation */}
+        <div className="space-y-3">
+          {/* Forward process visualization */}
+          <div className="rounded-xl p-4 border border-[#3a3835] bg-[#232220]">
+            <div className="text-[10px] uppercase tracking-widest text-[#787268] mb-2">Forward Process (add noise)</div>
+            <div className="flex items-center gap-1 text-xs font-mono overflow-hidden">
+              {['x\u2080', 'x\u2081', 'x\u2082', '\u2026', 'x\u209C'].map((label, i) => (
+                <div key={i} className="flex items-center gap-1">
+                  <span
+                    className="px-2 py-1 rounded"
+                    style={{
+                      background: `rgba(93, 138, 102, ${0.4 - i * 0.08})`,
+                      color: i < 4 ? '#e8e4dd' : '#787268',
+                    }}
+                  >
+                    {label}
+                  </span>
+                  {i < 4 && <ChevronRight size={10} className="text-[#787268] flex-shrink-0" />}
+                </div>
+              ))}
+            </div>
+            <p className="text-[10px] text-[#787268] mt-2">
+              Add Gaussian noise at each step. At t=T, pure noise.
+            </p>
+          </div>
+
+          {/* Reverse process steps */}
+          <div className="rounded-xl p-4 border border-[#3a3835] bg-[#232220] space-y-2">
+            <div className="text-[10px] uppercase tracking-widest text-[#787268] mb-1">Reverse Process (denoise)</div>
+            {[
+              { step: '1', text: 'U-Net predicts noise \u03B5\u03B8(x\u209C, t) at current step' },
+              { step: '2', text: 'Subtract predicted noise, scaled by schedule (\u03B1, \u03B2)' },
+              { step: '3', text: 'Repeat T\u219250 times for full denoising' },
+            ].map((item) => (
+              <div key={item.step} className="flex items-start gap-2">
+                <span
+                  className="text-[10px] font-bold w-4 h-4 rounded flex items-center justify-center flex-shrink-0 mt-0.5"
+                  style={{ background: `${METHOD_COLORS.generative}30`, color: METHOD_COLORS.generative }}
+                >
+                  {item.step}
+                </span>
+                <span className="text-xs text-[#a8a29e]">{item.text}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Distillation callout */}
+          <div
+            className="rounded-xl p-3 border text-center"
+            style={{ borderColor: METHOD_COLORS.generative, background: `${METHOD_COLORS.generative}10` }}
+          >
+            <div className="flex items-center justify-center gap-3 text-sm">
+              <span className="font-mono text-[#a8a29e]">50 steps</span>
+              <span className="text-[#787268]">&xrarr;</span>
+              <span className="font-mono font-bold" style={{ color: METHOD_COLORS.generative }}>1-4 steps</span>
+            </div>
+            <p className="text-[10px] text-[#787268] mt-1">Progressive distillation preserves quality at 40x speedup</p>
+          </div>
+        </div>
+
+        {/* Demo */}
+        <SlideDemoWrapper color={METHOD_COLORS.generative}>
+          <DenoisingDemo />
+        </SlideDemoWrapper>
       </div>
     </div>
   );
@@ -574,6 +793,155 @@ function SlideGaussianHow() {
   );
 }
 
+function SlideGaussianMechanism() {
+  return (
+    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
+      <SlideMethodBadge method="Gaussian Splatting" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-3xl font-bold mb-2">From Points to Splats</h2>
+      <div className="w-12 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
+
+      {/* Gaussian function formula */}
+      <FormulaBlock color={METHOD_COLORS.gaussian} label="3D Gaussian Function">
+        G(<span className="text-[#e8e4dd]">x</span>) = exp
+        <span className="text-[#787268]">(</span>
+        -&frac12; (<span className="text-[#e8e4dd]">x</span>-<span style={{ color: METHOD_COLORS.gaussian }}>&mu;</span>)
+        <sup>T</sup>{' '}
+        <span style={{ color: METHOD_COLORS.gaussian }}>&Sigma;</span><sup>-1</sup>{' '}
+        (<span className="text-[#e8e4dd]">x</span>-<span style={{ color: METHOD_COLORS.gaussian }}>&mu;</span>)
+        <span className="text-[#787268]">)</span>
+      </FormulaBlock>
+
+      <div className="grid grid-cols-2 gap-5 mt-5 items-start">
+        {/* Explanation */}
+        <div className="space-y-3">
+          {/* Learnable parameters as tagged pills */}
+          <div className="rounded-xl p-4 border border-[#3a3835] bg-[#232220]">
+            <div className="text-[10px] uppercase tracking-widest text-[#787268] mb-2.5">Learnable Parameters per Gaussian</div>
+            <div className="grid grid-cols-2 gap-2">
+              {[
+                { sym: '\u03BC', name: 'Position', desc: 'xyz center', color: '#ff6b6b' },
+                { sym: '\u03A3', name: 'Covariance', desc: '3x3 shape', color: '#ffd93d' },
+                { sym: 'c', name: 'Color', desc: 'SH coefficients', color: '#4ecdc4' },
+                { sym: '\u03B1', name: 'Opacity', desc: '[0, 1] alpha', color: '#c9b1ff' },
+              ].map((p) => (
+                <div key={p.sym} className="flex items-center gap-2 p-2 rounded-lg bg-[#1e1d1b]">
+                  <span
+                    className="w-6 h-6 rounded flex items-center justify-center text-xs font-bold font-mono"
+                    style={{ background: `${p.color}25`, color: p.color }}
+                  >
+                    {p.sym}
+                  </span>
+                  <div>
+                    <div className="text-xs font-medium text-[#e8e4dd]">{p.name}</div>
+                    <div className="text-[10px] text-[#787268]">{p.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Training pipeline */}
+          <div className="rounded-xl p-4 border border-[#3a3835] bg-[#232220]">
+            <div className="text-[10px] uppercase tracking-widest text-[#787268] mb-2">Optimization Loop</div>
+            <div className="space-y-1.5">
+              {[
+                'Render Gaussians \u2192 2D image via differentiable rasterizer',
+                'Compute photometric loss: L = ||I\u0302 - I||',
+                'Backprop gradients to all Gaussian parameters',
+                'Adaptive density: split under-reconstructed, prune low-\u03B1',
+              ].map((step, i) => (
+                <div key={i} className="flex items-start gap-2">
+                  <span
+                    className="text-[10px] font-bold w-4 h-4 rounded flex items-center justify-center flex-shrink-0 mt-0.5"
+                    style={{ background: `${METHOD_COLORS.gaussian}30`, color: METHOD_COLORS.gaussian }}
+                  >
+                    {i + 1}
+                  </span>
+                  <span className="text-xs text-[#a8a29e]">{step}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Demo */}
+        <SlideDemoWrapper color={METHOD_COLORS.gaussian}>
+          <PointCloudDemo />
+        </SlideDemoWrapper>
+      </div>
+    </div>
+  );
+}
+
+function SlideGaussianCovariance() {
+  return (
+    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
+      <SlideMethodBadge method="Gaussian Splatting" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-3xl font-bold mb-2">Covariance & Shape Control</h2>
+      <div className="w-12 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
+
+      {/* Covariance decomposition formula */}
+      <FormulaBlock color={METHOD_COLORS.gaussian} label="Covariance Decomposition">
+        <span style={{ color: METHOD_COLORS.gaussian }}>&Sigma;</span> ={' '}
+        <span className="text-[#ff6b6b]">R</span> &middot;{' '}
+        <span className="text-[#ffd93d]">S</span> &middot;{' '}
+        <span className="text-[#ffd93d]">S</span><sup>T</sup> &middot;{' '}
+        <span className="text-[#ff6b6b]">R</span><sup>T</sup>
+        <span className="text-[#787268] text-sm ml-4">
+          <span className="text-[#ff6b6b]">R</span>=rotation{'  '}
+          <span className="text-[#ffd93d]">S</span>=scale
+        </span>
+      </FormulaBlock>
+
+      <div className="grid grid-cols-2 gap-5 mt-5 items-start">
+        {/* Explanation */}
+        <div className="space-y-3">
+          {/* Shape examples */}
+          <div className="rounded-xl p-4 border border-[#3a3835] bg-[#232220]">
+            <div className="text-[10px] uppercase tracking-widest text-[#787268] mb-2.5">Shape Controls</div>
+            <div className="space-y-2">
+              {[
+                { shape: 'Sphere', formula: 'sx = sy = sz', use: 'Isotropic regions, distant points', icon: '\u25CF' },
+                { shape: 'Pancake', formula: 'sx = sy \u226B sz', use: 'Flat surfaces, walls, skin', icon: '\u2B2D' },
+                { shape: 'Needle', formula: 'sz \u226B sx = sy', use: 'Edges, hair strands, wires', icon: '\u2502' },
+              ].map((s) => (
+                <div key={s.shape} className="flex items-start gap-2.5 p-2 rounded-lg bg-[#1e1d1b]">
+                  <span className="text-lg leading-none mt-0.5" style={{ color: METHOD_COLORS.gaussian }}>{s.icon}</span>
+                  <div className="min-w-0">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-xs font-semibold text-[#e8e4dd]">{s.shape}</span>
+                      <code className="text-[10px] text-[#787268]">{s.formula}</code>
+                    </div>
+                    <div className="text-[10px] text-[#a8a29e]">{s.use}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 2D projection */}
+          <div
+            className="rounded-xl p-3 border"
+            style={{ borderColor: METHOD_COLORS.gaussian, background: `${METHOD_COLORS.gaussian}08` }}
+          >
+            <div className="text-xs font-semibold text-[#e8e4dd] mb-1">2D Splatting</div>
+            <p className="text-[11px] text-[#a8a29e]">
+              3D Gaussians project to <span className="text-[#e8e4dd]">2D ellipses</span> on screen.
+              Alpha-composited front-to-back for differentiable rendering.
+              Try the shape presets and auto-rotate in the demo.
+            </p>
+          </div>
+        </div>
+
+        {/* Demo */}
+        <SlideDemoWrapper color={METHOD_COLORS.gaussian}>
+          <CovarianceShapeDemo />
+        </SlideDemoWrapper>
+      </div>
+    </div>
+  );
+}
+
 function SlideGaussianPerf() {
   const benchmarks = [
     { system: 'LAM', fps: '563 FPS', hardware: 'A100 GPU', note: '110 FPS on mobile' },
@@ -660,6 +1028,77 @@ function SlideGaussianDemo() {
   );
 }
 
+function SlideStreamingArchitecture() {
+  return (
+    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
+      <SlideMethodBadge method="Streaming" label="Streaming" color={METHOD_COLORS.generative} />
+      <h2 className="text-3xl font-bold mb-2">How It Reaches the User</h2>
+      <div className="w-12 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.generative }} />
+
+      {/* Connection formulas comparison */}
+      <div className="grid grid-cols-3 gap-3 mb-5">
+        {[
+          { name: 'P2P (Mesh)', formula: 'N(N-1)/2', example: '4p = 6', latency: '~50ms', color: '#ff6b6b' },
+          { name: 'SFU', formula: 'N', example: '4p = 4', latency: '~100ms', color: '#3498db' },
+          { name: 'MCU', formula: 'N', example: '4p = 4', latency: '~200ms', color: '#9b59b6' },
+        ].map((arch) => (
+          <div key={arch.name} className="rounded-lg p-3 border border-[#3a3835] bg-[#1e1d1b] text-center">
+            <div className="text-xs font-semibold mb-1" style={{ color: arch.color }}>{arch.name}</div>
+            <div className="font-mono text-sm text-[#e8e4dd]">{arch.formula}</div>
+            <div className="text-[10px] text-[#787268] mt-1">
+              {arch.example} &middot; {arch.latency}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-2 gap-5 items-start">
+        {/* Architecture details */}
+        <div className="space-y-2.5">
+          {[
+            {
+              name: 'P2P',
+              color: '#ff6b6b',
+              desc: 'Direct connections. Lowest latency, no server cost, but each client uploads to every peer.',
+              badge: 'N\u00B2 scaling',
+            },
+            {
+              name: 'SFU',
+              color: '#3498db',
+              desc: 'Server forwards without processing. Used by LiveKit, Twilio, Agora. The standard for avatar streaming.',
+              badge: 'Avatar pattern',
+            },
+            {
+              name: 'MCU',
+              color: '#9b59b6',
+              desc: 'Server transcodes and mixes all streams. Lowest client bandwidth but highest server CPU and latency.',
+              badge: 'Max scalability',
+            },
+          ].map((arch) => (
+            <div key={arch.name} className="flex items-start gap-3 rounded-xl p-3 border border-[#3a3835] bg-[#232220]">
+              <span
+                className="text-[10px] font-bold px-2 py-1 rounded flex-shrink-0 mt-0.5"
+                style={{ background: `${arch.color}25`, color: arch.color }}
+              >
+                {arch.name}
+              </span>
+              <div className="min-w-0">
+                <p className="text-xs text-[#a8a29e]">{arch.desc}</p>
+                <span className="inline-block text-[10px] mt-1 px-1.5 py-0.5 rounded bg-[#1e1d1b] text-[#787268]">{arch.badge}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Demo */}
+        <SlideDemoWrapper color={METHOD_COLORS.generative}>
+          <SFUComparisonDemo />
+        </SlideDemoWrapper>
+      </div>
+    </div>
+  );
+}
+
 function SlideComparison() {
   const rows = [
     { label: 'Latency', metahuman: '< 16ms (60 FPS)', generative: '< 500ms (Avatar Forcing)', gaussian: '< 10ms (100+ FPS)' },
@@ -720,6 +1159,81 @@ function SlideComparison() {
           </tbody>
         </table>
       </div>
+    </div>
+  );
+}
+
+function SlideE2EPipeline() {
+  return (
+    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
+      <SlideMethodBadge method="End-to-End" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-3xl font-bold mb-2">The Full Loop</h2>
+      <div className="w-12 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
+
+      {/* Formula + latency breakdown side by side */}
+      <div className="grid grid-cols-2 gap-4 mb-4">
+        <FormulaBlock color={METHOD_COLORS.gaussian} label="Total Latency">
+          L<sub>total</sub> ={' '}
+          <span className="text-[#a8a29e]">&Sigma;</span> L<sub>i</sub> ={' '}
+          <span className="text-[#4ecdc4]">L<sub>vad</sub></span> +{' '}
+          <span className="text-[#45b7d1]">L<sub>stt</sub></span> +{' '}
+          <span className="text-[#96ceb4]">L<sub>llm</sub></span> +{' '}
+          <span className="text-[#ffd93d]">L<sub>tts</sub></span> +{' '}
+          <span className="text-[#ff6b6b]">L<sub>av</sub></span> +{' '}
+          <span className="text-[#c9b1ff]">L<sub>str</sub></span>
+        </FormulaBlock>
+
+        {/* Latency range bar */}
+        <div className="rounded-lg p-3 bg-[#1e1d1b] border border-[#3a3835] flex flex-col justify-center">
+          <div className="text-[10px] uppercase tracking-widest text-[#787268] mb-2">Typical Range</div>
+          <div className="flex items-center gap-3">
+            <div className="flex-1 h-3 rounded-full bg-[#232220] overflow-hidden relative">
+              <div
+                className="absolute inset-y-0 left-0 rounded-full"
+                style={{
+                  width: '30%',
+                  background: `linear-gradient(90deg, ${METHOD_COLORS.generative}, ${METHOD_COLORS.gaussian})`,
+                  opacity: 0.6,
+                }}
+              />
+              <div
+                className="absolute inset-y-0 left-0 rounded-full"
+                style={{
+                  width: '100%',
+                  background: `linear-gradient(90deg, ${METHOD_COLORS.generative}40, ${METHOD_COLORS.gaussian}40)`,
+                }}
+              />
+            </div>
+          </div>
+          <div className="flex justify-between text-[10px] font-mono mt-1">
+            <span style={{ color: METHOD_COLORS.generative }}>530ms</span>
+            <span className="text-[#787268]">streaming overlaps stages</span>
+            <span style={{ color: METHOD_COLORS.gaussian }}>1800ms</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Stage color legend */}
+      <div className="flex items-center gap-3 mb-3 text-[10px]">
+        {[
+          { name: 'VAD', color: '#4ecdc4', ms: '100-300' },
+          { name: 'STT', color: '#45b7d1', ms: '100-400' },
+          { name: 'LLM', color: '#96ceb4', ms: '150-500' },
+          { name: 'TTS', color: '#ffd93d', ms: '100-300' },
+          { name: 'Avatar', color: '#ff6b6b', ms: '50-200' },
+          { name: 'Stream', color: '#c9b1ff', ms: '30-100' },
+        ].map((s) => (
+          <div key={s.name} className="flex items-center gap-1">
+            <div className="w-2 h-2 rounded-sm" style={{ background: s.color }} />
+            <span className="text-[#a8a29e]">{s.name}</span>
+            <span className="text-[#787268] font-mono">{s.ms}</span>
+          </div>
+        ))}
+      </div>
+
+      <SlideDemoWrapper color={METHOD_COLORS.gaussian}>
+        <PipelineFlowDemo />
+      </SlideDemoWrapper>
     </div>
   );
 }
@@ -800,21 +1314,27 @@ function SlideThankYou() {
    ═══════════════════════════════════════════════════════════════ */
 
 const SLIDES: React.FC[] = [
-  SlideTitle,
-  SlideAboutMe,
-  SlideProblem,
-  SlideThreeApproaches,
-  SlideMetahumanHow,
-  SlideMetahumanDemo,
-  SlideGenerativeHow,
-  SlideGenerativeResearch,
-  SlideGenerativeDemo,
-  SlideGaussianHow,
-  SlideGaussianPerf,
-  SlideGaussianDemo,
-  SlideComparison,
-  SlideConvergence,
-  SlideThankYou,
+  SlideTitle,                 // 1
+  SlideAboutMe,               // 2
+  SlideProblem,               // 3
+  SlideThreeApproaches,       // 4
+  SlideMetahumanHow,          // 5
+  SlideMetahumanMechanism,    // 6  NEW
+  SlideMetahumanDemo,         // 7
+  SlideGenerativeHow,         // 8
+  SlideGenerativeMechanism,   // 9  NEW
+  SlideGenerativeResearch,    // 10
+  SlideGenerativeDemo,        // 11
+  SlideGaussianHow,           // 12
+  SlideGaussianMechanism,     // 13 NEW
+  SlideGaussianCovariance,    // 14 NEW
+  SlideGaussianPerf,          // 15
+  SlideGaussianDemo,          // 16
+  SlideStreamingArchitecture, // 17 NEW
+  SlideComparison,            // 18
+  SlideE2EPipeline,           // 19 NEW
+  SlideConvergence,           // 20
+  SlideThankYou,              // 21
 ];
 
 /* ═══════════════════════════════════════════════════════════════
@@ -871,7 +1391,11 @@ export default function SlidesPage() {
       switch (e.key) {
         case 'ArrowRight':
         case 'ArrowDown':
+          e.preventDefault();
+          next();
+          break;
         case ' ':
+          if (e.target instanceof HTMLButtonElement) return;
           e.preventDefault();
           next();
           break;
