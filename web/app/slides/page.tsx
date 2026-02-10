@@ -22,6 +22,7 @@ import {
   Gamepad2,
   Headset,
   BookOpen,
+  Palette,
   Users,
   ChevronRight,
 } from 'lucide-react';
@@ -75,6 +76,7 @@ function SlideAboutMe() {
     { icon: Headset, text: 'Co-founded UnrealLight Digital Tech for VR (2015-2017)' },
     { icon: GraduationCap, text: 'Pursuing MCIT at University of Pennsylvania' },
     { icon: BookOpen, text: 'Psychology background (M.Ed + B.S., East China Normal University)' },
+    { icon: Palette, text: 'Art background — painting, digital media, and creative expression' },
   ];
 
   return (
@@ -96,6 +98,11 @@ function SlideAboutMe() {
           <p className="text-[#a8a29e] text-sm">PajamaDot / Cogix</p>
         </div>
       </div>
+      <p className="text-[#a8a29e] text-sm italic mb-8 max-w-xl">
+        At the intersection of computer science, psychology, and art — building
+        intelligent tools for human behavior research, interactive storytelling,
+        and creative expression.
+      </p>
       <ul className="space-y-4">
         {experiences.map((item, i) => (
           <li key={i} className="flex items-start gap-3">
