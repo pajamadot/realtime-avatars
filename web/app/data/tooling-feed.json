@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-09T11:01:55.611Z",
+  "updatedAt": "2026-02-10T11:07:25.037Z",
   "source": "GitHub Search",
   "queries": {
     "metahuman": {
@@ -35,7 +35,7 @@
           "link": "https://github.com/poly-hammer/meta-human-dna-addon",
           "description": "Imports MetaHuman head and body components into Blender from a their DNA files, lets you customize them, then send them back to MetaHuman Creator.",
           "stars": 204,
-          "pushedAt": "2026-02-05T20:10:51.000Z",
+          "pushedAt": "2026-02-09T14:51:14.000Z",
           "language": "Python"
         },
         {
@@ -104,7 +104,7 @@
           "name": "OpenTalker/video-retalking",
           "link": "https://github.com/OpenTalker/video-retalking",
           "description": "[SIGGRAPH Asia 2022] VideoReTalking: Audio-based Lip Synchronization for Talking Head Video Editing In the Wild",
-          "stars": 7213,
+          "stars": 7214,
           "pushedAt": "2024-08-05T05:59:59.000Z",
           "language": "Python"
         },
@@ -112,8 +112,8 @@
           "name": "Kedreamix/Linly-Talker",
           "link": "https://github.com/Kedreamix/Linly-Talker",
           "description": "Digital Avatar Conversational System - Linly-Talker.  Linly-Talker is an intelligent AI system that combines large language models (LLMs) with visual models to create a novel human-AI interaction method.  It integrates various technologies like Whisper, Linly, Microsoft Speech Services, and SadTalker talking head generation system. ",
-          "stars": 3127,
-          "pushedAt": "2025-02-24T05:40:05.000Z",
+          "stars": 3129,
+          "pushedAt": "2026-02-10T05:17:05.000Z",
           "language": "Python"
         },
         {
@@ -160,7 +160,7 @@
           "name": "ZiqiaoPeng/SyncTalk",
           "link": "https://github.com/ZiqiaoPeng/SyncTalk",
           "description": "[CVPR 2024] This is the official source for our paper \"SyncTalk: The Devil is in the Synchronization for Talking Head Synthesis\"",
-          "stars": 1611,
+          "stars": 1612,
           "pushedAt": "2025-09-18T15:00:06.000Z",
           "language": "Python"
         },
@@ -168,7 +168,7 @@
           "name": "Kedreamix/Awesome-Talking-Head-Synthesis",
           "link": "https://github.com/Kedreamix/Awesome-Talking-Head-Synthesis",
           "description": " An extensive collection of exceptional resources dedicated to the captivating world of talking face synthesis!  If you find this repo useful, please give it a star! ",
-          "stars": 1438,
+          "stars": 1437,
           "pushedAt": "2025-11-06T07:49:03.000Z",
           "language": ""
         }
@@ -182,7 +182,7 @@
           "name": "graphdeco-inria/gaussian-splatting",
           "link": "https://github.com/graphdeco-inria/gaussian-splatting",
           "description": "Original reference implementation of \"3D Gaussian Splatting for Real-Time Radiance Field Rendering\"",
-          "stars": 20632,
+          "stars": 20640,
           "pushedAt": "2025-10-17T14:28:15.000Z",
           "language": "Python"
         },
@@ -190,7 +190,7 @@
           "name": "MrNeRF/awesome-3D-gaussian-splatting",
           "link": "https://github.com/MrNeRF/awesome-3D-gaussian-splatting",
           "description": "Curated list of papers and resources focused on 3D Gaussian Splatting, intended to keep pace with the anticipated surge of research in the coming months.",
-          "stars": 8301,
+          "stars": 8305,
           "pushedAt": "2026-01-07T20:53:43.000Z",
           "language": "HTML"
         },
@@ -198,7 +198,7 @@
           "name": "nerfstudio-project/gsplat",
           "link": "https://github.com/nerfstudio-project/gsplat",
           "description": "CUDA accelerated rasterization of gaussian splatting",
-          "stars": 4470,
+          "stars": 4481,
           "pushedAt": "2026-01-28T01:39:03.000Z",
           "language": "Python"
         },
@@ -206,7 +206,7 @@
           "name": "dreamgaussian/dreamgaussian",
           "link": "https://github.com/dreamgaussian/dreamgaussian",
           "description": "[ICLR 2024 Oral] Generative Gaussian Splatting for Efficient 3D Content Creation",
-          "stars": 4288,
+          "stars": 4287,
           "pushedAt": "2024-01-02T04:12:09.000Z",
           "language": "Python"
         },
@@ -214,7 +214,7 @@
           "name": "playcanvas/supersplat",
           "link": "https://github.com/playcanvas/supersplat",
           "description": "3D Gaussian Splat Editor",
-          "stars": 3573,
+          "stars": 3579,
           "pushedAt": "2026-02-04T14:25:12.000Z",
           "language": "TypeScript"
         },
@@ -222,7 +222,7 @@
           "name": "hustvl/4DGaussians",
           "link": "https://github.com/hustvl/4DGaussians",
           "description": "[CVPR 2024] 4D Gaussian Splatting for Real-Time Dynamic Scene Rendering",
-          "stars": 3370,
+          "stars": 3372,
           "pushedAt": "2024-10-27T04:07:37.000Z",
           "language": "Jupyter Notebook"
         },
@@ -230,7 +230,7 @@
           "name": "Anttwo/SuGaR",
           "link": "https://github.com/Anttwo/SuGaR",
           "description": "[CVPR 2024] Official PyTorch implementation of SuGaR: Surface-Aligned Gaussian Splatting for Efficient 3D Mesh Reconstruction and High-Quality Mesh Rendering",
-          "stars": 3193,
+          "stars": 3195,
           "pushedAt": "2024-09-24T15:13:31.000Z",
           "language": "C++"
         },
@@ -238,7 +238,7 @@
           "name": "aras-p/UnityGaussianSplatting",
           "link": "https://github.com/aras-p/UnityGaussianSplatting",
           "description": "Toy Gaussian Splatting visualization in Unity",
-          "stars": 3105,
+          "stars": 3108,
           "pushedAt": "2025-10-17T07:21:38.000Z",
           "language": "C#"
         },
@@ -246,7 +246,7 @@
           "name": "hbb1/2d-gaussian-splatting",
           "link": "https://github.com/hbb1/2d-gaussian-splatting",
           "description": "[SIGGRAPH'24] 2D Gaussian Splatting for Geometrically Accurate Radiance Fields",
-          "stars": 3035,
+          "stars": 3036,
           "pushedAt": "2025-11-24T15:26:53.000Z",
           "language": "Python"
         },
@@ -254,7 +254,7 @@
           "name": "antimatter15/splat",
           "link": "https://github.com/antimatter15/splat",
           "description": "WebGL 3D Gaussian Splat Viewer",
-          "stars": 2877,
+          "stars": 2879,
           "pushedAt": "2025-11-16T20:20:59.000Z",
           "language": "JavaScript"
         }
