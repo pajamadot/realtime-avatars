@@ -113,7 +113,7 @@ function SlideTitle() {
         className="w-16 h-1 rounded-full mb-8"
         style={{ background: METHOD_COLORS.gaussian }}
       />
-      <h1 className="text-5xl sm:text-6xl font-bold tracking-tight leading-tight mb-6 text-white">
+      <h1 className="text-5xl sm:text-6xl font-bold tracking-tight leading-tight mb-6">
         Real-Time Digital Avatars:
         <br />
         <span style={{ color: METHOD_COLORS.gaussian }}>
@@ -144,7 +144,7 @@ function SlideAboutMe() {
 
   return (
     <div className="flex flex-col justify-center h-full px-8 max-w-3xl mx-auto">
-      <h2 className="text-4xl font-bold mb-2 text-white">About Me</h2>
+      <h2 className="text-4xl font-bold mb-2">About Me</h2>
       <div
         className="w-14 h-1 rounded-full mb-8"
         style={{ background: METHOD_COLORS.gaussian }}
@@ -157,7 +157,7 @@ function SlideAboutMe() {
           <User size={28} style={{ color: METHOD_COLORS.gaussian }} />
         </div>
         <div>
-          <h3 className="text-2xl font-semibold text-white">Yuntian Chai</h3>
+          <h3 className="text-2xl font-semibold">Yuntian Chai</h3>
           <p className="text-[#bdb8af] text-sm">PajamaDot / Cogix</p>
         </div>
       </div>
@@ -192,7 +192,7 @@ function SlideProblem() {
 
   return (
     <div className="flex flex-col justify-center h-full px-8 max-w-4xl mx-auto">
-      <h2 className="text-4xl font-bold mb-2 text-white">Why Real-Time Avatars?</h2>
+      <h2 className="text-4xl font-bold mb-2">Why Real-Time Avatars?</h2>
       <div
         className="w-14 h-1 rounded-full mb-8"
         style={{ background: METHOD_COLORS.gaussian }}
@@ -204,13 +204,13 @@ function SlideProblem() {
             className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]"
           >
             <uc.icon size={24} className="mb-3" style={{ color: METHOD_COLORS.gaussian }} />
-            <h3 className="text-lg font-semibold mb-1 text-white">{uc.label}</h3>
+            <h3 className="text-lg font-semibold mb-1">{uc.label}</h3>
             <p className="text-sm text-[#bdb8af]">{uc.desc}</p>
           </div>
         ))}
       </div>
       <div className="rounded-xl border border-[#3d3a36] bg-[#1d1c1a] p-5">
-        <h3 className="text-lg font-semibold mb-3 text-white">The Core Challenge</h3>
+        <h3 className="text-lg font-semibold mb-3">The Core Challenge</h3>
         <p className="text-[#bdb8af]">
           Balance visual realism, low latency, controllability, and deployment
           cost -- no single approach dominates all four.
@@ -247,7 +247,7 @@ function SlideThreeApproaches() {
 
   return (
     <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
-      <h2 className="text-4xl font-bold mb-2 text-white">Three Approaches</h2>
+      <h2 className="text-4xl font-bold mb-2">Three Approaches</h2>
       <div
         className="w-14 h-1 rounded-full mb-10"
         style={{ background: METHOD_COLORS.gaussian }}
@@ -299,7 +299,7 @@ function SlideMetahumanHow() {
           MetaHuman
         </span>
       </div>
-      <h2 className="text-4xl font-bold mb-2 text-white">How It Works</h2>
+      <h2 className="text-4xl font-bold mb-2">How It Works</h2>
       <div
         className="w-14 h-1 rounded-full mb-8"
         style={{ background: METHOD_COLORS.metahuman }}
@@ -354,7 +354,7 @@ function SlideMetahumanMechanism() {
   return (
     <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
       <SlideMethodBadge method="MetaHuman" color={METHOD_COLORS.metahuman} />
-      <h2 className="text-3xl font-bold mb-2 text-white">Blendshapes & Facial Rigging</h2>
+      <h2 className="text-3xl font-bold mb-2">Blendshapes & Facial Rigging</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.metahuman }} />
 
       {/* Formula */}
@@ -424,7 +424,7 @@ function SlideMetahumanDemo() {
           MetaHuman Demo
         </span>
       </div>
-      <h2 className="text-3xl font-bold mb-1 text-white">Live Demo: Rapport MetaHuman</h2>
+      <h2 className="text-3xl font-bold mb-1">Live Demo: Rapport MetaHuman</h2>
       <p className="text-[#bdb8af] text-sm mb-6">
         Cloud-rendered Unreal Engine avatar via pixel streaming
       </p>
@@ -468,7 +468,7 @@ function SlideGenerativeHow() {
           Video Generation
         </span>
       </div>
-      <h2 className="text-4xl font-bold mb-2 text-white">How It Works</h2>
+      <h2 className="text-4xl font-bold mb-2">How It Works</h2>
       <div
         className="w-14 h-1 rounded-full mb-6"
         style={{ background: METHOD_COLORS.generative }}
@@ -526,7 +526,7 @@ function SlideGenerativeMechanism() {
   return (
     <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
       <SlideMethodBadge method="Video Generation" color={METHOD_COLORS.generative} />
-      <h2 className="text-3xl font-bold mb-2 text-white">The Denoising Process</h2>
+      <h2 className="text-3xl font-bold mb-2">The Denoising Process</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.generative }} />
 
       {/* DDPM reverse step formula */}
@@ -633,7 +633,7 @@ function SlideGenerativeResearch() {
           Video Generation
         </span>
       </div>
-      <h2 className="text-4xl font-bold mb-2 text-white">Research Frontier</h2>
+      <h2 className="text-4xl font-bold mb-2">Research Frontier</h2>
       <div
         className="w-14 h-1 rounded-full mb-8"
         style={{ background: METHOD_COLORS.generative }}
@@ -683,7 +683,7 @@ function SlideGenerativeDemo() {
           Video Generation Demo
         </span>
       </div>
-      <h2 className="text-3xl font-bold mb-1 text-white">Live Demo: LiveKit + Hedra</h2>
+      <h2 className="text-3xl font-bold mb-1">Live Demo: LiveKit + Hedra</h2>
       <p className="text-[#bdb8af] text-sm mb-8 max-w-lg">
         Diffusion-based avatar streamed via WebRTC
       </p>
@@ -720,7 +720,7 @@ function SlideGaussianHow() {
           Gaussian Splatting
         </span>
       </div>
-      <h2 className="text-4xl font-bold mb-2 text-white">How It Works</h2>
+      <h2 className="text-4xl font-bold mb-2">How It Works</h2>
       <div
         className="w-14 h-1 rounded-full mb-8"
         style={{ background: METHOD_COLORS.gaussian }}
@@ -729,7 +729,7 @@ function SlideGaussianHow() {
       {/* Traditional vs One-shot */}
       <div className="grid grid-cols-2 gap-6 mb-8">
         <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]">
-          <h3 className="text-lg font-semibold mb-3 text-white">Traditional</h3>
+          <h3 className="text-lg font-semibold mb-3">Traditional</h3>
           <ul className="space-y-2 text-sm text-[#bdb8af]">
             <li className="flex items-center gap-2">
               <ChevronRight size={14} style={{ color: METHOD_COLORS.gaussian }} />
@@ -797,7 +797,7 @@ function SlideGaussianMechanism() {
   return (
     <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
       <SlideMethodBadge method="Gaussian Splatting" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-3xl font-bold mb-2 text-white">From Points to Splats</h2>
+      <h2 className="text-3xl font-bold mb-2">From Points to Splats</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
 
       {/* Gaussian function formula */}
@@ -877,7 +877,7 @@ function SlideGaussianCovariance() {
   return (
     <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
       <SlideMethodBadge method="Gaussian Splatting" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-3xl font-bold mb-2 text-white">Covariance & Shape Control</h2>
+      <h2 className="text-3xl font-bold mb-2">Covariance & Shape Control</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
 
       {/* Covariance decomposition formula */}
@@ -961,7 +961,7 @@ function SlideGaussianPerf() {
           Gaussian Splatting
         </span>
       </div>
-      <h2 className="text-4xl font-bold mb-2 text-white">Performance</h2>
+      <h2 className="text-4xl font-bold mb-2">Performance</h2>
       <div
         className="w-14 h-1 rounded-full mb-8"
         style={{ background: METHOD_COLORS.gaussian }}
@@ -1003,7 +1003,7 @@ function SlideGaussianDemo() {
           Gaussian Splatting Demo
         </span>
       </div>
-      <h2 className="text-3xl font-bold mb-1 text-white">Live Demo: OpenAvatarChat + LAM</h2>
+      <h2 className="text-3xl font-bold mb-1">Live Demo: OpenAvatarChat + LAM</h2>
       <p className="text-[#bdb8af] text-sm mb-8 max-w-lg">
         Self-hosted Gaussian avatar with real-time conversation
       </p>
@@ -1032,7 +1032,7 @@ function SlideStreamingArchitecture() {
   return (
     <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
       <SlideMethodBadge method="Streaming" label="Streaming" color={METHOD_COLORS.generative} />
-      <h2 className="text-3xl font-bold mb-2 text-white">How It Reaches the User</h2>
+      <h2 className="text-3xl font-bold mb-2">How It Reaches the User</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.generative }} />
 
       {/* Connection formulas comparison */}
@@ -1111,7 +1111,7 @@ function SlideComparison() {
 
   return (
     <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
-      <h2 className="text-4xl font-bold mb-2 text-white">Comparison</h2>
+      <h2 className="text-4xl font-bold mb-2">Comparison</h2>
       <div
         className="w-14 h-1 rounded-full mb-8"
         style={{ background: METHOD_COLORS.gaussian }}
@@ -1167,7 +1167,7 @@ function SlideE2EPipeline() {
   return (
     <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
       <SlideMethodBadge method="End-to-End" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-3xl font-bold mb-2 text-white">The Full Loop</h2>
+      <h2 className="text-3xl font-bold mb-2">The Full Loop</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
       {/* Formula + latency breakdown side by side */}
@@ -1248,7 +1248,7 @@ function SlideConvergence() {
 
   return (
     <div className="flex flex-col justify-center h-full px-8 max-w-4xl mx-auto">
-      <h2 className="text-4xl font-bold mb-2 text-white">Convergence & Future</h2>
+      <h2 className="text-4xl font-bold mb-2">Convergence & Future</h2>
       <div
         className="w-14 h-1 rounded-full mb-6"
         style={{ background: METHOD_COLORS.gaussian }}
@@ -1275,7 +1275,7 @@ function SlideConvergence() {
 function SlideThankYou() {
   return (
     <div className="flex flex-col items-center justify-center h-full text-center px-8">
-      <h2 className="text-5xl sm:text-6xl font-bold mb-8 text-white">Thank You</h2>
+      <h2 className="text-5xl sm:text-6xl font-bold mb-8">Thank You</h2>
       <div
         className="w-16 h-1 rounded-full mb-10"
         style={{ background: METHOD_COLORS.gaussian }}
@@ -1479,8 +1479,9 @@ export default function SlidesPage() {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 bg-[#111110] text-[#f5f2ec] flex flex-col select-none overflow-hidden"
+      className="slides-root fixed inset-0 bg-[#111110] text-[#f5f2ec] flex flex-col select-none overflow-hidden"
     >
+      <style>{`.slides-root h1,.slides-root h2,.slides-root h3,.slides-root h4{color:#ffffff}`}</style>
       {/* Top bar */}
       <div className="flex items-center justify-between px-4 py-2 z-10 flex-shrink-0">
         <Link
