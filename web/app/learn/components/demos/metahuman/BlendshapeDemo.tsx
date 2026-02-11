@@ -1,9 +1,12 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback, useMemo, Suspense } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { useGLTF, OrbitControls } from '@react-three/drei';
+import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js';
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 
 // ═════════════════════════════════════════════════════════════════════════════
 // ARKit 52 Blendshape Playground — Real 3D Face
@@ -122,12 +125,21 @@ function toMorphName(name: string): string {
 // ═══ 3D Face Model ═══════════════════════════════════════════════════════════
 
 const MODEL_PATH = '/models/facecap.glb';
+const BASIS_PATH = 'https://cdn.jsdelivr.net/gh/pmndrs/drei-assets/basis/';
 
 function FaceModel({ weightsRef }: { weightsRef: React.MutableRefObject<Record<string, number>> }) {
-  const { scene } = useGLTF(MODEL_PATH);
+  const gl = useThree(s => s.gl);
+
+  const gltf = useLoader(GLTFLoader, MODEL_PATH, (loader) => {
+    const ktx2 = new KTX2Loader();
+    ktx2.setTranscoderPath(BASIS_PATH);
+    ktx2.detectSupport(gl);
+    loader.setKTX2Loader(ktx2);
+    loader.setMeshoptDecoder(MeshoptDecoder);
+  });
+
   const cloned = useMemo(() => {
-    const s = scene.clone(true);
-    // Ensure all meshes have proper materials for dark background
+    const s = gltf.scene.clone(true);
     s.traverse((child) => {
       const mesh = child as THREE.Mesh;
       if (mesh.isMesh && mesh.material) {
@@ -140,7 +152,7 @@ function FaceModel({ weightsRef }: { weightsRef: React.MutableRefObject<Record<s
       }
     });
     return s;
-  }, [scene]);
+  }, [gltf.scene]);
 
   const faceMeshRef = useRef<THREE.Mesh | null>(null);
 
@@ -173,7 +185,6 @@ function FaceModel({ weightsRef }: { weightsRef: React.MutableRefObject<Record<s
   );
 }
 
-useGLTF.preload(MODEL_PATH);
 
 function SceneLighting() {
   return (
