@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-09T06:31:29.234Z",
+  "updatedAt": "2026-02-11T10:57:47.506Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -129,6 +129,37 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "Toward Fine-Grained Facial Control in 3D Talking Head Generation",
+          "link": "https://arxiv.org/abs/2602.09736v1",
+          "published": "2026-02-10T12:49:50.000Z",
+          "authors": "Shaoyang Xie",
+          "summary": "Audio-driven talking head generation is a core component of digital avatars, and 3D Gaussian Splatting has shown strong performance in real-time rendering of high-fidelity talking heads. However, achieving precise control over fine-grained facial movements remains a significan...",
+          "tags": [
+            "audio-driven",
+            "gaussian",
+            "real-time"
+          ]
+        },
+        {
+          "title": "AUHead: Realistic Emotional Talking Head Generation via Action Units Control",
+          "link": "https://arxiv.org/abs/2602.09534v1",
+          "published": "2026-02-10T08:45:51.000Z",
+          "authors": "Jiayi Lyu",
+          "summary": "Realistic talking-head video generation is critical for virtual avatars, film production, and interactive systems. Current methods struggle with nuanced emotional expressions due to the lack of fine-grained emotion control. To address this issue, we introduce a novel two-stage...",
+          "tags": []
+        },
+        {
+          "title": "SoulX-FlashHead: Oracle-guided Generation of Infinite Real-time Streaming Talking Heads",
+          "link": "https://arxiv.org/abs/2602.07449v2",
+          "published": "2026-02-07T08:58:16.000Z",
+          "authors": "Tan Yu",
+          "summary": "Achieving a balance between high-fidelity visual quality and low-latency streaming remains a formidable challenge in audio-driven portrait generation. Existing large-scale models often suffer from prohibitive computational costs, while lightweight alternatives typically compro...",
+          "tags": [
+            "audio-driven",
+            "real-time"
+          ]
+        },
+        {
           "title": "EditYourself: Audio-Driven Generation and Manipulation of Talking Head Videos with Diffusion Transformers",
           "link": "https://arxiv.org/abs/2601.22127v1",
           "published": "2026-01-29T18:49:27.000Z",
@@ -222,47 +253,25 @@
           "tags": [
             "lip-sync"
           ]
-        },
-        {
-          "title": "Knot Forcing: Taming Autoregressive Video Diffusion Models for Real-time Infinite Interactive Portrait Animation",
-          "link": "https://arxiv.org/abs/2512.21734v2",
-          "published": "2025-12-25T16:34:56.000Z",
-          "authors": "Steven Xiao",
-          "summary": "Real-time portrait animation is essential for interactive applications such as virtual assistants and live avatars, requiring high visual fidelity, temporal coherence, ultra-low latency, and responsive control from dynamic inputs like reference images and driving signals. Whil...",
-          "tags": [
-            "diffusion",
-            "real-time"
-          ]
-        },
-        {
-          "title": "FlexAvatar: Flexible Large Reconstruction Model for Animatable Gaussian Head Avatars with Detailed Deformation",
-          "link": "https://arxiv.org/abs/2512.17717v1",
-          "published": "2025-12-19T15:51:44.000Z",
-          "authors": "Cheng Peng",
-          "summary": "We present FlexAvatar, a flexible large reconstruction model for high-fidelity 3D head avatars with detailed dynamic deformation from single or sparse images, without requiring camera poses or expression labels. It leverages a transformer-based reconstruction model with struct...",
-          "tags": [
-            "gaussian",
-            "transformer"
-          ]
-        },
-        {
-          "title": "SynergyWarpNet: Attention-Guided Cooperative Warping for Neural Portrait Animation",
-          "link": "https://arxiv.org/abs/2512.17331v1",
-          "published": "2025-12-19T08:21:23.000Z",
-          "authors": "Shihang Li",
-          "summary": "Recent advances in neural portrait animation have demonstrated remarked potential for applications in virtual avatars, telepresence, and digital content creation. However, traditional explicit warping approaches often struggle with accurate motion transfer or recovering missin...",
-          "tags": [
-            "diffusion",
-            "telepresence",
-            "transformer"
-          ]
         }
       ]
     },
     "gaussian": {
       "label": "Gaussian Splatting (3DGS)",
-      "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head))",
+      "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "Toward Fine-Grained Facial Control in 3D Talking Head Generation",
+          "link": "https://arxiv.org/abs/2602.09736v1",
+          "published": "2026-02-10T12:49:50.000Z",
+          "authors": "Shaoyang Xie",
+          "summary": "Audio-driven talking head generation is a core component of digital avatars, and 3D Gaussian Splatting has shown strong performance in real-time rendering of high-fidelity talking heads. However, achieving precise control over fine-grained facial movements remains a significan...",
+          "tags": [
+            "audio-driven",
+            "gaussian",
+            "real-time"
+          ]
+        },
         {
           "title": "Uncertainty-Aware 4D Gaussian Splatting for Monocular Occluded Human Rendering",
           "link": "https://arxiv.org/abs/2602.06343v1",
@@ -315,11 +324,33 @@
           ]
         },
         {
+          "title": "Lightweight High-Fidelity Low-Bitrate Talking Face Compression for 3D Video Conference",
+          "link": "https://arxiv.org/abs/2601.21269v1",
+          "published": "2026-01-29T05:03:29.000Z",
+          "authors": "Jianglong Li",
+          "summary": "The demand for immersive and interactive communication has driven advancements in 3D video conferencing, yet achieving high-fidelity 3D talking face representation at low bitrates remains a challenge. Traditional 2D video compression techniques fail to preserve fine-grained ge...",
+          "tags": [
+            "compression",
+            "diffusion",
+            "telepresence"
+          ]
+        },
+        {
           "title": "Splat-Portrait: Generalizing Talking Heads with Gaussian Splatting",
           "link": "https://arxiv.org/abs/2601.18633v1",
           "published": "2026-01-26T16:06:57.000Z",
           "authors": "Tong Shi",
           "summary": "Talking Head Generation aims at synthesizing natural-looking talking videos from speech and a single portrait image. Previous 3D talking head generation methods have relied on domain-specific heuristics such as warping-based facial motion representation priors to animate talki...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
+          "title": "EVolSplat4D: Efficient Volume-based Gaussian Splatting for 4D Urban Scene Synthesis",
+          "link": "https://arxiv.org/abs/2601.15951v1",
+          "published": "2026-01-22T13:39:29.000Z",
+          "authors": "Sheng Miao",
+          "summary": "Novel view synthesis (NVS) of static and dynamic urban scenes is essential for autonomous driving simulation, yet existing methods often struggle to balance reconstruction time with quality. While state-of-the-art neural radiance fields and 3D Gaussian Splatting approaches ach...",
           "tags": [
             "gaussian"
           ]
@@ -335,6 +366,14 @@
           ]
         },
         {
+          "title": "RSATalker: Realistic Socially-Aware Talking Head Generation for Multi-Turn Conversation",
+          "link": "https://arxiv.org/abs/2601.10606v1",
+          "published": "2026-01-15T17:23:19.000Z",
+          "authors": "Peng Chen",
+          "summary": "Talking head generation is increasingly important in virtual reality (VR), especially for social scenarios involving multi-turn conversation. Existing approaches face notable limitations: mesh-based 3D methods can model dual-person dialogue but lack realistic textures, while l...",
+          "tags": []
+        },
+        {
           "title": "Mon3tr: Monocular 3D Telepresence with Pre-built Gaussian Avatars as Amortization",
           "link": "https://arxiv.org/abs/2601.07518v1",
           "published": "2026-01-12T13:17:41.000Z",
@@ -345,56 +384,24 @@
             "monocular",
             "telepresence"
           ]
-        },
-        {
-          "title": "LayerGS: Decomposition and Inpainting of Layered 3D Human Avatars via 2D Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2601.05853v1",
-          "published": "2026-01-09T15:30:12.000Z",
-          "authors": "Yinghan Xu",
-          "summary": "We propose a novel framework for decomposing arbitrarily posed humans into animatable multi-layered 3D human avatars, separating the body and garments. Conventional single-layer reconstruction methods lock clothing to one identity, while prior multi-layer approaches struggle w...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "GaussianSwap: Animatable Video Face Swapping with 3D Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2601.05511v1",
-          "published": "2026-01-09T03:39:29.000Z",
-          "authors": "Xuan Cheng",
-          "summary": "We introduce GaussianSwap, a novel video face swapping framework that constructs a 3D Gaussian Splatting based face avatar from a target video while transferring identity from a source image to the avatar. Conventional video swapping frameworks are limited to generating facial...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "RelightAnyone: A Generalized Relightable 3D Gaussian Head Model",
-          "link": "https://arxiv.org/abs/2601.03357v1",
-          "published": "2026-01-06T19:01:07.000Z",
-          "authors": "Yingyan Xu",
-          "summary": "3D Gaussian Splatting (3DGS) has become a standard approach to reconstruct and render photorealistic 3D head avatars. A major challenge is to relight the avatars to match any scene illumination. For high quality relighting, existing methods require subjects to be captured unde...",
-          "tags": [
-            "gaussian",
-            "relighting"
-          ]
-        },
-        {
-          "title": "HeadLighter: Disentangling Illumination in Generative 3D Gaussian Heads via Lightstage Captures",
-          "link": "https://arxiv.org/abs/2601.02103v2",
-          "published": "2026-01-05T13:32:37.000Z",
-          "authors": "Yating Wang",
-          "summary": "Recent 3D-aware head generative models based on 3D Gaussian Splatting achieve real-time, photorealistic and view-consistent head synthesis. However, a fundamental limitation persists: the deep entanglement of illumination and intrinsic appearance prevents controllable relighti...",
-          "tags": [
-            "gaussian",
-            "real-time",
-            "relighting"
-          ]
         }
       ]
     },
     "streaming": {
-      "label": "Streaming Avatars / Infrastructure",
+      "label": "Video Generation / Infrastructure",
       "query": "(cat:cs.NI OR cat:cs.CV) AND (all:webrtc AND (all:streaming OR all:low-latency OR all:conference OR all:sfu OR all:telepresence OR all:avatar))",
       "items": [
+        {
+          "title": "Lightweight Call Signaling and Peer-to-Peer Control of WebRTC Video Conferencing",
+          "link": "https://arxiv.org/abs/2602.08975v1",
+          "published": "2026-02-09T18:16:37.000Z",
+          "authors": "Kundan Singh",
+          "summary": "We present the software architecture and implementation of our web-based multiparty video conference application. It does not use a media server. For call signaling, it either piggybacks on existing push notifications via a lightweight notification server, or utilizes email me...",
+          "tags": [
+            "telepresence",
+            "webrtc"
+          ]
+        },
         {
           "title": "Mon3tr: Monocular 3D Telepresence with Pre-built Gaussian Avatars as Amortization",
           "link": "https://arxiv.org/abs/2601.07518v1",
@@ -467,17 +474,6 @@
           "published": "2022-06-26T01:51:30.000Z",
           "authors": "Thomas Sandholm",
           "summary": "We present a novel WebRTC communication system capable of hosting multi-party audio and video conferencing sessions without a media server. We implement various communication models based on the needs and capabilities of the communicating parties, and show that we can construc...",
-          "tags": [
-            "telepresence",
-            "webrtc"
-          ]
-        },
-        {
-          "title": "fybrrStream: A WebRTC based Efficient and Scalable P2P Live Streaming Platform",
-          "link": "https://arxiv.org/abs/2105.07558v1",
-          "published": "2021-05-17T00:55:31.000Z",
-          "authors": "Debajyoti Halder",
-          "summary": "The demand for streaming media and live video conferencing is at peak and expected to grow further, thereby the need for low-cost streaming services with better quality and lower latency is essential. Therefore, in this paper, we propose a novel peer-to-peer (P2P) live streami...",
           "tags": [
             "telepresence",
             "webrtc"
