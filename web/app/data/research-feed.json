@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-11T10:57:47.506Z",
+  "updatedAt": "2026-02-12T10:55:16.742Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -150,7 +150,7 @@
         },
         {
           "title": "SoulX-FlashHead: Oracle-guided Generation of Infinite Real-time Streaming Talking Heads",
-          "link": "https://arxiv.org/abs/2602.07449v2",
+          "link": "https://arxiv.org/abs/2602.07449v3",
           "published": "2026-02-07T08:58:16.000Z",
           "authors": "Tan Yu",
           "summary": "Achieving a balance between high-fidelity visual quality and low-latency streaming remains a formidable challenge in audio-driven portrait generation. Existing large-scale models often suffer from prohibitive computational costs, while lightweight alternatives typically compro...",
@@ -260,6 +260,17 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "ArtisanGS: Interactive Tools for Gaussian Splat Selection with AI and Human in the Loop",
+          "link": "https://arxiv.org/abs/2602.10173v1",
+          "published": "2026-02-10T16:00:03.000Z",
+          "authors": "Clement Fuji Tsang",
+          "summary": "Representation in the family of 3D Gaussian Splats (3DGS) are growing into a viable alternative to traditional graphics for an expanding number of application, including recent techniques that facilitate physics simulation and animation. However, extracting usable objects from...",
+          "tags": [
+            "diffusion",
+            "gaussian"
+          ]
+        },
         {
           "title": "Toward Fine-Grained Facial Control in 3D Talking Head Generation",
           "link": "https://arxiv.org/abs/2602.09736v1",
@@ -372,18 +383,6 @@
           "authors": "Peng Chen",
           "summary": "Talking head generation is increasingly important in virtual reality (VR), especially for social scenarios involving multi-turn conversation. Existing approaches face notable limitations: mesh-based 3D methods can model dual-person dialogue but lack realistic textures, while l...",
           "tags": []
-        },
-        {
-          "title": "Mon3tr: Monocular 3D Telepresence with Pre-built Gaussian Avatars as Amortization",
-          "link": "https://arxiv.org/abs/2601.07518v1",
-          "published": "2026-01-12T13:17:41.000Z",
-          "authors": "Fangyu Lin",
-          "summary": "Immersive telepresence aims to transform human interaction in AR/VR applications by enabling lifelike full-body holographic representations for enhanced remote collaboration. However, existing systems rely on hardware-intensive multi-camera setups and demand high bandwidth for...",
-          "tags": [
-            "gaussian",
-            "monocular",
-            "telepresence"
-          ]
         }
       ]
     },
