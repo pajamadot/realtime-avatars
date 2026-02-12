@@ -179,7 +179,7 @@ function FaceModel({ weightsRef }: { weightsRef: React.MutableRefObject<Record<s
   });
 
   return (
-    <group position={[0, -1.55, 0]}>
+    <group position={[0, -1.65, 0.1]}>
       <primitive object={cloned} />
     </group>
   );
@@ -280,7 +280,7 @@ export function BlendshapeDemo() {
               </div>
             }>
               <Canvas
-                camera={{ position: [0, 0, 2.2], fov: 30 }}
+                camera={{ position: [0, 0.05, 1.5], fov: 28 }}
                 gl={{ antialias: true, alpha: false }}
                 style={{ background: '#0f0f1a' }}
               >
@@ -288,6 +288,7 @@ export function BlendshapeDemo() {
                 <SceneLighting />
                 <FaceModel weightsRef={weightsRef} />
                 <OrbitControls
+                  target={[0, 0.05, 0]}
                   enableZoom={false}
                   enablePan={false}
                   minPolarAngle={Math.PI / 3}
