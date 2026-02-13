@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-12T10:55:16.742Z",
+  "updatedAt": "2026-02-13T10:51:06.865Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -129,6 +129,17 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "OMEGA-Avatar: One-shot Modeling of 360° Gaussian Avatars",
+          "link": "https://arxiv.org/abs/2602.11693v1",
+          "published": "2026-02-12T08:16:38.000Z",
+          "authors": "Zehao Xia",
+          "summary": "Creating high-fidelity, animatable 3D avatars from a single image remains a formidable challenge. We identified three desirable attributes of avatar generation: 1) the method should be feed-forward, 2) model a 360° full-head, and 3) should be animation-ready. However, current ...",
+          "tags": [
+            "gaussian",
+            "monocular"
+          ]
+        },
+        {
           "title": "Toward Fine-Grained Facial Control in 3D Talking Head Generation",
           "link": "https://arxiv.org/abs/2602.09736v1",
           "published": "2026-02-10T12:49:50.000Z",
@@ -243,16 +254,6 @@
             "audio-driven",
             "lip-sync"
           ]
-        },
-        {
-          "title": "SyncAnyone: Implicit Disentanglement via Progressive Self-Correction for Lip-Syncing in the wild",
-          "link": "https://arxiv.org/abs/2512.21736v3",
-          "published": "2025-12-25T16:49:40.000Z",
-          "authors": "Xindi Zhang",
-          "summary": "High-quality AI-powered video dubbing demands precise audio-lip synchronization, high-fidelity visual generation, and faithful preservation of identity and background. Most existing methods rely on a mask-based training strategy, where the mouth region is masked in talking-hea...",
-          "tags": [
-            "lip-sync"
-          ]
         }
       ]
     },
@@ -260,6 +261,27 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "OMEGA-Avatar: One-shot Modeling of 360° Gaussian Avatars",
+          "link": "https://arxiv.org/abs/2602.11693v1",
+          "published": "2026-02-12T08:16:38.000Z",
+          "authors": "Zehao Xia",
+          "summary": "Creating high-fidelity, animatable 3D avatars from a single image remains a formidable challenge. We identified three desirable attributes of avatar generation: 1) the method should be feed-forward, 2) model a 360° full-head, and 3) should be animation-ready. However, current ...",
+          "tags": [
+            "gaussian",
+            "monocular"
+          ]
+        },
+        {
+          "title": "ReaDy-Go: Real-to-Sim Dynamic 3D Gaussian Splatting Simulation for Environment-Specific Visual Navigation with Moving Obstacles",
+          "link": "https://arxiv.org/abs/2602.11575v1",
+          "published": "2026-02-12T04:48:18.000Z",
+          "authors": "Seungyeon Yoo",
+          "summary": "Visual navigation models often struggle in real-world dynamic environments due to limited robustness to the sim-to-real gap and the difficulty of training policies tailored to target deployment environments (e.g., households, restaurants, and factories). Although real-to-sim n...",
+          "tags": [
+            "gaussian"
+          ]
+        },
         {
           "title": "ArtisanGS: Interactive Tools for Gaussian Splat Selection with AI and Human in the Loop",
           "link": "https://arxiv.org/abs/2602.10173v1",
@@ -365,24 +387,6 @@
           "tags": [
             "gaussian"
           ]
-        },
-        {
-          "title": "ICo3D: An Interactive Conversational 3D Virtual Human",
-          "link": "https://arxiv.org/abs/2601.13148v1",
-          "published": "2026-01-19T15:30:08.000Z",
-          "authors": "Richard Shaw",
-          "summary": "This work presents Interactive Conversational 3D Virtual Human (ICo3D), a method for generating an interactive, conversational, and photorealistic 3D human avatar. Based on multi-view captures of a subject, we create an animatable 3D face model and a dynamic 3D body model, bot...",
-          "tags": [
-            "multi-view"
-          ]
-        },
-        {
-          "title": "RSATalker: Realistic Socially-Aware Talking Head Generation for Multi-Turn Conversation",
-          "link": "https://arxiv.org/abs/2601.10606v1",
-          "published": "2026-01-15T17:23:19.000Z",
-          "authors": "Peng Chen",
-          "summary": "Talking head generation is increasingly important in virtual reality (VR), especially for social scenarios involving multi-turn conversation. Existing approaches face notable limitations: mesh-based 3D methods can model dual-person dialogue but lack realistic textures, while l...",
-          "tags": []
         }
       ]
     },
