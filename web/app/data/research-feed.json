@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-13T10:51:06.865Z",
+  "updatedAt": "2026-02-17T10:54:51.139Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -274,7 +274,7 @@
         },
         {
           "title": "ReaDy-Go: Real-to-Sim Dynamic 3D Gaussian Splatting Simulation for Environment-Specific Visual Navigation with Moving Obstacles",
-          "link": "https://arxiv.org/abs/2602.11575v1",
+          "link": "https://arxiv.org/abs/2602.11575v2",
           "published": "2026-02-12T04:48:18.000Z",
           "authors": "Seungyeon Yoo",
           "summary": "Visual navigation models often struggle in real-world dynamic environments due to limited robustness to the sim-to-real gap and the difficulty of training policies tailored to target deployment environments (e.g., households, restaurants, and factories). Although real-to-sim n...",
