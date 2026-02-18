@@ -9,8 +9,10 @@ import LivingResearchFeed from './components/LivingResearchFeed';
 import MobileNav from './components/MobileNav';
 import ReadingProgress from './components/ReadingProgress';
 import RecentPapers from './components/RecentPapers';
+import RootViewToggle from './components/RootViewToggle';
 import ShareButton from './components/ShareButton';
 import ResearchHighlights from './components/ResearchHighlights';
+import ResearchPulse from './components/ResearchPulse';
 import ToolingHighlights from './components/ToolingHighlights';
 import ToolingRadar from './components/ToolingRadar';
 
@@ -38,9 +40,9 @@ const jsonLd = [
       'Comprehensive survey comparing MetaHuman pipelines, video generation, and Gaussian splatting for building interactive digital humans.',
     author: { '@type': 'Organization', name: 'PajamaDot Research' },
     datePublished: '2026-01-01',
-    dateModified: '2026-02-10',
+    dateModified: '2026-02-17',
     inLanguage: 'en',
-    version: '2.1',
+    version: '2.2',
     keywords:
       'real-time avatars, MetaHuman, video generation, Gaussian splatting, digital humans',
   },
@@ -131,6 +133,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <RootViewToggle>
       <ReadingProgress />
       {/* Paper texture overlay */}
       <div className="paper-texture fixed inset-0" />
@@ -163,7 +166,7 @@ export default function Home() {
         {/* Title Section */}
         <article className="mb-12">
           <div className="flex items-center justify-between mb-4">
-            <p className="section-label">Research Survey · Updated February 9, 2026 · ~25 min read</p>
+            <p className="section-label">Research Survey · Updated February 17, 2026 · ~25 min read</p>
             <ShareButton />
           </div>
           <h1 className="text-3xl md:text-4xl font-semibold mb-4 leading-tight text-balance">
@@ -204,6 +207,10 @@ export default function Home() {
             <ResearchHighlights />
             <ToolingHighlights />
           </div>
+        </section>
+
+        <section className="mb-12">
+          <ResearchPulse />
         </section>
 
         {/* Getting Started callout */}
@@ -1905,7 +1912,7 @@ https://realtime-avatars.vercel.app`}
               <a href="#faq" className="footer-text hover:text-[var(--accent)]">FAQ</a>
               <span className="footer-text">·</span>
               <p className="footer-text">
-                PajamaDot Research · v2.1 · February 2026
+                PajamaDot Research · v2.2 · February 2026
               </p>
             </nav>
           </div>
@@ -1913,6 +1920,7 @@ https://realtime-avatars.vercel.app`}
       </footer>
 
       <BackToTop />
+      </RootViewToggle>
     </div>
   );
 }
