@@ -394,7 +394,7 @@ function SlideCogixEyeTrackerPrototype() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Cogix" label="Current Work" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">By Day: Work at Cogix</h2>
+      <h2 className="text-5xl font-bold mb-2">By Day: Building at Cogix</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
       <p className="text-base text-[#c7c2b9] mb-4 max-w-4xl">
@@ -754,7 +754,7 @@ function SlideProblem() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Framing" label="Why Real-time Avatars Now" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">Why Real-time Avatars In The Agent Era?</h2>
+      <h2 className="text-5xl font-bold mb-2">Why Real-time Avatars in the Agent Era?</h2>
       <div
         className="w-14 h-1 rounded-full mb-5"
         style={{ background: METHOD_COLORS.gaussian }}
@@ -946,7 +946,7 @@ function SlideApproachSelectionQuestion() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Bridge" label="From Modality Graph to Rendering Choice" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">Question Before We Pick a Stack</h2>
+      <h2 className="text-5xl font-bold mb-2">Question Before Picking a Stack</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
 
       <div className="rounded-xl p-6 border border-[#3d3a36] bg-[#1d1c1a] mb-5">
@@ -1495,7 +1495,7 @@ function SlideMetahumanDemo() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="MetaHuman Demo" color={METHOD_COLORS.metahuman} />
-      <h2 className="text-5xl font-bold mb-1">Live Demo: Rapport MetaHuman</h2>
+      <h2 className="text-5xl font-bold mb-1">Live Demo: Rapport MetaHuman Avatar</h2>
       <p className="text-[#bdb8af] text-xl mb-6">
         Cloud-rendered Unreal Engine 5.7 avatar via pixel streaming
       </p>
@@ -3845,7 +3845,7 @@ function SlideCapabilityTransition() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-5xl mx-auto text-center">
       <SlideMethodBadge method="Transition" label="From Demos To Decision" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">Before The Capability Matrix</h2>
+      <h2 className="text-5xl font-bold mb-2">Before the Capability Matrix</h2>
       <div className="w-14 h-1 rounded-full mb-6 mx-auto" style={{ background: METHOD_COLORS.gaussian }} />
 
       <p className="text-lg text-[#c7c2b9] mb-6">
@@ -4158,7 +4158,7 @@ function SlideHowToEvolveProject() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Evolution Guide" label="Research + Implementation Loop" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">How To Evolve This Project</h2>
+      <h2 className="text-5xl font-bold mb-2">How to Evolve This Project</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
       <p className="text-base text-[#bdb8af] mb-5">
