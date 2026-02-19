@@ -40,7 +40,7 @@ import gaussianVideoWallData from '../data/gaussian-video-wall.json';
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   CONSTANTS
    鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
-const TOTAL_SLIDES = 32;
+const TOTAL_SLIDES = 31;
 
 function clampSlideNumber(slide: number) {
   if (!Number.isFinite(slide)) return 1;
@@ -70,6 +70,8 @@ const SLIDE_TYPOGRAPHY_CSS = `
   --slide-font-display: "Inter Tight", "Avenir Next", "Segoe UI", sans-serif;
   --slide-font-body: "Inter", "Segoe UI", sans-serif;
   --slide-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  --slide-button-fg: #e8dfd2;
+  --slide-button-fg-hover: #ffffff;
   --slide-type--1: clamp(0.78rem, 0.74rem + 0.18vw, 0.9rem);
   --slide-type-0: clamp(0.9rem, 0.86rem + 0.24vw, 1.02rem);
   --slide-type-1: clamp(1.02rem, 0.95rem + 0.32vw, 1.2rem);
@@ -131,6 +133,16 @@ const SLIDE_TYPOGRAPHY_CSS = `
 .slides-root .slide-content-shell .font-mono {
   font-family: var(--slide-font-mono);
   letter-spacing: -0.01em;
+}
+
+.slides-root button,
+.slides-root a[class*="rounded"] {
+  color: var(--slide-button-fg);
+}
+
+.slides-root button:hover,
+.slides-root a[class*="rounded"]:hover {
+  color: var(--slide-button-fg-hover);
 }
 `;
 
@@ -1095,164 +1107,6 @@ function SlideGaussianCovariance() {
         {/* Demo link */}
         <DemoLink slug="covariance" label="Covariance & Shape" color={METHOD_COLORS.gaussian} />
       </div>
-    </div>
-  );
-}
-
-function SlideGaussianPerf() {
-  const profiles = [
-    { id: 'a100', label: 'A100 Cloud', renderFactor: 1, latencyFactor: 1, memory: '80GB', note: 'Best quality per avatar' },
-    { id: 'rtx4090', label: 'RTX 4090', renderFactor: 0.62, latencyFactor: 1.18, memory: '24GB', note: 'Great single-node deployment' },
-    { id: 'rtx4070', label: 'RTX 4070', renderFactor: 0.38, latencyFactor: 1.45, memory: '12GB', note: 'Lean edge server choice' },
-    { id: 'mobile', label: 'Mobile NPU', renderFactor: 0.2, latencyFactor: 1.8, memory: 'shared', note: 'On-device fallback mode' },
-  ] as const;
-
-  const qualityModes = [
-    { id: 'preview', label: 'Preview', fpsFactor: 1.2, latencyFactor: 0.86 },
-    { id: 'standard', label: 'Standard', fpsFactor: 1, latencyFactor: 1 },
-    { id: 'cinematic', label: 'Cinematic', fpsFactor: 0.74, latencyFactor: 1.25 },
-  ] as const;
-
-  const systems = [
-    { name: 'LAM Renderer', baseFps: 563, note: 'One-shot feed-forward avatar' },
-    { name: 'GaussianTalker', baseFps: 120, note: 'Per-subject optimized model' },
-    { name: 'TaoAvatar', baseFps: 90, note: 'XR-focused full body pipeline' },
-  ] as const;
-
-  const [profileId, setProfileId] = useState<(typeof profiles)[number]['id']>('rtx4090');
-  const [qualityId, setQualityId] = useState<(typeof qualityModes)[number]['id']>('standard');
-  const [sessionCount, setSessionCount] = useState(2);
-
-  const profile = profiles.find((entry) => entry.id === profileId) ?? profiles[0];
-  const quality = qualityModes.find((entry) => entry.id === qualityId) ?? qualityModes[1];
-  const concurrencyPenalty = 1 / (1 + Math.max(0, sessionCount - 1) * 0.22);
-
-  const projected = systems.map((system) => {
-    const fps = Math.max(
-      1,
-      Math.round(system.baseFps * profile.renderFactor * quality.fpsFactor * concurrencyPenalty),
-    );
-    return {
-      ...system,
-      fps,
-      hits30: fps >= 30,
-      hits60: fps >= 60,
-    };
-  });
-
-  const bestFps = Math.max(...projected.map((entry) => entry.fps));
-  const e2eLatencyMs = Math.round(
-    2200 * profile.latencyFactor * quality.latencyFactor * (1 + Math.max(0, sessionCount - 1) * 0.12),
-  );
-  const e2eGrade =
-    e2eLatencyMs <= 1800
-      ? { label: 'Good', color: '#6ec87a' }
-      : e2eLatencyMs <= 2600
-        ? { label: 'Acceptable', color: '#ffd93d' }
-        : { label: 'Slow', color: '#ff6b6b' };
-
-  return (
-    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Gaussian Splatting" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">Performance Planner</h2>
-      <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
-
-      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
-        <p className="text-sm text-[#948d82] mb-3">Tune deployment assumptions and inspect projected runtime behavior.</p>
-        <div className="flex flex-wrap gap-2 mb-3">
-          {profiles.map((entry) => (
-            <button
-              key={entry.id}
-              type="button"
-              onClick={() => setProfileId(entry.id)}
-              className="px-3 py-1.5 rounded-md text-xs font-semibold uppercase tracking-wide border transition-colors"
-              style={{
-                borderColor: profileId === entry.id ? METHOD_COLORS.gaussian : '#3d3a36',
-                color: profileId === entry.id ? METHOD_COLORS.gaussian : '#bdb8af',
-                background: profileId === entry.id ? `${METHOD_COLORS.gaussian}14` : '#181716',
-              }}
-            >
-              {entry.label}
-            </button>
-          ))}
-        </div>
-        <div className="flex flex-wrap gap-2 mb-3">
-          {qualityModes.map((entry) => (
-            <button
-              key={entry.id}
-              type="button"
-              onClick={() => setQualityId(entry.id)}
-              className="px-3 py-1.5 rounded-md text-xs font-semibold border transition-colors"
-              style={{
-                borderColor: qualityId === entry.id ? METHOD_COLORS.gaussian : '#3d3a36',
-                color: qualityId === entry.id ? METHOD_COLORS.gaussian : '#bdb8af',
-                background: qualityId === entry.id ? `${METHOD_COLORS.gaussian}14` : '#181716',
-              }}
-            >
-              {entry.label}
-            </button>
-          ))}
-        </div>
-        <div>
-          <div className="flex items-center justify-between text-[11px] mb-1">
-            <span className="text-[#bdb8af]">Concurrent sessions</span>
-            <span className="font-mono text-[#f5f2ec]">{sessionCount}</span>
-          </div>
-          <input
-            type="range"
-            min={1}
-            max={10}
-            step={1}
-            value={sessionCount}
-            onChange={(e) => setSessionCount(Number(e.target.value))}
-            className="slider"
-            aria-label="Concurrent sessions"
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        <div className="rounded-lg p-3 border border-[#3d3a36] bg-[#1d1c1a]">
-          <div className="text-sm uppercase tracking-widest text-[#948d82]">Best FPS</div>
-          <div className="text-2xl font-bold font-mono" style={{ color: METHOD_COLORS.gaussian }}>{bestFps}</div>
-        </div>
-        <div className="rounded-lg p-3 border border-[#3d3a36] bg-[#1d1c1a]">
-          <div className="text-sm uppercase tracking-widest text-[#948d82]">E2E Conversation</div>
-          <div className="text-2xl font-bold font-mono text-[#f5f2ec]">{e2eLatencyMs}ms</div>
-        </div>
-        <div className="rounded-lg p-3 border border-[#3d3a36] bg-[#1d1c1a]">
-          <div className="text-sm uppercase tracking-widest text-[#948d82]">Grade</div>
-          <div className="text-2xl font-bold font-mono" style={{ color: e2eGrade.color }}>{e2eGrade.label}</div>
-        </div>
-      </div>
-
-      <div className="space-y-2.5">
-        {projected.map((entry) => (
-          <div key={entry.name} className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]">
-            <div className="flex items-center justify-between gap-3 mb-1.5">
-              <p className="text-sm font-semibold text-[#f5f2ec]">{entry.name}</p>
-              <span className="font-mono text-sm" style={{ color: METHOD_COLORS.gaussian }}>{entry.fps} FPS</span>
-            </div>
-            <div className="h-1.5 rounded-full bg-[#181716] overflow-hidden mb-1.5">
-              <div
-                className="h-full rounded-full"
-                style={{
-                  width: `${Math.min(100, Math.round((entry.fps / 120) * 100))}%`,
-                  background: METHOD_COLORS.gaussian,
-                }}
-              />
-            </div>
-            <div className="flex items-center justify-between text-[11px] text-[#948d82]">
-              <span>{entry.note}</span>
-              <span>{entry.hits60 ? '60 FPS ready' : entry.hits30 ? '30 FPS ready' : 'sub-30 FPS'}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <p className="text-[11px] text-[#948d82] mt-3">
-        Profile: {profile.label} ({profile.memory}) 路 {profile.note}
-      </p>
     </div>
   );
 }
@@ -2620,24 +2474,23 @@ const SLIDES: React.FC[] = [
   SlideGaussianHow,              // 12
   SlideGaussianMechanism,        // 13
   SlideGaussianCovariance,       // 14
-  SlideGaussianPerf,             // 15
-  SlideGaussianDemo,             // 16
-  SlideGaussianSupersplatDemoOne,// 17 NEW
-  SlideGaussianSupersplatDemoTwo,// 18 NEW
-  SlideGaussianPersonalDemo,     // 19 NEW
-  SlideGaussianWorldlabsDemo,    // 20
-  SlideGaussianResearchVideoWall,// 21 NEW
-  SlideCapabilityMatrix,         // 22 NEW
-  SlideComparison,               // 23
-  SlideRealTimeMetrics,          // 24 NEW
-  SlideE2EPipeline,              // 25
-  SlideAudio2FaceBuildingBlocks, // 26 NEW
-  SlideWhereIntelligenceLives,   // 27 NEW
-  SlideResearchFrontier,         // 28 NEW
-  SlideConvergenceUpdated,       // 29 REPLACED
-  SlideBuiltWithClaudeSkills,    // 30 NEW
-  SlideAgentSkillsUsed,          // 31 NEW
-  SlideThankYou,                 // 32
+  SlideGaussianDemo,             // 15
+  SlideGaussianSupersplatDemoOne,// 16 NEW
+  SlideGaussianSupersplatDemoTwo,// 17 NEW
+  SlideGaussianPersonalDemo,     // 18 NEW
+  SlideGaussianWorldlabsDemo,    // 19
+  SlideGaussianResearchVideoWall,// 20 NEW
+  SlideCapabilityMatrix,         // 21 NEW
+  SlideComparison,               // 22
+  SlideRealTimeMetrics,          // 23 NEW
+  SlideE2EPipeline,              // 24
+  SlideAudio2FaceBuildingBlocks, // 25 NEW
+  SlideWhereIntelligenceLives,   // 26 NEW
+  SlideResearchFrontier,         // 27 NEW
+  SlideConvergenceUpdated,       // 28 REPLACED
+  SlideBuiltWithClaudeSkills,    // 29 NEW
+  SlideAgentSkillsUsed,          // 30 NEW
+  SlideThankYou,                 // 31
 ];
 
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   MAIN SLIDES PAGE
