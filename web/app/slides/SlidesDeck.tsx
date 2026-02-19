@@ -77,7 +77,7 @@ const EVIDENCE_URLS = {
   epicMetaHumansInUE: 'https://dev.epicgames.com/documentation/en-us/metahuman/metahumans-in-unreal-engine',
   epicMetaHumanAnimator: 'https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-animator',
   epicMetaHumanLiveLink: 'https://dev.epicgames.com/documentation/en-us/metahuman/realtime-animation-using-live-link',
-  epicMetaHumanAudioSource: 'https://dev.epicgames.com/documentation/en-us/metahuman/using-a-metahuman-audio-source',
+  epicMetaHumanAudioSource: 'https://dev.epicgames.com/documentation/en-us/metahuman/using-audio-source-for-animation',
   epicAudioDrivenAnimation: 'https://dev.epicgames.com/documentation/en-us/metahuman/audio-driven-animation',
   epicMeshToMetaHuman: 'https://dev.epicgames.com/documentation/en-us/metahuman/mesh-to-metahuman',
   epicRigLogicApi: 'https://dev.epicgames.com/documentation/en-us/unreal-engine/API/PluginIndex/RigLogic',
@@ -89,7 +89,7 @@ const EVIDENCE_URLS = {
   arxivProgressiveDistillation: 'https://arxiv.org/abs/2202.00512',
   arxiv3dgs: 'https://arxiv.org/abs/2308.04079',
   arxivTaoAvatar: 'https://arxiv.org/abs/2503.17032',
-  arxivLAM: 'https://arxiv.org/abs/2506.09127',
+  arxivLAM: 'https://arxiv.org/abs/2502.17796',
   arxivMIDAS: 'https://arxiv.org/abs/2508.19320',
   arxivKnotForcing: 'https://arxiv.org/abs/2512.21734',
   arxivStreamAvatar: 'https://arxiv.org/abs/2512.22065',
@@ -303,7 +303,7 @@ function SlideEvidenceStrip({
 
 function SlideAboutMe() {
   const experience = [
-    { icon: Video, title: 'Hedra', period: '2024-2025', text: 'Software engineer on realtime avatar work and diffusion-based image generation pipelines.', color: METHOD_COLORS.generative },
+    { icon: Video, title: 'Hedra', period: '2024-2025', text: 'Software engineer on real-time avatar work and diffusion-based image generation pipelines.', color: METHOD_COLORS.generative },
     { icon: Gamepad2, title: 'Epic Games', period: '2018-2020', text: 'Developer relations engineer for UE4/UE5 in Shanghai.', color: METHOD_COLORS.metahuman },
     { icon: Headset, title: 'UnrealLight Digital Tech', period: '2015-2017', text: 'Early-stage VR product and engineering work.', color: METHOD_COLORS.gaussian },
   ];
@@ -394,7 +394,7 @@ function SlideCogixEyeTrackerPrototype() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Cogix" label="Current Work" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">By Day Work on Cogix</h2>
+      <h2 className="text-5xl font-bold mb-2">By Day: Work at Cogix</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
       <p className="text-base text-[#c7c2b9] mb-4 max-w-4xl">
@@ -585,7 +585,7 @@ function SlideStoryCharacterCreationTool() {
             <ul className="list-disc pl-5 space-y-1.5 text-base text-[#c7c2b9]">
               <li>Step 1: 2D static identity (current).</li>
               <li>Step 2: 3D dynamic embodiment with richer expression controls.</li>
-              <li>Step 3: realtime performance for live storytelling with humans.</li>
+              <li>Step 3: real-time performance for live storytelling with humans.</li>
             </ul>
           </div>
         </div>
@@ -619,7 +619,7 @@ function SlideRealtimeAvatarPerformanceBridge() {
     },
     {
       icon: Sparkles,
-      title: 'Realtime Story Performance',
+      title: 'Real-time Story Performance',
       points: [
         'Multimodal user input.',
         'Story-aware model response.',
@@ -630,12 +630,12 @@ function SlideRealtimeAvatarPerformanceBridge() {
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Roadmap" label="2D -> Realtime Performance" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">Realtime Avatar Performance for Storytelling</h2>
+      <SlideMethodBadge method="Roadmap" label="2D -> Real-time Performance" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Real-time Avatar Performance for Storytelling</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
 
       <p className="text-lg text-[#c7c2b9] mb-6">
-        Start with a 2D identity layer, then move directly to realtime storytelling performance.
+        Start with a 2D identity layer, then move directly to real-time storytelling performance.
       </p>
 
       <div className="grid grid-cols-2 gap-4">
@@ -665,7 +665,7 @@ function SlideRealtimeAvatarPerformanceBridge() {
 function SlideE2EDefinitionMindmap() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Definition" label="End-to-End Realtime Avatar System" color={METHOD_COLORS.gaussian} />
+      <SlideMethodBadge method="Definition" label="End-to-End Real-time Avatar System" color={METHOD_COLORS.gaussian} />
       <h2 className="text-5xl font-bold mb-2">End-to-End Definition</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
@@ -753,14 +753,14 @@ function SlideProblem() {
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Framing" label="Why Realtime Avatars Now" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">Why Realtime Avatars In The Agent Era?</h2>
+      <SlideMethodBadge method="Framing" label="Why Real-time Avatars Now" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Why Real-time Avatars In The Agent Era?</h2>
       <div
         className="w-14 h-1 rounded-full mb-5"
         style={{ background: METHOD_COLORS.gaussian }}
       />
       <p className="text-base text-[#c7c2b9] mb-5">
-        Agents run workflows. Realtime avatars handle human-facing storytelling and social interaction.
+        Agents run workflows. Real-time avatars handle human-facing storytelling and social interaction.
       </p>
       <div className="grid grid-cols-2 gap-4 mb-6">
         {rationale.map((uc) => (
@@ -785,7 +785,7 @@ function SlideProblem() {
       <div className="rounded-xl border border-[#3d3a36] bg-[#1d1c1a] p-4">
         <h3 className="text-lg font-semibold mb-2">Narrative Throughline</h3>
         <p className="text-base text-[#bdb8af]">
-          Keep agents invisible for machine throughput. Use realtime avatars where trust, emotion, and storytelling outcomes matter.
+          Keep agents invisible for machine throughput. Use real-time avatars where trust, emotion, and storytelling outcomes matter.
         </p>
       </div>
     </div>
@@ -794,10 +794,10 @@ function SlideProblem() {
 
 function SlideStoryPerformanceMotivation() {
   const goals = [
-    'Focus on realtime interactive storytelling and live performance with humans, not only a technical avatar demo.',
+    'Focus on real-time interactive storytelling and live performance with humans, not only a technical avatar demo.',
     'Keep avatar behavior grounded in story context: scene memory, character intent, emotional arc, and relationship state.',
     'Target expressive performance quality across voice, face, gaze, timing, and body language.',
-    'Track the latest realtime avatar technology and integrate useful advances into the storytelling workflow.',
+    'Track the latest real-time avatar technology and integrate useful advances into the storytelling workflow.',
   ];
 
   const principles = [
@@ -807,7 +807,7 @@ function SlideStoryPerformanceMotivation() {
       bullets: [
         'Prefer narrative continuity over isolated responses.',
         'Maintain character-consistent behavior across long sessions.',
-        'Adapt in realtime without losing scene coherence.',
+        'Adapt in real-time without losing scene coherence.',
       ],
     },
     {
@@ -938,7 +938,7 @@ function SlideHumanModalityGraph() {
 function SlideApproachSelectionQuestion() {
   const selectionAxes = [
     'Identity control: how precisely can character identity be authored and preserved?',
-    'Response performance: how quickly and reliably can the system react in realtime?',
+    'Response performance: how quickly and reliably can the system react in real time?',
     'Expression bandwidth: how much facial/voice/gesture control is available?',
     'Production fit: how practical is this for our storytelling pipeline?',
   ];
@@ -1121,8 +1121,8 @@ function SlideRealtimeNarrativeLoop() {
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Realtime Narrative" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-1">Storytelling in Realtime (Linear + Branching)</h2>
+      <SlideMethodBadge method="Real-time Narrative" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-1">Storytelling in Real-time (Linear + Branching)</h2>
       <ul className="text-[#c7c2b9] text-lg mb-4 max-w-5xl list-disc pl-6 space-y-1.5">
         <li>Sense speech, text, gaze, and gesture in one loop.</li>
         <li>Update shared social and story state continuously.</li>
@@ -1186,8 +1186,8 @@ function SlideRealtimeNarrativeLoop() {
       </div>
 
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] text-lg text-[#c7c2b9]">
-        <span className="font-semibold text-[#f5f2ec]">Practical effect:</span> without realtime narrative timing, avatars can feel delayed or monotone.
-        Realtime narrative policy supports linear scenes or interactive branching while preserving coherence.
+        <span className="font-semibold text-[#f5f2ec]">Practical effect:</span> without real-time narrative timing, avatars can feel delayed or monotone.
+        Real-time narrative policy supports linear scenes or interactive branching while preserving coherence.
       </div>
     </div>
   );
@@ -1199,7 +1199,7 @@ function SlideThreeApproaches() {
       name: 'MetaHuman',
       color: METHOD_COLORS.metahuman,
       icon: Monitor,
-      tagline: 'Rig-based control with stable realtime output',
+      tagline: 'Rig-based control with stable real-time output',
       desc: 'Mesh-based rendering with rig/blendshape animation in Unreal Engine',
       a2f: 'MetaHuman Animator Speech2Face + Audio Live Link (UE-native).',
     },
@@ -1315,7 +1315,7 @@ function SlideMetahumanHow() {
     {
       title: 'Runtime & Delivery',
       points: [
-        'MetaHumanCoreTech (OneEuro + realtime smoothing)',
+        'MetaHumanCoreTech (OneEuro + real-time smoothing)',
         'RigLogicModule/RigLogicLib evaluates DNA rig',
         'MetaHumanLiveLink + LiveLink -> UE render',
       ],
@@ -1353,7 +1353,7 @@ function SlideMetahumanHow() {
           height={260}
           nodes={[
             { id: 'input', label: 'Camera / Audio / IMU', position: { x: 0, y: 92 }, sourcePosition: Position.Right, targetPosition: Position.Left },
-            { id: 'livelink', label: 'Realtime Path: LiveLinkFaceSource / MetaHumanLiveLink', position: { x: 250, y: 20 }, sourcePosition: Position.Right, targetPosition: Position.Left },
+            { id: 'livelink', label: 'Real-time Path: LiveLinkFaceSource / MetaHumanLiveLink', position: { x: 250, y: 20 }, sourcePosition: Position.Right, targetPosition: Position.Left },
             { id: 'capture', label: 'Solve Path: CaptureSource + ProtocolStack', position: { x: 250, y: 162 }, sourcePosition: Position.Right, targetPosition: Position.Left },
             { id: 'solve', label: 'FaceAnimationSolver / Speech2Face', position: { x: 520, y: 162 }, sourcePosition: Position.Right, targetPosition: Position.Left },
             { id: 'core', label: 'MetaHumanCoreTech (filters/smoothing)', position: { x: 790, y: 92 }, sourcePosition: Position.Right, targetPosition: Position.Left },
@@ -1452,7 +1452,7 @@ function SlideMetahumanIdentityResponse() {
           </ul>
         </div>
         <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-          <h3 className="text-lg font-semibold text-[#f5f2ec] mb-2">2) Realtime Response Model</h3>
+          <h3 className="text-lg font-semibold text-[#f5f2ec] mb-2">2) Real-time Response Model</h3>
           <ul className="space-y-1.5 text-sm text-[#bdb8af]">
             <li>Renderer/control inputs: face video/depth retargeting (pipeline-dependent), audio, and head motion from Live Link devices.</li>
             <li>Models: Live Link Face + MetaHuman Animator 4D solver + RigLogic runtime path.</li>
@@ -1483,7 +1483,7 @@ function SlideMetahumanIdentityResponse() {
       <SlideEvidenceStrip
         links={[
           { label: 'MetaHuman Animator', href: EVIDENCE_URLS.epicMetaHumanAnimator },
-          { label: 'Realtime Live Link', href: EVIDENCE_URLS.epicMetaHumanLiveLink },
+          { label: 'Real-time Live Link', href: EVIDENCE_URLS.epicMetaHumanLiveLink },
           { label: 'Mesh to MetaHuman', href: EVIDENCE_URLS.epicMeshToMetaHuman },
         ]}
       />
@@ -1603,7 +1603,7 @@ function SlideGenerativeIdentityResponse() {
           </ul>
         </div>
         <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-          <h3 className="text-lg font-semibold text-[#f5f2ec] mb-2">2) Realtime Response Model</h3>
+          <h3 className="text-lg font-semibold text-[#f5f2ec] mb-2">2) Real-time Response Model</h3>
           <ul className="space-y-1.5 text-sm text-[#bdb8af]">
             <li>Renderer/control inputs: audio waveform + text intent; optional pose/emotion/image controls for stronger conditioning.</li>
             <li>Conditional inputs: direct webcam-derived gaze/AU signals usually need an extra perception front-end.</li>
@@ -1774,7 +1774,7 @@ function SlideGenerativeResearch() {
           name: 'SoulX-FlashHead (2026)',
           metric: 'Up to 96 FPS (Lite)',
           desc: 'Oracle-guided streaming architecture for long-horizon stability.',
-          focus: 'Sustain realtime generation with stable long-form behavior.',
+          focus: 'Sustain real-time generation with stable long-form behavior.',
           inputs: 'Audio + visual conditioning',
           url: EVIDENCE_URLS.arxivSoulXFlashHead,
           codeUrl: EVIDENCE_URLS.githubSoulXFlashHead,
@@ -1783,8 +1783,8 @@ function SlideGenerativeResearch() {
         {
           name: 'LiveTalk (2025)',
           metric: '20x distillation',
-          desc: 'Realtime multimodal interactive video diffusion.',
-          focus: 'Compress denoising cost using a distillation-heavy realtime stack.',
+          desc: 'Real-time multimodal interactive video diffusion.',
+          focus: 'Compress denoising cost using a distillation-heavy real-time stack.',
           inputs: 'Audio + text + image',
           url: EVIDENCE_URLS.arxivLiveTalk,
         },
@@ -1814,7 +1814,7 @@ function SlideGenerativeResearch() {
         {
           name: 'MIDAS (2025)',
           metric: 'Audio+pose+text',
-          desc: 'Realtime autoregressive multimodal digital human synthesis.',
+          desc: 'Real-time autoregressive multimodal digital human synthesis.',
           focus: 'Fuse multiple control channels in one autoregressive model.',
           inputs: 'Audio + pose + text',
           url: EVIDENCE_URLS.arxivMIDAS,
@@ -1824,13 +1824,13 @@ function SlideGenerativeResearch() {
     {
       id: 'deployment',
       label: 'Deployment',
-      hint: 'Papers emphasizing practical realtime deployment paths.',
+      hint: 'Papers emphasizing practical real-time deployment paths.',
       papers: [
         {
           name: 'TaoAvatar (2025)',
           metric: '90 FPS Vision Pro',
           desc: 'Controllable full-body 3DGS avatars with XR deployment results.',
-          focus: 'Ship controllable Gaussian avatars in realtime XR settings.',
+          focus: 'Ship controllable Gaussian avatars in real-time XR settings.',
           inputs: 'Audio + expression + gesture/pose controls',
           url: EVIDENCE_URLS.arxivTaoAvatar,
           codeUrl: EVIDENCE_URLS.githubTaoAvatarMobileDemo,
@@ -1847,8 +1847,8 @@ function SlideGenerativeResearch() {
         {
           name: 'FastGHA (2026)',
           metric: 'Few-shot real-time',
-          desc: 'Few-shot Gaussian head avatars animated in realtime.',
-          focus: 'Lower data requirements while preserving realtime behavior.',
+          desc: 'Few-shot Gaussian head avatars animated in real time.',
+          focus: 'Lower data requirements while preserving real-time behavior.',
           inputs: 'Few-shot visual identity + driving signals',
           url: EVIDENCE_URLS.arxivFastGHA,
         },
@@ -2094,7 +2094,7 @@ function SlideGaussianHow() {
           { id: 'opt', label: 'Estimate Gaussian Params (mu, Sigma, c, alpha)' },
           { id: 'project', label: 'Project to 2D Ellipses' },
           { id: 'blend', label: 'Alpha Blend (Depth-Aware)' },
-          { id: 'render', label: 'Realtime View Synthesis' },
+          { id: 'render', label: 'Real-time View Synthesis' },
         ]}
       />
 
@@ -2132,11 +2132,11 @@ function SlideGaussianIdentityResponse() {
           </ul>
         </div>
         <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-          <h3 className="text-lg font-semibold text-[#f5f2ec] mb-2">2) Realtime Response Model</h3>
+          <h3 className="text-lg font-semibold text-[#f5f2ec] mb-2">2) Real-time Response Model</h3>
           <ul className="space-y-1.5 text-sm text-[#bdb8af]">
             <li>Common avatar-backend control inputs: audio, expression coefficients, and head pose; direct webcam gaze/AU feeds are often extra modules.</li>
             <li>Models: Audio2Expression driver + deformation model (FLAME/SMPL-X or learned fields).</li>
-            <li>Renderer: differentiable or realtime splat rasterizer with depth-aware alpha blending.</li>
+            <li>Renderer: differentiable or real-time splat rasterizer with depth-aware alpha blending.</li>
             <li>Final outputs: high-FPS video stream and avatar state updates for interaction loops.</li>
           </ul>
         </div>
@@ -2154,7 +2154,7 @@ function SlideGaussianIdentityResponse() {
           </div>
           <div className="rounded-lg p-3 bg-[#181716]">
             <p className="text-[#948d82] uppercase tracking-wide mb-1">Runtime Representation</p>
-            <p className="text-[#f5f2ec]">Explicit 3D Gaussian primitives rasterized directly in realtime.</p>
+            <p className="text-[#f5f2ec]">Explicit 3D Gaussian primitives rasterized directly in real time.</p>
           </div>
         </div>
       </div>
@@ -2349,6 +2349,29 @@ function SlideGaussianDemo() {
         Open Gaussian Demo
         <ExternalLink size={16} />
       </a>
+
+      <div className="flex flex-wrap items-center justify-center gap-3 mt-4">
+        <a
+          href={EVIDENCE_URLS.arxivLAM}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[#3d3a36] text-sm font-semibold hover:bg-[#242220] transition-colors"
+          style={{ color: METHOD_COLORS.gaussian }}
+        >
+          LAM Paper
+          <ExternalLink size={13} />
+        </a>
+        <a
+          href={EVIDENCE_URLS.arxiv3dgs}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[#3d3a36] text-sm font-semibold hover:bg-[#242220] transition-colors"
+          style={{ color: METHOD_COLORS.gaussian }}
+        >
+          3DGS Paper
+          <ExternalLink size={13} />
+        </a>
+      </div>
 
       <div className="flex items-center gap-2 text-xs text-[#948d82] mt-6">
         <Cpu size={14} />
@@ -2987,7 +3010,7 @@ function SlideSignalsInteraction() {
           refs: [{ label: 'OpenAI Realtime', href: EVIDENCE_URLS.openaiRealtimeApi }],
         },
         {
-          name: 'Tool or realtime API events',
+          name: 'Tool or real-time API events',
           support: [2, 2, 2],
           refs: [{ label: 'OpenAI Realtime', href: EVIDENCE_URLS.openaiRealtimeApi }],
         },
@@ -3255,10 +3278,10 @@ function SlideCurrentE2EIOPaths() {
   ];
 
   const directPath = [
-    'Input audio + interaction state -> audio-to-audio realtime model',
-    'Realtime output audio/prosody -> viseme/expression solver',
+    'Input audio + interaction state -> audio-to-audio real-time model',
+    'Real-time output audio/prosody -> viseme/expression solver',
     'Solver output -> rig curves / expression coefficients',
-    'Renderer executes motion + shading in realtime',
+    'Renderer executes motion + shading in real time',
   ];
 
   return (
@@ -3617,9 +3640,9 @@ function SlideAudio2FaceBuildingBlocks() {
       title: 'Gaussian Backend',
       color: METHOD_COLORS.gaussian,
       representation: 'Explicit 3D Gaussians + expression/pose coefficient drivers',
-      runtime: 'Realtime splat rasterization (client or GPU server)',
+      runtime: 'Real-time splat rasterization (client or GPU server)',
       notes: [
-        'Balances control and realtime speed on modern GPUs.',
+        'Balances control and real-time speed on modern GPUs.',
         'Supports explicit geometry-level editing and fast render loops.',
       ],
     },
@@ -3633,10 +3656,14 @@ function SlideAudio2FaceBuildingBlocks() {
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <h2 className="text-5xl font-bold mb-2">Audio2Face: The Bridge</h2>
+      <SlideMethodBadge method="Actuation Layer" label="Why This Page Exists" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Audio-to-Avatar Actuation Bridge</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
-      <p className="text-lg text-[#bdb8af] mb-4">
-        Same audio signal, different embodiment backends. Audio2Face is the actuation bridge between cognition output and avatar performance.
+      <p className="text-base text-[#bdb8af] mb-4">
+        Purpose: clarify the shared actuation layer between response-model output and each avatar backend.
+      </p>
+      <p className="text-sm text-[#948d82] mb-4">
+        Same input speech signal, different backend execution paths.
       </p>
 
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
@@ -3678,7 +3705,7 @@ function SlideAudio2FaceBuildingBlocks() {
         <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]">
           <h3 className="text-sm font-semibold text-[#f5f2ec] mb-1">Official Tracks (2026)</h3>
           <ul className="list-disc pl-5 space-y-1 text-xs text-[#bdb8af]">
-            <li>MetaHuman docs provide official Audio Driven Animation and Live Link realtime workflows.</li>
+            <li>MetaHuman docs provide official Audio Driven Animation and Live Link real-time workflows.</li>
             <li>NVIDIA Audio2Face-3D is open sourced with model code and training/runtime assets.</li>
             <li>For ACE Unreal plugin deployment, verify UE-version compatibility in the current plugin docs.</li>
           </ul>
@@ -3708,7 +3735,7 @@ function SlideAudio2FaceBuildingBlocks() {
       <SlideEvidenceStrip
         links={[
           { label: 'Audio Driven Animation (Epic)', href: EVIDENCE_URLS.epicAudioDrivenAnimation },
-          { label: 'Realtime Live Link (Epic)', href: EVIDENCE_URLS.epicMetaHumanLiveLink },
+          { label: 'Real-time Live Link (Epic)', href: EVIDENCE_URLS.epicMetaHumanLiveLink },
           { label: 'NVIDIA Audio2Face-3D', href: EVIDENCE_URLS.nvidiaAudio2FaceRepo },
           { label: 'NVIDIA Audio2Face release note', href: EVIDENCE_URLS.nvidiaAudio2FaceBlog },
           { label: 'ACE Unreal plugin docs', href: EVIDENCE_URLS.nvidiaAcePluginDocs },
@@ -3789,7 +3816,7 @@ function SlideWhereIntelligenceLives() {
         <div className="rounded-lg p-3 bg-[#242220] border border-[#3d3a36] flex items-center">
           <p className="text-xs text-[#f5f2ec] font-medium">
             <Eye size={12} className="inline mr-1" style={{ color: METHOD_COLORS.gaussian }} />
-            Takeaway: default to Path A for controllable realtime storytelling; use Path B when speed of iteration is the main objective.
+            Takeaway: default to Path A for controllable real-time storytelling; use Path B when speed of iteration is the main objective.
           </p>
         </div>
       </div>
@@ -3882,7 +3909,7 @@ function SlideResearchFrontier() {
       year: '2025',
       category: 'streaming' as const,
       metric: '20x distillation',
-      desc: 'Realtime multimodal interactive video diffusion (audio+text+image).',
+      desc: 'Real-time multimodal interactive video diffusion (audio+text+image).',
       url: EVIDENCE_URLS.arxivLiveTalk,
     },
     {
@@ -4046,7 +4073,7 @@ function SlideConvergenceUpdated() {
         'Encode identity and conditioning signals.',
         'Run causal/streaming generation for next-frame prediction.',
         'Use distillation/forcing modules to reduce latency.',
-        'Deliver video/audio stream via realtime transport.',
+        'Deliver video/audio stream via real-time transport.',
       ],
     },
     {
@@ -4211,7 +4238,7 @@ function SlideAgentSkillsUsed() {
     },
     {
       name: 'gaussian-youtube-video-wall-evolver',
-      purpose: 'Collects latest realtime Gaussian avatar demo videos and publishes the modal video wall dataset.',
+      purpose: 'Collects latest real-time Gaussian avatar demo videos and publishes the modal video wall dataset.',
       url: SKILL_GAUSSIAN_WALL_URL,
     },
     {
@@ -4597,4 +4624,7 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
     </div>
   );
 }
+
+
+
 

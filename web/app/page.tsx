@@ -28,8 +28,8 @@ const jsonLd = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://realtime-avatars.vercel.app' },
-      { '@type': 'ListItem', position: 2, name: 'Survey', item: 'https://realtime-avatars.vercel.app/' },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.realtime-avatars.com' },
+      { '@type': 'ListItem', position: 2, name: 'Survey', item: 'https://www.realtime-avatars.com/' },
     ],
   },
   {
@@ -40,7 +40,7 @@ const jsonLd = [
       'Comprehensive survey comparing MetaHuman pipelines, video generation, and Gaussian splatting for building interactive digital humans.',
     author: { '@type': 'Organization', name: 'PajamaDot Research' },
     datePublished: '2026-01-01',
-    dateModified: '2026-02-17',
+    dateModified: '2026-02-19',
     inLanguage: 'en',
     version: '2.2',
     keywords:
@@ -166,7 +166,7 @@ export default function Home() {
         {/* Title Section */}
         <article className="mb-12">
           <div className="flex items-center justify-between mb-4">
-            <p className="section-label">Research Survey · Updated February 17, 2026 · ~25 min read</p>
+            <p className="section-label">Research Survey · Updated February 19, 2026 · ~25 min read</p>
             <ShareButton />
           </div>
           <h1 className="text-3xl md:text-4xl font-semibold mb-4 leading-tight text-balance">
@@ -186,20 +186,27 @@ export default function Home() {
             <div>
               <div className="text-2xl font-semibold mb-1">60+ FPS</div>
               <div className="text-sm text-[var(--text-muted)]">MetaHuman rendering</div>
+              <div className="text-[10px] text-[var(--text-muted)] mt-1">Source: Epic MetaHuman docs</div>
             </div>
             <div>
               <div className="text-2xl font-semibold mb-1">563 FPS</div>
               <div className="text-sm text-[var(--text-muted)]">Gaussian (LAM, A100)</div>
+              <div className="text-[10px] text-[var(--text-muted)] mt-1">Source: LAM paper report</div>
             </div>
             <div>
               <div className="text-2xl font-semibold mb-1">~32 FPS</div>
               <div className="text-sm text-[var(--text-muted)]">Diffusion real-time</div>
+              <div className="text-[10px] text-[var(--text-muted)] mt-1">Source: SoulX-FlashHead / LiveTalk</div>
             </div>
             <div>
               <div className="text-2xl font-semibold mb-1">&lt;500ms</div>
               <div className="text-sm text-[var(--text-muted)]">Avatar Forcing E2E</div>
+              <div className="text-[10px] text-[var(--text-muted)] mt-1">Source: Avatar Forcing (paper)</div>
             </div>
           </div>
+          <p className="text-[10px] text-[var(--text-muted)] mt-4">
+            These values are paper/document reported and not normalized under one benchmark harness.
+          </p>
         </section>
 
         <section className="mb-12">
@@ -1895,13 +1902,13 @@ export default function Home() {
 
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xl font-semibold">How to Cite</h3>
-            <CopyButton text="PajamaDot Research. (2026). Real-Time Avatar Systems: A Comparative Analysis. Retrieved from https://realtime-avatars.vercel.app" />
+            <CopyButton text="PajamaDot Research. (2026). Real-Time Avatar Systems: A Comparative Analysis. Retrieved from https://www.realtime-avatars.com" />
           </div>
           <div className="card p-4">
             <code className="block text-xs leading-relaxed whitespace-pre-wrap text-[var(--text-secondary)]">
 {`PajamaDot Research. (2026). Real-Time Avatar Systems:
 A Comparative Analysis. Retrieved from
-https://realtime-avatars.vercel.app`}
+https://www.realtime-avatars.com`}
             </code>
           </div>
         </section>
