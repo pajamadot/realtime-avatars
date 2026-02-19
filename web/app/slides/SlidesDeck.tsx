@@ -32,6 +32,7 @@ import {
   Activity,
   Timer,
   Play,
+  Github,
 } from 'lucide-react';
 import SlideFlow from './components/SlideFlow';
 
@@ -51,6 +52,8 @@ const METHOD_COLORS = {
   generative: '#6ec87a',
   gaussian: '#e08840',
 } as const;
+
+const PROJECT_REPO_URL = 'https://github.com/pajamadot/realtime-avatars';
 
 function DemoLink({ slug, label, color }: { slug: string; label: string; color: string }) {
   return (
@@ -123,6 +126,16 @@ function SlideTitle() {
       <div className="flex flex-col items-center gap-1.5 text-[#948d82]">
         <span className="text-2xl font-medium text-[#f5f2ec]">Yuntian Chai</span>
         <span className="text-lg">PajamaDot / Cogix</span>
+        <a
+          href={PROJECT_REPO_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-2 inline-flex items-center gap-2 text-base hover:underline"
+          style={{ color: METHOD_COLORS.gaussian }}
+        >
+          <Github size={16} />
+          github.com/pajamadot/realtime-avatars
+        </a>
       </div>
     </div>
   );
@@ -2439,14 +2452,14 @@ function SlideThankYou() {
           realtime-avatars.vercel.app
         </a>
         <a
-          href="https://github.com/PajamaDot/realtime-avatars"
+          href={PROJECT_REPO_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-base hover:underline justify-center"
           style={{ color: METHOD_COLORS.gaussian }}
         >
-          <ExternalLink size={16} />
-          github.com/PajamaDot/realtime-avatars
+          <Github size={16} />
+          github.com/pajamadot/realtime-avatars
         </a>
       </div>
 
