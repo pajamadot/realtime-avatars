@@ -1,0 +1,206 @@
+{
+  "generated_at": "2026-02-19T23:34:51Z",
+  "cycle": 100,
+  "core_cycle": 30,
+  "core_generated_at": "2026-02-19T23:34:51+00:00",
+  "query_focus_terms": [
+    "livekit",
+    "voice",
+    "audio",
+    "metahuman",
+    "livelink",
+    "gaussian",
+    "tts",
+    "speech",
+    "splatting",
+    "gaussian-splatting",
+    "sadtalker",
+    "liveportrait",
+    "text-to-speech",
+    "audio-driven",
+    "linly-talker",
+    "non-gaussianity"
+  ],
+  "delta": {
+    "new_arxiv_entries": [],
+    "new_github_repositories": [],
+    "new_arxiv_count": 0,
+    "new_github_repo_count": 0
+  },
+  "research": {
+    "arxiv_ids": [
+      "http://arxiv.org/abs/2602.16013v1"
+    ],
+    "github_repos": [
+      "FACEGOOD/FgControlRig",
+      "FloatingRobotics/face-animation-comparison",
+      "Johnny12242006/aiVideo",
+      "KwaiVGI/LivePortrait",
+      "NVIDIA/Audio2Face-3D-SDK",
+      "OpenTalker/SadTalker",
+      "StarOfOman/Embody_Textures",
+      "chocolatepcode/unreal-motion",
+      "cvlab-kaist/GaussianTalker",
+      "graphdeco-inria/gaussian-splatting",
+      "itsDaVinCi/tools-for-builders",
+      "livekit/agents",
+      "poly-hammer/meta-human-dna-addon",
+      "soulx-ai/SoulX-FlashHead",
+      "viper-108/livekit_plugins_sub200"
+    ],
+    "arxiv_highlights": [
+      {
+        "id": "http://arxiv.org/abs/2602.16013v1",
+        "title": "Punchlines Unbound: Comedy Practices in Social Virtual Reality",
+        "updated": "2026-02-17T21:09:00Z"
+      }
+    ],
+    "github_highlights": [
+      {
+        "full_name": "cvlab-kaist/GaussianTalker",
+        "url": "https://github.com/cvlab-kaist/GaussianTalker",
+        "stars": 0,
+        "pushed_at": ""
+      },
+      {
+        "full_name": "graphdeco-inria/gaussian-splatting",
+        "url": "https://github.com/graphdeco-inria/gaussian-splatting",
+        "stars": 0,
+        "pushed_at": ""
+      },
+      {
+        "full_name": "OpenTalker/SadTalker",
+        "url": "https://github.com/OpenTalker/SadTalker",
+        "stars": 0,
+        "pushed_at": ""
+      },
+      {
+        "full_name": "KwaiVGI/LivePortrait",
+        "url": "https://github.com/KwaiVGI/LivePortrait",
+        "stars": 0,
+        "pushed_at": ""
+      },
+      {
+        "full_name": "livekit/agents",
+        "url": "https://github.com/livekit/agents",
+        "stars": 0,
+        "pushed_at": ""
+      },
+      {
+        "full_name": "soulx-ai/SoulX-FlashHead",
+        "url": "https://github.com/soulx-ai/SoulX-FlashHead",
+        "stars": 0,
+        "pushed_at": ""
+      },
+      {
+        "full_name": "chocolatepcode/unreal-motion",
+        "url": "https://github.com/chocolatepcode/unreal-motion",
+        "stars": 0,
+        "pushed_at": "2026-02-05T07:23:47Z"
+      },
+      {
+        "full_name": "FloatingRobotics/face-animation-comparison",
+        "url": "https://github.com/FloatingRobotics/face-animation-comparison",
+        "stars": 0,
+        "pushed_at": "2026-02-13T11:35:40Z"
+      },
+      {
+        "full_name": "NVIDIA/Audio2Face-3D-SDK",
+        "url": "https://github.com/NVIDIA/Audio2Face-3D-SDK",
+        "stars": 155,
+        "pushed_at": "2025-08-28T14:22:28Z"
+      },
+      {
+        "full_name": "FACEGOOD/FgControlRig",
+        "url": "https://github.com/FACEGOOD/FgControlRig",
+        "stars": 14,
+        "pushed_at": "2024-12-06T04:12:56Z"
+      },
+      {
+        "full_name": "StarOfOman/Embody_Textures",
+        "url": "https://github.com/StarOfOman/Embody_Textures",
+        "stars": 0,
+        "pushed_at": "2026-02-19T23:03:56Z"
+      },
+      {
+        "full_name": "viper-108/livekit_plugins_sub200",
+        "url": "https://github.com/viper-108/livekit_plugins_sub200",
+        "stars": 0,
+        "pushed_at": "2026-02-19T22:27:47Z"
+      },
+      {
+        "full_name": "itsDaVinCi/tools-for-builders",
+        "url": "https://github.com/itsDaVinCi/tools-for-builders",
+        "stars": 0,
+        "pushed_at": "2026-02-19T21:49:04Z"
+      },
+      {
+        "full_name": "poly-hammer/meta-human-dna-addon",
+        "url": "https://github.com/poly-hammer/meta-human-dna-addon",
+        "stars": 205,
+        "pushed_at": "2026-02-19T21:43:06Z"
+      },
+      {
+        "full_name": "Johnny12242006/aiVideo",
+        "url": "https://github.com/Johnny12242006/aiVideo",
+        "stars": 1,
+        "pushed_at": "2026-02-19T21:27:08Z"
+      }
+    ]
+  },
+  "claim_matrix": {
+    "inputs": [],
+    "outputs": [],
+    "coupling": []
+  },
+  "approaches": {
+    "metahuman": {
+      "identity_creation": [
+        "Inputs: MetaHuman Creator parameters, scans/photos via Mesh to MetaHuman, and material/groom assets.",
+        "Models: DNA + RigLogic calibration and rig assembly in Unreal.",
+        "Representation: explicit skeletal mesh, blendshape curves, DNA-backed facial rig."
+      ],
+      "response_model": [
+        "Perception path: Live Link Face / MetaHuman Animator derive facial curves and pose from video+audio.",
+        "Behavior path: agent text intent can modulate expression/gaze/turn-taking policy before render.",
+        "Output path: deterministic Unreal render stream plus synchronized voice/audio."
+      ],
+      "representation_note": "Deterministic rig controls with explicit facial coefficients and bone transforms.",
+      "coupling_patterns": [
+        "No native coupling pattern identified."
+      ]
+    },
+    "video_generation": {
+      "identity_creation": [
+        "Inputs: single portrait or short reference clip, optional style/persona prompt.",
+        "Models: reference encoders (identity tokens) + temporal conditioning stack.",
+        "Representation: latent identity embeddings conditioned into diffusion/DiT decoders."
+      ],
+      "response_model": [
+        "Perception path: audio waveform, text intent, and optional pose/control tokens.",
+        "Behavior path: temporal generators produce coherent motion and lip-sync in latent space.",
+        "Output path: pixel-space video frames with optional separate synthesized speech track."
+      ],
+      "representation_note": "Implicit latent dynamics decoded to pixels; less explicit geometric control.",
+      "coupling_patterns": [
+        "No native coupling pattern identified."
+      ]
+    },
+    "gaussian_splatting": {
+      "identity_creation": [
+        "Inputs: multiview capture or one-shot portrait with reconstruction priors.",
+        "Models: 3DGS optimization or feed-forward regressors for splat parameters.",
+        "Representation: explicit 3D Gaussians (position, covariance, opacity, SH color)."
+      ],
+      "response_model": [
+        "Perception path: audio, expression coefficients, head pose, gaze, optional text/emotion intent.",
+        "Behavior path: audio-to-expression and deformation drivers update splat/rig state.",
+        "Output path: realtime splat rasterization to RGB frames and stream transport."
+      ],
+      "representation_note": "Explicit neural primitives with fast rasterization and high-fps rendering.",
+      "coupling_patterns": [
+        "No native coupling pattern identified."
+      ]
+    }
+  }
+}
