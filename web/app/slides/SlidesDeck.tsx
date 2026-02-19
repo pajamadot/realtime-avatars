@@ -634,12 +634,12 @@ function SlideRealtimeAvatarPerformanceBridge() {
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Roadmap" label="2D -> Real-time Performance" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">Real-time Avatar Performance for Storytelling</h2>
+      <SlideMethodBadge method="Roadmap" label="Identity -> Runtime -> Performance" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Runtime Bridge: Identity to Live Performance</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
 
       <p className="text-lg text-[#c7c2b9] mb-6">
-        Slide 5 shows identity authoring. This slide defines the runtime bridge from identity to live performance.
+        Slide 5 defines character identity. This slide defines the runtime handoff that turns identity into live storytelling performance.
       </p>
 
       <div className="grid grid-cols-3 gap-4">
@@ -668,8 +668,8 @@ function SlideRealtimeAvatarPerformanceBridge() {
 function SlideE2EDefinitionMindmap() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Definition" label="End-to-End Real-time Avatar System" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">End-to-End Definition</h2>
+      <SlideMethodBadge method="Definition" label="Shared Runtime Definition" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">End-to-End Runtime Definition</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-3">
@@ -695,7 +695,8 @@ function SlideE2EDefinitionMindmap() {
 
       <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-3">
         <p className="text-sm text-[#c7c2b9]">
-          Operational path: <span className="text-[#f5f2ec]">inputs → perception → LLM response model → avatar control → outputs</span>
+          Shared path used by all approaches:
+          <span className="text-[#f5f2ec]"> end-user inputs → perception → response model → avatar actuation → multimodal outputs</span>
         </p>
       </div>
 
@@ -948,14 +949,13 @@ function SlideApproachSelectionQuestion() {
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Bridge" label="From Modality Graph to Rendering Choice" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">Question Before Picking a Stack</h2>
+      <SlideMethodBadge method="Bridge" label="From Runtime Definition to Stack Choice" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Which Backend Fits the Runtime Targets?</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
 
       <div className="rounded-xl p-6 border border-[#3d3a36] bg-[#1d1c1a] mb-5">
         <p className="text-xl text-[#f5f2ec] leading-relaxed">
-          If our cognition layer understands multimodal social signals, which rendering approach
-          can meet the required control and latency targets?
+          Given the shared runtime definition, which backend can meet control, latency, and production constraints for live storytelling?
         </p>
       </div>
 
@@ -1199,6 +1199,7 @@ function SlideRealtimeNarrativeLoop() {
 function SlideThreeApproaches() {
   const methods = [
     {
+      phase: 'Approach 1/3',
       name: 'MetaHuman',
       color: METHOD_COLORS.metahuman,
       icon: User,
@@ -1209,6 +1210,7 @@ function SlideThreeApproaches() {
       a2f: 'MetaHuman Animator Speech2Face + Audio Live Link (UE-native).',
     },
     {
+      phase: 'Approach 2/3',
       name: 'Video Generation',
       color: METHOD_COLORS.generative,
       icon: Sparkles,
@@ -1219,6 +1221,7 @@ function SlideThreeApproaches() {
       a2f: 'Audio-conditioned video synthesis; control is mostly implicit.',
     },
     {
+      phase: 'Approach 3/3',
       name: 'Gaussian Splatting',
       color: METHOD_COLORS.gaussian,
       icon: Box,
@@ -1241,6 +1244,9 @@ function SlideThreeApproaches() {
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-5">
         <p className="text-base text-[#c7c2b9]">
           This page compares backend approaches at the output layer. System input processing is a separate shared pipeline.
+        </p>
+        <p className="text-sm text-[#948d82] mt-2">
+          Next section order is consistent for each approach: <span className="text-[#f5f2ec]">Demo → How it works → Identity/response stack</span>.
         </p>
         <div className="grid grid-cols-2 gap-3 mt-3">
           <div className="rounded-lg p-3 border border-[#3d3a36] bg-[#181716]">
@@ -1282,7 +1288,7 @@ function SlideThreeApproaches() {
               </div>
             </div>
             <p className="text-[10px] uppercase tracking-wide mb-2" style={{ color: `${m.color}cc` }}>
-              {m.iconLabel}
+              {m.phase} · {m.iconLabel}
             </p>
             <h3 className="text-2xl font-semibold mb-1" style={{ color: m.color }}>
               {m.name}
@@ -1349,8 +1355,8 @@ function SlideMetahumanHow() {
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="MetaHuman" color={METHOD_COLORS.metahuman} />
-      <h2 className="text-5xl font-bold mb-1">How It Works (UE 5.7, Source-Backed)</h2>
+      <SlideMethodBadge method="MetaHuman" label="Approach 1/3 · Mechanism" color={METHOD_COLORS.metahuman} />
+      <h2 className="text-5xl font-bold mb-1">Approach 1/3: MetaHuman How It Works (UE 5.7)</h2>
       <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-3">
         <p className="text-sm text-[#c7c2b9]">
           Transition from slide 13: this is the same end-to-end IO pipeline mapped onto one concrete backend,
@@ -1449,8 +1455,8 @@ function SlideMetahumanHow() {
 function SlideMetahumanIdentityResponse() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="MetaHuman Deep Dive" color={METHOD_COLORS.metahuman} />
-      <h2 className="text-5xl font-bold mb-2">Identity & Response Stack</h2>
+      <SlideMethodBadge method="MetaHuman" label="Approach 1/3 · Identity + Response" color={METHOD_COLORS.metahuman} />
+      <h2 className="text-5xl font-bold mb-2">Approach 1/3: Identity & Response Stack</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.metahuman }} />
 
       <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
@@ -1512,8 +1518,8 @@ function SlideMetahumanIdentityResponse() {
 function SlideMetahumanDemo() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="MetaHuman Demo" color={METHOD_COLORS.metahuman} />
-      <h2 className="text-5xl font-bold mb-1">Live Demo: Rapport MetaHuman Avatar</h2>
+      <SlideMethodBadge method="MetaHuman" label="Approach 1/3 · Demo" color={METHOD_COLORS.metahuman} />
+      <h2 className="text-5xl font-bold mb-1">Approach 1/3: Rapport MetaHuman Demo</h2>
       <p className="text-[#bdb8af] text-xl mb-6">
         Cloud-rendered Unreal Engine 5.7 avatar via pixel streaming
       </p>
@@ -1541,8 +1547,8 @@ function SlideMetahumanDemo() {
 function SlideGenerativeHow() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Video Generation" color={METHOD_COLORS.generative} />
-      <h2 className="text-5xl font-bold mb-2">How It Works</h2>
+      <SlideMethodBadge method="Video Generation" label="Approach 2/3 · Mechanism" color={METHOD_COLORS.generative} />
+      <h2 className="text-5xl font-bold mb-2">Approach 2/3: How Video Generation Works</h2>
       <div
         className="w-14 h-1 rounded-full mb-6"
         style={{ background: METHOD_COLORS.generative }}
@@ -1600,8 +1606,8 @@ function SlideGenerativeHow() {
 function SlideGenerativeIdentityResponse() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Video Generation Deep Dive" color={METHOD_COLORS.generative} />
-      <h2 className="text-5xl font-bold mb-2">Identity & Response Stack</h2>
+      <SlideMethodBadge method="Video Generation" label="Approach 2/3 · Identity + Response" color={METHOD_COLORS.generative} />
+      <h2 className="text-5xl font-bold mb-2">Approach 2/3: Identity & Response Stack</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.generative }} />
 
       <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
@@ -1883,8 +1889,8 @@ function SlideGenerativeResearch() {
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Video Generation" color={METHOD_COLORS.generative} />
-      <h2 className="text-5xl font-bold mb-2">Research Frontier</h2>
+      <SlideMethodBadge method="Video Generation" label="Approach 2/3 · Research Snapshot" color={METHOD_COLORS.generative} />
+      <h2 className="text-5xl font-bold mb-2">Approach 2/3: Research Snapshot</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.generative }} />
 
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
@@ -2010,8 +2016,8 @@ function SlideGenerativeResearch() {
 function SlideGenerativeDemo() {
   return (
     <div className="flex flex-col items-center justify-center h-full px-12 text-center">
-      <SlideMethodBadge method="Video Generation Demo" color={METHOD_COLORS.generative} />
-      <h2 className="text-5xl font-bold mb-1">Live Demo: LiveKit + Hedra</h2>
+      <SlideMethodBadge method="Video Generation" label="Approach 2/3 · Demo" color={METHOD_COLORS.generative} />
+      <h2 className="text-5xl font-bold mb-1">Approach 2/3: LiveKit + Hedra Demo</h2>
       <p className="text-[#bdb8af] text-xl mb-8 max-w-lg">
         Diffusion-based avatar streamed via WebRTC
       </p>
@@ -2049,8 +2055,8 @@ function SlideGenerativeDemo() {
 function SlideGaussianHow() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Gaussian Splatting" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">Gaussian Splatting Fundamentals</h2>
+      <SlideMethodBadge method="Gaussian Splatting" label="Approach 3/3 · Fundamentals" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Approach 3/3: Gaussian Splatting Fundamentals</h2>
       <div
         className="w-14 h-1 rounded-full mb-8"
         style={{ background: METHOD_COLORS.gaussian }}
@@ -2129,8 +2135,8 @@ function SlideGaussianHow() {
 function SlideGaussianIdentityResponse() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Gaussian Deep Dive" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">Identity & Response Stack</h2>
+      <SlideMethodBadge method="Gaussian Splatting" label="Approach 3/3 · Identity + Response" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Approach 3/3: Identity & Response Stack</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
       <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
@@ -2207,8 +2213,8 @@ function SlideGaussianMechanism() {
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Gaussian Splatting" label="Mechanism + Interactive Demo" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">How Gaussian Splatting Works</h2>
+      <SlideMethodBadge method="Gaussian Splatting" label="Approach 3/3 · Mechanism + Demo" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Approach 3/3: How Gaussian Splatting Works</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
       <p className="text-lg text-[#c7c2b9] mb-4 max-w-5xl">
         Gaussian splatting represents a scene as explicit 3D Gaussian primitives and renders by projecting them to screen-space ellipses with alpha compositing, instead of querying a heavy neural field per pixel.
@@ -2387,8 +2393,8 @@ function SlideGaussianCovariance() {
 function SlideGaussianDemo() {
   return (
     <div className="flex flex-col items-center justify-center h-full px-12 text-center">
-      <SlideMethodBadge method="Gaussian Splatting Demo" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-1">Live Demo: OpenAvatarChat + LAM</h2>
+      <SlideMethodBadge method="Gaussian Splatting" label="Approach 3/3 · Demo" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-1">Approach 3/3: OpenAvatarChat + LAM Demo</h2>
       <p className="text-[#bdb8af] text-xl mb-8 max-w-lg">
         Self-hosted Gaussian avatar with real-time conversation
       </p>
@@ -3194,10 +3200,10 @@ function SlideSignalsInteraction() {
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <h2 className="text-5xl font-bold mb-2">Interaction Signals</h2>
+      <h2 className="text-5xl font-bold mb-2">Interaction Signals (Shared Definitions)</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
       <p className="text-base text-[#bdb8af] mb-4">
-        Approach tab selects backend. Aspect tab separates end-user perception inputs from avatar control/render interfaces.
+        Use this as the shared glossary before approach deep dives. Approach tabs select backend behavior; aspect tabs separate end-user inputs from avatar-system interfaces.
       </p>
 
       <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
@@ -3289,6 +3295,9 @@ function SlideSignalsInteraction() {
 
       <p className="text-xs text-[#948d82] mt-3">
         End-user inputs belong to perception. Avatar-system inputs are control/actuation signals. Native = documented inside backend defaults.
+      </p>
+      <p className="text-xs text-[#948d82] mt-1">
+        Next: apply this schema to Approach 1 (MetaHuman).
       </p>
 
       <SlideEvidenceStrip
@@ -3900,8 +3909,8 @@ function SlideWhereIntelligenceLives() {
 function SlideCapabilityTransition() {
   const checkpoints = [
     'Demos showed what each approach can render.',
-    'Now compare them with one decision frame.',
-    'Next slide turns evidence into selection criteria.',
+    'Next: compare capabilities with one decision frame.',
+    'Then: isolate missing layers and map research directions.',
   ];
 
   return (
@@ -4434,8 +4443,8 @@ const SLIDES: React.FC[] = [
   SlideCapabilityMatrix,         // 28
   SlideAudio2FaceBuildingBlocks, // 29
   SlideWhereIntelligenceLives,   // 30
-  SlideResearchFrontier,         // 31
-  SlideFuturePerspectiveMissingLayers, // 32
+  SlideFuturePerspectiveMissingLayers, // 31
+  SlideResearchFrontier,         // 32
   SlideConvergenceUpdated,       // 33
   SlideHowToEvolveProject,       // 34
   SlideThankYou,                 // 35
