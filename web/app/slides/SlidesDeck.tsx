@@ -58,6 +58,7 @@ const PROJECT_SKILLS_DIR_URL = 'https://github.com/pajamadot/realtime-avatars/tr
 const SKILL_METAHUMAN_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/metahuman-evolver/SKILL.md';
 const SKILL_FULL_MODALITY_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/full-modality-social-evolver/SKILL.md';
 const SKILL_GAUSSIAN_WALL_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/gaussian-youtube-video-wall-evolver/SKILL.md';
+const SKILL_MULTIMODAL_IO_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/multimodal-io-research-evolver/SKILL.md';
 const HEDRA_AVATAR_URL = 'https://www.hedra.com/app/avatar';
 const WORLDLABS_MARBLE_APP_URL = 'https://marble.worldlabs.ai';
 const SUPERSPLAT_DEMO_ONE_URL = 'https://superspl.at/view?id=bd964899';
@@ -330,8 +331,8 @@ function SlideProblem() {
   const rationale = [
     { icon: Cpu, label: 'Agent-Only Work', desc: 'Backoffice automation, ETL, triage, routing: no avatar needed.' },
     { icon: Users, label: 'Human Trust Loop', desc: 'People calibrate trust through timing, gaze, expression, and tone.' },
-    { icon: Headset, label: 'Storytelling & Roleplay', desc: 'Realtime branch selection keeps the narrative coherent when users interrupt or choose new paths.' },
-    { icon: BookOpen, label: 'Teaching & Care', desc: 'Realtime social cues and adaptive branching improve comprehension, confidence, and engagement.' },
+    { icon: Headset, label: 'Storytelling in Realtime', desc: 'Adaptive pacing for linear scenes and branch selection for interactive roleplay.' },
+    { icon: BookOpen, label: 'Teaching & Care', desc: 'Realtime social cues and narrative continuity improve comprehension, confidence, and engagement.' },
   ];
 
   return (
@@ -357,7 +358,8 @@ function SlideProblem() {
         <h3 className="text-xl font-semibold mb-3">The Core Decision</h3>
         <p className="text-lg text-[#bdb8af]">
           Keep agents invisible for machine-to-machine throughput. Use realtime avatars at the
-          human boundary where rapport, accountability, social coordination, and realtime narrative branching determine outcomes.
+          human boundary where rapport, accountability, social coordination, and realtime storytelling quality
+          (linear or branching) determine outcomes.
         </p>
       </div>
     </div>
@@ -376,12 +378,12 @@ function SlideRealtimeNarrativeLoop() {
       ],
     },
     {
-      title: 'Realtime Branch Policy',
+      title: 'Narrative Policy Engine',
       color: METHOD_COLORS.generative,
       lines: [
-        'pick next beat every turn (or partial turn)',
-        'allow interruption-safe replanning',
-        'enforce continuity + safety guardrails',
+        'mode A: linear beat continuation',
+        'mode B: branch selection from choice graph',
+        'merge to canonical anchors to preserve coherence',
       ],
     },
     {
@@ -389,7 +391,7 @@ function SlideRealtimeNarrativeLoop() {
       color: METHOD_COLORS.metahuman,
       lines: [
         'voice prosody + text semantics',
-        'face/gesture/gaze aligned to branch intent',
+        'face/gesture/gaze aligned to beat or branch intent',
         'camera/staging updates to reinforce narrative',
       ],
     },
@@ -398,10 +400,10 @@ function SlideRealtimeNarrativeLoop() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Realtime Narrative" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-1">Storytelling and Branching in Realtime</h2>
+      <h2 className="text-5xl font-bold mb-1">Storytelling in Realtime (Linear + Branching)</h2>
       <p className="text-[#bdb8af] text-base mb-4 max-w-5xl">
-        A realtime agent is a narrative controller: it senses user signals, updates story state,
-        picks the next branch, and renders the response across voice, face, and body in one loop.
+        A realtime agent is a narrative performer: it senses user signals, updates scene state,
+        then either continues a linear arc or chooses a branch while keeping continuity and emotional timing.
       </p>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
 
@@ -411,10 +413,11 @@ function SlideRealtimeNarrativeLoop() {
           nodes={[
             { id: 'sense', label: 'Sense (speech / text / gaze / gesture)' },
             { id: 'state', label: 'Update social + story state' },
-            { id: 'plan', label: 'Plan beat + objective' },
-            { id: 'branch', label: 'Select branch + constraints' },
+            { id: 'plan', label: 'Plan intent + pacing' },
+            { id: 'choose', label: 'Choose beat or branch' },
+            { id: 'deliver', label: 'Compose line + delivery style' },
             { id: 'render', label: 'Render multimodal response' },
-            { id: 'feedback', label: 'Observe feedback and replan' },
+            { id: 'feedback', label: 'Observe feedback + replan' },
           ]}
         />
       </div>
@@ -434,9 +437,34 @@ function SlideRealtimeNarrativeLoop() {
         ))}
       </div>
 
+      <div className="grid grid-cols-2 gap-3 mb-4">
+        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+          <h3 className="text-sm font-semibold mb-2" style={{ color: METHOD_COLORS.generative }}>
+            Branching Brainstorm Patterns
+          </h3>
+          <ul className="space-y-1 text-xs text-[#bdb8af]">
+            <li>Explicit choice cards: user picks option A/B/C in real time.</li>
+            <li>Implicit branching: infer intent from interruption or sentiment shift.</li>
+            <li>Micro-branches: local detours that rejoin quickly.</li>
+            <li>Hard branches: chapter-level divergence with persistent state changes.</li>
+          </ul>
+        </div>
+        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+          <h3 className="text-sm font-semibold mb-2" style={{ color: METHOD_COLORS.metahuman }}>
+            Guardrails for Coherence
+          </h3>
+          <ul className="space-y-1 text-xs text-[#bdb8af]">
+            <li>Branch budget: limit depth/time per branch.</li>
+            <li>Canonical anchors: mandatory return points for continuity.</li>
+            <li>Persona lock: same character goals and voice across branches.</li>
+            <li>State checks: prevent contradictions before each response.</li>
+          </ul>
+        </div>
+      </div>
+
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] text-sm text-[#bdb8af]">
-        <span className="font-semibold text-[#f5f2ec]">Why this matters:</span> without realtime branch control, avatars look responsive but feel scripted.
-        With branch control, the user can steer the story live and still keep coherence.
+        <span className="font-semibold text-[#f5f2ec]">Why this matters:</span> without realtime narrative timing, avatars feel delayed or monotone.
+        With realtime narrative policy, they can run linear scenes or interactive branching while staying coherent.
       </div>
     </div>
   );
@@ -629,9 +657,9 @@ function SlideMetahumanIdentityResponse() {
         <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
           <h3 className="text-lg font-semibold text-[#f5f2ec] mb-2">2) Realtime Response Model</h3>
           <ul className="space-y-1.5 text-sm text-[#bdb8af]">
-            <li>Input modalities: RGB/depth face video, audio, head pose, optional emotion/text intent.</li>
-            <li>Models: Live Link Face / MetaHuman Animator 4D solver, optional Audio2Face mapping.</li>
-            <li>Control outputs: ARKit-style blendshape curves + head/eye transforms.</li>
+            <li>Native multimodal inputs: face video/depth, audio prosody, head pose, gaze cues, turn-taking signals.</li>
+            <li>Models: Live Link Face + MetaHuman Animator 4D solver + RigLogic runtime path.</li>
+            <li>Control outputs: ARKit-style blendshape curves, head/eye transforms, and interaction-state cues.</li>
             <li>Final outputs: rendered video stream + synced speech audio.</li>
           </ul>
         </div>
@@ -641,7 +669,7 @@ function SlideMetahumanIdentityResponse() {
         <div className="grid grid-cols-3 gap-3 text-xs">
           <div className="rounded-lg p-3 bg-[#181716]">
             <p className="text-[#948d82] uppercase tracking-wide mb-1">Input Modalities</p>
-            <p className="text-[#f5f2ec]">Face video, depth, audio, IMU/head pose, intent signals.</p>
+            <p className="text-[#f5f2ec]">Face/depth video, audio, head pose, gaze, turn-state, intent signals.</p>
           </div>
           <div className="rounded-lg p-3 bg-[#181716]">
             <p className="text-[#948d82] uppercase tracking-wide mb-1">Core Models</p>
@@ -756,9 +784,10 @@ function SlideGenerativeIdentityResponse() {
         <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
           <h3 className="text-lg font-semibold text-[#f5f2ec] mb-2">2) Realtime Response Model</h3>
           <ul className="space-y-1.5 text-sm text-[#bdb8af]">
-            <li>Input modalities: audio waveform, text intent, pose/landmark controls, emotion tokens.</li>
-            <li>Models: audio encoder (mel/Wav2Vec-style) + temporal causal module + diffusion/DiT decoder.</li>
-            <li>Runtime output: generated video frames (optionally with viseme/expression consistency constraints).</li>
+            <li>Native inputs: audio waveform + text intent; optional pose/emotion/image controls for stronger conditioning.</li>
+            <li>Conditional inputs: direct webcam-derived gaze/AU signals usually need an extra perception front-end.</li>
+            <li>Models: audio/text encoders + temporal causal modules + diffusion/DiT decoders (LiveTalk/Avatar Forcing style).</li>
+            <li>Runtime output: generated video frames with temporal lip-sync and expression consistency constraints.</li>
             <li>Delivery output: WebRTC streamed video + optional synthesized speech audio.</li>
           </ul>
         </div>
@@ -768,7 +797,7 @@ function SlideGenerativeIdentityResponse() {
         <div className="grid grid-cols-3 gap-3 text-xs">
           <div className="rounded-lg p-3 bg-[#181716]">
             <p className="text-[#948d82] uppercase tracking-wide mb-1">Input Modalities</p>
-            <p className="text-[#f5f2ec]">Portrait/video reference, audio, prompt, emotion, pose maps.</p>
+            <p className="text-[#f5f2ec]">Portrait/video reference, audio, text intent, emotion/pose controls, turn-state.</p>
           </div>
           <div className="rounded-lg p-3 bg-[#181716]">
             <p className="text-[#948d82] uppercase tracking-wide mb-1">Core Models</p>
@@ -1221,7 +1250,7 @@ function SlideGaussianIdentityResponse() {
         <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
           <h3 className="text-lg font-semibold text-[#f5f2ec] mb-2">2) Realtime Response Model</h3>
           <ul className="space-y-1.5 text-sm text-[#bdb8af]">
-            <li>Input modalities: audio, expression coefficients, head pose, gaze, text/emotion intent.</li>
+            <li>Native inputs: audio, expression coefficients, head pose; webcam face/gaze is usually conditional.</li>
             <li>Models: Audio2Expression driver + deformation model (FLAME/SMPL-X or learned fields).</li>
             <li>Renderer: differentiable or realtime splat rasterizer with depth-aware alpha blending.</li>
             <li>Final outputs: high-FPS video stream and avatar state updates for interaction loops.</li>
@@ -1233,7 +1262,7 @@ function SlideGaussianIdentityResponse() {
         <div className="grid grid-cols-3 gap-3 text-xs">
           <div className="rounded-lg p-3 bg-[#181716]">
             <p className="text-[#948d82] uppercase tracking-wide mb-1">Input Modalities</p>
-            <p className="text-[#f5f2ec]">Image/video capture, audio speech, pose/gaze, emotion controls.</p>
+            <p className="text-[#f5f2ec]">Image/video capture, audio speech, expression/pose drivers, optional gaze/emotion controls.</p>
           </div>
           <div className="rounded-lg p-3 bg-[#181716]">
             <p className="text-[#948d82] uppercase tracking-wide mb-1">Core Models</p>
@@ -1929,53 +1958,76 @@ function SlideE2EPipeline() {
 
 function SlideSignalsInteraction() {
   type TabId = 'inputs' | 'outputs' | 'coupling';
+  type SupportLevel = 0 | 1 | 2;
   const [activeTab, setActiveTab] = useState<TabId>('inputs');
+  const methodCodes = ['MH', 'VG', 'GS'];
 
-  const methodDot = (supported: boolean[], colors: string[]) => (
+  const supportLabels: Record<SupportLevel, string> = {
+    0: 'Not native',
+    1: 'Conditional',
+    2: 'Native',
+  };
+
+  const methodDot = (supported: SupportLevel[], colors: string[]) => (
     <div className="flex gap-1">
-      {supported.map((s, i) => (
-        <div
-          key={i}
-          className="w-2 h-2 rounded-full"
-          style={{ background: s ? colors[i] : '#3d3a36' }}
-          title={s ? 'Supported' : 'Not supported'}
-        />
-      ))}
+      {supported.map((level, i) => {
+        const color = colors[i];
+        const style =
+          level === 2
+            ? { background: color, borderColor: color }
+            : level === 1
+              ? { background: `${color}88`, borderColor: color }
+              : { background: '#3d3a36', borderColor: '#4a4641' };
+        return (
+          <div
+            key={i}
+            className="w-2.5 h-2.5 rounded-full border"
+            style={style}
+            title={`${methodCodes[i]}: ${supportLabels[level]}`}
+          />
+        );
+      })}
     </div>
   );
 
   const colors = [METHOD_COLORS.metahuman, METHOD_COLORS.generative, METHOD_COLORS.gaussian];
 
-  const tabs: Record<TabId, { label: string; signals: Array<{ name: string; support: boolean[] }> }> = {
+  const tabs: Record<
+    TabId,
+    {
+      label: string;
+      signals: Array<{ name: string; support: [SupportLevel, SupportLevel, SupportLevel] }>;
+    }
+  > = {
     inputs: {
       label: 'User Inputs',
       signals: [
-        { name: 'Audio prosody', support: [true, true, true] },
-        { name: 'Face video (webcam)', support: [true, true, true] },
-        { name: 'Head pose', support: [true, true, true] },
-        { name: 'Gaze direction', support: [true, true, true] },
-        { name: 'Expression coefficients', support: [true, true, true] },
-        { name: 'Turn-taking signals', support: [true, true, true] },
+        { name: 'Audio prosody', support: [2, 2, 2] },
+        { name: 'Face video (webcam)', support: [2, 2, 1] },
+        { name: 'Head pose', support: [2, 2, 2] },
+        { name: 'Gaze direction', support: [2, 1, 1] },
+        { name: 'Expression coefficients', support: [2, 1, 2] },
+        { name: 'Turn-taking signals', support: [2, 2, 2] },
       ],
     },
     outputs: {
       label: 'Agent Outputs',
       signals: [
-        { name: 'Speech audio', support: [true, true, true] },
-        { name: 'Facial action units', support: [true, true, true] },
-        { name: 'Head motion', support: [true, true, true] },
-        { name: 'Gaze shifts', support: [true, true, true] },
-        { name: 'Hand gestures', support: [true, true, true] },
-        { name: 'Idle micro-motion', support: [true, true, true] },
+        { name: 'Speech audio', support: [2, 2, 2] },
+        { name: 'Facial action units', support: [2, 1, 1] },
+        { name: 'Head motion', support: [2, 2, 2] },
+        { name: 'Gaze shifts', support: [2, 1, 1] },
+        { name: 'Hand gestures', support: [2, 2, 1] },
+        { name: 'Idle micro-motion', support: [2, 2, 2] },
       ],
     },
     coupling: {
       label: 'Coupling Styles',
       signals: [
-        { name: 'Audio-only driven', support: [true, true, true] },
-        { name: 'Audio + user motion (Avatar Forcing)', support: [false, true, false] },
-        { name: 'Audio + text + image (LiveTalk)', support: [false, true, false] },
-        { name: 'Audio + pose (TaoAvatar)', support: [false, false, true] },
+        { name: 'Audio-only driven', support: [2, 2, 2] },
+        { name: 'Audio + user motion (Avatar Forcing)', support: [0, 2, 0] },
+        { name: 'Audio + text + image (LiveTalk)', support: [0, 2, 0] },
+        { name: 'Audio + pose (TaoAvatar)', support: [0, 0, 2] },
       ],
     },
   };
@@ -2026,8 +2078,23 @@ function SlideSignalsInteraction() {
         </div>
       </div>
 
+      <div className="flex items-center gap-5 mt-3 text-[11px] text-[#948d82]">
+        <div className="flex items-center gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full border border-[#6ec87a] bg-[#6ec87a]" />
+          Native
+        </div>
+        <div className="flex items-center gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full border border-[#e1a65b] bg-[#e1a65b88]" />
+          Conditional
+        </div>
+        <div className="flex items-center gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full border border-[#4a4641] bg-[#3d3a36]" />
+          Not native
+        </div>
+      </div>
+
       <p className="text-sm text-[#948d82] mt-3">
-        Emotional responsiveness is not just about rendering -- it depends on what signals the pipeline can ingest and produce.
+        Real multimodality depends on native signal support. Conditional channels usually require extra perception/control modules.
       </p>
     </div>
   );
@@ -2590,7 +2657,7 @@ function SlideBuiltWithClaudeSkills() {
           accentColor={METHOD_COLORS.gaussian}
           nodes={[
             { id: 'scan', label: 'Scan Repo + Live Pages' },
-            { id: 'skill', label: 'Run Skills (MetaHuman / Full-Modality)' },
+            { id: 'skill', label: 'Run Skills (MetaHuman / Full-Modality / Multimodal I/O)' },
             { id: 'patch', label: 'Patch Code + Slides' },
             { id: 'verify', label: 'Verify Claims + Lint' },
             { id: 'publish', label: 'Publish docs to web/public/docs' },
@@ -2604,6 +2671,7 @@ function SlideBuiltWithClaudeSkills() {
           <ul className="space-y-1.5 text-sm text-[#bdb8af]">
             <li>`metahuman-evolver`: Unreal plugin architecture + dependency graph</li>
             <li>`full-modality-social-evolver`: slide claim checks + ArXiv/GitHub deltas</li>
+            <li>`multimodal-io-research-evolver`: distills native vs conditional I/O across all 3 approaches</li>
             <li>Self-evolving state/events memory for repeatable improvement cycles</li>
           </ul>
         </div>
@@ -2613,6 +2681,8 @@ function SlideBuiltWithClaudeSkills() {
           <ul className="space-y-1.5 text-sm text-[#bdb8af]">
             <li>`full-modality-research-latest.md/json`</li>
             <li>`full-modality-claim-check-latest.json`</li>
+            <li>`multimodal-io-research-latest.md/json`</li>
+            <li>`multimodal-io-claim-matrix-latest.json`</li>
             <li>`metahuman-architecture-latest.json`</li>
             <li>`metahuman-dependency-graph-latest.json/.mmd`</li>
           </ul>
@@ -2622,7 +2692,7 @@ function SlideBuiltWithClaudeSkills() {
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
         <p className="text-sm text-[#948d82] mb-2">Typical cycle command</p>
         <code className="text-sm text-[#f5f2ec] break-all">
-          python .claude/skills/full-modality-social-evolver/scripts/evolve_social_modality_research.py
+          python .claude/skills/multimodal-io-research-evolver/scripts/evolve_multimodal_io_research.py
         </code>
       </div>
     </div>
@@ -2640,6 +2710,11 @@ function SlideAgentSkillsUsed() {
       name: 'full-modality-social-evolver',
       purpose: 'Verifies modality claims, tracks ArXiv/GitHub deltas, and evolves social interaction research.',
       url: SKILL_FULL_MODALITY_URL,
+    },
+    {
+      name: 'multimodal-io-research-evolver',
+      purpose: 'Refreshes multimodal research and upserts cross-approach I/O conclusions into the deep-research doc.',
+      url: SKILL_MULTIMODAL_IO_URL,
     },
     {
       name: 'gaussian-youtube-video-wall-evolver',

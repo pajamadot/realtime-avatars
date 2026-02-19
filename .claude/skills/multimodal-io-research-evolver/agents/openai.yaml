@@ -1,0 +1,4 @@
+interface:
+  display_name: "Multimodal IO Research Evolver"
+  short_description: "Self-evolving multimodal input/output research and claim distillation across three avatar approaches"
+
