@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useLayoutEffect } from 'react';
 import Link from 'next/link';
 import {
   ArrowLeft,
@@ -77,6 +77,7 @@ const GAUSSIAN_VIDEO_WALL_ROUTE = '/gaussian-video-wall';
 const EVIDENCE_URLS = {
   epicMetaHumanDocs: 'https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-documentation',
   epicMetaHumansInUE: 'https://dev.epicgames.com/documentation/en-us/metahuman/metahumans-in-unreal-engine',
+  epicPixelStreaming: 'https://dev.epicgames.com/documentation/en-us/unreal-engine/pixel-streaming-in-unreal-engine',
   epicMetaHumanAnimator: 'https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-animator',
   epicMetaHumanLiveLink: 'https://dev.epicgames.com/documentation/en-us/metahuman/realtime-animation-using-live-link',
   epicMetaHumanAudioSource: 'https://dev.epicgames.com/documentation/en-us/metahuman/using-audio-source-for-animation',
@@ -89,9 +90,11 @@ const EVIDENCE_URLS = {
   openaiRealtimeApi: 'https://platform.openai.com/docs/guides/realtime',
   arxivDdpm: 'https://arxiv.org/abs/2006.11239',
   arxivProgressiveDistillation: 'https://arxiv.org/abs/2202.00512',
+  wikiGaussianSplatting: 'https://en.wikipedia.org/wiki/Gaussian_splatting',
   arxiv3dgs: 'https://arxiv.org/abs/2308.04079',
   gsplatColmap: 'https://docs.gsplat.studio/main/examples/colmap.html',
   supersplatDocs: 'https://developer.playcanvas.com/user-manual/gaussian-splatting/editing/supersplat/',
+  playcanvasGaussianSplatting: 'https://developer.playcanvas.com/user-manual/gaussian-splatting/',
   arxivTaoAvatar: 'https://arxiv.org/abs/2503.17032',
   arxivLAM: 'https://arxiv.org/abs/2502.17796',
   arxivMIDAS: 'https://arxiv.org/abs/2508.19320',
@@ -398,7 +401,7 @@ function SlideCogixEyeTrackerPrototype() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Cogix" label="Current Work" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">By Day: Building at Cogix</h2>
+      <h2 className="text-5xl font-bold mb-2">By Day: Building Cogix</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
       <p className="text-base text-[#c7c2b9] mb-4 max-w-4xl">
@@ -535,7 +538,7 @@ function SlideGraphNerd() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Personal Lens" label="Node-First Thinking" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">Graph Nerd & Storyteller at Night</h2>
+      <h2 className="text-5xl font-bold mb-2">At Night: Graph Nerd Building Storytelling Tools</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
       <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]">
@@ -696,7 +699,7 @@ function SlideE2EDefinitionMindmap() {
       <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-3">
         <p className="text-sm text-[#c7c2b9]">
           Shared path used by all approaches:
-          <span className="text-[#f5f2ec]"> end-user inputs → perception → response model → avatar actuation → multimodal outputs</span>
+          <span className="text-[#f5f2ec]"> end-user inputs → perception → response model → avatar control → multimodal outputs</span>
         </p>
       </div>
 
@@ -707,7 +710,7 @@ function SlideE2EDefinitionMindmap() {
         </div>
         <div className="rounded-lg p-3 border border-[#3d3a36] bg-[#1d1c1a]">
           <p className="text-[11px] uppercase tracking-wide text-[#948d82] mb-1">System Boundary</p>
-          <p className="text-xs text-[#c7c2b9]">LLM response model means dialogue/intent generation with memory/state. Avatar control inputs are downstream actuation signals.</p>
+          <p className="text-xs text-[#c7c2b9]">LLM response model means dialogue/intent generation with memory/state. Avatar control inputs are downstream control signals.</p>
         </div>
         <div className="rounded-lg p-3 border border-[#3d3a36] bg-[#1d1c1a]">
           <p className="text-[11px] uppercase tracking-wide text-[#948d82] mb-1">Multimodal Outputs</p>
@@ -1025,7 +1028,7 @@ function SlideFuturePerspectiveMissingLayers() {
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
       <p className="text-base text-[#c7c2b9] mb-5">
-        This layer is upstream of all avatar backends. Its job is to convert noisy human signals into reliable interaction state before response generation and actuation.
+        This layer is upstream of all avatar backends. Its job is to convert noisy human signals into reliable interaction state before response generation and avatar control.
       </p>
 
       <div className="mb-4">
@@ -1071,7 +1074,7 @@ function SlideFuturePerspectiveMissingLayers() {
       </div>
 
       <div className="rounded-xl border border-[#3d3a36] bg-[#1d1c1a] p-4 text-sm text-[#bdb8af]">
-        <span className="font-semibold text-[#f5f2ec]">Design rule:</span> keep user-input processing and avatar actuation separate, then bridge them with a typed interaction-state contract.
+        <span className="font-semibold text-[#f5f2ec]">Design rule:</span> keep user-input processing and avatar control separate, then bridge them with a typed interaction-state contract.
       </div>
 
       <SlideEvidenceStrip
@@ -1254,7 +1257,7 @@ function SlideThreeApproaches() {
             <ul className="list-disc pl-5 space-y-1 text-sm text-[#bdb8af]">
               <li>End-user multimodal input reception</li>
               <li>Perception + fusion + state update</li>
-              <li>Policy and actuation planning</li>
+              <li>Policy and control planning</li>
             </ul>
           </div>
           <div className="rounded-lg p-3 border border-[#3d3a36] bg-[#181716]">
@@ -2053,20 +2056,82 @@ function SlideGenerativeDemo() {
 }
 
 function SlideGaussianHow() {
+  const plainEnglishE2E = [
+    {
+      title: '1) Capture',
+      text: 'Record many views around a subject (for example, walking around with a phone camera).',
+    },
+    {
+      title: '2) Reconstruct',
+      text: 'Estimate camera positions and build an initial 3D point cloud from those views.',
+    },
+    {
+      title: '3) Convert to Splats',
+      text: 'Turn points into tiny 3D Gaussian blobs with position, size/shape, color, and opacity.',
+    },
+    {
+      title: '4) Render',
+      text: 'For each frame, project blobs to screen-space ellipses and blend them front-to-back.',
+    },
+    {
+      title: '5) Animate',
+      text: 'Drive expression/pose controls over time to produce real-time avatar motion.',
+    },
+  ];
+
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Gaussian Splatting" label="Approach 3/3 · Fundamentals" color={METHOD_COLORS.gaussian} />
       <h2 className="text-5xl font-bold mb-2">Approach 3/3: Gaussian Splatting Fundamentals</h2>
       <div
-        className="w-14 h-1 rounded-full mb-8"
+        className="w-14 h-1 rounded-full mb-5"
         style={{ background: METHOD_COLORS.gaussian }}
       />
 
-      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-6">
+      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
+        <p className="text-sm uppercase tracking-wide text-[#948d82] mb-2">Plain-English End-to-End</p>
+        <div className="grid grid-cols-5 gap-2">
+          {plainEnglishE2E.map((step) => (
+            <div key={step.title} className="rounded-lg p-2.5 border border-[#3d3a36] bg-[#181716]">
+              <p className="text-sm font-semibold text-[#f5f2ec] mb-1">{step.title}</p>
+              <p className="text-xs text-[#bdb8af] leading-relaxed">{step.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-5">
         <p className="text-lg text-[#bdb8af] leading-relaxed">
           Think of a scene as <span className="text-[#f5f2ec]">millions of tiny translucent paint clouds</span>.
           {' '}Each cloud is a 3D Gaussian with center, shape, color, and opacity. Unlike NeRF-style MLP field queries, 3DGS renders by projecting those clouds to screen-space ellipses and alpha-blending front-to-back.
         </p>
+      </div>
+
+      <div className="grid grid-cols-3 gap-3 mb-5">
+        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+          <p className="text-sm uppercase tracking-wide text-[#948d82] mb-2">Training (Offline)</p>
+          <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#c7c2b9]">
+            <li>Reconstruct identity from multi-view images/video and camera poses (3DGS/LAM family).</li>
+            <li>Optimize Gaussian parameters with photometric loss and density control (split/prune).</li>
+            <li>Train speech-driven motion mapping (audio to expression/pose coefficients) from paired motion data.</li>
+          </ul>
+        </div>
+        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+          <p className="text-sm uppercase tracking-wide text-[#948d82] mb-2">Inference During Talk (Online)</p>
+          <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#c7c2b9]">
+            <li>Incoming speech is encoded into phoneme/prosody-conditioned control signals.</li>
+            <li>Controls drive expression/head/pose updates on the avatar state each frame.</li>
+            <li>Updated Gaussians are rasterized in real time and streamed as output frames.</li>
+          </ul>
+        </div>
+        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+          <p className="text-sm uppercase tracking-wide text-[#948d82] mb-2">Underlying Representation</p>
+          <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#c7c2b9]">
+            <li>Explicit 3D primitives: per-splat <span className="text-[#f5f2ec]">mu, Sigma, color, opacity</span>.</li>
+            <li>Optional parameterized face/body control layers (for expression and gesture actuation).</li>
+            <li>Rendering is direct splat rasterization, not per-pixel neural-field querying.</li>
+          </ul>
+        </div>
       </div>
 
       {/* Classic training vs feed-forward generation */}
@@ -2124,8 +2189,12 @@ function SlideGaussianHow() {
 
       <SlideEvidenceStrip
         links={[
+          { label: 'Wikipedia: Gaussian splatting', href: EVIDENCE_URLS.wikiGaussianSplatting },
           { label: '3D Gaussian Splatting', href: EVIDENCE_URLS.arxiv3dgs },
           { label: 'LAM (one-shot Gaussian avatar)', href: EVIDENCE_URLS.arxivLAM },
+          { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
+          { label: 'ICo3D', href: EVIDENCE_URLS.arxivICo3D },
+          { label: 'FastGHA', href: EVIDENCE_URLS.arxivFastGHA },
         ]}
       />
     </div>
@@ -2569,7 +2638,7 @@ function SlideGaussianResearchVideoWall() {
       <SlideMethodBadge method="Gaussian Splatting Demo" label="YouTube Research Wall" color={METHOD_COLORS.gaussian} />
       <h2 className="text-5xl font-bold mb-1">Gaussian Avatar Research Video Wall</h2>
       <p className="text-[#bdb8af] text-base mb-4">
-        Auto-collected from YouTube by the self-evolving
+        Signal check before capability scoring: this wall is auto-collected from YouTube by the self-evolving
         <code className="mx-1">gaussian-youtube-video-wall-evolver</code>
         skill. Click any tile to open modal playback.
       </p>
@@ -3025,7 +3094,7 @@ function SlideSignalsInteraction() {
             { label: 'GazeGPT', href: EVIDENCE_URLS.arxivGazeGPT },
             { label: 'GPT-4 Eyes code', href: EVIDENCE_URLS.pupilGpt4EyesCode },
           ],
-          note: 'Usually routed into context/state estimation before avatar actuation.',
+          note: 'Usually routed into context/state estimation before avatar control.',
         },
         {
           name: 'User head pose / body gesture',
@@ -3294,7 +3363,7 @@ function SlideSignalsInteraction() {
       </div>
 
       <p className="text-xs text-[#948d82] mt-3">
-        End-user inputs belong to perception. Avatar-system inputs are control/actuation signals. Native = documented inside backend defaults.
+        End-user inputs belong to perception. Avatar-system inputs are backend control signals. Native = documented inside backend defaults.
       </p>
       <p className="text-xs text-[#948d82] mt-1">
         Next: apply this schema to Approach 1 (MetaHuman).
@@ -3368,7 +3437,7 @@ function SlideCurrentE2EIOPaths() {
             { id: 'user', label: 'End user multimodal input' },
             { id: 'perception', label: 'Perception (ASR + vision + gaze + events)' },
             { id: 'fusion', label: 'Temporal fusion + state update' },
-            { id: 'policy', label: 'Response policy / actuation planning' },
+            { id: 'policy', label: 'Response policy / control planning' },
             { id: 'render', label: 'Avatar rendering + delivery' },
           ]}
         />
@@ -3485,6 +3554,37 @@ function SlideCapabilityMatrix() {
         { label: 'MetaHumans in UE', href: EVIDENCE_URLS.epicMetaHumansInUE },
       ],
     },
+    {
+      name: 'Hardware Footprint Flexibility',
+      scores: [1, 1, 2],
+      cite: 'MetaHuman and real-time video generation usually rely on strong GPU paths; Gaussian pipelines also need GPU but can span mobile XR to desktop/web deployment depending on quality targets.',
+      sources: [
+        { label: 'MetaHumans in UE', href: EVIDENCE_URLS.epicMetaHumansInUE },
+        { label: 'LiveTalk', href: EVIDENCE_URLS.arxivLiveTalk },
+        { label: 'SoulX-FlashHead', href: EVIDENCE_URLS.arxivSoulXFlashHead },
+        { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
+      ],
+    },
+    {
+      name: 'Web-Ready Delivery Path',
+      scores: [2, 3, 2],
+      cite: 'MetaHuman uses Unreal Pixel Streaming for browser delivery, video-generation systems are commonly served via real-time streaming transports, and Gaussian content has direct web-native tooling.',
+      sources: [
+        { label: 'UE Pixel Streaming', href: EVIDENCE_URLS.epicPixelStreaming },
+        { label: 'OpenAI Realtime API', href: EVIDENCE_URLS.openaiRealtimeApi },
+        { label: 'PlayCanvas Gaussian docs', href: EVIDENCE_URLS.playcanvasGaussianSplatting },
+      ],
+    },
+    {
+      name: 'Stylized Character Support',
+      scores: [1, 3, 2],
+      cite: 'MetaHuman is realism-biased, video generation strongly supports stylized identity through image/style conditioning, and Gaussian pipelines support stylized assets when capture/authoring data is available.',
+      sources: [
+        { label: 'MetaHuman docs', href: EVIDENCE_URLS.epicMetaHumanDocs },
+        { label: 'LivePortrait', href: EVIDENCE_URLS.arxivLivePortrait },
+        { label: 'SuperSplat docs', href: EVIDENCE_URLS.supersplatDocs },
+      ],
+    },
   ];
 
   const methods = [
@@ -3571,6 +3671,9 @@ function SlideCapabilityMatrix() {
       <p className="text-[10px] text-[#948d82] mt-2">
         Note: this matrix evaluates rendering/output and identity-control traits. Full multimodal user-input processing is a separate stack.
       </p>
+      <p className="text-[10px] text-[#948d82] mt-1">
+        For hardware and web-delivery rows, higher score means more deployment flexibility for production.
+      </p>
       <p className="text-[10px] text-[#7f7b74] mt-1">
         Scores are evidence-guided heuristics for architecture planning, not a normalized benchmark.
       </p>
@@ -3578,8 +3681,12 @@ function SlideCapabilityMatrix() {
       <SlideEvidenceStrip
         links={[
           { label: 'MetaHuman docs', href: EVIDENCE_URLS.epicMetaHumanDocs },
+          { label: 'UE Pixel Streaming', href: EVIDENCE_URLS.epicPixelStreaming },
           { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
+          { label: 'LivePortrait', href: EVIDENCE_URLS.arxivLivePortrait },
           { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
+          { label: 'SoulX-FlashHead', href: EVIDENCE_URLS.arxivSoulXFlashHead },
+          { label: 'PlayCanvas Gaussian docs', href: EVIDENCE_URLS.playcanvasGaussianSplatting },
           { label: 'ICo3D', href: EVIDENCE_URLS.arxivICo3D },
         ]}
       />
@@ -3727,14 +3834,17 @@ function SlideAudio2FaceBuildingBlocks() {
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Actuation Layer" label="Why This Page Exists" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">Audio-to-Avatar Actuation Bridge</h2>
+      <SlideMethodBadge method="Control Interface" label="Why This Page Exists" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Audio-to-Avatar Control Bridge</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
       <p className="text-base text-[#bdb8af] mb-4">
-        Purpose: clarify the shared actuation layer between response-model output and each avatar backend.
+        Purpose: clarify the shared control layer between response-model output and each avatar backend.
+      </p>
+      <p className="text-sm text-[#948d82] mb-2">
+        Narrative link from slide 28: after selecting a backend profile, implementation starts with a stable control interface.
       </p>
       <p className="text-sm text-[#948d82] mb-4">
-        Same input speech signal, different backend execution paths.
+        Same input speech signal, different backend control execution paths.
       </p>
 
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
@@ -3743,13 +3853,13 @@ function SlideAudio2FaceBuildingBlocks() {
           nodes={[
             { id: 'audio', label: 'Audio Input' },
             { id: 'a2e', label: 'Phoneme + Emotion Extraction' },
-            { id: 'viseme', label: 'Viseme / Expression Actuation' },
+            { id: 'viseme', label: 'Viseme / Expression Controls' },
             { id: 'avatar_backend', label: 'Avatar Backend (MH / VG / GS)' },
           ]}
         />
         <div className="flex items-center justify-center gap-2 text-sm text-[#948d82] mt-2">
           <Layers size={14} />
-          Shared abstraction: one voice stream → one actuation interface → multiple avatar backends.
+          Shared abstraction: one voice stream to one control interface to multiple avatar backends.
         </div>
       </div>
 
@@ -3862,7 +3972,7 @@ function SlideWhereIntelligenceLives() {
             Path B: End-to-End Generative Embodiment
           </h3>
           <p className="text-sm text-[#bdb8af] mb-3">
-            More behavior is internalized in the generator; fewer explicit actuation channels.
+            More behavior is internalized in the generator; fewer explicit control channels.
           </p>
           <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#c7c2b9]">
             <li>Fast to prototype from image/audio/text conditioning.</li>
@@ -3909,8 +4019,8 @@ function SlideWhereIntelligenceLives() {
 function SlideCapabilityTransition() {
   const checkpoints = [
     'Demos showed what each approach can render.',
-    'Next: compare capabilities with one decision frame.',
-    'Then: isolate missing layers and map research directions.',
+    'Next: quick scan of live research/demo signals.',
+    'Then: compare capabilities with one decision frame.',
   ];
 
   return (
@@ -3920,7 +4030,7 @@ function SlideCapabilityTransition() {
       <div className="w-14 h-1 rounded-full mb-6 mx-auto" style={{ background: METHOD_COLORS.gaussian }} />
 
       <p className="text-lg text-[#c7c2b9] mb-6">
-        The previous section showed individual demos and papers. The next step is a direct comparison to choose a stack.
+        The previous section showed approach demos. The next two slides connect market/research signals to a concrete architecture comparison.
       </p>
 
       <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]">
@@ -4166,7 +4276,7 @@ function SlideConvergenceUpdated() {
       <h2 className="text-5xl font-bold mb-2">Paper-Backed Workflow Comparison</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
       <p className="text-sm text-[#bdb8af] mb-4">
-        Workflow view: user input processing hands off to response modeling, then each avatar backend executes a different actuation/render path.
+        Workflow view: user input processing hands off to response modeling, then each avatar backend executes a different control/render path.
       </p>
 
       <div className="mb-4">
@@ -4438,8 +4548,8 @@ const SLIDES: React.FC[] = [
   SlideGaussianSupersplatDemoTwo,// 23
   SlideGaussianPersonalDemo,     // 24
   SlideGaussianWorldlabsDemo,    // 25
-  SlideGaussianResearchVideoWall,// 26
-  SlideCapabilityTransition,     // 27
+  SlideCapabilityTransition,     // 26
+  SlideGaussianResearchVideoWall,// 27
   SlideCapabilityMatrix,         // 28
   SlideAudio2FaceBuildingBlocks, // 29
   SlideWhereIntelligenceLives,   // 30
@@ -4458,7 +4568,10 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
   const [direction, setDirection] = useState<'left' | 'right' | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [fitScale, setFitScale] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
+  const slideViewportRef = useRef<HTMLDivElement>(null);
+  const slideInnerRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
   const touchStartY = useRef(0);
 
@@ -4589,6 +4702,54 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
 
   const CurrentSlide = SLIDES[current];
 
+  const recalcFitScale = useCallback(() => {
+    const viewport = slideViewportRef.current;
+    const inner = slideInnerRef.current;
+    if (!viewport || !inner) return;
+
+    const viewportH = viewport.clientHeight;
+    const viewportW = viewport.clientWidth;
+    const contentH = inner.scrollHeight;
+    const contentW = inner.scrollWidth;
+    if (viewportH <= 0 || viewportW <= 0 || contentH <= 0 || contentW <= 0) return;
+
+    const hScale = viewportH / contentH;
+    const wScale = viewportW / contentW;
+    const nextScale = Math.min(1, hScale, wScale);
+    const roundedScale = Math.max(0.55, Number(nextScale.toFixed(3)));
+    setFitScale((prev) => (Math.abs(prev - roundedScale) > 0.002 ? roundedScale : prev));
+  }, []);
+
+  useLayoutEffect(() => {
+    const id = requestAnimationFrame(recalcFitScale);
+    return () => cancelAnimationFrame(id);
+  }, [current, direction, recalcFitScale, isFullscreen]);
+
+  useEffect(() => {
+    const viewport = slideViewportRef.current;
+    const inner = slideInnerRef.current;
+    if (!viewport || !inner) return;
+
+    const ro = new ResizeObserver(() => recalcFitScale());
+    ro.observe(viewport);
+    ro.observe(inner);
+
+    const media = inner.querySelectorAll('img, video, iframe');
+    const listeners: Array<() => void> = [];
+    media.forEach((el) => {
+      const onLoad = () => recalcFitScale();
+      el.addEventListener('load', onLoad);
+      listeners.push(() => el.removeEventListener('load', onLoad));
+    });
+
+    window.addEventListener('resize', recalcFitScale);
+    return () => {
+      ro.disconnect();
+      listeners.forEach((off) => off());
+      window.removeEventListener('resize', recalcFitScale);
+    };
+  }, [current, recalcFitScale]);
+
   // Compute animation style
   const slideStyle: React.CSSProperties = {
     transition: 'opacity 300ms ease, transform 300ms ease',
@@ -4601,7 +4762,6 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
   };
 
   const slideContentStyle: React.CSSProperties = {
-    ...slideStyle,
     fontSize: `${SLIDE_FONT_SCALE}em`,
     lineHeight: 1.36,
   };
@@ -4667,9 +4827,20 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
         </button>
 
         {/* Slide */}
-        <div className="slide-content-shell h-full px-4 sm:px-6 overflow-y-auto" style={slideContentStyle}>
-          <div className="h-full min-h-full max-w-[1720px] mx-auto py-1">
-            <CurrentSlide />
+        <div className="slide-content-shell h-full px-4 sm:px-6 overflow-hidden" style={slideStyle}>
+          <div ref={slideViewportRef} className="h-full min-h-0 overflow-hidden">
+            <div
+              className="h-full min-h-full max-w-[1720px] mx-auto py-1"
+              style={{
+                ...slideContentStyle,
+                transform: `scale(${fitScale})`,
+                transformOrigin: 'top center',
+              }}
+            >
+              <div ref={slideInnerRef} className="h-full min-h-full">
+                <CurrentSlide />
+              </div>
+            </div>
           </div>
         </div>
       </div>
