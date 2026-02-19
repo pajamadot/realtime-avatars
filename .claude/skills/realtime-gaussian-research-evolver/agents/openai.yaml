@@ -1,0 +1,3 @@
+interface:
+  display_name: "Realtime Gaussian Research Evolver"
+  short_description: "Self-evolving ArXiv/GitHub deep research for realtime Gaussian avatars"

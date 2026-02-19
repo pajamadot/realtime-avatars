@@ -1,0 +1,1273 @@
+{
+  "generated_at": "2026-02-19T02:47:36+00:00",
+  "cycle": 3,
+  "slide": {
+    "url": "https://www.realtime-avatars.com/slides/5",
+    "source_path": "G:\\PajamaDot\\realtime-avatars\\web\\app\\slides\\SlidesDeck.tsx",
+    "source_exists": true,
+    "status_code": 200,
+    "ok": true,
+    "title": "Real-Time Avatars: A Comparative Guide",
+    "error": null,
+    "sections_parsed": {
+      "inputs": 6,
+      "outputs": 6,
+      "coupling": 4
+    }
+  },
+  "claim_check": {
+    "generated_at": "2026-02-19T02:47:36+00:00",
+    "totals": {
+      "claims_checked": 16,
+      "mismatched_claims": 6
+    },
+    "mismatch_by_method": {
+      "MetaHuman": 0,
+      "Video Generation": 4,
+      "Gaussian Splatting": 4
+    },
+    "checks": [
+      {
+        "section": "coupling",
+        "signal": "Audio + pose (TaoAvatar)",
+        "slide_support": [
+          false,
+          false,
+          true
+        ],
+        "recommended_scores": [
+          0,
+          0,
+          2
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "arxiv_taoavatar"
+        ],
+        "evidence_links": [
+          "https://arxiv.org/abs/2506.09976"
+        ]
+      },
+      {
+        "section": "coupling",
+        "signal": "Audio + text + image (LiveTalk)",
+        "slide_support": [
+          false,
+          true,
+          false
+        ],
+        "recommended_scores": [
+          0,
+          2,
+          0
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "arxiv_livetalk"
+        ],
+        "evidence_links": [
+          "https://arxiv.org/abs/2512.23576"
+        ]
+      },
+      {
+        "section": "coupling",
+        "signal": "Audio + user motion (Avatar Forcing)",
+        "slide_support": [
+          false,
+          true,
+          false
+        ],
+        "recommended_scores": [
+          0,
+          2,
+          0
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "arxiv_avatar_forcing"
+        ],
+        "evidence_links": [
+          "https://arxiv.org/abs/2601.00664"
+        ]
+      },
+      {
+        "section": "coupling",
+        "signal": "Audio-only driven",
+        "slide_support": [
+          true,
+          true,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          2
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "epic_metahuman_audio_source",
+          "arxiv_livetalk",
+          "arxiv_taoavatar"
+        ],
+        "evidence_links": [
+          "https://dev.epicgames.com/documentation/en-us/metahuman/using-audio-source-for-animation",
+          "https://arxiv.org/abs/2512.23576",
+          "https://arxiv.org/abs/2506.09976"
+        ]
+      },
+      {
+        "section": "inputs",
+        "signal": "Audio prosody",
+        "slide_support": [
+          true,
+          true,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          2
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "epic_metahuman_audio_source",
+          "arxiv_livetalk",
+          "arxiv_taoavatar"
+        ],
+        "evidence_links": [
+          "https://dev.epicgames.com/documentation/en-us/metahuman/using-audio-source-for-animation",
+          "https://arxiv.org/abs/2512.23576",
+          "https://arxiv.org/abs/2506.09976"
+        ]
+      },
+      {
+        "section": "inputs",
+        "signal": "Expression coefficients",
+        "slide_support": [
+          true,
+          false,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          1,
+          2
+        ],
+        "matches_recommendation": false,
+        "mismatches": [
+          {
+            "method": "Video Generation",
+            "slide_support": false,
+            "recommended_support": true,
+            "recommended_level": 1
+          }
+        ],
+        "evidence_ids": [
+          "apple_wwdc_arkit",
+          "arxiv_liveportrait",
+          "arxiv_gaussianavatars"
+        ],
+        "evidence_links": [
+          "https://developer.apple.com/videos/play/wwdc2018/716/",
+          "https://arxiv.org/abs/2407.03168",
+          "https://arxiv.org/abs/2312.02069"
+        ]
+      },
+      {
+        "section": "inputs",
+        "signal": "Face video (webcam)",
+        "slide_support": [
+          true,
+          true,
+          false
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          1
+        ],
+        "matches_recommendation": false,
+        "mismatches": [
+          {
+            "method": "Gaussian Splatting",
+            "slide_support": false,
+            "recommended_support": true,
+            "recommended_level": 1
+          }
+        ],
+        "evidence_ids": [
+          "epic_realtime_livelink",
+          "arxiv_liveportrait",
+          "arxiv_gaussianavatars"
+        ],
+        "evidence_links": [
+          "https://dev.epicgames.com/documentation/en-us/metahuman/realtime-animation-using-live-link",
+          "https://arxiv.org/abs/2407.03168",
+          "https://arxiv.org/abs/2312.02069"
+        ]
+      },
+      {
+        "section": "inputs",
+        "signal": "Gaze direction",
+        "slide_support": [
+          true,
+          false,
+          false
+        ],
+        "recommended_scores": [
+          2,
+          1,
+          1
+        ],
+        "matches_recommendation": false,
+        "mismatches": [
+          {
+            "method": "Video Generation",
+            "slide_support": false,
+            "recommended_support": true,
+            "recommended_level": 1
+          },
+          {
+            "method": "Gaussian Splatting",
+            "slide_support": false,
+            "recommended_support": true,
+            "recommended_level": 1
+          }
+        ],
+        "evidence_ids": [
+          "epic_metahuman_animator",
+          "arxiv_gazegaussian"
+        ],
+        "evidence_links": [
+          "https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-animator",
+          "https://arxiv.org/abs/2409.12533"
+        ]
+      },
+      {
+        "section": "inputs",
+        "signal": "Head pose",
+        "slide_support": [
+          true,
+          true,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          2
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "arxiv_liveportrait",
+          "arxiv_gaussianavatars",
+          "arxiv_taoavatar"
+        ],
+        "evidence_links": [
+          "https://arxiv.org/abs/2407.03168",
+          "https://arxiv.org/abs/2312.02069",
+          "https://arxiv.org/abs/2506.09976"
+        ]
+      },
+      {
+        "section": "inputs",
+        "signal": "Turn-taking signals",
+        "slide_support": [
+          true,
+          true,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          2
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "github_livekit_agents",
+          "arxiv_ico3d",
+          "arxiv_avatar_forcing"
+        ],
+        "evidence_links": [
+          "https://github.com/livekit/agents",
+          "https://arxiv.org/abs/2509.17080",
+          "https://arxiv.org/abs/2601.00664"
+        ]
+      },
+      {
+        "section": "outputs",
+        "signal": "Facial action units",
+        "slide_support": [
+          true,
+          false,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          1,
+          1
+        ],
+        "matches_recommendation": false,
+        "mismatches": [
+          {
+            "method": "Video Generation",
+            "slide_support": false,
+            "recommended_support": true,
+            "recommended_level": 1
+          }
+        ],
+        "evidence_ids": [
+          "apple_wwdc_arkit",
+          "github_audio2face_sdk",
+          "arxiv_liveportrait"
+        ],
+        "evidence_links": [
+          "https://developer.apple.com/videos/play/wwdc2018/716/",
+          "https://github.com/NVIDIA/Audio2Face-3D-Samples",
+          "https://arxiv.org/abs/2407.03168"
+        ]
+      },
+      {
+        "section": "outputs",
+        "signal": "Gaze shifts",
+        "slide_support": [
+          true,
+          false,
+          false
+        ],
+        "recommended_scores": [
+          2,
+          1,
+          1
+        ],
+        "matches_recommendation": false,
+        "mismatches": [
+          {
+            "method": "Video Generation",
+            "slide_support": false,
+            "recommended_support": true,
+            "recommended_level": 1
+          },
+          {
+            "method": "Gaussian Splatting",
+            "slide_support": false,
+            "recommended_support": true,
+            "recommended_level": 1
+          }
+        ],
+        "evidence_ids": [
+          "epic_metahuman_animator",
+          "arxiv_gazegaussian"
+        ],
+        "evidence_links": [
+          "https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-animator",
+          "https://arxiv.org/abs/2409.12533"
+        ]
+      },
+      {
+        "section": "outputs",
+        "signal": "Hand gestures",
+        "slide_support": [
+          true,
+          true,
+          false
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          1
+        ],
+        "matches_recommendation": false,
+        "mismatches": [
+          {
+            "method": "Gaussian Splatting",
+            "slide_support": false,
+            "recommended_support": true,
+            "recommended_level": 1
+          }
+        ],
+        "evidence_ids": [
+          "arxiv_chatanyone",
+          "arxiv_taoavatar"
+        ],
+        "evidence_links": [
+          "https://arxiv.org/abs/2505.22210",
+          "https://arxiv.org/abs/2506.09976"
+        ]
+      },
+      {
+        "section": "outputs",
+        "signal": "Head motion",
+        "slide_support": [
+          true,
+          true,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          2
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "arxiv_liveportrait",
+          "arxiv_taoavatar",
+          "arxiv_avatar_forcing"
+        ],
+        "evidence_links": [
+          "https://arxiv.org/abs/2407.03168",
+          "https://arxiv.org/abs/2506.09976",
+          "https://arxiv.org/abs/2601.00664"
+        ]
+      },
+      {
+        "section": "outputs",
+        "signal": "Idle micro-motion",
+        "slide_support": [
+          true,
+          true,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          2
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "arxiv_liveportrait",
+          "arxiv_gaussianavatars",
+          "arxiv_avatar_forcing"
+        ],
+        "evidence_links": [
+          "https://arxiv.org/abs/2407.03168",
+          "https://arxiv.org/abs/2312.02069",
+          "https://arxiv.org/abs/2601.00664"
+        ]
+      },
+      {
+        "section": "outputs",
+        "signal": "Speech audio",
+        "slide_support": [
+          true,
+          true,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          2
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "epic_metahuman_audio_source",
+          "arxiv_livetalk",
+          "github_livekit_agents"
+        ],
+        "evidence_links": [
+          "https://dev.epicgames.com/documentation/en-us/metahuman/using-audio-source-for-animation",
+          "https://arxiv.org/abs/2512.23576",
+          "https://github.com/livekit/agents"
+        ]
+      }
+    ]
+  },
+  "research": {
+    "arxiv": {
+      "queries": [
+        "real-time talking avatar",
+        "multimodal social interaction avatar",
+        "audio driven facial animation",
+        "3D Gaussian Splatting talking avatar",
+        "interactive controllable portrait generation",
+        "turn-taking conversational agents",
+        "co-speech gesture generation",
+        "real-time neural rendering avatar",
+        "livekit avatar",
+        "voice avatar",
+        "have avatar",
+        "while avatar"
+      ],
+      "total_collected": 67,
+      "total_after_relevance_filter": 7,
+      "entries": [
+        {
+          "id": "http://arxiv.org/abs/2602.16013v1",
+          "title": "Punchlines Unbound: Comedy Practices in Social Virtual Reality",
+          "summary": "Social VR platforms serve as an emergent venue for live performance, enabling co-presence and real-time interaction among distributed performers and audiences within shared virtual environments. Live performances, such as comedy, rely on subtle social cues between performers and audiences, which are missing in VR. However, it remains unclear how comedians...",
+          "published": "2026-02-17T21:09:00Z",
+          "updated": "2026-02-17T21:09:00Z",
+          "authors": [
+            "Ryo Ohara",
+            "Chi-Lan Yang",
+            "Yuji Hatada",
+            "Takuji Narumi",
+            "Hideaki Kuzuoka"
+          ],
+          "categories": [
+            "cs.HC"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16013v1",
+            "https://arxiv.org/pdf/2602.16013v1"
+          ],
+          "query": "livekit avatar",
+          "relevance_score": 3,
+          "queries": [
+            "livekit avatar",
+            "voice avatar"
+          ]
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.11575v2",
+          "title": "ReaDy-Go: Real-to-Sim Dynamic 3D Gaussian Splatting Simulation for Environment-Specific Visual Navigation with Moving Obstacles",
+          "summary": "Visual navigation models often struggle in real-world dynamic environments due to limited robustness to the sim-to-real gap and the difficulty of training policies tailored to target deployment environments (e.g., households, restaurants, and factories). Although real-to-sim navigation simulation using 3D Gaussian Splatting (GS) can mitigate these challen...",
+          "published": "2026-02-12T04:48:18Z",
+          "updated": "2026-02-14T15:05:27Z",
+          "authors": [
+            "Seungyeon Yoo",
+            "Youngseok Jang",
+            "Dabin Kim",
+            "Youngsoo Han",
+            "Seungwoo Jung",
+            "H. Jin Kim"
+          ],
+          "categories": [
+            "cs.RO",
+            "cs.AI",
+            "cs.CV"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.11575v2",
+            "https://arxiv.org/pdf/2602.11575v2"
+          ],
+          "query": "livekit avatar",
+          "relevance_score": 3
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.11693v1",
+          "title": "OMEGA-Avatar: One-shot Modeling of 360\u00b0 Gaussian Avatars",
+          "summary": "Creating high-fidelity, animatable 3D avatars from a single image remains a formidable challenge. We identified three desirable attributes of avatar generation: 1) the method should be feed-forward, 2) model a 360\u00b0 full-head, and 3) should be animation-ready. However, current work addresses only two of the three points simultaneously. To address these lim...",
+          "published": "2026-02-12T08:16:38Z",
+          "updated": "2026-02-12T08:16:38Z",
+          "authors": [
+            "Zehao Xia",
+            "Yiqun Wang",
+            "Zhengda Lu",
+            "Kai Liu",
+            "Jun Xiao",
+            "Peter Wonka"
+          ],
+          "categories": [
+            "cs.GR",
+            "cs.AI",
+            "cs.CV"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.11693v1",
+            "https://arxiv.org/pdf/2602.11693v1"
+          ],
+          "query": "livekit avatar",
+          "relevance_score": 3
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16687v1",
+          "title": "Scaling Open Discrete Audio Foundation Models with Interleaved Semantic, Acoustic, and Text Tokens",
+          "summary": "Current audio language models are predominantly text-first, either extending pre-trained text LLM backbones or relying on semantic-only audio tokens, limiting general audio modeling. This paper presents a systematic empirical study of native audio foundation models that apply next-token prediction to audio at scale, jointly modeling semantic content, acou...",
+          "published": "2026-02-18T18:32:46Z",
+          "updated": "2026-02-18T18:32:46Z",
+          "authors": [
+            "Potsawee Manakul",
+            "Woody Haosheng Gan",
+            "Martijn Bartelds",
+            "Guangzhi Sun",
+            "William Held",
+            "Diyi Yang"
+          ],
+          "categories": [
+            "cs.SD",
+            "cs.CL",
+            "eess.AS"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16687v1",
+            "https://arxiv.org/pdf/2602.16687v1"
+          ],
+          "query": "audio driven facial animation",
+          "relevance_score": 2,
+          "queries": [
+            "audio driven facial animation",
+            "voice avatar"
+          ]
+        },
+        {
+          "id": "http://arxiv.org/abs/2512.16395v2",
+          "title": "BEST-STD2.0: Balanced and Efficient Speech Tokenizer for Spoken Term Detection",
+          "summary": "Fast and accurate spoken content retrieval is vital for applications such as voice search. Query-by-Example Spoken Term Detection (STD) involves retrieving matching segments from an audio database given a spoken query. Token-based STD systems, which use discrete speech representations, enable efficient search but struggle with robustness to noise and reve...",
+          "published": "2025-12-18T10:48:00Z",
+          "updated": "2026-02-18T13:28:13Z",
+          "authors": [
+            "Anup Singh",
+            "Vipul Arora",
+            "Kris Demuynck"
+          ],
+          "categories": [
+            "eess.AS"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2512.16395v2",
+            "https://arxiv.org/pdf/2512.16395v2"
+          ],
+          "query": "voice avatar",
+          "relevance_score": 2
+        },
+        {
+          "id": "http://arxiv.org/abs/2506.05688v3",
+          "title": "Voice Impression Control in Zero-Shot TTS",
+          "summary": "Para-/non-linguistic information in speech is pivotal in shaping the listeners' impression. Although zero-shot text-to-speech (TTS) has achieved high speaker fidelity, modulating subtle para-/non-linguistic information to control perceived voice characteristics, i.e., impressions, remains challenging. We have therefore developed a voice impression control...",
+          "published": "2025-06-06T02:34:29Z",
+          "updated": "2026-02-18T01:56:12Z",
+          "authors": [
+            "Kenichi Fujita",
+            "Shota Horiguchi",
+            "Yusuke Ijima"
+          ],
+          "categories": [
+            "cs.SD",
+            "cs.CL",
+            "cs.LG",
+            "eess.AS"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2506.05688v3",
+            "https://arxiv.org/pdf/2506.05688v3",
+            "https://doi.org/10.21437/Interspeech.2025-1192"
+          ],
+          "query": "voice avatar",
+          "relevance_score": 2
+        },
+        {
+          "id": "http://arxiv.org/abs/2408.09126v7",
+          "title": "DreamBarbie: Text to Barbie-Style 3D Avatars",
+          "summary": "To integrate digital humans into everyday life, there is a strong demand for generating high-quality, fine-grained disentangled 3D avatars that support expressive animation and simulation capabilities, ideally from low-cost textual inputs. Although text-driven 3D avatar generation has made significant progress by leveraging 2D generative priors, existing ...",
+          "published": "2024-08-17T07:27:14Z",
+          "updated": "2026-02-14T05:16:46Z",
+          "authors": [
+            "Xiaokun Sun",
+            "Zhenyu Zhang",
+            "Ying Tai",
+            "Hao Tang",
+            "Zili Yi",
+            "Jian Yang"
+          ],
+          "categories": [
+            "cs.CV"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2408.09126v7",
+            "https://arxiv.org/pdf/2408.09126v7"
+          ],
+          "query": "livekit avatar",
+          "relevance_score": 2
+        }
+      ]
+    },
+    "github": {
+      "queries": [
+        "livekit agents",
+        "graphdeco gaussian-splatting",
+        "KwaiVGI LivePortrait",
+        "NVIDIA Audio2Face-3D-SDK",
+        "cvlab-kaist GaussianTalker",
+        "soulx-ai SoulX-FlashHead",
+        "SadTalker",
+        "metahuman livelink",
+        "livekit",
+        "voice",
+        "have",
+        "while",
+        "large",
+        "interactions"
+      ],
+      "total_collected": 40,
+      "total_after_relevance_filter": 23,
+      "failures": [
+        "have: status=403 (HTTPError: rate limit exceeded)",
+        "while: status=403 (HTTPError: rate limit exceeded)",
+        "large: status=403 (HTTPError: rate limit exceeded)",
+        "interactions: status=403 (HTTPError: rate limit exceeded)"
+      ],
+      "repositories": [
+        {
+          "full_name": "Kedreamix/Linly-Talker",
+          "url": "https://github.com/Kedreamix/Linly-Talker",
+          "description": "Digital Avatar Conversational System - Linly-Talker. \ud83d\ude04\u2728 Linly-Talker is an intelligent AI system that combines large language models (LLMs) with visual models to create a novel human-AI interaction method. \ud83e\udd1d\ud83e\udd16 It integ...",
+          "language": "Python",
+          "stars": 3134,
+          "forks": 499,
+          "open_issues": 30,
+          "updated_at": "2026-02-18T22:26:40Z",
+          "pushed_at": "2026-02-10T05:17:05Z",
+          "topics": [],
+          "query": "SadTalker",
+          "relevance_score": 5
+        },
+        {
+          "full_name": "chocolatepcode/unreal-motion",
+          "url": "https://github.com/chocolatepcode/unreal-motion",
+          "description": "Real-time MetaHuman face tracking for Unreal Engine 5 using MediaPipe4U. Webcam-based 52 ARKit blendshape capture via LiveLink for facial animation.",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-05T08:13:38Z",
+          "pushed_at": "2026-02-05T07:23:47Z",
+          "topics": [
+            "arkit",
+            "face-tracking",
+            "livelink",
+            "mediapipe",
+            "metahuman",
+            "motion-capture",
+            "ue5",
+            "unreal-engine"
+          ],
+          "query": "metahuman livelink",
+          "relevance_score": 3
+        },
+        {
+          "full_name": "TimoR91/FGJ2022_Lahti_TimoR",
+          "url": "https://github.com/TimoR91/FGJ2022_Lahti_TimoR",
+          "description": "The focus of this game development was about implementing Unreal Engine's Metahuman and LiveLink to game. Metahuman provides realistic human characters. LiveLink is used to make facial animations to characters via mob...",
+          "language": null,
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2022-06-03T08:17:08Z",
+          "pushed_at": "2022-06-03T08:17:36Z",
+          "topics": [],
+          "query": "metahuman livelink",
+          "relevance_score": 3
+        },
+        {
+          "full_name": "alexdjulin/LiveLinkFace-CSV-Retarget-For-Motionbuilder",
+          "url": "https://github.com/alexdjulin/LiveLinkFace-CSV-Retarget-For-Motionbuilder",
+          "description": "Retarget facial animation created with the LiveLinkFace app and saved as CSV onto a metahuman skeleeton in MotionBuilder.",
+          "language": "Python",
+          "stars": 19,
+          "forks": 1,
+          "open_issues": 0,
+          "updated_at": "2026-01-20T11:01:07Z",
+          "pushed_at": "2022-02-11T09:36:11Z",
+          "topics": [],
+          "query": "metahuman livelink",
+          "relevance_score": 3
+        },
+        {
+          "full_name": "FloatingRobotics/face-animation-comparison",
+          "url": "https://github.com/FloatingRobotics/face-animation-comparison",
+          "description": "Side-by-side comparison of 4 audio-driven face animation networks: SadTalker, Hallo, EchoMimic, LivePortrait+JoyVASA",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-13T11:35:43Z",
+          "pushed_at": "2026-02-13T11:35:40Z",
+          "topics": [],
+          "query": "SadTalker",
+          "relevance_score": 2
+        },
+        {
+          "full_name": "NVIDIA/Audio2Face-3D-SDK",
+          "url": "https://github.com/NVIDIA/Audio2Face-3D-SDK",
+          "description": "High-performance C++/CUDA SDK for running Audio2Emotion and Audio2Face inference with integrated post-processing.",
+          "language": "C++",
+          "stars": 155,
+          "forks": 29,
+          "open_issues": 6,
+          "updated_at": "2026-02-17T21:39:05Z",
+          "pushed_at": "2025-08-28T14:22:28Z",
+          "topics": [
+            "cuda",
+            "gpu-acceleration",
+            "nvidia",
+            "tensorrt"
+          ],
+          "query": "NVIDIA Audio2Face-3D-SDK",
+          "relevance_score": 2
+        },
+        {
+          "full_name": "PornprpaGam/https-github.com-graphdeco-inria-gaussian-splatting",
+          "url": "https://github.com/PornprpaGam/https-github.com-graphdeco-inria-gaussian-splatting",
+          "description": "",
+          "language": null,
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2025-04-11T19:04:30Z",
+          "pushed_at": "2025-04-11T19:04:30Z",
+          "topics": [],
+          "query": "graphdeco gaussian-splatting",
+          "relevance_score": 2
+        },
+        {
+          "full_name": "david97044/3DGS_Rendering_Implement",
+          "url": "https://github.com/david97044/3DGS_Rendering_Implement",
+          "description": "This repository implements the 3DGS rendering engine by translating the original graphdeco-inria/gaussian-splatting C++/CUDA code to Python and PyTorch. It modularizes the rendering process for clarity and easier main...",
+          "language": "Jupyter Notebook",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2025-03-04T12:31:44Z",
+          "pushed_at": "2025-03-04T12:31:41Z",
+          "topics": [],
+          "query": "graphdeco gaussian-splatting",
+          "relevance_score": 2
+        },
+        {
+          "full_name": "nilerolir/Implementation_3DGS_in_Colab",
+          "url": "https://github.com/nilerolir/Implementation_3DGS_in_Colab",
+          "description": "To test the use of 3D Gaussian Splatting technology, I implemented the original code developed by graphdeco-inria in Google Colab, as I do not have a suitable graphics card.",
+          "language": "Jupyter Notebook",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2025-01-30T02:34:20Z",
+          "pushed_at": "2025-01-30T02:34:16Z",
+          "topics": [],
+          "query": "graphdeco gaussian-splatting",
+          "relevance_score": 2
+        },
+        {
+          "full_name": "FACEGOOD/FgControlRig",
+          "url": "https://github.com/FACEGOOD/FgControlRig",
+          "description": "this is a implement of  UE plugin work for  livelink data process and set the data to metahuman controlrig board",
+          "language": "C++",
+          "stars": 14,
+          "forks": 2,
+          "open_issues": 1,
+          "updated_at": "2025-08-25T17:10:17Z",
+          "pushed_at": "2024-12-06T04:12:56Z",
+          "topics": [],
+          "query": "metahuman livelink",
+          "relevance_score": 2
+        },
+        {
+          "full_name": "xli562/3dgs-acceleration",
+          "url": "https://github.com/xli562/3dgs-acceleration",
+          "description": "Copied from the original repo: https://github.com/graphdeco-inria/gaussian-splatting",
+          "language": "C++",
+          "stars": 2,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2025-11-29T07:07:45Z",
+          "pushed_at": "2024-07-22T16:55:01Z",
+          "topics": [],
+          "query": "graphdeco gaussian-splatting",
+          "relevance_score": 2
+        },
+        {
+          "full_name": "forresti/gaussian-splatting",
+          "url": "https://github.com/forresti/gaussian-splatting",
+          "description": "fork of https://github.com/graphdeco-inria/gaussian-splatting",
+          "language": "Python",
+          "stars": 2,
+          "forks": 2,
+          "open_issues": 0,
+          "updated_at": "2025-11-29T07:06:56Z",
+          "pushed_at": "2024-06-13T23:59:26Z",
+          "topics": [],
+          "query": "graphdeco gaussian-splatting",
+          "relevance_score": 2
+        },
+        {
+          "full_name": "gyccccc/motionControl",
+          "url": "https://github.com/gyccccc/motionControl",
+          "description": "python control Unreal livelink to control metahuman expresion or other motion",
+          "language": "Kotlin",
+          "stars": 3,
+          "forks": 2,
+          "open_issues": 1,
+          "updated_at": "2024-12-12T07:56:56Z",
+          "pushed_at": "2022-03-11T09:44:57Z",
+          "topics": [],
+          "query": "metahuman livelink",
+          "relevance_score": 2
+        },
+        {
+          "full_name": "mavenagi/realtime-ui-poc",
+          "url": "https://github.com/mavenagi/realtime-ui-poc",
+          "description": "Real-time voice conversation monitoring UI using Redis pub/sub and WebSocket",
+          "language": "TypeScript",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-19T02:46:41Z",
+          "pushed_at": "2026-02-19T02:46:38Z",
+          "topics": [],
+          "query": "voice",
+          "relevance_score": 1
+        },
+        {
+          "full_name": "purpleneutral/chatalot",
+          "url": "https://github.com/purpleneutral/chatalot",
+          "description": "Self-hosted encrypted chat platform with voice/video, communities, and a desktop app. Discord alternative built with Rust + Svelte.",
+          "language": "Svelte",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 4,
+          "updated_at": "2026-02-19T02:45:34Z",
+          "pushed_at": "2026-02-19T02:45:31Z",
+          "topics": [
+            "chat",
+            "discord-alternative",
+            "docker",
+            "encrypted-messaging",
+            "end-to-end-encryption",
+            "open-source",
+            "privacy",
+            "real-time",
+            "rust",
+            "self-hosted",
+            "signal-protocol",
+            "svelte",
+            "tauri",
+            "webrtc"
+          ],
+          "query": "voice",
+          "relevance_score": 1
+        },
+        {
+          "full_name": "chabandou/poisecast",
+          "url": "https://github.com/chabandou/poisecast",
+          "description": "A Podcast player with client-side ML voice isolation using onnxruntime-web (WASM/WebGPU).",
+          "language": "TypeScript",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-19T02:45:11Z",
+          "pushed_at": "2026-02-19T02:45:08Z",
+          "topics": [
+            "audio",
+            "machine-learning"
+          ],
+          "query": "voice",
+          "relevance_score": 1
+        },
+        {
+          "full_name": "mbailey/voicemode",
+          "url": "https://github.com/mbailey/voicemode",
+          "description": "Natural voice conversations with Claude Code",
+          "language": "Python",
+          "stars": 744,
+          "forks": 100,
+          "open_issues": 32,
+          "updated_at": "2026-02-19T02:17:34Z",
+          "pushed_at": "2026-02-19T02:43:18Z",
+          "topics": [
+            "anthropic",
+            "asr",
+            "claude",
+            "claudecode",
+            "kokoro",
+            "livekit",
+            "mcp",
+            "mcp-server",
+            "tts",
+            "voice",
+            "voicemode",
+            "whisper"
+          ],
+          "query": "livekit",
+          "relevance_score": 1
+        },
+        {
+          "full_name": "viper-108/livekit_plugins_sub200",
+          "url": "https://github.com/viper-108/livekit_plugins_sub200",
+          "description": "\ud83c\udfa4 Add Sub200 text-to-speech support to your LiveKit Agents with this plugin, enabling seamless integration in voice pipelines.",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-19T02:31:45Z",
+          "pushed_at": "2026-02-19T02:31:42Z",
+          "topics": [
+            "android",
+            "cordova",
+            "dart",
+            "flutter",
+            "flutter-plugin",
+            "ionic",
+            "joplin-plugin",
+            "kotlin",
+            "messaging",
+            "react",
+            "rollup",
+            "serverless",
+            "serverless-framework",
+            "serverless-plugin",
+            "sfu",
+            "typecho",
+            "typecho-plugin",
+            "typescript",
+            "voice"
+          ],
+          "query": "livekit agents",
+          "relevance_score": 1,
+          "queries": [
+            "livekit",
+            "livekit agents"
+          ]
+        },
+        {
+          "full_name": "AnonBOTpl/sadtalker-desktop",
+          "url": "https://github.com/AnonBOTpl/sadtalker-desktop",
+          "description": "One-click Windows installer and desktop GUI for SadTalker AI talking-head generator",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-19T01:24:23Z",
+          "pushed_at": "2026-02-19T01:23:55Z",
+          "topics": [],
+          "query": "SadTalker",
+          "relevance_score": 1
+        },
+        {
+          "full_name": "silaskiragu/SmartCall-Agent",
+          "url": "https://github.com/silaskiragu/SmartCall-Agent",
+          "description": "\ud83d\udc19 AI Agent System with RAG and outbound calling through LiveKit, OpenAI Realtime for voice chats; integrates Pinecone, JWT auth, and analytics for smart agents.",
+          "language": "Python",
+          "stars": 10,
+          "forks": 2,
+          "open_issues": 0,
+          "updated_at": "2026-02-19T00:03:06Z",
+          "pushed_at": "2026-02-19T00:03:02Z",
+          "topics": [
+            "ai-agent",
+            "ai-call-center-solution",
+            "ai-customer-support",
+            "fastapi",
+            "livekit",
+            "openai-api",
+            "outbound-calling",
+            "pinecone",
+            "pinecone-document-embeddings",
+            "plivo",
+            "rag",
+            "real-time-conversations",
+            "tone-and-persona-voice-modulation",
+            "tts",
+            "voice-ai"
+          ],
+          "query": "livekit agents",
+          "relevance_score": 1
+        },
+        {
+          "full_name": "ManojKumarKarumanchi/voice-rag-agent",
+          "url": "https://github.com/ManojKumarKarumanchi/voice-rag-agent",
+          "description": "Real-time voice AI agent where you can talk over WebRTC (LiveKit) and get answers using RAG over uploaded documents during the call.",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-18T17:31:31Z",
+          "pushed_at": "2026-02-18T17:31:27Z",
+          "topics": [],
+          "query": "livekit agents",
+          "relevance_score": 1
+        },
+        {
+          "full_name": "dhananjayaDev/sadtalker-avatar-generator",
+          "url": "https://github.com/dhananjayaDev/sadtalker-avatar-generator",
+          "description": "",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-18T07:33:22Z",
+          "pushed_at": "2026-02-18T07:33:19Z",
+          "topics": [],
+          "query": "SadTalker",
+          "relevance_score": 1
+        },
+        {
+          "full_name": "supremekiran/LivePortrait",
+          "url": "https://github.com/supremekiran/LivePortrait",
+          "description": "A Flask App that can convert static potrait images of people into potrait animation (based on https://huggingface.co/KwaiVGI/LivePortrait)",
+          "language": null,
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 1,
+          "updated_at": "2024-07-22T01:39:18Z",
+          "pushed_at": "2024-07-22T01:39:15Z",
+          "topics": [],
+          "query": "KwaiVGI LivePortrait",
+          "relevance_score": 1
+        }
+      ]
+    }
+  },
+  "evidence_references": {
+    "epic_metahuman_animator": {
+      "url": "https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-animator",
+      "note": "MetaHuman Animator supports animation from video or audio data."
+    },
+    "epic_realtime_livelink": {
+      "url": "https://dev.epicgames.com/documentation/en-us/metahuman/realtime-animation-using-live-link",
+      "note": "MetaHuman can be driven in real time using webcam and audio devices."
+    },
+    "epic_metahuman_audio_source": {
+      "url": "https://dev.epicgames.com/documentation/en-us/metahuman/using-audio-source-for-animation",
+      "note": "Audio Source mode maps speech to facial animation for MetaHuman."
+    },
+    "apple_wwdc_arkit": {
+      "url": "https://developer.apple.com/videos/play/wwdc2018/716/",
+      "note": "ARKit face tracking exposes 50+ blendshape coefficients at up to 60 FPS."
+    },
+    "arxiv_3dgs": {
+      "url": "https://arxiv.org/abs/2308.04079",
+      "note": "3D Gaussian Splatting baseline demonstrates high-quality real-time rendering."
+    },
+    "arxiv_liveportrait": {
+      "url": "https://arxiv.org/abs/2407.03168",
+      "note": "LivePortrait enables controllable portrait animation with expression/pose retargeting."
+    },
+    "arxiv_livetalk": {
+      "url": "https://arxiv.org/abs/2512.23576",
+      "note": "LiveTalk uses audio/text/image conditioning for real-time talking video generation."
+    },
+    "arxiv_avatar_forcing": {
+      "url": "https://arxiv.org/abs/2601.00664",
+      "note": "Avatar Forcing introduces interactive user-motion-conditioned generation loops."
+    },
+    "arxiv_taoavatar": {
+      "url": "https://arxiv.org/abs/2506.09976",
+      "note": "TaoAvatar targets full-body real-time talking avatars for XR with controllable body motion."
+    },
+    "arxiv_gaussianavatars": {
+      "url": "https://arxiv.org/abs/2312.02069",
+      "note": "GaussianAvatars supports driving by expression and pose transfers."
+    },
+    "arxiv_gazegaussian": {
+      "url": "https://arxiv.org/abs/2409.12533",
+      "note": "GazeGaussian studies gaze-aware Gaussian-head synthesis with explicit gaze cues."
+    },
+    "arxiv_ico3d": {
+      "url": "https://arxiv.org/abs/2509.17080",
+      "note": "ICo3D integrates oral and written interactions for interactive 3D social avatars."
+    },
+    "arxiv_chatanyone": {
+      "url": "https://arxiv.org/abs/2505.22210",
+      "note": "ChatAnyone supports real-time full-body avatar interaction including hand gestures."
+    },
+    "github_livekit_agents": {
+      "url": "https://github.com/livekit/agents",
+      "note": "LiveKit Agents provides realtime voice pipelines with turn-detection modules."
+    },
+    "github_liveportrait": {
+      "url": "https://github.com/KwaiVGI/LivePortrait",
+      "note": "Open implementation for controllable portrait animation and stitching."
+    },
+    "github_gaussian_splatting": {
+      "url": "https://github.com/graphdeco-inria/gaussian-splatting",
+      "note": "Reference implementation of 3D Gaussian Splatting."
+    },
+    "github_audio2face_sdk": {
+      "url": "https://github.com/NVIDIA/Audio2Face-3D-Samples",
+      "note": "Audio2Face SDK samples for real-time blendshape-driven animation."
+    }
+  },
+  "query_plan": {
+    "arxiv_queries": [
+      "real-time talking avatar",
+      "multimodal social interaction avatar",
+      "audio driven facial animation",
+      "3D Gaussian Splatting talking avatar",
+      "interactive controllable portrait generation",
+      "turn-taking conversational agents",
+      "co-speech gesture generation",
+      "real-time neural rendering avatar",
+      "livekit avatar",
+      "voice avatar",
+      "have avatar",
+      "while avatar"
+    ],
+    "github_queries": [
+      "livekit agents",
+      "graphdeco gaussian-splatting",
+      "KwaiVGI LivePortrait",
+      "NVIDIA Audio2Face-3D-SDK",
+      "cvlab-kaist GaussianTalker",
+      "soulx-ai SoulX-FlashHead",
+      "SadTalker",
+      "metahuman livelink",
+      "livekit",
+      "voice",
+      "have",
+      "while",
+      "large",
+      "interactions"
+    ],
+    "focus_terms": [
+      "livekit",
+      "voice",
+      "have",
+      "while",
+      "large",
+      "interactions",
+      "distribution"
+    ]
+  },
+  "delta": {
+    "new_arxiv_entries": [
+      "http://arxiv.org/abs/2512.16395v2",
+      "http://arxiv.org/abs/2506.05688v3"
+    ],
+    "new_github_repositories": [
+      "mavenagi/realtime-ui-poc",
+      "purpleneutral/chatalot",
+      "chabandou/poisecast"
+    ],
+    "new_arxiv_count": 2,
+    "new_github_repo_count": 3
+  },
+  "focus_terms_next": [
+    "livekit",
+    "voice",
+    "have",
+    "while",
+    "large",
+    "interactions",
+    "distribution",
+    "audio",
+    "metahuman",
+    "livelink",
+    "real-time",
+    "control",
+    "animation",
+    "gaussian",
+    "spoken",
+    "tts"
+  ],
+  "focus_terms_added": [
+    "audio",
+    "metahuman",
+    "livelink",
+    "real-time",
+    "control",
+    "animation",
+    "gaussian",
+    "spoken",
+    "tts"
+  ]
+}

@@ -1,0 +1,21 @@
+services:
+  livetalk:
+    build:
+      context: .
+      args:
+        HF_TOKEN: ${HF_TOKEN:-}
+    ports:
+      - "7860:7860"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - ./output:/app/output
+      - ./input:/app/input
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    shm_size: "16g"

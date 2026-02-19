@@ -1,0 +1,2164 @@
+{
+  "generated_at": "2026-02-19T02:05:48+00:00",
+  "cycle": 8,
+  "ue_root": "G:\\UE\\UnrealEngine",
+  "totals": {
+    "plugin_nodes": 12,
+    "plugin_edges": 28,
+    "module_edges": 248
+  },
+  "plugin_nodes": [
+    {
+      "id": "DNACalib",
+      "name": "DNACalib",
+      "category": "Animation",
+      "module_count": 3,
+      "module_types": {
+        "Runtime": 3
+      }
+    },
+    {
+      "id": "LiveLink",
+      "name": "LiveLink",
+      "category": "Animation",
+      "module_count": 7,
+      "module_types": {
+        "Editor": 1,
+        "Runtime": 3,
+        "UncookedOnly": 3
+      }
+    },
+    {
+      "id": "MetaHumanAnimator",
+      "name": "MetaHumanAnimator",
+      "category": "MetaHuman",
+      "module_count": 28,
+      "module_types": {
+        "Editor": 22,
+        "Runtime": 6
+      }
+    },
+    {
+      "id": "MetaHumanCalibrationDiagnostics",
+      "name": "MetaHumanCalibrationDiagnostics",
+      "category": "MetaHuman",
+      "module_count": 1,
+      "module_types": {
+        "Editor": 1
+      }
+    },
+    {
+      "id": "MetaHumanCalibrationProcessing",
+      "name": "MetaHumanCalibrationProcessing",
+      "category": "MetaHuman",
+      "module_count": 3,
+      "module_types": {
+        "Editor": 3
+      }
+    },
+    {
+      "id": "MetaHumanCharacter",
+      "name": "MetaHumanCharacter",
+      "category": "MetaHuman",
+      "module_count": 7,
+      "module_types": {
+        "Editor": 4,
+        "Runtime": 3
+      }
+    },
+    {
+      "id": "MetaHumanCharacterUAF",
+      "name": "MetaHumanCharacterUAF",
+      "category": "MetaHuman",
+      "module_count": 1,
+      "module_types": {
+        "Editor": 1
+      }
+    },
+    {
+      "id": "MetaHumanCoreTechLib",
+      "name": "MetaHumanCoreTechLib",
+      "category": "MetaHuman",
+      "module_count": 5,
+      "module_types": {
+        "Editor": 2,
+        "Runtime": 3
+      }
+    },
+    {
+      "id": "MetaHumanLiveLink",
+      "name": "MetaHumanLiveLink",
+      "category": "MetaHuman",
+      "module_count": 7,
+      "module_types": {
+        "Editor": 3,
+        "Runtime": 4
+      }
+    },
+    {
+      "id": "MetaHumanRuntime",
+      "name": "MetaHumanRuntime",
+      "category": "Other",
+      "module_count": 0,
+      "module_types": {}
+    },
+    {
+      "id": "MetaHumanSDK",
+      "name": "MetaHumanSDK",
+      "category": "MetaHuman",
+      "module_count": 3,
+      "module_types": {
+        "Editor": 2,
+        "Runtime": 1
+      }
+    },
+    {
+      "id": "RigLogic",
+      "name": "RigLogic",
+      "category": "Animation",
+      "module_count": 5,
+      "module_types": {
+        "Editor": 1,
+        "Runtime": 3,
+        "UncookedOnly": 1
+      }
+    }
+  ],
+  "plugin_edges": [
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "to_plugin": "MetaHumanAnimator",
+      "count": 94,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames",
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 93,
+      "intra_plugin": true
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "count": 35,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames",
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 35,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "to_plugin": "MetaHumanCharacter",
+      "count": 19,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames",
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 19,
+      "intra_plugin": true
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "to_plugin": "MetaHumanSDK",
+      "count": 10,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames",
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 9,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "LiveLink",
+      "to_plugin": "LiveLink",
+      "count": 9,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames",
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 9,
+      "intra_plugin": true
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "count": 9,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames"
+      ],
+      "module_pair_count": 9,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "to_plugin": "RigLogic",
+      "count": 8,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames",
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 8,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "to_plugin": "MetaHumanLiveLink",
+      "count": 7,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames",
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 7,
+      "intra_plugin": true
+    },
+    {
+      "from_plugin": "RigLogic",
+      "to_plugin": "RigLogic",
+      "count": 7,
+      "dependency_kinds": [
+        "DynamicallyLoadedModuleNames",
+        "PrivateDependencyModuleNames",
+        "PrivateIncludePathModuleNames",
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 6,
+      "intra_plugin": true
+    },
+    {
+      "from_plugin": "MetaHumanCoreTechLib",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "count": 5,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames"
+      ],
+      "module_pair_count": 5,
+      "intra_plugin": true
+    },
+    {
+      "from_plugin": "DNACalib",
+      "to_plugin": "RigLogic",
+      "count": 4,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames",
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 4,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "to_plugin": "MetaHumanSDK",
+      "count": 4,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames",
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 4,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "to_plugin": "MetaHumanAnimator",
+      "count": 4,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames"
+      ],
+      "module_pair_count": 4,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "count": 4,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames",
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 4,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "to_plugin": "RigLogic",
+      "count": 4,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames",
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 4,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanCalibrationProcessing",
+      "to_plugin": "MetaHumanCalibrationProcessing",
+      "count": 3,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames"
+      ],
+      "module_pair_count": 3,
+      "intra_plugin": true
+    },
+    {
+      "from_plugin": "MetaHumanCalibrationProcessing",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "count": 3,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames"
+      ],
+      "module_pair_count": 3,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanCharacterUAF",
+      "to_plugin": "MetaHumanCharacter",
+      "count": 3,
+      "dependency_kinds": [
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 3,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "to_plugin": "LiveLink",
+      "count": 3,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames",
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 3,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "DNACalib",
+      "to_plugin": "DNACalib",
+      "count": 2,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames",
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 2,
+      "intra_plugin": true
+    },
+    {
+      "from_plugin": "MetaHumanCalibrationDiagnostics",
+      "to_plugin": "MetaHumanCalibrationProcessing",
+      "count": 2,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames"
+      ],
+      "module_pair_count": 2,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanCoreTechLib",
+      "to_plugin": "RigLogic",
+      "count": 2,
+      "dependency_kinds": [
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 2,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanSDK",
+      "to_plugin": "RigLogic",
+      "count": 2,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames",
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 2,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanCalibrationDiagnostics",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "count": 1,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames"
+      ],
+      "module_pair_count": 1,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanCalibrationProcessing",
+      "to_plugin": "RigLogic",
+      "count": 1,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames"
+      ],
+      "module_pair_count": 1,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "to_plugin": "DNACalib",
+      "count": 1,
+      "dependency_kinds": [
+        "PrivateDependencyModuleNames"
+      ],
+      "module_pair_count": 1,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanCharacterUAF",
+      "to_plugin": "MetaHumanSDK",
+      "count": 1,
+      "dependency_kinds": [
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 1,
+      "intra_plugin": false
+    },
+    {
+      "from_plugin": "MetaHumanCoreTechLib",
+      "to_plugin": "MetaHumanSDK",
+      "count": 1,
+      "dependency_kinds": [
+        "PublicDependencyModuleNames"
+      ],
+      "module_pair_count": 1,
+      "intra_plugin": false
+    }
+  ],
+  "module_edges": [
+    {
+      "from_plugin": "DNACalib",
+      "from_module": "DNACalibLib",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicLib",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "DNACalib",
+      "from_module": "DNACalibLibTest",
+      "to_plugin": "DNACalib",
+      "to_module": "DNACalibLib",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "DNACalib",
+      "from_module": "DNACalibLibTest",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicLib",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "DNACalib",
+      "from_module": "DNACalibModule",
+      "to_plugin": "DNACalib",
+      "to_module": "DNACalibLib",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "DNACalib",
+      "from_module": "DNACalibModule",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicLib",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "DNACalib",
+      "from_module": "DNACalibModule",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicModule",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "LiveLink",
+      "from_module": "LiveLinkEditor",
+      "to_plugin": "LiveLink",
+      "to_module": "LiveLink",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "LiveLink",
+      "from_module": "LiveLinkEditor",
+      "to_plugin": "LiveLink",
+      "to_module": "LiveLinkComponents",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "LiveLink",
+      "from_module": "LiveLinkEditor",
+      "to_plugin": "LiveLink",
+      "to_module": "LiveLinkGraphNode",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "LiveLink",
+      "from_module": "LiveLinkEditor",
+      "to_plugin": "LiveLink",
+      "to_module": "LiveLinkMovieScene",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "LiveLink",
+      "from_module": "LiveLinkGraphNode",
+      "to_plugin": "LiveLink",
+      "to_module": "LiveLink",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "LiveLink",
+      "from_module": "LiveLinkMultiUser",
+      "to_plugin": "LiveLink",
+      "to_module": "LiveLinkComponents",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "LiveLink",
+      "from_module": "LiveLinkSequencer",
+      "to_plugin": "LiveLink",
+      "to_module": "LiveLink",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "LiveLink",
+      "from_module": "LiveLinkSequencer",
+      "to_plugin": "LiveLink",
+      "to_module": "LiveLinkComponents",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "LiveLink",
+      "from_module": "LiveLinkSequencer",
+      "to_plugin": "LiveLink",
+      "to_module": "LiveLinkMovieScene",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanBatchProcessor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanBatchProcessor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanPerformance",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanBatchProcessor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanPipeline",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanBatchProcessor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanSpeech2Face",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanBatchProcessor",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanBatchProcessor",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTechLib",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanBatchProcessor",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanPipelineCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanCaptureDataEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCoreEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanCaptureDataEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanImageViewerEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanCaptureProtocolStack",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCaptureUtils",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanCaptureSource",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCaptureProtocolStack",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanCaptureSource",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCaptureUtils",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanCaptureSource",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanCaptureSource",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCoreEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanCaptureSource",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanFaceContourTracker",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanCaptureSource",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanPipeline",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanCaptureSource",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCaptureData",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanCaptureSource",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanPipelineCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanConfig",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MeshTrackerInterface",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanConfig",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanConfig",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCaptureData",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanConfig",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanConfig",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTechLib",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanConfig",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicModule",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanConfigEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanConfig",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanConfigEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCoreEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanControlsConversionTest",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MeshTrackerInterface",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanControlsConversionTest",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanConfig",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanControlsConversionTest",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanControlsConversionTest",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanControlsConversionTest",
+      "to_plugin": "MetaHumanSDK",
+      "to_module": "MetaHumanSDKRuntime",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanControlsConversionTest",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicModule",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanCore",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanCore",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicLib",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanCore",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicModule",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanCoreEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanCoreEditor",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicModule",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanDepthGenerator",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MeshTrackerInterface",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanDepthGenerator",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCaptureSource",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanDepthGenerator",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanDepthGenerator",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanPipeline",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanDepthGenerator",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCaptureData",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanDepthGenerator",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanPipelineCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFaceAnimationSolver",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanConfig",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFaceAnimationSolverEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanConfig",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFaceAnimationSolverEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanConfigEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFaceAnimationSolverEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCoreEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFaceAnimationSolverEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanFaceAnimationSolver",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFaceContourTracker",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFaceContourTrackerEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFaceContourTrackerEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCoreEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFaceContourTrackerEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanFaceContourTracker",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFaceFittingSolver",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanConfig",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFaceFittingSolver",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanFaceAnimationSolver",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFaceFittingSolverEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanConfig",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFaceFittingSolverEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanConfigEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFaceFittingSolverEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCoreEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFaceFittingSolverEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanFaceFittingSolver",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFootageIngest",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MeshTrackerInterface",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFootageIngest",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCaptureSource",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFootageIngest",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCaptureUtils",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFootageIngest",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFootageIngest",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCoreEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanFootageIngest",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCaptureData",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentity",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCaptureDataEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentity",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanConfig",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentity",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentity",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanFaceAnimationSolver",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentity",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanFaceContourTracker",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentity",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanFaceFittingSolver",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentity",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanPipeline",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentity",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCaptureData",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentity",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentity",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTechLib",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentity",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanPipelineCore",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentity",
+      "to_plugin": "MetaHumanSDK",
+      "to_module": "InterchangeDNA",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentity",
+      "to_plugin": "MetaHumanSDK",
+      "to_module": "MetaHumanSDKEditor",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentity",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicModule",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCaptureDataEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCaptureUtils",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCoreEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanFaceContourTracker",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanFaceFittingSolver",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanIdentity",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanImageViewerEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanPipeline",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanPlatform",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanSequencer",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanToolkit",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCaptureData",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTechLib",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "MetaHumanSDK",
+      "to_module": "MetaHumanSDKEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanIdentityEditor",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicModule",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanImageViewerEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanImageViewerEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCoreEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanImageViewerEditor",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanImageViewerEditor",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanImageViewer",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCaptureDataEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCaptureUtils",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCoreEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCoreEditor",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanFaceAnimationSolver",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanFaceContourTracker",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanIdentity",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanIdentityEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanImageViewerEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanPipeline",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanPlatform",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanSequencer",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanSpeech2Face",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanToolkit",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCaptureData",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTechLib",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanImageViewer",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanPipelineCore",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPerformance",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicModule",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPipeline",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MeshTrackerInterface",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPipeline",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanConfig",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPipeline",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPipeline",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanFaceAnimationSolver",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPipeline",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanPlatform",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPipeline",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanSpeech2Face",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPipeline",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCaptureData",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPipeline",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPipeline",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTechLib",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPipeline",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanPipelineCore",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPlatform",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MeshTrackerInterface",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanPlatform",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanSequencer",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanSequencer",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCaptureData",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanSpeech2Face",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanSpeech2Face",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanToolkit",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanToolkit",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanImageViewerEditor",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanToolkit",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanSequencer",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanToolkit",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCaptureData",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanAnimator",
+      "from_module": "MetaHumanToolkit",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanImageViewer",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCalibrationDiagnostics",
+      "from_module": "MetaHumanCalibrationDiagnostics",
+      "to_plugin": "MetaHumanCalibrationProcessing",
+      "to_module": "MetaHumanCalibrationCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCalibrationDiagnostics",
+      "from_module": "MetaHumanCalibrationDiagnostics",
+      "to_plugin": "MetaHumanCalibrationProcessing",
+      "to_module": "MetaHumanCalibrationLib",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCalibrationDiagnostics",
+      "from_module": "MetaHumanCalibrationDiagnostics",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanImageViewer",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCalibrationProcessing",
+      "from_module": "MetaHumanCalibrationCore",
+      "to_plugin": "MetaHumanCalibrationProcessing",
+      "to_module": "MetaHumanCalibrationLib",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCalibrationProcessing",
+      "from_module": "MetaHumanCalibrationCore",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCaptureData",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCalibrationProcessing",
+      "from_module": "MetaHumanCalibrationCore",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanImageViewer",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCalibrationProcessing",
+      "from_module": "MetaHumanCalibrationGenerator",
+      "to_plugin": "MetaHumanCalibrationProcessing",
+      "to_module": "MetaHumanCalibrationCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCalibrationProcessing",
+      "from_module": "MetaHumanCalibrationGenerator",
+      "to_plugin": "MetaHumanCalibrationProcessing",
+      "to_module": "MetaHumanCalibrationLib",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCalibrationProcessing",
+      "from_module": "MetaHumanCalibrationGenerator",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanImageViewer",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCalibrationProcessing",
+      "from_module": "MetaHumanCalibrationLib",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicLib",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacter",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacterPalette",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacter",
+      "to_plugin": "MetaHumanSDK",
+      "to_module": "MetaHumanSDKRuntime",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "DNACalib",
+      "to_module": "DNACalibModule",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanConfig",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanIdentity",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "MetaHumanAnimator",
+      "to_module": "MetaHumanPipeline",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacter",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacterPalette",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacterPaletteEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanDefaultPipeline",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTechLib",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "MetaHumanSDK",
+      "to_module": "InterchangeDNA",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "MetaHumanSDK",
+      "to_module": "MetaHumanSDKEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "MetaHumanSDK",
+      "to_module": "MetaHumanSDKEditor",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "MetaHumanSDK",
+      "to_module": "MetaHumanSDKRuntime",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicLib",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterEditor",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicModule",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterMigrationEditor",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacter",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterMigrationEditor",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacterEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterMigrationEditor",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacterPalette",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterMigrationEditor",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacterPaletteEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterMigrationEditor",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanDefaultPipeline",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterMigrationEditor",
+      "to_plugin": "MetaHumanSDK",
+      "to_module": "MetaHumanSDKEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterMigrationEditor",
+      "to_plugin": "MetaHumanSDK",
+      "to_module": "MetaHumanSDKRuntime",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterMigrationEditor",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicModule",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterPalette",
+      "to_plugin": "MetaHumanSDK",
+      "to_module": "MetaHumanSDKRuntime",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterPaletteEditor",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacter",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanCharacterPaletteEditor",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacterPalette",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanDefaultEditorPipeline",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacter",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanDefaultEditorPipeline",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacterEditor",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanDefaultEditorPipeline",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacterPalette",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanDefaultEditorPipeline",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacterPaletteEditor",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanDefaultEditorPipeline",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanDefaultPipeline",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanDefaultEditorPipeline",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanDefaultEditorPipeline",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTechLib",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanDefaultEditorPipeline",
+      "to_plugin": "MetaHumanSDK",
+      "to_module": "MetaHumanSDKEditor",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanDefaultEditorPipeline",
+      "to_plugin": "MetaHumanSDK",
+      "to_module": "MetaHumanSDKRuntime",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanDefaultEditorPipeline",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicModule",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanDefaultPipeline",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacter",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacter",
+      "from_module": "MetaHumanDefaultPipeline",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacterPalette",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacterUAF",
+      "from_module": "MetaHumanCharacterUAFEditor",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacterEditor",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacterUAF",
+      "from_module": "MetaHumanCharacterUAFEditor",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanCharacterPalette",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacterUAF",
+      "from_module": "MetaHumanCharacterUAFEditor",
+      "to_plugin": "MetaHumanCharacter",
+      "to_module": "MetaHumanDefaultEditorPipeline",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCharacterUAF",
+      "from_module": "MetaHumanCharacterUAFEditor",
+      "to_plugin": "MetaHumanSDK",
+      "to_module": "MetaHumanSDKRuntime",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCoreTechLib",
+      "from_module": "MetaHumanCaptureData",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanImageViewer",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCoreTechLib",
+      "from_module": "MetaHumanCoreTechLib",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCoreTechLib",
+      "from_module": "MetaHumanCoreTechLib",
+      "to_plugin": "MetaHumanSDK",
+      "to_module": "MetaHumanSDKRuntime",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCoreTechLib",
+      "from_module": "MetaHumanCoreTechLib",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicLib",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCoreTechLib",
+      "from_module": "MetaHumanCoreTechLib",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicModule",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCoreTechLib",
+      "from_module": "MetaHumanImageViewer",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCoreTechLib",
+      "from_module": "MetaHumanPipelineCore",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCaptureData",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanCoreTechLib",
+      "from_module": "MetaHumanPipelineCore",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "LiveLinkFaceSource",
+      "to_plugin": "LiveLink",
+      "to_module": "LiveLink",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "LiveLinkFaceSource",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "LiveLinkFaceSource",
+      "to_plugin": "MetaHumanLiveLink",
+      "to_module": "MetaHumanLiveLinkSource",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "LiveLinkFaceSourceEditor",
+      "to_plugin": "MetaHumanLiveLink",
+      "to_module": "LiveLinkFaceDiscovery",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "LiveLinkFaceSourceEditor",
+      "to_plugin": "MetaHumanLiveLink",
+      "to_module": "LiveLinkFaceSource",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "MetaHumanLiveLinkSource",
+      "to_plugin": "LiveLink",
+      "to_module": "LiveLink",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "MetaHumanLiveLinkSource",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "MetaHumanLiveLinkSourceEditor",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "MetaHumanLiveLinkSourceEditor",
+      "to_plugin": "MetaHumanLiveLink",
+      "to_module": "MetaHumanLiveLinkSource",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "MetaHumanLocalLiveLinkSource",
+      "to_plugin": "LiveLink",
+      "to_module": "LiveLink",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "MetaHumanLocalLiveLinkSource",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "MetaHumanLocalLiveLinkSource",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanImageViewer",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "MetaHumanLocalLiveLinkSource",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanPipelineCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "MetaHumanLocalLiveLinkSource",
+      "to_plugin": "MetaHumanLiveLink",
+      "to_module": "MetaHumanLiveLinkSource",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "MetaHumanLocalLiveLinkSourceEditor",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanCoreTech",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "MetaHumanLocalLiveLinkSourceEditor",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanImageViewer",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "MetaHumanLocalLiveLinkSourceEditor",
+      "to_plugin": "MetaHumanCoreTechLib",
+      "to_module": "MetaHumanPipelineCore",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "MetaHumanLocalLiveLinkSourceEditor",
+      "to_plugin": "MetaHumanLiveLink",
+      "to_module": "MetaHumanLiveLinkSource",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanLiveLink",
+      "from_module": "MetaHumanLocalLiveLinkSourceEditor",
+      "to_plugin": "MetaHumanLiveLink",
+      "to_module": "MetaHumanLocalLiveLinkSource",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanSDK",
+      "from_module": "InterchangeDNA",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicLib",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "MetaHumanSDK",
+      "from_module": "InterchangeDNA",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicModule",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "RigLogic",
+      "from_module": "RigLogicDeveloper",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicEditor",
+      "dependency_kind": "DynamicallyLoadedModuleNames"
+    },
+    {
+      "from_plugin": "RigLogic",
+      "from_module": "RigLogicDeveloper",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicEditor",
+      "dependency_kind": "PrivateIncludePathModuleNames"
+    },
+    {
+      "from_plugin": "RigLogic",
+      "from_module": "RigLogicDeveloper",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicModule",
+      "dependency_kind": "PrivateDependencyModuleNames"
+    },
+    {
+      "from_plugin": "RigLogic",
+      "from_module": "RigLogicEditor",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicLib",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "RigLogic",
+      "from_module": "RigLogicEditor",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicModule",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "RigLogic",
+      "from_module": "RigLogicLibTest",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicLib",
+      "dependency_kind": "PublicDependencyModuleNames"
+    },
+    {
+      "from_plugin": "RigLogic",
+      "from_module": "RigLogicModule",
+      "to_plugin": "RigLogic",
+      "to_module": "RigLogicLib",
+      "dependency_kind": "PublicDependencyModuleNames"
+    }
+  ]
+}

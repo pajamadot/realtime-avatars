@@ -1,0 +1,6 @@
+G:\UE\UnrealEngine
+
+This path is used as the external UE 5.7 source root for MetaHuman architecture/code scanning.
+Referenced by:
+- metahuman/UE57_METAHUMAN_ARCHITECTURE.md
+- web/app/learn/metahuman/architecture/page.tsx

@@ -1,6 +1,85 @@
-# Educational Content Iteration Mega Prompt
+# Repository Iteration Mega Prompt
 
-Use this prompt to continue building educational content for the Real-Time Avatars website after context compression. Copy the relevant section based on what phase you're in.
+Use this prompt to run full-repo evolution cycles for `realtime-avatars` after context compression.  
+This now covers product, research, architecture, performance, documentation, and publishing quality gates.
+
+---
+
+## Repository Evolution Mode (Primary)
+
+### Objective
+
+Continuously evolve the entire repo by running deterministic cycles that:
+- verify live claims/pages against code and evidence,
+- improve architecture and implementation quality,
+- increase realtime performance and social-interaction modality coverage,
+- publish auditable artifacts to `web/public/docs`,
+- persist memory so each cycle builds on previous results.
+
+### Cycle Contract
+
+Run the following loop each cycle:
+
+1. **Load memory and status**
+- Read `state.json`, `events.jsonl`, and latest artifacts for active skills.
+- Read current repo status (`git status --short`) and avoid reverting unrelated user work.
+
+2. **Collect signals**
+- Product/UI: validate live pages and slide claims.
+- Code: scan implementation drift and dependency updates.
+- Research: pull ArXiv + GitHub updates (authenticated when possible).
+- Runtime/perf: capture timing, bottlenecks, and streaming health indicators.
+
+3. **Select highest-impact mutation**
+- Pick one to three concrete changes that improve correctness, capability, or reliability.
+- Prefer patches that produce measurable deltas and preserve backwards compatibility.
+
+4. **Implement**
+- Apply focused edits.
+- Update architecture/dep graph outputs when system behavior changes.
+
+5. **Validate**
+- Compile/lint/test relevant scopes.
+- Re-run skill cycle(s) to verify new outputs and deltas.
+
+6. **Publish artifacts**
+- Mirror latest markdown/json/graph outputs to `web/public/docs`.
+- Ensure page-level references point to updated artifacts.
+
+7. **Persist memory**
+- Append event logs.
+- Update state with new learned focus terms and observed deltas.
+- Write progress notes suitable for next-cycle continuation.
+
+### Skill-Oriented Execution
+
+Use these skills as building blocks:
+- `metahuman-evolver` for Unreal plugin deep dives, architecture and dependency updates.
+- `full-modality-social-evolver` for slide claim verification and multimodal research tracking.
+- Any additional repo-specific skills as needed for targeted subsystems.
+
+### Quality Gates Per Cycle
+
+Do not mark a cycle complete unless all are true:
+- No regressions in verified claim checks for touched scope.
+- Outputs regenerated and published under `web/public/docs`.
+- State/events/progress files updated.
+- Clear delta summary generated (new/changed/removed items).
+
+### Auth + Rate-Limit Handling
+
+- If GitHub API is rate-limited, use `GITHUB_TOKEN` or `GH_TOKEN`.
+- If `gh` is logged in, inject token for the run:
+  - PowerShell: `$env:GITHUB_TOKEN = gh auth token`
+- Record in cycle output when fallback data sources were used.
+
+### End-of-Cycle Output Template
+
+Always report:
+- What changed (files and behavior).
+- Validation results (compile/test/run outputs).
+- Evidence-backed corrections/recommendations.
+- Next best mutation options for the following cycle.
 
 ---
 

@@ -33,6 +33,7 @@ import {
   Play,
   Github,
 } from 'lucide-react';
+import { Position } from '@xyflow/react';
 import SlideFlow from './components/SlideFlow';
 import GaussianVideoWall from '../components/GaussianVideoWall';
 import gaussianVideoWallData from '../data/gaussian-video-wall.json';
@@ -40,7 +41,7 @@ import gaussianVideoWallData from '../data/gaussian-video-wall.json';
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   CONSTANTS
    鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
-const TOTAL_SLIDES = 35;
+const TOTAL_SLIDES = 41;
 
 function clampSlideNumber(slide: number) {
   if (!Number.isFinite(slide)) return 1;
@@ -226,16 +227,6 @@ function SlideTitle() {
       </p>
       <div className="flex flex-col items-center gap-1.5 text-[#948d82]">
         <span className="text-2xl font-medium text-[#f5f2ec]">Yuntian Chai</span>
-        <a
-          href={PROJECT_REPO_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-2 inline-flex items-center gap-2 text-sm hover:underline"
-          style={{ color: METHOD_COLORS.gaussian }}
-        >
-          <Github size={16} />
-          github.com/pajamadot/realtime-avatars
-        </a>
       </div>
     </div>
   );
@@ -243,7 +234,7 @@ function SlideTitle() {
 
 function SlideAboutMe() {
   const experience = [
-    { icon: Video, title: 'Hedra', period: '2024-2025', text: 'Software engineer on diffusion video pipeline implementation.', color: METHOD_COLORS.generative },
+    { icon: Video, title: 'Hedra', period: '2024-2025', text: 'Software engineer on real-time avatar project.', color: METHOD_COLORS.generative },
     { icon: Gamepad2, title: 'Epic Games', period: '2018-2020', text: 'Developer relations engineer for UE4/UE5 in Shanghai.', color: METHOD_COLORS.metahuman },
     { icon: Headset, title: 'UnrealLight Digital Tech', period: '2015-2017', text: 'Early-stage VR product and engineering work.', color: METHOD_COLORS.gaussian },
   ];
@@ -327,52 +318,586 @@ function SlideAboutMe() {
   );
 }
 
-function SlideProblem() {
-  const rationale = [
-    { icon: Cpu, label: 'Agent-Only Work', desc: 'Backoffice automation, ETL, triage, routing: no avatar needed.' },
-    { icon: Users, label: 'Human Trust Loop', desc: 'People calibrate trust through timing, gaze, expression, and tone.' },
-    { icon: Headset, label: 'Storytelling in Realtime', desc: 'Adaptive pacing for linear scenes and branch selection for interactive roleplay.' },
-    { icon: BookOpen, label: 'Teaching & Care', desc: 'Realtime social cues and narrative continuity improve comprehension, confidence, and engagement.' },
+function SlideCogixEyeTrackerPrototype() {
+  return (
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <SlideMethodBadge method="Cogix" label="Current Work" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">By Day Work on Cogix</h2>
+      <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
+
+      <p className="text-lg text-[#c7c2b9] mb-5 max-w-5xl">
+        I am also building an eye tracker prototype at Cogix, combining a custom IR hardware rig with a session-based analytics software pipeline.
+      </p>
+
+      <div className="grid grid-cols-3 gap-4">
+        <div className="rounded-xl overflow-hidden border border-[#3d3a36] bg-[#10100f]">
+          <img
+            src="/eye-tracker.jpg"
+            alt="Eye tracker prototype hardware rig with IR LEDs and cameras"
+            className="w-full h-[220px] object-cover"
+          />
+          <div className="px-4 py-3 text-sm text-[#bdb8af] border-t border-[#3d3a36]">
+            Hardware prototype: IR illuminators + cameras for gaze capture.
+          </div>
+        </div>
+        <div className="rounded-xl overflow-hidden border border-[#3d3a36] bg-[#10100f]">
+          <img
+            src="/eye-tracking-software.png"
+            alt="Eye-Tracking Studio interface showing session timeline and gaze analytics"
+            className="w-full h-[220px] object-cover object-top"
+          />
+          <div className="px-4 py-3 text-sm text-[#bdb8af] border-t border-[#3d3a36]">
+            Software prototype: timeline, fixations, saccades, pupil metrics, and exportable reports.
+          </div>
+        </div>
+        <div className="rounded-xl overflow-hidden border border-[#3d3a36] bg-[#10100f]">
+          <video
+            src="/eye_tracking_video.mp4"
+            className="w-full h-[220px] object-cover bg-black"
+            controls
+            muted
+            playsInline
+            preload="metadata"
+            poster="/eye-tracker.jpg"
+          />
+          <div className="px-4 py-3 text-sm text-[#bdb8af] border-t border-[#3d3a36]">
+            Prototype session video: calibration + recording playback from the same tracking stack.
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-4 rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] text-sm text-[#bdb8af] flex items-start gap-2">
+        <Eye size={16} className="text-[#e1a65b] mt-0.5 flex-shrink-0" />
+        This work complements realtime avatar research by improving live human-signal capture quality at the input layer.
+      </div>
+
+      <p className="mt-3 text-xs text-[#8f8b84]">
+        Static assets used on this slide: <code>/eye-tracker.jpg</code>, <code>/eye-tracking-software.png</code>, <code>/eye_tracking_video.mp4</code>.
+      </p>
+    </div>
+  );
+}
+
+function SlideGraphNerd() {
+  const PAJAMADOT_FLOW_EXAMPLE_URL = 'https://www.pajamadot.com/projects/5c91c637-ff86-4cf9-a47f-14175022a454/flow';
+  const graphNodes = [
+    {
+      id: 'graphs',
+      label: 'Graphs',
+      color: METHOD_COLORS.gaussian,
+      position: { x: 24, y: 168 },
+      sourcePosition: Position.Right,
+      targetPosition: Position.Left,
+    },
+    {
+      id: 'webgeo',
+      label: 'Web Geometry Nodes',
+      color: '#45b7d1',
+      position: { x: 270, y: 0 },
+      sourcePosition: Position.Right,
+      targetPosition: Position.Left,
+    },
+    {
+      id: 'reactflow',
+      label: 'React Flow Graphs',
+      color: '#86c6ff',
+      position: { x: 270, y: 56 },
+      sourcePosition: Position.Right,
+      targetPosition: Position.Left,
+    },
+    {
+      id: 'blueprint',
+      label: 'UE Blueprint',
+      color: METHOD_COLORS.metahuman,
+      position: { x: 270, y: 112 },
+      sourcePosition: Position.Right,
+      targetPosition: Position.Left,
+    },
+    {
+      id: 'uematerial',
+      label: 'UE Material Nodes',
+      color: '#c9b1ff',
+      position: { x: 270, y: 168 },
+      sourcePosition: Position.Right,
+      targetPosition: Position.Left,
+    },
+    {
+      id: 'blender',
+      label: 'Blender Geo Nodes',
+      color: '#6ec87a',
+      position: { x: 270, y: 224 },
+      sourcePosition: Position.Right,
+      targetPosition: Position.Left,
+    },
+    {
+      id: 'storynodes',
+      label: 'Story Narrative Nodes',
+      color: '#e1a65b',
+      position: { x: 270, y: 280 },
+      sourcePosition: Position.Right,
+      targetPosition: Position.Left,
+    },
+    {
+      id: 'pajamaflow',
+      label: 'PajamaDot Flow (Build)',
+      color: METHOD_COLORS.gaussian,
+      position: { x: 270, y: 336 },
+      sourcePosition: Position.Right,
+      targetPosition: Position.Left,
+    },
+  ];
+  const graphEdges = graphNodes
+    .filter((node) => node.id !== 'graphs')
+    .map((node) => ({
+      source: 'graphs',
+      target: node.id,
+    }));
+
+  return (
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <SlideMethodBadge method="Personal Lens" label="Node-First Thinking" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Graph Nerd & Storyteller at Night</h2>
+      <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
+
+      <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]">
+        <p className="text-xs uppercase tracking-widest text-[#948d82] mb-2">Draggable Graph</p>
+        <SlideFlow
+          accentColor={METHOD_COLORS.gaussian}
+          interactive
+          height={420}
+          nodes={graphNodes}
+          edges={graphEdges}
+        />
+        <div className="mt-2.5 flex items-center justify-between gap-3 text-xs">
+          <span className="text-[#948d82]">Hierarchical layout: root node “Graphs” on the left, branch nodes on the right, each node draggable.</span>
+          <a
+            href={PAJAMADOT_FLOW_EXAMPLE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 font-semibold hover:underline"
+            style={{ color: METHOD_COLORS.gaussian }}
+          >
+            PajamaDot Flow Example
+            <ExternalLink size={13} />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SlideStoryCharacterCreationTool() {
+  const PAJAMADOT_CHARACTER_URL = 'https://www.pajamadot.com/projects/5c91c637-ff86-4cf9-a47f-14175022a454/characters/7bc804f1-5880-492e-bd33-a74f062856c0';
+
+  return (
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <SlideMethodBadge method="PajamaDot Tool" label="Story Character Creation" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Character Creation Tool for Story (2D)</h2>
+      <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
+
+      <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <h3 className="text-xl font-semibold text-[#f5f2ec] mb-2">Current Scope: 2D Static Identity</h3>
+            <ul className="list-disc pl-5 space-y-1.5 text-base text-[#c7c2b9]">
+              <li>This character workflow is 2D, not 3D.</li>
+              <li>We define reusable identity: personality, style, and narrative role.</li>
+              <li>We wire characters directly into node-based story flow and memory.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold text-[#f5f2ec] mb-2">Planned Expansion Path</h3>
+            <ul className="list-disc pl-5 space-y-1.5 text-base text-[#c7c2b9]">
+              <li>Step 1: 2D static identity (current).</li>
+              <li>Step 2: 3D dynamic embodiment with richer expression controls.</li>
+              <li>Step 3: realtime performance for live storytelling with humans.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <a
+        href={PAJAMADOT_CHARACTER_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 self-start rounded-lg px-5 py-3 border text-base font-semibold hover:underline"
+        style={{ borderColor: METHOD_COLORS.gaussian, color: METHOD_COLORS.gaussian, background: `${METHOD_COLORS.gaussian}12` }}
+      >
+        <User size={18} />
+        Open PajamaDot Character Example
+        <ExternalLink size={15} />
+      </a>
+    </div>
+  );
+}
+
+function SlideRealtimeAvatarPerformanceBridge() {
+  const steps = [
+    {
+      icon: Box,
+      title: '2D Static Base (Now)',
+      points: [
+        'Story-consistent character identity and style profiles.',
+        'Text/voice behavior grounded in character context.',
+      ],
+      color: METHOD_COLORS.gaussian,
+    },
+    {
+      icon: Layers,
+      title: '3D Dynamic Embodiment (Next)',
+      points: [
+        'Add geometry, rig, deformation, and expression spaces.',
+        'Map emotion/state to controllable facial/body dynamics.',
+      ],
+      color: METHOD_COLORS.metahuman,
+    },
+    {
+      icon: Sparkles,
+      title: 'Realtime Story Performance (Then)',
+      points: [
+        'Multimodal input -> story-aware response planning.',
+        'Low-latency voice + face + gaze performance for live scenes.',
+      ],
+      color: METHOD_COLORS.generative,
+    },
   ];
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <h2 className="text-5xl font-bold mb-2">Why Real-Time Avatars In The Agent Era?</h2>
-      <div
-        className="w-14 h-1 rounded-full mb-8"
-        style={{ background: METHOD_COLORS.gaussian }}
-      />
-      <div className="grid grid-cols-2 gap-6 mb-8">
-        {rationale.map((uc) => (
-          <div
-            key={uc.label}
-            className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]"
-          >
-            <uc.icon size={28} className="mb-3" style={{ color: METHOD_COLORS.gaussian }} />
-            <h3 className="text-xl font-semibold mb-1">{uc.label}</h3>
-            <p className="text-base text-[#bdb8af]">{uc.desc}</p>
+      <SlideMethodBadge method="Roadmap" label="2D -> 3D Offline -> Realtime Performance" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Realtime Avatar Performance for Storytelling</h2>
+      <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
+
+      <p className="text-lg text-[#c7c2b9] mb-6">
+        We start with a strong 2D identity layer, then evolve to 3D dynamic expression, and finally deliver realtime social storytelling performance.
+      </p>
+
+      <div className="grid grid-cols-3 gap-4">
+        {steps.map((step) => (
+          <div key={step.title} className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+            <step.icon size={24} className="mb-3" style={{ color: step.color }} />
+            <h3 className="text-xl font-semibold mb-2" style={{ color: step.color }}>{step.title}</h3>
+            <ul className="list-disc pl-5 space-y-1.5 text-base text-[#c7c2b9]">
+              {step.points.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>
-      <div className="rounded-xl border border-[#3d3a36] bg-[#1d1c1a] p-5">
-        <h3 className="text-xl font-semibold mb-3">The Core Decision</h3>
-        <p className="text-lg text-[#bdb8af]">
-          Keep agents invisible for machine-to-machine throughput. Use realtime avatars at the
-          human boundary where rapport, accountability, social coordination, and realtime storytelling quality
-          (linear or branching) determine outcomes.
+    </div>
+  );
+}
+
+function SlideProblem() {
+  const rationale = [
+    {
+      step: '01',
+      icon: Cpu,
+      label: 'Agents Handle Machine Work',
+      desc: 'Automation, routing, ETL, and backend ops do not need avatars.',
+    },
+    {
+      step: '02',
+      icon: Users,
+      label: 'Humans Need Social Signals',
+      desc: 'Trust depends on timing, gaze, expression, and turn-taking.',
+    },
+    {
+      step: '03',
+      icon: Headset,
+      label: 'Storytelling Is Live Performance',
+      desc: 'Live storytelling needs pacing, emotion, and character continuity.',
+    },
+    {
+      step: '04',
+      icon: BookOpen,
+      label: 'Avatar = Human Interface Runtime',
+      desc: 'Avatars turn model intelligence into readable human performance.',
+    },
+  ];
+
+  return (
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <SlideMethodBadge method="Framing" label="Why Realtime Avatars Now" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Why Realtime Avatars In The Agent Era?</h2>
+      <div
+        className="w-14 h-1 rounded-full mb-5"
+        style={{ background: METHOD_COLORS.gaussian }}
+      />
+      <p className="text-base text-[#c7c2b9] mb-5">
+        Agents run workflows. Realtime avatars handle human-facing storytelling and social interaction.
+      </p>
+      <div className="grid grid-cols-2 gap-4 mb-6">
+        {rationale.map((uc) => (
+          <div
+            key={uc.label}
+            className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <uc.icon size={28} style={{ color: METHOD_COLORS.gaussian }} />
+              <span
+                className="text-xs font-semibold tracking-wider px-2 py-1 rounded border"
+                style={{ borderColor: `${METHOD_COLORS.gaussian}88`, color: METHOD_COLORS.gaussian, background: `${METHOD_COLORS.gaussian}14` }}
+              >
+                STEP {uc.step}
+              </span>
+            </div>
+            <h3 className="text-lg font-semibold mb-1">{uc.label}</h3>
+            <p className="text-sm text-[#bdb8af]">{uc.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div className="rounded-xl border border-[#3d3a36] bg-[#1d1c1a] p-4">
+        <h3 className="text-lg font-semibold mb-2">Narrative Throughline</h3>
+        <p className="text-base text-[#bdb8af]">
+          Keep agents invisible for machine throughput. Use realtime avatars where trust, emotion, and storytelling outcomes matter.
         </p>
       </div>
     </div>
   );
 }
 
+function SlideStoryPerformanceMotivation() {
+  const goals = [
+    'We are building for realtime interactive storytelling and performance with humans, not just a technical avatar demo.',
+    'We keep the avatar inside story context: scene memory, character intent, emotional arc, and relationship state.',
+    'We target expressive performance quality that feels human across voice, face, gaze, timing, and body language.',
+  ];
+
+  const principles = [
+    {
+      title: 'Story-First System',
+      color: METHOD_COLORS.generative,
+      bullets: [
+        'Narrative continuity over isolated responses.',
+        'Character-consistent behavior across long sessions.',
+        'Realtime adaptation without losing scene coherence.',
+      ],
+    },
+    {
+      title: 'Performance-First Avatar',
+      color: METHOD_COLORS.metahuman,
+      bullets: [
+        'Emotion-aware delivery with controllable intensity.',
+        'Human-like timing for pauses, turn-taking, and emphasis.',
+        'Expressive multimodal output, not only lip-sync.',
+      ],
+    },
+    {
+      title: 'Human-Loop Interaction',
+      color: METHOD_COLORS.gaussian,
+      bullets: [
+        'Receive rich human inputs continuously.',
+        'Respond with believable, legible social signals.',
+        'Keep latency low enough to sustain live rapport.',
+      ],
+    },
+  ];
+
+  return (
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <SlideMethodBadge method="Motivation" label="Story + Performance Vision" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Why We Are Building This Project</h2>
+      <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
+
+      <ul className="list-disc pl-6 space-y-2 text-lg text-[#c7c2b9] mb-6">
+        {goals.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+
+      <div className="grid grid-cols-3 gap-4">
+        {principles.map((block) => (
+          <div key={block.title} className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+            <h3 className="text-xl font-semibold mb-2" style={{ color: block.color }}>
+              {block.title}
+            </h3>
+            <ul className="list-disc pl-5 space-y-1.5 text-base text-[#c7c2b9]">
+              {block.bullets.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function SlideHumanModalityGraph() {
+  const inputModalities = [
+    'Speech content + prosody',
+    'Face expression + gaze',
+    'Head pose + turn-taking cues',
+    'Text intent + narrative choices',
+  ];
+  const coreLayer = [
+    'Multimodal perception fusion',
+    'Emotion/state estimation',
+    'Narrative policy + pacing',
+    'Character performance planner',
+  ];
+  const outputModalities = [
+    'Voice tone + timing + phrasing',
+    'Facial expression dynamics',
+    'Eye contact + gaze shifts',
+    'Head motion + gesture rhythm',
+  ];
+  const graphLinks = [
+    'Prosody -> voice style + emotional cadence',
+    'Gaze/attention -> eye-contact strategy',
+    'Emotion state -> expression intensity + gesture energy',
+    'Narrative context -> content, timing, and delivery',
+  ];
+
+  return (
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <SlideMethodBadge method="Motivation" label="Full Human Modality Graph" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Full Modality Storytelling Graph</h2>
+      <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
+
+      <p className="text-base text-[#c7c2b9] mb-4">
+        We want to map human inputs to expressive outputs through a story-aware cognition layer, so the avatar performs like a contextual character, not a detached renderer.
+      </p>
+
+      <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] gap-3 items-stretch mb-5">
+        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+          <h3 className="text-xl font-semibold mb-2" style={{ color: METHOD_COLORS.metahuman }}>Input Modalities</h3>
+          <ul className="list-disc pl-5 space-y-1.5 text-sm text-[#c7c2b9]">
+            {inputModalities.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </div>
+
+        <div className="flex items-center justify-center text-3xl text-[#7d776f]">→</div>
+
+        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+          <h3 className="text-xl font-semibold mb-2" style={{ color: METHOD_COLORS.generative }}>Cognition Core</h3>
+          <ul className="list-disc pl-5 space-y-1.5 text-sm text-[#c7c2b9]">
+            {coreLayer.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </div>
+
+        <div className="flex items-center justify-center text-3xl text-[#7d776f]">→</div>
+
+        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+          <h3 className="text-xl font-semibold mb-2" style={{ color: METHOD_COLORS.gaussian }}>Output Modalities</h3>
+          <ul className="list-disc pl-5 space-y-1.5 text-sm text-[#c7c2b9]">
+            {outputModalities.map((item) => <li key={item}>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+
+      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+        <h3 className="text-lg font-semibold mb-2 text-[#f5f2ec]">Key Graph Edges</h3>
+        <ul className="list-disc pl-5 space-y-1.5 text-sm text-[#c7c2b9]">
+          {graphLinks.map((edge) => (
+            <li key={edge}>{edge}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function SlideFuturePerspectiveMissingLayers() {
+  const layers = [
+    {
+      title: 'Interaction Runtime',
+      color: METHOD_COLORS.gaussian,
+      icon: Clock,
+      bullets: [
+        'Realtime turn-taking, barge-in, and latency budgeting.',
+        'Fast acknowledgement before full response generation.',
+      ],
+    },
+    {
+      title: 'Memory + Identity Graph',
+      color: METHOD_COLORS.generative,
+      icon: Brain,
+      bullets: [
+        'Persistent character memory across sessions.',
+        'Narrative state + relationship continuity over time.',
+      ],
+    },
+    {
+      title: 'Social Reasoning Layer',
+      color: METHOD_COLORS.metahuman,
+      icon: Users,
+      bullets: [
+        'Multimodal fusion with uncertainty-aware affect estimates.',
+        'Conservative behavior when confidence is low.',
+      ],
+    },
+    {
+      title: 'Trust, Safety, and Eval',
+      color: METHOD_COLORS.gaussian,
+      icon: Activity,
+      bullets: [
+        'Consent-aware signal use + provenance instrumentation.',
+        'Metrics: first reaction latency, drift, coherence, MOS.',
+      ],
+    },
+  ];
+
+  return (
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <SlideMethodBadge method="Future Perspective" label="What We Are Missing: Multimodal Input Processing" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Missing Layer: Multimodal User-Input Processing</h2>
+      <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
+
+      <p className="text-base text-[#c7c2b9] mb-5">
+        The three approaches mostly define how we render and perform output. What we still need is a dedicated pipeline to process user multimodal input before any renderer.
+      </p>
+
+      <div className="mb-4">
+        <SlideFlow
+          accentColor={METHOD_COLORS.gaussian}
+          nodes={[
+            { id: 'in', label: 'User input (audio / text / video / gesture)' },
+            { id: 'perception', label: 'Perception (ASR + vision + quality checks)' },
+            { id: 'fusion', label: 'Temporal fusion + uncertainty estimation' },
+            { id: 'state', label: 'Turn-taking + memory + social state' },
+            { id: 'policy', label: 'Response policy + intent planning' },
+            { id: 'renderer', label: 'Output renderer (MH / VG / GS)' },
+          ]}
+        />
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 mb-4">
+        {layers.map((layer) => (
+          <div key={layer.title} className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+            <div className="flex items-center gap-2 mb-2">
+              <layer.icon size={18} style={{ color: layer.color }} />
+              <h3 className="text-lg font-semibold" style={{ color: layer.color }}>
+                {layer.title}
+              </h3>
+            </div>
+            <ul className="list-disc pl-5 space-y-1.5 text-sm text-[#c7c2b9]">
+              {layer.bullets.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div className="rounded-xl border border-[#3d3a36] bg-[#1d1c1a] p-4 text-sm text-[#bdb8af]">
+        <span className="font-semibold text-[#f5f2ec]">Future stack:</span> First build robust multimodal input processing, then plug any output renderer (MetaHuman, Video Generation, Gaussian) behind it.
+      </div>
+    </div>
+  );
+}
+
+// Parked slide: hidden from deck order for now, keep for future re-enable.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function SlideRealtimeNarrativeLoop() {
   const loopCards = [
     {
-      title: 'State You Must Track',
+      title: 'State We Must Track',
       color: METHOD_COLORS.gaussian,
       lines: [
-        'conversation memory + user profile',
+        'conversation memory + participant profile',
         'emotion / arousal / confidence trajectory',
         'story variables, goals, and branch constraints',
       ],
@@ -401,10 +926,11 @@ function SlideRealtimeNarrativeLoop() {
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Realtime Narrative" color={METHOD_COLORS.gaussian} />
       <h2 className="text-5xl font-bold mb-1">Storytelling in Realtime (Linear + Branching)</h2>
-      <p className="text-[#bdb8af] text-base mb-4 max-w-5xl">
-        A realtime agent is a narrative performer: it senses user signals, updates scene state,
-        then either continues a linear arc or chooses a branch while keeping continuity and emotional timing.
-      </p>
+      <ul className="text-[#c7c2b9] text-lg mb-4 max-w-5xl list-disc pl-6 space-y-1.5">
+        <li>We sense speech, text, gaze, and gesture in one loop.</li>
+        <li>We update shared social and story state continuously.</li>
+        <li>We continue linear beats or switch branches while preserving coherence and timing.</li>
+      </ul>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
 
       <div className="mb-6">
@@ -425,10 +951,10 @@ function SlideRealtimeNarrativeLoop() {
       <div className="grid grid-cols-3 gap-4 mb-4">
         {loopCards.map((card) => (
           <div key={card.title} className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-            <h3 className="text-base font-semibold mb-2" style={{ color: card.color }}>
+            <h3 className="text-xl font-semibold mb-2" style={{ color: card.color }}>
               {card.title}
             </h3>
-            <ul className="space-y-1 text-xs text-[#bdb8af]">
+            <ul className="space-y-1.5 text-base text-[#c7c2b9] list-disc pl-5">
               {card.lines.map((line) => (
                 <li key={line}>{line}</li>
               ))}
@@ -439,32 +965,32 @@ function SlideRealtimeNarrativeLoop() {
 
       <div className="grid grid-cols-2 gap-3 mb-4">
         <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-          <h3 className="text-sm font-semibold mb-2" style={{ color: METHOD_COLORS.generative }}>
+          <h3 className="text-lg font-semibold mb-2" style={{ color: METHOD_COLORS.generative }}>
             Branching Brainstorm Patterns
           </h3>
-          <ul className="space-y-1 text-xs text-[#bdb8af]">
-            <li>Explicit choice cards: user picks option A/B/C in real time.</li>
-            <li>Implicit branching: infer intent from interruption or sentiment shift.</li>
-            <li>Micro-branches: local detours that rejoin quickly.</li>
-            <li>Hard branches: chapter-level divergence with persistent state changes.</li>
+          <ul className="space-y-1.5 text-base text-[#c7c2b9] list-disc pl-5">
+            <li>Explicit choice cards: we pick option A/B/C in real time.</li>
+            <li>Implicit branching: we infer intent from interruption or sentiment shift.</li>
+            <li>Micro-branches: we take local detours, then rejoin quickly.</li>
+            <li>Hard branches: we allow chapter-level divergence with persistent state changes.</li>
           </ul>
         </div>
         <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-          <h3 className="text-sm font-semibold mb-2" style={{ color: METHOD_COLORS.metahuman }}>
+          <h3 className="text-lg font-semibold mb-2" style={{ color: METHOD_COLORS.metahuman }}>
             Guardrails for Coherence
           </h3>
-          <ul className="space-y-1 text-xs text-[#bdb8af]">
-            <li>Branch budget: limit depth/time per branch.</li>
-            <li>Canonical anchors: mandatory return points for continuity.</li>
-            <li>Persona lock: same character goals and voice across branches.</li>
-            <li>State checks: prevent contradictions before each response.</li>
+          <ul className="space-y-1.5 text-base text-[#c7c2b9] list-disc pl-5">
+            <li>Branch budget: we limit depth/time per branch.</li>
+            <li>Canonical anchors: we enforce return points for continuity.</li>
+            <li>Persona lock: we keep character goals and voice stable across branches.</li>
+            <li>State checks: we prevent contradictions before each response.</li>
           </ul>
         </div>
       </div>
 
-      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] text-sm text-[#bdb8af]">
-        <span className="font-semibold text-[#f5f2ec]">Why this matters:</span> without realtime narrative timing, avatars feel delayed or monotone.
-        With realtime narrative policy, they can run linear scenes or interactive branching while staying coherent.
+      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] text-lg text-[#c7c2b9]">
+        <span className="font-semibold text-[#f5f2ec]">Why this matters for us:</span> without realtime narrative timing, avatars feel delayed or monotone.
+        With realtime narrative policy, we can run linear scenes or interactive branching while staying coherent.
       </div>
     </div>
   );
@@ -478,6 +1004,7 @@ function SlideThreeApproaches() {
       icon: Monitor,
       tagline: 'Deterministic control at 60+ FPS',
       desc: 'Mesh-based rendering with blendshape animation via Unreal Engine',
+      a2f: 'MetaHuman Animator Speech2Face + Audio Live Link (UE-native).',
     },
     {
       name: 'Video Generation',
@@ -485,6 +1012,7 @@ function SlideThreeApproaches() {
       icon: Video,
       tagline: 'Photorealism from a single photo',
       desc: 'Diffusion-based synthesis streamed via WebRTC providers',
+      a2f: 'Audio-conditioned diffusion/forcing; no explicit rig control surface.',
     },
     {
       name: 'Gaussian Splatting',
@@ -492,6 +1020,7 @@ function SlideThreeApproaches() {
       icon: Box,
       tagline: 'Explicit 3D primitives, real-time rasterization',
       desc: 'Per-splat (mu, Sigma, color, alpha); no neural-field inference at runtime',
+      a2f: 'Audio2Expression drives explicit pose/expression coefficients.',
     },
   ];
 
@@ -521,7 +1050,12 @@ function SlideThreeApproaches() {
             <p className="text-base font-medium text-[#f5f2ec] mb-2">
               {m.tagline}
             </p>
-            <p className="text-base text-[#948d82] mt-auto">{m.desc}</p>
+            <div className="mt-auto space-y-2">
+              <p className="text-base text-[#948d82]">{m.desc}</p>
+              <p className="text-sm text-[#bdb8af]">
+                <span className="font-semibold text-[#f5f2ec]">Audio-to-Face:</span> {m.a2f}
+              </p>
+            </div>
           </div>
         ))}
       </div>
@@ -579,14 +1113,24 @@ function SlideMetahumanHow() {
       <div className="mb-5">
         <SlideFlow
           accentColor={METHOD_COLORS.metahuman}
+          height={260}
           nodes={[
-            { id: 'input', label: 'Camera / Audio / IMU' },
-            { id: 'capture', label: 'CaptureSource + ProtocolStack' },
-            { id: 'solve', label: 'FaceAnimationSolver / Speech2Face' },
-            { id: 'core', label: 'MetaHumanCoreTech Filters' },
-            { id: 'riglogic', label: 'RigLogic (DNA -> rig controls)' },
-            { id: 'livelink', label: 'MetaHumanLiveLink / LiveLink' },
-            { id: 'render', label: 'UE 5.7 Render + Stream' },
+            { id: 'input', label: 'Camera / Audio / IMU', position: { x: 0, y: 92 }, sourcePosition: Position.Right, targetPosition: Position.Left },
+            { id: 'livelink', label: 'Realtime Path: LiveLinkFaceSource / MetaHumanLiveLink', position: { x: 250, y: 20 }, sourcePosition: Position.Right, targetPosition: Position.Left },
+            { id: 'capture', label: 'Solve Path: CaptureSource + ProtocolStack', position: { x: 250, y: 162 }, sourcePosition: Position.Right, targetPosition: Position.Left },
+            { id: 'solve', label: 'FaceAnimationSolver / Speech2Face', position: { x: 520, y: 162 }, sourcePosition: Position.Right, targetPosition: Position.Left },
+            { id: 'core', label: 'MetaHumanCoreTech (filters/smoothing)', position: { x: 790, y: 92 }, sourcePosition: Position.Right, targetPosition: Position.Left },
+            { id: 'riglogic', label: 'RigLogic (DNA -> rig controls)', position: { x: 1060, y: 92 }, sourcePosition: Position.Right, targetPosition: Position.Left },
+            { id: 'render', label: 'UE 5.7 Render + Stream', position: { x: 1330, y: 92 }, sourcePosition: Position.Right, targetPosition: Position.Left },
+          ]}
+          edges={[
+            { source: 'input', target: 'livelink' },
+            { source: 'input', target: 'capture' },
+            { source: 'capture', target: 'solve' },
+            { source: 'solve', target: 'core' },
+            { source: 'livelink', target: 'core' },
+            { source: 'core', target: 'riglogic' },
+            { source: 'riglogic', target: 'render' },
           ]}
         />
       </div>
@@ -629,7 +1173,7 @@ function SlideMetahumanHow() {
           <ul className="space-y-1 text-xs text-[#bdb8af]">
             <li>One-line docs include tracker model tags: hyprface-0.1.4, wav2face-0.0.10.</li>
             <li>MetaHuman docs watch: 5/5 Epic docs endpoints reachable in latest cycle.</li>
-            <li>Plugin topology is stable across cycles; changes are in sampled API/method coverage.</li>
+            <li>Plugin topology is stable across cycles; updates are mostly in API/method coverage.</li>
           </ul>
         </div>
       </div>
@@ -2110,10 +2654,10 @@ function SlideCapabilityMatrix() {
     scores: [ScoreLevel, ScoreLevel, ScoreLevel];
     cite: string;
   }> = [
-    { name: 'Reactive Listening', scores: [2, 3, 1], cite: 'Avatar Forcing enables user-motion-conditioned generation' },
+    { name: 'Identity Creation: Customizability & Control', scores: [3, 1, 2], cite: 'MetaHuman DNA rig controls are explicit; Gaussian identity is editable but less standardized; video generation is mostly latent/conditional.' },
     { name: 'Eye / Gaze Control', scores: [3, 1, 2], cite: 'MetaHuman has explicit gaze rigs; ICo3D adds gaze to Gaussians' },
-    { name: 'Gesture Support', scores: [3, 2, 0], cite: 'Full body rigs vs. portrait-only generation' },
-    { name: 'XR-Ready', scores: [3, 0, 2], cite: 'TaoAvatar: 90 FPS on Vision Pro; Audio2Face: UE5 XR' },
+    { name: 'Gesture Support', scores: [3, 2, 1], cite: 'MetaHuman full-body rigs are mature; TaoAvatar shows conditional gesture/pose control for Gaussian avatars.' },
+    { name: 'XR-Ready', scores: [3, 0, 3], cite: 'TaoAvatar reports 90 FPS Vision Pro deployment; MetaHuman is production-proven in UE XR pipelines.' },
   ];
 
   const methods = [
@@ -2129,7 +2673,7 @@ function SlideCapabilityMatrix() {
       <h2 className="text-5xl font-bold mb-2">Capability Matrix</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
       <p className="text-xl text-[#bdb8af] mb-5">
-        Emotion-responsiveness comparison across the three paradigms.
+        Output/performance + identity-control comparison across the three paradigms.
       </p>
 
       <div className="rounded-xl border border-[#3d3a36] bg-[#1d1c1a] overflow-hidden">
@@ -2182,6 +2726,10 @@ function SlideCapabilityMatrix() {
           </div>
         ))}
       </div>
+
+      <p className="text-[10px] text-[#948d82] mt-2">
+        Note: this matrix evaluates rendering/output and identity-control traits. Full multimodal user-input processing is a separate stack.
+      </p>
     </div>
   );
 }
@@ -2367,6 +2915,15 @@ function SlideAudio2FaceBuildingBlocks() {
 
         <p className="text-base text-[#bdb8af] mt-3">{active.note}</p>
       </div>
+
+      <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mt-3">
+        <h3 className="text-sm font-semibold text-[#f5f2ec] mb-1">Official Tracks (2026)</h3>
+        <ul className="list-disc pl-5 space-y-1 text-xs text-[#bdb8af]">
+          <li>UE 5.7 MetaHuman supports native audio-driven animation and realtime Audio Live Link workflows.</li>
+          <li>NVIDIA Audio2Face-3D provides open models + SDK + training framework for custom pipelines.</li>
+          <li>ACE Unreal Audio2Face plugin docs currently target UE 5.5/5.6, so UE 5.7 needs compatibility validation.</li>
+        </ul>
+      </div>
     </div>
   );
 }
@@ -2463,15 +3020,15 @@ function SlideResearchFrontier() {
   const [activeCategory, setActiveCategory] = useState<CategoryId>('all');
 
   const papers = [
-    { name: 'Avatar Forcing', year: '2026', category: 'interactive' as const, metric: '<500ms E2E', speed: 9, realism: 7, control: 7, desc: 'Causal forcing keeps interaction state warm between turns.' },
-    { name: 'Knot Forcing', year: '2026', category: 'interactive' as const, metric: 'Identity stable', speed: 7, realism: 8, control: 7, desc: 'Knot-based forcing prevents identity drift over long sessions.' },
-    { name: 'StreamAvatar', year: '2025', category: 'streaming' as const, metric: 'Streaming 3DGS', speed: 8, realism: 7, control: 6, desc: 'Disentangled motion for real-time Gaussian avatar streaming.' },
-    { name: 'SoulX-FlashHead', year: '2026', category: 'streaming' as const, metric: '32 FPS (8xH800)', speed: 8, realism: 8, control: 6, desc: 'Oracle-guided architecture for consistent real-time throughput.' },
-    { name: 'LiveTalk', year: '2025', category: 'streaming' as const, metric: '40x fewer steps', speed: 8, realism: 6, control: 5, desc: 'Distillation compresses diffusion loops from dozens to a few steps.' },
-    { name: 'MIDAS', year: '2026', category: '3d_xr' as const, metric: 'Multi-identity', speed: 6, realism: 8, control: 7, desc: 'Disentangled geometry and appearance for multi-identity Gaussian avatars.' },
-    { name: 'ICo3D', year: '2026', category: '3d_xr' as const, metric: 'Gaze + expression', speed: 7, realism: 8, control: 8, desc: 'Interactive controllable 3D head avatars with gaze and fine expression.' },
-    { name: 'FastGHA', year: '2026', category: '3d_xr' as const, metric: 'Fast generation', speed: 9, realism: 7, control: 6, desc: 'Gaussian head avatars from single image in under 2 seconds.' },
-    { name: 'TaoAvatar', year: '2025', category: '3d_xr' as const, metric: '90 FPS Vision Pro', speed: 9, realism: 8, control: 8, desc: 'On-device Gaussian avatar for Apple Vision Pro at 90 FPS.' },
+    { name: 'Avatar Forcing', year: '2026', category: 'interactive' as const, metric: '~500ms E2E', speed: 9, realism: 7, control: 7, desc: 'Causal multimodal forcing for reactive conversation.', url: 'https://arxiv.org/abs/2601.00664' },
+    { name: 'Knot Forcing', year: '2025', category: 'interactive' as const, metric: 'Identity stability', speed: 7, realism: 8, control: 7, desc: 'Infinite interactive portrait animation with temporal knots.', url: 'https://arxiv.org/abs/2512.21734' },
+    { name: 'StreamAvatar', year: '2025', category: 'streaming' as const, metric: 'Streaming avatar', speed: 8, realism: 7, control: 6, desc: 'Streaming diffusion with coherent listening gestures.', url: 'https://arxiv.org/abs/2512.22065' },
+    { name: 'SoulX-FlashHead', year: '2026', category: 'streaming' as const, metric: '96 FPS (Lite)', speed: 8, realism: 8, control: 6, desc: 'Oracle-guided streaming talking heads with long-horizon stability.', url: 'https://arxiv.org/abs/2602.07449' },
+    { name: 'LiveTalk', year: '2025', category: 'streaming' as const, metric: '20x distillation', speed: 8, realism: 6, control: 5, desc: 'Realtime multimodal interactive video diffusion (audio+text+image).', url: 'https://arxiv.org/abs/2512.23576' },
+    { name: 'MIDAS', year: '2025', category: '3d_xr' as const, metric: 'Audio+pose+text', speed: 6, realism: 8, control: 7, desc: 'Real-time autoregressive multimodal digital-human synthesis.', url: 'https://arxiv.org/abs/2508.19320' },
+    { name: 'ICo3D', year: '2026', category: '3d_xr' as const, metric: 'Gaze + expression', speed: 7, realism: 8, control: 8, desc: 'Interactive conversational 3D virtual human with Gaussian head/body.', url: 'https://arxiv.org/abs/2601.13148' },
+    { name: 'FastGHA', year: '2026', category: '3d_xr' as const, metric: 'Few-shot real-time', speed: 9, realism: 7, control: 6, desc: 'Few-shot Gaussian head avatars with real-time animation.', url: 'https://arxiv.org/abs/2601.13837' },
+    { name: 'TaoAvatar', year: '2025', category: '3d_xr' as const, metric: '90 FPS Vision Pro', speed: 9, realism: 8, control: 8, desc: 'Full-body 3DGS avatars with controllable expression and gesture.', url: 'https://arxiv.org/abs/2503.17032' },
   ];
 
   const categories: Array<{ id: CategoryId; label: string }> = [
@@ -2482,14 +3039,6 @@ function SlideResearchFrontier() {
   ];
 
   const filtered = activeCategory === 'all' ? papers : papers.filter((p) => p.category === activeCategory);
-  const [selectedPaper, setSelectedPaper] = useState(papers[0].name);
-  const selected = papers.find((p) => p.name === selectedPaper) ?? papers[0];
-
-  const metrics: Array<{ key: 'speed' | 'realism' | 'control'; label: string }> = [
-    { key: 'speed', label: 'Speed' },
-    { key: 'realism', label: 'Realism' },
-    { key: 'control', label: 'Control' },
-  ];
 
   const categoryColor = (cat: string) =>
     cat === 'interactive' ? METHOD_COLORS.generative : cat === 'streaming' ? METHOD_COLORS.generative : METHOD_COLORS.gaussian;
@@ -2498,6 +3047,9 @@ function SlideResearchFrontier() {
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <h2 className="text-5xl font-bold mb-2">Research Frontier (Late 2025 -- Feb 2026)</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
+      <p className="text-sm text-[#bdb8af] mb-4">
+        Grid view with verified original paper links (arXiv/CVPR-aligned records).
+      </p>
 
       <div className="flex gap-2 mb-4">
         {categories.map((cat) => (
@@ -2516,74 +3068,57 @@ function SlideResearchFrontier() {
         ))}
       </div>
 
-      <div className="grid grid-cols-2 gap-5 items-start">
-        <div className="space-y-2">
-          {filtered.map((paper) => {
-            const isSelected = paper.name === selectedPaper;
-            const color = categoryColor(paper.category);
-            return (
-              <button
-                key={paper.name}
-                onClick={() => setSelectedPaper(paper.name)}
-                className="w-full text-left rounded-xl p-3 border transition-colors"
-                style={{
-                  borderColor: isSelected ? color : '#3d3a36',
-                  background: isSelected ? `${color}12` : '#1d1c1a',
-                }}
-              >
-                <div className="flex items-center justify-between gap-2">
-                  <p className="text-sm font-semibold text-[#f5f2ec]">{paper.name} ({paper.year})</p>
-                  <span className="text-xs font-mono" style={{ color }}>{paper.metric}</span>
-                </div>
-                <p className="text-xs text-[#bdb8af] mt-1 line-clamp-2">{paper.desc}</p>
-              </button>
-            );
-          })}
-        </div>
-
-        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-          <div className="flex items-center gap-3 mb-3">
+      <div className="grid grid-cols-3 gap-3">
+        {filtered.map((paper) => {
+          const color = categoryColor(paper.category);
+          return (
             <div
-              className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
-              style={{ background: `${categoryColor(selected.category)}22` }}
+              key={paper.name}
+              className="rounded-xl p-3 border bg-[#1d1c1a] flex flex-col"
+              style={{ borderColor: color }}
             >
-              <Sparkles size={18} style={{ color: categoryColor(selected.category) }} />
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-[#f5f2ec]">{selected.name} ({selected.year})</p>
-              <p className="text-[11px] text-[#948d82]">{selected.metric}</p>
-            </div>
-          </div>
-
-          <p className="text-xs text-[#bdb8af] mb-4">{selected.desc}</p>
-
-          <div className="space-y-2.5">
-            {metrics.map((metric) => (
-              <div key={metric.key}>
-                <div className="flex items-center justify-between text-[11px] mb-1">
-                  <span className="text-[#bdb8af]">{metric.label}</span>
-                  <span className="font-mono text-[#f5f2ec]">{selected[metric.key]}/10</span>
-                </div>
-                <div className="h-1.5 rounded-full bg-[#181716] overflow-hidden">
-                  <div
-                    className="h-full rounded-full"
-                    style={{
-                      width: `${selected[metric.key] * 10}%`,
-                      background: categoryColor(selected.category),
-                    }}
-                  />
-                </div>
+              <div className="flex items-center justify-between gap-2 mb-1">
+                <p className="text-sm font-semibold text-[#f5f2ec]">{paper.name}</p>
+                <span className="text-[10px] text-[#948d82]">{paper.year}</span>
               </div>
-            ))}
-          </div>
-        </div>
+
+              <p className="text-[11px] font-mono mb-1" style={{ color }}>
+                {paper.metric}
+              </p>
+              <p className="text-[11px] text-[#bdb8af] line-clamp-2 mb-2">{paper.desc}</p>
+
+              <div className="flex items-center gap-2 text-[10px] text-[#948d82] mb-2">
+                <span>S:{paper.speed}/10</span>
+                <span>R:{paper.realism}/10</span>
+                <span>C:{paper.control}/10</span>
+              </div>
+
+              <a
+                href={paper.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-semibold hover:underline"
+                style={{ color }}
+              >
+                Original paper
+                <ExternalLink size={12} />
+              </a>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
 }
 
 function SlideConvergenceUpdated() {
-  const threeDCards = [
+  const convergenceCards = [
+    {
+      title: 'Rig-Centric Production Anchor',
+      desc: 'Explicit rig, blendshape, and gaze controls with predictable runtime behavior.',
+      color: METHOD_COLORS.metahuman,
+      examples: 'MetaHuman DNA + RigLogic + Live Link',
+    },
     {
       title: '3D as Explicit Representation',
       desc: 'Point clouds and meshes rendered directly. Full geometric control.',
@@ -2599,14 +3134,14 @@ function SlideConvergenceUpdated() {
     {
       title: '3D as Control Signals',
       desc: 'Pose, landmarks, and depth maps guide a 2D generator. 3D informs but pixels remain 2D.',
-      color: METHOD_COLORS.metahuman,
+      color: METHOD_COLORS.generative,
       examples: 'AUHead, LiveTalk pose conditioning',
     },
   ];
 
   const trends = [
     { text: 'Audio2Face bridges all three paradigms', color: METHOD_COLORS.gaussian },
-    { text: 'MetaHuman + neural skin rendering', color: METHOD_COLORS.metahuman },
+    { text: 'MetaHuman remains the production baseline for controllability', color: METHOD_COLORS.metahuman },
     { text: 'One-shot Gaussian from single photo (LAM)', color: METHOD_COLORS.gaussian },
     { text: 'Sub-500ms E2E conversational loops', color: METHOD_COLORS.generative },
     { text: 'On-device: TaoAvatar 90 FPS Vision Pro, LAM 110 FPS mobile', color: METHOD_COLORS.gaussian },
@@ -2617,8 +3152,8 @@ function SlideConvergenceUpdated() {
       <h2 className="text-5xl font-bold mb-2">Convergence & the Role of 3D</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
-      <div className="grid grid-cols-3 gap-4 mb-5">
-        {threeDCards.map((card) => (
+      <div className="grid grid-cols-2 gap-4 mb-5">
+        {convergenceCards.map((card) => (
           <div key={card.title} className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
             <div className="w-2.5 h-2.5 rounded-full mb-2" style={{ background: card.color }} />
             <h3 className="text-base font-bold text-[#f5f2ec] mb-1">{card.title}</h3>
@@ -2787,14 +3322,14 @@ function SlideThankYou() {
 
       <div className="space-y-3 mb-12">
         <a
-          href="https://realtime-avatars.vercel.app"
+          href="https://www.realtime-avatars.com"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-base hover:underline justify-center"
           style={{ color: METHOD_COLORS.gaussian }}
         >
           <Globe size={16} />
-          realtime-avatars.vercel.app
+          www.realtime-avatars.com
         </a>
         <a
           href={PROJECT_REPO_URL}
@@ -2819,39 +3354,45 @@ function SlideThankYou() {
 const SLIDES: React.FC[] = [
   SlideTitle,                    // 1
   SlideAboutMe,                  // 2
-  SlideProblem,                  // 3
-  SlideRealtimeNarrativeLoop,    // 4 NEW
-  SlideThreeApproaches,          // 5
-  SlideSignalsInteraction,       // 6
-  SlideMetahumanHow,             // 7
-  SlideMetahumanIdentityResponse,// 8
-  SlideMetahumanDemo,            // 9
-  SlideGenerativeHow,            // 10
-  SlideGenerativeIdentityResponse,// 11
-  SlideGenerativeMechanism,      // 12
-  SlideGenerativeResearch,       // 13
-  SlideGenerativeDemo,           // 14
-  SlideGaussianHow,              // 15
-  SlideGaussianIdentityResponse, // 16
-  SlideGaussianMechanism,        // 17
-  SlideGaussianCovariance,       // 18
-  SlideGaussianDemo,             // 19
-  SlideGaussianSupersplatDemoOne,// 20
-  SlideGaussianSupersplatDemoTwo,// 21
-  SlideGaussianPersonalDemo,     // 22
-  SlideGaussianWorldlabsDemo,    // 23
-  SlideGaussianResearchVideoWall,// 24
-  SlideCapabilityMatrix,         // 25
-  SlideComparison,               // 26
-  SlideRealTimeMetrics,          // 27
-  SlideE2EPipeline,              // 28
-  SlideAudio2FaceBuildingBlocks, // 29
-  SlideWhereIntelligenceLives,   // 30
-  SlideResearchFrontier,         // 31
-  SlideConvergenceUpdated,       // 32
-  SlideBuiltWithClaudeSkills,    // 33
-  SlideAgentSkillsUsed,          // 34
-  SlideThankYou,                 // 35
+  SlideCogixEyeTrackerPrototype, // 3
+  SlideGraphNerd,                // 4
+  SlideStoryCharacterCreationTool,// 5
+  SlideRealtimeAvatarPerformanceBridge, // 6
+  SlideProblem,                  // 7
+  SlideStoryPerformanceMotivation,// 8
+  SlideHumanModalityGraph,       // 9
+  SlideThreeApproaches,          // 10
+  SlideSignalsInteraction,       // 11
+  SlideMetahumanHow,             // 12
+  SlideMetahumanIdentityResponse,// 13
+  SlideMetahumanDemo,            // 14
+  SlideGenerativeHow,            // 15
+  SlideGenerativeIdentityResponse,// 16
+  SlideGenerativeMechanism,      // 17
+  SlideGenerativeResearch,       // 18
+  SlideGenerativeDemo,           // 19
+  SlideGaussianHow,              // 20
+  SlideGaussianIdentityResponse, // 21
+  SlideGaussianMechanism,        // 22
+  SlideGaussianCovariance,       // 23
+  SlideGaussianDemo,             // 24
+  SlideGaussianSupersplatDemoOne,// 25
+  SlideGaussianSupersplatDemoTwo,// 26
+  SlideGaussianPersonalDemo,     // 27
+  SlideGaussianWorldlabsDemo,    // 28
+  SlideGaussianResearchVideoWall,// 29
+  SlideCapabilityMatrix,         // 30
+  SlideComparison,               // 31
+  SlideRealTimeMetrics,          // 32
+  SlideE2EPipeline,              // 33
+  SlideAudio2FaceBuildingBlocks, // 34
+  SlideWhereIntelligenceLives,   // 35
+  SlideResearchFrontier,         // 36
+  SlideFuturePerspectiveMissingLayers, // 37
+  SlideConvergenceUpdated,       // 38
+  SlideBuiltWithClaudeSkills,    // 39
+  SlideAgentSkillsUsed,          // 40
+  SlideThankYou,                 // 41
 ];
 
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   MAIN SLIDES PAGE

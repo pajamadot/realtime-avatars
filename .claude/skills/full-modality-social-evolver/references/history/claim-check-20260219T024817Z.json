@@ -1,0 +1,466 @@
+{
+  "generated_at": "2026-02-19T02:48:17+00:00",
+  "totals": {
+    "claims_checked": 16,
+    "mismatched_claims": 6
+  },
+  "mismatch_by_method": {
+    "MetaHuman": 0,
+    "Video Generation": 4,
+    "Gaussian Splatting": 4
+  },
+  "checks": [
+    {
+      "section": "coupling",
+      "signal": "Audio + pose (TaoAvatar)",
+      "slide_support": [
+        false,
+        false,
+        true
+      ],
+      "recommended_scores": [
+        0,
+        0,
+        2
+      ],
+      "matches_recommendation": true,
+      "mismatches": [],
+      "evidence_ids": [
+        "arxiv_taoavatar"
+      ],
+      "evidence_links": [
+        "https://arxiv.org/abs/2506.09976"
+      ]
+    },
+    {
+      "section": "coupling",
+      "signal": "Audio + text + image (LiveTalk)",
+      "slide_support": [
+        false,
+        true,
+        false
+      ],
+      "recommended_scores": [
+        0,
+        2,
+        0
+      ],
+      "matches_recommendation": true,
+      "mismatches": [],
+      "evidence_ids": [
+        "arxiv_livetalk"
+      ],
+      "evidence_links": [
+        "https://arxiv.org/abs/2512.23576"
+      ]
+    },
+    {
+      "section": "coupling",
+      "signal": "Audio + user motion (Avatar Forcing)",
+      "slide_support": [
+        false,
+        true,
+        false
+      ],
+      "recommended_scores": [
+        0,
+        2,
+        0
+      ],
+      "matches_recommendation": true,
+      "mismatches": [],
+      "evidence_ids": [
+        "arxiv_avatar_forcing"
+      ],
+      "evidence_links": [
+        "https://arxiv.org/abs/2601.00664"
+      ]
+    },
+    {
+      "section": "coupling",
+      "signal": "Audio-only driven",
+      "slide_support": [
+        true,
+        true,
+        true
+      ],
+      "recommended_scores": [
+        2,
+        2,
+        2
+      ],
+      "matches_recommendation": true,
+      "mismatches": [],
+      "evidence_ids": [
+        "epic_metahuman_audio_source",
+        "arxiv_livetalk",
+        "arxiv_taoavatar"
+      ],
+      "evidence_links": [
+        "https://dev.epicgames.com/documentation/en-us/metahuman/using-audio-source-for-animation",
+        "https://arxiv.org/abs/2512.23576",
+        "https://arxiv.org/abs/2506.09976"
+      ]
+    },
+    {
+      "section": "inputs",
+      "signal": "Audio prosody",
+      "slide_support": [
+        true,
+        true,
+        true
+      ],
+      "recommended_scores": [
+        2,
+        2,
+        2
+      ],
+      "matches_recommendation": true,
+      "mismatches": [],
+      "evidence_ids": [
+        "epic_metahuman_audio_source",
+        "arxiv_livetalk",
+        "arxiv_taoavatar"
+      ],
+      "evidence_links": [
+        "https://dev.epicgames.com/documentation/en-us/metahuman/using-audio-source-for-animation",
+        "https://arxiv.org/abs/2512.23576",
+        "https://arxiv.org/abs/2506.09976"
+      ]
+    },
+    {
+      "section": "inputs",
+      "signal": "Expression coefficients",
+      "slide_support": [
+        true,
+        false,
+        true
+      ],
+      "recommended_scores": [
+        2,
+        1,
+        2
+      ],
+      "matches_recommendation": false,
+      "mismatches": [
+        {
+          "method": "Video Generation",
+          "slide_support": false,
+          "recommended_support": true,
+          "recommended_level": 1
+        }
+      ],
+      "evidence_ids": [
+        "apple_wwdc_arkit",
+        "arxiv_liveportrait",
+        "arxiv_gaussianavatars"
+      ],
+      "evidence_links": [
+        "https://developer.apple.com/videos/play/wwdc2018/716/",
+        "https://arxiv.org/abs/2407.03168",
+        "https://arxiv.org/abs/2312.02069"
+      ]
+    },
+    {
+      "section": "inputs",
+      "signal": "Face video (webcam)",
+      "slide_support": [
+        true,
+        true,
+        false
+      ],
+      "recommended_scores": [
+        2,
+        2,
+        1
+      ],
+      "matches_recommendation": false,
+      "mismatches": [
+        {
+          "method": "Gaussian Splatting",
+          "slide_support": false,
+          "recommended_support": true,
+          "recommended_level": 1
+        }
+      ],
+      "evidence_ids": [
+        "epic_realtime_livelink",
+        "arxiv_liveportrait",
+        "arxiv_gaussianavatars"
+      ],
+      "evidence_links": [
+        "https://dev.epicgames.com/documentation/en-us/metahuman/realtime-animation-using-live-link",
+        "https://arxiv.org/abs/2407.03168",
+        "https://arxiv.org/abs/2312.02069"
+      ]
+    },
+    {
+      "section": "inputs",
+      "signal": "Gaze direction",
+      "slide_support": [
+        true,
+        false,
+        false
+      ],
+      "recommended_scores": [
+        2,
+        1,
+        1
+      ],
+      "matches_recommendation": false,
+      "mismatches": [
+        {
+          "method": "Video Generation",
+          "slide_support": false,
+          "recommended_support": true,
+          "recommended_level": 1
+        },
+        {
+          "method": "Gaussian Splatting",
+          "slide_support": false,
+          "recommended_support": true,
+          "recommended_level": 1
+        }
+      ],
+      "evidence_ids": [
+        "epic_metahuman_animator",
+        "arxiv_gazegaussian"
+      ],
+      "evidence_links": [
+        "https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-animator",
+        "https://arxiv.org/abs/2409.12533"
+      ]
+    },
+    {
+      "section": "inputs",
+      "signal": "Head pose",
+      "slide_support": [
+        true,
+        true,
+        true
+      ],
+      "recommended_scores": [
+        2,
+        2,
+        2
+      ],
+      "matches_recommendation": true,
+      "mismatches": [],
+      "evidence_ids": [
+        "arxiv_liveportrait",
+        "arxiv_gaussianavatars",
+        "arxiv_taoavatar"
+      ],
+      "evidence_links": [
+        "https://arxiv.org/abs/2407.03168",
+        "https://arxiv.org/abs/2312.02069",
+        "https://arxiv.org/abs/2506.09976"
+      ]
+    },
+    {
+      "section": "inputs",
+      "signal": "Turn-taking signals",
+      "slide_support": [
+        true,
+        true,
+        true
+      ],
+      "recommended_scores": [
+        2,
+        2,
+        2
+      ],
+      "matches_recommendation": true,
+      "mismatches": [],
+      "evidence_ids": [
+        "github_livekit_agents",
+        "arxiv_ico3d",
+        "arxiv_avatar_forcing"
+      ],
+      "evidence_links": [
+        "https://github.com/livekit/agents",
+        "https://arxiv.org/abs/2509.17080",
+        "https://arxiv.org/abs/2601.00664"
+      ]
+    },
+    {
+      "section": "outputs",
+      "signal": "Facial action units",
+      "slide_support": [
+        true,
+        false,
+        true
+      ],
+      "recommended_scores": [
+        2,
+        1,
+        1
+      ],
+      "matches_recommendation": false,
+      "mismatches": [
+        {
+          "method": "Video Generation",
+          "slide_support": false,
+          "recommended_support": true,
+          "recommended_level": 1
+        }
+      ],
+      "evidence_ids": [
+        "apple_wwdc_arkit",
+        "github_audio2face_sdk",
+        "arxiv_liveportrait"
+      ],
+      "evidence_links": [
+        "https://developer.apple.com/videos/play/wwdc2018/716/",
+        "https://github.com/NVIDIA/Audio2Face-3D-Samples",
+        "https://arxiv.org/abs/2407.03168"
+      ]
+    },
+    {
+      "section": "outputs",
+      "signal": "Gaze shifts",
+      "slide_support": [
+        true,
+        false,
+        false
+      ],
+      "recommended_scores": [
+        2,
+        1,
+        1
+      ],
+      "matches_recommendation": false,
+      "mismatches": [
+        {
+          "method": "Video Generation",
+          "slide_support": false,
+          "recommended_support": true,
+          "recommended_level": 1
+        },
+        {
+          "method": "Gaussian Splatting",
+          "slide_support": false,
+          "recommended_support": true,
+          "recommended_level": 1
+        }
+      ],
+      "evidence_ids": [
+        "epic_metahuman_animator",
+        "arxiv_gazegaussian"
+      ],
+      "evidence_links": [
+        "https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-animator",
+        "https://arxiv.org/abs/2409.12533"
+      ]
+    },
+    {
+      "section": "outputs",
+      "signal": "Hand gestures",
+      "slide_support": [
+        true,
+        true,
+        false
+      ],
+      "recommended_scores": [
+        2,
+        2,
+        1
+      ],
+      "matches_recommendation": false,
+      "mismatches": [
+        {
+          "method": "Gaussian Splatting",
+          "slide_support": false,
+          "recommended_support": true,
+          "recommended_level": 1
+        }
+      ],
+      "evidence_ids": [
+        "arxiv_chatanyone",
+        "arxiv_taoavatar"
+      ],
+      "evidence_links": [
+        "https://arxiv.org/abs/2505.22210",
+        "https://arxiv.org/abs/2506.09976"
+      ]
+    },
+    {
+      "section": "outputs",
+      "signal": "Head motion",
+      "slide_support": [
+        true,
+        true,
+        true
+      ],
+      "recommended_scores": [
+        2,
+        2,
+        2
+      ],
+      "matches_recommendation": true,
+      "mismatches": [],
+      "evidence_ids": [
+        "arxiv_liveportrait",
+        "arxiv_taoavatar",
+        "arxiv_avatar_forcing"
+      ],
+      "evidence_links": [
+        "https://arxiv.org/abs/2407.03168",
+        "https://arxiv.org/abs/2506.09976",
+        "https://arxiv.org/abs/2601.00664"
+      ]
+    },
+    {
+      "section": "outputs",
+      "signal": "Idle micro-motion",
+      "slide_support": [
+        true,
+        true,
+        true
+      ],
+      "recommended_scores": [
+        2,
+        2,
+        2
+      ],
+      "matches_recommendation": true,
+      "mismatches": [],
+      "evidence_ids": [
+        "arxiv_liveportrait",
+        "arxiv_gaussianavatars",
+        "arxiv_avatar_forcing"
+      ],
+      "evidence_links": [
+        "https://arxiv.org/abs/2407.03168",
+        "https://arxiv.org/abs/2312.02069",
+        "https://arxiv.org/abs/2601.00664"
+      ]
+    },
+    {
+      "section": "outputs",
+      "signal": "Speech audio",
+      "slide_support": [
+        true,
+        true,
+        true
+      ],
+      "recommended_scores": [
+        2,
+        2,
+        2
+      ],
+      "matches_recommendation": true,
+      "mismatches": [],
+      "evidence_ids": [
+        "epic_metahuman_audio_source",
+        "arxiv_livetalk",
+        "github_livekit_agents"
+      ],
+      "evidence_links": [
+        "https://dev.epicgames.com/documentation/en-us/metahuman/using-audio-source-for-animation",
+        "https://arxiv.org/abs/2512.23576",
+        "https://github.com/livekit/agents"
+      ]
+    }
+  ]
+}

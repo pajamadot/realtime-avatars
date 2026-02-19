@@ -1,0 +1,2331 @@
+{
+  "generated_at": "2026-02-19T02:45:44+00:00",
+  "cycle": 1,
+  "slide": {
+    "url": "https://www.realtime-avatars.com/slides/5",
+    "source_path": "G:\\PajamaDot\\realtime-avatars\\web\\app\\slides\\SlidesDeck.tsx",
+    "source_exists": true,
+    "status_code": 200,
+    "ok": true,
+    "title": "Real-Time Avatars: A Comparative Guide",
+    "error": null,
+    "sections_parsed": {
+      "inputs": 6,
+      "outputs": 6,
+      "coupling": 4
+    }
+  },
+  "claim_check": {
+    "generated_at": "2026-02-19T02:45:44+00:00",
+    "totals": {
+      "claims_checked": 16,
+      "mismatched_claims": 6
+    },
+    "mismatch_by_method": {
+      "MetaHuman": 0,
+      "Video Generation": 4,
+      "Gaussian Splatting": 4
+    },
+    "checks": [
+      {
+        "section": "coupling",
+        "signal": "Audio + pose (TaoAvatar)",
+        "slide_support": [
+          false,
+          false,
+          true
+        ],
+        "recommended_scores": [
+          0,
+          0,
+          2
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "arxiv_taoavatar"
+        ],
+        "evidence_links": [
+          "https://arxiv.org/abs/2506.09976"
+        ]
+      },
+      {
+        "section": "coupling",
+        "signal": "Audio + text + image (LiveTalk)",
+        "slide_support": [
+          false,
+          true,
+          false
+        ],
+        "recommended_scores": [
+          0,
+          2,
+          0
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "arxiv_livetalk"
+        ],
+        "evidence_links": [
+          "https://arxiv.org/abs/2512.23576"
+        ]
+      },
+      {
+        "section": "coupling",
+        "signal": "Audio + user motion (Avatar Forcing)",
+        "slide_support": [
+          false,
+          true,
+          false
+        ],
+        "recommended_scores": [
+          0,
+          2,
+          0
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "arxiv_avatar_forcing"
+        ],
+        "evidence_links": [
+          "https://arxiv.org/abs/2601.00664"
+        ]
+      },
+      {
+        "section": "coupling",
+        "signal": "Audio-only driven",
+        "slide_support": [
+          true,
+          true,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          2
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "epic_metahuman_audio_source",
+          "arxiv_livetalk",
+          "arxiv_taoavatar"
+        ],
+        "evidence_links": [
+          "https://dev.epicgames.com/documentation/en-us/metahuman/using-audio-source-for-animation",
+          "https://arxiv.org/abs/2512.23576",
+          "https://arxiv.org/abs/2506.09976"
+        ]
+      },
+      {
+        "section": "inputs",
+        "signal": "Audio prosody",
+        "slide_support": [
+          true,
+          true,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          2
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "epic_metahuman_audio_source",
+          "arxiv_livetalk",
+          "arxiv_taoavatar"
+        ],
+        "evidence_links": [
+          "https://dev.epicgames.com/documentation/en-us/metahuman/using-audio-source-for-animation",
+          "https://arxiv.org/abs/2512.23576",
+          "https://arxiv.org/abs/2506.09976"
+        ]
+      },
+      {
+        "section": "inputs",
+        "signal": "Expression coefficients",
+        "slide_support": [
+          true,
+          false,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          1,
+          2
+        ],
+        "matches_recommendation": false,
+        "mismatches": [
+          {
+            "method": "Video Generation",
+            "slide_support": false,
+            "recommended_support": true,
+            "recommended_level": 1
+          }
+        ],
+        "evidence_ids": [
+          "apple_wwdc_arkit",
+          "arxiv_liveportrait",
+          "arxiv_gaussianavatars"
+        ],
+        "evidence_links": [
+          "https://developer.apple.com/videos/play/wwdc2018/716/",
+          "https://arxiv.org/abs/2407.03168",
+          "https://arxiv.org/abs/2312.02069"
+        ]
+      },
+      {
+        "section": "inputs",
+        "signal": "Face video (webcam)",
+        "slide_support": [
+          true,
+          true,
+          false
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          1
+        ],
+        "matches_recommendation": false,
+        "mismatches": [
+          {
+            "method": "Gaussian Splatting",
+            "slide_support": false,
+            "recommended_support": true,
+            "recommended_level": 1
+          }
+        ],
+        "evidence_ids": [
+          "epic_realtime_livelink",
+          "arxiv_liveportrait",
+          "arxiv_gaussianavatars"
+        ],
+        "evidence_links": [
+          "https://dev.epicgames.com/documentation/en-us/metahuman/realtime-animation-using-live-link",
+          "https://arxiv.org/abs/2407.03168",
+          "https://arxiv.org/abs/2312.02069"
+        ]
+      },
+      {
+        "section": "inputs",
+        "signal": "Gaze direction",
+        "slide_support": [
+          true,
+          false,
+          false
+        ],
+        "recommended_scores": [
+          2,
+          1,
+          1
+        ],
+        "matches_recommendation": false,
+        "mismatches": [
+          {
+            "method": "Video Generation",
+            "slide_support": false,
+            "recommended_support": true,
+            "recommended_level": 1
+          },
+          {
+            "method": "Gaussian Splatting",
+            "slide_support": false,
+            "recommended_support": true,
+            "recommended_level": 1
+          }
+        ],
+        "evidence_ids": [
+          "epic_metahuman_animator",
+          "arxiv_gazegaussian"
+        ],
+        "evidence_links": [
+          "https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-animator",
+          "https://arxiv.org/abs/2409.12533"
+        ]
+      },
+      {
+        "section": "inputs",
+        "signal": "Head pose",
+        "slide_support": [
+          true,
+          true,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          2
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "arxiv_liveportrait",
+          "arxiv_gaussianavatars",
+          "arxiv_taoavatar"
+        ],
+        "evidence_links": [
+          "https://arxiv.org/abs/2407.03168",
+          "https://arxiv.org/abs/2312.02069",
+          "https://arxiv.org/abs/2506.09976"
+        ]
+      },
+      {
+        "section": "inputs",
+        "signal": "Turn-taking signals",
+        "slide_support": [
+          true,
+          true,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          2
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "github_livekit_agents",
+          "arxiv_ico3d",
+          "arxiv_avatar_forcing"
+        ],
+        "evidence_links": [
+          "https://github.com/livekit/agents",
+          "https://arxiv.org/abs/2509.17080",
+          "https://arxiv.org/abs/2601.00664"
+        ]
+      },
+      {
+        "section": "outputs",
+        "signal": "Facial action units",
+        "slide_support": [
+          true,
+          false,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          1,
+          1
+        ],
+        "matches_recommendation": false,
+        "mismatches": [
+          {
+            "method": "Video Generation",
+            "slide_support": false,
+            "recommended_support": true,
+            "recommended_level": 1
+          }
+        ],
+        "evidence_ids": [
+          "apple_wwdc_arkit",
+          "github_audio2face_sdk",
+          "arxiv_liveportrait"
+        ],
+        "evidence_links": [
+          "https://developer.apple.com/videos/play/wwdc2018/716/",
+          "https://github.com/NVIDIA/Audio2Face-3D-Samples",
+          "https://arxiv.org/abs/2407.03168"
+        ]
+      },
+      {
+        "section": "outputs",
+        "signal": "Gaze shifts",
+        "slide_support": [
+          true,
+          false,
+          false
+        ],
+        "recommended_scores": [
+          2,
+          1,
+          1
+        ],
+        "matches_recommendation": false,
+        "mismatches": [
+          {
+            "method": "Video Generation",
+            "slide_support": false,
+            "recommended_support": true,
+            "recommended_level": 1
+          },
+          {
+            "method": "Gaussian Splatting",
+            "slide_support": false,
+            "recommended_support": true,
+            "recommended_level": 1
+          }
+        ],
+        "evidence_ids": [
+          "epic_metahuman_animator",
+          "arxiv_gazegaussian"
+        ],
+        "evidence_links": [
+          "https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-animator",
+          "https://arxiv.org/abs/2409.12533"
+        ]
+      },
+      {
+        "section": "outputs",
+        "signal": "Hand gestures",
+        "slide_support": [
+          true,
+          true,
+          false
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          1
+        ],
+        "matches_recommendation": false,
+        "mismatches": [
+          {
+            "method": "Gaussian Splatting",
+            "slide_support": false,
+            "recommended_support": true,
+            "recommended_level": 1
+          }
+        ],
+        "evidence_ids": [
+          "arxiv_chatanyone",
+          "arxiv_taoavatar"
+        ],
+        "evidence_links": [
+          "https://arxiv.org/abs/2505.22210",
+          "https://arxiv.org/abs/2506.09976"
+        ]
+      },
+      {
+        "section": "outputs",
+        "signal": "Head motion",
+        "slide_support": [
+          true,
+          true,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          2
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "arxiv_liveportrait",
+          "arxiv_taoavatar",
+          "arxiv_avatar_forcing"
+        ],
+        "evidence_links": [
+          "https://arxiv.org/abs/2407.03168",
+          "https://arxiv.org/abs/2506.09976",
+          "https://arxiv.org/abs/2601.00664"
+        ]
+      },
+      {
+        "section": "outputs",
+        "signal": "Idle micro-motion",
+        "slide_support": [
+          true,
+          true,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          2
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "arxiv_liveportrait",
+          "arxiv_gaussianavatars",
+          "arxiv_avatar_forcing"
+        ],
+        "evidence_links": [
+          "https://arxiv.org/abs/2407.03168",
+          "https://arxiv.org/abs/2312.02069",
+          "https://arxiv.org/abs/2601.00664"
+        ]
+      },
+      {
+        "section": "outputs",
+        "signal": "Speech audio",
+        "slide_support": [
+          true,
+          true,
+          true
+        ],
+        "recommended_scores": [
+          2,
+          2,
+          2
+        ],
+        "matches_recommendation": true,
+        "mismatches": [],
+        "evidence_ids": [
+          "epic_metahuman_audio_source",
+          "arxiv_livetalk",
+          "github_livekit_agents"
+        ],
+        "evidence_links": [
+          "https://dev.epicgames.com/documentation/en-us/metahuman/using-audio-source-for-animation",
+          "https://arxiv.org/abs/2512.23576",
+          "https://github.com/livekit/agents"
+        ]
+      }
+    ]
+  },
+  "research": {
+    "arxiv": {
+      "queries": [
+        "real-time talking avatar",
+        "multimodal social interaction avatar",
+        "audio driven facial animation",
+        "3D Gaussian Splatting talking avatar",
+        "interactive controllable portrait generation",
+        "turn-taking conversational agents",
+        "co-speech gesture generation",
+        "real-time neural rendering avatar"
+      ],
+      "total_collected": 48,
+      "entries": [
+        {
+          "id": "http://arxiv.org/abs/2602.16712v1",
+          "title": "One Hand to Rule Them All: Canonical Representations for Unified Dexterous Manipulation",
+          "summary": "Dexterous manipulation policies today largely assume fixed hand designs, severely restricting their generalization to new embodiments with varied kinematic and structural layouts. To overcome this limitation, we introduce a parameterized canonical representation that unifies a broad spectrum of dexterous hand architectures. It comprises a unified paramete...",
+          "published": "2026-02-18T18:59:57Z",
+          "updated": "2026-02-18T18:59:57Z",
+          "authors": [
+            "Zhenyu Wei",
+            "Yunchao Yao",
+            "Mingyu Ding"
+          ],
+          "categories": [
+            "cs.RO"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16712v1",
+            "https://arxiv.org/pdf/2602.16712v1"
+          ],
+          "query": "interactive controllable portrait generation",
+          "queries": [
+            "co-speech gesture generation",
+            "interactive controllable portrait generation"
+          ]
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16711v1",
+          "title": "TeCoNeRV: Leveraging Temporal Coherence for Compressible Neural Representations for Videos",
+          "summary": "Implicit Neural Representations (INRs) have recently demonstrated impressive performance for video compression. However, since a separate INR must be overfit for each video, scaling to high-resolution videos while maintaining encoding efficiency remains a significant challenge. Hypernetwork-based approaches predict INR weights (hyponetworks) for unseen vi...",
+          "published": "2026-02-18T18:59:55Z",
+          "updated": "2026-02-18T18:59:55Z",
+          "authors": [
+            "Namitha Padmanabhan",
+            "Matthew Gwilliam",
+            "Abhinav Shrivastava"
+          ],
+          "categories": [
+            "cs.CV"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16711v1",
+            "https://arxiv.org/pdf/2602.16711v1"
+          ],
+          "query": "real-time neural rendering avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2601.16213v2",
+          "title": "Gauge Theory and Skein Modules",
+          "summary": "We study skein modules of 3-manifolds by embedding them into the Hilbert spaces of 4d ${\\cal N}=4$ super-Yang-Mills theories. When the 3-manifold has reduced holonomy, we present an algorithm to determine the dimension and the list of generators of the skein module with a general gauge group. The analysis uses a deformation preserving ${\\cal N}=1$ supersy...",
+          "published": "2026-01-22T18:59:51Z",
+          "updated": "2026-02-18T18:59:27Z",
+          "authors": [
+            "Du Pei"
+          ],
+          "categories": [
+            "hep-th",
+            "math.AG",
+            "math.GT",
+            "math.QA",
+            "math.RT"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2601.16213v2",
+            "https://arxiv.org/pdf/2601.16213v2"
+          ],
+          "query": "interactive controllable portrait generation",
+          "queries": [
+            "co-speech gesture generation",
+            "interactive controllable portrait generation"
+          ]
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.13194v2",
+          "title": "Semantic Chunking and the Entropy of Natural Language",
+          "summary": "The entropy rate of printed English is famously estimated to be about one bit per character, a benchmark that modern large language models (LLMs) have only recently approached. This entropy rate implies that English contains nearly 80 percent redundancy relative to the five bits per character expected for random text. We introduce a statistical model that...",
+          "published": "2026-02-13T18:58:10Z",
+          "updated": "2026-02-18T18:59:22Z",
+          "authors": [
+            "Weishun Zhong",
+            "Doron Sivan",
+            "Tankut Can",
+            "Mikhail Katkov",
+            "Misha Tsodyks"
+          ],
+          "categories": [
+            "cs.CL",
+            "cond-mat.dis-nn",
+            "cond-mat.stat-mech",
+            "cs.AI"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.13194v2",
+            "https://arxiv.org/pdf/2602.13194v2"
+          ],
+          "query": "real-time neural rendering avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16710v1",
+          "title": "EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data",
+          "summary": "Human behavior is among the most scalable sources of data for learning physical intelligence, yet how to effectively leverage it for dexterous manipulation remains unclear. While prior work demonstrates human to robot transfer in constrained settings, it is unclear whether large scale human data can support fine grained, high degree of freedom dexterous m...",
+          "published": "2026-02-18T18:59:05Z",
+          "updated": "2026-02-18T18:59:05Z",
+          "authors": [
+            "Ruijie Zheng",
+            "Dantong Niu",
+            "Yuqi Xie",
+            "Jing Wang",
+            "Mengda Xu",
+            "Yunfan Jiang",
+            "Fernando Casta\u00f1eda",
+            "Fengyuan Hu",
+            "You Liang Tan",
+            "Letian Fu",
+            "Trevor Darrell",
+            "Furong Huang",
+            "Yuke Zhu",
+            "Danfei Xu",
+            "Linxi Fan"
+          ],
+          "categories": [
+            "cs.RO"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16710v1",
+            "https://arxiv.org/pdf/2602.16710v1"
+          ],
+          "query": "real-time talking avatar",
+          "queries": [
+            "real-time neural rendering avatar",
+            "real-time talking avatar"
+          ]
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16708v1",
+          "title": "Policy Compiler for Secure Agentic Systems",
+          "summary": "LLM-based agents are increasingly being deployed in contexts requiring complex authorization policies: customer service protocols, approval workflows, data access restrictions, and regulatory compliance. Embedding these policies in prompts provides no enforcement guarantees. We present PCAS, a Policy Compiler for Agentic Systems that provides deterministi...",
+          "published": "2026-02-18T18:57:12Z",
+          "updated": "2026-02-18T18:57:12Z",
+          "authors": [
+            "Nils Palumbo",
+            "Sarthak Choudhary",
+            "Jihye Choi",
+            "Prasad Chalasani",
+            "Mihai Christodorescu",
+            "Somesh Jha"
+          ],
+          "categories": [
+            "cs.CR",
+            "cs.AI",
+            "cs.MA"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16708v1",
+            "https://arxiv.org/pdf/2602.16708v1"
+          ],
+          "query": "turn-taking conversational agents"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16705v1",
+          "title": "Learning Humanoid End-Effector Control for Open-Vocabulary Visual Loco-Manipulation",
+          "summary": "Visual loco-manipulation of arbitrary objects in the wild with humanoid robots requires accurate end-effector (EE) control and a generalizable understanding of the scene via visual inputs (e.g., RGB-D images). Existing approaches are based on real-world imitation learning and exhibit limited generalization due to the difficulty in collecting large-scale t...",
+          "published": "2026-02-18T18:55:02Z",
+          "updated": "2026-02-18T18:55:02Z",
+          "authors": [
+            "Runpei Dong",
+            "Ziyan Li",
+            "Xialin He",
+            "Saurabh Gupta"
+          ],
+          "categories": [
+            "cs.RO",
+            "cs.CV"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16705v1",
+            "https://arxiv.org/pdf/2602.16705v1"
+          ],
+          "query": "multimodal social interaction avatar",
+          "queries": [
+            "co-speech gesture generation",
+            "interactive controllable portrait generation",
+            "multimodal social interaction avatar",
+            "real-time neural rendering avatar"
+          ]
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16704v1",
+          "title": "Reinforced Fast Weights with Next-Sequence Prediction",
+          "summary": "Fast weight architectures offer a promising alternative to attention-based transformers for long-context modeling by maintaining constant memory overhead regardless of context length. However, their potential is limited by the next-token prediction (NTP) training paradigm. NTP optimizes single-token predictions and ignores semantic coherence across multip...",
+          "published": "2026-02-18T18:53:18Z",
+          "updated": "2026-02-18T18:53:18Z",
+          "authors": [
+            "Hee Seung Hwang",
+            "Xindi Wu",
+            "Sanghyuk Chun",
+            "Olga Russakovsky"
+          ],
+          "categories": [
+            "cs.CL"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16704v1",
+            "https://arxiv.org/pdf/2602.16704v1"
+          ],
+          "query": "interactive controllable portrait generation",
+          "queries": [
+            "co-speech gesture generation",
+            "interactive controllable portrait generation"
+          ]
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16703v1",
+          "title": "Measuring Mid-2025 LLM-Assistance on Novice Performance in Biology",
+          "summary": "Large language models (LLMs) perform strongly on biological benchmarks, raising concerns that they may help novice actors acquire dual-use laboratory skills. Yet, whether this translates to improved human performance in the physical laboratory remains unclear. To address this, we conducted a pre-registered, investigator-blinded, randomized controlled tria...",
+          "published": "2026-02-18T18:51:28Z",
+          "updated": "2026-02-18T18:51:28Z",
+          "authors": [
+            "Shen Zhou Hong",
+            "Alex Kleinman",
+            "Alyssa Mathiowetz",
+            "Adam Howes",
+            "Julian Cohen",
+            "Suveer Ganta",
+            "Alex Letizia",
+            "Dora Liao",
+            "Deepika Pahari",
+            "Xavier Roberts-Gaal",
+            "Luca Righetti",
+            "Joe Torres"
+          ],
+          "categories": [
+            "cs.CY",
+            "cs.AI"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16703v1",
+            "https://arxiv.org/pdf/2602.16703v1"
+          ],
+          "query": "interactive controllable portrait generation"
+        },
+        {
+          "id": "http://arxiv.org/abs/2402.18060v6",
+          "title": "Benchmarking Large Language Models on Answering and Explaining Challenging Medical Questions",
+          "summary": "LLMs have demonstrated impressive performance in answering medical questions, such as achieving passing scores on medical licensing examinations. However, medical board exams or general clinical questions do not capture the complexity of realistic clinical cases. Moreover, the lack of reference explanations means we cannot easily evaluate the reasoning of...",
+          "published": "2024-02-28T05:44:41Z",
+          "updated": "2026-02-18T18:50:32Z",
+          "authors": [
+            "Hanjie Chen",
+            "Zhouxiang Fang",
+            "Yash Singla",
+            "Mark Dredze"
+          ],
+          "categories": [
+            "cs.CL"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2402.18060v6",
+            "https://arxiv.org/pdf/2402.18060v6"
+          ],
+          "query": "interactive controllable portrait generation",
+          "queries": [
+            "co-speech gesture generation",
+            "interactive controllable portrait generation"
+          ]
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16702v1",
+          "title": "Saliency-Aware Multi-Route Thinking: Revisiting Vision-Language Reasoning",
+          "summary": "Vision-language models (VLMs) aim to reason by jointly leveraging visual and textual modalities. While allocating additional inference-time computation has proven effective for large language models (LLMs), achieving similar scaling in VLMs remains challenging. A key obstacle is that visual inputs are typically provided only once at the start of generatio...",
+          "published": "2026-02-18T18:49:56Z",
+          "updated": "2026-02-18T18:49:56Z",
+          "authors": [
+            "Mingjia Shi",
+            "Yinhan He",
+            "Yaochen Zhu",
+            "Jundong Li"
+          ],
+          "categories": [
+            "cs.CV"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16702v1",
+            "https://arxiv.org/pdf/2602.16702v1"
+          ],
+          "query": "interactive controllable portrait generation",
+          "queries": [
+            "co-speech gesture generation",
+            "interactive controllable portrait generation"
+          ]
+        },
+        {
+          "id": "http://arxiv.org/abs/2505.11660v3",
+          "title": "Advancing Averaged Primer Vector Theory with Bang-Bang Control and Eclipsing",
+          "summary": "Primer vector theory using averaged dynamics is well suited for optimizing low-thrust, many-revolution spacecraft trajectories, but is difficult to implement in a way that maintains both optimality and computational efficiency. An improved model is presented that combines advances from several past works into a general and practical formulation for minimu...",
+          "published": "2025-05-16T19:51:42Z",
+          "updated": "2026-02-18T18:47:34Z",
+          "authors": [
+            "Noah Lifset"
+          ],
+          "categories": [
+            "math.OC"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2505.11660v3",
+            "https://arxiv.org/pdf/2505.11660v3",
+            "https://doi.org/10.2514/1.G009348"
+          ],
+          "query": "interactive controllable portrait generation",
+          "queries": [
+            "co-speech gesture generation",
+            "interactive controllable portrait generation"
+          ]
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16701v1",
+          "title": "Understanding the kinetics of static recrystallization in Mg-Zn-Ca alloys using an integrated PRISMS simulation framework",
+          "summary": "Recrystallization is a phenomenon in which a plastically deformed polycrystalline microstructure with a high dislocation density transforms into another that has low dislocation density. This evolution is driven by the stored energy in dislocations, rather than grain growth driven by grain boundary energy alone. One difficulty in quantitative modeling of ...",
+          "published": "2026-02-18T18:47:12Z",
+          "updated": "2026-02-18T18:47:12Z",
+          "authors": [
+            "David Montiel",
+            "Philip Staublin",
+            "Supriyo Chakraborty",
+            "Tracy Berman",
+            "Chaitali Patil",
+            "Michael Pilipchuk",
+            "Veera Sundararaghavan",
+            "John Allison",
+            "Katsuyo Thornton"
+          ],
+          "categories": [
+            "cond-mat.mtrl-sci"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16701v1",
+            "https://arxiv.org/pdf/2602.16701v1"
+          ],
+          "query": "audio driven facial animation"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16700v1",
+          "title": "The Role of Common Randomness Replication in Symmetric PIR on Graph-Based Replicated Systems",
+          "summary": "In symmetric private information retrieval (SPIR), a user communicates with multiple servers to retrieve from them a message in a database, while not revealing the message index to any individual server (user privacy), and learning no additional information about the database (database privacy). We study the problem of SPIR on graph-replicated database sy...",
+          "published": "2026-02-18T18:46:58Z",
+          "updated": "2026-02-18T18:46:58Z",
+          "authors": [
+            "Shreya Meel",
+            "Sennur Ulukus"
+          ],
+          "categories": [
+            "cs.IT",
+            "cs.CR",
+            "cs.NI",
+            "eess.SP"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16700v1",
+            "https://arxiv.org/pdf/2602.16700v1"
+          ],
+          "query": "turn-taking conversational agents",
+          "queries": [
+            "co-speech gesture generation",
+            "turn-taking conversational agents"
+          ]
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16699v1",
+          "title": "Calibrate-Then-Act: Cost-Aware Exploration in LLM Agents",
+          "summary": "LLMs are increasingly being used for complex problems which are not necessarily resolved in a single response, but require interacting with an environment to acquire information. In these scenarios, LLMs must reason about inherent cost-uncertainty tradeoffs in when to stop exploring and commit to an answer. For instance, on a programming task, an LLM shou...",
+          "published": "2026-02-18T18:46:14Z",
+          "updated": "2026-02-18T18:46:14Z",
+          "authors": [
+            "Wenxuan Ding",
+            "Nicholas Tomlin",
+            "Greg Durrett"
+          ],
+          "categories": [
+            "cs.CL",
+            "cs.AI"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16699v1",
+            "https://arxiv.org/pdf/2602.16699v1"
+          ],
+          "query": "multimodal social interaction avatar",
+          "queries": [
+            "multimodal social interaction avatar",
+            "turn-taking conversational agents"
+          ]
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16695v1",
+          "title": "Fairness Dynamics in Digital Economy Platforms with Biased Ratings",
+          "summary": "The digital services economy consists of online platforms that facilitate interactions between service providers and consumers. This ecosystem is characterized by short-term, often one-off, transactions between parties that have no prior familiarity. To establish trust among users, platforms employ rating systems which allow users to report on the quality...",
+          "published": "2026-02-18T18:41:16Z",
+          "updated": "2026-02-18T18:41:16Z",
+          "authors": [
+            "J. Martin Smit",
+            "Fernando P. Santos"
+          ],
+          "categories": [
+            "cs.MA",
+            "cs.CY"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16695v1",
+            "https://arxiv.org/pdf/2602.16695v1",
+            "https://doi.org/10.65109/CEJT6762"
+          ],
+          "query": "multimodal social interaction avatar",
+          "queries": [
+            "multimodal social interaction avatar",
+            "turn-taking conversational agents"
+          ]
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16693v1",
+          "title": "Numerical study of non-relativistic quantum systems and small oscillations induced in a helically twisted geometry",
+          "summary": "We investigate bound states of a non-relativistic scalar particle in a three-dimensional helically twisted (torsional) geometry, considering both the free case and the presence of external radial interactions. The dynamics is described by the Schr\u00f6dinger equation on a curved spatial background and, when included, by minimal coupling to a magnetic vector p...",
+          "published": "2026-02-18T18:39:54Z",
+          "updated": "2026-02-18T18:39:54Z",
+          "authors": [
+            "C. F. S. Pereira",
+            "R. L. L. Vit\u00f3ria",
+            "A. R. Soares",
+            "B. B. Silva",
+            "H. Belich",
+            "Edilberto O. Silva"
+          ],
+          "categories": [
+            "quant-ph",
+            "math-ph"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16693v1",
+            "https://arxiv.org/pdf/2602.16693v1"
+          ],
+          "query": "multimodal social interaction avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2503.18825v4",
+          "title": "EconEvals: Benchmarks and Litmus Tests for Economic Decision-Making by LLM Agents",
+          "summary": "We develop evaluation methods for measuring the economic decision-making capabilities and tendencies of LLMs. First, we develop benchmarks derived from key problems in economics -- procurement, scheduling, and pricing -- that test an LLM's ability to learn from the environment in context. Second, we develop the framework of litmus tests, evaluations that ...",
+          "published": "2025-03-24T16:06:04Z",
+          "updated": "2026-02-18T18:37:52Z",
+          "authors": [
+            "Sara Fish",
+            "Julia Shephard",
+            "Minkai Li",
+            "Ran I. Shorrer",
+            "Yannai A. Gonczarowski"
+          ],
+          "categories": [
+            "cs.AI",
+            "cs.CL",
+            "cs.GT"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2503.18825v4",
+            "https://arxiv.org/pdf/2503.18825v4"
+          ],
+          "query": "turn-taking conversational agents"
+        },
+        {
+          "id": "http://arxiv.org/abs/2502.17356v5",
+          "title": "Random Scaling of Emergent Capabilities",
+          "summary": "Language models famously improve under a smooth scaling law, but some specific capabilities exhibit sudden breakthroughs in performance. Advocates of \"emergence\" view these capabilities as unlocked at a specific scale, but others attribute breakthroughs to superficial metric thresholding effects. We propose that breakthroughs are instead driven by continu...",
+          "published": "2025-02-24T17:34:45Z",
+          "updated": "2026-02-18T18:37:12Z",
+          "authors": [
+            "Rosie Zhao",
+            "Tian Qin",
+            "David Alvarez-Melis",
+            "Sham Kakade",
+            "Naomi Saphra"
+          ],
+          "categories": [
+            "cs.LG"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2502.17356v5",
+            "https://arxiv.org/pdf/2502.17356v5"
+          ],
+          "query": "audio driven facial animation"
+        },
+        {
+          "id": "http://arxiv.org/abs/2512.18637v5",
+          "title": "Post-Newtonian Dynamics of Radiating Charges: Canonical Formulation and Binary Inspiral Laws",
+          "summary": "We construct an explicit electromagnetic analogue of the post-Newtonian Hamiltonian framework widely used in gravitational-wave physics. Starting from the Lorentz-Dirac equation and implementing Landau-Lifshitz order reduction, we derive the near-zone 1.5 PN dipole radiation-reaction force and combine it with the Darwin Hamiltonian through 1PN order to ob...",
+          "published": "2025-12-21T08:17:52Z",
+          "updated": "2026-02-18T18:35:02Z",
+          "authors": [
+            "Suhani Verma",
+            "Siddarth Mediratta",
+            "Nanditha Kilari",
+            "Prakhar Nigam",
+            "Ishaan Singh",
+            "Daksh Tamoli",
+            "Aakash Palakurthi",
+            "Valluru Ishaan",
+            "Tanmay Golchha",
+            "Sanjay Raghav R",
+            "Sugapriyan S",
+            "Yash Narayan",
+            "Pasupuleti Devi",
+            "Prathamesh Kapase",
+            "G Prudhvi Raj",
+            "Lakshya Sachdeva",
+            "Shreya Meher",
+            "K Nanda Kishore",
+            "G Keshav",
+            "Jetain Chetan",
+            "Rickmoy Samanta"
+          ],
+          "categories": [
+            "gr-qc",
+            "astro-ph.HE",
+            "hep-th"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2512.18637v5",
+            "https://arxiv.org/pdf/2512.18637v5"
+          ],
+          "query": "audio driven facial animation"
+        },
+        {
+          "id": "http://arxiv.org/abs/2601.16689v2",
+          "title": "Agonist-Antagonist Neural Coordination without Mechanical Coupling after Targeted Muscle Reinnervation",
+          "summary": "Following limb amputation and targeted muscle reinnervation (TMR), nerves that originally innervated agonist and antagonist muscles are rerouted into one or more residual target muscles. This rerouting profoundly alters the natural mechanical coupling and afferent signalling that normally link muscle groups in intact limbs. Despite this disruption, in thi...",
+          "published": "2026-01-23T12:09:35Z",
+          "updated": "2026-02-18T18:32:48Z",
+          "authors": [
+            "Laura Ferrante",
+            "Anna Boesendorfer",
+            "Benedikt Baumgartner",
+            "Manuel Catalano",
+            "Antonio Bicchi",
+            "Oskar Aszmann",
+            "Dario Farina"
+          ],
+          "categories": [
+            "q-bio.NC",
+            "eess.SP"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2601.16689v2",
+            "https://arxiv.org/pdf/2601.16689v2"
+          ],
+          "query": "real-time neural rendering avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16687v1",
+          "title": "Scaling Open Discrete Audio Foundation Models with Interleaved Semantic, Acoustic, and Text Tokens",
+          "summary": "Current audio language models are predominantly text-first, either extending pre-trained text LLM backbones or relying on semantic-only audio tokens, limiting general audio modeling. This paper presents a systematic empirical study of native audio foundation models that apply next-token prediction to audio at scale, jointly modeling semantic content, acou...",
+          "published": "2026-02-18T18:32:46Z",
+          "updated": "2026-02-18T18:32:46Z",
+          "authors": [
+            "Potsawee Manakul",
+            "Woody Haosheng Gan",
+            "Martijn Bartelds",
+            "Guangzhi Sun",
+            "William Held",
+            "Diyi Yang"
+          ],
+          "categories": [
+            "cs.SD",
+            "cs.CL",
+            "eess.AS"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16687v1",
+            "https://arxiv.org/pdf/2602.16687v1"
+          ],
+          "query": "audio driven facial animation"
+        },
+        {
+          "id": "http://arxiv.org/abs/2402.10881v2",
+          "title": "AbacusPNG: A modest set of simulations of local-type primordial non-Gaussianity in the DESI era",
+          "summary": "A measurement of a primordial non-Gaussianity (PNG) signal through late- or early-Universe probes has the potential to transform our understanding of the physics of the primordial Universe. $N$-body simulations, such as the public \\textsc{AbacusPNG} set presented in this study, consisting of 9 boxes, each of size $L_{\\rm box} = 2~{\\rm Gpc}/h$ and particle...",
+          "published": "2024-02-16T18:34:47Z",
+          "updated": "2026-02-18T18:30:18Z",
+          "authors": [
+            "Boryana Hadzhiyska",
+            "Lehman Garrison",
+            "Daniel J. Eisenstein",
+            "Simone Ferraro"
+          ],
+          "categories": [
+            "astro-ph.CO"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2402.10881v2",
+            "https://arxiv.org/pdf/2402.10881v2"
+          ],
+          "query": "3D Gaussian Splatting talking avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2512.01991v2",
+          "title": "Neural steering vectors reveal dose and exposure-dependent impacts of human-AI relationships",
+          "summary": "Humans are increasingly forming parasocial relationships with AI systems, and modern AI shows an increasing tendency to display social and relationship-seeking behaviour. However, the psychological consequences of this trend are unknown. Here, we combined longitudinal randomised controlled trials (N=3,534) with a neural steering vector approach to precise...",
+          "published": "2025-12-01T18:48:22Z",
+          "updated": "2026-02-18T18:29:50Z",
+          "authors": [
+            "Hannah Rose Kirk",
+            "Henry Davidson",
+            "Ed Saunders",
+            "Lennart Luettgau",
+            "Bertie Vidgen",
+            "Scott A. Hale",
+            "Christopher Summerfield"
+          ],
+          "categories": [
+            "cs.HC"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2512.01991v2",
+            "https://arxiv.org/pdf/2512.01991v2"
+          ],
+          "query": "multimodal social interaction avatar",
+          "queries": [
+            "multimodal social interaction avatar",
+            "real-time neural rendering avatar"
+          ]
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16683v1",
+          "title": "Scattering data and correlation function for the $K f_1(1285)$ interaction",
+          "summary": "We study the interaction of a kaon with the $f_1(1285)$ resonance, assuming that the $f_1(1285)$ is a molecular state generated by the $K \\bar K^*, \\bar K K^*$ interaction, evaluating the scattering amplitude, the scattering length and effective range of the $K f_1$ system. The scattering amplitude develops a resonant structure approximately $10$ MeV belo...",
+          "published": "2026-02-18T18:24:57Z",
+          "updated": "2026-02-18T18:24:57Z",
+          "authors": [
+            "Wen-Hao Jia",
+            "Jing Song",
+            "Wei-Hong Liang",
+            "Eulogio Oset"
+          ],
+          "categories": [
+            "hep-ph"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16683v1",
+            "https://arxiv.org/pdf/2602.16683v1"
+          ],
+          "query": "multimodal social interaction avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16682v1",
+          "title": "Learning Situated Awareness in the Real World",
+          "summary": "A core aspect of human perception is situated awareness, the ability to relate ourselves to the surrounding physical environment and reason over possible actions in context. However, most existing benchmarks for multimodal foundation models (MFMs) emphasize environment-centric spatial relations (relations among objects in a scene), while largely overlooki...",
+          "published": "2026-02-18T18:22:52Z",
+          "updated": "2026-02-18T18:22:52Z",
+          "authors": [
+            "Chuhan Li",
+            "Ruilin Han",
+            "Joy Hsu",
+            "Yongyuan Liang",
+            "Rajiv Dhawan",
+            "Jiajun Wu",
+            "Ming-Hsuan Yang",
+            "Xin Eric Wang"
+          ],
+          "categories": [
+            "cs.CV"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16682v1",
+            "https://arxiv.org/pdf/2602.16682v1"
+          ],
+          "query": "multimodal social interaction avatar",
+          "queries": [
+            "multimodal social interaction avatar",
+            "turn-taking conversational agents"
+          ]
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16681v1",
+          "title": "VETime: Vision Enhanced Zero-Shot Time Series Anomaly Detection",
+          "summary": "Time-series anomaly detection (TSAD) requires identifying both immediate Point Anomalies and long-range Context Anomalies. However, existing foundation models face a fundamental trade-off: 1D temporal models provide fine-grained pointwise localization but lack a global contextual perspective, while 2D vision-based models capture global patterns but suffer...",
+          "published": "2026-02-18T18:22:22Z",
+          "updated": "2026-02-18T18:22:22Z",
+          "authors": [
+            "Yingyuan Yang",
+            "Tian Lan",
+            "Yifei Gao",
+            "Yimeng Lu",
+            "Wenjun He",
+            "Meng Wang",
+            "Chenghao Liu",
+            "Chen Zhang"
+          ],
+          "categories": [
+            "cs.CV"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16681v1",
+            "https://arxiv.org/pdf/2602.16681v1"
+          ],
+          "query": "turn-taking conversational agents"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16680v1",
+          "title": "Intermodal quantum key distribution over an 18 km free-space channel with adaptive optics and room-temperature detectors",
+          "summary": "Intermodal quantum key distribution at telecom wavelengths provides a hybrid interface between fiber connections and free-space links, both essential for the realization of scalable and interoperable quantum networks. Although demonstrated over short-range free-space links, long-distance implementations of intermodal quantum key distribution remain challe...",
+          "published": "2026-02-18T18:21:12Z",
+          "updated": "2026-02-18T18:21:12Z",
+          "authors": [
+            "Edoardo Rossi",
+            "Ilektra Karakosta-Amarantidou",
+            "Matteo Padovan",
+            "Marco Nardi",
+            "Marco Avesani",
+            "Francesco Bruno Leonardo Santagiustina",
+            "Marco Taffarello",
+            "Antonio Vanzo",
+            "Stefano Bonora",
+            "Giuseppe Vallone",
+            "Paolo Villoresi",
+            "Francesco Vedovato"
+          ],
+          "categories": [
+            "quant-ph"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16680v1",
+            "https://arxiv.org/pdf/2602.16680v1"
+          ],
+          "query": "real-time talking avatar",
+          "queries": [
+            "real-time neural rendering avatar",
+            "real-time talking avatar"
+          ]
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16678v1",
+          "title": "Consensus Based Task Allocation for Angles-Only Local Catalog Maintenance of Satellite Systems",
+          "summary": "In order for close proximity satellites to safely perform their missions, the relative states of all satellites and pieces of debris must be well understood. This presents a problem for ground based tracking and orbit determination since it may not be practical to achieve the required accuracy. Using space-based sensors allows for more accurate relative s...",
+          "published": "2026-02-18T18:17:04Z",
+          "updated": "2026-02-18T18:17:04Z",
+          "authors": [
+            "Harrison Perone",
+            "Christopher W. Hays"
+          ],
+          "categories": [
+            "cs.MA",
+            "eess.SY"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16678v1",
+            "https://arxiv.org/pdf/2602.16678v1"
+          ],
+          "query": "turn-taking conversational agents"
+        },
+        {
+          "id": "http://arxiv.org/abs/2512.21122v3",
+          "title": "Coherent-state boundary conditions as the first-principles origin of background fields in QED",
+          "summary": "QED formulated in prescribed classical background electromagnetic fields is a standard framework for strong-field and laser\\textendash matter interactions. It is usually treated as a theory modified by externally imposed fields, obscuring its precise relation to full QED and, in particular, the role of asymptotic boundary conditions for the gauge field. S...",
+          "published": "2025-12-24T11:49:53Z",
+          "updated": "2026-02-18T18:16:47Z",
+          "authors": [
+            "Keita Seto"
+          ],
+          "categories": [
+            "physics.plasm-ph",
+            "hep-ph",
+            "physics.optics",
+            "quant-ph"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2512.21122v3",
+            "https://arxiv.org/pdf/2512.21122v3"
+          ],
+          "query": "multimodal social interaction avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16677v1",
+          "title": "$p$-wave magnet driven field-free Josephson diode effect",
+          "summary": "Recently, the superconducting diode effect (SDE), characterized by unequal critical currents in opposite directions, has been observed experimentally and predicted theoretically in models of bulk superconductors and Josephson junctions (JJs). In this work, we construct a Josephson junction using a recently discovered unconventional coplanar magnet, the $p...",
+          "published": "2026-02-18T18:16:31Z",
+          "updated": "2026-02-18T18:16:31Z",
+          "authors": [
+            "Lovy Sharma",
+            "Bimal Ghimire",
+            "Manisha Thakurathi"
+          ],
+          "categories": [
+            "cond-mat.supr-con",
+            "cond-mat.mes-hall",
+            "cond-mat.str-el"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16677v1",
+            "https://arxiv.org/pdf/2602.16677v1"
+          ],
+          "query": "audio driven facial animation"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16668v1",
+          "title": "Operator based propagation of Whittaker and Helmholtz Gauss beams",
+          "summary": "We introduce a compact operator-based technique that solves the paraxial wave equation for a broad class of structured light fields. Using the spatial evolution operator to propagate two families of physically apodized inputs, Gaussian apodized Whittaker integrals and Gaussian apodized Helmholtz fields, we derive closed form expressions that retain the Ga...",
+          "published": "2026-02-18T18:08:25Z",
+          "updated": "2026-02-18T18:08:25Z",
+          "authors": [
+            "M. A. Jacome Silva",
+            "I. Julian Macias",
+            "F. Soto Eguibar",
+            "U. Ruiz Corona",
+            "I. Ramos Prieto",
+            "D. Sanchez de la Llave",
+            "H. M. Moya Cessa"
+          ],
+          "categories": [
+            "physics.optics"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16668v1",
+            "https://arxiv.org/pdf/2602.16668v1"
+          ],
+          "query": "3D Gaussian Splatting talking avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16665v1",
+          "title": "Optimizing p-spin models through hypergraph neural networks and deep reinforcement learning",
+          "summary": "p-spin glasses, characterized by frustrated many-body interactions beyond the conventional pairwise case (p>2), are prototypical disordered systems whose ground-state search is NP-hard and computationally prohibitive for large instances. Solving this problem is not only fundamental for understanding high-order disorder, structural glasses, and topological...",
+          "published": "2026-02-18T18:05:19Z",
+          "updated": "2026-02-18T18:05:19Z",
+          "authors": [
+            "Li Zeng",
+            "Mutian Shen",
+            "Tianle Pu",
+            "Zohar Nussinov",
+            "Qing Feng",
+            "Chao Chen",
+            "Zhong Liu",
+            "Changjun Fan"
+          ],
+          "categories": [
+            "cond-mat.dis-nn",
+            "physics.comp-ph"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16665v1",
+            "https://arxiv.org/pdf/2602.16665v1"
+          ],
+          "query": "real-time neural rendering avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2511.21677v3",
+          "title": "Lesion-Independent Associations Between Thalamic Nuclei Volumes and Information Processing Speed in Multiple Sclerosis",
+          "summary": "Background: Cognitive impairment in multiple sclerosis (MS) is driven by both focal inflammation and compartmentalized neurodegeneration, yet the relative effect of lesion-independent thalamic atrophy on information processing speed (IPS) remains unclear. Methods: This retrospective cohort study included 100 participants with MS. Automatic segmentation te...",
+          "published": "2025-11-26T18:54:13Z",
+          "updated": "2026-02-18T17:58:07Z",
+          "authors": [
+            "Arshya Pooladi-Darvish",
+            "Heather Rosehart",
+            "Marina R. Everest",
+            "Ali R. Khan",
+            "Sarah A. Morrow"
+          ],
+          "categories": [
+            "q-bio.NC"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2511.21677v3",
+            "https://arxiv.org/pdf/2511.21677v3"
+          ],
+          "query": "audio driven facial animation"
+        },
+        {
+          "id": "http://arxiv.org/abs/2505.12393v2",
+          "title": "Protocol as Poetry: A Case Study of Pak's Smart Contract-Based Protocol Art",
+          "summary": "Protocol art has recently proliferated through blockchain-based smart contracts, building on a century-long lineage of conceptual, participatory, interactive, systematic, algorithmic, and generative art practices. Few studies have examined the characteristics and appreciation of this emerging art form. To address this gap, this paper presents an annotated...",
+          "published": "2025-05-18T12:43:10Z",
+          "updated": "2026-02-18T17:58:03Z",
+          "authors": [
+            "Botao Amber Hu"
+          ],
+          "categories": [
+            "cs.CY",
+            "cs.CR",
+            "cs.MM"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2505.12393v2",
+            "https://arxiv.org/pdf/2505.12393v2",
+            "https://doi.org/10.1145/3773699.3773918"
+          ],
+          "query": "audio driven facial animation"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16652v1",
+          "title": "Nonlinear Frequency Shifts due to Phase Coherent Interactions in Incompressible Hall MHD Turbulence",
+          "summary": "Turbulence in the magnetized plasma is well understood to be the consequence of wave interactions. When the Hall effect is added to the minimum magnetohydrodynamics (MHD), the MHD waves become dispersive and different nonlinear interactions are expected. The emergent turbulent state will thus be expected to be different. For incompressible Hall MHD we dev...",
+          "published": "2026-02-18T17:47:34Z",
+          "updated": "2026-02-18T17:47:34Z",
+          "authors": [
+            "Erik C. Hansen",
+            "Prerana Sharma",
+            "Swadesh M. Mahajan"
+          ],
+          "categories": [
+            "physics.plasm-ph"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16652v1",
+            "https://arxiv.org/pdf/2602.16652v1"
+          ],
+          "query": "audio driven facial animation"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16651v1",
+          "title": "Interpreting the HI 21-cm cosmology maps through Largest Cluster Statistics III: Impact of the lightcone effect",
+          "summary": "The redshifted 21-cm signal emitted by neutral Hydrogen (HI) is a promising probe to understand the evolution of the topology of ionized regions during the Epoch of Reionization (EoR). The topology of ionized regions allows us to infer the nature and properties of ionizing sources, i.e., early galaxies and AGNs. Traditional Fourier statistics, such as the...",
+          "published": "2026-02-18T17:47:25Z",
+          "updated": "2026-02-18T17:47:25Z",
+          "authors": [
+            "Hemanth Potluri",
+            "Manas Mohit Dosibhatla",
+            "Leon Noble",
+            "Chandra Shekhar Murmu",
+            "Suman Majumdar",
+            "Samit Kumar Pal",
+            "Saswata Dasgupta",
+            "Satadru Bag",
+            "Abhirup Datta"
+          ],
+          "categories": [
+            "astro-ph.CO"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16651v1",
+            "https://arxiv.org/pdf/2602.16651v1"
+          ],
+          "query": "3D Gaussian Splatting talking avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2508.10836v2",
+          "title": "SoK: Data Minimization in Machine Learning",
+          "summary": "Data minimization (DM) describes the principle of collecting only the data strictly necessary for a given task. It is a foundational principle across major data protection regulations like GDPR and CPRA. Violations of this principle have substantial real-world consequences, with regulatory actions resulting in fines reaching hundreds of millions of dollar...",
+          "published": "2025-08-14T17:00:13Z",
+          "updated": "2026-02-18T17:46:15Z",
+          "authors": [
+            "Robin Staab",
+            "Nikola Jovanovi\u0107",
+            "Kimberly Mai",
+            "Prakhar Ganesh",
+            "Martin Vechev",
+            "Ferdinando Fioretto",
+            "Matthew Jagielski"
+          ],
+          "categories": [
+            "cs.LG",
+            "cs.CR"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2508.10836v2",
+            "https://arxiv.org/pdf/2508.10836v2"
+          ],
+          "query": "real-time talking avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16649v1",
+          "title": "Design Principles for Fluid Molecular Ferroelectrics",
+          "summary": "Fluid molecular ferroelectrics are a new class of organic materials where ferroelectricity is found in conjunction with 3D fluidity whilst still retaining spontaneous polarization values comparable to their traditional solid state counterparts. One of the major challenges for soft condensed matter physics is predicting whether a fluid molecular material w...",
+          "published": "2026-02-18T17:45:26Z",
+          "updated": "2026-02-18T17:45:26Z",
+          "authors": [
+            "Calum J Gibb",
+            "Jordan Hobbs",
+            "William C Ogle",
+            "Richard J Mandle"
+          ],
+          "categories": [
+            "cond-mat.soft",
+            "cond-mat.mtrl-sci"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16649v1",
+            "https://arxiv.org/pdf/2602.16649v1"
+          ],
+          "query": "3D Gaussian Splatting talking avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16641v1",
+          "title": "Towards Autonomous Robotic Kidney Ultrasound: Spatial-Efficient Volumetric Imaging via Template Guided Optimal Pivoting",
+          "summary": "Medical ultrasound (US) imaging is a frontline tool for the diagnosis of kidney diseases. However, traditional freehand imaging procedure suffers from inconsistent, operator-dependent outcomes, lack of 3D localization information, and risks of work-related musculoskeletal disorders. While robotic ultrasound (RUS) systems offer the potential for standardiz...",
+          "published": "2026-02-18T17:31:11Z",
+          "updated": "2026-02-18T17:31:11Z",
+          "authors": [
+            "Xihan Ma",
+            "Haichong Zhang"
+          ],
+          "categories": [
+            "cs.RO"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16641v1",
+            "https://arxiv.org/pdf/2602.16641v1"
+          ],
+          "query": "3D Gaussian Splatting talking avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16638v1",
+          "title": "An $n^{2+o(1)}$ Time Algorithm for Single-Source Negative Weight Shortest Paths",
+          "summary": "We present a randomized algorithm for the single-source shortest paths (SSSP) problem on directed graphs with arbitrary real-valued edge weights that runs in $n^{2+o(1)}$ time with high probability. This result yields the first almost linear-time algorithm for the problem on dense graphs ($m = \u0398(n^2)$) and improves upon the best previously known bounds fo...",
+          "published": "2026-02-18T17:28:01Z",
+          "updated": "2026-02-18T17:28:01Z",
+          "authors": [
+            "Sanjeev Khanna",
+            "Junkai Song"
+          ],
+          "categories": [
+            "cs.DS"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16638v1",
+            "https://arxiv.org/pdf/2602.16638v1"
+          ],
+          "query": "real-time talking avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16621v1",
+          "title": "WindDensity-MBIR: Model-Based Iterative Reconstruction for Wind Tunnel 3D Density Estimation",
+          "summary": "Experimentalists often use wind tunnels to study aerodynamic turbulence, but most wind tunnel imaging techniques are limited in their ability to take non-invasive 3D density measurements of turbulence. Wavefront tomography is a technique that uses multiple wavefront measurements from various viewing angles to non-invasively measure the 3D density field of...",
+          "published": "2026-02-18T17:16:44Z",
+          "updated": "2026-02-18T17:16:44Z",
+          "authors": [
+            "Karl J. Weisenburger",
+            "Gregery T. Buzzard",
+            "Charles A. Bouman",
+            "Matthew R. Kemnetz"
+          ],
+          "categories": [
+            "eess.SP",
+            "physics.flu-dyn",
+            "physics.optics"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16621v1",
+            "https://arxiv.org/pdf/2602.16621v1"
+          ],
+          "query": "3D Gaussian Splatting talking avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2510.16161v2",
+          "title": "Still Competitive: Revisiting Recurrent Models for Irregular Time Series Prediction",
+          "summary": "Modeling irregularly sampled multivariate time series is a persistent challenge in domains like healthcare and sensor networks. While recent works have explored a variety of complex learning architectures to solve the prediction problems for irregularly sampled time series, it remains unclear what the true benefits of some of these architectures are, and ...",
+          "published": "2025-10-17T19:04:16Z",
+          "updated": "2026-02-18T17:10:14Z",
+          "authors": [
+            "Ankitkumar Joshi",
+            "Milos Hauskrecht"
+          ],
+          "categories": [
+            "cs.LG",
+            "stat.ML"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2510.16161v2",
+            "https://arxiv.org/pdf/2510.16161v2"
+          ],
+          "query": "real-time talking avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16614v1",
+          "title": "Meteor statistics I: The distribution of instrumental magnitudes",
+          "summary": "The distribution of meteor magnitudes is known to follow an exponential distribution, where the base of this distribution is called the population index. The distribution of observed magnitudes preserves this behavior, but is truncated by the detection threshold. If both the population index and detection threshold can be determined, observed meteor rates...",
+          "published": "2026-02-18T17:07:42Z",
+          "updated": "2026-02-18T17:07:42Z",
+          "authors": [
+            "Althea V. Moorhead",
+            "Peter G. Brown",
+            "Margaret D. Campbell-Brown",
+            "Michael J. Mazur",
+            "Denis Vida"
+          ],
+          "categories": [
+            "astro-ph.EP"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16614v1",
+            "https://arxiv.org/pdf/2602.16614v1"
+          ],
+          "query": "3D Gaussian Splatting talking avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2502.07274v5",
+          "title": "Forget Forgetting: Continual Learning in a World of Abundant Memory",
+          "summary": "Continual learning (CL) has traditionally focused on minimizing exemplar memory, a constraint often misaligned with modern systems where GPU time, not storage, is the primary bottleneck. This paper challenges this paradigm by investigating a more realistic regime: one where memory is abundant enough to mitigate forgetting, but full retraining from scratch...",
+          "published": "2025-02-11T05:40:52Z",
+          "updated": "2026-02-18T17:04:52Z",
+          "authors": [
+            "Dongkyu Cho",
+            "Taesup Moon",
+            "Rumi Chunara",
+            "Kyunghyun Cho",
+            "Sungmin Cha"
+          ],
+          "categories": [
+            "cs.LG",
+            "cs.AI"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2502.07274v5",
+            "https://arxiv.org/pdf/2502.07274v5"
+          ],
+          "query": "real-time talking avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2509.07203v2",
+          "title": "Extended Version: Characterizing Distributed Photovoltaic Panel Investment Equilibria",
+          "summary": "This study investigates long-term investment decisions in distributed photovoltaic panels by individual investors. We consider a setting where investment decisions are driven by expected revenue from participating in short-term electricity markets over the panel lifespan. These revenues depend on short-term market equilibria, i.e., prices and allocations,...",
+          "published": "2025-09-08T20:34:20Z",
+          "updated": "2026-02-18T17:01:08Z",
+          "authors": [
+            "Mehdi Davoudi",
+            "Junjie Qin",
+            "Xiaojun Lin"
+          ],
+          "categories": [
+            "eess.SY",
+            "econ.GN"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2509.07203v2",
+            "https://arxiv.org/pdf/2509.07203v2"
+          ],
+          "query": "real-time talking avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16603v1",
+          "title": "FlowPrefill: Decoupling Preemption from Prefill Scheduling Granularity to Mitigate Head-of-Line Blocking in LLM Serving",
+          "summary": "The growing demand for large language models (LLMs) requires serving systems to handle many concurrent requests with diverse service level objectives (SLOs). This exacerbates head-of-line (HoL) blocking during the compute-intensive prefill phase, where long-running requests monopolize resources and delay higher-priority ones, leading to widespread time-to...",
+          "published": "2026-02-18T16:57:45Z",
+          "updated": "2026-02-18T16:57:45Z",
+          "authors": [
+            "Chia-chi Hsieh",
+            "Zan Zong",
+            "Xinyang Chen",
+            "Jianjiang Li",
+            "Jidong Zhai",
+            "Lijie Wen"
+          ],
+          "categories": [
+            "cs.DC",
+            "cs.AI"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16603v1",
+            "https://arxiv.org/pdf/2602.16603v1"
+          ],
+          "query": "real-time talking avatar"
+        },
+        {
+          "id": "http://arxiv.org/abs/2602.16591v1",
+          "title": "Fast Ewald Summation using Prolate Spheroidal Wave Functions",
+          "summary": "Fast Ewald summation efficiently evaluates Coulomb interactions and is widely used in molecular dynamics simulations. It is based on a split into a short-range and a long-range part, where evaluation of the latter is accelerated using the fast Fourier transform (FFT). The accuracy and computational cost depend critically on the mollifier in the Ewald spli...",
+          "published": "2026-02-18T16:41:50Z",
+          "updated": "2026-02-18T16:41:50Z",
+          "authors": [
+            "Erik Bostr\u00f6m",
+            "Anna-Karin Tornberg",
+            "Ludvig af Klinteberg"
+          ],
+          "categories": [
+            "math.NA"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16591v1",
+            "https://arxiv.org/pdf/2602.16591v1"
+          ],
+          "query": "3D Gaussian Splatting talking avatar"
+        }
+      ]
+    },
+    "github": {
+      "queries": [
+        "livekit agents",
+        "graphdeco gaussian-splatting",
+        "KwaiVGI LivePortrait",
+        "NVIDIA Audio2Face-3D-SDK",
+        "cvlab-kaist GaussianTalker",
+        "soulx-ai SoulX-FlashHead",
+        "SadTalker",
+        "metahuman livelink"
+      ],
+      "total_collected": 28,
+      "failures": [],
+      "repositories": [
+        {
+          "full_name": "nissan/livekit-openai-realtime-demo",
+          "url": "https://github.com/nissan/livekit-openai-realtime-demo",
+          "description": "Student-Assisted Learning Voice Agent: multi-agent voice tutoring with LiveKit, OpenAI Realtime, Claude, and Langfuse observability",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-19T02:40:54Z",
+          "pushed_at": "2026-02-19T02:40:51Z",
+          "topics": [],
+          "query": "livekit agents"
+        },
+        {
+          "full_name": "viper-108/livekit_plugins_sub200",
+          "url": "https://github.com/viper-108/livekit_plugins_sub200",
+          "description": "\ud83c\udfa4 Add Sub200 text-to-speech support to your LiveKit Agents with this plugin, enabling seamless integration in voice pipelines.",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-19T02:31:45Z",
+          "pushed_at": "2026-02-19T02:31:42Z",
+          "topics": [
+            "android",
+            "cordova",
+            "dart",
+            "flutter",
+            "flutter-plugin",
+            "ionic",
+            "joplin-plugin",
+            "kotlin",
+            "messaging",
+            "react",
+            "rollup",
+            "serverless",
+            "serverless-framework",
+            "serverless-plugin",
+            "sfu",
+            "typecho",
+            "typecho-plugin",
+            "typescript",
+            "voice"
+          ],
+          "query": "livekit agents"
+        },
+        {
+          "full_name": "ibrahimhamwi99/medical-voice-agent",
+          "url": "https://github.com/ibrahimhamwi99/medical-voice-agent",
+          "description": "\ud83e\udd16 Streamline appointment management with an AI voice agent that handles calls, schedules, and integrates seamlessly with EHR systems for medical practices.",
+          "language": "HTML",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-19T02:13:58Z",
+          "pushed_at": "2026-02-19T02:13:54Z",
+          "topics": [
+            "aws-polly",
+            "deepgram",
+            "elevenlabs",
+            "fastapi",
+            "langchain",
+            "livekit",
+            "openai",
+            "pydantic",
+            "python",
+            "ttv",
+            "twilio",
+            "voiceagent",
+            "vtt"
+          ],
+          "query": "livekit agents"
+        },
+        {
+          "full_name": "voicetestdev/voicetest",
+          "url": "https://github.com/voicetestdev/voicetest",
+          "description": "Test harness for voice agents. Import from Retell, VAPI, Bland, LiveKit. Run autonomous simulations. Evaluate with LLM judges.",
+          "language": "Python",
+          "stars": 6,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-19T02:05:18Z",
+          "pushed_at": "2026-02-19T02:10:05Z",
+          "topics": [
+            "bland",
+            "dspy",
+            "livekit",
+            "llm",
+            "retell",
+            "testing",
+            "vapi",
+            "voice-ai"
+          ],
+          "query": "livekit agents"
+        },
+        {
+          "full_name": "AnonBOTpl/sadtalker-desktop",
+          "url": "https://github.com/AnonBOTpl/sadtalker-desktop",
+          "description": "One-click Windows installer and desktop GUI for SadTalker AI talking-head generator",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-19T01:24:23Z",
+          "pushed_at": "2026-02-19T01:23:55Z",
+          "topics": [],
+          "query": "SadTalker"
+        },
+        {
+          "full_name": "silaskiragu/SmartCall-Agent",
+          "url": "https://github.com/silaskiragu/SmartCall-Agent",
+          "description": "\ud83d\udc19 AI Agent System with RAG and outbound calling through LiveKit, OpenAI Realtime for voice chats; integrates Pinecone, JWT auth, and analytics for smart agents.",
+          "language": "Python",
+          "stars": 10,
+          "forks": 2,
+          "open_issues": 0,
+          "updated_at": "2026-02-19T00:03:06Z",
+          "pushed_at": "2026-02-19T00:03:02Z",
+          "topics": [
+            "ai-agent",
+            "ai-call-center-solution",
+            "ai-customer-support",
+            "fastapi",
+            "livekit",
+            "openai-api",
+            "outbound-calling",
+            "pinecone",
+            "pinecone-document-embeddings",
+            "plivo",
+            "rag",
+            "real-time-conversations",
+            "tone-and-persona-voice-modulation",
+            "tts",
+            "voice-ai"
+          ],
+          "query": "livekit agents"
+        },
+        {
+          "full_name": "BertrandConxy/CS-ai-agent",
+          "url": "https://github.com/BertrandConxy/CS-ai-agent",
+          "description": "AI Voice agent built with LiveKit",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-18T21:44:08Z",
+          "pushed_at": "2026-02-18T21:44:04Z",
+          "topics": [],
+          "query": "livekit agents"
+        },
+        {
+          "full_name": "livekit/agent-skills",
+          "url": "https://github.com/livekit/agent-skills",
+          "description": "Reusable AI coding agent skills for building voice AI with LiveKit",
+          "language": null,
+          "stars": 1,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-18T19:52:45Z",
+          "pushed_at": "2026-02-18T19:52:43Z",
+          "topics": [
+            "agents",
+            "ai",
+            "livekit",
+            "realtime",
+            "skills",
+            "voice-agents",
+            "voice-ai"
+          ],
+          "query": "livekit agents"
+        },
+        {
+          "full_name": "ManojKumarKarumanchi/voice-rag-agent",
+          "url": "https://github.com/ManojKumarKarumanchi/voice-rag-agent",
+          "description": "Real-time voice AI agent where you can talk over WebRTC (LiveKit) and get answers using RAG over uploaded documents during the call.",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-18T17:31:31Z",
+          "pushed_at": "2026-02-18T17:31:27Z",
+          "topics": [],
+          "query": "livekit agents"
+        },
+        {
+          "full_name": "dhananjayaDev/sadtalker-avatar-generator",
+          "url": "https://github.com/dhananjayaDev/sadtalker-avatar-generator",
+          "description": "",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-18T07:33:22Z",
+          "pushed_at": "2026-02-18T07:33:19Z",
+          "topics": [],
+          "query": "SadTalker"
+        },
+        {
+          "full_name": "baccaraaa/jobpath-sadtalker",
+          "url": "https://github.com/baccaraaa/jobpath-sadtalker",
+          "description": "SadTalker lip-sync RunPod Serverless worker for JobPath mockup interviews",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-15T14:59:02Z",
+          "pushed_at": "2026-02-15T14:58:59Z",
+          "topics": [],
+          "query": "SadTalker"
+        },
+        {
+          "full_name": "FloatingRobotics/face-animation-comparison",
+          "url": "https://github.com/FloatingRobotics/face-animation-comparison",
+          "description": "Side-by-side comparison of 4 audio-driven face animation networks: SadTalker, Hallo, EchoMimic, LivePortrait+JoyVASA",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-13T11:35:43Z",
+          "pushed_at": "2026-02-13T11:35:40Z",
+          "topics": [],
+          "query": "SadTalker"
+        },
+        {
+          "full_name": "SDP-Grisa/SadtalkerLipSync",
+          "url": "https://github.com/SDP-Grisa/SadtalkerLipSync",
+          "description": "Animated video from person's image.",
+          "language": "Batchfile",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-11T04:44:16Z",
+          "pushed_at": "2026-02-11T04:44:12Z",
+          "topics": [],
+          "query": "SadTalker"
+        },
+        {
+          "full_name": "Kedreamix/Linly-Talker",
+          "url": "https://github.com/Kedreamix/Linly-Talker",
+          "description": "Digital Avatar Conversational System - Linly-Talker. \ud83d\ude04\u2728 Linly-Talker is an intelligent AI system that combines large language models (LLMs) with visual models to create a novel human-AI interaction method. \ud83e\udd1d\ud83e\udd16 It integ...",
+          "language": "Python",
+          "stars": 3134,
+          "forks": 499,
+          "open_issues": 30,
+          "updated_at": "2026-02-18T22:26:40Z",
+          "pushed_at": "2026-02-10T05:17:05Z",
+          "topics": [],
+          "query": "SadTalker"
+        },
+        {
+          "full_name": "6Morpheus6/SadTalker",
+          "url": "https://github.com/6Morpheus6/SadTalker",
+          "description": "[NVIDIA ONLY] Fast Lipsync application for smaller GPU's (Minimum Requirements 8GB VRAM / 16GB RAM)",
+          "language": "JavaScript",
+          "stars": 3,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-07T15:51:42Z",
+          "pushed_at": "2026-02-07T15:51:38Z",
+          "topics": [
+            "lipsync",
+            "pinokio"
+          ],
+          "query": "SadTalker"
+        },
+        {
+          "full_name": "Prathameshpatil4172/SadTalker-ai",
+          "url": "https://github.com/Prathameshpatil4172/SadTalker-ai",
+          "description": "",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-05T17:05:36Z",
+          "pushed_at": "2026-02-05T16:59:18Z",
+          "topics": [],
+          "query": "SadTalker"
+        },
+        {
+          "full_name": "chocolatepcode/unreal-motion",
+          "url": "https://github.com/chocolatepcode/unreal-motion",
+          "description": "Real-time MetaHuman face tracking for Unreal Engine 5 using MediaPipe4U. Webcam-based 52 ARKit blendshape capture via LiveLink for facial animation.",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-05T08:13:38Z",
+          "pushed_at": "2026-02-05T07:23:47Z",
+          "topics": [
+            "arkit",
+            "face-tracking",
+            "livelink",
+            "mediapipe",
+            "metahuman",
+            "motion-capture",
+            "ue5",
+            "unreal-engine"
+          ],
+          "query": "metahuman livelink"
+        },
+        {
+          "full_name": "NVIDIA/Audio2Face-3D-SDK",
+          "url": "https://github.com/NVIDIA/Audio2Face-3D-SDK",
+          "description": "High-performance C++/CUDA SDK for running Audio2Emotion and Audio2Face inference with integrated post-processing.",
+          "language": "C++",
+          "stars": 155,
+          "forks": 29,
+          "open_issues": 6,
+          "updated_at": "2026-02-17T21:39:05Z",
+          "pushed_at": "2025-08-28T14:22:28Z",
+          "topics": [
+            "cuda",
+            "gpu-acceleration",
+            "nvidia",
+            "tensorrt"
+          ],
+          "query": "NVIDIA Audio2Face-3D-SDK"
+        },
+        {
+          "full_name": "PornprpaGam/https-github.com-graphdeco-inria-gaussian-splatting",
+          "url": "https://github.com/PornprpaGam/https-github.com-graphdeco-inria-gaussian-splatting",
+          "description": "",
+          "language": null,
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2025-04-11T19:04:30Z",
+          "pushed_at": "2025-04-11T19:04:30Z",
+          "topics": [],
+          "query": "graphdeco gaussian-splatting"
+        },
+        {
+          "full_name": "david97044/3DGS_Rendering_Implement",
+          "url": "https://github.com/david97044/3DGS_Rendering_Implement",
+          "description": "This repository implements the 3DGS rendering engine by translating the original graphdeco-inria/gaussian-splatting C++/CUDA code to Python and PyTorch. It modularizes the rendering process for clarity and easier main...",
+          "language": "Jupyter Notebook",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2025-03-04T12:31:44Z",
+          "pushed_at": "2025-03-04T12:31:41Z",
+          "topics": [],
+          "query": "graphdeco gaussian-splatting"
+        },
+        {
+          "full_name": "nilerolir/Implementation_3DGS_in_Colab",
+          "url": "https://github.com/nilerolir/Implementation_3DGS_in_Colab",
+          "description": "To test the use of 3D Gaussian Splatting technology, I implemented the original code developed by graphdeco-inria in Google Colab, as I do not have a suitable graphics card.",
+          "language": "Jupyter Notebook",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2025-01-30T02:34:20Z",
+          "pushed_at": "2025-01-30T02:34:16Z",
+          "topics": [],
+          "query": "graphdeco gaussian-splatting"
+        },
+        {
+          "full_name": "FACEGOOD/FgControlRig",
+          "url": "https://github.com/FACEGOOD/FgControlRig",
+          "description": "this is a implement of  UE plugin work for  livelink data process and set the data to metahuman controlrig board",
+          "language": "C++",
+          "stars": 14,
+          "forks": 2,
+          "open_issues": 1,
+          "updated_at": "2025-08-25T17:10:17Z",
+          "pushed_at": "2024-12-06T04:12:56Z",
+          "topics": [],
+          "query": "metahuman livelink"
+        },
+        {
+          "full_name": "xli562/3dgs-acceleration",
+          "url": "https://github.com/xli562/3dgs-acceleration",
+          "description": "Copied from the original repo: https://github.com/graphdeco-inria/gaussian-splatting",
+          "language": "C++",
+          "stars": 2,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2025-11-29T07:07:45Z",
+          "pushed_at": "2024-07-22T16:55:01Z",
+          "topics": [],
+          "query": "graphdeco gaussian-splatting"
+        },
+        {
+          "full_name": "supremekiran/LivePortrait",
+          "url": "https://github.com/supremekiran/LivePortrait",
+          "description": "A Flask App that can convert static potrait images of people into potrait animation (based on https://huggingface.co/KwaiVGI/LivePortrait)",
+          "language": null,
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 1,
+          "updated_at": "2024-07-22T01:39:18Z",
+          "pushed_at": "2024-07-22T01:39:15Z",
+          "topics": [],
+          "query": "KwaiVGI LivePortrait"
+        },
+        {
+          "full_name": "forresti/gaussian-splatting",
+          "url": "https://github.com/forresti/gaussian-splatting",
+          "description": "fork of https://github.com/graphdeco-inria/gaussian-splatting",
+          "language": "Python",
+          "stars": 2,
+          "forks": 2,
+          "open_issues": 0,
+          "updated_at": "2025-11-29T07:06:56Z",
+          "pushed_at": "2024-06-13T23:59:26Z",
+          "topics": [],
+          "query": "graphdeco gaussian-splatting"
+        },
+        {
+          "full_name": "TimoR91/FGJ2022_Lahti_TimoR",
+          "url": "https://github.com/TimoR91/FGJ2022_Lahti_TimoR",
+          "description": "The focus of this game development was about implementing Unreal Engine's Metahuman and LiveLink to game. Metahuman provides realistic human characters. LiveLink is used to make facial animations to characters via mob...",
+          "language": null,
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2022-06-03T08:17:08Z",
+          "pushed_at": "2022-06-03T08:17:36Z",
+          "topics": [],
+          "query": "metahuman livelink"
+        },
+        {
+          "full_name": "gyccccc/motionControl",
+          "url": "https://github.com/gyccccc/motionControl",
+          "description": "python control Unreal livelink to control metahuman expresion or other motion",
+          "language": "Kotlin",
+          "stars": 3,
+          "forks": 2,
+          "open_issues": 1,
+          "updated_at": "2024-12-12T07:56:56Z",
+          "pushed_at": "2022-03-11T09:44:57Z",
+          "topics": [],
+          "query": "metahuman livelink"
+        },
+        {
+          "full_name": "alexdjulin/LiveLinkFace-CSV-Retarget-For-Motionbuilder",
+          "url": "https://github.com/alexdjulin/LiveLinkFace-CSV-Retarget-For-Motionbuilder",
+          "description": "Retarget facial animation created with the LiveLinkFace app and saved as CSV onto a metahuman skeleeton in MotionBuilder.",
+          "language": "Python",
+          "stars": 19,
+          "forks": 1,
+          "open_issues": 0,
+          "updated_at": "2026-01-20T11:01:07Z",
+          "pushed_at": "2022-02-11T09:36:11Z",
+          "topics": [],
+          "query": "metahuman livelink"
+        }
+      ]
+    }
+  },
+  "evidence_references": {
+    "epic_metahuman_animator": {
+      "url": "https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-animator",
+      "note": "MetaHuman Animator supports animation from video or audio data."
+    },
+    "epic_realtime_livelink": {
+      "url": "https://dev.epicgames.com/documentation/en-us/metahuman/realtime-animation-using-live-link",
+      "note": "MetaHuman can be driven in real time using webcam and audio devices."
+    },
+    "epic_metahuman_audio_source": {
+      "url": "https://dev.epicgames.com/documentation/en-us/metahuman/using-audio-source-for-animation",
+      "note": "Audio Source mode maps speech to facial animation for MetaHuman."
+    },
+    "apple_wwdc_arkit": {
+      "url": "https://developer.apple.com/videos/play/wwdc2018/716/",
+      "note": "ARKit face tracking exposes 50+ blendshape coefficients at up to 60 FPS."
+    },
+    "arxiv_3dgs": {
+      "url": "https://arxiv.org/abs/2308.04079",
+      "note": "3D Gaussian Splatting baseline demonstrates high-quality real-time rendering."
+    },
+    "arxiv_liveportrait": {
+      "url": "https://arxiv.org/abs/2407.03168",
+      "note": "LivePortrait enables controllable portrait animation with expression/pose retargeting."
+    },
+    "arxiv_livetalk": {
+      "url": "https://arxiv.org/abs/2512.23576",
+      "note": "LiveTalk uses audio/text/image conditioning for real-time talking video generation."
+    },
+    "arxiv_avatar_forcing": {
+      "url": "https://arxiv.org/abs/2601.00664",
+      "note": "Avatar Forcing introduces interactive user-motion-conditioned generation loops."
+    },
+    "arxiv_taoavatar": {
+      "url": "https://arxiv.org/abs/2506.09976",
+      "note": "TaoAvatar targets full-body real-time talking avatars for XR with controllable body motion."
+    },
+    "arxiv_gaussianavatars": {
+      "url": "https://arxiv.org/abs/2312.02069",
+      "note": "GaussianAvatars supports driving by expression and pose transfers."
+    },
+    "arxiv_gazegaussian": {
+      "url": "https://arxiv.org/abs/2409.12533",
+      "note": "GazeGaussian studies gaze-aware Gaussian-head synthesis with explicit gaze cues."
+    },
+    "arxiv_ico3d": {
+      "url": "https://arxiv.org/abs/2509.17080",
+      "note": "ICo3D integrates oral and written interactions for interactive 3D social avatars."
+    },
+    "arxiv_chatanyone": {
+      "url": "https://arxiv.org/abs/2505.22210",
+      "note": "ChatAnyone supports real-time full-body avatar interaction including hand gestures."
+    },
+    "github_livekit_agents": {
+      "url": "https://github.com/livekit/agents",
+      "note": "LiveKit Agents provides realtime voice pipelines with turn-detection modules."
+    },
+    "github_liveportrait": {
+      "url": "https://github.com/KwaiVGI/LivePortrait",
+      "note": "Open implementation for controllable portrait animation and stitching."
+    },
+    "github_gaussian_splatting": {
+      "url": "https://github.com/graphdeco-inria/gaussian-splatting",
+      "note": "Reference implementation of 3D Gaussian Splatting."
+    },
+    "github_audio2face_sdk": {
+      "url": "https://github.com/NVIDIA/Audio2Face-3D-Samples",
+      "note": "Audio2Face SDK samples for real-time blendshape-driven animation."
+    }
+  },
+  "query_plan": {
+    "arxiv_queries": [
+      "real-time talking avatar",
+      "multimodal social interaction avatar",
+      "audio driven facial animation",
+      "3D Gaussian Splatting talking avatar",
+      "interactive controllable portrait generation",
+      "turn-taking conversational agents",
+      "co-speech gesture generation",
+      "real-time neural rendering avatar"
+    ],
+    "github_queries": [
+      "livekit agents",
+      "graphdeco gaussian-splatting",
+      "KwaiVGI LivePortrait",
+      "NVIDIA Audio2Face-3D-SDK",
+      "cvlab-kaist GaussianTalker",
+      "soulx-ai SoulX-FlashHead",
+      "SadTalker",
+      "metahuman livelink"
+    ],
+    "focus_terms": []
+  },
+  "delta": {
+    "new_arxiv_entries": [
+      "http://arxiv.org/abs/2602.16712v1",
+      "http://arxiv.org/abs/2602.16711v1",
+      "http://arxiv.org/abs/2601.16213v2",
+      "http://arxiv.org/abs/2602.13194v2",
+      "http://arxiv.org/abs/2602.16710v1",
+      "http://arxiv.org/abs/2602.16708v1",
+      "http://arxiv.org/abs/2602.16705v1",
+      "http://arxiv.org/abs/2602.16704v1",
+      "http://arxiv.org/abs/2602.16703v1",
+      "http://arxiv.org/abs/2402.18060v6",
+      "http://arxiv.org/abs/2602.16702v1",
+      "http://arxiv.org/abs/2505.11660v3",
+      "http://arxiv.org/abs/2602.16701v1",
+      "http://arxiv.org/abs/2602.16700v1",
+      "http://arxiv.org/abs/2602.16699v1",
+      "http://arxiv.org/abs/2602.16695v1",
+      "http://arxiv.org/abs/2602.16693v1",
+      "http://arxiv.org/abs/2503.18825v4",
+      "http://arxiv.org/abs/2502.17356v5",
+      "http://arxiv.org/abs/2512.18637v5",
+      "http://arxiv.org/abs/2601.16689v2",
+      "http://arxiv.org/abs/2602.16687v1",
+      "http://arxiv.org/abs/2402.10881v2",
+      "http://arxiv.org/abs/2512.01991v2",
+      "http://arxiv.org/abs/2602.16683v1",
+      "http://arxiv.org/abs/2602.16682v1",
+      "http://arxiv.org/abs/2602.16681v1",
+      "http://arxiv.org/abs/2602.16680v1",
+      "http://arxiv.org/abs/2602.16678v1",
+      "http://arxiv.org/abs/2512.21122v3"
+    ],
+    "new_github_repositories": [
+      "nissan/livekit-openai-realtime-demo",
+      "viper-108/livekit_plugins_sub200",
+      "ibrahimhamwi99/medical-voice-agent",
+      "voicetestdev/voicetest",
+      "AnonBOTpl/sadtalker-desktop",
+      "silaskiragu/SmartCall-Agent",
+      "BertrandConxy/CS-ai-agent",
+      "livekit/agent-skills",
+      "ManojKumarKarumanchi/voice-rag-agent",
+      "dhananjayaDev/sadtalker-avatar-generator",
+      "baccaraaa/jobpath-sadtalker",
+      "FloatingRobotics/face-animation-comparison",
+      "SDP-Grisa/SadtalkerLipSync",
+      "Kedreamix/Linly-Talker",
+      "6Morpheus6/SadTalker",
+      "Prathameshpatil4172/SadTalker-ai",
+      "chocolatepcode/unreal-motion",
+      "NVIDIA/Audio2Face-3D-SDK",
+      "PornprpaGam/https-github.com-graphdeco-inria-gaussian-splatting",
+      "david97044/3DGS_Rendering_Implement",
+      "nilerolir/Implementation_3DGS_in_Colab",
+      "FACEGOOD/FgControlRig",
+      "xli562/3dgs-acceleration",
+      "supremekiran/LivePortrait",
+      "forresti/gaussian-splatting",
+      "TimoR91/FGJ2022_Lahti_TimoR",
+      "gyccccc/motionControl",
+      "alexdjulin/LiveLinkFace-CSV-Retarget-For-Motionbuilder"
+    ],
+    "new_arxiv_count": 48,
+    "new_github_repo_count": 28
+  },
+  "focus_terms_next": [
+    "are",
+    "livekit",
+    "systems",
+    "data",
+    "learning",
+    "study",
+    "voice",
+    "language",
+    "llms",
+    "but",
+    "have",
+    "while",
+    "large",
+    "llm",
+    "interactions",
+    "distribution"
+  ],
+  "focus_terms_added": [
+    "are",
+    "livekit",
+    "systems",
+    "data",
+    "learning",
+    "study",
+    "voice",
+    "language",
+    "llms",
+    "but",
+    "have",
+    "while",
+    "large",
+    "llm",
+    "interactions",
+    "distribution"
+  ]
+}

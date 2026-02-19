@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-02-19T02:47:36+00:00",
+  "layers": [
+    {
+      "name": "Input Modalities",
+      "components": [
+        "user_audio_stream",
+        "user_video_webcam",
+        "head_pose_gaze",
+        "text_chat",
+        "session_context"
+      ]
+    },
+    {
+      "name": "Perception + Social Signal Extraction",
+      "components": [
+        "asr_and_prosody",
+        "vision_landmarks_expression",
+        "turn_taking_detector",
+        "emotion_state_estimator"
+      ]
+    },
+    {
+      "name": "Narrative + Dialogue Cognition",
+      "components": [
+        "llm_dialogue_policy",
+        "persona_memory",
+        "narrative_planner",
+        "safety_guardrails"
+      ]
+    },
+    {
+      "name": "Behavior Planner",
+      "components": [
+        "speech_text_to_tts",
+        "prosody_to_expression",
+        "gaze_and_head_scheduler",
+        "gesture_intent_timeline"
+      ]
+    },
+    {
+      "name": "Renderer Adapters",
+      "components": [
+        "metahuman_livelink_adapter",
+        "video_diffusion_condition_adapter",
+        "gaussian_avatar_control_adapter"
+      ]
+    },
+    {
+      "name": "Output Modalities",
+      "components": [
+        "speech_audio",
+        "facial_motion",
+        "head_gaze_motion",
+        "upper_body_gesture",
+        "rendered_video_stream"
+      ]
+    }
+  ],
+  "shared_contract": {
+    "name": "SocialBehaviorFrame",
+    "fields": [
+      "timestamp_ms",
+      "utterance_text",
+      "phoneme_timeline",
+      "prosody_features",
+      "emotion_distribution",
+      "head_pose",
+      "gaze_target",
+      "expression_coefficients",
+      "gesture_tokens",
+      "turn_state",
+      "narrative_intent"
+    ]
+  },
+  "realtime_targets": {
+    "interaction_roundtrip_ms": 500,
+    "motion_to_photon_ms": 120,
+    "streaming_fps_target": 30,
+    "xr_fps_target": 72
+  }
+}

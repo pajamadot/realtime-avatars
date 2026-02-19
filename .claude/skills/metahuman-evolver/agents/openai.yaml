@@ -1,0 +1,3 @@
+interface:
+  display_name: "MetaHuman Evolver"
+  short_description: "Iterative Unreal MetaHuman source intelligence with persistent memory"

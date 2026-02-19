@@ -30,7 +30,7 @@ default:
     handler_configs:
       LamClient:
         module: client/h5_rendering_client/client_handler_lam
-        asset_path: "lam_samples/barbara.zip"
+        asset_path: "lam_samples/james.zip"
         connection_ttl: 900
 
       SileroVad:
@@ -49,7 +49,7 @@ default:
       EdgeTTS:
         enabled: true
         module: tts/edgetts/tts_handler_edgetts
-        voice: "en-US-AriaNeural"
+        voice: "en-US-GuyNeural"
 
       LLMOpenAICompatible:
         enabled: true

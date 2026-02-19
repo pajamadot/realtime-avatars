@@ -59,3 +59,13 @@ next-env.d.ts
 
 # avatar assets (keep user faces out of git)
 agents/livekit-hedra-avatar/avatar.*
+
+# local runtime logs
+web/.dev-server.log
+web/.dev-server.err.log
+
+# Windows null-device artifact
+nul
+
+# Unreal local project artifacts (generated, large, machine-specific)
+metahuman/avatar01/

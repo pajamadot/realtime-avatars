@@ -26,17 +26,26 @@ default:
 
     handler_configs:
       # --- Client: LAM Gaussian avatar rendered in browser ---
+      # Available avatars (in container at /app/src/handlers/client/h5_rendering_client/lam_samples/):
+      #   - barbara.zip   (4.06 MB) — female
+      #   - james.zip     (3.98 MB) — male, default
+      #   - status.zip    (3.95 MB) — alternative
+      #   - vfhq_case1.zip (3.98 MB) — alternative
+      # Change asset_path below and restart to switch faces.
       LamClient:
         module: client/h5_rendering_client/client_handler_lam
-        asset_path: "lam_samples/barbara.zip"
+        asset_path: "lam_samples/james.zip"
         connection_ttl: 900  # max session duration (seconds)
 
       # --- VAD: Silero voice activity detection ---
+      # Tuned for lower latency: reduced start_delay (1536 vs 2048) and
+      # end_delay (3000 vs 5000) for faster speech detection and quicker
+      # response after user stops speaking (~187ms silence vs ~312ms).
       SileroVad:
         module: vad/silerovad/vad_handler_silero
         speaking_threshold: 0.5
-        start_delay: 2048
-        end_delay: 5000
+        start_delay: 1536
+        end_delay: 3000
         buffer_look_back: 5000
         speech_padding: 512
 
@@ -51,7 +60,7 @@ default:
       EdgeTTS:
         enabled: true
         module: tts/edgetts/tts_handler_edgetts
-        voice: "en-US-AriaNeural"
+        voice: "en-US-GuyNeural"
 
       # --- TTS alternative: CosyVoice via DashScope API ---
       # Uncomment below and comment out EdgeTTS above to use.

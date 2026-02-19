@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ExternalLink, Cpu, Video, Mic } from 'lucide-react';
+import MetaHumanEditorControlPanel from '../components/MetaHumanEditorControlPanel';
+import MetaHumanRealtimeTalkPanel from '../components/MetaHumanRealtimeTalkPanel';
 
 export const metadata: Metadata = {
   title: 'Rapport MetaHuman Demo — Real-Time Avatars',
@@ -52,7 +54,7 @@ export default function RapportPage() {
           </h1>
           <p className="text-lg text-[var(--text-muted)] max-w-2xl">
             A real-time MetaHuman avatar powered by Unreal Engine and pixel streaming.
-            This demo showcases Rapport's cloud-rendered photorealistic avatars with
+            This demo showcases Rapport&apos;s cloud-rendered photorealistic avatars with
             natural conversation capabilities.
           </p>
         </article>
@@ -72,6 +74,9 @@ export default function RapportPage() {
             Voice Interaction
           </span>
         </div>
+
+        <MetaHumanEditorControlPanel />
+        <MetaHumanRealtimeTalkPanel />
 
         {/* Rapport iframe embed */}
         <div className="flex justify-center">
@@ -126,7 +131,7 @@ export default function RapportPage() {
         </div>
 
         {/* Links */}
-        <div className="grid md:grid-cols-3 gap-4 mt-6">
+        <div className="grid md:grid-cols-4 gap-4 mt-6">
           <a
             href="https://www.rapport.cloud/"
             target="_blank"
@@ -157,6 +162,16 @@ export default function RapportPage() {
             <div>
               <p className="font-medium text-sm">MetaHuman Track</p>
               <p className="text-xs text-[var(--text-muted)]">Learn how it works</p>
+            </div>
+          </Link>
+          <Link
+            href="/learn/metahuman/architecture"
+            className="card p-4 flex items-center gap-3 hover:border-[var(--border-strong)]"
+          >
+            <ExternalLink size={18} className="text-[var(--accent)]" />
+            <div>
+              <p className="font-medium text-sm">Architecture Docs</p>
+              <p className="text-xs text-[var(--text-muted)]">Module and function map</p>
             </div>
           </Link>
         </div>

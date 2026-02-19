@@ -1,0 +1,7 @@
+tunnel: pajama-engine
+credentials-file: C:\Users\PS\.cloudflared\pajama-engine.json
+
+ingress:
+  - hostname: engine.pajamadot.com
+    service: http://127.0.0.1:8788
+  - service: http_status:404

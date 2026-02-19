@@ -54,6 +54,11 @@ services:
       - ./models:/app/models
       - ./ssl_certs:/app/ssl_certs:ro
       - ./config:/app/config:ro
+      # Patched frontend: unlocked vertical camera rotation (OrbitControls)
+      - ./patches/frontend/index.js:/app/src/handlers/client/rtc_client/frontend/dist/assets/index.js:ro
+      # Patched LAM: FP16 autocast for ~30-50% faster GPU inference + error handling fix
+      - ./patches/lam/avatar_handler_lam_audio2expression.py:/app/src/handlers/avatar/lam/avatar_handler_lam_audio2expression.py:ro
+      - ./patches/lam/infer.py:/app/src/handlers/avatar/lam/LAM_Audio2Expression/engines/infer.py:ro
       # .env is injected via env_file above; no need to mount it as a volume
     ports:
       - "8282:8282"

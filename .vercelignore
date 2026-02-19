@@ -1,0 +1,10 @@
+# Non-web project areas (exclude from Vercel packaging)
+.cache/**
+agents/**
+gaussian-avatar/**
+livetalk-docker/**
+metahuman/avatar01/**
+metahuman/editor-bridge/**
+research/**
+secrets/**
+workers/**

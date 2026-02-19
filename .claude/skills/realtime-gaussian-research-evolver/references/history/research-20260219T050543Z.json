@@ -1,0 +1,1401 @@
+{
+  "generated_at": "2026-02-19T05:05:43Z",
+  "cycle": 2,
+  "queries": [
+    "realtime gaussian avatar",
+    "3d gaussian splatting avatar",
+    "animatable gaussian avatar",
+    "audio driven gaussian talking head",
+    "gaussian avatar reenactment",
+    "realtime gaussian avatar realtime",
+    "gaussian talking head realtime",
+    "realtime gaussian avatar audio-driven",
+    "gaussian talking head audio-driven",
+    "realtime gaussian avatar gaussian",
+    "gaussian talking head gaussian",
+    "realtime gaussian avatar splatting",
+    "gaussian talking head splatting",
+    "realtime gaussian avatar avatar",
+    "gaussian talking head avatar",
+    "realtime gaussian avatar talking",
+    "gaussian talking head talking",
+    "realtime gaussian avatar face",
+    "gaussian talking head face",
+    "realtime gaussian avatar speech",
+    "gaussian talking head speech"
+  ],
+  "papers": [
+    {
+      "arxiv_id": "2602.11693v1",
+      "title": "OMEGA-Avatar: One-shot Modeling of 360° Gaussian Avatars",
+      "summary": "Creating high-fidelity, animatable 3D avatars from a single image remains a formidable challenge. We identified three desirable attributes of avatar generation: 1) the method should be feed-forward, 2) model a 360° full-head, and 3) should be animation-ready. However, current work addresses only two of the three points simultaneously. To address these limitations, we propose OMEGA-Avatar, the first feed-forward framework that simultaneously generates a generalizable, 360°-complete, and animatable 3D Gaussian head from a single image. Starting from a feed-forward and animatable framework, we address the 360° full-head avatar generation problem with two novel components. First, to overcome poor hair modeling in full-head avatar generation, we introduce a semantic-aware mesh deformation module that integrates multi-view normals to optimize a FLAME head with hair while preserving its topology structure. Second, to enable effective feed-forward decoding of full-head features, we propose a multi-view feature splatting module that constructs a shared canonical UV representation from features across multiple views through differentiable bilinear splatting, hierarchical UV mapping, and visibility-aware fusion. This approach preserves both global structural coherence and local high-frequency details across all viewpoints, ensuring 360° consistency without per-instance optimization. Extensive experiments demonstrate that OMEGA-Avatar achieves state-of-the-art performance, significantly outperforming existing baselines in 360° full-head completeness while robustly preserving identity across different viewpoints.",
+      "authors": [
+        "Zehao Xia",
+        "Yiqun Wang",
+        "Zhengda Lu",
+        "Kai Liu",
+        "Jun Xiao",
+        "Peter Wonka"
+      ],
+      "published": "2026-02-12T08:16:38Z",
+      "updated": "2026-02-12T08:16:38Z",
+      "url": "https://arxiv.org/abs/2602.11693v1",
+      "query": "3d gaussian splatting avatar",
+      "score": 56.0,
+      "alt_queries": [
+        "animatable gaussian avatar"
+      ]
+    },
+    {
+      "arxiv_id": "2602.11575v2",
+      "title": "ReaDy-Go: Real-to-Sim Dynamic 3D Gaussian Splatting Simulation for Environment-Specific Visual Navigation with Moving Obstacles",
+      "summary": "Visual navigation models often struggle in real-world dynamic environments due to limited robustness to the sim-to-real gap and the difficulty of training policies tailored to target deployment environments (e.g., households, restaurants, and factories). Although real-to-sim navigation simulation using 3D Gaussian Splatting (GS) can mitigate these challenges, prior GS-based works have considered only static scenes or non-photorealistic human obstacles built from simulator assets, despite the importance of safe navigation in dynamic environments. To address these issues, we propose ReaDy-Go, a novel real-to-sim simulation pipeline that synthesizes photorealistic dynamic scenarios in target environments by augmenting a reconstructed static GS scene with dynamic human GS obstacles, and trains navigation policies using the generated datasets. The pipeline provides three key contributions: (1) a dynamic GS simulator that integrates static scene GS with a human animation module, enabling the insertion of animatable human GS avatars and the synthesis of plausible human motions from 2D trajectories, (2) a navigation dataset generation framework that leverages the simulator along with a robot expert planner designed for dynamic GS representations and a human planner, and (3) robust navigation policies to both the sim-to-real gap and moving obstacles. The proposed simulator generates thousands of photorealistic navigation scenarios with animatable human GS avatars from arbitrary viewpoints. ReaDy-Go outperforms baselines across target environments in both simulation and real-world experiments, demonstrating improved navigation performance even after sim-to-real transfer and in the presence of moving obstacles. Moreover, zero-shot sim-to-real deployment in an unseen environment indicates its generalization potential. Project page: https://syeon-yoo.github.io/ready-go-site/.",
+      "authors": [
+        "Seungyeon Yoo",
+        "Youngseok Jang",
+        "Dabin Kim",
+        "Youngsoo Han",
+        "Seungwoo Jung",
+        "H. Jin Kim"
+      ],
+      "published": "2026-02-12T04:48:18Z",
+      "updated": "2026-02-14T15:05:27Z",
+      "url": "https://arxiv.org/abs/2602.11575v2",
+      "query": "3d gaussian splatting avatar",
+      "score": 56.0,
+      "alt_queries": [
+        "animatable gaussian avatar"
+      ]
+    },
+    {
+      "arxiv_id": "2602.09736v1",
+      "title": "Toward Fine-Grained Facial Control in 3D Talking Head Generation",
+      "summary": "Audio-driven talking head generation is a core component of digital avatars, and 3D Gaussian Splatting has shown strong performance in real-time rendering of high-fidelity talking heads. However, achieving precise control over fine-grained facial movements remains a significant challenge, particularly due to lip-synchronization inaccuracies and facial jitter, both of which can contribute to the uncanny valley effect. To address these challenges, we propose Fine-Grained 3D Gaussian Splatting (FG-3DGS), a novel framework that enables temporally consistent and high-fidelity talking head generation. Our method introduces a frequency-aware disentanglement strategy to explicitly model facial regions based on their motion characteristics. Low-frequency regions, such as the cheeks, nose, and forehead, are jointly modeled using a standard MLP, while high-frequency regions, including the eyes and mouth, are captured separately using a dedicated network guided by facial area masks. The predicted motion dynamics, represented as Gaussian deltas, are applied to the static Gaussians to generate the final head frames, which are rendered via a rasterizer using frame-specific camera parameters. Additionally, a high-frequency-refined post-rendering alignment mechanism, learned from large-scale audio-video pairs by a pretrained model, is incorporated to enhance per-frame generation and achieve more accurate lip synchronization. Extensive experiments on widely used datasets for talking head generation demonstrate that our method outperforms recent state-of-the-art approaches in producing high-fidelity, lip-synced talking head videos.",
+      "authors": [
+        "Shaoyang Xie",
+        "Xiaofeng Cong",
+        "Baosheng Yu",
+        "Zhipeng Gui",
+        "Jie Gui",
+        "Yuan Yan Tang",
+        "James Tin-Yau Kwok"
+      ],
+      "published": "2026-02-10T12:49:50Z",
+      "updated": "2026-02-10T12:49:50Z",
+      "url": "https://arxiv.org/abs/2602.09736v1",
+      "query": "3d gaussian splatting avatar",
+      "score": 72.0,
+      "alt_queries": [
+        "audio driven gaussian talking head",
+        "gaussian talking head audio-driven",
+        "gaussian talking head gaussian",
+        "gaussian talking head splatting",
+        "gaussian talking head avatar",
+        "gaussian talking head talking"
+      ]
+    },
+    {
+      "arxiv_id": "2602.06122v1",
+      "title": "From Blurry to Believable: Enhancing Low-quality Talking Heads with 3D Generative Priors",
+      "summary": "Creating high-fidelity, animatable 3D talking heads is crucial for immersive applications, yet often hindered by the prevalence of low-quality image or video sources, which yield poor 3D reconstructions. In this paper, we introduce SuperHead, a novel framework for enhancing low-resolution, animatable 3D head avatars. The core challenge lies in synthesizing high-quality geometry and textures, while ensuring both 3D and temporal consistency during animation and preserving subject identity. Despite recent progress in image, video and 3D-based super-resolution (SR), existing SR techniques are ill-equipped to handle dynamic 3D inputs. To address this, SuperHead leverages the rich priors from pre-trained 3D generative models via a novel dynamics-aware 3D inversion scheme. This process optimizes the latent representation of the generative model to produce a super-resolved 3D Gaussian Splatting (3DGS) head model, which is subsequently rigged to an underlying parametric head model (e.g., FLAME) for animation. The inversion is jointly supervised using a sparse collection of upscaled 2D face renderings and corresponding depth maps, captured from diverse facial expressions and camera viewpoints, to ensure realism under dynamic facial motions. Experiments demonstrate that SuperHead generates avatars with fine-grained facial details under dynamic motions, significantly outperforming baseline methods in visual quality.",
+      "authors": [
+        "Ding-Jiun Huang",
+        "Yuanhao Wang",
+        "Shao-Ji Yuan",
+        "Albert Mosella-Montoro",
+        "Francisco Vicente Carrasco",
+        "Cheng Zhang",
+        "Fernando De la Torre"
+      ],
+      "published": "2026-02-05T19:00:50Z",
+      "updated": "2026-02-05T19:00:50Z",
+      "url": "https://arxiv.org/abs/2602.06122v1",
+      "query": "3d gaussian splatting avatar",
+      "score": 56.0,
+      "alt_queries": [
+        "animatable gaussian avatar",
+        "gaussian talking head gaussian",
+        "gaussian talking head splatting",
+        "gaussian talking head avatar",
+        "gaussian talking head talking",
+        "gaussian talking head face"
+      ]
+    },
+    {
+      "arxiv_id": "2602.04317v1",
+      "title": "JOintGS: Joint Optimization of Cameras, Bodies and 3D Gaussians for In-the-Wild Monocular Reconstruction",
+      "summary": "Reconstructing high-fidelity animatable 3D human avatars from monocular RGB videos remains challenging, particularly in unconstrained in-the-wild scenarios where camera parameters and human poses from off-the-shelf methods (e.g., COLMAP, HMR2.0) are often inaccurate. Splatting (3DGS) advances demonstrate impressive rendering quality and real-time performance, they critically depend on precise camera calibration and pose annotations, limiting their applicability in real-world settings. We present JOintGS, a unified framework that jointly optimizes camera extrinsics, human poses, and 3D Gaussian representations from coarse initialization through a synergistic refinement mechanism. Our key insight is that explicit foreground-background disentanglement enables mutual reinforcement: static background Gaussians anchor camera estimation via multi-view consistency; refined cameras improve human body alignment through accurate temporal correspondence; optimized human poses enhance scene reconstruction by removing dynamic artifacts from static constraints. We further introduce a temporal dynamics module to capture fine-grained pose-dependent deformations and a residual color field to model illumination variations. Extensive experiments on NeuMan and EMDB datasets demonstrate that JOintGS achieves superior reconstruction quality, with 2.1~dB PSNR improvement over state-of-the-art methods on NeuMan dataset, while maintaining real-time rendering. Notably, our method shows significantly enhanced robustness to noisy initialization compared to the baseline.Our source code is available at https://github.com/MiliLab/JOintGS.",
+      "authors": [
+        "Zihan Lou",
+        "Jinlong Fan",
+        "Sihan Ma",
+        "Yuxiang Yang",
+        "Jing Zhang"
+      ],
+      "published": "2026-02-04T08:33:51Z",
+      "updated": "2026-02-04T08:33:51Z",
+      "url": "https://arxiv.org/abs/2602.04317v1",
+      "query": "3d gaussian splatting avatar",
+      "score": 58.0,
+      "alt_queries": [
+        "animatable gaussian avatar"
+      ]
+    },
+    {
+      "arxiv_id": "2602.01674v1",
+      "title": "VRGaussianAvatar: Integrating 3D Gaussian Avatars into VR",
+      "summary": "We present VRGaussianAvatar, an integrated system that enables real-time full-body 3D Gaussian Splatting (3DGS) avatars in virtual reality using only head-mounted display (HMD) tracking signals. The system adopts a parallel pipeline with a VR Frontend and a GA Backend. The VR Frontend uses inverse kinematics to estimate full-body pose and streams the resulting pose along with stereo camera parameters to the backend. The GA Backend stereoscopically renders a 3DGS avatar reconstructed from a single image. To improve stereo rendering efficiency, we introduce Binocular Batching, which jointly processes left and right eye views in a single batched pass to reduce redundant computation and support high-resolution VR displays. We evaluate VRGaussianAvatar with quantitative performance tests and a within-subject user study against image- and video-based mesh avatar baselines. Results show that VRGaussianAvatar sustains interactive VR performance and yields higher perceived appearance similarity, embodiment, and plausibility. Project page and source code are available at https://vrgaussianavatar.github.io.",
+      "authors": [
+        "Hail Song",
+        "Boram Yoon",
+        "Seokhwan Yang",
+        "Seoyoung Kang",
+        "Hyunjeong Kim",
+        "Henning Metzmacher",
+        "Woontack Woo"
+      ],
+      "published": "2026-02-02T05:42:40Z",
+      "updated": "2026-02-02T05:42:40Z",
+      "url": "https://arxiv.org/abs/2602.01674v1",
+      "query": "3d gaussian splatting avatar",
+      "score": 58.0
+    },
+    {
+      "arxiv_id": "2601.21269v1",
+      "title": "Lightweight High-Fidelity Low-Bitrate Talking Face Compression for 3D Video Conference",
+      "summary": "The demand for immersive and interactive communication has driven advancements in 3D video conferencing, yet achieving high-fidelity 3D talking face representation at low bitrates remains a challenge. Traditional 2D video compression techniques fail to preserve fine-grained geometric and appearance details, while implicit neural rendering methods like NeRF suffer from prohibitive computational costs. To address these challenges, we propose a lightweight, high-fidelity, low-bitrate 3D talking face compression framework that integrates FLAME-based parametric modeling with 3DGS neural rendering. Our approach transmits only essential facial metadata in real time, enabling efficient reconstruction with a Gaussian-based head model. Additionally, we introduce a compact representation and compression scheme, including Gaussian attribute compression and MLP optimization, to enhance transmission efficiency. Experimental results demonstrate that our method achieves superior rate-distortion performance, delivering high-quality facial rendering at extremely low bitrates, making it well-suited for real-time 3D video conferencing applications.",
+      "authors": [
+        "Jianglong Li",
+        "Jun Xu",
+        "Bingcong Lu",
+        "Zhengxue Cheng",
+        "Hongwei Hu",
+        "Ronghua Wu",
+        "Li Song"
+      ],
+      "published": "2026-01-29T05:03:29Z",
+      "updated": "2026-01-29T05:03:29Z",
+      "url": "https://arxiv.org/abs/2601.21269v1",
+      "query": "gaussian talking head gaussian",
+      "score": 64.0,
+      "alt_queries": [
+        "gaussian talking head talking",
+        "gaussian talking head face"
+      ]
+    },
+    {
+      "arxiv_id": "2601.19112v1",
+      "title": "Uncertainty-Aware 3D Emotional Talking Face Synthesis with Emotion Prior Distillation",
+      "summary": "Emotional Talking Face synthesis is pivotal in multimedia and signal processing, yet existing 3D methods suffer from two critical challenges: poor audio-vision emotion alignment, manifested as difficult audio emotion extraction and inadequate control over emotional micro-expressions; and a one-size-fits-all multi-view fusion strategy that overlooks uncertainty and feature quality differences, undermining rendering quality. We propose UA-3DTalk, Uncertainty-Aware 3D Emotional Talking Face Synthesis with emotion prior distillation, which has three core modules: the Prior Extraction module disentangles audio into content-synchronized features for alignment and person-specific complementary features for individualization; the Emotion Distillation module introduces a multi-modal attention-weighted fusion mechanism and 4D Gaussian encoding with multi-resolution code-books, enabling fine-grained audio emotion extraction and precise control of emotional micro-expressions; the Uncertainty-based Deformation deploys uncertainty blocks to estimate view-specific aleatoric (input noise) and epistemic (model parameters) uncertainty, realizing adaptive multi-view fusion and incorporating a multi-head decoder for Gaussian primitive optimization to mitigate the limitations of uniform-weight fusion. Extensive experiments on regular and emotional datasets show UA-3DTalk outperforms state-of-the-art methods like DEGSTalk and EDTalk by 5.2% in E-FID for emotion alignment, 3.1% in SyncC for lip synchronization, and 0.015 in LPIPS for rendering quality. Project page: https://mrask999.github.io/UA-3DTalk",
+      "authors": [
+        "Nanhan Shen",
+        "Zhilei Liu"
+      ],
+      "published": "2026-01-27T02:32:37Z",
+      "updated": "2026-01-27T02:32:37Z",
+      "url": "https://arxiv.org/abs/2601.19112v1",
+      "query": "gaussian talking head gaussian",
+      "score": 58.0,
+      "alt_queries": [
+        "gaussian talking head talking",
+        "gaussian talking head face"
+      ]
+    },
+    {
+      "arxiv_id": "2601.18633v1",
+      "title": "Splat-Portrait: Generalizing Talking Heads with Gaussian Splatting",
+      "summary": "Talking Head Generation aims at synthesizing natural-looking talking videos from speech and a single portrait image. Previous 3D talking head generation methods have relied on domain-specific heuristics such as warping-based facial motion representation priors to animate talking motions, yet still produce inaccurate 3D avatar reconstructions, thus undermining the realism of generated animations. We introduce Splat-Portrait, a Gaussian-splatting-based method that addresses the challenges of 3D head reconstruction and lip motion synthesis. Our approach automatically learns to disentangle a single portrait image into a static 3D reconstruction represented as static Gaussian Splatting, and a predicted whole-image 2D background. It then generates natural lip motion conditioned on input audio, without any motion driven priors. Training is driven purely by 2D reconstruction and score-distillation losses, without 3D supervision nor landmarks. Experimental results demonstrate that Splat-Portrait exhibits superior performance on talking head generation and novel view synthesis, achieving better visual quality compared to previous works. Our project code and supplementary documents are public available at https://github.com/stonewalking/Splat-portrait.",
+      "authors": [
+        "Tong Shi",
+        "Melonie de Almeida",
+        "Daniela Ivanova",
+        "Nicolas Pugeault",
+        "Paul Henderson"
+      ],
+      "published": "2026-01-26T16:06:57Z",
+      "updated": "2026-01-26T16:06:57Z",
+      "url": "https://arxiv.org/abs/2601.18633v1",
+      "query": "3d gaussian splatting avatar",
+      "score": 64.0,
+      "alt_queries": [
+        "audio driven gaussian talking head",
+        "gaussian talking head audio-driven",
+        "gaussian talking head gaussian",
+        "gaussian talking head splatting",
+        "gaussian talking head avatar",
+        "gaussian talking head talking",
+        "gaussian talking head speech"
+      ]
+    },
+    {
+      "arxiv_id": "2601.16672v1",
+      "title": "ReWeaver: Towards Simulation-Ready and Topology-Accurate Garment Reconstruction",
+      "summary": "High-quality 3D garment reconstruction plays a crucial role in mitigating the sim-to-real gap in applications such as digital avatars, virtual try-on and robotic manipulation. However, existing garment reconstruction methods typically rely on unstructured representations, such as 3D Gaussian Splats, struggling to provide accurate reconstructions of garment topology and sewing structures. As a result, the reconstructed outputs are often unsuitable for high-fidelity physical simulation. We propose ReWeaver, a novel framework for topology-accurate 3D garment and sewing pattern reconstruction from sparse multi-view RGB images. Given as few as four input views, ReWeaver predicts seams and panels as well as their connectivities in both the 2D UV space and the 3D space. The predicted seams and panels align precisely with the multi-view images, yielding structured 2D--3D garment representations suitable for 3D perception, high-fidelity physical simulation, and robotic manipulation. To enable effective training, we construct a large-scale dataset GCD-TS, comprising multi-view RGB images, 3D garment geometries, textured human body meshes and annotated sewing patterns. The dataset contains over 100,000 synthetic samples covering a wide range of complex geometries and topologies. Extensive experiments show that ReWeaver consistently outperforms existing methods in terms of topology accuracy, geometry alignment and seam-panel consistency.",
+      "authors": [
+        "Ming Li",
+        "Hui Shan",
+        "Kai Zheng",
+        "Chentao Shen",
+        "Siyu Liu",
+        "Yanwei Fu",
+        "Zhen Chen",
+        "Xiangru Huang"
+      ],
+      "published": "2026-01-23T11:42:02Z",
+      "updated": "2026-01-23T11:42:02Z",
+      "url": "https://arxiv.org/abs/2601.16672v1",
+      "query": "3d gaussian splatting avatar",
+      "score": 50.0
+    },
+    {
+      "arxiv_id": "2601.13148v1",
+      "title": "ICo3D: An Interactive Conversational 3D Virtual Human",
+      "summary": "This work presents Interactive Conversational 3D Virtual Human (ICo3D), a method for generating an interactive, conversational, and photorealistic 3D human avatar. Based on multi-view captures of a subject, we create an animatable 3D face model and a dynamic 3D body model, both rendered by splatting Gaussian primitives. Once merged together, they represent a lifelike virtual human avatar suitable for real-time user interactions. We equip our avatar with an LLM for conversational ability. During conversation, the audio speech of the avatar is used as a driving signal to animate the face model, enabling precise synchronization. We describe improvements to our dynamic Gaussian models that enhance photorealism: SWinGS++ for body reconstruction and HeadGaS++ for face reconstruction, and provide as well a solution to merge the separate face and body models without artifacts. We also present a demo of the complete system, showcasing several use cases of real-time conversation with the 3D avatar. Our approach offers a fully integrated virtual avatar experience, supporting both oral and written form interactions in immersive environments. ICo3D is applicable to a wide range of fields, including gaming, virtual assistance, and personalized education, among others. Project page: https://ico3d.github.io/",
+      "authors": [
+        "Richard Shaw",
+        "Youngkyoon Jang",
+        "Athanasios Papaioannou",
+        "Arthur Moreau",
+        "Helisa Dhamo",
+        "Zhensong Zhang",
+        "Eduardo Pérez-Pellitero"
+      ],
+      "published": "2026-01-19T15:30:08Z",
+      "updated": "2026-01-19T15:30:08Z",
+      "url": "https://arxiv.org/abs/2601.13148v1",
+      "query": "3d gaussian splatting avatar",
+      "score": 66.0,
+      "alt_queries": [
+        "animatable gaussian avatar"
+      ]
+    },
+    {
+      "arxiv_id": "2601.12770v1",
+      "title": "Generalizable and Animatable 3D Full-Head Gaussian Avatar from a Single Image",
+      "summary": "Building 3D animatable head avatars from a single image is an important yet challenging problem. Existing methods generally collapse under large camera pose variations, compromising the realism of 3D avatars. In this work, we propose a new framework to tackle the novel setting of one-shot 3D full-head animatable avatar reconstruction in a single feed-forward pass, enabling real-time animation and simultaneous 360$^\\circ$ rendering views. To facilitate efficient animation control, we model 3D head avatars with Gaussian primitives embedded on the surface of a parametric face model within the UV space. To obtain knowledge of full-head geometry and textures, we leverage rich 3D full-head priors within a pretrained 3D generative adversarial network (GAN) for global full-head feature extraction and multi-view supervision. To increase the fidelity of the 3D reconstruction of the input image, we take advantage of the symmetric nature of the UV space and human faces to fuse local fine-grained input image features with the global full-head textures. Extensive experiments demonstrate the effectiveness of our method, achieving high-quality 3D full-head modeling as well as real-time animation, thereby improving the realism of 3D talking avatars.",
+      "authors": [
+        "Shuling Zhao",
+        "Dan Xu"
+      ],
+      "published": "2026-01-19T06:56:58Z",
+      "updated": "2026-01-19T06:56:58Z",
+      "url": "https://arxiv.org/abs/2601.12770v1",
+      "query": "animatable gaussian avatar",
+      "score": 64.0,
+      "alt_queries": [
+        "gaussian talking head gaussian",
+        "gaussian talking head avatar",
+        "gaussian talking head talking",
+        "gaussian talking head face"
+      ]
+    },
+    {
+      "arxiv_id": "2601.10606v1",
+      "title": "RSATalker: Realistic Socially-Aware Talking Head Generation for Multi-Turn Conversation",
+      "summary": "Talking head generation is increasingly important in virtual reality (VR), especially for social scenarios involving multi-turn conversation. Existing approaches face notable limitations: mesh-based 3D methods can model dual-person dialogue but lack realistic textures, while large-model-based 2D methods produce natural appearances but incur prohibitive computational costs. Recently, 3D Gaussian Splatting (3DGS) based methods achieve efficient and realistic rendering but remain speaker-only and ignore social relationships. We introduce RSATalker, the first framework that leverages 3DGS for realistic and socially-aware talking head generation with support for multi-turn conversation. Our method first drives mesh-based 3D facial motion from speech, then binds 3D Gaussians to mesh facets to render high-fidelity 2D avatar videos. To capture interpersonal dynamics, we propose a socially-aware module that encodes social relationships, including blood and non-blood as well as equal and unequal, into high-level embeddings through a learnable query mechanism. We design a three-stage training paradigm and construct the RSATalker dataset with speech-mesh-image triplets annotated with social relationships. Extensive experiments demonstrate that RSATalker achieves state-of-the-art performance in both realism and social awareness. The code and dataset will be released.",
+      "authors": [
+        "Peng Chen",
+        "Xiaobao Wei",
+        "Yi Yang",
+        "Naiming Yao",
+        "Hui Chen",
+        "Feng Tian"
+      ],
+      "published": "2026-01-15T17:23:19Z",
+      "updated": "2026-01-15T17:23:19Z",
+      "url": "https://arxiv.org/abs/2601.10606v1",
+      "query": "3d gaussian splatting avatar",
+      "score": 58.0,
+      "alt_queries": [
+        "gaussian talking head gaussian",
+        "gaussian talking head splatting",
+        "gaussian talking head avatar",
+        "gaussian talking head talking",
+        "gaussian talking head face",
+        "gaussian talking head speech"
+      ]
+    },
+    {
+      "arxiv_id": "2601.10200v1",
+      "title": "ELITE: Efficient Gaussian Head Avatar from a Monocular Video via Learned Initialization and TEst-time Generative Adaptation",
+      "summary": "We introduce ELITE, an Efficient Gaussian head avatar synthesis from a monocular video via Learned Initialization and TEst-time generative adaptation. Prior works rely either on a 3D data prior or a 2D generative prior to compensate for missing visual cues in monocular videos. However, 3D data prior methods often struggle to generalize in-the-wild, while 2D generative prior methods are computationally heavy and prone to identity hallucination. We identify a complementary synergy between these two priors and design an efficient system that achieves high-fidelity animatable avatar synthesis with strong in-the-wild generalization. Specifically, we introduce a feed-forward Mesh2Gaussian Prior Model (MGPM) that enables fast initialization of a Gaussian avatar. To further bridge the domain gap at test time, we design a test-time generative adaptation stage, leveraging both real and synthetic images as supervision. Unlike previous full diffusion denoising strategies that are slow and hallucination-prone, we propose a rendering-guided single-step diffusion enhancer that restores missing visual details, grounded on Gaussian avatar renderings. Our experiments demonstrate that ELITE produces visually superior avatars to prior works, even for challenging expressions, while achieving 60x faster synthesis than the 2D generative prior method.",
+      "authors": [
+        "Kim Youwang",
+        "Lee Hyoseok",
+        "Subin Park",
+        "Gerard Pons-Moll",
+        "Tae-Hyun Oh"
+      ],
+      "published": "2026-01-15T08:57:49Z",
+      "updated": "2026-01-15T08:57:49Z",
+      "url": "https://arxiv.org/abs/2601.10200v1",
+      "query": "animatable gaussian avatar",
+      "score": 50.0
+    },
+    {
+      "arxiv_id": "2601.07603v2",
+      "title": "UIKA: Fast Universal Head Avatar from Pose-Free Images",
+      "summary": "We present UIKA, a feed-forward animatable Gaussian head model from an arbitrary number of unposed inputs, including a single image, multi-view captures, and smartphone-captured videos. Unlike the traditional avatar method, which requires a studio-level multi-view capture system and reconstructs a human-specific model through a long-time optimization process, we rethink the task through the lenses of model representation, network design, and data preparation. First, we introduce a UV-guided avatar modeling strategy, in which each input image is associated with a pixel-wise facial correspondence estimation. Such correspondence estimation allows us to reproject each valid pixel color from screen space to UV space, which is independent of camera pose and character expression. Furthermore, we design learnable UV tokens on which the attention mechanism can be applied at both the screen and UV levels. The learned UV tokens can be decoded into canonical Gaussian attributes using aggregated UV information from all input views. To train our large avatar model, we additionally prepare a large-scale, identity-rich synthetic training dataset. Our method significantly outperforms existing approaches in both monocular and multi-view settings. See more details in our project page: https://zijian-wu.github.io/uika-page/",
+      "authors": [
+        "Zijian Wu",
+        "Boyao Zhou",
+        "Liangxiao Hu",
+        "Hongyu Liu",
+        "Yuan Sun",
+        "Xuan Wang",
+        "Xun Cao",
+        "Yujun Shen",
+        "Hao Zhu"
+      ],
+      "published": "2026-01-12T14:53:56Z",
+      "updated": "2026-01-16T12:26:41Z",
+      "url": "https://arxiv.org/abs/2601.07603v2",
+      "query": "animatable gaussian avatar",
+      "score": 50.0
+    },
+    {
+      "arxiv_id": "2601.07518v1",
+      "title": "Mon3tr: Monocular 3D Telepresence with Pre-built Gaussian Avatars as Amortization",
+      "summary": "Immersive telepresence aims to transform human interaction in AR/VR applications by enabling lifelike full-body holographic representations for enhanced remote collaboration. However, existing systems rely on hardware-intensive multi-camera setups and demand high bandwidth for volumetric streaming, limiting their real-time performance on mobile devices. To overcome these challenges, we propose Mon3tr, a novel Monocular 3D telepresence framework that integrates 3D Gaussian splatting (3DGS) based parametric human modeling into telepresence for the first time. Mon3tr adopts an amortized computation strategy, dividing the process into a one-time offline multi-view reconstruction phase to build a user-specific avatar and a monocular online inference phase during live telepresence sessions. A single monocular RGB camera is used to capture body motions and facial expressions in real time to drive the 3DGS-based parametric human model, significantly reducing system complexity and cost. The extracted motion and appearance features are transmitted at < 0.2 Mbps over WebRTC's data channel, allowing robust adaptation to network fluctuations. On the receiver side, e.g., Meta Quest 3, we develop a lightweight 3DGS attribute deformation network to dynamically generate corrective 3DGS attribute adjustments on the pre-built avatar, synthesizing photorealistic motion and appearance at ~ 60 FPS. Extensive experiments demonstrate the state-of-the-art performance of our method, achieving a PSNR of > 28 dB for novel poses, an end-to-end latency of ~ 80 ms, and > 1000x bandwidth reduction compared to point-cloud streaming, while supporting real-time operation from monocular inputs across diverse scenarios. Our demos can be found at https://mon3tr3d.github.io.",
+      "authors": [
+        "Fangyu Lin",
+        "Yingdong Hu",
+        "Zhening Liu",
+        "Yufan Zhuang",
+        "Zehong Lin",
+        "Jun Zhang"
+      ],
+      "published": "2026-01-12T13:17:41Z",
+      "updated": "2026-01-12T13:17:41Z",
+      "url": "https://arxiv.org/abs/2601.07518v1",
+      "query": "3d gaussian splatting avatar",
+      "score": 58.0
+    },
+    {
+      "arxiv_id": "2601.05853v1",
+      "title": "LayerGS: Decomposition and Inpainting of Layered 3D Human Avatars via 2D Gaussian Splatting",
+      "summary": "We propose a novel framework for decomposing arbitrarily posed humans into animatable multi-layered 3D human avatars, separating the body and garments. Conventional single-layer reconstruction methods lock clothing to one identity, while prior multi-layer approaches struggle with occluded regions. We overcome both limitations by encoding each layer as a set of 2D Gaussians for accurate geometry and photorealistic rendering, and inpainting hidden regions with a pretrained 2D diffusion model via score-distillation sampling (SDS). Our three-stage training strategy first reconstructs the coarse canonical garment via single-layer reconstruction, followed by multi-layer training to jointly recover the inner-layer body and outer-layer garment details. Experiments on two 3D human benchmark datasets (4D-Dress, Thuman2.0) show that our approach achieves better rendering quality and layer decomposition and recomposition than the previous state-of-the-art, enabling realistic virtual try-on under novel viewpoints and poses, and advancing practical creation of high-fidelity 3D human assets for immersive applications. Our code is available at https://github.com/RockyXu66/LayerGS",
+      "authors": [
+        "Yinghan Xu",
+        "John Dingliana"
+      ],
+      "published": "2026-01-09T15:30:12Z",
+      "updated": "2026-01-09T15:30:12Z",
+      "url": "https://arxiv.org/abs/2601.05853v1",
+      "query": "3d gaussian splatting avatar",
+      "score": 50.0,
+      "alt_queries": [
+        "animatable gaussian avatar"
+      ]
+    },
+    {
+      "arxiv_id": "2601.05511v1",
+      "title": "GaussianSwap: Animatable Video Face Swapping with 3D Gaussian Splatting",
+      "summary": "We introduce GaussianSwap, a novel video face swapping framework that constructs a 3D Gaussian Splatting based face avatar from a target video while transferring identity from a source image to the avatar. Conventional video swapping frameworks are limited to generating facial representations in pixel-based formats. The resulting swapped faces exist merely as a set of unstructured pixels without any capacity for animation or interactive manipulation. Our work introduces a paradigm shift from conventional pixel-based video generation to the creation of high-fidelity avatar with swapped faces. The framework first preprocesses target video to extract FLAME parameters, camera poses and segmentation masks, and then rigs 3D Gaussian splats to the FLAME model across frames, enabling dynamic facial control. To ensure identity preserving, we propose an compound identity embedding constructed from three state-of-the-art face recognition models for avatar finetuning. Finally, we render the face-swapped avatar on the background frames to obtain the face-swapped video. Experimental results demonstrate that GaussianSwap achieves superior identity preservation, visual clarity and temporal consistency, while enabling previously unattainable interactive applications.",
+      "authors": [
+        "Xuan Cheng",
+        "Jiahao Rao",
+        "Chengyang Li",
+        "Wenhao Wang",
+        "Weilin Chen",
+        "Lvqing Yang"
+      ],
+      "published": "2026-01-09T03:39:29Z",
+      "updated": "2026-01-09T03:39:29Z",
+      "url": "https://arxiv.org/abs/2601.05511v1",
+      "query": "animatable gaussian avatar",
+      "score": 56.0
+    },
+    {
+      "arxiv_id": "2601.02098v1",
+      "title": "InpaintHuman: Reconstructing Occluded Humans with Multi-Scale UV Mapping and Identity-Preserving Diffusion Inpainting",
+      "summary": "Reconstructing complete and animatable 3D human avatars from monocular videos remains challenging, particularly under severe occlusions. While 3D Gaussian Splatting has enabled photorealistic human rendering, existing methods struggle with incomplete observations, often producing corrupted geometry and temporal inconsistencies. We present InpaintHuman, a novel method for generating high-fidelity, complete, and animatable avatars from occluded monocular videos. Our approach introduces two key innovations: (i) a multi-scale UV-parameterized representation with hierarchical coarse-to-fine feature interpolation, enabling robust reconstruction of occluded regions while preserving geometric details; and (ii) an identity-preserving diffusion inpainting module that integrates textual inversion with semantic-conditioned guidance for subject-specific, temporally coherent completion. Unlike SDS-based methods, our approach employs direct pixel-level supervision to ensure identity fidelity. Experiments on synthetic benchmarks (PeopleSnapshot, ZJU-MoCap) and real-world scenarios (OcMotion) demonstrate competitive performance with consistent improvements in reconstruction quality across diverse poses and viewpoints.",
+      "authors": [
+        "Jinlong Fan",
+        "Shanshan Zhao",
+        "Liang Zheng",
+        "Jing Zhang",
+        "Yuxiang Yang",
+        "Mingming Gong"
+      ],
+      "published": "2026-01-05T13:26:02Z",
+      "updated": "2026-01-05T13:26:02Z",
+      "url": "https://arxiv.org/abs/2601.02098v1",
+      "query": "animatable gaussian avatar",
+      "score": 50.0
+    },
+    {
+      "arxiv_id": "2601.01847v1",
+      "title": "ESGaussianFace: Emotional and Stylized Audio-Driven Facial Animation via 3D Gaussian Splatting",
+      "summary": "Most current audio-driven facial animation research primarily focuses on generating videos with neutral emotions. While some studies have addressed the generation of facial videos driven by emotional audio, efficiently generating high-quality talking head videos that integrate both emotional expressions and style features remains a significant challenge. In this paper, we propose ESGaussianFace, an innovative framework for emotional and stylized audio-driven facial animation. Our approach leverages 3D Gaussian Splatting to reconstruct 3D scenes and render videos, ensuring efficient generation of 3D consistent results. We propose an emotion-audio-guided spatial attention method that effectively integrates emotion features with audio content features. Through emotion-guided attention, the model is able to reconstruct facial details across different emotional states more accurately. To achieve emotional and stylized deformations of the 3D Gaussian points through emotion and style features, we introduce two 3D Gaussian deformation predictors. Futhermore, we propose a multi-stage training strategy, enabling the step-by-step learning of the character's lip movements, emotional variations, and style features. Our generated results exhibit high efficiency, high quality, and 3D consistency. Extensive experimental results demonstrate that our method outperforms existing state-of-the-art techniques in terms of lip movement accuracy, expression variation, and style feature expressiveness.",
+      "authors": [
+        "Chuhang Ma",
+        "Shuai Tan",
+        "Ye Pan",
+        "Jiaolong Yang",
+        "Xin Tong"
+      ],
+      "published": "2026-01-05T07:19:38Z",
+      "updated": "2026-01-05T07:19:38Z",
+      "url": "https://arxiv.org/abs/2601.01847v1",
+      "query": "audio driven gaussian talking head",
+      "score": 64.0,
+      "alt_queries": [
+        "gaussian talking head audio-driven",
+        "gaussian talking head gaussian",
+        "gaussian talking head splatting",
+        "gaussian talking head talking"
+      ]
+    },
+    {
+      "arxiv_id": "2601.01749v1",
+      "title": "MANGO:Natural Multi-speaker 3D Talking Head Generation via 2D-Lifted Enhancement",
+      "summary": "Current audio-driven 3D head generation methods mainly focus on single-speaker scenarios, lacking natural, bidirectional listen-and-speak interaction. Achieving seamless conversational behavior, where speaking and listening states transition fluidly remains a key challenge. Existing 3D conversational avatar approaches rely on error-prone pseudo-3D labels that fail to capture fine-grained facial dynamics. To address these limitations, we introduce a novel two-stage framework MANGO, which leveraging pure image-level supervision by alternately training to mitigate the noise introduced by pseudo-3D labels, thereby achieving better alignment with real-world conversational behaviors. Specifically, in the first stage, a diffusion-based transformer with a dual-audio interaction module models natural 3D motion from multi-speaker audio. In the second stage, we use a fast 3D Gaussian Renderer to generate high-fidelity images and provide 2D-level photometric supervision for the 3D motions through alternate training. Additionally, we introduce MANGO-Dialog, a high-quality dataset with over 50 hours of aligned 2D-3D conversational data across 500+ identities. Extensive experiments demonstrate that our method achieves exceptional accuracy and realism in modeling two-person 3D dialogue motion, significantly advancing the fidelity and controllability of audio-driven talking heads.",
+      "authors": [
+        "Lei Zhu",
+        "Lijian Lin",
+        "Ye Zhu",
+        "Jiahao Wu",
+        "Xuehan Hou",
+        "Yu Li",
+        "Yunfei Liu",
+        "Jie Chen"
+      ],
+      "published": "2026-01-05T02:59:49Z",
+      "updated": "2026-01-05T02:59:49Z",
+      "url": "https://arxiv.org/abs/2601.01749v1",
+      "query": "audio driven gaussian talking head",
+      "score": 64.0,
+      "alt_queries": [
+        "gaussian talking head audio-driven",
+        "gaussian talking head gaussian",
+        "gaussian talking head avatar",
+        "gaussian talking head talking"
+      ]
+    },
+    {
+      "arxiv_id": "2512.21099v1",
+      "title": "TexAvatars : Hybrid Texel-3D Representations for Stable Rigging of Photorealistic Gaussian Head Avatars",
+      "summary": "Constructing drivable and photorealistic 3D head avatars has become a central task in AR/XR, enabling immersive and expressive user experiences. With the emergence of high-fidelity and efficient representations such as 3D Gaussians, recent works have pushed toward ultra-detailed head avatars. Existing approaches typically fall into two categories: rule-based analytic rigging or neural network-based deformation fields. While effective in constrained settings, both approaches often fail to generalize to unseen expressions and poses, particularly in extreme reenactment scenarios. Other methods constrain Gaussians to the global texel space of 3DMMs to reduce rendering complexity. However, these texel-based avatars tend to underutilize the underlying mesh structure. They apply minimal analytic deformation and rely heavily on neural regressors and heuristic regularization in UV space, which weakens geometric consistency and limits extrapolation to complex, out-of-distribution deformations. To address these limitations, we introduce TexAvatars, a hybrid avatar representation that combines the explicit geometric grounding of analytic rigging with the spatial continuity of texel space. Our approach predicts local geometric attributes in UV space via CNNs, but drives 3D deformation through mesh-aware Jacobians, enabling smooth and semantically meaningful transitions across triangle boundaries. This hybrid design separates semantic modeling from geometric control, resulting in improved generalization, interpretability, and stability. Furthermore, TexAvatars captures fine-grained expression effects, including muscle-induced wrinkles, glabellar lines, and realistic mouth cavity geometry, with high fidelity. Our method achieves state-of-the-art performance under extreme pose and expression variations, demonstrating strong generalization in challenging head reenactment settings.",
+      "authors": [
+        "Jaeseong Lee",
+        "Junyeong Ahn",
+        "Taewoong Kang",
+        "Jaegul Choo"
+      ],
+      "published": "2025-12-24T10:50:04Z",
+      "updated": "2025-12-24T10:50:04Z",
+      "url": "https://arxiv.org/abs/2512.21099v1",
+      "query": "gaussian avatar reenactment",
+      "score": 50.0
+    },
+    {
+      "arxiv_id": "2512.17717v1",
+      "title": "FlexAvatar: Flexible Large Reconstruction Model for Animatable Gaussian Head Avatars with Detailed Deformation",
+      "summary": "We present FlexAvatar, a flexible large reconstruction model for high-fidelity 3D head avatars with detailed dynamic deformation from single or sparse images, without requiring camera poses or expression labels. It leverages a transformer-based reconstruction model with structured head query tokens as canonical anchor to aggregate flexible input-number-agnostic, camera-pose-free and expression-free inputs into a robust canonical 3D representation. For detailed dynamic deformation, we introduce a lightweight UNet decoder conditioned on UV-space position maps, which can produce detailed expression-dependent deformations in real time. To better capture rare but critical expressions like wrinkles and bared teeth, we also adopt a data distribution adjustment strategy during training to balance the distribution of these expressions in the training set. Moreover, a lightweight 10-second refinement can further enhances identity-specific details in extreme identities without affecting deformation quality. Extensive experiments demonstrate that our FlexAvatar achieves superior 3D consistency, detailed dynamic realism compared with previous methods, providing a practical solution for animatable 3D avatar creation.",
+      "authors": [
+        "Cheng Peng",
+        "Zhuo Su",
+        "Liao Wang",
+        "Chen Guo",
+        "Zhaohu Li",
+        "Chengjiang Long",
+        "Zheng Lv",
+        "Jingxiang Sun",
+        "Chenyangguang Zhang",
+        "Yebin Liu"
+      ],
+      "published": "2025-12-19T15:51:44Z",
+      "updated": "2025-12-19T15:51:44Z",
+      "url": "https://arxiv.org/abs/2512.17717v1",
+      "query": "animatable gaussian avatar",
+      "score": 50.0
+    },
+    {
+      "arxiv_id": "2512.14677v1",
+      "title": "VASA-3D: Lifelike Audio-Driven Gaussian Head Avatars from a Single Image",
+      "summary": "We propose VASA-3D, an audio-driven, single-shot 3D head avatar generator. This research tackles two major challenges: capturing the subtle expression details present in real human faces, and reconstructing an intricate 3D head avatar from a single portrait image. To accurately model expression details, VASA-3D leverages the motion latent of VASA-1, a method that yields exceptional realism and vividness in 2D talking heads. A critical element of our work is translating this motion latent to 3D, which is accomplished by devising a 3D head model that is conditioned on the motion latent. Customization of this model to a single image is achieved through an optimization framework that employs numerous video frames of the reference head synthesized from the input image. The optimization takes various training losses robust to artifacts and limited pose coverage in the generated training data. Our experiment shows that VASA-3D produces realistic 3D talking heads that cannot be achieved by prior art, and it supports the online generation of 512x512 free-viewpoint videos at up to 75 FPS, facilitating more immersive engagements with lifelike 3D avatars.",
+      "authors": [
+        "Sicheng Xu",
+        "Guojun Chen",
+        "Jiaolong Yang",
+        "Yizhong Zhang",
+        "Yu Deng",
+        "Steve Lin",
+        "Baining Guo"
+      ],
+      "published": "2025-12-16T18:44:00Z",
+      "updated": "2025-12-16T18:44:00Z",
+      "url": "https://arxiv.org/abs/2512.14677v1",
+      "query": "audio driven gaussian talking head",
+      "score": 64.0,
+      "alt_queries": [
+        "gaussian talking head audio-driven",
+        "gaussian talking head gaussian",
+        "gaussian talking head avatar",
+        "gaussian talking head talking",
+        "gaussian talking head face"
+      ]
+    },
+    {
+      "arxiv_id": "2512.10939v1",
+      "title": "GaussianHeadTalk: Wobble-Free 3D Talking Heads with Audio Driven Gaussian Splatting",
+      "summary": "Speech-driven talking heads have recently emerged and enable interactive avatars. However, real-world applications are limited, as current methods achieve high visual fidelity but slow or fast yet temporally unstable. Diffusion methods provide realistic image generation, yet struggle with oneshot settings. Gaussian Splatting approaches are real-time, yet inaccuracies in facial tracking, or inconsistent Gaussian mappings, lead to unstable outputs and video artifacts that are detrimental to realistic use cases. We address this problem by mapping Gaussian Splatting using 3D Morphable Models to generate person-specific avatars. We introduce transformer-based prediction of model parameters, directly from audio, to drive temporal consistency. From monocular video and independent audio speech inputs, our method enables generation of real-time talking head videos where we report competitive quantitative and qualitative performance.",
+      "authors": [
+        "Madhav Agarwal",
+        "Mingtian Zhang",
+        "Laura Sevilla-Lara",
+        "Steven McDonagh"
+      ],
+      "published": "2025-12-11T18:59:02Z",
+      "updated": "2025-12-11T18:59:02Z",
+      "url": "https://arxiv.org/abs/2512.10939v1",
+      "query": "audio driven gaussian talking head",
+      "score": 72.0,
+      "alt_queries": [
+        "gaussian talking head audio-driven",
+        "gaussian talking head gaussian",
+        "gaussian talking head splatting",
+        "gaussian talking head avatar",
+        "gaussian talking head talking",
+        "gaussian talking head speech"
+      ]
+    },
+    {
+      "arxiv_id": "2512.05991v2",
+      "title": "EmoDiffTalk:Emotion-aware Diffusion for Editable 3D Gaussian Talking Head",
+      "summary": "Recent photo-realistic 3D talking head via 3D Gaussian Splatting still has significant shortcoming in emotional expression manipulation, especially for fine-grained and expansive dynamics emotional editing using multi-modal control. This paper introduces a new editable 3D Gaussian talking head, i.e. EmoDiffTalk. Our key idea is a novel Emotion-aware Gaussian Diffusion, which includes an action unit (AU) prompt Gaussian diffusion process for fine-grained facial animator, and moreover an accurate text-to-AU emotion controller to provide accurate and expansive dynamic emotional editing using text input. Experiments on public EmoTalk3D and RenderMe-360 datasets demonstrate superior emotional subtlety, lip-sync fidelity, and controllability of our EmoDiffTalk over previous works, establishing a principled pathway toward high-quality, diffusion-driven, multimodal editable 3D talking-head synthesis. To our best knowledge, our EmoDiffTalk is one of the first few 3D Gaussian Splatting talking-head generation framework, especially supporting continuous, multimodal emotional editing within the AU-based expression space.",
+      "authors": [
+        "Chang Liu",
+        "Tianjiao Jing",
+        "Chengcheng Ma",
+        "Xuanqi Zhou",
+        "Zhengxuan Lian",
+        "Qin Jin",
+        "Hongliang Yuan",
+        "Shi-Sheng Huang"
+      ],
+      "published": "2025-11-30T16:28:19Z",
+      "updated": "2025-12-10T19:56:51Z",
+      "url": "https://arxiv.org/abs/2512.05991v2",
+      "query": "gaussian talking head gaussian",
+      "score": 56.0,
+      "alt_queries": [
+        "gaussian talking head splatting",
+        "gaussian talking head talking"
+      ]
+    },
+    {
+      "arxiv_id": "2510.05488v1",
+      "title": "ArchitectHead: Continuous Level of Detail Control for 3D Gaussian Head Avatars",
+      "summary": "3D Gaussian Splatting (3DGS) has enabled photorealistic and real-time rendering of 3D head avatars. Existing 3DGS-based avatars typically rely on tens of thousands of 3D Gaussian points (Gaussians), with the number of Gaussians fixed after training. However, many practical applications require adjustable levels of detail (LOD) to balance rendering efficiency and visual quality. In this work, we propose \"ArchitectHead\", the first framework for creating 3D Gaussian head avatars that support continuous control over LOD. Our key idea is to parameterize the Gaussians in a 2D UV feature space and propose a UV feature field composed of multi-level learnable feature maps to encode their latent features. A lightweight neural network-based decoder then transforms these latent features into 3D Gaussian attributes for rendering. ArchitectHead controls the number of Gaussians by dynamically resampling feature maps from the UV feature field at the desired resolutions. This method enables efficient and continuous control of LOD without retraining. Experimental results show that ArchitectHead achieves state-of-the-art (SOTA) quality in self and cross-identity reenactment tasks at the highest LOD, while maintaining near SOTA performance at lower LODs. At the lowest LOD, our method uses only 6.2\\% of the Gaussians while the quality degrades moderately (L1 Loss +7.9\\%, PSNR --0.97\\%, SSIM --0.6\\%, LPIPS Loss +24.1\\%), and the rendering speed nearly doubles.",
+      "authors": [
+        "Peizhi Yan",
+        "Rabab Ward",
+        "Qiang Tang",
+        "Shan Du"
+      ],
+      "published": "2025-10-07T01:08:28Z",
+      "updated": "2025-10-07T01:08:28Z",
+      "url": "https://arxiv.org/abs/2510.05488v1",
+      "query": "gaussian avatar reenactment",
+      "score": 58.0
+    },
+    {
+      "arxiv_id": "2510.08587v1",
+      "title": "EGSTalker: Real-Time Audio-Driven Talking Head Generation with Efficient Gaussian Deformation",
+      "summary": "This paper presents EGSTalker, a real-time audio-driven talking head generation framework based on 3D Gaussian Splatting (3DGS). Designed to enhance both speed and visual fidelity, EGSTalker requires only 3-5 minutes of training video to synthesize high-quality facial animations. The framework comprises two key stages: static Gaussian initialization and audio-driven deformation. In the first stage, a multi-resolution hash triplane and a Kolmogorov-Arnold Network (KAN) are used to extract spatial features and construct a compact 3D Gaussian representation. In the second stage, we propose an Efficient Spatial-Audio Attention (ESAA) module to fuse audio and spatial cues, while KAN predicts the corresponding Gaussian deformations. Extensive experiments demonstrate that EGSTalker achieves rendering quality and lip-sync accuracy comparable to state-of-the-art methods, while significantly outperforming them in inference speed. These results highlight EGSTalker's potential for real-time multimedia applications.",
+      "authors": [
+        "Tianheng Zhu",
+        "Yinfeng Yu",
+        "Liejun Wang",
+        "Fuchun Sun",
+        "Wendong Zheng"
+      ],
+      "published": "2025-10-03T14:31:20Z",
+      "updated": "2025-10-03T14:31:20Z",
+      "url": "https://arxiv.org/abs/2510.08587v1",
+      "query": "audio driven gaussian talking head",
+      "score": 72.0,
+      "alt_queries": [
+        "gaussian talking head audio-driven",
+        "gaussian talking head splatting",
+        "gaussian talking head speech"
+      ]
+    },
+    {
+      "arxiv_id": "2509.16922v1",
+      "title": "PGSTalker: Real-Time Audio-Driven Talking Head Generation via 3D Gaussian Splatting with Pixel-Aware Density Control",
+      "summary": "Audio-driven talking head generation is crucial for applications in virtual reality, digital avatars, and film production. While NeRF-based methods enable high-fidelity reconstruction, they suffer from low rendering efficiency and suboptimal audio-visual synchronization. This work presents PGSTalker, a real-time audio-driven talking head synthesis framework based on 3D Gaussian Splatting (3DGS). To improve rendering performance, we propose a pixel-aware density control strategy that adaptively allocates point density, enhancing detail in dynamic facial regions while reducing redundancy elsewhere. Additionally, we introduce a lightweight Multimodal Gated Fusion Module to effectively fuse audio and spatial features, thereby improving the accuracy of Gaussian deformation prediction. Extensive experiments on public datasets demonstrate that PGSTalker outperforms existing NeRF- and 3DGS-based approaches in rendering quality, lip-sync precision, and inference speed. Our method exhibits strong generalization capabilities and practical potential for real-world deployment.",
+      "authors": [
+        "Tianheng Zhu",
+        "Yinfeng Yu",
+        "Liejun Wang",
+        "Fuchun Sun",
+        "Wendong Zheng"
+      ],
+      "published": "2025-09-21T05:01:54Z",
+      "updated": "2025-09-21T05:01:54Z",
+      "url": "https://arxiv.org/abs/2509.16922v1",
+      "query": "audio driven gaussian talking head",
+      "score": 72.0,
+      "alt_queries": [
+        "gaussian talking head audio-driven",
+        "gaussian talking head splatting",
+        "gaussian talking head avatar"
+      ]
+    },
+    {
+      "arxiv_id": "2509.05582v2",
+      "title": "Reconstruction and Reenactment Separated Method for Realistic Gaussian Head",
+      "summary": "In this paper, we explore a reconstruction and reenactment separated framework for 3D Gaussians head, which requires only a single portrait image as input to generate controllable avatar. Specifically, we developed a large-scale one-shot gaussian head generator built upon WebSSL and employed a two-stage training approach that significantly enhances the capabilities of generalization and high-frequency texture reconstruction. During inference, an ultra-lightweight gaussian avatar driven by control signals enables high frame-rate rendering, achieving 90 FPS at a resolution of 512x512. We further demonstrate that the proposed framework follows the scaling law, whereby increasing the parameter scale of the reconstruction module leads to improved performance. Moreover, thanks to the separation design, driving efficiency remains unaffected. Finally, extensive quantitative and qualitative experiments validate that our approach outperforms current state-of-the-art methods.",
+      "authors": [
+        "Zhiling Ye",
+        "Cong Zhou",
+        "Xiubao Zhang",
+        "Haifeng Shen",
+        "Weihong Deng",
+        "Quan Lu"
+      ],
+      "published": "2025-09-06T03:58:53Z",
+      "updated": "2025-09-17T14:08:26Z",
+      "url": "https://arxiv.org/abs/2509.05582v2",
+      "query": "gaussian avatar reenactment",
+      "score": 56.0
+    },
+    {
+      "arxiv_id": "2508.18389v2",
+      "title": "FastAvatar: Instant 3D Gaussian Splatting for Faces from Single Unconstrained Poses",
+      "summary": "We present FastAvatar, a fast and robust algorithm for single-image 3D face reconstruction using 3D Gaussian Splatting (3DGS). Given a single input image from an arbitrary pose, FastAvatar recovers a high-quality, full-head 3DGS avatar in approximately 3 seconds on a single NVIDIA A100 GPU. We use a two-stage design: a feed-forward encoder-decoder predicts coarse face geometry by regressing Gaussian structure from a pose-invariant identity embedding, and a lightweight test-time refinement stage then optimizes the appearance parameters for photorealistic rendering. This hybrid strategy combines the speed and stability of direct prediction with the accuracy of optimization, enabling strong identity preservation even under extreme input poses. FastAvatar achieves state-of-the-art reconstruction quality (24.01 dB PSNR, 0.91 SSIM) while running over 600x faster than existing per-subject optimization methods (e.g., FlashAvatar, GaussianAvatars, GASP). Once reconstructed, our avatars support photorealistic novel-view synthesis and FLAME-guided expression animation, enabling controllable reenactment from a single image. By jointly offering high fidelity, robustness to pose, and rapid reconstruction, FastAvatar significantly broadens the applicability of 3DGS-based facial avatars.",
+      "authors": [
+        "Hao Liang",
+        "Zhixuan Ge",
+        "Soumendu Majee",
+        "Ashish Tiwari",
+        "G. M. Dilshan Godaliyadda",
+        "Ashok Veeraraghavan",
+        "Guha Balakrishnan"
+      ],
+      "published": "2025-08-25T18:29:05Z",
+      "updated": "2025-11-25T20:15:13Z",
+      "url": "https://arxiv.org/abs/2508.18389v2",
+      "query": "gaussian avatar reenactment",
+      "score": 56.0
+    },
+    {
+      "arxiv_id": "2508.14449v1",
+      "title": "D^3-Talker: Dual-Branch Decoupled Deformation Fields for Few-Shot 3D Talking Head Synthesis",
+      "summary": "A key challenge in 3D talking head synthesis lies in the reliance on a long-duration talking head video to train a new model for each target identity from scratch. Recent methods have attempted to address this issue by extracting general features from audio through pre-training models. However, since audio contains information irrelevant to lip motion, existing approaches typically struggle to map the given audio to realistic lip behaviors in the target face when trained on only a few frames, causing poor lip synchronization and talking head image quality. This paper proposes D^3-Talker, a novel approach that constructs a static 3D Gaussian attribute field and employs audio and Facial Motion signals to independently control two distinct Gaussian attribute deformation fields, effectively decoupling the predictions of general and personalized deformations. We design a novel similarity contrastive loss function during pre-training to achieve more thorough decoupling. Furthermore, we integrate a Coarse-to-Fine module to refine the rendered images, alleviating blurriness caused by head movements and enhancing overall image quality. Extensive experiments demonstrate that D^3-Talker outperforms state-of-the-art methods in both high-fidelity rendering and accurate audio-lip synchronization with limited training data. Our code will be provided upon acceptance.",
+      "authors": [
+        "Yuhang Guo",
+        "Kaijun Deng",
+        "Siyang Song",
+        "Jindong Xie",
+        "Wenhui Ma",
+        "Linlin Shen"
+      ],
+      "published": "2025-08-20T06:12:33Z",
+      "updated": "2025-08-20T06:12:33Z",
+      "url": "https://arxiv.org/abs/2508.14449v1",
+      "query": "gaussian talking head face",
+      "score": 58.0
+    },
+    {
+      "arxiv_id": "2506.21513v2",
+      "title": "GGTalker: Talking Head Systhesis with Generalizable Gaussian Priors and Identity-Specific Adaptation",
+      "summary": "Creating high-quality, generalizable speech-driven 3D talking heads remains a persistent challenge. Previous methods achieve satisfactory results for fixed viewpoints and small-scale audio variations, but they struggle with large head rotations and out-of-distribution (OOD) audio. Moreover, they are constrained by the need for time-consuming, identity-specific training. We believe the core issue lies in the lack of sufficient 3D priors, which limits the extrapolation capabilities of synthesized talking heads. To address this, we propose GGTalker, which synthesizes talking heads through a combination of generalizable priors and identity-specific adaptation. We introduce a two-stage Prior-Adaptation training strategy to learn Gaussian head priors and adapt to individual characteristics. We train Audio-Expression and Expression-Visual priors to capture the universal patterns of lip movements and the general distribution of head textures. During the Customized Adaptation, individual speaking styles and texture details are precisely modeled. Additionally, we introduce a color MLP to generate fine-grained, motion-aligned textures and a Body Inpainter to blend rendered results with the background, producing indistinguishable, photorealistic video frames. Comprehensive experiments show that GGTalker achieves state-of-the-art performance in rendering quality, 3D consistency, lip-sync accuracy, and training efficiency.",
+      "authors": [
+        "Wentao Hu",
+        "Shunkai Li",
+        "Ziqiao Peng",
+        "Haoxian Zhang",
+        "Fan Shi",
+        "Xiaoqiang Liu",
+        "Pengfei Wan",
+        "Di Zhang",
+        "Hui Tian"
+      ],
+      "published": "2025-06-26T17:37:18Z",
+      "updated": "2025-07-10T06:36:05Z",
+      "url": "https://arxiv.org/abs/2506.21513v2",
+      "query": "audio driven gaussian talking head",
+      "score": 64.0,
+      "alt_queries": [
+        "gaussian talking head audio-driven",
+        "gaussian talking head speech"
+      ]
+    },
+    {
+      "arxiv_id": "2506.14742v1",
+      "title": "SyncTalk++: High-Fidelity and Efficient Synchronized Talking Heads Synthesis Using Gaussian Splatting",
+      "summary": "Achieving high synchronization in the synthesis of realistic, speech-driven talking head videos presents a significant challenge. A lifelike talking head requires synchronized coordination of subject identity, lip movements, facial expressions, and head poses. The absence of these synchronizations is a fundamental flaw, leading to unrealistic results. To address the critical issue of synchronization, identified as the ''devil'' in creating realistic talking heads, we introduce SyncTalk++, which features a Dynamic Portrait Renderer with Gaussian Splatting to ensure consistent subject identity preservation and a Face-Sync Controller that aligns lip movements with speech while innovatively using a 3D facial blendshape model to reconstruct accurate facial expressions. To ensure natural head movements, we propose a Head-Sync Stabilizer, which optimizes head poses for greater stability. Additionally, SyncTalk++ enhances robustness to out-of-distribution (OOD) audio by incorporating an Expression Generator and a Torso Restorer, which generate speech-matched facial expressions and seamless torso regions. Our approach maintains consistency and continuity in visual details across frames and significantly improves rendering speed and quality, achieving up to 101 frames per second. Extensive experiments and user studies demonstrate that SyncTalk++ outperforms state-of-the-art methods in synchronization and realism. We recommend watching the supplementary video: https://ziqiaopeng.github.io/synctalk++.",
+      "authors": [
+        "Ziqiao Peng",
+        "Wentao Hu",
+        "Junyuan Ma",
+        "Xiangyu Zhu",
+        "Xiaomei Zhang",
+        "Hao Zhao",
+        "Hui Tian",
+        "Jun He",
+        "Hongyan Liu",
+        "Zhaoxin Fan"
+      ],
+      "published": "2025-06-17T17:22:12Z",
+      "updated": "2025-06-17T17:22:12Z",
+      "url": "https://arxiv.org/abs/2506.14742v1",
+      "query": "audio driven gaussian talking head",
+      "score": 64.0,
+      "alt_queries": [
+        "gaussian talking head audio-driven",
+        "gaussian talking head splatting",
+        "gaussian talking head face",
+        "gaussian talking head speech"
+      ]
+    },
+    {
+      "arxiv_id": "2506.06271v2",
+      "title": "BecomingLit: Relightable Gaussian Avatars with Hybrid Neural Shading",
+      "summary": "We introduce BecomingLit, a novel method for reconstructing relightable, high-resolution head avatars that can be rendered from novel viewpoints at interactive rates. Therefore, we propose a new low-cost light stage capture setup, tailored specifically towards capturing faces. Using this setup, we collect a novel dataset consisting of diverse multi-view sequences of numerous subjects under varying illumination conditions and facial expressions. By leveraging our new dataset, we introduce a new relightable avatar representation based on 3D Gaussian primitives that we animate with a parametric head model and an expression-dependent dynamics module. We propose a new hybrid neural shading approach, combining a neural diffuse BRDF with an analytical specular term. Our method reconstructs disentangled materials from our dynamic light stage recordings and enables all-frequency relighting of our avatars with both point lights and environment maps. In addition, our avatars can easily be animated and controlled from monocular videos. We validate our approach in extensive experiments on our dataset, where we consistently outperform existing state-of-the-art methods in relighting and reenactment by a significant margin.",
+      "authors": [
+        "Jonathan Schmidt",
+        "Simon Giebenhain",
+        "Matthias Niessner"
+      ],
+      "published": "2025-06-06T17:53:58Z",
+      "updated": "2025-11-14T17:10:57Z",
+      "url": "https://arxiv.org/abs/2506.06271v2",
+      "query": "gaussian avatar reenactment",
+      "score": 50.0
+    },
+    {
+      "arxiv_id": "2505.01928v1",
+      "title": "GenSync: A Generalized Talking Head Framework for Audio-driven Multi-Subject Lip-Sync using 3D Gaussian Splatting",
+      "summary": "We introduce GenSync, a novel framework for multi-identity lip-synced video synthesis using 3D Gaussian Splatting. Unlike most existing 3D methods that require training a new model for each identity , GenSync learns a unified network that synthesizes lip-synced videos for multiple speakers. By incorporating a Disentanglement Module, our approach separates identity-specific features from audio representations, enabling efficient multi-identity video synthesis. This design reduces computational overhead and achieves 6.8x faster training compared to state-of-the-art models, while maintaining high lip-sync accuracy and visual quality.",
+      "authors": [
+        "Anushka Agarwal",
+        "Muhammad Yusuf Hassan",
+        "Talha Chafekar"
+      ],
+      "published": "2025-05-03T21:44:59Z",
+      "updated": "2025-05-03T21:44:59Z",
+      "url": "https://arxiv.org/abs/2505.01928v1",
+      "query": "audio driven gaussian talking head",
+      "score": 64.0,
+      "alt_queries": [
+        "gaussian talking head audio-driven",
+        "gaussian talking head splatting"
+      ]
+    },
+    {
+      "arxiv_id": "2504.19165v2",
+      "title": "IM-Portrait: Learning 3D-aware Video Diffusion for Photorealistic Talking Heads from Monocular Videos",
+      "summary": "We propose a novel 3D-aware diffusion-based method for generating photorealistic talking head videos directly from a single identity image and explicit control signals (e.g., expressions). Our method generates Multiplane Images (MPIs) that ensure geometric consistency, making them ideal for immersive viewing experiences like binocular videos for VR headsets. Unlike existing methods that often require a separate stage or joint optimization to reconstruct a 3D representation (such as NeRF or 3D Gaussians), our approach directly generates the final output through a single denoising process, eliminating the need for post-processing steps to render novel views efficiently. To effectively learn from monocular videos, we introduce a training mechanism that reconstructs the output MPI randomly in either the target or the reference camera space. This approach enables the model to simultaneously learn sharp image details and underlying 3D information. Extensive experiments demonstrate the effectiveness of our method, which achieves competitive avatar quality and novel-view rendering capabilities, even without explicit 3D reconstruction or high-quality multi-view training data.",
+      "authors": [
+        "Yuan Li",
+        "Ziqian Bai",
+        "Feitong Tan",
+        "Zhaopeng Cui",
+        "Sean Fanello",
+        "Yinda Zhang"
+      ],
+      "published": "2025-04-27T08:56:02Z",
+      "updated": "2025-04-29T09:05:05Z",
+      "url": "https://arxiv.org/abs/2504.19165v2",
+      "query": "gaussian talking head avatar",
+      "score": 50.0
+    },
+    {
+      "arxiv_id": "2504.07949v1",
+      "title": "InteractAvatar: Modeling Hand-Face Interaction in Photorealistic Avatars with Deformable Gaussians",
+      "summary": "With the rising interest from the community in digital avatars coupled with the importance of expressions and gestures in communication, modeling natural avatar behavior remains an important challenge across many industries such as teleconferencing, gaming, and AR/VR. Human hands are the primary tool for interacting with the environment and essential for realistic human behavior modeling, yet existing 3D hand and head avatar models often overlook the crucial aspect of hand-body interactions, such as between hand and face. We present InteracttAvatar, the first model to faithfully capture the photorealistic appearance of dynamic hand and non-rigid hand-face interactions. Our novel Dynamic Gaussian Hand model, combining template model and 3D Gaussian Splatting as well as a dynamic refinement module, captures pose-dependent change, e.g. the fine wrinkles and complex shadows that occur during articulation. Importantly, our hand-face interaction module models the subtle geometry and appearance dynamics that underlie common gestures. Through experiments of novel view synthesis, self reenactment and cross-identity reenactment, we demonstrate that InteracttAvatar can reconstruct hand and hand-face interactions from monocular or multiview videos with high-fidelity details and be animated with novel poses.",
+      "authors": [
+        "Kefan Chen",
+        "Sergiu Oprea",
+        "Justin Theiss",
+        "Sreyas Mohan",
+        "Srinath Sridhar",
+        "Aayush Prakash"
+      ],
+      "published": "2025-04-10T17:55:43Z",
+      "updated": "2025-04-10T17:55:43Z",
+      "url": "https://arxiv.org/abs/2504.07949v1",
+      "query": "gaussian avatar reenactment",
+      "score": 50.0
+    },
+    {
+      "arxiv_id": "2504.00665v1",
+      "title": "Monocular and Generalizable Gaussian Talking Head Animation",
+      "summary": "In this work, we introduce Monocular and Generalizable Gaussian Talking Head Animation (MGGTalk), which requires monocular datasets and generalizes to unseen identities without personalized re-training. Compared with previous 3D Gaussian Splatting (3DGS) methods that requires elusive multi-view datasets or tedious personalized learning/inference, MGGtalk enables more practical and broader applications. However, in the absence of multi-view and personalized training data, the incompleteness of geometric and appearance information poses a significant challenge. To address these challenges, MGGTalk explores depth information to enhance geometric and facial symmetry characteristics to supplement both geometric and appearance features. Initially, based on the pixel-wise geometric information obtained from depth estimation, we incorporate symmetry operations and point cloud filtering techniques to ensure a complete and precise position parameter for 3DGS. Subsequently, we adopt a two-stage strategy with symmetric priors for predicting the remaining 3DGS parameters. We begin by predicting Gaussian parameters for the visible facial regions of the source image. These parameters are subsequently utilized to improve the prediction of Gaussian parameters for the non-visible regions. Extensive experiments demonstrate that MGGTalk surpasses previous state-of-the-art methods, achieving superior performance across various metrics.",
+      "authors": [
+        "Shengjie Gong",
+        "Haojie Li",
+        "Jiapeng Tang",
+        "Dongming Hu",
+        "Shuangping Huang",
+        "Hao Chen",
+        "Tianshui Chen",
+        "Zhuoman Liu"
+      ],
+      "published": "2025-04-01T11:16:52Z",
+      "updated": "2025-04-01T11:16:52Z",
+      "url": "https://arxiv.org/abs/2504.00665v1",
+      "query": "gaussian talking head splatting",
+      "score": 56.0
+    },
+    {
+      "arxiv_id": "2503.22605v2",
+      "title": "Audio-Plane: Audio Factorization Plane Gaussian Splatting for Real-Time Talking Head Synthesis",
+      "summary": "Talking head synthesis has emerged as a prominent research topic in computer graphics and multimedia, yet most existing methods often struggle to strike a balance between generation quality and computational efficiency, particularly under real-time constraints. In this paper, we propose a novel framework that integrates Gaussian Splatting with a structured Audio Factorization Plane (Audio-Plane) to enable high-quality, audio-synchronized, and real-time talking head generation. For modeling a dynamic talking head, a 4D volume representation, which consists of three axes in 3D space and one temporal axis aligned with audio progression, is typically required. However, directly storing and processing a dense 4D grid is impractical due to the high memory and computation cost, and lack of scalability for longer durations. We address this challenge by decomposing the 4D volume representation into a set of audio-independent spatial planes and audio-dependent planes, forming a compact and interpretable representation for talking head modeling that we refer to as the Audio-Plane. This factorized design allows for efficient and fine-grained audio-aware spatial encoding, and significantly enhances the model's ability to capture complex lip dynamics driven by speech signals. To further improve region-specific motion modeling, we introduce an audio-guided saliency splatting mechanism based on region-aware modulation, which adaptively emphasizes highly dynamic regions such as the mouth area. This allows the model to focus its learning capacity on where it matters most for accurate speech-driven animation. Extensive experiments on both the self-driven and the cross-driven settings demonstrate that our method achieves state-of-the-art visual quality, precise audio-lip synchronization, and real-time performance, outperforming prior approaches across both 2D- and 3D-based paradigms.",
+      "authors": [
+        "Shuai Shen",
+        "Wanhua Li",
+        "Yunpeng Zhang",
+        "Yap-Peng Tan",
+        "Jiwen Lu"
+      ],
+      "published": "2025-03-28T16:50:27Z",
+      "updated": "2025-06-27T02:42:26Z",
+      "url": "https://arxiv.org/abs/2503.22605v2",
+      "query": "audio driven gaussian talking head",
+      "score": 72.0,
+      "alt_queries": [
+        "gaussian talking head audio-driven",
+        "gaussian talking head speech"
+      ]
+    },
+    {
+      "arxiv_id": "2503.22225v1",
+      "title": "Follow Your Motion: A Generic Temporal Consistency Portrait Editing Framework with Trajectory Guidance",
+      "summary": "Pre-trained conditional diffusion models have demonstrated remarkable potential in image editing. However, they often face challenges with temporal consistency, particularly in the talking head domain, where continuous changes in facial expressions intensify the level of difficulty. These issues stem from the independent editing of individual images and the inherent loss of temporal continuity during the editing process. In this paper, we introduce Follow Your Motion (FYM), a generic framework for maintaining temporal consistency in portrait editing. Specifically, given portrait images rendered by a pre-trained 3D Gaussian Splatting model, we first develop a diffusion model that intuitively and inherently learns motion trajectory changes at different scales and pixel coordinates, from the first frame to each subsequent frame. This approach ensures that temporally inconsistent edited avatars inherit the motion information from the rendered avatars. Secondly, to maintain fine-grained expression temporal consistency in talking head editing, we propose a dynamic re-weighted attention mechanism. This mechanism assigns higher weight coefficients to landmark points in space and dynamically updates these weights based on landmark loss, achieving more consistent and refined facial expressions. Extensive experiments demonstrate that our method outperforms existing approaches in terms of temporal consistency and can be used to optimize and compensate for temporally inconsistent outputs in a range of applications, such as text-driven editing, relighting, and various other applications.",
+      "authors": [
+        "Haijie Yang",
+        "Zhenyu Zhang",
+        "Hao Tang",
+        "Jianjun Qian",
+        "Jian Yang"
+      ],
+      "published": "2025-03-28T08:18:05Z",
+      "updated": "2025-03-28T08:18:05Z",
+      "url": "https://arxiv.org/abs/2503.22225v1",
+      "query": "gaussian talking head avatar",
+      "score": 56.0,
+      "alt_queries": [
+        "gaussian talking head face"
+      ]
+    },
+    {
+      "arxiv_id": "2502.17796v2",
+      "title": "LAM: Large Avatar Model for One-shot Animatable Gaussian Head",
+      "summary": "We present LAM, an innovative Large Avatar Model for animatable Gaussian head reconstruction from a single image. Unlike previous methods that require extensive training on captured video sequences or rely on auxiliary neural networks for animation and rendering during inference, our approach generates Gaussian heads that are immediately animatable and renderable. Specifically, LAM creates an animatable Gaussian head in a single forward pass, enabling reenactment and rendering without additional networks or post-processing steps. This capability allows for seamless integration into existing rendering pipelines, ensuring real-time animation and rendering across a wide range of platforms, including mobile phones. The centerpiece of our framework is the canonical Gaussian attributes generator, which utilizes FLAME canonical points as queries. These points interact with multi-scale image features through a Transformer to accurately predict Gaussian attributes in the canonical space. The reconstructed canonical Gaussian avatar can then be animated utilizing standard linear blend skinning (LBS) with corrective blendshapes as the FLAME model did and rendered in real-time on various platforms. Our experimental results demonstrate that LAM outperforms state-of-the-art methods on existing benchmarks. Our code and video are available at https://aigc3d.github.io/projects/LAM/",
+      "authors": [
+        "Yisheng He",
+        "Xiaodong Gu",
+        "Xiaodan Ye",
+        "Chao Xu",
+        "Zhengyi Zhao",
+        "Yuan Dong",
+        "Weihao Yuan",
+        "Zilong Dong",
+        "Liefeng Bo"
+      ],
+      "published": "2025-02-25T02:57:45Z",
+      "updated": "2025-04-04T06:30:27Z",
+      "url": "https://arxiv.org/abs/2502.17796v2",
+      "query": "gaussian avatar reenactment",
+      "score": 64.0
+    },
+    {
+      "arxiv_id": "2502.00654v1",
+      "title": "EmoTalkingGaussian: Continuous Emotion-conditioned Talking Head Synthesis",
+      "summary": "3D Gaussian splatting-based talking head synthesis has recently gained attention for its ability to render high-fidelity images with real-time inference speed. However, since it is typically trained on only a short video that lacks the diversity in facial emotions, the resultant talking heads struggle to represent a wide range of emotions. To address this issue, we propose a lip-aligned emotional face generator and leverage it to train our EmoTalkingGaussian model. It is able to manipulate facial emotions conditioned on continuous emotion values (i.e., valence and arousal); while retaining synchronization of lip movements with input audio. Additionally, to achieve the accurate lip synchronization for in-the-wild audio, we introduce a self-supervised learning method that leverages a text-to-speech network and a visual-audio synchronization network. We experiment our EmoTalkingGaussian on publicly available videos and have obtained better results than state-of-the-arts in terms of image quality (measured in PSNR, SSIM, LPIPS), emotion expression (measured in V-RMSE, A-RMSE, V-SA, A-SA, Emotion Accuracy), and lip synchronization (measured in LMD, Sync-E, Sync-C), respectively.",
+      "authors": [
+        "Junuk Cha",
+        "Seongro Yoon",
+        "Valeriya Strizhkova",
+        "Francois Bremond",
+        "Seungryul Baek"
+      ],
+      "published": "2025-02-02T04:01:54Z",
+      "updated": "2025-02-02T04:01:54Z",
+      "url": "https://arxiv.org/abs/2502.00654v1",
+      "query": "gaussian talking head face",
+      "score": 66.0,
+      "alt_queries": [
+        "gaussian talking head speech"
+      ]
+    },
+    {
+      "arxiv_id": "2412.08504v1",
+      "title": "PointTalk: Audio-Driven Dynamic Lip Point Cloud for 3D Gaussian-based Talking Head Synthesis",
+      "summary": "Talking head synthesis with arbitrary speech audio is a crucial challenge in the field of digital humans. Recently, methods based on radiance fields have received increasing attention due to their ability to synthesize high-fidelity and identity-consistent talking heads from just a few minutes of training video. However, due to the limited scale of the training data, these methods often exhibit poor performance in audio-lip synchronization and visual quality. In this paper, we propose a novel 3D Gaussian-based method called PointTalk, which constructs a static 3D Gaussian field of the head and deforms it in sync with the audio. It also incorporates an audio-driven dynamic lip point cloud as a critical component of the conditional information, thereby facilitating the effective synthesis of talking heads. Specifically, the initial step involves generating the corresponding lip point cloud from the audio signal and capturing its topological structure. The design of the dynamic difference encoder aims to capture the subtle nuances inherent in dynamic lip movements more effectively. Furthermore, we integrate the audio-point enhancement module, which not only ensures the synchronization of the audio signal with the corresponding lip point cloud within the feature space, but also facilitates a deeper understanding of the interrelations among cross-modal conditional features. Extensive experiments demonstrate that our method achieves superior high-fidelity and audio-lip synchronization in talking head synthesis compared to previous methods.",
+      "authors": [
+        "Yifan Xie",
+        "Tao Feng",
+        "Xin Zhang",
+        "Xiangyang Luo",
+        "Zixuan Guo",
+        "Weijiang Yu",
+        "Heng Chang",
+        "Fei Ma",
+        "Fei Richard Yu"
+      ],
+      "published": "2024-12-11T16:15:14Z",
+      "updated": "2024-12-11T16:15:14Z",
+      "url": "https://arxiv.org/abs/2412.08504v1",
+      "query": "gaussian talking head speech",
+      "score": 64.0
+    },
+    {
+      "arxiv_id": "2411.18675v1",
+      "title": "GaussianSpeech: Audio-Driven Gaussian Avatars",
+      "summary": "We introduce GaussianSpeech, a novel approach that synthesizes high-fidelity animation sequences of photo-realistic, personalized 3D human head avatars from spoken audio. To capture the expressive, detailed nature of human heads, including skin furrowing and finer-scale facial movements, we propose to couple speech signal with 3D Gaussian splatting to create realistic, temporally coherent motion sequences. We propose a compact and efficient 3DGS-based avatar representation that generates expression-dependent color and leverages wrinkle- and perceptually-based losses to synthesize facial details, including wrinkles that occur with different expressions. To enable sequence modeling of 3D Gaussian splats with audio, we devise an audio-conditioned transformer model capable of extracting lip and expression features directly from audio input. Due to the absence of high-quality datasets of talking humans in correspondence with audio, we captured a new large-scale multi-view dataset of audio-visual sequences of talking humans with native English accents and diverse facial geometry. GaussianSpeech consistently achieves state-of-the-art performance with visually natural motion at real time rendering rates, while encompassing diverse facial expressions and styles.",
+      "authors": [
+        "Shivangi Aneja",
+        "Artem Sevastopolsky",
+        "Tobias Kirschstein",
+        "Justus Thies",
+        "Angela Dai",
+        "Matthias Nießner"
+      ],
+      "published": "2024-11-27T18:54:08Z",
+      "updated": "2024-11-27T18:54:08Z",
+      "url": "https://arxiv.org/abs/2411.18675v1",
+      "query": "gaussian talking head avatar",
+      "score": 64.0,
+      "alt_queries": [
+        "gaussian talking head speech"
+      ]
+    },
+    {
+      "arxiv_id": "2410.07971v1",
+      "title": "Generalizable and Animatable Gaussian Head Avatar",
+      "summary": "In this paper, we propose Generalizable and Animatable Gaussian head Avatar (GAGAvatar) for one-shot animatable head avatar reconstruction. Existing methods rely on neural radiance fields, leading to heavy rendering consumption and low reenactment speeds. To address these limitations, we generate the parameters of 3D Gaussians from a single image in a single forward pass. The key innovation of our work is the proposed dual-lifting method, which produces high-fidelity 3D Gaussians that capture identity and facial details. Additionally, we leverage global image features and the 3D morphable model to construct 3D Gaussians for controlling expressions. After training, our model can reconstruct unseen identities without specific optimizations and perform reenactment rendering at real-time speeds. Experiments show that our method exhibits superior performance compared to previous methods in terms of reconstruction quality and expression accuracy. We believe our method can establish new benchmarks for future research and advance applications of digital avatars. Code and demos are available https://github.com/xg-chu/GAGAvatar.",
+      "authors": [
+        "Xuangeng Chu",
+        "Tatsuya Harada"
+      ],
+      "published": "2024-10-10T14:29:00Z",
+      "updated": "2024-10-10T14:29:00Z",
+      "url": "https://arxiv.org/abs/2410.07971v1",
+      "query": "gaussian avatar reenactment",
+      "score": 58.0
+    },
+    {
+      "arxiv_id": "2409.17145v1",
+      "title": "DreamWaltz-G: Expressive 3D Gaussian Avatars from Skeleton-Guided 2D Diffusion",
+      "summary": "Leveraging pretrained 2D diffusion models and score distillation sampling (SDS), recent methods have shown promising results for text-to-3D avatar generation. However, generating high-quality 3D avatars capable of expressive animation remains challenging. In this work, we present DreamWaltz-G, a novel learning framework for animatable 3D avatar generation from text. The core of this framework lies in Skeleton-guided Score Distillation and Hybrid 3D Gaussian Avatar representation. Specifically, the proposed skeleton-guided score distillation integrates skeleton controls from 3D human templates into 2D diffusion models, enhancing the consistency of SDS supervision in terms of view and human pose. This facilitates the generation of high-quality avatars, mitigating issues such as multiple faces, extra limbs, and blurring. The proposed hybrid 3D Gaussian avatar representation builds on the efficient 3D Gaussians, combining neural implicit fields and parameterized 3D meshes to enable real-time rendering, stable SDS optimization, and expressive animation. Extensive experiments demonstrate that DreamWaltz-G is highly effective in generating and animating 3D avatars, outperforming existing methods in both visual quality and animation expressiveness. Our framework further supports diverse applications, including human video reenactment and multi-subject scene composition.",
+      "authors": [
+        "Yukun Huang",
+        "Jianan Wang",
+        "Ailing Zeng",
+        "Zheng-Jun Zha",
+        "Lei Zhang",
+        "Xihui Liu"
+      ],
+      "published": "2024-09-25T17:59:45Z",
+      "updated": "2024-09-25T17:59:45Z",
+      "url": "https://arxiv.org/abs/2409.17145v1",
+      "query": "gaussian avatar reenactment",
+      "score": 64.0
+    },
+    {
+      "arxiv_id": "2408.10588v2",
+      "title": "DEGAS: Detailed Expressions on Full-Body Gaussian Avatars",
+      "summary": "Although neural rendering has made significant advances in creating lifelike, animatable full-body and head avatars, incorporating detailed expressions into full-body avatars remains largely unexplored. We present DEGAS, the first 3D Gaussian Splatting (3DGS)-based modeling method for full-body avatars with rich facial expressions. Trained on multiview videos of a given subject, our method learns a conditional variational autoencoder that takes both the body motion and facial expression as driving signals to generate Gaussian maps in the UV layout. To drive the facial expressions, instead of the commonly used 3D Morphable Models (3DMMs) in 3D head avatars, we propose to adopt the expression latent space trained solely on 2D portrait images, bridging the gap between 2D talking faces and 3D avatars. Leveraging the rendering capability of 3DGS and the rich expressiveness of the expression latent space, the learned avatars can be reenacted to reproduce photorealistic rendering images with subtle and accurate facial expressions. Experiments on an existing dataset and our newly proposed dataset of full-body talking avatars demonstrate the efficacy of our method. We also propose an audio-driven extension of our method with the help of 2D talking faces, opening new possibilities for interactive AI agents.",
+      "authors": [
+        "Zhijing Shao",
+        "Duotun Wang",
+        "Qing-Yao Tian",
+        "Yao-Dong Yang",
+        "Hengyu Meng",
+        "Zeyu Cai",
+        "Bo Dong",
+        "Yu Zhang",
+        "Kang Zhang",
+        "Zeyu Wang"
+      ],
+      "published": "2024-08-20T06:52:03Z",
+      "updated": "2025-02-08T03:49:49Z",
+      "url": "https://arxiv.org/abs/2408.10588v2",
+      "query": "gaussian avatar reenactment",
+      "score": 64.0,
+      "alt_queries": [
+        "gaussian talking head face"
+      ]
+    },
+    {
+      "arxiv_id": "2408.00297v1",
+      "title": "EmoTalk3D: High-Fidelity Free-View Synthesis of Emotional 3D Talking Head",
+      "summary": "We present a novel approach for synthesizing 3D talking heads with controllable emotion, featuring enhanced lip synchronization and rendering quality. Despite significant progress in the field, prior methods still suffer from multi-view consistency and a lack of emotional expressiveness. To address these issues, we collect EmoTalk3D dataset with calibrated multi-view videos, emotional annotations, and per-frame 3D geometry. By training on the EmoTalk3D dataset, we propose a \\textit{`Speech-to-Geometry-to-Appearance'} mapping framework that first predicts faithful 3D geometry sequence from the audio features, then the appearance of a 3D talking head represented by 4D Gaussians is synthesized from the predicted geometry. The appearance is further disentangled into canonical and dynamic Gaussians, learned from multi-view videos, and fused to render free-view talking head animation. Moreover, our model enables controllable emotion in the generated talking heads and can be rendered in wide-range views. Our method exhibits improved rendering quality and stability in lip motion generation while capturing dynamic facial details such as wrinkles and subtle expressions. Experiments demonstrate the effectiveness of our approach in generating high-fidelity and emotion-controllable 3D talking heads. The code and EmoTalk3D dataset are released at https://nju-3dv.github.io/projects/EmoTalk3D.",
+      "authors": [
+        "Qianyun He",
+        "Xinya Ji",
+        "Yicheng Gong",
+        "Yuanxun Lu",
+        "Zhengyu Diao",
+        "Linjia Huang",
+        "Yao Yao",
+        "Siyu Zhu",
+        "Zhan Ma",
+        "Songcen Xu",
+        "Xiaofei Wu",
+        "Zixiao Zhang",
+        "Xun Cao",
+        "Hao Zhu"
+      ],
+      "published": "2024-08-01T05:46:57Z",
+      "updated": "2024-08-01T05:46:57Z",
+      "url": "https://arxiv.org/abs/2408.00297v1",
+      "query": "gaussian talking head speech",
+      "score": 64.0
+    },
+    {
+      "arxiv_id": "2407.04545v4",
+      "title": "Gaussian Eigen Models for Human Heads",
+      "summary": "Current personalized neural head avatars face a trade-off: lightweight models lack detail and realism, while high-quality, animatable avatars require significant computational resources, making them unsuitable for commodity devices. To address this gap, we introduce Gaussian Eigen Models (GEM), which provide high-quality, lightweight, and easily controllable head avatars. GEM utilizes 3D Gaussian primitives for representing the appearance combined with Gaussian splatting for rendering. Building on the success of mesh-based 3D morphable face models (3DMM), we define GEM as an ensemble of linear eigenbases for representing the head appearance of a specific subject. In particular, we construct linear bases to represent the position, scale, rotation, and opacity of the 3D Gaussians. This allows us to efficiently generate Gaussian primitives of a specific head shape by a linear combination of the basis vectors, only requiring a low-dimensional parameter vector that contains the respective coefficients. We propose to construct these linear bases (GEM) by distilling high-quality compute-intense CNN-based Gaussian avatar models that can generate expression-dependent appearance changes like wrinkles. These high-quality models are trained on multi-view videos of a subject and are distilled using a series of principal component analyses. Once we have obtained the bases that represent the animatable appearance space of a specific human, we learn a regressor that takes a single RGB image as input and predicts the low-dimensional parameter vector that corresponds to the shown facial expression. In a series of experiments, we compare GEM's self-reenactment and cross-person reenactment results to state-of-the-art 3D avatar methods, demonstrating GEM's higher visual quality and better generalization to new expressions.",
+      "authors": [
+        "Wojciech Zielonka",
+        "Timo Bolkart",
+        "Thabo Beeler",
+        "Justus Thies"
+      ],
+      "published": "2024-07-05T14:30:24Z",
+      "updated": "2025-03-31T09:32:40Z",
+      "url": "https://arxiv.org/abs/2407.04545v4",
+      "query": "gaussian avatar reenactment",
+      "score": 50.0
+    }
+  ],
+  "repos": [
+    {
+      "full_name": "graphdeco-inria/gaussian-splatting",
+      "url": "https://github.com/graphdeco-inria/gaussian-splatting",
+      "description": "Original reference implementation of \"3D Gaussian Splatting for Real-Time Radiance Field Rendering\"",
+      "stars": 20701,
+      "forks": 2966,
+      "language": "Python",
+      "topics": [
+        "computer-graphics",
+        "computer-vision",
+        "radiance-field"
+      ],
+      "pushed_at": "2025-10-17T14:28:15Z",
+      "updated_at": "2026-02-19T05:05:08Z",
+      "source": "curated"
+    },
+    {
+      "full_name": "nerfstudio-project/gsplat",
+      "url": "https://github.com/nerfstudio-project/gsplat",
+      "description": "CUDA accelerated rasterization of gaussian splatting",
+      "stars": 4521,
+      "forks": 713,
+      "language": "Python",
+      "topics": [
+        "gaussian-splatting"
+      ],
+      "pushed_at": "2026-01-28T01:39:03Z",
+      "updated_at": "2026-02-19T02:41:16Z",
+      "source": "curated"
+    },
+    {
+      "full_name": "graphdeco-inria/hierarchical-3d-gaussians",
+      "url": "https://github.com/graphdeco-inria/hierarchical-3d-gaussians",
+      "description": "Official implementation of the SIGGRAPH 2024 paper \"A Hierarchical 3D Gaussian Representation for Real-Time Rendering of Very Large Datasets\"",
+      "stars": 1373,
+      "forks": 128,
+      "language": "Python",
+      "topics": [],
+      "pushed_at": "2025-06-10T08:39:35Z",
+      "updated_at": "2026-02-17T17:29:02Z",
+      "source": "curated"
+    },
+    {
+      "full_name": "lizhe00/AnimatableGaussians",
+      "url": "https://github.com/lizhe00/AnimatableGaussians",
+      "description": "Code of [CVPR 2024] \"Animatable Gaussians: Learning Pose-dependent Gaussian Maps for High-fidelity Human Avatar Modeling\"",
+      "stars": 1071,
+      "forks": 72,
+      "language": "Python",
+      "topics": [
+        "3d-gaussian-splatting",
+        "3d-human",
+        "3d-reconstruction",
+        "animatable-avatar"
+      ],
+      "pushed_at": "2024-11-16T13:23:25Z",
+      "updated_at": "2026-02-10T04:28:09Z",
+      "source": "curated"
+    },
+    {
+      "full_name": "ShenhanQian/GaussianAvatars",
+      "url": "https://github.com/ShenhanQian/GaussianAvatars",
+      "description": "[CVPR 2024 Highlight] The official repo for \"GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians\"",
+      "stars": 948,
+      "forks": 130,
+      "language": "Python",
+      "topics": [],
+      "pushed_at": "2026-02-11T10:28:19Z",
+      "updated_at": "2026-02-16T18:14:00Z",
+      "source": "curated"
+    },
+    {
+      "full_name": "aigc3d/LAM",
+      "url": "https://github.com/aigc3d/LAM",
+      "description": "[SIGGRAPH 2025] LAM: Large Avatar Model for One-shot Animatable Gaussian Head",
+      "stars": 922,
+      "forks": 85,
+      "language": "Python",
+      "topics": [],
+      "pushed_at": "2025-09-11T11:26:54Z",
+      "updated_at": "2026-02-17T14:59:52Z",
+      "source": "search:animatable gaussian avatar"
+    },
+    {
+      "full_name": "aipixel/GaussianAvatar",
+      "url": "https://github.com/aipixel/GaussianAvatar",
+      "description": "[CVPR 2024] The official repo for \"GaussianAvatar: Towards Realistic Human Avatar Modeling from a Single Video via Animatable 3D Gaussians\"",
+      "stars": 576,
+      "forks": 54,
+      "language": "Python",
+      "topics": [],
+      "pushed_at": "2024-03-26T12:20:47Z",
+      "updated_at": "2026-02-16T05:03:15Z",
+      "source": "curated"
+    },
+    {
+      "full_name": "xg-chu/GAGAvatar",
+      "url": "https://github.com/xg-chu/GAGAvatar",
+      "description": "[NeurIPS 2024] Generalizable and Animatable Gaussian Head Avatar",
+      "stars": 569,
+      "forks": 50,
+      "language": "Python",
+      "topics": [],
+      "pushed_at": "2025-03-13T09:37:54Z",
+      "updated_at": "2026-02-18T18:57:36Z",
+      "source": "search:animatable gaussian avatar"
+    },
+    {
+      "full_name": "initialneil/SplattingAvatar",
+      "url": "https://github.com/initialneil/SplattingAvatar",
+      "description": "[CVPR2024] Official implementation of SplattingAvatar.",
+      "stars": 539,
+      "forks": 51,
+      "language": "Python",
+      "topics": [],
+      "pushed_at": "2024-10-28T01:46:53Z",
+      "updated_at": "2026-02-13T04:43:40Z",
+      "source": "curated"
+    },
+    {
+      "full_name": "aigc3d/AniGS",
+      "url": "https://github.com/aigc3d/AniGS",
+      "description": "[CVPR2025] AniGS: Animatable Gaussian Avatar from a Single Image with Inconsistent Gaussian Reconstruction",
+      "stars": 453,
+      "forks": 26,
+      "language": null,
+      "topics": [
+        "aicg",
+        "aigc",
+        "digital-humans"
+      ],
+      "pushed_at": "2025-03-13T19:01:23Z",
+      "updated_at": "2026-02-04T06:53:22Z",
+      "source": "search:animatable gaussian avatar"
+    },
+    {
+      "full_name": "cvlab-kaist/GaussianTalker",
+      "url": "https://github.com/cvlab-kaist/GaussianTalker",
+      "description": "Official implementation of “GaussianTalker: Real-Time High-Fidelity Talking Head Synthesis with Audio-Driven 3D Gaussian Splatting” by Kyusun Cho, Joungbin Lee, Heeji Yoon, Yeobin Hong, Jaehoon Ko, Sangjun Ahn and Seungryong Kim",
+      "stars": 387,
+      "forks": 60,
+      "language": "Python",
+      "topics": [],
+      "pushed_at": "2025-10-12T11:46:15Z",
+      "updated_at": "2026-02-12T03:18:42Z",
+      "source": "curated"
+    },
+    {
+      "full_name": "graphdeco-inria/reduced-3dgs",
+      "url": "https://github.com/graphdeco-inria/reduced-3dgs",
+      "description": "The code for the paper \"Reducing the Memory Footprint of 3D Gaussian Splatting\"",
+      "stars": 229,
+      "forks": 19,
+      "language": "Python",
+      "topics": [],
+      "pushed_at": "2025-09-22T16:21:43Z",
+      "updated_at": "2026-01-27T18:40:42Z",
+      "source": "curated"
+    },
+    {
+      "full_name": "ZhenglinZhou/HeadStudio",
+      "url": "https://github.com/ZhenglinZhou/HeadStudio",
+      "description": "[ECCV 2024] HeadStudio: Text to Animatable Head Avatars with 3D Gaussian Splatting.",
+      "stars": 215,
+      "forks": 10,
+      "language": "Python",
+      "topics": [],
+      "pushed_at": "2025-04-10T02:34:18Z",
+      "updated_at": "2026-01-26T09:43:56Z",
+      "source": "search:animatable gaussian avatar"
+    },
+    {
+      "full_name": "gserifi/HyperGaussians",
+      "url": "https://github.com/gserifi/HyperGaussians",
+      "description": "HyperGaussians: High-Dimensional Gaussian Splatting for High-Fidelity Animatable Face Avatars",
+      "stars": 39,
+      "forks": 3,
+      "language": "Python",
+      "topics": [],
+      "pushed_at": "2026-01-21T15:41:08Z",
+      "updated_at": "2026-02-17T18:13:34Z",
+      "source": "search:animatable gaussian avatar"
+    },
+    {
+      "full_name": "Maxwell-Zhao/SGGS",
+      "url": "https://github.com/Maxwell-Zhao/SGGS",
+      "description": "Code for SG-GS: Photo-realistic Animatable Human Avatars with Semantically-Guided Gaussian Splatting",
+      "stars": 12,
+      "forks": 0,
+      "language": "Python",
+      "topics": [],
+      "pushed_at": "2026-01-05T03:44:47Z",
+      "updated_at": "2026-01-05T03:44:51Z",
+      "source": "search:animatable gaussian avatar"
+    },
+    {
+      "full_name": "ShaelynZ/fhavatar",
+      "url": "https://github.com/ShaelynZ/fhavatar",
+      "description": "Official code for \"Generalizable and Animatable 3D Full-Head Gaussian Avatar from a Single Image\"",
+      "stars": 8,
+      "forks": 0,
+      "language": null,
+      "topics": [],
+      "pushed_at": "2026-01-22T01:51:54Z",
+      "updated_at": "2026-02-17T15:11:06Z",
+      "source": "search:animatable gaussian avatar"
+    },
+    {
+      "full_name": "Rainiver/3DGS_Gen",
+      "url": "https://github.com/Rainiver/3DGS_Gen",
+      "description": "A framework integrating deformable 3D Gaussian splatting with geometry-aware GANs for high-fidelity, animatable avatar synthesis, featuring enhanced 3D consistency across viewpoints/poses and efficient rendering.",
+      "stars": 7,
+      "forks": 0,
+      "language": "Python",
+      "topics": [],
+      "pushed_at": "2025-09-14T12:02:14Z",
+      "updated_at": "2025-12-03T14:49:27Z",
+      "source": "search:animatable gaussian avatar"
+    },
+    {
+      "full_name": "1231234zhan/InteractRAGA",
+      "url": "https://github.com/1231234zhan/InteractRAGA",
+      "description": "[TVCG 2025] Interactive Rendering of Relightable and Animatable Gaussian Avatars",
+      "stars": 6,
+      "forks": 1,
+      "language": "Python",
+      "topics": [],
+      "pushed_at": "2025-05-20T05:07:33Z",
+      "updated_at": "2026-01-21T09:09:10Z",
+      "source": "search:animatable gaussian avatar"
+    },
+    {
+      "full_name": "miraymen/aha_codebase",
+      "url": "https://github.com/miraymen/aha_codebase",
+      "description": "Codebase for paper AHA! Animating Human Avatars in Diverse Scenes with Gaussian Splatting",
+      "stars": 4,
+      "forks": 0,
+      "language": null,
+      "topics": [],
+      "pushed_at": "2026-01-10T13:17:41Z",
+      "updated_at": "2026-01-23T18:03:14Z",
+      "source": "search:animatable gaussian avatar"
+    },
+    {
+      "full_name": "myned-ai/gsplat-flame-avatar-renderer",
+      "url": "https://github.com/myned-ai/gsplat-flame-avatar-renderer",
+      "description": "FLAME-enabled Gaussian Splatting renderer for animated 3D avatars with ARKit blendshape support",
+      "stars": 3,
+      "forks": 1,
+      "language": "JavaScript",
+      "topics": [
+        "3d-gaussian-splatting",
+        "avatar",
+        "gaussian",
+        "javascript",
+        "three-js",
+        "threejs",
+        "webgl"
+      ],
+      "pushed_at": "2026-02-08T20:32:21Z",
+      "updated_at": "2026-02-12T21:43:40Z",
+      "source": "search:animatable gaussian avatar"
+    },
+    {
+      "full_name": "QFreedomQ/GAGAvatar_old",
+      "url": "https://github.com/QFreedomQ/GAGAvatar_old",
+      "description": "[NeurIPS 2024] Generalizable and Animatable Gaussian Head Avatar",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "topics": [],
+      "pushed_at": "2025-10-27T07:59:26Z",
+      "updated_at": "2025-10-27T16:43:13Z",
+      "source": "search:animatable gaussian avatar"
+    }
+  ],
+  "how_it_works": {
+    "pipeline": [
+      "Identity capture: collect multi-view (best quality) or monocular (faster setup) data.",
+      "Tracking + canonicalization: fit camera/face/body parameters and define a canonical avatar space.",
+      "Gaussian parameter learning: optimize per-splat position/covariance/color/opacity and optional dynamics.",
+      "Driver inference: map audio, expression, pose, and gaze signals into deformation/control updates.",
+      "Realtime render: tile-based depth-sorted Gaussian splat rasterization and alpha compositing.",
+      "Delivery: stream rendered avatar with synchronized audio through WebRTC/game-engine surfaces."
+    ],
+    "patterns": [
+      "Canonical representation: explicit anisotropic 3D Gaussians (position, covariance, opacity, color/SH).",
+      "Realtime renderer: tile-based, depth-sorted splat rasterization with alpha compositing.",
+      "Animation control: drive Gaussian attributes/deformation from pose, expression, and audio-derived signals.",
+      "Deployment stack: compression/LOD/streaming are required for web/mobile scale.",
+      "Monocular reconstruction variants trade quality for easier capture and faster onboarding."
+    ],
+    "design_tradeoffs": [
+      "Quality vs setup: multi-view capture improves realism but increases capture complexity.",
+      "Control vs realism: stronger rig constraints improve editability but can limit fine detail.",
+      "Latency vs fidelity: anti-aliasing and high-resolution rendering increase quality but cost frame budget.",
+      "Model size vs portability: compression/LOD are required for web/mobile distribution."
+    ]
+  },
+  "delta": {
+    "new_papers": [
+      "2508.14449v1",
+      "2502.00654v1",
+      "2412.08504v1",
+      "2408.00297v1"
+    ],
+    "new_repos": []
+  },
+  "errors": {
+    "arxiv": [],
+    "github": []
+  },
+  "focus_terms": [
+    "realtime",
+    "audio-driven",
+    "gaussian",
+    "splatting",
+    "avatar",
+    "talking",
+    "face",
+    "speech",
+    "head",
+    "facial",
+    "methods",
+    "animatable",
+    "method",
+    "human",
+    "propose",
+    "image"
+  ]
+}

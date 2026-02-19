@@ -14,3 +14,6 @@ coturn-data/
 build/
 exp/
 resource/
+
+# Extracted container files (working copies, not for git)
+_extracted_client/

@@ -1,0 +1,664 @@
+{
+  "generated_at": "2026-02-19T02:27:19+00:00",
+  "cycle": 10,
+  "ue_root": "G:\\UE\\UnrealEngine",
+  "totals": {
+    "plugins": 12,
+    "modules": 70,
+    "source_files": 2898,
+    "internal_dependency_edges": 248
+  },
+  "plugin_inventory": [
+    {
+      "name": "MetaHumanAnimator",
+      "path": "G:\\UE\\UnrealEngine\\Engine\\Plugins\\MetaHuman\\MetaHumanAnimator",
+      "category": "MetaHuman",
+      "description": "The official MetaHuman Unreal Engine toolkit",
+      "module_count": 28,
+      "module_types": {
+        "Editor": 22,
+        "Runtime": 6
+      },
+      "top_modules": [
+        {
+          "name": "MetaHumanCaptureProtocolStack",
+          "type": "Editor",
+          "header_files": 32,
+          "source_files": 40
+        },
+        {
+          "name": "MetaHumanCaptureSource",
+          "type": "Editor",
+          "header_files": 33,
+          "source_files": 35
+        },
+        {
+          "name": "MetaHumanPerformance",
+          "type": "Editor",
+          "header_files": 29,
+          "source_files": 28
+        },
+        {
+          "name": "MetaHumanCore",
+          "type": "Runtime",
+          "header_files": 20,
+          "source_files": 16
+        },
+        {
+          "name": "MetaHumanPipeline",
+          "type": "Editor",
+          "header_files": 18,
+          "source_files": 17
+        },
+        {
+          "name": "MetaHumanIdentityEditor",
+          "type": "Editor",
+          "header_files": 15,
+          "source_files": 15
+        },
+        {
+          "name": "MetaHumanIdentity",
+          "type": "Editor",
+          "header_files": 14,
+          "source_files": 15
+        },
+        {
+          "name": "MetaHumanSequencer",
+          "type": "Editor",
+          "header_files": 11,
+          "source_files": 11
+        }
+      ],
+      "docs": [
+        {
+          "path": "G:\\UE\\UnrealEngine\\Engine\\Plugins\\MetaHuman\\MetaHumanAnimator\\Content\\GenericTracker\\VERSIONS.txt",
+          "relative_path": "Content\\GenericTracker\\VERSIONS.txt",
+          "line": "Tracking models come from Hyprsense/Hyprface2D-python repo: tag hyprface-0.1.4"
+        },
+        {
+          "path": "G:\\UE\\UnrealEngine\\Engine\\Plugins\\MetaHuman\\MetaHumanAnimator\\Content\\Python\\ReadMe.txt",
+          "relative_path": "Content\\Python\\ReadMe.txt",
+          "line": "The purpose of this document is to provide details on how to use the python scripts included in the content folder."
+        },
+        {
+          "path": "G:\\UE\\UnrealEngine\\Engine\\Plugins\\MetaHuman\\MetaHumanAnimator\\Content\\Speech2Face\\VERSIONS.txt",
+          "relative_path": "Content\\Speech2Face\\VERSIONS.txt",
+          "line": "Tracking models copied on 19th Jan 2024. See README.md in Research/Wav2Face repo: tag wav2face-0.0.10"
+        },
+        {
+          "path": "G:\\UE\\UnrealEngine\\Engine\\Plugins\\MetaHuman\\MetaHumanAnimator\\Content\\StereoCaptureTools\\ReadMe.txt",
+          "relative_path": "Content\\StereoCaptureTools\\ReadMe.txt",
+          "line": "The Stereo Capture Tools have moved!"
+        }
+      ]
+    },
+    {
+      "name": "LiveLink",
+      "path": "G:\\UE\\UnrealEngine\\Engine\\Plugins\\Animation\\LiveLink",
+      "category": "Animation",
+      "description": "LiveLink allows streaming of animated data into Unreal Engine",
+      "module_count": 7,
+      "module_types": {
+        "Editor": 1,
+        "Runtime": 3,
+        "UncookedOnly": 3
+      },
+      "top_modules": [
+        {
+          "name": "LiveLink",
+          "type": "Runtime",
+          "header_files": 47,
+          "source_files": 41
+        },
+        {
+          "name": "LiveLinkEditor",
+          "type": "Editor",
+          "header_files": 29,
+          "source_files": 26
+        },
+        {
+          "name": "LiveLinkMovieScene",
+          "type": "Runtime",
+          "header_files": 16,
+          "source_files": 14
+        },
+        {
+          "name": "LiveLinkComponents",
+          "type": "Runtime",
+          "header_files": 8,
+          "source_files": 5
+        },
+        {
+          "name": "LiveLinkSequencer",
+          "type": "UncookedOnly",
+          "header_files": 7,
+          "source_files": 6
+        },
+        {
+          "name": "LiveLinkGraphNode",
+          "type": "UncookedOnly",
+          "header_files": 5,
+          "source_files": 6
+        },
+        {
+          "name": "LiveLinkMultiUser",
+          "type": "UncookedOnly",
+          "header_files": 1,
+          "source_files": 1
+        }
+      ],
+      "docs": []
+    },
+    {
+      "name": "MetaHumanCharacter",
+      "path": "G:\\UE\\UnrealEngine\\Engine\\Plugins\\MetaHuman\\MetaHumanCharacter",
+      "category": "MetaHuman",
+      "description": "MetaHuman Character Asset Creator and Editor.",
+      "module_count": 7,
+      "module_types": {
+        "Editor": 4,
+        "Runtime": 3
+      },
+      "top_modules": [
+        {
+          "name": "MetaHumanCharacterEditor",
+          "type": "Editor",
+          "header_files": 91,
+          "source_files": 90
+        },
+        {
+          "name": "MetaHumanCharacterPalette",
+          "type": "Runtime",
+          "header_files": 23,
+          "source_files": 18
+        },
+        {
+          "name": "MetaHumanCharacterPaletteEditor",
+          "type": "Editor",
+          "header_files": 19,
+          "source_files": 17
+        },
+        {
+          "name": "MetaHumanDefaultPipeline",
+          "type": "Runtime",
+          "header_files": 11,
+          "source_files": 11
+        },
+        {
+          "name": "MetaHumanDefaultEditorPipeline",
+          "type": "Editor",
+          "header_files": 11,
+          "source_files": 10
+        },
+        {
+          "name": "MetaHumanCharacter",
+          "type": "Runtime",
+          "header_files": 13,
+          "source_files": 6
+        },
+        {
+          "name": "MetaHumanCharacterMigrationEditor",
+          "type": "Editor",
+          "header_files": 3,
+          "source_files": 1
+        }
+      ],
+      "docs": []
+    },
+    {
+      "name": "MetaHumanLiveLink",
+      "path": "G:\\UE\\UnrealEngine\\Engine\\Plugins\\MetaHuman\\MetaHumanLiveLink",
+      "category": "MetaHuman",
+      "description": "Live Link sources and associated utilities for streaming real time MetaHuman animation data.",
+      "module_count": 7,
+      "module_types": {
+        "Editor": 3,
+        "Runtime": 4
+      },
+      "top_modules": [
+        {
+          "name": "MetaHumanLocalLiveLinkSource",
+          "type": "Runtime",
+          "header_files": 33,
+          "source_files": 28
+        },
+        {
+          "name": "LiveLinkFaceSource",
+          "type": "Runtime",
+          "header_files": 9,
+          "source_files": 8
+        },
+        {
+          "name": "MetaHumanLocalLiveLinkSourceEditor",
+          "type": "Editor",
+          "header_files": 6,
+          "source_files": 7
+        },
+        {
+          "name": "MetaHumanLiveLinkSource",
+          "type": "Runtime",
+          "header_files": 4,
+          "source_files": 4
+        },
+        {
+          "name": "LiveLinkFaceSourceEditor",
+          "type": "Editor",
+          "header_files": 3,
+          "source_files": 3
+        },
+        {
+          "name": "MetaHumanLiveLinkSourceEditor",
+          "type": "Editor",
+          "header_files": 3,
+          "source_files": 3
+        },
+        {
+          "name": "LiveLinkFaceDiscovery",
+          "type": "Runtime",
+          "header_files": 2,
+          "source_files": 2
+        }
+      ],
+      "docs": []
+    },
+    {
+      "name": "MetaHumanCoreTechLib",
+      "path": "G:\\UE\\UnrealEngine\\Engine\\Plugins\\MetaHuman\\MetaHumanCoreTechLib",
+      "category": "MetaHuman",
+      "description": "The core technology behind the MetaHuman Creator and MetaHuman Animator plugins.",
+      "module_count": 5,
+      "module_types": {
+        "Editor": 2,
+        "Runtime": 3
+      },
+      "top_modules": [
+        {
+          "name": "MetaHumanCoreTechLib",
+          "type": "Editor",
+          "header_files": 299,
+          "source_files": 166
+        },
+        {
+          "name": "MetaHumanPipelineCore",
+          "type": "Editor",
+          "header_files": 16,
+          "source_files": 16
+        },
+        {
+          "name": "MetaHumanCoreTech",
+          "type": "Runtime",
+          "header_files": 18,
+          "source_files": 11
+        },
+        {
+          "name": "MetaHumanCaptureData",
+          "type": "Runtime",
+          "header_files": 7,
+          "source_files": 14
+        },
+        {
+          "name": "MetaHumanImageViewer",
+          "type": "Runtime",
+          "header_files": 2,
+          "source_files": 2
+        }
+      ],
+      "docs": []
+    },
+    {
+      "name": "RigLogic",
+      "path": "G:\\UE\\UnrealEngine\\Engine\\Plugins\\Animation\\RigLogic",
+      "category": "Animation",
+      "description": "RigLogic Plugin for Facial Animation v10.3.0",
+      "module_count": 5,
+      "module_types": {
+        "Editor": 1,
+        "Runtime": 3,
+        "UncookedOnly": 1
+      },
+      "top_modules": [
+        {
+          "name": "RigLogicLib",
+          "type": "Runtime",
+          "header_files": 252,
+          "source_files": 90
+        },
+        {
+          "name": "RigLogicLibTest",
+          "type": "Runtime",
+          "header_files": 42,
+          "source_files": 77
+        },
+        {
+          "name": "RigLogicModule",
+          "type": "Runtime",
+          "header_files": 22,
+          "source_files": 18
+        },
+        {
+          "name": "RigLogicEditor",
+          "type": "Editor",
+          "header_files": 6,
+          "source_files": 5
+        },
+        {
+          "name": "RigLogicDeveloper",
+          "type": "UncookedOnly",
+          "header_files": 2,
+          "source_files": 2
+        }
+      ],
+      "docs": []
+    },
+    {
+      "name": "DNACalib",
+      "path": "G:\\UE\\UnrealEngine\\Engine\\Plugins\\Animation\\DNACalib",
+      "category": "Animation",
+      "description": "DNA Calibration tool plugin",
+      "module_count": 3,
+      "module_types": {
+        "Runtime": 3
+      },
+      "top_modules": [
+        {
+          "name": "DNACalibLib",
+          "type": "Runtime",
+          "header_files": 60,
+          "source_files": 36
+        },
+        {
+          "name": "DNACalibModule",
+          "type": "Runtime",
+          "header_files": 30,
+          "source_files": 26
+        },
+        {
+          "name": "DNACalibLibTest",
+          "type": "Runtime",
+          "header_files": 7,
+          "source_files": 27
+        }
+      ],
+      "docs": []
+    },
+    {
+      "name": "MetaHumanCalibrationProcessing",
+      "path": "G:\\UE\\UnrealEngine\\Engine\\Plugins\\MetaHuman\\MetaHumanCalibrationProcessing",
+      "category": "MetaHuman",
+      "description": "The official MetaHuman Calibration Processing Unreal Engine toolkit",
+      "module_count": 3,
+      "module_types": {
+        "Editor": 3
+      },
+      "top_modules": [
+        {
+          "name": "MetaHumanCalibrationLib",
+          "type": "Editor",
+          "header_files": 215,
+          "source_files": 101
+        },
+        {
+          "name": "MetaHumanCalibrationCore",
+          "type": "Editor",
+          "header_files": 10,
+          "source_files": 11
+        },
+        {
+          "name": "MetaHumanCalibrationGenerator",
+          "type": "Editor",
+          "header_files": 10,
+          "source_files": 9
+        }
+      ],
+      "docs": []
+    },
+    {
+      "name": "MetaHumanSDK",
+      "path": "G:\\UE\\UnrealEngine\\Engine\\Plugins\\MetaHuman\\MetaHumanSDK",
+      "category": "MetaHuman",
+      "description": "Utilities and tools for working with MetaHumans in Unreal Engine.",
+      "module_count": 3,
+      "module_types": {
+        "Editor": 2,
+        "Runtime": 1
+      },
+      "top_modules": [
+        {
+          "name": "MetaHumanSDKEditor",
+          "type": "Editor",
+          "header_files": 39,
+          "source_files": 38
+        },
+        {
+          "name": "MetaHumanSDKRuntime",
+          "type": "Runtime",
+          "header_files": 5,
+          "source_files": 3
+        },
+        {
+          "name": "InterchangeDNA",
+          "type": "Editor",
+          "header_files": 3,
+          "source_files": 2
+        }
+      ],
+      "docs": []
+    },
+    {
+      "name": "MetaHumanCalibrationDiagnostics",
+      "path": "G:\\UE\\UnrealEngine\\Engine\\Plugins\\Experimental\\MetaHuman\\MetaHumanCalibrationDiagnostics",
+      "category": "MetaHuman",
+      "description": "The official MetaHuman Calibration Diagnostics Unreal Engine toolkit",
+      "module_count": 1,
+      "module_types": {
+        "Editor": 1
+      },
+      "top_modules": [
+        {
+          "name": "MetaHumanCalibrationDiagnostics",
+          "type": "Editor",
+          "header_files": 6,
+          "source_files": 5
+        }
+      ],
+      "docs": []
+    },
+    {
+      "name": "MetaHumanCharacterUAF",
+      "path": "G:\\UE\\UnrealEngine\\Engine\\Plugins\\Experimental\\MetaHuman\\MetaHumanCharacterUAF",
+      "category": "MetaHuman",
+      "description": "UAF (Unreal Animation Framework) support for MetaHuman Creator",
+      "module_count": 1,
+      "module_types": {
+        "Editor": 1
+      },
+      "top_modules": [
+        {
+          "name": "MetaHumanCharacterUAFEditor",
+          "type": "Editor",
+          "header_files": 1,
+          "source_files": 2
+        }
+      ],
+      "docs": []
+    },
+    {
+      "name": "MetaHumanRuntime",
+      "path": "G:\\UE\\UnrealEngine\\Engine\\Plugins\\Experimental\\MetaHuman\\MetaHumanRuntime",
+      "category": "Other",
+      "description": "Deprecated plugin now redirected to MetaHumanSDK",
+      "module_count": 0,
+      "module_types": {},
+      "top_modules": [],
+      "docs": []
+    }
+  ],
+  "dependency_hubs": {
+    "module_targets": [
+      {
+        "module": "MetaHumanCoreTech",
+        "incoming_edges": 20
+      },
+      {
+        "module": "MetaHumanCore",
+        "incoming_edges": 19
+      },
+      {
+        "module": "RigLogicModule",
+        "incoming_edges": 15
+      },
+      {
+        "module": "MetaHumanCaptureData",
+        "incoming_edges": 12
+      },
+      {
+        "module": "RigLogicLib",
+        "incoming_edges": 11
+      },
+      {
+        "module": "MetaHumanCoreEditor",
+        "incoming_edges": 11
+      },
+      {
+        "module": "MetaHumanConfig",
+        "incoming_edges": 9
+      },
+      {
+        "module": "MetaHumanImageViewer",
+        "incoming_edges": 9
+      },
+      {
+        "module": "MetaHumanCoreTechLib",
+        "incoming_edges": 8
+      },
+      {
+        "module": "MetaHumanPipelineCore",
+        "incoming_edges": 8
+      },
+      {
+        "module": "MetaHumanSDKRuntime",
+        "incoming_edges": 8
+      },
+      {
+        "module": "MetaHumanPipeline",
+        "incoming_edges": 7
+      },
+      {
+        "module": "MetaHumanCharacterPalette",
+        "incoming_edges": 7
+      },
+      {
+        "module": "LiveLink",
+        "incoming_edges": 6
+      },
+      {
+        "module": "MeshTrackerInterface",
+        "incoming_edges": 6
+      },
+      {
+        "module": "MetaHumanSDKEditor",
+        "incoming_edges": 6
+      },
+      {
+        "module": "MetaHumanCaptureUtils",
+        "incoming_edges": 5
+      },
+      {
+        "module": "MetaHumanFaceContourTracker",
+        "incoming_edges": 5
+      },
+      {
+        "module": "MetaHumanFaceAnimationSolver",
+        "incoming_edges": 5
+      },
+      {
+        "module": "MetaHumanCharacter",
+        "incoming_edges": 5
+      }
+    ],
+    "plugin_targets": [
+      {
+        "plugin": "MetaHumanAnimator",
+        "incoming_edges": 98
+      },
+      {
+        "plugin": "MetaHumanCoreTechLib",
+        "incoming_edges": 57
+      },
+      {
+        "plugin": "RigLogic",
+        "incoming_edges": 28
+      },
+      {
+        "plugin": "MetaHumanCharacter",
+        "incoming_edges": 22
+      },
+      {
+        "plugin": "MetaHumanSDK",
+        "incoming_edges": 16
+      },
+      {
+        "plugin": "LiveLink",
+        "incoming_edges": 12
+      },
+      {
+        "plugin": "MetaHumanLiveLink",
+        "incoming_edges": 7
+      },
+      {
+        "plugin": "MetaHumanCalibrationProcessing",
+        "incoming_edges": 5
+      },
+      {
+        "plugin": "DNACalib",
+        "incoming_edges": 3
+      }
+    ],
+    "plugin_sources": [
+      {
+        "plugin": "MetaHumanAnimator",
+        "outgoing_edges": 141
+      },
+      {
+        "plugin": "MetaHumanCharacter",
+        "outgoing_edges": 42
+      },
+      {
+        "plugin": "MetaHumanLiveLink",
+        "outgoing_edges": 19
+      },
+      {
+        "plugin": "LiveLink",
+        "outgoing_edges": 9
+      },
+      {
+        "plugin": "MetaHumanCoreTechLib",
+        "outgoing_edges": 8
+      },
+      {
+        "plugin": "RigLogic",
+        "outgoing_edges": 7
+      },
+      {
+        "plugin": "MetaHumanCalibrationProcessing",
+        "outgoing_edges": 7
+      },
+      {
+        "plugin": "DNACalib",
+        "outgoing_edges": 6
+      },
+      {
+        "plugin": "MetaHumanCharacterUAF",
+        "outgoing_edges": 4
+      },
+      {
+        "plugin": "MetaHumanCalibrationDiagnostics",
+        "outgoing_edges": 3
+      },
+      {
+        "plugin": "MetaHumanSDK",
+        "outgoing_edges": 2
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+graph LR
+  DNACalib["DNACalib (3)"]
+  LiveLink["LiveLink (7)"]
+  MetaHumanAnimator["MetaHumanAnimator (28)"]
+  MetaHumanCalibrationDiagnostics["MetaHumanCalibrationDiagnostics (1)"]
+  MetaHumanCalibrationProcessing["MetaHumanCalibrationProcessing (3)"]
+  MetaHumanCharacter["MetaHumanCharacter (7)"]
+  MetaHumanCharacterUAF["MetaHumanCharacterUAF (1)"]
+  MetaHumanCoreTechLib["MetaHumanCoreTechLib (5)"]
+  MetaHumanLiveLink["MetaHumanLiveLink (7)"]
+  MetaHumanRuntime["MetaHumanRuntime (0)"]
+  MetaHumanSDK["MetaHumanSDK (3)"]
+  RigLogic["RigLogic (5)"]
+  MetaHumanAnimator -->|35| MetaHumanCoreTechLib
+  MetaHumanCharacter -->|10| MetaHumanSDK
+  MetaHumanLiveLink -->|9| MetaHumanCoreTechLib
+  MetaHumanAnimator -->|8| RigLogic
+  DNACalib -->|4| RigLogic
+  MetaHumanAnimator -->|4| MetaHumanSDK
+  MetaHumanCharacter -->|4| MetaHumanAnimator
+  MetaHumanCharacter -->|4| MetaHumanCoreTechLib
+  MetaHumanCharacter -->|4| RigLogic
+  MetaHumanCalibrationProcessing -->|3| MetaHumanCoreTechLib
+  MetaHumanCharacterUAF -->|3| MetaHumanCharacter
+  MetaHumanLiveLink -->|3| LiveLink
+  MetaHumanCalibrationDiagnostics -->|2| MetaHumanCalibrationProcessing
+  MetaHumanCoreTechLib -->|2| RigLogic
+  MetaHumanSDK -->|2| RigLogic
+  MetaHumanCalibrationDiagnostics -->|1| MetaHumanCoreTechLib
+  MetaHumanCalibrationProcessing -->|1| RigLogic
+  MetaHumanCharacter -->|1| DNACalib
+  MetaHumanCharacterUAF -->|1| MetaHumanSDK
+  MetaHumanCoreTechLib -->|1| MetaHumanSDK
