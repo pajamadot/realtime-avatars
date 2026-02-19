@@ -1,76 +1,71 @@
 # realtime-avatars
 
-Public research/engineering repository for comparing and operating real-time digital avatar pipelines:
+Public research and engineering repo for real-time digital avatar systems across:
 
-1. MetaHuman / Unreal graphics pipeline
+1. MetaHuman + Unreal Engine
 2. Streaming avatar infrastructure (WebRTC + LiveKit)
-3. Neural Gaussian splatting track
-4. Generative video avatar track
+3. Gaussian splatting avatars
+4. Generative video avatars
 
-## Current Status (2026-02-19)
+## Live URLs
 
-- Repository visibility: `PUBLIC` (`https://github.com/pajamadot/realtime-avatars`).
-- Web app: Next.js `16.1.6` with TypeScript and Tailwind v4.
-- Build status: `npm run build` in `web/` passes.
-- Living feeds:
-  - arXiv research feed: `web/app/data/research-feed.json`
-  - GitHub tooling feed: `web/app/data/tooling-feed.json`
-- MetaHuman E2E control path is implemented and wired to `/rapport`.
-- MetaHuman source intelligence skill is implemented at `.claude/skills/metahuman-evolver`.
+- Primary: `https://www.realtime-avatars.com`
+- Vercel fallback: `https://realtime-avatars.vercel.app`
+- Slides entry: `https://www.realtime-avatars.com/slides/1`
 
-## What Is Implemented
+## Current Project Status
 
-### 1) Web experience
+- Visibility: public (`https://github.com/pajamadot/realtime-avatars`)
+- Web stack: Next.js `16.1.6` + TypeScript + Tailwind v4
+- Build status: `web/` production build passes (`npm run build`)
+- Research feeds:
+  - `web/app/data/research-feed.json` (arXiv feed)
+  - `web/app/data/tooling-feed.json` (GitHub tooling feed)
+- Active skill automation under `.claude/skills/` for MetaHuman, modality research, and Gaussian video-wall evolution
 
-- Main site and method tracks under `web/app/learn/*`.
-- Live demo pages:
-  - `/rapport` (MetaHuman control + realtime talk UI)
+## Key Implemented Areas
+
+### Web Experience
+
+- Learning pages: `web/app/learn/*`
+- Slides system: `web/app/slides/*`
+- Demos:
+  - `/rapport` (MetaHuman control + realtime talk)
   - `/livekit` (LiveKit streaming demo)
-- APIs:
-  - `web/app/api/metahuman/control/route.ts`
-  - `web/app/api/livekit/token/route.ts`
-  - `web/app/api/openai/realtime/client-secret/route.ts`
+  - `/gaussian-video-wall` (modal YouTube video wall)
 
-### 2) MetaHuman local control path
+### API Endpoints
 
-- Unreal plugin:
-  - `metahuman/avatar01/Plugins/PajamaRealtimeControl/Source/PajamaRealtimeControl/*`
-- Bridge service:
-  - `metahuman/editor-bridge/server.mjs`
-- Web control panels:
+- `web/app/api/metahuman/control/route.ts`
+- `web/app/api/livekit/token/route.ts`
+- `web/app/api/openai/realtime/client-secret/route.ts`
+
+### MetaHuman Control Path
+
+- Unreal plugin: `metahuman/avatar01/Plugins/PajamaRealtimeControl/Source/PajamaRealtimeControl/*`
+- Bridge service: `metahuman/editor-bridge/server.mjs`
+- Web panels:
   - `web/app/components/MetaHumanEditorControlPanel.tsx`
   - `web/app/components/MetaHumanRealtimeTalkPanel.tsx`
+- Runbook: `metahuman/UE57_REALTIME_E2E.md`
 
-Detailed runbook: `metahuman/UE57_REALTIME_E2E.md`
+### Skill-Generated Architecture Artifacts
 
-### 3) MetaHuman architecture + dependency graph generation
-
-- Skill:
-  - `.claude/skills/metahuman-evolver/SKILL.md`
-  - `.claude/skills/metahuman-evolver/scripts/evolve_metahuman.py`
-- Default scan scope:
-  - `Engine/Plugins/MetaHuman/*`
-  - `Engine/Plugins/Experimental/MetaHuman/*`
-  - `Engine/Plugins/Animation/LiveLink`
-  - `Engine/Plugins/Animation/RigLogic`
-  - `Engine/Plugins/Animation/DNACalib`
-- Generated artifacts (local skill memory):
-  - `.claude/skills/metahuman-evolver/references/latest-scan.json`
-  - `.claude/skills/metahuman-evolver/references/latest-architecture.json`
-  - `.claude/skills/metahuman-evolver/references/latest-dependency-graph.json`
-  - `.claude/skills/metahuman-evolver/references/latest-dependency-graph.mmd`
-- Published artifacts (web-consumed):
-  - `web/public/docs/metahuman-evolution-latest.json`
+- Skills root: `.claude/skills/`
+- MetaHuman architecture/dependency outputs:
   - `web/public/docs/metahuman-architecture-latest.json`
   - `web/public/docs/metahuman-dependency-graph-latest.json`
   - `web/public/docs/metahuman-dependency-graph-latest.mmd`
-
-The architecture page renders these generated artifacts directly:
-- `web/app/learn/metahuman/architecture/page.tsx`
+- Full-modality outputs:
+  - `web/public/docs/full-modality-research-latest.json`
+  - `web/public/docs/full-modality-architecture-latest.json`
+- Gaussian video wall outputs:
+  - `web/app/data/gaussian-video-wall.json`
+  - `web/public/docs/gaussian-video-wall-latest.json`
 
 ## Local Development
 
-### Web app
+### Run web app
 
 ```bash
 cd web
@@ -78,33 +73,35 @@ npm install
 npm run dev
 ```
 
-Production build check:
+### Production build check
 
 ```bash
 cd web
 npm run build
 ```
 
-### Refresh living feeds
+### Refresh research/tooling feeds
 
 ```bash
 cd web
 npm run feeds:update
 ```
 
-### Run MetaHuman evolver cycle
+### Run evolver skills
 
 ```bash
 python .claude/skills/metahuman-evolver/scripts/evolve_metahuman.py --max-api-samples 30
+python .claude/skills/full-modality-social-evolver/scripts/evolve_social_modality_research.py
+python .claude/skills/gaussian-youtube-video-wall-evolver/scripts/evolve_gaussian_video_wall.py
 ```
 
 ## Automation
 
-- Feed refresh workflow: `.github/workflows/update-research-feed.yml`
-- Scheduled daily run updates research/tooling feed JSON and commits changes when diffs exist.
+- Workflow: `.github/workflows/update-research-feed.yml`
+- Daily scheduled refresh updates feed JSONs and commits diffs automatically
 
-## Notes and Boundaries
+## Notes
 
-- This repo is an active research/iteration workspace, not a packaged production product.
-- Unreal/MetaHuman control requires local UE setup and valid runtime secrets/tokens.
-- Generated docs and skill snapshots are source-of-truth for current MetaHuman architecture status.
+- This is an active iteration repo, not a packaged product release.
+- Unreal and MetaHuman paths require local UE setup and valid runtime credentials.
+- Skill-generated docs under `web/public/docs/` are the latest architecture/research snapshots.

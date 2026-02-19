@@ -213,7 +213,6 @@ function SlideTitle() {
       </p>
       <div className="flex flex-col items-center gap-1.5 text-[#948d82]">
         <span className="text-2xl font-medium text-[#f5f2ec]">Yuntian Chai</span>
-        <span className="text-lg">PajamaDot / Cogix</span>
         <a
           href={PROJECT_REPO_URL}
           target="_blank"
