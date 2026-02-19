@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
@@ -36,11 +36,10 @@ import {
 } from 'lucide-react';
 import SlideFlow from './components/SlideFlow';
 
-/* ═══════════════════════════════════════════════════════════════
-   CONSTANTS
-   ═══════════════════════════════════════════════════════════════ */
+/* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   CONSTANTS
+   鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
-const TOTAL_SLIDES = 29;
+const TOTAL_SLIDES = 32;
 
 function clampSlideNumber(slide: number) {
   if (!Number.isFinite(slide)) return 1;
@@ -58,6 +57,9 @@ const HEDRA_AVATAR_URL = 'https://www.hedra.com/app/avatar';
 const WORLDLABS_SPLAT_WORLD_URL = 'https://www.worldlabs.ai/case-studies/1-splat-world';
 const WORLDLABS_MARBLE_GUIDE_URL = 'https://docs.worldlabs.ai/marble/getting-started/user-guide';
 const WORLDLABS_YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/6vRUKR2Qv30';
+const SUPERSPLAT_DEMO_ONE_URL = 'https://superspl.at/view?id=bd964899';
+const SUPERSPLAT_DEMO_TWO_URL = 'https://superspl.at/view?id=97a75605';
+const PLAYCANVAS_PERSONAL_DEMO_URL = 'https://playcanv.as/p/ySwArvB0/';
 
 function DemoLink({ slug, label, color }: { slug: string; label: string; color: string }) {
   return (
@@ -106,9 +108,8 @@ function SlideMethodBadge({ method, label, color }: { method: string; label?: st
   );
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   INDIVIDUAL SLIDE COMPONENTS
-   ═══════════════════════════════════════════════════════════════ */
+/* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   INDIVIDUAL SLIDE COMPONENTS
+   鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
 function SlideTitle() {
   return (
@@ -289,8 +290,8 @@ function SlideThreeApproaches() {
       name: 'Gaussian Splatting',
       color: METHOD_COLORS.gaussian,
       icon: Box,
-      tagline: 'Explicit 3D Gaussians at 100+ FPS',
-      desc: 'Scene as anisotropic Gaussian splats, directly rasterized in real time',
+      tagline: 'Explicit 3D primitives, real-time rasterization',
+      desc: 'Per-splat (mu, Sigma, color, alpha); no neural-field inference at runtime',
     },
   ];
 
@@ -872,7 +873,7 @@ function SlideGaussianHow() {
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-6">
         <p className="text-lg text-[#bdb8af] leading-relaxed">
           Think of a scene as <span className="text-[#f5f2ec]">millions of tiny translucent paint clouds</span>.
-          {' '}Each cloud is a 3D Gaussian with center, shape, color, and opacity. Rendering means projecting those clouds to screen-space ellipses and alpha-blending them front-to-back.
+          {' '}Each cloud is a 3D Gaussian with center, shape, color, and opacity. Unlike NeRF-style MLP field queries, 3DGS renders by projecting those clouds to screen-space ellipses and alpha-blending front-to-back.
         </p>
       </div>
 
@@ -922,7 +923,7 @@ function SlideGaussianHow() {
         accentColor={METHOD_COLORS.gaussian}
         nodes={[
           { id: 'capture', label: 'Capture / Input Views' },
-          { id: 'opt', label: 'Estimate Gaussian Params (μ, Σ, c, α)' },
+          { id: 'opt', label: 'Estimate Gaussian Params (mu, Sigma, c, alpha)' },
           { id: 'project', label: 'Project to 2D Ellipses' },
           { id: 'blend', label: 'Alpha Blend (Depth-Aware)' },
           { id: 'render', label: 'Realtime View Synthesis' },
@@ -1228,7 +1229,7 @@ function SlideGaussianPerf() {
       </div>
 
       <p className="text-[11px] text-[#948d82] mt-3">
-        Profile: {profile.label} ({profile.memory}) · {profile.note}
+        Profile: {profile.label} ({profile.memory}) 路 {profile.note}
       </p>
     </div>
   );
@@ -1259,6 +1260,96 @@ function SlideGaussianDemo() {
         <Cpu size={14} />
         <span>Requires local Docker setup (see gaussian-avatar/ directory)</span>
       </div>
+    </div>
+  );
+}
+
+function SlideGaussianSupersplatDemo({
+  title,
+  demoUrl,
+}: {
+  title: string;
+  demoUrl: string;
+}) {
+  return (
+    <div className="flex flex-col items-center justify-center h-full px-12 text-center">
+      <SlideMethodBadge method="Gaussian Splatting Demo" label="SuperSplat" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-1">{title}</h2>
+      <p className="text-[#bdb8af] text-lg mb-5 max-w-3xl">
+        Interactive Gaussian splat scene by artist Dany Bittel.
+      </p>
+
+      <div className="w-full max-w-5xl aspect-video rounded-xl overflow-hidden border border-[#3d3a36] bg-[#1d1c1a]">
+        <iframe
+          src={demoUrl}
+          title={title}
+          className="w-full h-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      </div>
+
+      <a
+        href={demoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-4 py-2 mt-5 rounded-lg border border-[#3d3a36] text-sm font-semibold hover:bg-[#242220] transition-colors"
+        style={{ color: METHOD_COLORS.gaussian }}
+      >
+        <ExternalLink size={14} />
+        Open on superspl.at
+      </a>
+    </div>
+  );
+}
+
+function SlideGaussianSupersplatDemoOne() {
+  return (
+    <SlideGaussianSupersplatDemo
+      title="Gaussian Splat Demo: Dany Bittel (Scene 1)"
+      demoUrl={SUPERSPLAT_DEMO_ONE_URL}
+    />
+  );
+}
+
+function SlideGaussianSupersplatDemoTwo() {
+  return (
+    <SlideGaussianSupersplatDemo
+      title="Gaussian Splat Demo: Dany Bittel (Scene 2)"
+      demoUrl={SUPERSPLAT_DEMO_TWO_URL}
+    />
+  );
+}
+
+function SlideGaussianPersonalDemo() {
+  return (
+    <div className="flex flex-col items-center justify-center h-full px-12 text-center">
+      <SlideMethodBadge method="Gaussian Splatting Demo" label="Personal Demo" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-1">My Personal Gaussian Demo</h2>
+      <p className="text-[#bdb8af] text-lg mb-5 max-w-3xl">
+        Personal PlayCanvas interactive demo.
+      </p>
+
+      <div className="w-full max-w-5xl aspect-video rounded-xl overflow-hidden border border-[#3d3a36] bg-[#1d1c1a]">
+        <iframe
+          src={PLAYCANVAS_PERSONAL_DEMO_URL}
+          title="Personal PlayCanvas Gaussian Demo"
+          className="w-full h-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      </div>
+
+      <a
+        href={PLAYCANVAS_PERSONAL_DEMO_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-4 py-2 mt-5 rounded-lg border border-[#3d3a36] text-sm font-semibold hover:bg-[#242220] transition-colors"
+        style={{ color: METHOD_COLORS.gaussian }}
+      >
+        <ExternalLink size={14} />
+        Open on PlayCanvas
+      </a>
     </div>
   );
 }
@@ -1847,9 +1938,8 @@ function SlideE2EPipeline() {
   );
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   NEW SLIDES (Deep Research Overhaul)
-   ═══════════════════════════════════════════════════════════════ */
+/* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   NEW SLIDES (Deep Research Overhaul)
+   鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
 function SlideSignalsInteraction() {
   type TabId = 'inputs' | 'outputs' | 'coupling';
@@ -2590,9 +2680,8 @@ function SlideThankYou() {
   );
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   SLIDES ARRAY
-   ═══════════════════════════════════════════════════════════════ */
+/* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   SLIDES ARRAY
+   鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
 const SLIDES: React.FC[] = [
   SlideTitle,                    // 1
@@ -2612,23 +2701,25 @@ const SLIDES: React.FC[] = [
   SlideGaussianCovariance,       // 15
   SlideGaussianPerf,             // 16
   SlideGaussianDemo,             // 17
-  SlideGaussianWorldlabsDemo,    // 18 NEW
-  SlideStreamingArchitecture,    // 19
-  SlideCapabilityMatrix,         // 20 NEW
-  SlideComparison,               // 21
-  SlideRealTimeMetrics,          // 22 NEW
-  SlideE2EPipeline,              // 23
-  SlideAudio2FaceBuildingBlocks, // 24 NEW
-  SlideWhereIntelligenceLives,   // 25 NEW
-  SlideResearchFrontier,         // 26 NEW
-  SlideConvergenceUpdated,       // 27 REPLACED
-  SlideBuiltWithClaudeSkills,    // 28 NEW
-  SlideThankYou,                 // 29
+  SlideGaussianSupersplatDemoOne,// 18 NEW
+  SlideGaussianSupersplatDemoTwo,// 19 NEW
+  SlideGaussianPersonalDemo,     // 20 NEW
+  SlideGaussianWorldlabsDemo,    // 21
+  SlideStreamingArchitecture,    // 22
+  SlideCapabilityMatrix,         // 23 NEW
+  SlideComparison,               // 24
+  SlideRealTimeMetrics,          // 25 NEW
+  SlideE2EPipeline,              // 26
+  SlideAudio2FaceBuildingBlocks, // 27 NEW
+  SlideWhereIntelligenceLives,   // 28 NEW
+  SlideResearchFrontier,         // 29 NEW
+  SlideConvergenceUpdated,       // 30 REPLACED
+  SlideBuiltWithClaudeSkills,    // 31 NEW
+  SlideThankYou,                 // 32
 ];
 
-/* ═══════════════════════════════════════════════════════════════
-   MAIN SLIDES PAGE
-   ═══════════════════════════════════════════════════════════════ */
+/* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   MAIN SLIDES PAGE
+   鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
 export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?: number; onExit?: () => void }) {
   const router = useRouter();
@@ -2866,3 +2957,4 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
     </div>
   );
 }
+
