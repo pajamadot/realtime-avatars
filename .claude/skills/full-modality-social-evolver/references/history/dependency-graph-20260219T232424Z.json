@@ -1,0 +1,121 @@
+{
+  "generated_at": "2026-02-19T23:24:24+00:00",
+  "nodes": [
+    {
+      "id": "input_audio",
+      "label": "Audio Input",
+      "group": "input"
+    },
+    {
+      "id": "input_video",
+      "label": "Video Input",
+      "group": "input"
+    },
+    {
+      "id": "input_text",
+      "label": "Text Input",
+      "group": "input"
+    },
+    {
+      "id": "signal_core",
+      "label": "Social Signal Core",
+      "group": "core"
+    },
+    {
+      "id": "narrative_core",
+      "label": "Narrative Core",
+      "group": "core"
+    },
+    {
+      "id": "behavior_core",
+      "label": "Behavior Planner",
+      "group": "core"
+    },
+    {
+      "id": "adapter_metahuman",
+      "label": "MetaHuman Adapter",
+      "group": "adapter"
+    },
+    {
+      "id": "adapter_video",
+      "label": "VideoGen Adapter",
+      "group": "adapter"
+    },
+    {
+      "id": "adapter_gaussian",
+      "label": "Gaussian Adapter",
+      "group": "adapter"
+    },
+    {
+      "id": "output_stream",
+      "label": "Realtime Stream",
+      "group": "output"
+    }
+  ],
+  "edges": [
+    {
+      "from": "input_audio",
+      "to": "signal_core",
+      "kind": "signal"
+    },
+    {
+      "from": "input_video",
+      "to": "signal_core",
+      "kind": "signal"
+    },
+    {
+      "from": "input_text",
+      "to": "narrative_core",
+      "kind": "semantic"
+    },
+    {
+      "from": "signal_core",
+      "to": "narrative_core",
+      "kind": "context"
+    },
+    {
+      "from": "signal_core",
+      "to": "behavior_core",
+      "kind": "control"
+    },
+    {
+      "from": "narrative_core",
+      "to": "behavior_core",
+      "kind": "intent"
+    },
+    {
+      "from": "behavior_core",
+      "to": "adapter_metahuman",
+      "kind": "adapter"
+    },
+    {
+      "from": "behavior_core",
+      "to": "adapter_video",
+      "kind": "adapter"
+    },
+    {
+      "from": "behavior_core",
+      "to": "adapter_gaussian",
+      "kind": "adapter"
+    },
+    {
+      "from": "adapter_metahuman",
+      "to": "output_stream",
+      "kind": "render"
+    },
+    {
+      "from": "adapter_video",
+      "to": "output_stream",
+      "kind": "render"
+    },
+    {
+      "from": "adapter_gaussian",
+      "to": "output_stream",
+      "kind": "render"
+    }
+  ],
+  "totals": {
+    "nodes": 10,
+    "edges": 12
+  }
+}
