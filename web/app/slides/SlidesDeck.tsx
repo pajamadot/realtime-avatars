@@ -325,55 +325,58 @@ function SlideCogixEyeTrackerPrototype() {
       <h2 className="text-5xl font-bold mb-2">By Day Work on Cogix</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
-      <p className="text-lg text-[#c7c2b9] mb-5 max-w-5xl">
+      <p className="text-base text-[#c7c2b9] mb-4 max-w-4xl">
         I am also building an eye tracker prototype at Cogix, combining a custom IR hardware rig with a session-based analytics software pipeline.
       </p>
 
-      <div className="grid grid-cols-3 gap-4">
-        <div className="rounded-xl overflow-hidden border border-[#3d3a36] bg-[#10100f]">
-          <img
-            src="/eye-tracker.jpg"
-            alt="Eye tracker prototype hardware rig with IR LEDs and cameras"
-            className="w-full h-[220px] object-cover"
-          />
-          <div className="px-4 py-3 text-sm text-[#bdb8af] border-t border-[#3d3a36]">
-            Hardware prototype: IR illuminators + cameras for gaze capture.
+      <div className="w-[82%] max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 gap-3">
+          <div className="rounded-xl overflow-hidden border border-[#3d3a36] bg-[#10100f]">
+            <img
+              src="/eye-tracker-calibration.jpg"
+              alt="Eye tracker calibration target layout"
+              className="w-full aspect-video object-cover"
+            />
+            <div className="px-3 py-2 text-[11px] text-[#bdb8af] border-t border-[#3d3a36]">
+              Calibration map: 9-point target distribution.
+            </div>
           </div>
-        </div>
-        <div className="rounded-xl overflow-hidden border border-[#3d3a36] bg-[#10100f]">
-          <img
-            src="/eye-tracking-software.png"
-            alt="Eye-Tracking Studio interface showing session timeline and gaze analytics"
-            className="w-full h-[220px] object-cover object-top"
-          />
-          <div className="px-4 py-3 text-sm text-[#bdb8af] border-t border-[#3d3a36]">
-            Software prototype: timeline, fixations, saccades, pupil metrics, and exportable reports.
+          <div className="rounded-xl overflow-hidden border border-[#3d3a36] bg-[#10100f]">
+            <img
+              src="/eye-tracker.jpg"
+              alt="Eye tracker prototype hardware rig with IR LEDs and cameras"
+              className="w-full aspect-video object-cover"
+            />
+            <div className="px-3 py-2 text-[11px] text-[#bdb8af] border-t border-[#3d3a36]">
+              Hardware prototype: IR illuminators + cameras.
+            </div>
           </div>
-        </div>
-        <div className="rounded-xl overflow-hidden border border-[#3d3a36] bg-[#10100f]">
-          <video
-            src="/eye_tracking_video.mp4"
-            className="w-full h-[220px] object-cover bg-black"
-            controls
-            muted
-            playsInline
-            preload="metadata"
-            poster="/eye-tracker.jpg"
-          />
-          <div className="px-4 py-3 text-sm text-[#bdb8af] border-t border-[#3d3a36]">
-            Prototype session video: calibration + recording playback from the same tracking stack.
+          <div className="rounded-xl overflow-hidden border border-[#3d3a36] bg-[#10100f]">
+            <img
+              src="/eye-tracking-software.png"
+              alt="Eye-Tracking Studio interface showing session timeline and gaze analytics"
+              className="w-full aspect-video object-cover object-top"
+            />
+            <div className="px-3 py-2 text-[11px] text-[#bdb8af] border-t border-[#3d3a36]">
+              Software: timeline, fixations, saccades, pupil metrics.
+            </div>
+          </div>
+          <div className="rounded-xl overflow-hidden border border-[#3d3a36] bg-[#10100f]">
+            <video
+              src="/eye_tracking_video.mp4"
+              className="w-full aspect-video object-cover bg-black"
+              controls
+              muted
+              playsInline
+              preload="metadata"
+              poster="/eye_tracking_video-poster.jpg"
+            />
+            <div className="px-3 py-2 text-[11px] text-[#bdb8af] border-t border-[#3d3a36]">
+              Prototype session video playback from the same stack.
+            </div>
           </div>
         </div>
       </div>
-
-      <div className="mt-4 rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] text-sm text-[#bdb8af] flex items-start gap-2">
-        <Eye size={16} className="text-[#e1a65b] mt-0.5 flex-shrink-0" />
-        This work complements realtime avatar research by improving live human-signal capture quality at the input layer.
-      </div>
-
-      <p className="mt-3 text-xs text-[#8f8b84]">
-        Static assets used on this slide: <code>/eye-tracker.jpg</code>, <code>/eye-tracking-software.png</code>, <code>/eye_tracking_video.mp4</code>.
-      </p>
     </div>
   );
 }
