@@ -63,6 +63,74 @@ const SUPERSPLAT_DEMO_TWO_URL = 'https://superspl.at/view?id=97a75605';
 const PLAYCANVAS_PERSONAL_DEMO_URL = 'https://playcanv.as/p/ySwArvB0/';
 const GAUSSIAN_VIDEO_WALL_ROUTE = '/gaussian-video-wall';
 const SLIDE_FONT_SCALE = 1.2;
+const SLIDE_TYPOGRAPHY_CSS = `
+.slides-root {
+  --slide-font-display: "Inter Tight", "Avenir Next", "Segoe UI", sans-serif;
+  --slide-font-body: "Inter", "Segoe UI", sans-serif;
+  --slide-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  --slide-type--1: clamp(0.78rem, 0.74rem + 0.18vw, 0.9rem);
+  --slide-type-0: clamp(0.9rem, 0.86rem + 0.24vw, 1.02rem);
+  --slide-type-1: clamp(1.02rem, 0.95rem + 0.32vw, 1.2rem);
+  --slide-type-2: clamp(1.16rem, 1.05rem + 0.5vw, 1.42rem);
+  --slide-type-3: clamp(1.34rem, 1.18rem + 0.72vw, 1.78rem);
+  --slide-type-4: clamp(1.62rem, 1.35rem + 1.1vw, 2.32rem);
+  --slide-type-5: clamp(2.02rem, 1.62rem + 1.6vw, 3.08rem);
+  --slide-type-6: clamp(2.56rem, 1.94rem + 2.45vw, 4.18rem);
+  --slide-type-7: clamp(3.24rem, 2.42rem + 3.25vw, 5.46rem);
+}
+
+.slides-root .slide-content-shell {
+  font-family: var(--slide-font-body);
+  line-height: 1.36;
+  letter-spacing: -0.01em;
+  font-feature-settings: "liga" 1, "tnum" 1, "ss01" 1;
+}
+
+.slides-root .slide-content-shell h1,
+.slides-root .slide-content-shell h2,
+.slides-root .slide-content-shell h3,
+.slides-root .slide-content-shell h4 {
+  color: #ffffff;
+  font-family: var(--slide-font-display);
+  letter-spacing: -0.025em;
+}
+
+.slides-root .slide-content-shell h1 {
+  font-size: var(--slide-type-7);
+  line-height: 1.02;
+  font-weight: 780;
+}
+
+.slides-root .slide-content-shell h2 {
+  font-size: var(--slide-type-6);
+  line-height: 1.08;
+  font-weight: 740;
+}
+
+.slides-root .slide-content-shell h3 {
+  font-size: var(--slide-type-4);
+  line-height: 1.14;
+  font-weight: 700;
+}
+
+.slides-root .slide-content-shell h4 {
+  font-size: var(--slide-type-3);
+  line-height: 1.18;
+  font-weight: 680;
+}
+
+.slides-root .slide-content-shell p,
+.slides-root .slide-content-shell li,
+.slides-root .slide-content-shell span {
+  text-wrap: pretty;
+}
+
+.slides-root .slide-content-shell code,
+.slides-root .slide-content-shell .font-mono {
+  font-family: var(--slide-font-mono);
+  letter-spacing: -0.01em;
+}
+`;
 
 const GAUSSIAN_WALL_VIDEOS = ((gaussianVideoWallData as { videos?: Array<{
   video_id: string;
@@ -2853,7 +2921,7 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
   const slideContentStyle: React.CSSProperties = {
     ...slideStyle,
     fontSize: `${SLIDE_FONT_SCALE}em`,
-    lineHeight: 1.2,
+    lineHeight: 1.36,
   };
 
   return (
@@ -2861,7 +2929,7 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
       ref={containerRef}
       className="slides-root fixed inset-0 bg-[#111110] text-[#f5f2ec] flex flex-col select-none overflow-hidden"
     >
-      <style>{`.slides-root h1,.slides-root h2,.slides-root h3,.slides-root h4{color:#ffffff}`}</style>
+      <style>{SLIDE_TYPOGRAPHY_CSS}</style>
       {/* Top bar */}
       <div className="flex items-center justify-between px-4 py-2 z-10 flex-shrink-0">
         {onExit ? (
@@ -2917,7 +2985,7 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
         </button>
 
         {/* Slide */}
-        <div className="h-full px-4 sm:px-6 overflow-y-auto" style={slideContentStyle}>
+        <div className="slide-content-shell h-full px-4 sm:px-6 overflow-y-auto" style={slideContentStyle}>
           <div className="min-h-full max-w-[1720px] mx-auto py-1">
             <CurrentSlide />
           </div>
