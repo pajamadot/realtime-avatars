@@ -327,22 +327,22 @@ function SlideAboutMe() {
 }
 
 function SlideProblem() {
-  const useCases = [
-    { icon: Gamepad2, label: 'Gaming', desc: 'NPCs that react naturally' },
-    { icon: Headset, label: 'Customer Service', desc: 'Empathetic virtual agents' },
-    { icon: BookOpen, label: 'Education', desc: 'Personalized AI tutors' },
-    { icon: Users, label: 'Telepresence', desc: 'Photorealistic remote presence' },
+  const rationale = [
+    { icon: Cpu, label: 'Agent-Only Work', desc: 'Backoffice automation, ETL, triage, routing: no avatar needed.' },
+    { icon: Users, label: 'Human Trust Loop', desc: 'People calibrate trust through timing, gaze, expression, and tone.' },
+    { icon: Headset, label: 'Service & Sales', desc: 'De-escalation, persuasion, and empathy benefit from visible presence.' },
+    { icon: BookOpen, label: 'Teaching & Care', desc: 'Realtime social cues improve comprehension, confidence, and engagement.' },
   ];
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <h2 className="text-5xl font-bold mb-2">Why Real-Time Avatars?</h2>
+      <h2 className="text-5xl font-bold mb-2">Why Real-Time Avatars In The Agent Era?</h2>
       <div
         className="w-14 h-1 rounded-full mb-8"
         style={{ background: METHOD_COLORS.gaussian }}
       />
       <div className="grid grid-cols-2 gap-6 mb-8">
-        {useCases.map((uc) => (
+        {rationale.map((uc) => (
           <div
             key={uc.label}
             className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]"
@@ -354,10 +354,10 @@ function SlideProblem() {
         ))}
       </div>
       <div className="rounded-xl border border-[#3d3a36] bg-[#1d1c1a] p-5">
-        <h3 className="text-xl font-semibold mb-3">The Core Challenge</h3>
+        <h3 className="text-xl font-semibold mb-3">The Core Decision</h3>
         <p className="text-lg text-[#bdb8af]">
-          Balance visual realism, low latency, controllability, and deployment
-          cost -- no single approach dominates all four.
+          Keep agents invisible for machine-to-machine throughput. Use realtime avatars at the
+          human boundary where rapport, accountability, and social coordination determine outcomes.
         </p>
       </div>
     </div>

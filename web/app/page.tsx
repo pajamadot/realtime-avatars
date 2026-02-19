@@ -255,6 +255,14 @@ export default function Home() {
             Achieving a convincing digital human requires balancing visual realism, low latency,
             precise controllability, and feasible deployment.
           </p>
+          <div className="card-alt p-4 mb-4">
+            <p className="font-medium mb-1">Why avatars when agents can already do the work?</p>
+            <p className="text-sm text-[var(--text-muted)]">
+              Most machine-to-machine workflows should remain avatar-free. Realtime avatars matter at
+              the human interface: trust calibration, negotiation, de-escalation, teaching, and care.
+              They add social bandwidth where pure text or voice often underperforms.
+            </p>
+          </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4 text-sm">
             <div className="p-3 bg-[var(--surface-2)] rounded text-center">
