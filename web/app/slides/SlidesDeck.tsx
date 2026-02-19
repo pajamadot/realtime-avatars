@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import {
   ArrowLeft,
   ArrowRight,
@@ -41,7 +40,7 @@ import gaussianVideoWallData from '../data/gaussian-video-wall.json';
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   CONSTANTS
    鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
-const TOTAL_SLIDES = 33;
+const TOTAL_SLIDES = 32;
 
 function clampSlideNumber(slide: number) {
   if (!Number.isFinite(slide)) return 1;
@@ -63,6 +62,7 @@ const SUPERSPLAT_DEMO_ONE_URL = 'https://superspl.at/view?id=bd964899';
 const SUPERSPLAT_DEMO_TWO_URL = 'https://superspl.at/view?id=97a75605';
 const PLAYCANVAS_PERSONAL_DEMO_URL = 'https://playcanv.as/p/ySwArvB0/';
 const GAUSSIAN_VIDEO_WALL_ROUTE = '/gaussian-video-wall';
+const SLIDE_FONT_SCALE = 1.2;
 
 const GAUSSIAN_WALL_VIDEOS = ((gaussianVideoWallData as { videos?: Array<{
   video_id: string;
@@ -385,66 +385,6 @@ function SlideMetahumanHow() {
             </div>
           </div>
         ))}
-      </div>
-    </div>
-  );
-}
-
-function SlideMetahumanMechanism() {
-  return (
-    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="MetaHuman" color={METHOD_COLORS.metahuman} />
-      <h2 className="text-5xl font-bold mb-2">Blendshapes & Facial Rigging</h2>
-      <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.metahuman }} />
-
-      {/* Formula */}
-      <FormulaBlock color={METHOD_COLORS.metahuman} label="Linear Blend Model">
-        <span className="text-[#f5f2ec]">f</span> = <span className="text-[#f5f2ec]">x</span>
-        <sub>0</sub> + <span className="text-[#bdb8af]">&Sigma;</span>
-        <sub>i=1</sub><sup>52</sup>{' '}
-        <span style={{ color: METHOD_COLORS.metahuman }}>w</span>
-        <sub>i</sub> &middot; <span className="text-[#f5f2ec]">B</span>
-        <sub>i</sub>
-      </FormulaBlock>
-
-      <div className="grid grid-cols-2 gap-5 mt-5 items-start">
-        {/* Explanation */}
-        <div className="space-y-3">
-          {/* Key stats row */}
-          <div className="grid grid-cols-3 gap-2">
-            {[
-              { value: '52', unit: 'blendshapes', desc: 'ARKit basis vectors' },
-              { value: '60', unit: 'FPS', desc: 'tracking rate' },
-              { value: '<16', unit: 'ms', desc: 'mesh deform' },
-            ].map((s) => (
-              <div key={s.unit} className="rounded-lg p-3 border border-[#3d3a36] bg-[#1d1c1a] text-center">
-                <div className="text-2xl font-bold font-mono" style={{ color: METHOD_COLORS.metahuman }}>
-                  {s.value}<span className="text-sm ml-0.5 text-[#bdb8af]">{s.unit}</span>
-                </div>
-                <div className="text-sm text-[#948d82] mt-0.5">{s.desc}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* How it works */}
-          <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] space-y-2.5">
-            <div className="flex items-start gap-2.5">
-              <span className="text-sm font-bold px-1.5 py-0.5 rounded mt-0.5" style={{ background: `${METHOD_COLORS.metahuman}25`, color: METHOD_COLORS.metahuman }}>B<sub>i</sub></span>
-              <p className="text-base text-[#bdb8af]">Each blendshape is a <span className="text-[#f5f2ec]">vertex displacement map</span> -- a basis vector describing how the mesh deforms for one facial action unit.</p>
-            </div>
-            <div className="flex items-start gap-2.5">
-              <span className="text-sm font-bold px-1.5 py-0.5 rounded mt-0.5" style={{ background: `${METHOD_COLORS.metahuman}25`, color: METHOD_COLORS.metahuman }}>w<sub>i</sub></span>
-              <p className="text-base text-[#bdb8af]">Weights range <span className="font-mono text-[#f5f2ec]">[0, 1]</span>. ARKit extracts these from camera in real-time. LiveLink streams to Unreal Engine.</p>
-            </div>
-            <div className="flex items-start gap-2.5">
-              <span className="text-sm font-bold px-1.5 py-0.5 rounded mt-0.5" style={{ background: `${METHOD_COLORS.metahuman}25`, color: METHOD_COLORS.metahuman }}>&Sigma;</span>
-              <p className="text-base text-[#bdb8af]">Any expression = weighted sum. Try the presets in the interactive demo.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Demo link */}
-        <DemoLink slug="blendshape" label="Blendshape Explorer" color={METHOD_COLORS.metahuman} />
       </div>
     </div>
   );
@@ -2732,40 +2672,38 @@ const SLIDES: React.FC[] = [
   SlideThreeApproaches,          // 4
   SlideSignalsInteraction,       // 5  NEW
   SlideMetahumanHow,             // 6
-  SlideMetahumanMechanism,       // 7
-  SlideMetahumanDemo,            // 8
-  SlideGenerativeHow,            // 9
-  SlideGenerativeMechanism,      // 10
-  SlideGenerativeResearch,       // 11
-  SlideGenerativeDemo,           // 12
-  SlideGaussianHow,              // 13
-  SlideGaussianMechanism,        // 14
-  SlideGaussianCovariance,       // 15
-  SlideGaussianPerf,             // 16
-  SlideGaussianDemo,             // 17
-  SlideGaussianSupersplatDemoOne,// 18 NEW
-  SlideGaussianSupersplatDemoTwo,// 19 NEW
-  SlideGaussianPersonalDemo,     // 20 NEW
-  SlideGaussianWorldlabsDemo,    // 21
-  SlideGaussianResearchVideoWall,// 22 NEW
-  SlideStreamingArchitecture,    // 23
-  SlideCapabilityMatrix,         // 24 NEW
-  SlideComparison,               // 25
-  SlideRealTimeMetrics,          // 26 NEW
-  SlideE2EPipeline,              // 27
-  SlideAudio2FaceBuildingBlocks, // 28 NEW
-  SlideWhereIntelligenceLives,   // 29 NEW
-  SlideResearchFrontier,         // 30 NEW
-  SlideConvergenceUpdated,       // 31 REPLACED
-  SlideBuiltWithClaudeSkills,    // 32 NEW
-  SlideThankYou,                 // 33
+  SlideMetahumanDemo,            // 7
+  SlideGenerativeHow,            // 8
+  SlideGenerativeMechanism,      // 9
+  SlideGenerativeResearch,       // 10
+  SlideGenerativeDemo,           // 11
+  SlideGaussianHow,              // 12
+  SlideGaussianMechanism,        // 13
+  SlideGaussianCovariance,       // 14
+  SlideGaussianPerf,             // 15
+  SlideGaussianDemo,             // 16
+  SlideGaussianSupersplatDemoOne,// 17 NEW
+  SlideGaussianSupersplatDemoTwo,// 18 NEW
+  SlideGaussianPersonalDemo,     // 19 NEW
+  SlideGaussianWorldlabsDemo,    // 20
+  SlideGaussianResearchVideoWall,// 21 NEW
+  SlideStreamingArchitecture,    // 22
+  SlideCapabilityMatrix,         // 23 NEW
+  SlideComparison,               // 24
+  SlideRealTimeMetrics,          // 25 NEW
+  SlideE2EPipeline,              // 26
+  SlideAudio2FaceBuildingBlocks, // 27 NEW
+  SlideWhereIntelligenceLives,   // 28 NEW
+  SlideResearchFrontier,         // 29 NEW
+  SlideConvergenceUpdated,       // 30 REPLACED
+  SlideBuiltWithClaudeSkills,    // 31 NEW
+  SlideThankYou,                 // 32
 ];
 
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   MAIN SLIDES PAGE
    鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
 export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?: number; onExit?: () => void }) {
-  const router = useRouter();
   const [current, setCurrent] = useState(() => clampSlideNumber(initialSlide) - 1);
   const [direction, setDirection] = useState<'left' | 'right' | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -2789,14 +2727,14 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
       setIsAnimating(true);
       setTimeout(() => {
         setCurrent(index);
-        if (!onExit) {
-          router.replace(`/slides/${index + 1}`, { scroll: false });
+        if (!onExit && typeof window !== 'undefined') {
+          window.history.replaceState(null, '', `/slides/${index + 1}`);
         }
         setDirection(null);
         setIsAnimating(false);
       }, 300);
     },
-    [current, isAnimating, onExit, router]
+    [current, isAnimating, onExit]
   );
 
   const next = useCallback(() => {
@@ -2912,6 +2850,12 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
         : 'translateX(0)',
   };
 
+  const slideContentStyle: React.CSSProperties = {
+    ...slideStyle,
+    fontSize: `${SLIDE_FONT_SCALE}em`,
+    lineHeight: 1.2,
+  };
+
   return (
     <div
       ref={containerRef}
@@ -2973,8 +2917,10 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
         </button>
 
         {/* Slide */}
-        <div className="h-full px-4 sm:px-6" style={slideStyle}>
-          <CurrentSlide />
+        <div className="h-full px-4 sm:px-6 overflow-y-auto" style={slideContentStyle}>
+          <div className="min-h-full max-w-[1720px] mx-auto py-1">
+            <CurrentSlide />
+          </div>
         </div>
       </div>
 
