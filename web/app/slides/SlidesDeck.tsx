@@ -31,23 +31,9 @@ import {
   Brain,
   Activity,
   Timer,
+  Play,
 } from 'lucide-react';
-import dynamic from 'next/dynamic';
-
-function DemoLoading() {
-  return (
-    <div className="flex items-center justify-center h-48 text-[#948d82]">
-      <div className="w-6 h-6 border-2 border-current border-t-transparent rounded-full animate-spin" />
-    </div>
-  );
-}
-
-const BlendshapeDemo = dynamic(() => import('../learn/components/demos/metahuman/BlendshapeDemo'), { ssr: false, loading: () => <DemoLoading /> });
-const DenoisingDemo = dynamic(() => import('../learn/components/demos/generative/DenoisingDemo'), { ssr: false, loading: () => <DemoLoading /> });
-const PointCloudDemo = dynamic(() => import('../learn/components/demos/gaussian/PointCloudDemo'), { ssr: false, loading: () => <DemoLoading /> });
-const CovarianceShapeDemo = dynamic(() => import('../learn/components/demos/gaussian/CovarianceShapeDemo'), { ssr: false, loading: () => <DemoLoading /> });
-const SFUComparisonDemo = dynamic(() => import('../learn/components/demos/streaming/SFUComparisonDemo'), { ssr: false, loading: () => <DemoLoading /> });
-const PipelineFlowDemo = dynamic(() => import('../learn/components/demos/endtoend/PipelineFlowDemo'), { ssr: false, loading: () => <DemoLoading /> });
+import SlideFlow from './components/SlideFlow';
 
 /* ═══════════════════════════════════════════════════════════════
    CONSTANTS
@@ -66,36 +52,36 @@ const METHOD_COLORS = {
   gaussian: '#e08840',
 } as const;
 
-function SlideDemoWrapper({ children, color }: { children: React.ReactNode; color?: string }) {
+function DemoLink({ slug, label, color }: { slug: string; label: string; color: string }) {
   return (
-    <div
-      className="rounded-xl border border-[#3d3a36] overflow-auto max-h-[480px]"
-      style={{
-        '--text-muted': '#948d82',
-        '--text-primary': '#f5f2ec',
-        '--border': '#3d3a36',
-        '--border-strong': '#5d5a55',
-        '--surface-0': '#111110',
-        '--surface-1': '#181716',
-        '--surface-2': '#1d1c1a',
-        '--surface-3': '#242220',
-        '--background': '#111110',
-        '--accent': color || '#c4713b',
-        '--foreground': '#f5f2ec',
-      } as React.CSSProperties}
+    <a
+      href={`/slides/demos/${slug}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="rounded-xl border border-[#3d3a36] bg-[#1d1c1a] hover:bg-[#242220] transition-colors p-5 flex items-center gap-4"
     >
-      {children}
-    </div>
+      <div
+        className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+        style={{ background: `${color}22` }}
+      >
+        <Play size={22} style={{ color }} />
+      </div>
+      <div>
+        <div className="text-base font-semibold text-[#f5f2ec]">{label}</div>
+        <div className="text-sm text-[#948d82]">Open interactive demo</div>
+      </div>
+      <ExternalLink size={16} className="ml-auto text-[#5d5a55]" />
+    </a>
   );
 }
 
 function FormulaBlock({ children, color, label }: { children: React.ReactNode; color: string; label?: string }) {
   return (
-    <div className="rounded-lg p-3 bg-[#181716] border border-[#3d3a36]">
+    <div className="rounded-lg p-4 bg-[#181716] border border-[#3d3a36]">
       {label && (
-        <div className="text-[10px] uppercase tracking-widest text-[#948d82] mb-1.5">{label}</div>
+        <div className="text-sm uppercase tracking-widest text-[#948d82] mb-2">{label}</div>
       )}
-      <div className="font-mono text-center text-base leading-relaxed" style={{ color }}>
+      <div className="font-mono text-center text-xl leading-relaxed" style={{ color }}>
         {children}
       </div>
     </div>
@@ -105,8 +91,8 @@ function FormulaBlock({ children, color, label }: { children: React.ReactNode; c
 function SlideMethodBadge({ method, label, color }: { method: string; label?: string; color: string }) {
   return (
     <div className="flex items-center gap-2 mb-2">
-      <div className="w-2 h-2 rounded-full" style={{ background: color }} />
-      <span className="text-xs font-semibold uppercase tracking-widest" style={{ color }}>
+      <div className="w-2.5 h-2.5 rounded-full" style={{ background: color }} />
+      <span className="text-sm font-semibold uppercase tracking-widest" style={{ color }}>
         {label || method}
       </span>
     </div>
@@ -119,24 +105,24 @@ function SlideMethodBadge({ method, label, color }: { method: string; label?: st
 
 function SlideTitle() {
   return (
-    <div className="flex flex-col items-center justify-center h-full text-center px-8">
+    <div className="flex flex-col items-center justify-center h-full text-center px-12">
       <div
-        className="w-16 h-1 rounded-full mb-8"
+        className="w-20 h-1 rounded-full mb-8"
         style={{ background: METHOD_COLORS.gaussian }}
       />
-      <h1 className="text-5xl sm:text-6xl font-bold tracking-tight leading-tight mb-6">
+      <h1 className="text-6xl sm:text-7xl font-bold tracking-tight leading-tight mb-6">
         Real-Time Digital Avatars:
         <br />
         <span style={{ color: METHOD_COLORS.gaussian }}>
           A Comparative Analysis
         </span>
       </h1>
-      <p className="text-xl text-[#c4bfb6] max-w-2xl mb-10">
+      <p className="text-2xl text-[#c4bfb6] max-w-3xl mb-10">
         Three approaches to making digital humans respond in real-time
       </p>
       <div className="flex flex-col items-center gap-1 text-[#948d82]">
-        <span className="text-lg font-medium text-[#f5f2ec]">Yuntian Chai</span>
-        <span className="text-sm">PajamaDot / Cogix</span>
+        <span className="text-xl font-medium text-[#f5f2ec]">Yuntian Chai</span>
+        <span className="text-base">PajamaDot / Cogix</span>
       </div>
     </div>
   );
@@ -437,14 +423,14 @@ function SlideAboutMe() {
   }) : [];
 
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
-      <h2 className="text-4xl font-bold mb-2">About Me</h2>
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <h2 className="text-5xl font-bold mb-2">About Me</h2>
       <div
-        className="w-14 h-1 rounded-full mb-6"
+        className="w-14 h-1 rounded-full mb-4"
         style={{ background: METHOD_COLORS.gaussian }}
       />
 
-      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
+      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-3">
         <div className="flex items-start justify-between gap-4 mb-3">
           <div className="flex items-center gap-3">
             <div
@@ -454,22 +440,22 @@ function SlideAboutMe() {
               <User size={24} style={{ color: METHOD_COLORS.gaussian }} />
             </div>
             <div>
-              <h3 className="text-xl font-semibold">Yuntian Chai</h3>
+              <h3 className="text-2xl font-semibold">Yuntian Chai</h3>
               <div className="flex items-center gap-2 mt-1">
                 <a
                   href="https://pajamadot.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[11px] text-[#bdb8af] underline decoration-dotted underline-offset-2 hover:text-[#f5f2ec]"
+                  className="text-sm text-[#bdb8af] underline decoration-dotted underline-offset-2 hover:text-[#f5f2ec]"
                 >
                   pajamadot.com
                 </a>
-                <span className="text-[10px] text-[#66625d]">|</span>
+                <span className="text-xs text-[#66625d]">|</span>
                 <a
                   href="https://cogix.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[11px] text-[#bdb8af] underline decoration-dotted underline-offset-2 hover:text-[#f5f2ec]"
+                  className="text-sm text-[#bdb8af] underline decoration-dotted underline-offset-2 hover:text-[#f5f2ec]"
                 >
                   cogix.app
                 </a>
@@ -477,8 +463,8 @@ function SlideAboutMe() {
             </div>
           </div>
           <div className="flex flex-wrap gap-1.5">
-            <span className="text-[10px] px-2 py-1 rounded bg-[#181716] border border-[#3d3a36] text-[#bdb8af]">Epic + Hedra alumni</span>
-            <span className="text-[10px] px-2 py-1 rounded bg-[#181716] border border-[#3d3a36] text-[#bdb8af]">CS + Psych + Art</span>
+            <span className="text-xs px-2 py-1 rounded bg-[#181716] border border-[#3d3a36] text-[#bdb8af]">Epic + Hedra alumni</span>
+            <span className="text-xs px-2 py-1 rounded bg-[#181716] border border-[#3d3a36] text-[#bdb8af]">CS + Psych + Art</span>
           </div>
         </div>
 
@@ -488,7 +474,7 @@ function SlideAboutMe() {
               key={entry.id}
               type="button"
               onClick={() => setActivePerspectiveId(entry.id)}
-              className="px-3 py-1.5 rounded-md text-xs font-semibold border transition-colors inline-flex items-center gap-1.5"
+              className="px-3 py-1.5 rounded-md text-sm font-semibold border transition-colors inline-flex items-center gap-1.5"
               style={{
                 borderColor: activePerspectiveId === entry.id ? METHOD_COLORS.gaussian : '#3d3a36',
                 color: activePerspectiveId === entry.id ? METHOD_COLORS.gaussian : '#bdb8af',
@@ -501,14 +487,14 @@ function SlideAboutMe() {
           ))}
         </div>
 
-        <p className="text-sm text-[#f5f2ec]">{activePerspective.headline}</p>
-        <p className="text-xs text-[#948d82] mt-1">{activePerspective.details}</p>
+        <p className="text-base text-[#f5f2ec]">{activePerspective.headline}</p>
+        <p className="text-sm text-[#948d82] mt-1">{activePerspective.details}</p>
       </div>
 
-      <div className="grid gap-4" style={{ gridTemplateColumns: '1.7fr 1fr' }}>
-        <div className="rounded-[24px] p-5 border border-[#3d3a36] bg-[#151513] overflow-hidden">
-          <p className="text-xs uppercase tracking-widest text-[#948d82] mb-2">Set Intersection Map</p>
-          <div className="relative rounded-[20px] border border-[#2f2d2a] min-h-[540px] overflow-hidden">
+      <div className="grid gap-4 flex-1 min-h-0" style={{ gridTemplateColumns: '1.7fr 1fr' }}>
+        <div className="rounded-[24px] p-5 border border-[#3d3a36] bg-[#151513] overflow-hidden flex flex-col">
+          <p className="text-sm uppercase tracking-widest text-[#948d82] mb-2">Set Intersection Map</p>
+          <div className="relative rounded-[20px] border border-[#2f2d2a] flex-1 min-h-0 overflow-hidden">
             <canvas
               ref={canvasRef}
               className="absolute inset-0 w-full h-full cursor-crosshair"
@@ -517,15 +503,15 @@ function SlideAboutMe() {
               onMouseLeave={() => setHoveredRegionId(null)}
               aria-label="Set intersection interaction map"
             />
-            <div className="absolute left-3 bottom-3 text-[10px] text-[#948d82] bg-[#151513b8] px-2 py-1 rounded">
+            <div className="absolute left-3 bottom-3 text-xs text-[#948d82] bg-[#151513b8] px-2 py-1 rounded">
               Hover any colored region to inspect mapped past experience / education.
             </div>
           </div>
         </div>
 
         <div className="rounded-[24px] p-4 border border-[#3d3a36] bg-[#161614]">
-          <p className="text-xs uppercase tracking-widest text-[#948d82] mb-2">Facts</p>
-          <ul className="mb-3 space-y-1 text-[11px] text-[#bdb8af]">
+          <p className="text-sm uppercase tracking-widest text-[#948d82] mb-2">Facts</p>
+          <ul className="mb-3 space-y-1 text-sm text-[#bdb8af]">
             <li>Cogix: CS + Psychology</li>
             <li>PajamaDot: CS + Art</li>
           </ul>
@@ -538,8 +524,8 @@ function SlideAboutMe() {
             }}
           >
             <div className="flex items-center justify-between gap-2 mb-2">
-              <p className="text-xs font-semibold text-[#f5f2ec]">{hoveredRegion?.label ?? 'Hover a region'}</p>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-[#1d1c1a] border border-[#3d3a36] text-[#bdb8af]">
+              <p className="text-sm font-semibold text-[#f5f2ec]">{hoveredRegion?.label ?? 'Hover a region'}</p>
+              <span className="text-xs px-2 py-0.5 rounded bg-[#1d1c1a] border border-[#3d3a36] text-[#bdb8af]">
                 {hoveredRegion
                   ? hoveredRegion.domains.length > 1
                     ? 'Intersection experience (past)'
@@ -552,7 +538,7 @@ function SlideAboutMe() {
               {hoveredRegion?.domains.map((domainId) => (
                 <span
                   key={`${hoveredRegionId ?? 'none'}:${domainId}`}
-                  className="text-[10px] px-1.5 py-0.5 rounded border"
+                  className="text-xs px-1.5 py-0.5 rounded border"
                   style={{
                     borderColor: domains[domainId].color,
                     color: domains[domainId].color,
@@ -570,22 +556,22 @@ function SlideAboutMe() {
                     <entry.icon size={14} className="mt-0.5" style={{ color: METHOD_COLORS.gaussian }} />
                     <div className="min-w-0">
                       <div className="flex items-center gap-1.5">
-                        <p className="text-[11px] text-[#f5f2ec] font-medium">{entry.title}</p>
-                        <span className="text-[10px] text-[#948d82] font-mono">{entry.period}</span>
+                        <p className="text-sm text-[#f5f2ec] font-medium">{entry.title}</p>
+                        <span className="text-xs text-[#948d82] font-mono">{entry.period}</span>
                       </div>
-                      <p className="text-[11px] text-[#bdb8af]">{entry.text}</p>
+                      <p className="text-sm text-[#bdb8af]">{entry.text}</p>
                     </div>
                   </div>
                 ))}
               </div>
             ) : hoveredRegion ? (
-              <p className="text-[11px] text-[#948d82]">No mapped records in this set region.</p>
+              <p className="text-sm text-[#948d82]">No mapped records in this set region.</p>
             ) : (
-              <p className="text-[11px] text-[#948d82]">Move the cursor over a colored set region to inspect details.</p>
+              <p className="text-sm text-[#948d82]">Move the cursor over a colored set region to inspect details.</p>
             )}
           </div>
 
-          <div className="text-[10px] text-[#948d82]">
+          <div className="text-xs text-[#948d82]">
             Region rule: intersections map to past work experience, single-set regions map to education background.
           </div>
         </div>
@@ -603,27 +589,27 @@ function SlideProblem() {
   ];
 
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-4xl mx-auto">
-      <h2 className="text-4xl font-bold mb-2">Why Real-Time Avatars?</h2>
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <h2 className="text-5xl font-bold mb-2">Why Real-Time Avatars?</h2>
       <div
         className="w-14 h-1 rounded-full mb-8"
         style={{ background: METHOD_COLORS.gaussian }}
       />
-      <div className="grid grid-cols-2 gap-6 mb-10">
+      <div className="grid grid-cols-2 gap-6 mb-8">
         {useCases.map((uc) => (
           <div
             key={uc.label}
             className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]"
           >
-            <uc.icon size={24} className="mb-3" style={{ color: METHOD_COLORS.gaussian }} />
-            <h3 className="text-lg font-semibold mb-1">{uc.label}</h3>
-            <p className="text-sm text-[#bdb8af]">{uc.desc}</p>
+            <uc.icon size={28} className="mb-3" style={{ color: METHOD_COLORS.gaussian }} />
+            <h3 className="text-xl font-semibold mb-1">{uc.label}</h3>
+            <p className="text-base text-[#bdb8af]">{uc.desc}</p>
           </div>
         ))}
       </div>
       <div className="rounded-xl border border-[#3d3a36] bg-[#1d1c1a] p-5">
-        <h3 className="text-lg font-semibold mb-3">The Core Challenge</h3>
-        <p className="text-[#bdb8af]">
+        <h3 className="text-xl font-semibold mb-3">The Core Challenge</h3>
+        <p className="text-lg text-[#bdb8af]">
           Balance visual realism, low latency, controllability, and deployment
           cost -- no single approach dominates all four.
         </p>
@@ -658,8 +644,8 @@ function SlideThreeApproaches() {
   ];
 
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
-      <h2 className="text-4xl font-bold mb-2">Three Approaches</h2>
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <h2 className="text-5xl font-bold mb-2">Three Approaches</h2>
       <div
         className="w-14 h-1 rounded-full mb-10"
         style={{ background: METHOD_COLORS.gaussian }}
@@ -672,18 +658,18 @@ function SlideThreeApproaches() {
             style={{ borderColor: m.color }}
           >
             <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
+              className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
               style={{ background: `${m.color}22` }}
             >
-              <m.icon size={22} style={{ color: m.color }} />
+              <m.icon size={24} style={{ color: m.color }} />
             </div>
-            <h3 className="text-xl font-semibold mb-1" style={{ color: m.color }}>
+            <h3 className="text-2xl font-semibold mb-1" style={{ color: m.color }}>
               {m.name}
             </h3>
-            <p className="text-sm font-medium text-[#f5f2ec] mb-2">
+            <p className="text-base font-medium text-[#f5f2ec] mb-2">
               {m.tagline}
             </p>
-            <p className="text-sm text-[#948d82] mt-auto">{m.desc}</p>
+            <p className="text-base text-[#948d82] mt-auto">{m.desc}</p>
           </div>
         ))}
       </div>
@@ -692,50 +678,27 @@ function SlideThreeApproaches() {
 }
 
 function SlideMetahumanHow() {
-  const pipelineSteps = [
-    'Camera / Audio',
-    'ARKit / LiveLink',
-    'Blendshapes',
-    'Unreal Engine',
-    '60+ FPS',
-  ];
-
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-4xl mx-auto">
-      <div className="flex items-center gap-2 mb-2">
-        <div
-          className="w-2 h-2 rounded-full"
-          style={{ background: METHOD_COLORS.metahuman }}
-        />
-        <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: METHOD_COLORS.metahuman }}>
-          MetaHuman
-        </span>
-      </div>
-      <h2 className="text-4xl font-bold mb-2">How It Works</h2>
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <SlideMethodBadge method="MetaHuman" color={METHOD_COLORS.metahuman} />
+      <h2 className="text-5xl font-bold mb-2">How It Works</h2>
       <div
         className="w-14 h-1 rounded-full mb-8"
         style={{ background: METHOD_COLORS.metahuman }}
       />
 
-      {/* Pipeline */}
-      <div className="flex items-center gap-2 mb-10 flex-wrap">
-        {pipelineSteps.map((step, i) => (
-          <div key={step} className="flex items-center gap-2">
-            <span
-              className="px-4 py-2 rounded-lg text-sm font-medium border"
-              style={{
-                borderColor: METHOD_COLORS.metahuman,
-                color: METHOD_COLORS.metahuman,
-                background: `${METHOD_COLORS.metahuman}15`,
-              }}
-            >
-              {step}
-            </span>
-            {i < pipelineSteps.length - 1 && (
-              <ChevronRight size={16} className="text-[#948d82]" />
-            )}
-          </div>
-        ))}
+      {/* Pipeline via ReactFlow */}
+      <div className="mb-8">
+        <SlideFlow
+          accentColor={METHOD_COLORS.metahuman}
+          nodes={[
+            { id: 'cam', label: 'Camera / Audio' },
+            { id: 'arkit', label: 'ARKit / LiveLink' },
+            { id: 'blend', label: 'Blendshapes' },
+            { id: 'ue', label: 'Unreal Engine' },
+            { id: 'fps', label: '60+ FPS' },
+          ]}
+        />
       </div>
 
       {/* Key Stats */}
@@ -747,12 +710,12 @@ function SlideMetahumanHow() {
         ].map((stat) => (
           <div
             key={stat.label}
-            className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] text-center"
+            className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a] text-center"
           >
-            <div className="text-2xl font-bold mb-1" style={{ color: METHOD_COLORS.metahuman }}>
+            <div className="text-4xl font-bold mb-1" style={{ color: METHOD_COLORS.metahuman }}>
               {stat.value}
             </div>
-            <div className="text-xs text-[#948d82] uppercase tracking-wide">
+            <div className="text-sm text-[#948d82] uppercase tracking-wide">
               {stat.label}
             </div>
           </div>
@@ -764,9 +727,9 @@ function SlideMetahumanHow() {
 
 function SlideMetahumanMechanism() {
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="MetaHuman" color={METHOD_COLORS.metahuman} />
-      <h2 className="text-3xl font-bold mb-2">Blendshapes & Facial Rigging</h2>
+      <h2 className="text-5xl font-bold mb-2">Blendshapes & Facial Rigging</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.metahuman }} />
 
       {/* Formula */}
@@ -789,11 +752,11 @@ function SlideMetahumanMechanism() {
               { value: '60', unit: 'FPS', desc: 'tracking rate' },
               { value: '<16', unit: 'ms', desc: 'mesh deform' },
             ].map((s) => (
-              <div key={s.unit} className="rounded-lg p-2.5 border border-[#3d3a36] bg-[#1d1c1a] text-center">
-                <div className="text-lg font-bold font-mono" style={{ color: METHOD_COLORS.metahuman }}>
-                  {s.value}<span className="text-xs ml-0.5 text-[#bdb8af]">{s.unit}</span>
+              <div key={s.unit} className="rounded-lg p-3 border border-[#3d3a36] bg-[#1d1c1a] text-center">
+                <div className="text-2xl font-bold font-mono" style={{ color: METHOD_COLORS.metahuman }}>
+                  {s.value}<span className="text-sm ml-0.5 text-[#bdb8af]">{s.unit}</span>
                 </div>
-                <div className="text-[10px] text-[#948d82] mt-0.5">{s.desc}</div>
+                <div className="text-sm text-[#948d82] mt-0.5">{s.desc}</div>
               </div>
             ))}
           </div>
@@ -801,24 +764,22 @@ function SlideMetahumanMechanism() {
           {/* How it works */}
           <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] space-y-2.5">
             <div className="flex items-start gap-2.5">
-              <span className="text-xs font-bold px-1.5 py-0.5 rounded mt-0.5" style={{ background: `${METHOD_COLORS.metahuman}25`, color: METHOD_COLORS.metahuman }}>B<sub>i</sub></span>
-              <p className="text-xs text-[#bdb8af]">Each blendshape is a <span className="text-[#f5f2ec]">vertex displacement map</span> -- a basis vector describing how the mesh deforms for one facial action unit.</p>
+              <span className="text-sm font-bold px-1.5 py-0.5 rounded mt-0.5" style={{ background: `${METHOD_COLORS.metahuman}25`, color: METHOD_COLORS.metahuman }}>B<sub>i</sub></span>
+              <p className="text-base text-[#bdb8af]">Each blendshape is a <span className="text-[#f5f2ec]">vertex displacement map</span> -- a basis vector describing how the mesh deforms for one facial action unit.</p>
             </div>
             <div className="flex items-start gap-2.5">
-              <span className="text-xs font-bold px-1.5 py-0.5 rounded mt-0.5" style={{ background: `${METHOD_COLORS.metahuman}25`, color: METHOD_COLORS.metahuman }}>w<sub>i</sub></span>
-              <p className="text-xs text-[#bdb8af]">Weights range <span className="font-mono text-[#f5f2ec]">[0, 1]</span>. ARKit extracts these from camera in real-time. LiveLink streams to Unreal Engine.</p>
+              <span className="text-sm font-bold px-1.5 py-0.5 rounded mt-0.5" style={{ background: `${METHOD_COLORS.metahuman}25`, color: METHOD_COLORS.metahuman }}>w<sub>i</sub></span>
+              <p className="text-base text-[#bdb8af]">Weights range <span className="font-mono text-[#f5f2ec]">[0, 1]</span>. ARKit extracts these from camera in real-time. LiveLink streams to Unreal Engine.</p>
             </div>
             <div className="flex items-start gap-2.5">
-              <span className="text-xs font-bold px-1.5 py-0.5 rounded mt-0.5" style={{ background: `${METHOD_COLORS.metahuman}25`, color: METHOD_COLORS.metahuman }}>&Sigma;</span>
-              <p className="text-xs text-[#bdb8af]">Any expression = weighted sum. Try the presets: <span className="text-[#f5f2ec]">smile</span>, <span className="text-[#f5f2ec]">surprise</span>, <span className="text-[#f5f2ec]">angry</span> -- then adjust individual sliders.</p>
+              <span className="text-sm font-bold px-1.5 py-0.5 rounded mt-0.5" style={{ background: `${METHOD_COLORS.metahuman}25`, color: METHOD_COLORS.metahuman }}>&Sigma;</span>
+              <p className="text-base text-[#bdb8af]">Any expression = weighted sum. Try the presets in the interactive demo.</p>
             </div>
           </div>
         </div>
 
-        {/* Demo */}
-        <SlideDemoWrapper color={METHOD_COLORS.metahuman}>
-          <BlendshapeDemo />
-        </SlideDemoWrapper>
+        {/* Demo link */}
+        <DemoLink slug="blendshape" label="Blendshape Explorer" color={METHOD_COLORS.metahuman} />
       </div>
     </div>
   );
@@ -826,18 +787,10 @@ function SlideMetahumanMechanism() {
 
 function SlideMetahumanDemo() {
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-4xl mx-auto">
-      <div className="flex items-center gap-2 mb-2">
-        <div
-          className="w-2 h-2 rounded-full"
-          style={{ background: METHOD_COLORS.metahuman }}
-        />
-        <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: METHOD_COLORS.metahuman }}>
-          MetaHuman Demo
-        </span>
-      </div>
-      <h2 className="text-3xl font-bold mb-1">Live Demo: Rapport MetaHuman</h2>
-      <p className="text-[#bdb8af] text-sm mb-6">
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <SlideMethodBadge method="MetaHuman Demo" color={METHOD_COLORS.metahuman} />
+      <h2 className="text-5xl font-bold mb-1">Live Demo: Rapport MetaHuman</h2>
+      <p className="text-[#bdb8af] text-xl mb-6">
         Cloud-rendered Unreal Engine avatar via pixel streaming
       </p>
 
@@ -862,70 +815,47 @@ function SlideMetahumanDemo() {
 }
 
 function SlideGenerativeHow() {
-  const pipelineSteps = [
-    'Photo + Audio',
-    'Diffusion / U-Net',
-    'Decode',
-    'WebRTC Stream',
-  ];
-
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-4xl mx-auto">
-      <div className="flex items-center gap-2 mb-2">
-        <div
-          className="w-2 h-2 rounded-full"
-          style={{ background: METHOD_COLORS.generative }}
-        />
-        <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: METHOD_COLORS.generative }}>
-          Video Generation
-        </span>
-      </div>
-      <h2 className="text-4xl font-bold mb-2">How It Works</h2>
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <SlideMethodBadge method="Video Generation" color={METHOD_COLORS.generative} />
+      <h2 className="text-5xl font-bold mb-2">How It Works</h2>
       <div
         className="w-14 h-1 rounded-full mb-6"
         style={{ background: METHOD_COLORS.generative }}
       />
 
-      <p className="text-[#bdb8af] mb-6 text-base">
+      <p className="text-[#bdb8af] mb-6 text-xl">
         Two components: diffusion models for synthesis, and streaming providers for real-time delivery.
       </p>
 
-      {/* Pipeline */}
-      <div className="flex items-center gap-2 mb-8 flex-wrap">
-        {pipelineSteps.map((step, i) => (
-          <div key={step} className="flex items-center gap-2">
-            <span
-              className="px-4 py-2 rounded-lg text-sm font-medium border"
-              style={{
-                borderColor: METHOD_COLORS.generative,
-                color: METHOD_COLORS.generative,
-                background: `${METHOD_COLORS.generative}15`,
-              }}
-            >
-              {step}
-            </span>
-            {i < pipelineSteps.length - 1 && (
-              <ChevronRight size={16} className="text-[#948d82]" />
-            )}
-          </div>
-        ))}
+      {/* Pipeline via ReactFlow */}
+      <div className="mb-8">
+        <SlideFlow
+          accentColor={METHOD_COLORS.generative}
+          nodes={[
+            { id: 'photo', label: 'Photo + Audio' },
+            { id: 'diff', label: 'Diffusion / U-Net' },
+            { id: 'decode', label: 'Decode' },
+            { id: 'stream', label: 'WebRTC Stream' },
+          ]}
+        />
       </div>
 
       {/* Key Stats */}
       <div className="grid grid-cols-2 gap-4">
-        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] text-center">
-          <div className="text-2xl font-bold mb-1" style={{ color: METHOD_COLORS.generative }}>
+        <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a] text-center">
+          <div className="text-4xl font-bold mb-1" style={{ color: METHOD_COLORS.generative }}>
             24-32 FPS
           </div>
-          <div className="text-xs text-[#948d82] uppercase tracking-wide">
+          <div className="text-sm text-[#948d82] uppercase tracking-wide">
             With distillation
           </div>
         </div>
-        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] text-center">
-          <div className="text-2xl font-bold mb-1" style={{ color: METHOD_COLORS.generative }}>
+        <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a] text-center">
+          <div className="text-4xl font-bold mb-1" style={{ color: METHOD_COLORS.generative }}>
             {'<'}500ms
           </div>
-          <div className="text-xs text-[#948d82] uppercase tracking-wide">
+          <div className="text-sm text-[#948d82] uppercase tracking-wide">
             E2E with Avatar Forcing
           </div>
         </div>
@@ -936,9 +866,9 @@ function SlideGenerativeHow() {
 
 function SlideGenerativeMechanism() {
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Video Generation" color={METHOD_COLORS.generative} />
-      <h2 className="text-3xl font-bold mb-2">The Denoising Process</h2>
+      <h2 className="text-5xl font-bold mb-2">The Denoising Process</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.generative }} />
 
       {/* DDPM reverse step formula */}
@@ -962,12 +892,12 @@ function SlideGenerativeMechanism() {
         <div className="space-y-3">
           {/* Forward process visualization */}
           <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-            <div className="text-[10px] uppercase tracking-widest text-[#948d82] mb-2">Forward Process (add noise)</div>
-            <div className="flex items-center gap-1 text-xs font-mono overflow-hidden">
+            <div className="text-sm uppercase tracking-widest text-[#948d82] mb-2">Forward Process (add noise)</div>
+            <div className="flex items-center gap-1.5 text-sm font-mono overflow-hidden">
               {['x\u2080', 'x\u2081', 'x\u2082', '\u2026', 'x\u209C'].map((label, i) => (
-                <div key={i} className="flex items-center gap-1">
+                <div key={i} className="flex items-center gap-1.5">
                   <span
-                    className="px-2 py-1 rounded"
+                    className="px-2.5 py-1 rounded"
                     style={{
                       background: `rgba(93, 138, 102, ${0.4 - i * 0.08})`,
                       color: i < 4 ? '#f5f2ec' : '#948d82',
@@ -975,18 +905,18 @@ function SlideGenerativeMechanism() {
                   >
                     {label}
                   </span>
-                  {i < 4 && <ChevronRight size={10} className="text-[#948d82] flex-shrink-0" />}
+                  {i < 4 && <ChevronRight size={12} className="text-[#948d82] flex-shrink-0" />}
                 </div>
               ))}
             </div>
-            <p className="text-[10px] text-[#948d82] mt-2">
+            <p className="text-sm text-[#948d82] mt-2">
               Add Gaussian noise at each step. At t=T, pure noise.
             </p>
           </div>
 
           {/* Reverse process steps */}
           <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] space-y-2">
-            <div className="text-[10px] uppercase tracking-widest text-[#948d82] mb-1">Reverse Process (denoise)</div>
+            <div className="text-sm uppercase tracking-widest text-[#948d82] mb-1">Reverse Process (denoise)</div>
             {[
               { step: '1', text: 'U-Net predicts noise \u03B5\u03B8(x\u209C, t) at current step' },
               { step: '2', text: 'Subtract predicted noise, scaled by schedule (\u03B1, \u03B2)' },
@@ -994,12 +924,12 @@ function SlideGenerativeMechanism() {
             ].map((item) => (
               <div key={item.step} className="flex items-start gap-2">
                 <span
-                  className="text-[10px] font-bold w-4 h-4 rounded flex items-center justify-center flex-shrink-0 mt-0.5"
+                  className="text-sm font-bold w-5 h-5 rounded flex items-center justify-center flex-shrink-0 mt-0.5"
                   style={{ background: `${METHOD_COLORS.generative}30`, color: METHOD_COLORS.generative }}
                 >
                   {item.step}
                 </span>
-                <span className="text-xs text-[#bdb8af]">{item.text}</span>
+                <span className="text-base text-[#bdb8af]">{item.text}</span>
               </div>
             ))}
           </div>
@@ -1009,19 +939,17 @@ function SlideGenerativeMechanism() {
             className="rounded-xl p-3 border text-center"
             style={{ borderColor: METHOD_COLORS.generative, background: `${METHOD_COLORS.generative}10` }}
           >
-            <div className="flex items-center justify-center gap-3 text-sm">
+            <div className="flex items-center justify-center gap-3 text-base">
               <span className="font-mono text-[#bdb8af]">50 steps</span>
               <span className="text-[#948d82]">&xrarr;</span>
               <span className="font-mono font-bold" style={{ color: METHOD_COLORS.generative }}>1-4 steps</span>
             </div>
-            <p className="text-[10px] text-[#948d82] mt-1">Progressive distillation preserves quality at 40x speedup</p>
+            <p className="text-sm text-[#948d82] mt-1">Progressive distillation preserves quality at 40x speedup</p>
           </div>
         </div>
 
-        {/* Demo */}
-        <SlideDemoWrapper color={METHOD_COLORS.generative}>
-          <DenoisingDemo />
-        </SlideDemoWrapper>
+        {/* Demo link */}
+        <DemoLink slug="denoising" label="Denoising Process" color={METHOD_COLORS.generative} />
       </div>
     </div>
   );
@@ -1140,13 +1068,13 @@ function SlideGenerativeResearch() {
   ];
 
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Video Generation" color={METHOD_COLORS.generative} />
-      <h2 className="text-3xl font-bold mb-2">Research Frontier Deep Dive</h2>
+      <h2 className="text-5xl font-bold mb-2">Research Frontier Deep Dive</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.generative }} />
 
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
-        <p className="text-xs text-[#948d82] mb-3">Pick a research track, then inspect representative papers.</p>
+        <p className="text-sm text-[#948d82] mb-3">Pick a research track, then inspect representative papers.</p>
         <div className="flex flex-wrap gap-2">
           {tracks.map((track) => (
             <button
@@ -1243,18 +1171,10 @@ function SlideGenerativeResearch() {
 
 function SlideGenerativeDemo() {
   return (
-    <div className="flex flex-col items-center justify-center h-full px-8 text-center">
-      <div className="flex items-center gap-2 mb-2">
-        <div
-          className="w-2 h-2 rounded-full"
-          style={{ background: METHOD_COLORS.generative }}
-        />
-        <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: METHOD_COLORS.generative }}>
-          Video Generation Demo
-        </span>
-      </div>
-      <h2 className="text-3xl font-bold mb-1">Live Demo: LiveKit + Hedra</h2>
-      <p className="text-[#bdb8af] text-sm mb-8 max-w-lg">
+    <div className="flex flex-col items-center justify-center h-full px-12 text-center">
+      <SlideMethodBadge method="Video Generation Demo" color={METHOD_COLORS.generative} />
+      <h2 className="text-5xl font-bold mb-1">Live Demo: LiveKit + Hedra</h2>
+      <p className="text-[#bdb8af] text-xl mb-8 max-w-lg">
         Diffusion-based avatar streamed via WebRTC
       </p>
 
@@ -1280,17 +1200,9 @@ function SlideGenerativeDemo() {
 
 function SlideGaussianHow() {
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-4xl mx-auto">
-      <div className="flex items-center gap-2 mb-2">
-        <div
-          className="w-2 h-2 rounded-full"
-          style={{ background: METHOD_COLORS.gaussian }}
-        />
-        <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: METHOD_COLORS.gaussian }}>
-          Gaussian Splatting
-        </span>
-      </div>
-      <h2 className="text-4xl font-bold mb-2">How It Works</h2>
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <SlideMethodBadge method="Gaussian Splatting" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">How It Works</h2>
       <div
         className="w-14 h-1 rounded-full mb-8"
         style={{ background: METHOD_COLORS.gaussian }}
@@ -1299,18 +1211,18 @@ function SlideGaussianHow() {
       {/* Traditional vs One-shot */}
       <div className="grid grid-cols-2 gap-6 mb-8">
         <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]">
-          <h3 className="text-lg font-semibold mb-3">Traditional</h3>
-          <ul className="space-y-2 text-sm text-[#bdb8af]">
+          <h3 className="text-xl font-semibold mb-3">Traditional</h3>
+          <ul className="space-y-2 text-base text-[#bdb8af]">
             <li className="flex items-center gap-2">
-              <ChevronRight size={14} style={{ color: METHOD_COLORS.gaussian }} />
+              <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
               50-200 input images
             </li>
             <li className="flex items-center gap-2">
-              <ChevronRight size={14} style={{ color: METHOD_COLORS.gaussian }} />
+              <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
               Hours of training
             </li>
             <li className="flex items-center gap-2">
-              <ChevronRight size={14} style={{ color: METHOD_COLORS.gaussian }} />
+              <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
               100+ FPS rendering
             </li>
           </ul>
@@ -1319,55 +1231,45 @@ function SlideGaussianHow() {
           className="rounded-xl p-5 border bg-[#1d1c1a]"
           style={{ borderColor: METHOD_COLORS.gaussian }}
         >
-          <h3 className="text-lg font-semibold mb-3" style={{ color: METHOD_COLORS.gaussian }}>
+          <h3 className="text-xl font-semibold mb-3" style={{ color: METHOD_COLORS.gaussian }}>
             One-Shot (LAM)
           </h3>
-          <ul className="space-y-2 text-sm text-[#bdb8af]">
+          <ul className="space-y-2 text-base text-[#bdb8af]">
             <li className="flex items-center gap-2">
-              <ChevronRight size={14} style={{ color: METHOD_COLORS.gaussian }} />
+              <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
               1 photo input
             </li>
             <li className="flex items-center gap-2">
-              <ChevronRight size={14} style={{ color: METHOD_COLORS.gaussian }} />
+              <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
               ~1.4s inference
             </li>
             <li className="flex items-center gap-2">
-              <ChevronRight size={14} style={{ color: METHOD_COLORS.gaussian }} />
+              <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
               563 FPS (A100)
             </li>
           </ul>
         </div>
       </div>
 
-      {/* Pipeline */}
-      <div className="flex items-center gap-2 flex-wrap">
-        {['Photo', 'LAM', '3D Gaussians', 'WebGL Render + Audio2Expression'].map((step, i) => (
-          <div key={step} className="flex items-center gap-2">
-            <span
-              className="px-4 py-2 rounded-lg text-sm font-medium border"
-              style={{
-                borderColor: METHOD_COLORS.gaussian,
-                color: METHOD_COLORS.gaussian,
-                background: `${METHOD_COLORS.gaussian}15`,
-              }}
-            >
-              {step}
-            </span>
-            {i < 3 && (
-              <ChevronRight size={16} className="text-[#948d82]" />
-            )}
-          </div>
-        ))}
-      </div>
+      {/* Pipeline via ReactFlow */}
+      <SlideFlow
+        accentColor={METHOD_COLORS.gaussian}
+        nodes={[
+          { id: 'photo', label: 'Photo' },
+          { id: 'lam', label: 'LAM' },
+          { id: 'gauss', label: '3D Gaussians' },
+          { id: 'render', label: 'WebGL Render' },
+        ]}
+      />
     </div>
   );
 }
 
 function SlideGaussianMechanism() {
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Gaussian Splatting" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-3xl font-bold mb-2">From Points to Splats</h2>
+      <h2 className="text-5xl font-bold mb-2">From Points to Splats</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
 
       {/* Gaussian function formula */}
@@ -1386,7 +1288,7 @@ function SlideGaussianMechanism() {
         <div className="space-y-3">
           {/* Learnable parameters as tagged pills */}
           <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-            <div className="text-[10px] uppercase tracking-widest text-[#948d82] mb-2.5">Learnable Parameters per Gaussian</div>
+            <div className="text-sm uppercase tracking-widest text-[#948d82] mb-2.5">Learnable Parameters per Gaussian</div>
             <div className="grid grid-cols-2 gap-2">
               {[
                 { sym: '\u03BC', name: 'Position', desc: 'xyz center', color: '#ff6b6b' },
@@ -1394,16 +1296,16 @@ function SlideGaussianMechanism() {
                 { sym: 'c', name: 'Color', desc: 'SH coefficients', color: '#4ecdc4' },
                 { sym: '\u03B1', name: 'Opacity', desc: '[0, 1] alpha', color: '#c9b1ff' },
               ].map((p) => (
-                <div key={p.sym} className="flex items-center gap-2 p-2 rounded-lg bg-[#181716]">
+                <div key={p.sym} className="flex items-center gap-2 p-2.5 rounded-lg bg-[#181716]">
                   <span
-                    className="w-6 h-6 rounded flex items-center justify-center text-xs font-bold font-mono"
+                    className="w-7 h-7 rounded flex items-center justify-center text-sm font-bold font-mono"
                     style={{ background: `${p.color}25`, color: p.color }}
                   >
                     {p.sym}
                   </span>
                   <div>
-                    <div className="text-xs font-medium text-[#f5f2ec]">{p.name}</div>
-                    <div className="text-[10px] text-[#948d82]">{p.desc}</div>
+                    <div className="text-base font-medium text-[#f5f2ec]">{p.name}</div>
+                    <div className="text-sm text-[#948d82]">{p.desc}</div>
                   </div>
                 </div>
               ))}
@@ -1412,8 +1314,8 @@ function SlideGaussianMechanism() {
 
           {/* Training pipeline */}
           <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-            <div className="text-[10px] uppercase tracking-widest text-[#948d82] mb-2">Optimization Loop</div>
-            <div className="space-y-1.5">
+            <div className="text-sm uppercase tracking-widest text-[#948d82] mb-2">Optimization Loop</div>
+            <div className="space-y-2">
               {[
                 'Render Gaussians \u2192 2D image via differentiable rasterizer',
                 'Compute photometric loss: L = ||I\u0302 - I||',
@@ -1422,22 +1324,20 @@ function SlideGaussianMechanism() {
               ].map((step, i) => (
                 <div key={i} className="flex items-start gap-2">
                   <span
-                    className="text-[10px] font-bold w-4 h-4 rounded flex items-center justify-center flex-shrink-0 mt-0.5"
+                    className="text-sm font-bold w-5 h-5 rounded flex items-center justify-center flex-shrink-0 mt-0.5"
                     style={{ background: `${METHOD_COLORS.gaussian}30`, color: METHOD_COLORS.gaussian }}
                   >
                     {i + 1}
                   </span>
-                  <span className="text-xs text-[#bdb8af]">{step}</span>
+                  <span className="text-base text-[#bdb8af]">{step}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Demo */}
-        <SlideDemoWrapper color={METHOD_COLORS.gaussian}>
-          <PointCloudDemo />
-        </SlideDemoWrapper>
+        {/* Demo link */}
+        <DemoLink slug="point-cloud" label="Point Cloud to Splats" color={METHOD_COLORS.gaussian} />
       </div>
     </div>
   );
@@ -1445,9 +1345,9 @@ function SlideGaussianMechanism() {
 
 function SlideGaussianCovariance() {
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Gaussian Splatting" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-3xl font-bold mb-2">Covariance & Shape Control</h2>
+      <h2 className="text-5xl font-bold mb-2">Covariance & Shape Control</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
 
       {/* Covariance decomposition formula */}
@@ -1468,21 +1368,21 @@ function SlideGaussianCovariance() {
         <div className="space-y-3">
           {/* Shape examples */}
           <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-            <div className="text-[10px] uppercase tracking-widest text-[#948d82] mb-2.5">Shape Controls</div>
+            <div className="text-sm uppercase tracking-widest text-[#948d82] mb-2.5">Shape Controls</div>
             <div className="space-y-2">
               {[
                 { shape: 'Sphere', formula: 'sx = sy = sz', use: 'Isotropic regions, distant points', icon: '\u25CF' },
                 { shape: 'Pancake', formula: 'sx = sy \u226B sz', use: 'Flat surfaces, walls, skin', icon: '\u2B2D' },
                 { shape: 'Needle', formula: 'sz \u226B sx = sy', use: 'Edges, hair strands, wires', icon: '\u2502' },
               ].map((s) => (
-                <div key={s.shape} className="flex items-start gap-2.5 p-2 rounded-lg bg-[#181716]">
-                  <span className="text-lg leading-none mt-0.5" style={{ color: METHOD_COLORS.gaussian }}>{s.icon}</span>
+                <div key={s.shape} className="flex items-start gap-2.5 p-2.5 rounded-lg bg-[#181716]">
+                  <span className="text-xl leading-none mt-0.5" style={{ color: METHOD_COLORS.gaussian }}>{s.icon}</span>
                   <div className="min-w-0">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-xs font-semibold text-[#f5f2ec]">{s.shape}</span>
-                      <code className="text-[10px] text-[#948d82]">{s.formula}</code>
+                      <span className="text-base font-semibold text-[#f5f2ec]">{s.shape}</span>
+                      <code className="text-sm text-[#948d82]">{s.formula}</code>
                     </div>
-                    <div className="text-[10px] text-[#bdb8af]">{s.use}</div>
+                    <div className="text-sm text-[#bdb8af]">{s.use}</div>
                   </div>
                 </div>
               ))}
@@ -1494,19 +1394,16 @@ function SlideGaussianCovariance() {
             className="rounded-xl p-3 border"
             style={{ borderColor: METHOD_COLORS.gaussian, background: `${METHOD_COLORS.gaussian}08` }}
           >
-            <div className="text-xs font-semibold text-[#f5f2ec] mb-1">2D Splatting</div>
-            <p className="text-[11px] text-[#bdb8af]">
+            <div className="text-base font-semibold text-[#f5f2ec] mb-1">2D Splatting</div>
+            <p className="text-sm text-[#bdb8af]">
               3D Gaussians project to <span className="text-[#f5f2ec]">2D ellipses</span> on screen.
               Alpha-composited front-to-back for differentiable rendering.
-              Try the shape presets and auto-rotate in the demo.
             </p>
           </div>
         </div>
 
-        {/* Demo */}
-        <SlideDemoWrapper color={METHOD_COLORS.gaussian}>
-          <CovarianceShapeDemo />
-        </SlideDemoWrapper>
+        {/* Demo link */}
+        <DemoLink slug="covariance" label="Covariance & Shape" color={METHOD_COLORS.gaussian} />
       </div>
     </div>
   );
@@ -1565,13 +1462,13 @@ function SlideGaussianPerf() {
         : { label: 'Slow', color: '#ff6b6b' };
 
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Gaussian Splatting" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-3xl font-bold mb-2">Performance Planner</h2>
+      <h2 className="text-5xl font-bold mb-2">Performance Planner</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
-        <p className="text-xs text-[#948d82] mb-3">Tune deployment assumptions and inspect projected runtime behavior.</p>
+        <p className="text-sm text-[#948d82] mb-3">Tune deployment assumptions and inspect projected runtime behavior.</p>
         <div className="flex flex-wrap gap-2 mb-3">
           {profiles.map((entry) => (
             <button
@@ -1626,16 +1523,16 @@ function SlideGaussianPerf() {
 
       <div className="grid grid-cols-3 gap-3 mb-4">
         <div className="rounded-lg p-3 border border-[#3d3a36] bg-[#1d1c1a]">
-          <div className="text-[10px] uppercase tracking-widest text-[#948d82]">Best FPS</div>
-          <div className="text-xl font-bold font-mono" style={{ color: METHOD_COLORS.gaussian }}>{bestFps}</div>
+          <div className="text-sm uppercase tracking-widest text-[#948d82]">Best FPS</div>
+          <div className="text-2xl font-bold font-mono" style={{ color: METHOD_COLORS.gaussian }}>{bestFps}</div>
         </div>
         <div className="rounded-lg p-3 border border-[#3d3a36] bg-[#1d1c1a]">
-          <div className="text-[10px] uppercase tracking-widest text-[#948d82]">E2E Conversation</div>
-          <div className="text-xl font-bold font-mono text-[#f5f2ec]">{e2eLatencyMs}ms</div>
+          <div className="text-sm uppercase tracking-widest text-[#948d82]">E2E Conversation</div>
+          <div className="text-2xl font-bold font-mono text-[#f5f2ec]">{e2eLatencyMs}ms</div>
         </div>
         <div className="rounded-lg p-3 border border-[#3d3a36] bg-[#1d1c1a]">
-          <div className="text-[10px] uppercase tracking-widest text-[#948d82]">Grade</div>
-          <div className="text-xl font-bold font-mono" style={{ color: e2eGrade.color }}>{e2eGrade.label}</div>
+          <div className="text-sm uppercase tracking-widest text-[#948d82]">Grade</div>
+          <div className="text-2xl font-bold font-mono" style={{ color: e2eGrade.color }}>{e2eGrade.label}</div>
         </div>
       </div>
 
@@ -1672,18 +1569,10 @@ function SlideGaussianPerf() {
 
 function SlideGaussianDemo() {
   return (
-    <div className="flex flex-col items-center justify-center h-full px-8 text-center">
-      <div className="flex items-center gap-2 mb-2">
-        <div
-          className="w-2 h-2 rounded-full"
-          style={{ background: METHOD_COLORS.gaussian }}
-        />
-        <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: METHOD_COLORS.gaussian }}>
-          Gaussian Splatting Demo
-        </span>
-      </div>
-      <h2 className="text-3xl font-bold mb-1">Live Demo: OpenAvatarChat + LAM</h2>
-      <p className="text-[#bdb8af] text-sm mb-8 max-w-lg">
+    <div className="flex flex-col items-center justify-center h-full px-12 text-center">
+      <SlideMethodBadge method="Gaussian Splatting Demo" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-1">Live Demo: OpenAvatarChat + LAM</h2>
+      <p className="text-[#bdb8af] text-xl mb-8 max-w-lg">
         Self-hosted Gaussian avatar with real-time conversation
       </p>
 
@@ -1770,13 +1659,13 @@ function SlideStreamingArchitecture() {
     [...topologies].sort((a, b) => a.score - b.score)[0] ?? topologies[0];
 
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Streaming" label="Streaming" color={METHOD_COLORS.generative} />
-      <h2 className="text-3xl font-bold mb-2">Streaming Topology Explorer</h2>
+      <h2 className="text-5xl font-bold mb-2">Streaming Topology Explorer</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.generative }} />
 
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
-        <p className="text-xs text-[#948d82] mb-3">Tune room size and network envelope to see which transport model wins.</p>
+        <p className="text-sm text-[#948d82] mb-3">Tune room size and network envelope to see which transport model wins.</p>
         <div className="grid grid-cols-2 gap-3">
           <label className="text-[11px] text-[#bdb8af]">
             Participants: {participants}
@@ -1871,17 +1760,15 @@ function SlideStreamingArchitecture() {
 
       <div className="grid grid-cols-2 gap-5 items-start">
         <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]">
-          <div className="text-xs font-semibold text-[#f5f2ec] mb-2">Decision heuristic</div>
-          <ul className="text-[11px] text-[#bdb8af] space-y-1.5">
+          <div className="text-base font-semibold text-[#f5f2ec] mb-2">Decision heuristic</div>
+          <ul className="text-sm text-[#bdb8af] space-y-1.5">
             <li>P2P when participants are small and uplink is strong.</li>
             <li>SFU for most conversational avatar products.</li>
             <li>MCU for constrained clients that need fixed downlink.</li>
             <li>Move SFUs closer to users before adding GPU-heavy processing.</li>
           </ul>
         </div>
-        <SlideDemoWrapper color={METHOD_COLORS.generative}>
-          <SFUComparisonDemo />
-        </SlideDemoWrapper>
+        <DemoLink slug="sfu-comparison" label="SFU Topology Comparison" color={METHOD_COLORS.generative} />
       </div>
     </div>
   );
@@ -1996,8 +1883,8 @@ function SlideComparison() {
   const winner = ranked[0];
 
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
-      <h2 className="text-4xl font-bold mb-2">Scenario Matrix</h2>
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <h2 className="text-5xl font-bold mb-2">Scenario Matrix</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
@@ -2124,9 +2011,9 @@ function SlideE2EPipeline() {
   const whatIfLatency = Math.max(120, effectiveLatency - bottleneckCut);
 
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="End-to-End" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-3xl font-bold mb-2">Latency Budget Simulator</h2>
+      <h2 className="text-5xl font-bold mb-2">Latency Budget Simulator</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
       <div className="grid grid-cols-2 gap-4 mb-4">
@@ -2241,9 +2128,7 @@ function SlideE2EPipeline() {
         </div>
       </div>
 
-      <SlideDemoWrapper color={METHOD_COLORS.gaussian}>
-        <PipelineFlowDemo />
-      </SlideDemoWrapper>
+      <DemoLink slug="pipeline-flow" label="Pipeline Flow" color={METHOD_COLORS.gaussian} />
     </div>
   );
 }
@@ -2308,10 +2193,10 @@ function SlideSignalsInteraction() {
   const active = tabs[activeTab];
 
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
-      <h2 className="text-3xl font-bold mb-2">Interaction Signals</h2>
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <h2 className="text-5xl font-bold mb-2">Interaction Signals</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
-      <p className="text-base text-[#bdb8af] mb-5">
+      <p className="text-xl text-[#bdb8af] mb-5">
         What signals flow between user and avatar -- and which methods support them?
       </p>
 
@@ -2332,8 +2217,8 @@ function SlideSignalsInteraction() {
         ))}
       </div>
 
-      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-        <div className="flex items-center gap-4 mb-3 text-[10px] text-[#948d82] uppercase tracking-widest">
+      <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]">
+        <div className="flex items-center gap-4 mb-3 text-sm text-[#948d82] uppercase tracking-widest">
           <span className="flex-1">Signal</span>
           <div className="flex gap-3">
             <span style={{ color: METHOD_COLORS.metahuman }}>MH</span>
@@ -2344,14 +2229,14 @@ function SlideSignalsInteraction() {
         <div className="space-y-2">
           {active.signals.map((signal) => (
             <div key={signal.name} className="flex items-center gap-4 py-1.5 border-b border-[#242220] last:border-0">
-              <span className="flex-1 text-sm text-[#f5f2ec]">{signal.name}</span>
+              <span className="flex-1 text-base text-[#f5f2ec]">{signal.name}</span>
               {methodDot(signal.support, colors)}
             </div>
           ))}
         </div>
       </div>
 
-      <p className="text-xs text-[#948d82] mt-3">
+      <p className="text-sm text-[#948d82] mt-3">
         Emotional responsiveness is not just about rendering -- it depends on what signals the pipeline can ingest and produce.
       </p>
     </div>
@@ -2383,10 +2268,10 @@ function SlideCapabilityMatrix() {
   const [expanded, setExpanded] = useState<string | null>(null);
 
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
-      <h2 className="text-3xl font-bold mb-2">Capability Matrix</h2>
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <h2 className="text-5xl font-bold mb-2">Capability Matrix</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
-      <p className="text-base text-[#bdb8af] mb-5">
+      <p className="text-xl text-[#bdb8af] mb-5">
         Emotion-responsiveness comparison across the three paradigms.
       </p>
 
@@ -2451,10 +2336,10 @@ function SlideRealTimeMetrics() {
   const latencyColor = latencyMs < 200 ? '#6ec87a' : latencyMs < 500 ? '#e08840' : '#ff6b6b';
 
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
-      <h2 className="text-3xl font-bold mb-2">Redefining &ldquo;Real-Time&rdquo;</h2>
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <h2 className="text-5xl font-bold mb-2">Redefining &ldquo;Real-Time&rdquo;</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
-      <p className="text-base text-[#bdb8af] mb-5">
+      <p className="text-xl text-[#bdb8af] mb-5">
         FPS alone does not capture responsiveness. Two metrics matter independently.
       </p>
 
@@ -2570,28 +2455,26 @@ function SlideAudio2FaceBuildingBlocks() {
   const active = paths[activePath];
 
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
-      <h2 className="text-3xl font-bold mb-2">Audio2Face: The Bridge</h2>
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <h2 className="text-5xl font-bold mb-2">Audio2Face: The Bridge</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
-      <p className="text-base text-[#bdb8af] mb-5">
+      <p className="text-xl text-[#bdb8af] mb-5">
         Audio-to-face is the shared building block. Same audio input, three different rendering backends.
       </p>
 
-      {/* Pipeline visualization */}
+      {/* Pipeline via ReactFlow */}
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
-        <div className="flex items-center justify-center gap-3 text-xs mb-4">
-          {['Audio Input', 'Audio2Emotion', 'Viseme + Emotion', 'Rig Controls'].map((step, i) => (
-            <div key={step} className="flex items-center gap-3">
-              <div className="px-3 py-1.5 rounded-lg bg-[#242220] border border-[#3d3a36] text-[#f5f2ec] font-medium">
-                {step}
-              </div>
-              {i < 3 && <ChevronRight size={14} className="text-[#948d82]" />}
-            </div>
-          ))}
-        </div>
-
-        <div className="flex items-center justify-center gap-2 text-[10px] text-[#948d82]">
-          <Layers size={12} />
+        <SlideFlow
+          accentColor={METHOD_COLORS.gaussian}
+          nodes={[
+            { id: 'audio', label: 'Audio Input' },
+            { id: 'a2e', label: 'Audio2Emotion' },
+            { id: 'viseme', label: 'Viseme + Emotion' },
+            { id: 'rig', label: 'Rig Controls' },
+          ]}
+        />
+        <div className="flex items-center justify-center gap-2 text-sm text-[#948d82] mt-2">
+          <Layers size={14} />
           Open models: Audio2Face (NVIDIA), Audio2Expression (LAM), SadTalker, GeneFace++
         </div>
       </div>
@@ -2617,24 +2500,15 @@ function SlideAudio2FaceBuildingBlocks() {
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
         <div className="flex items-center gap-2 mb-3">
           <div className="w-3 h-3 rounded-full" style={{ background: active.color }} />
-          <h3 className="text-sm font-semibold text-[#f5f2ec]">{active.label}</h3>
+          <h3 className="text-base font-semibold text-[#f5f2ec]">{active.label}</h3>
         </div>
 
-        <div className="flex items-center gap-2 mb-3">
-          {active.steps.map((step, i) => (
-            <div key={step} className="flex items-center gap-2">
-              <div
-                className="px-2.5 py-1 rounded text-xs"
-                style={{ background: `${active.color}16`, color: active.color, border: `1px solid ${active.color}33` }}
-              >
-                {step}
-              </div>
-              {i < active.steps.length - 1 && <ChevronRight size={12} className="text-[#5d5a55]" />}
-            </div>
-          ))}
-        </div>
+        <SlideFlow
+          accentColor={active.color}
+          nodes={active.steps.map((step, i) => ({ id: `step-${i}`, label: step }))}
+        />
 
-        <p className="text-xs text-[#bdb8af]">{active.note}</p>
+        <p className="text-base text-[#bdb8af] mt-3">{active.note}</p>
       </div>
     </div>
   );
@@ -2642,10 +2516,10 @@ function SlideAudio2FaceBuildingBlocks() {
 
 function SlideWhereIntelligenceLives() {
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
-      <h2 className="text-3xl font-bold mb-2">Where Intelligence Lives</h2>
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <h2 className="text-5xl font-bold mb-2">Where Intelligence Lives</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
-      <p className="text-base text-[#bdb8af] mb-6">
+      <p className="text-xl text-[#bdb8af] mb-5">
         Two paradigms for how avatars embody emotion and response behavior.
       </p>
 
@@ -2764,8 +2638,8 @@ function SlideResearchFrontier() {
     cat === 'interactive' ? METHOD_COLORS.generative : cat === 'streaming' ? METHOD_COLORS.generative : METHOD_COLORS.gaussian;
 
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
-      <h2 className="text-3xl font-bold mb-2">Research Frontier (Late 2025 -- Feb 2026)</h2>
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <h2 className="text-5xl font-bold mb-2">Research Frontier (Late 2025 -- Feb 2026)</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
       <div className="flex gap-2 mb-4">
@@ -2786,7 +2660,7 @@ function SlideResearchFrontier() {
       </div>
 
       <div className="grid grid-cols-2 gap-5 items-start">
-        <div className="space-y-2 max-h-[400px] overflow-y-auto pr-1">
+        <div className="space-y-2">
           {filtered.map((paper) => {
             const isSelected = paper.name === selectedPaper;
             const color = categoryColor(paper.category);
@@ -2882,61 +2756,27 @@ function SlideConvergenceUpdated() {
   ];
 
   return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-5xl mx-auto">
-      <h2 className="text-3xl font-bold mb-2">Convergence & the Role of 3D</h2>
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <h2 className="text-5xl font-bold mb-2">Convergence & the Role of 3D</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
-      <div className="grid grid-cols-3 gap-3 mb-5">
+      <div className="grid grid-cols-3 gap-4 mb-5">
         {threeDCards.map((card) => (
-          <div key={card.title} className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]">
-            <div className="w-2 h-2 rounded-full mb-2" style={{ background: card.color }} />
-            <h3 className="text-xs font-bold text-[#f5f2ec] mb-1">{card.title}</h3>
-            <p className="text-[10px] text-[#bdb8af] mb-2">{card.desc}</p>
-            <p className="text-[10px] text-[#948d82]">{card.examples}</p>
+          <div key={card.title} className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+            <div className="w-2.5 h-2.5 rounded-full mb-2" style={{ background: card.color }} />
+            <h3 className="text-base font-bold text-[#f5f2ec] mb-1">{card.title}</h3>
+            <p className="text-sm text-[#bdb8af] mb-2">{card.desc}</p>
+            <p className="text-sm text-[#948d82]">{card.examples}</p>
           </div>
         ))}
       </div>
 
-      <h3 className="text-sm font-semibold text-[#f5f2ec] mb-3">Convergence Trends</h3>
+      <h3 className="text-lg font-semibold text-[#f5f2ec] mb-3">Convergence Trends</h3>
       <div className="space-y-3">
         {trends.map((t, i) => (
           <div key={i} className="flex items-center gap-3">
-            <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: t.color }} />
-            <span className="text-sm text-[#f5f2ec]">{t.text}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function SlideConvergence() {
-  const trends = [
-    { text: 'MetaHuman + neural skin rendering', color: METHOD_COLORS.metahuman },
-    { text: 'One-shot Gaussian from single photo (LAM)', color: METHOD_COLORS.gaussian },
-    { text: 'Sub-200ms E2E conversational loops', color: METHOD_COLORS.generative },
-    { text: 'On-device: TaoAvatar 90 FPS Vision Pro, LAM 110 FPS mobile', color: METHOD_COLORS.gaussian },
-  ];
-
-  return (
-    <div className="flex flex-col justify-center h-full px-8 max-w-4xl mx-auto">
-      <h2 className="text-4xl font-bold mb-2">Convergence & Future</h2>
-      <div
-        className="w-14 h-1 rounded-full mb-6"
-        style={{ background: METHOD_COLORS.gaussian }}
-      />
-      <p className="text-xl text-[#bdb8af] mb-10">
-        These approaches are converging -- each borrowing techniques from the others.
-      </p>
-
-      <div className="space-y-5">
-        {trends.map((t, i) => (
-          <div key={i} className="flex items-center gap-4">
-            <div
-              className="w-3 h-3 rounded-full flex-shrink-0"
-              style={{ background: t.color }}
-            />
-            <span className="text-lg text-[#f5f2ec]">{t.text}</span>
+            <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: t.color }} />
+            <span className="text-base text-[#f5f2ec]">{t.text}</span>
           </div>
         ))}
       </div>
@@ -2946,8 +2786,8 @@ function SlideConvergence() {
 
 function SlideThankYou() {
   return (
-    <div className="flex flex-col items-center justify-center h-full text-center px-8">
-      <h2 className="text-5xl sm:text-6xl font-bold mb-8">Thank You</h2>
+    <div className="flex flex-col items-center justify-center h-full text-center px-12">
+      <h2 className="text-6xl sm:text-7xl font-bold mb-8">Thank You</h2>
       <div
         className="w-16 h-1 rounded-full mb-10"
         style={{ background: METHOD_COLORS.gaussian }}
@@ -3170,23 +3010,23 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
         {onExit ? (
           <button
             onClick={onExit}
-            className="flex items-center gap-1.5 text-xs text-[#948d82] hover:text-[#bdb8af] transition-colors"
+            className="flex items-center gap-1.5 text-sm text-[#948d82] hover:text-[#bdb8af] transition-colors"
           >
-            <ArrowLeft size={14} />
+            <ArrowLeft size={16} />
             Article
           </button>
         ) : (
           <Link
             href="/"
-            className="flex items-center gap-1.5 text-xs text-[#948d82] hover:text-[#bdb8af] transition-colors"
+            className="flex items-center gap-1.5 text-sm text-[#948d82] hover:text-[#bdb8af] transition-colors"
           >
-            <ArrowLeft size={14} />
+            <ArrowLeft size={16} />
             Exit
           </Link>
         )}
 
         <div className="flex items-center gap-3">
-          <span className="text-xs font-mono text-[#948d82]">
+          <span className="text-sm font-mono text-[#948d82]">
             {current + 1} / {TOTAL_SLIDES}
           </span>
           <button
@@ -3194,7 +3034,7 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
             className="p-1.5 rounded-md text-[#948d82] hover:text-[#bdb8af] hover:bg-[#242220] transition-colors"
             aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
           >
-            {isFullscreen ? <Minimize size={14} /> : <Maximize size={14} />}
+            {isFullscreen ? <Minimize size={16} /> : <Maximize size={16} />}
           </button>
         </div>
       </div>
@@ -3208,7 +3048,7 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
           className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-lg text-[#948d82] hover:text-[#f5f2ec] hover:bg-[#242220] transition-colors disabled:opacity-20 disabled:cursor-default hidden sm:block"
           aria-label="Previous slide"
         >
-          <ArrowLeft size={20} />
+          <ArrowLeft size={24} />
         </button>
         <button
           onClick={next}
@@ -3216,11 +3056,11 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
           className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-lg text-[#948d82] hover:text-[#f5f2ec] hover:bg-[#242220] transition-colors disabled:opacity-20 disabled:cursor-default hidden sm:block"
           aria-label="Next slide"
         >
-          <ArrowRight size={20} />
+          <ArrowRight size={24} />
         </button>
 
         {/* Slide */}
-        <div className="h-full px-4 sm:px-12" style={slideStyle}>
+        <div className="h-full px-4 sm:px-6" style={slideStyle}>
           <CurrentSlide />
         </div>
       </div>
@@ -3235,9 +3075,9 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
             }}
             className="transition-all duration-200"
             style={{
-              width: i === current ? 24 : 6,
-              height: 6,
-              borderRadius: 3,
+              width: i === current ? 28 : 8,
+              height: 8,
+              borderRadius: 4,
               background: i === current ? METHOD_COLORS.gaussian : '#3d3a36',
             }}
             aria-label={`Go to slide ${i + 1}`}
