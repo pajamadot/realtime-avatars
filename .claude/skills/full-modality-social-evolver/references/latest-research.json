@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-02-19T23:27:01+00:00",
-  "cycle": 23,
+  "generated_at": "2026-02-19T23:31:29+00:00",
+  "cycle": 27,
   "slide": {
     "url": "https://www.realtime-avatars.com/slides/35",
     "source_path": "G:\\PajamaDot\\realtime-avatars\\web\\app\\slides\\SlidesDeck.tsx",
@@ -16,7 +16,7 @@
     }
   },
   "claim_check": {
-    "generated_at": "2026-02-19T23:27:01+00:00",
+    "generated_at": "2026-02-19T23:31:28+00:00",
     "totals": {
       "claims_checked": 0,
       "mismatched_claims": 0
@@ -97,8 +97,8 @@
         "sadtalker",
         "liveportrait"
       ],
-      "total_collected": 26,
-      "total_after_relevance_filter": 21,
+      "total_collected": 27,
+      "total_after_relevance_filter": 22,
       "failures": [],
       "repositories": [
         {
