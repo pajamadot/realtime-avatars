@@ -148,7 +148,7 @@ function SlideTitle() {
           href={PROJECT_REPO_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 inline-flex items-center gap-2 text-base hover:underline"
+          className="mt-2 inline-flex items-center gap-2 text-sm hover:underline"
           style={{ color: METHOD_COLORS.gaussian }}
         >
           <Github size={16} />
