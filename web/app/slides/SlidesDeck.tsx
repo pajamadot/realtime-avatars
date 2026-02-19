@@ -2077,58 +2077,20 @@ function SlideGaussianHow() {
         </div>
       </div>
 
-      {/* Classic training vs feed-forward generation */}
-      <div className="grid grid-cols-2 gap-6 mb-8">
-        <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]">
-          <h3 className="text-xl font-semibold mb-3">Classic 3DGS Pipeline</h3>
-          <ul className="space-y-2 text-base text-[#bdb8af]">
-            <li className="flex items-center gap-2">
-              <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
-              Multi-view capture (often 50+ photos)
-            </li>
-            <li className="flex items-center gap-2">
-              <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
-              Optimize Gaussian params via photometric loss
-            </li>
-            <li className="flex items-center gap-2">
-              <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
-              Fast rasterized rendering after convergence
-            </li>
-          </ul>
-        </div>
-        <div
-          className="rounded-xl p-5 border bg-[#1d1c1a]"
-          style={{ borderColor: METHOD_COLORS.gaussian }}
-        >
-          <h3 className="text-xl font-semibold mb-3" style={{ color: METHOD_COLORS.gaussian }}>Feed-Forward Variants</h3>
-          <ul className="space-y-2 text-base text-[#bdb8af]">
-            <li className="flex items-center gap-2">
-              <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
-              Regress splat parameters from very few views
-            </li>
-            <li className="flex items-center gap-2">
-              <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
-              Useful for quick avatar bootstrapping
-            </li>
-            <li className="flex items-center gap-2">
-              <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
-              Trade quality/control for speed and convenience
-            </li>
-          </ul>
-        </div>
-      </div>
-
       {/* Pipeline via ReactFlow */}
-      <SlideFlow
-        accentColor={METHOD_COLORS.gaussian}
-        nodes={[
-          { id: 'capture', label: 'Capture / Input Views' },
-          { id: 'opt', label: 'Estimate Gaussian Params (mu, Sigma, c, alpha)' },
-          { id: 'project', label: 'Project to 2D Ellipses' },
-          { id: 'blend', label: 'Alpha Blend (Depth-Aware)' },
-          { id: 'render', label: 'Real-time View Synthesis' },
-        ]}
-      />
+      <div className="mb-2">
+        <SlideFlow
+          accentColor={METHOD_COLORS.gaussian}
+          height={300}
+          nodes={[
+            { id: 'capture', label: 'Capture / Input Views' },
+            { id: 'opt', label: 'Estimate Gaussian Params (mu, Sigma, c, alpha)' },
+            { id: 'project', label: 'Project to 2D Ellipses' },
+            { id: 'blend', label: 'Alpha Blend (Depth-Aware)' },
+            { id: 'render', label: 'Real-time View Synthesis' },
+          ]}
+        />
+      </div>
 
       <SlideEvidenceStrip
         links={[
@@ -4476,8 +4438,8 @@ const SLIDES: React.FC[] = [
   SlideE2EDefinitionMindmap,     // 7
   SlideApproachSelectionQuestion,// 8
   SlideThreeApproaches,          // 9
-  SlideSignalsInteraction,       // 10
-  SlideFuturePerspectiveMissingLayers, // 11
+  SlideFuturePerspectiveMissingLayers, // 10
+  SlideSignalsInteraction,       // 11
   SlideMetahumanDemo,            // 12
   SlideMetahumanHow,             // 13
   SlideMetahumanIdentityResponse,// 14
@@ -4486,11 +4448,11 @@ const SLIDES: React.FC[] = [
   SlideGenerativeIdentityResponse,// 17
   SlideGenerativeResearch,       // 18
   SlideGaussianDemo,             // 19
-  SlideGaussianHow,              // 20
-  SlideGaussianIdentityResponse, // 21
-  SlideGaussianSupersplatDemoOne,// 22
-  SlideGaussianSupersplatDemoTwo,// 23
-  SlideGaussianPersonalDemo,     // 24
+  SlideGaussianSupersplatDemoOne,// 20
+  SlideGaussianSupersplatDemoTwo,// 21
+  SlideGaussianPersonalDemo,     // 22
+  SlideGaussianHow,              // 23
+  SlideGaussianIdentityResponse, // 24
   SlideGaussianWorldlabsDemo,    // 25
   SlideGaussianResearchVideoWall,// 26
   SlideAudio2FaceBuildingBlocks, // 27
@@ -4784,6 +4746,29 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
                 <CurrentSlide />
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Bottom-left page jumper */}
+        <div className="absolute left-3 bottom-3 z-20">
+          <div className="flex items-center gap-2 rounded-lg border border-[#3d3a36] bg-[#1a1917]/95 px-2 py-1.5 shadow-lg">
+            <span className="text-[11px] uppercase tracking-wide text-[#948d82]">Jump</span>
+            <select
+              value={current}
+              onChange={(e) => {
+                const target = Number(e.target.value);
+                if (Number.isNaN(target) || target === current) return;
+                goTo(target, target > current ? 'right' : 'left');
+              }}
+              className="rounded border border-[#3d3a36] bg-[#111110] text-[#f5f2ec] text-xs px-2 py-1 outline-none focus:border-[#5d5a55]"
+              aria-label="Jump to slide"
+            >
+              {Array.from({ length: TOTAL_SLIDES }).map((_, i) => (
+                <option key={i} value={i}>
+                  {i + 1}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       </div>
