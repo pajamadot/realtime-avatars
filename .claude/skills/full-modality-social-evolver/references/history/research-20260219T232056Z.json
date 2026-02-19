@@ -1,0 +1,583 @@
+{
+  "generated_at": "2026-02-19T23:20:56+00:00",
+  "cycle": 17,
+  "slide": {
+    "url": "https://www.realtime-avatars.com/slides/35",
+    "source_path": "G:\\PajamaDot\\realtime-avatars\\web\\app\\slides\\SlidesDeck.tsx",
+    "source_exists": true,
+    "status_code": 200,
+    "ok": true,
+    "title": "Real-Time Avatars: A Comparative Guide",
+    "error": null,
+    "sections_parsed": {
+      "inputs": 0,
+      "outputs": 0,
+      "coupling": 0
+    }
+  },
+  "claim_check": {
+    "generated_at": "2026-02-19T23:20:56+00:00",
+    "totals": {
+      "claims_checked": 0,
+      "mismatched_claims": 0
+    },
+    "mismatch_by_method": {
+      "MetaHuman": 0,
+      "Video Generation": 0,
+      "Gaussian Splatting": 0
+    },
+    "checks": []
+  },
+  "research": {
+    "arxiv": {
+      "queries": [
+        "real-time talking avatar",
+        "multimodal social interaction avatar",
+        "audio driven facial animation",
+        "3D Gaussian Splatting talking avatar",
+        "interactive controllable portrait generation",
+        "turn-taking conversational agents",
+        "co-speech gesture generation",
+        "real-time neural rendering avatar",
+        "livekit avatar",
+        "metahuman avatar",
+        "livelink avatar",
+        "gaussian avatar"
+      ],
+      "total_collected": 16,
+      "total_after_relevance_filter": 1,
+      "entries": [
+        {
+          "id": "http://arxiv.org/abs/2602.16013v1",
+          "title": "Punchlines Unbound: Comedy Practices in Social Virtual Reality",
+          "summary": "Social VR platforms serve as an emergent venue for live performance, enabling co-presence and real-time interaction among distributed performers and audiences within shared virtual environments. Live performances, such as comedy, rely on subtle social cues between performers and audiences, which are missing in VR. However, it remains unclear how comedians...",
+          "published": "2026-02-17T21:09:00Z",
+          "updated": "2026-02-17T21:09:00Z",
+          "authors": [
+            "Ryo Ohara",
+            "Chi-Lan Yang",
+            "Yuji Hatada",
+            "Takuji Narumi",
+            "Hideaki Kuzuoka"
+          ],
+          "categories": [
+            "cs.HC"
+          ],
+          "links": [
+            "https://arxiv.org/abs/2602.16013v1",
+            "https://arxiv.org/pdf/2602.16013v1"
+          ],
+          "query": "livekit avatar",
+          "relevance_score": 3,
+          "source": "arxiv_query_api",
+          "queries": [
+            "livekit avatar",
+            "livelink avatar",
+            "metahuman avatar"
+          ]
+        }
+      ]
+    },
+    "github": {
+      "queries": [
+        "livekit agents",
+        "graphdeco gaussian-splatting",
+        "KwaiVGI LivePortrait",
+        "NVIDIA Audio2Face-3D-SDK",
+        "cvlab-kaist GaussianTalker",
+        "soulx-ai SoulX-FlashHead",
+        "SadTalker",
+        "metahuman livelink",
+        "livekit",
+        "metahuman",
+        "livelink",
+        "gaussian",
+        "splatting",
+        "gaussian-splatting",
+        "sadtalker",
+        "liveportrait"
+      ],
+      "total_collected": 26,
+      "total_after_relevance_filter": 21,
+      "failures": [],
+      "repositories": [
+        {
+          "full_name": "cvlab-kaist/GaussianTalker",
+          "url": "https://github.com/cvlab-kaist/GaussianTalker",
+          "description": "Official implementation of \u201cGaussianTalker: Real-Time High-Fidelity Talking Head Synthesis with Audio-Driven 3D Gaussian Splatting\u201d by Kyusun Cho, Joungbin Lee, Heeji Yoon, Yeobin Hong, Jaehoon Ko, Sangjun Ahn and Seu...",
+          "language": null,
+          "stars": null,
+          "forks": null,
+          "open_issues": null,
+          "updated_at": null,
+          "pushed_at": null,
+          "topics": [],
+          "query": "curated",
+          "relevance_score": 9,
+          "source": "curated_fallback",
+          "status_code": 200,
+          "ok": true,
+          "title": "GitHub - cvlab-kaist/GaussianTalker: Official implementation of \u201cGaussianTalker: Real-Time High-Fidelity Talking Head Synthesis with Audio-Driven 3D Gaussian Splatting\u201d by Kyusun Cho, Joungbin Lee,...",
+          "error": null
+        },
+        {
+          "full_name": "graphdeco-inria/gaussian-splatting",
+          "url": "https://github.com/graphdeco-inria/gaussian-splatting",
+          "description": "Original reference implementation of \"3D Gaussian Splatting for Real-Time Radiance Field Rendering\" - graphdeco-inria/gaussian-splatting",
+          "language": null,
+          "stars": null,
+          "forks": null,
+          "open_issues": null,
+          "updated_at": null,
+          "pushed_at": null,
+          "topics": [],
+          "query": "curated",
+          "relevance_score": 7,
+          "source": "curated_fallback",
+          "status_code": 200,
+          "ok": true,
+          "title": "GitHub - graphdeco-inria/gaussian-splatting: Original reference implementation of \"3D Gaussian Splatting for Real-Time Radiance Field Rendering\"",
+          "error": null
+        },
+        {
+          "full_name": "OpenTalker/SadTalker",
+          "url": "https://github.com/OpenTalker/SadTalker",
+          "description": "[CVPR 2023] SadTalker\uff1aLearning Realistic 3D Motion Coefficients for Stylized Audio-Driven Single Image Talking Face Animation - OpenTalker/SadTalker",
+          "language": null,
+          "stars": null,
+          "forks": null,
+          "open_issues": null,
+          "updated_at": null,
+          "pushed_at": null,
+          "topics": [],
+          "query": "curated",
+          "relevance_score": 7,
+          "source": "curated_fallback",
+          "status_code": 200,
+          "ok": true,
+          "title": "GitHub - OpenTalker/SadTalker: [CVPR 2023] SadTalker\uff1aLearning Realistic 3D Motion Coefficients for Stylized Audio-Driven Single Image Talking Face Animation",
+          "error": null
+        },
+        {
+          "full_name": "KwaiVGI/LivePortrait",
+          "url": "https://github.com/KwaiVGI/LivePortrait",
+          "description": "Bring portraits to life! Contribute to KlingAIResearch/LivePortrait development by creating an account on GitHub.",
+          "language": null,
+          "stars": null,
+          "forks": null,
+          "open_issues": null,
+          "updated_at": null,
+          "pushed_at": null,
+          "topics": [],
+          "query": "curated",
+          "relevance_score": 6,
+          "source": "curated_fallback",
+          "status_code": 200,
+          "ok": true,
+          "title": "GitHub - KlingAIResearch/LivePortrait: Bring portraits to life!",
+          "error": null
+        },
+        {
+          "full_name": "livekit/agents",
+          "url": "https://github.com/livekit/agents",
+          "description": "A framework for building realtime voice AI agents \ud83e\udd16\ud83c\udf99\ufe0f\ud83d\udcf9 - GitHub - livekit/agents: A framework for building realtime voice AI agents \ud83e\udd16\ud83c\udf99\ufe0f\ud83d\udcf9",
+          "language": null,
+          "stars": null,
+          "forks": null,
+          "open_issues": null,
+          "updated_at": null,
+          "pushed_at": null,
+          "topics": [],
+          "query": "curated",
+          "relevance_score": 5,
+          "source": "curated_fallback",
+          "status_code": 200,
+          "ok": true,
+          "title": "GitHub - livekit/agents: A framework for building realtime voice AI agents \ud83e\udd16\ud83c\udf99\ufe0f\ud83d\udcf9",
+          "error": null
+        },
+        {
+          "full_name": "soulx-ai/SoulX-FlashHead",
+          "url": "https://github.com/soulx-ai/SoulX-FlashHead",
+          "description": "",
+          "language": null,
+          "stars": null,
+          "forks": null,
+          "open_issues": null,
+          "updated_at": null,
+          "pushed_at": null,
+          "topics": [],
+          "query": "curated",
+          "relevance_score": 5,
+          "source": "curated_fallback",
+          "status_code": 404,
+          "ok": false,
+          "title": "",
+          "error": "HTTPError: Not Found"
+        },
+        {
+          "full_name": "chocolatepcode/unreal-motion",
+          "url": "https://github.com/chocolatepcode/unreal-motion",
+          "description": "Real-time MetaHuman face tracking for Unreal Engine 5 using MediaPipe4U. Webcam-based 52 ARKit blendshape capture via LiveLink for facial animation.",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-05T08:13:38Z",
+          "pushed_at": "2026-02-05T07:23:47Z",
+          "topics": [
+            "arkit",
+            "face-tracking",
+            "livelink",
+            "mediapipe",
+            "metahuman",
+            "motion-capture",
+            "ue5",
+            "unreal-engine"
+          ],
+          "query": "metahuman livelink",
+          "relevance_score": 3,
+          "source": "github_search_api"
+        },
+        {
+          "full_name": "FloatingRobotics/face-animation-comparison",
+          "url": "https://github.com/FloatingRobotics/face-animation-comparison",
+          "description": "Side-by-side comparison of 4 audio-driven face animation networks: SadTalker, Hallo, EchoMimic, LivePortrait+JoyVASA",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-13T11:35:43Z",
+          "pushed_at": "2026-02-13T11:35:40Z",
+          "topics": [],
+          "query": "liveportrait",
+          "relevance_score": 2,
+          "source": "github_search_api"
+        },
+        {
+          "full_name": "NVIDIA/Audio2Face-3D-SDK",
+          "url": "https://github.com/NVIDIA/Audio2Face-3D-SDK",
+          "description": "High-performance C++/CUDA SDK for running Audio2Emotion and Audio2Face inference with integrated post-processing.",
+          "language": "C++",
+          "stars": 155,
+          "forks": 30,
+          "open_issues": 6,
+          "updated_at": "2026-02-17T21:39:05Z",
+          "pushed_at": "2025-08-28T14:22:28Z",
+          "topics": [
+            "cuda",
+            "gpu-acceleration",
+            "nvidia",
+            "tensorrt"
+          ],
+          "query": "NVIDIA Audio2Face-3D-SDK",
+          "relevance_score": 2,
+          "source": "github_search_api"
+        },
+        {
+          "full_name": "FACEGOOD/FgControlRig",
+          "url": "https://github.com/FACEGOOD/FgControlRig",
+          "description": "this is a implement of  UE plugin work for  livelink data process and set the data to metahuman controlrig board",
+          "language": "C++",
+          "stars": 14,
+          "forks": 2,
+          "open_issues": 1,
+          "updated_at": "2025-08-25T17:10:17Z",
+          "pushed_at": "2024-12-06T04:12:56Z",
+          "topics": [],
+          "query": "metahuman livelink",
+          "relevance_score": 2,
+          "source": "github_search_api"
+        },
+        {
+          "full_name": "StarOfOman/Embody_Textures",
+          "url": "https://github.com/StarOfOman/Embody_Textures",
+          "description": "This repository contains all of the PNGs required to paint over the UV maps of game objects. You can also use tools like Gemini Image 2 Image to generate new textures on the fly. Make your MetaHuman a reptile, a sorce...",
+          "language": null,
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-19T23:03:59Z",
+          "pushed_at": "2026-02-19T23:03:56Z",
+          "topics": [],
+          "query": "metahuman",
+          "relevance_score": 1,
+          "source": "github_search_api"
+        },
+        {
+          "full_name": "viper-108/livekit_plugins_sub200",
+          "url": "https://github.com/viper-108/livekit_plugins_sub200",
+          "description": "\ud83c\udfa4 Add Sub200 text-to-speech support to your LiveKit Agents with this plugin, enabling seamless integration in voice pipelines.",
+          "language": "Python",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-19T22:27:51Z",
+          "pushed_at": "2026-02-19T22:27:47Z",
+          "topics": [
+            "android",
+            "cordova",
+            "dart",
+            "flutter",
+            "flutter-plugin",
+            "ionic",
+            "joplin-plugin",
+            "kotlin",
+            "messaging",
+            "react",
+            "rollup",
+            "serverless",
+            "serverless-framework",
+            "serverless-plugin",
+            "sfu",
+            "typecho",
+            "typecho-plugin",
+            "typescript",
+            "voice"
+          ],
+          "query": "livekit agents",
+          "relevance_score": 1,
+          "source": "github_search_api"
+        },
+        {
+          "full_name": "itsDaVinCi/tools-for-builders",
+          "url": "https://github.com/itsDaVinCi/tools-for-builders",
+          "description": "\ud83d\udee0\ufe0f Discover essential tools and resources for developers and tech professionals, curated to enhance productivity and streamline workflows.",
+          "language": "Markdown",
+          "stars": 0,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-19T21:49:07Z",
+          "pushed_at": "2026-02-19T21:49:04Z",
+          "topics": [
+            "cloud",
+            "cloudnative",
+            "css",
+            "fxml",
+            "java",
+            "livelink",
+            "metasequoia",
+            "modo",
+            "motionbuilder",
+            "nearprotocol",
+            "security",
+            "site-generator",
+            "ui-builder",
+            "web-builder-framework",
+            "website-builder"
+          ],
+          "query": "livelink",
+          "relevance_score": 1,
+          "source": "github_search_api"
+        },
+        {
+          "full_name": "poly-hammer/meta-human-dna-addon",
+          "url": "https://github.com/poly-hammer/meta-human-dna-addon",
+          "description": "Imports MetaHuman head and body components into Blender from a their DNA files, lets you customize them, then send them back to MetaHuman Creator.",
+          "language": "Python",
+          "stars": 205,
+          "forks": 33,
+          "open_issues": 18,
+          "updated_at": "2026-02-19T21:11:57Z",
+          "pushed_at": "2026-02-19T21:43:06Z",
+          "topics": [
+            "blender",
+            "character",
+            "dna",
+            "metahuman",
+            "python",
+            "rigging",
+            "unreal",
+            "unreal-engine-5"
+          ],
+          "query": "metahuman",
+          "relevance_score": 1,
+          "source": "github_search_api"
+        },
+        {
+          "full_name": "Johnny12242006/aiVideo",
+          "url": "https://github.com/Johnny12242006/aiVideo",
+          "description": "\ud83d\ude80 Streamline your video editing with aiVideo, an AI tool that transforms complex workflows into swift, automated processes for creators.",
+          "language": null,
+          "stars": 1,
+          "forks": 0,
+          "open_issues": 0,
+          "updated_at": "2026-02-19T21:27:12Z",
+          "pushed_at": "2026-02-19T21:27:08Z",
+          "topics": [
+            "6g",
+            "ai-video",
+            "aigc",
+            "aivideocreation",
+            "aivideogenerator",
+            "ar",
+            "chatgpt",
+            "cog",
+            "comfyui",
+            "liveportrait",
+            "openai",
+            "reels",
+            "replicate",
+            "tts",
+            "veo3",
+            "veo3-fast",
+            "video",
+            "videoai"
+          ],
+          "query": "liveportrait",
+          "relevance_score": 1,
+          "source": "github_search_api"
+        }
+      ]
+    }
+  },
+  "evidence_references": {
+    "epic_metahuman_animator": {
+      "url": "https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-animator",
+      "note": "MetaHuman Animator supports animation from video or audio data."
+    },
+    "epic_realtime_livelink": {
+      "url": "https://dev.epicgames.com/documentation/en-us/metahuman/realtime-animation-using-live-link",
+      "note": "MetaHuman can be driven in real time using webcam and audio devices."
+    },
+    "epic_metahuman_audio_source": {
+      "url": "https://dev.epicgames.com/documentation/en-us/metahuman/using-audio-source-for-animation",
+      "note": "Audio Source mode maps speech to facial animation for MetaHuman."
+    },
+    "apple_wwdc_arkit": {
+      "url": "https://developer.apple.com/videos/play/wwdc2018/716/",
+      "note": "ARKit face tracking exposes 50+ blendshape coefficients at up to 60 FPS."
+    },
+    "arxiv_3dgs": {
+      "url": "https://arxiv.org/abs/2308.04079",
+      "note": "3D Gaussian Splatting baseline demonstrates high-quality real-time rendering."
+    },
+    "arxiv_liveportrait": {
+      "url": "https://arxiv.org/abs/2407.03168",
+      "note": "LivePortrait enables controllable portrait animation with expression/pose retargeting."
+    },
+    "arxiv_livetalk": {
+      "url": "https://arxiv.org/abs/2512.23576",
+      "note": "LiveTalk uses audio/text/image conditioning for real-time talking video generation."
+    },
+    "arxiv_avatar_forcing": {
+      "url": "https://arxiv.org/abs/2601.00664",
+      "note": "Avatar Forcing introduces interactive user-motion-conditioned generation loops."
+    },
+    "arxiv_taoavatar": {
+      "url": "https://arxiv.org/abs/2506.09976",
+      "note": "TaoAvatar targets full-body real-time talking avatars for XR with controllable body motion."
+    },
+    "arxiv_gaussianavatars": {
+      "url": "https://arxiv.org/abs/2312.02069",
+      "note": "GaussianAvatars supports driving by expression and pose transfers."
+    },
+    "arxiv_gazegaussian": {
+      "url": "https://arxiv.org/abs/2409.12533",
+      "note": "GazeGaussian studies gaze-aware Gaussian-head synthesis with explicit gaze cues."
+    },
+    "arxiv_ico3d": {
+      "url": "https://arxiv.org/abs/2509.17080",
+      "note": "ICo3D integrates oral and written interactions for interactive 3D social avatars."
+    },
+    "arxiv_chatanyone": {
+      "url": "https://arxiv.org/abs/2505.22210",
+      "note": "ChatAnyone supports real-time full-body avatar interaction including hand gestures."
+    },
+    "github_livekit_agents": {
+      "url": "https://github.com/livekit/agents",
+      "note": "LiveKit Agents provides realtime voice pipelines with turn-detection modules."
+    },
+    "github_liveportrait": {
+      "url": "https://github.com/KwaiVGI/LivePortrait",
+      "note": "Open implementation for controllable portrait animation and stitching."
+    },
+    "github_gaussian_splatting": {
+      "url": "https://github.com/graphdeco-inria/gaussian-splatting",
+      "note": "Reference implementation of 3D Gaussian Splatting."
+    },
+    "github_audio2face_sdk": {
+      "url": "https://github.com/NVIDIA/Audio2Face-3D-Samples",
+      "note": "Audio2Face SDK samples for real-time blendshape-driven animation."
+    }
+  },
+  "query_plan": {
+    "arxiv_queries": [
+      "real-time talking avatar",
+      "multimodal social interaction avatar",
+      "audio driven facial animation",
+      "3D Gaussian Splatting talking avatar",
+      "interactive controllable portrait generation",
+      "turn-taking conversational agents",
+      "co-speech gesture generation",
+      "real-time neural rendering avatar",
+      "livekit avatar",
+      "metahuman avatar",
+      "livelink avatar",
+      "gaussian avatar"
+    ],
+    "github_queries": [
+      "livekit agents",
+      "graphdeco gaussian-splatting",
+      "KwaiVGI LivePortrait",
+      "NVIDIA Audio2Face-3D-SDK",
+      "cvlab-kaist GaussianTalker",
+      "soulx-ai SoulX-FlashHead",
+      "SadTalker",
+      "metahuman livelink",
+      "livekit",
+      "metahuman",
+      "livelink",
+      "gaussian",
+      "splatting",
+      "gaussian-splatting",
+      "sadtalker",
+      "liveportrait"
+    ],
+    "focus_terms": [
+      "livekit",
+      "voice",
+      "audio",
+      "metahuman",
+      "livelink",
+      "gaussian",
+      "tts",
+      "speech",
+      "splatting",
+      "gaussian-splatting",
+      "sadtalker",
+      "liveportrait",
+      "text-to-speech",
+      "audio-driven",
+      "linly-talker",
+      "non-gaussianity"
+    ]
+  },
+  "delta": {
+    "new_arxiv_entries": [],
+    "new_github_repositories": [],
+    "new_arxiv_count": 0,
+    "new_github_repo_count": 0
+  },
+  "focus_terms_next": [
+    "livekit",
+    "voice",
+    "audio",
+    "metahuman",
+    "livelink",
+    "gaussian",
+    "tts",
+    "speech",
+    "splatting",
+    "gaussian-splatting",
+    "sadtalker",
+    "liveportrait",
+    "text-to-speech",
+    "audio-driven",
+    "linly-talker",
+    "non-gaussianity"
+  ],
+  "focus_terms_added": [
+    "real-time"
+  ]
+}

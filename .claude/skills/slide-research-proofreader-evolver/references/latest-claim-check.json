@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-02-19T23:18:20Z",
-  "cycle": 23,
+  "generated_at": "2026-02-19T23:22:43Z",
+  "cycle": 43,
   "slides_path": "web\\app\\slides\\SlidesDeck.tsx",
   "target_slides": [
     "SlideThreeApproaches",
