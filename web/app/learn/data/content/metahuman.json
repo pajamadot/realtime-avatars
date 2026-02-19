@@ -1,7 +1,7 @@
 {
   "id": "metahuman",
   "title": "MetaHuman Pipeline",
-  "subtitle": "Game-engine rigged avatars with precise control",
+  "subtitle": "UE 5.7 rigged avatars with source-backed control paths",
   "color": "var(--color-metahuman)",
 
   "intro": {
@@ -12,36 +12,42 @@
   "pipeline": {
     "steps": [
       {
-        "id": "input",
-        "label": "Input Capture",
-        "description": "iPhone TrueDepth camera or microphone captures facial movement or speech"
+        "id": "identity",
+        "label": "Identity Authoring",
+        "description": "MetaHumanCharacter + MetaHumanIdentity modules assemble DNA-backed character assets"
       },
       {
-        "id": "tracking",
-        "label": "ARKit Tracking",
-        "description": "52 blendshape weights extracted at 60 FPS using infrared dot projection"
+        "id": "capture",
+        "label": "Capture Ingest",
+        "description": "MetaHumanCaptureSource + MetaHumanCaptureProtocolStack ingest video/audio streams"
       },
       {
-        "id": "livelink",
-        "label": "Live Link",
-        "description": "Stream tracking data over WiFi to Unreal Engine in real-time"
+        "id": "solve",
+        "label": "Face Solve",
+        "description": "MetaHumanFaceAnimationSolver / MetaHumanSpeech2Face produce animation controls"
       },
       {
-        "id": "rig",
-        "label": "Rig Solver",
-        "description": "RigLogic maps 800+ joints and 200+ controls to final pose"
+        "id": "runtime",
+        "label": "Runtime Rig Solve",
+        "description": "MetaHumanCoreTech filtering + RigLogicModule evaluate DNA rig and control curves"
+      },
+      {
+        "id": "transport",
+        "label": "Live Link Transport",
+        "description": "MetaHumanLiveLinkSource / LiveLinkFaceSource stream subjects into UE animation graph"
       },
       {
         "id": "render",
-        "label": "UE5 Render",
-        "description": "Lumen lighting, ray-traced hair, and subsurface skin rendering"
+        "label": "UE 5.7 Render + Stream",
+        "description": "Control Rig + AnimBP + renderer output viewport/pixel streaming to end users"
       }
     ],
     "connections": [
-      ["input", "tracking"],
-      ["tracking", "livelink"],
-      ["livelink", "rig"],
-      ["rig", "render"]
+      ["identity", "capture"],
+      ["capture", "solve"],
+      ["solve", "runtime"],
+      ["runtime", "transport"],
+      ["transport", "render"]
     ]
   },
 

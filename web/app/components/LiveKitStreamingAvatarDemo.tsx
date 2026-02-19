@@ -116,7 +116,7 @@ export default function LiveKitStreamingAvatarDemo({
   const [displayName, setDisplayName] = useState('web-user');
 
   const [avatarPrompt, setAvatarPrompt] = useState(
-    'A photorealistic close-up headshot of a friendly digital human, neutral background, studio lighting, looking at the camera, high detail, sharp focus'
+    'A photorealistic close-up headshot of a friendly young adult woman, neutral gray background, soft studio lighting, looking directly at the camera, natural skin texture, high detail, sharp focus, 85mm portrait lens look, no text, no watermark'
   );
   const [avatarImageUrl, setAvatarImageUrl] = useState('');
   const [avatarBusy, setAvatarBusy] = useState(false);

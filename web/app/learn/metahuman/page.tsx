@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Bone, Smile, Smartphone, Palette, Link2, Shirt, Sparkles, Github, BookOpen, Check, X } from 'lucide-react';
 import content from '../data/content/metahuman.json';
-import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, DemoWrapper, InteractiveTooltip, MechanismNugget,
+import { ConceptCard, AnimatedDiagram, CodeWalkthrough, CrossTrackNav, KeyInsight, InteractiveTooltip, MechanismNugget,
   BoneHierarchyMini, BlendshapeInterpolation, SkinningWeightsMini, FKvsIKMini, LODMini, FACSMini, WrinkleMapMini,
   BoneTransformMini, MorphTargetMini, JointLimitsMini, QuaternionMini, InterpolationMini,
   NormalMappingMini, PBRMaterialMini, AmbientOcclusionMini, PhonemeVisemeMini, LipSyncWeightsMini,
@@ -23,6 +23,17 @@ const sections = [
 export default function MetaHumanPage() {
   const [currentSection, setCurrentSection] = useState('intro');
   const color = 'var(--color-metahuman)';
+  const evolverSignals = [
+    'Cycle 11 scan: 12 plugins, 70 modules, 2898 source files, 248 internal module edges.',
+    'Hub plugins: MetaHumanAnimator (28 modules), MetaHumanCoreTechLib (5), MetaHumanLiveLink (7).',
+    'Official watch: 5/5 Epic MetaHuman docs endpoints reachable in latest cycle.',
+  ];
+  const dependencySignals = [
+    'MetaHumanAnimator -> MetaHumanCoreTechLib (35)',
+    'MetaHumanAnimator -> RigLogic (8)',
+    'MetaHumanCharacter -> MetaHumanSDK (10)',
+    'MetaHumanLiveLink -> MetaHumanCoreTechLib (9)',
+  ];
 
   return (
     <div>
@@ -124,7 +135,7 @@ export default function MetaHumanPage() {
                 <Shirt size={20} className="text-[var(--color-metahuman)]" strokeWidth={1.5} />
               </div>
               <p className="text-sm font-medium">Mesh</p>
-              <p className="text-xs text-[var(--text-muted)]">Puppet's cloth/skin</p>
+              <p className="text-xs text-[var(--text-muted)]">Puppet&apos;s cloth/skin</p>
             </div>
             <div className="text-center p-4 bg-[var(--surface-2)] rounded-lg">
               <div className="w-10 h-10 rounded-full bg-[var(--surface-0)] flex items-center justify-center mx-auto mb-2">
@@ -324,7 +335,7 @@ export default function MetaHumanPage() {
       <section id="pipeline" className="mb-16 scroll-mt-32">
         <h2 className="text-2xl font-semibold mb-4">The Animation Pipeline</h2>
         <p className="text-[var(--text-muted)] mb-6">
-          From iPhone face tracking to rendered MetaHuman, here's how data flows.
+          Refined with metahuman-evolver output from Unreal Engine 5.7 source scans.
         </p>
 
         <AnimatedDiagram
@@ -334,6 +345,28 @@ export default function MetaHumanPage() {
           autoPlay={true}
           intervalMs={3000}
         />
+
+        <div className="grid md:grid-cols-2 gap-4 mt-6">
+          <div className="card p-4">
+            <h3 className="font-semibold mb-2">Dependency Hot Paths</h3>
+            <ul className="space-y-1 text-sm text-[var(--text-muted)]">
+              {dependencySignals.map((signal) => (
+                <li key={signal}>{signal}</li>
+              ))}
+              <li>Top module hubs: MetaHumanCoreTech (20), MetaHumanCore (19), RigLogicModule (15)</li>
+            </ul>
+          </div>
+
+          <div className="card p-4">
+            <h3 className="font-semibold mb-2">Evolver Signals</h3>
+            <ul className="space-y-1 text-sm text-[var(--text-muted)]">
+              {evolverSignals.map((signal) => (
+                <li key={signal}>{signal}</li>
+              ))}
+              <li>One-line docs include tracker model tags: hyprface-0.1.4 and wav2face-0.0.10.</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <div className="divider" />
@@ -380,6 +413,15 @@ export default function MetaHumanPage() {
         {/* Resources */}
         <div className="mt-8">
           <h3 className="font-semibold mb-4">Resources</h3>
+          <div className="card p-4 mb-3">
+            <p className="font-medium text-sm mb-1">Complete UE 5.7 Architecture Dossier</p>
+            <p className="text-xs text-[var(--text-muted)] mb-2">
+              Full module-by-module implementation map spanning this repo, the UE source tree, and official Epic docs.
+            </p>
+            <Link href="/learn/metahuman/architecture" className="badge hover:border-[var(--border-strong)]">
+              Open architecture documentation
+            </Link>
+          </div>
           <div className="grid md:grid-cols-2 gap-3">
             {content.implementation.resources.map((resource) => (
               <a
@@ -487,6 +529,12 @@ export default function MetaHumanPage() {
               className="badge hover:border-[var(--border-strong)]"
             >
               Explore ARKit Blendshapes →
+            </Link>
+            <Link
+              href="/learn/metahuman/architecture"
+              className="badge hover:border-[var(--border-strong)]"
+            >
+              Full architecture docs
             </Link>
             <Link
               href="/learn"
