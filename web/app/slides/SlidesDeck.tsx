@@ -138,7 +138,7 @@ function SlideTitle() {
           A Comparative Analysis
         </span>
       </h1>
-      <p className="text-2xl sm:text-3xl text-[#c4bfb6] max-w-4xl mb-14">
+      <p className="text-xl sm:text-2xl text-[#c4bfb6] max-w-4xl mb-14">
         Three approaches to making digital humans respond in real-time
       </p>
       <div className="flex flex-col items-center gap-1.5 text-[#948d82]">
