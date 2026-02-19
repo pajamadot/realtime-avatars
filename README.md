@@ -1,70 +1,110 @@
-Real-time digital humans: a living comparison site for four technical routes:
+# realtime-avatars
 
-1) MetaHuman / graphics pipeline
-2) Generative video models (diffusion/transformers)
-3) Neural Gaussian splatting (3DGS)
-4) Streaming avatars / infrastructure (WebRTC + backend)
+Public research/engineering repository for comparing and operating real-time digital avatar pipelines:
 
-The website includes an auto-updating "Living Research Feed" that pulls recent papers from arXiv and renders them on the homepage and per-method sections.
+1. MetaHuman / Unreal graphics pipeline
+2. Streaming avatar infrastructure (WebRTC + LiveKit)
+3. Neural Gaussian splatting track
+4. Generative video avatar track
 
-## LiveKit streaming avatar demo
+## Current Status (2026-02-19)
 
-There is a LiveKit WebRTC demo page at `/livekit` that connects to a LiveKit room and renders the first remote video track (intended to be an avatar worker publishing a digital human stream).
+- Repository visibility: `PUBLIC` (`https://github.com/pajamadot/realtime-avatars`).
+- Web app: Next.js `16.1.6` with TypeScript and Tailwind v4.
+- Build status: `npm run build` in `web/` passes.
+- Living feeds:
+  - arXiv research feed: `web/app/data/research-feed.json`
+  - GitHub tooling feed: `web/app/data/tooling-feed.json`
+- MetaHuman E2E control path is implemented and wired to `/rapport`.
+- MetaHuman source intelligence skill is implemented at `.claude/skills/metahuman-evolver`.
 
-### Token issuer (server-side)
+## What Is Implemented
 
-The browser must fetch a LiveKit token from a server-side endpoint (because it uses `LIVEKIT_API_SECRET`).
+### 1) Web experience
 
-Option A: Next.js API route (Node)
-- `web/app/api/livekit/token/route.ts`
+- Main site and method tracks under `web/app/learn/*`.
+- Live demo pages:
+  - `/rapport` (MetaHuman control + realtime talk UI)
+  - `/livekit` (LiveKit streaming demo)
+- APIs:
+  - `web/app/api/metahuman/control/route.ts`
+  - `web/app/api/livekit/token/route.ts`
+  - `web/app/api/openai/realtime/client-secret/route.ts`
 
-Option B (Cloudflare): Worker token service
-- `workers/livekit-token/` implements `POST /api/livekit/token` using WebCrypto (HS256 JWT).
-  - Supports agent dispatch via `agent_name` / `room_config` (maps to the JWT claim `roomConfig`).
+### 2) MetaHuman local control path
 
-If the Worker is hosted on a different origin, set `NEXT_PUBLIC_LIVEKIT_TOKEN_ENDPOINT` in the web build to that full URL.
+- Unreal plugin:
+  - `metahuman/avatar01/Plugins/PajamaRealtimeControl/Source/PajamaRealtimeControl/*`
+- Bridge service:
+  - `metahuman/editor-bridge/server.mjs`
+- Web control panels:
+  - `web/app/components/MetaHumanEditorControlPanel.tsx`
+  - `web/app/components/MetaHumanRealtimeTalkPanel.tsx`
 
-Server env vars / secrets (set on the token issuer):
+Detailed runbook: `metahuman/UE57_REALTIME_E2E.md`
 
-- `LIVEKIT_URL`
-- `LIVEKIT_API_KEY`
-- `LIVEKIT_API_SECRET`
+### 3) MetaHuman architecture + dependency graph generation
 
-You also need a running agent that publishes an avatar stream into the room. A Hedra + OpenAI Realtime example
-(custom face from a single image) is in `agents/livekit-hedra-avatar/`.
+- Skill:
+  - `.claude/skills/metahuman-evolver/SKILL.md`
+  - `.claude/skills/metahuman-evolver/scripts/evolve_metahuman.py`
+- Default scan scope:
+  - `Engine/Plugins/MetaHuman/*`
+  - `Engine/Plugins/Experimental/MetaHuman/*`
+  - `Engine/Plugins/Animation/LiveLink`
+  - `Engine/Plugins/Animation/RigLogic`
+  - `Engine/Plugins/Animation/DNACalib`
+- Generated artifacts (local skill memory):
+  - `.claude/skills/metahuman-evolver/references/latest-scan.json`
+  - `.claude/skills/metahuman-evolver/references/latest-architecture.json`
+  - `.claude/skills/metahuman-evolver/references/latest-dependency-graph.json`
+  - `.claude/skills/metahuman-evolver/references/latest-dependency-graph.mmd`
+- Published artifacts (web-consumed):
+  - `web/public/docs/metahuman-evolution-latest.json`
+  - `web/public/docs/metahuman-architecture-latest.json`
+  - `web/public/docs/metahuman-dependency-graph-latest.json`
+  - `web/public/docs/metahuman-dependency-graph-latest.mmd`
 
-### LiveKit Cloud notes
+The architecture page renders these generated artifacts directly:
+- `web/app/learn/metahuman/architecture/page.tsx`
 
-- LiveKit Cloud provides the SFU/RTC backend (use your Cloud project URL for `LIVEKIT_URL`, e.g. `wss://...livekit.cloud`).
-- Token minting must run somewhere that can hold `LIVEKIT_API_SECRET` (Worker/Node backend is fine).
-- The *avatar agent* must run as a long-lived process (your own server, or LiveKit Cloud Agents). A Cloudflare Worker cannot run the real-time media pipeline.
+## Local Development
 
-## Local dev
-
-From `web/`:
+### Web app
 
 ```bash
+cd web
 npm install
 npm run dev
 ```
 
-## Research feed (auto-evolving)
-
-The feed is generated into `web/app/data/research-feed.json` using this config:
-
-- `web/app/data/research-feed.config.json`
-
-Update locally:
+Production build check:
 
 ```bash
 cd web
-npm run research:update
+npm run build
 ```
 
-This will fetch arXiv results, filter for relevance, tag items, and rewrite the JSON used by the UI.
+### Refresh living feeds
+
+```bash
+cd web
+npm run feeds:update
+```
+
+### Run MetaHuman evolver cycle
+
+```bash
+python .claude/skills/metahuman-evolver/scripts/evolve_metahuman.py --max-api-samples 30
+```
 
 ## Automation
 
-GitHub Actions runs the updater on a schedule and auto-commits changes (plus a build safety check):
+- Feed refresh workflow: `.github/workflows/update-research-feed.yml`
+- Scheduled daily run updates research/tooling feed JSON and commits changes when diffs exist.
 
-- `.github/workflows/update-research-feed.yml`
+## Notes and Boundaries
+
+- This repo is an active research/iteration workspace, not a packaged production product.
+- Unreal/MetaHuman control requires local UE setup and valid runtime secrets/tokens.
+- Generated docs and skill snapshots are source-of-truth for current MetaHuman architecture status.
