@@ -40,7 +40,7 @@ import SlideFlow from './components/SlideFlow';
    CONSTANTS
    ═══════════════════════════════════════════════════════════════ */
 
-const TOTAL_SLIDES = 27;
+const TOTAL_SLIDES = 29;
 
 function clampSlideNumber(slide: number) {
   if (!Number.isFinite(slide)) return 1;
@@ -54,6 +54,10 @@ const METHOD_COLORS = {
 } as const;
 
 const PROJECT_REPO_URL = 'https://github.com/pajamadot/realtime-avatars';
+const HEDRA_AVATAR_URL = 'https://www.hedra.com/app/avatar';
+const WORLDLABS_SPLAT_WORLD_URL = 'https://www.worldlabs.ai/case-studies/1-splat-world';
+const WORLDLABS_MARBLE_GUIDE_URL = 'https://docs.worldlabs.ai/marble/getting-started/user-guide';
+const WORLDLABS_YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/6vRUKR2Qv30';
 
 function DemoLink({ slug, label, color }: { slug: string; label: string; color: string }) {
   return (
@@ -143,9 +147,9 @@ function SlideTitle() {
 
 function SlideAboutMe() {
   const experience = [
-    { icon: Headset, title: 'UnrealLight Digital Tech', period: '2015-2017', text: 'Early-stage VR product and engineering work.', color: METHOD_COLORS.gaussian },
-    { icon: Gamepad2, title: 'Epic Games', period: '2018-2020', text: 'Developer relations engineer for UE4/UE5 in Shanghai.', color: METHOD_COLORS.metahuman },
     { icon: Video, title: 'Hedra', period: '2024-2025', text: 'Software engineer on diffusion video pipeline implementation.', color: METHOD_COLORS.generative },
+    { icon: Gamepad2, title: 'Epic Games', period: '2018-2020', text: 'Developer relations engineer for UE4/UE5 in Shanghai.', color: METHOD_COLORS.metahuman },
+    { icon: Headset, title: 'UnrealLight Digital Tech', period: '2015-2017', text: 'Early-stage VR product and engineering work.', color: METHOD_COLORS.gaussian },
   ];
 
   const education = [
@@ -285,8 +289,8 @@ function SlideThreeApproaches() {
       name: 'Gaussian Splatting',
       color: METHOD_COLORS.gaussian,
       icon: Box,
-      tagline: 'Neural 3D at 100+ FPS',
-      desc: 'Learned radiance fields with real-time differentiable rendering',
+      tagline: 'Explicit 3D Gaussians at 100+ FPS',
+      desc: 'Scene as anisotropic Gaussian splats, directly rasterized in real time',
     },
   ];
 
@@ -837,9 +841,19 @@ function SlideGenerativeDemo() {
         <ExternalLink size={16} />
       </a>
 
+      <a
+        href={HEDRA_AVATAR_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-5 py-2.5 mt-4 rounded-lg text-sm font-semibold border border-[#3d3a36] text-[#f5f2ec] hover:bg-[#242220] transition-colors"
+      >
+        <ExternalLink size={14} />
+        Open Hedra Avatar (Alternative)
+      </a>
+
       <div className="flex items-center gap-2 text-xs text-[#948d82] mt-6">
         <Clock size={14} />
-        <span>Requires LiveKit credentials</span>
+        <span>Requires LiveKit credentials. Use Hedra alternative if unavailable.</span>
       </div>
     </div>
   );
@@ -849,28 +863,35 @@ function SlideGaussianHow() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Gaussian Splatting" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">How It Works</h2>
+      <h2 className="text-5xl font-bold mb-2">Gaussian Splatting Fundamentals</h2>
       <div
         className="w-14 h-1 rounded-full mb-8"
         style={{ background: METHOD_COLORS.gaussian }}
       />
 
-      {/* Traditional vs One-shot */}
+      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-6">
+        <p className="text-lg text-[#bdb8af] leading-relaxed">
+          Think of a scene as <span className="text-[#f5f2ec]">millions of tiny translucent paint clouds</span>.
+          {' '}Each cloud is a 3D Gaussian with center, shape, color, and opacity. Rendering means projecting those clouds to screen-space ellipses and alpha-blending them front-to-back.
+        </p>
+      </div>
+
+      {/* Classic training vs feed-forward generation */}
       <div className="grid grid-cols-2 gap-6 mb-8">
         <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]">
-          <h3 className="text-xl font-semibold mb-3">Traditional</h3>
+          <h3 className="text-xl font-semibold mb-3">Classic 3DGS Pipeline</h3>
           <ul className="space-y-2 text-base text-[#bdb8af]">
             <li className="flex items-center gap-2">
               <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
-              50-200 input images
+              Multi-view capture (often 50+ photos)
             </li>
             <li className="flex items-center gap-2">
               <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
-              Hours of training
+              Optimize Gaussian params via photometric loss
             </li>
             <li className="flex items-center gap-2">
               <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
-              100+ FPS rendering
+              Fast rasterized rendering after convergence
             </li>
           </ul>
         </div>
@@ -878,21 +899,19 @@ function SlideGaussianHow() {
           className="rounded-xl p-5 border bg-[#1d1c1a]"
           style={{ borderColor: METHOD_COLORS.gaussian }}
         >
-          <h3 className="text-xl font-semibold mb-3" style={{ color: METHOD_COLORS.gaussian }}>
-            One-Shot (LAM)
-          </h3>
+          <h3 className="text-xl font-semibold mb-3" style={{ color: METHOD_COLORS.gaussian }}>Feed-Forward Variants</h3>
           <ul className="space-y-2 text-base text-[#bdb8af]">
             <li className="flex items-center gap-2">
               <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
-              1 photo input
+              Regress splat parameters from very few views
             </li>
             <li className="flex items-center gap-2">
               <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
-              ~1.4s inference
+              Great for quick avatar bootstrapping
             </li>
             <li className="flex items-center gap-2">
               <ChevronRight size={16} style={{ color: METHOD_COLORS.gaussian }} />
-              563 FPS (A100)
+              Trade quality/control for speed and convenience
             </li>
           </ul>
         </div>
@@ -902,10 +921,11 @@ function SlideGaussianHow() {
       <SlideFlow
         accentColor={METHOD_COLORS.gaussian}
         nodes={[
-          { id: 'photo', label: 'Photo' },
-          { id: 'lam', label: 'LAM' },
-          { id: 'gauss', label: '3D Gaussians' },
-          { id: 'render', label: 'WebGL Render' },
+          { id: 'capture', label: 'Capture / Input Views' },
+          { id: 'opt', label: 'Estimate Gaussian Params (μ, Σ, c, α)' },
+          { id: 'project', label: 'Project to 2D Ellipses' },
+          { id: 'blend', label: 'Alpha Blend (Depth-Aware)' },
+          { id: 'render', label: 'Realtime View Synthesis' },
         ]}
       />
     </div>
@@ -1238,6 +1258,53 @@ function SlideGaussianDemo() {
       <div className="flex items-center gap-2 text-xs text-[#948d82] mt-6">
         <Cpu size={14} />
         <span>Requires local Docker setup (see gaussian-avatar/ directory)</span>
+      </div>
+    </div>
+  );
+}
+
+function SlideGaussianWorldlabsDemo() {
+  return (
+    <div className="flex flex-col items-center justify-center h-full px-12 text-center">
+      <SlideMethodBadge method="Gaussian Splatting Demo" label="World Labs" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-1">World Labs Gaussian Showcase</h2>
+      <p className="text-[#bdb8af] text-lg mb-5 max-w-3xl">
+        Public World Labs pages are not embeddable (frame-ancestors / X-Frame-Options). We embed their public demo walkthrough and link directly to the live case study.
+      </p>
+
+      <div className="w-full max-w-5xl aspect-video rounded-xl overflow-hidden border border-[#3d3a36] bg-[#1d1c1a]">
+        <iframe
+          src={WORLDLABS_YOUTUBE_EMBED_URL}
+          title="World Labs Gaussian Splatting Demo"
+          className="w-full h-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      </div>
+
+      <div className="flex flex-wrap items-center justify-center gap-3 mt-5">
+        <a
+          href={WORLDLABS_SPLAT_WORLD_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#3d3a36] text-sm font-semibold hover:bg-[#242220] transition-colors"
+          style={{ color: METHOD_COLORS.gaussian }}
+        >
+          <Globe size={15} />
+          Open World Labs Splat World
+          <ExternalLink size={14} />
+        </a>
+        <a
+          href={WORLDLABS_MARBLE_GUIDE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#3d3a36] text-sm font-semibold hover:bg-[#242220] transition-colors"
+          style={{ color: METHOD_COLORS.gaussian }}
+        >
+          <BookOpen size={15} />
+          Open Marble User Guide
+          <ExternalLink size={14} />
+        </a>
       </div>
     </div>
   );
@@ -1808,10 +1875,10 @@ function SlideSignalsInteraction() {
       label: 'User Inputs',
       signals: [
         { name: 'Audio prosody', support: [true, true, true] },
-        { name: 'Face video (webcam)', support: [true, true, false] },
+        { name: 'Face video (webcam)', support: [true, true, true] },
         { name: 'Head pose', support: [true, true, true] },
-        { name: 'Gaze direction', support: [true, false, false] },
-        { name: 'Expression coefficients', support: [true, false, true] },
+        { name: 'Gaze direction', support: [true, true, true] },
+        { name: 'Expression coefficients', support: [true, true, true] },
         { name: 'Turn-taking signals', support: [true, true, true] },
       ],
     },
@@ -1819,10 +1886,10 @@ function SlideSignalsInteraction() {
       label: 'Agent Outputs',
       signals: [
         { name: 'Speech audio', support: [true, true, true] },
-        { name: 'Facial action units', support: [true, false, true] },
+        { name: 'Facial action units', support: [true, true, true] },
         { name: 'Head motion', support: [true, true, true] },
-        { name: 'Gaze shifts', support: [true, false, false] },
-        { name: 'Hand gestures', support: [true, true, false] },
+        { name: 'Gaze shifts', support: [true, true, true] },
+        { name: 'Hand gestures', support: [true, true, true] },
         { name: 'Idle micro-motion', support: [true, true, true] },
       ],
     },
@@ -2431,6 +2498,61 @@ function SlideConvergenceUpdated() {
   );
 }
 
+function SlideBuiltWithClaudeSkills() {
+  return (
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <SlideMethodBadge method="Build Process" label="Claude Code + Skills" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">How I Built This Project</h2>
+      <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
+
+      <p className="text-lg text-[#bdb8af] mb-5">
+        This deck and site were built with iterative agent loops: inspect code, run skill cycles, verify claims against sources, patch, test, and publish artifacts.
+      </p>
+
+      <div className="mb-5">
+        <SlideFlow
+          accentColor={METHOD_COLORS.gaussian}
+          nodes={[
+            { id: 'scan', label: 'Scan Repo + Live Pages' },
+            { id: 'skill', label: 'Run Skills (MetaHuman / Full-Modality)' },
+            { id: 'patch', label: 'Patch Code + Slides' },
+            { id: 'verify', label: 'Verify Claims + Lint' },
+            { id: 'publish', label: 'Publish docs to web/public/docs' },
+          ]}
+        />
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 mb-4">
+        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+          <h3 className="text-lg font-semibold mb-2 text-[#f5f2ec]">Skills Used</h3>
+          <ul className="space-y-1.5 text-sm text-[#bdb8af]">
+            <li>`metahuman-evolver`: Unreal plugin architecture + dependency graph</li>
+            <li>`full-modality-social-evolver`: slide claim checks + ArXiv/GitHub deltas</li>
+            <li>Self-evolving state/events memory for repeatable improvement cycles</li>
+          </ul>
+        </div>
+
+        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+          <h3 className="text-lg font-semibold mb-2 text-[#f5f2ec]">Continuous Outputs</h3>
+          <ul className="space-y-1.5 text-sm text-[#bdb8af]">
+            <li>`full-modality-research-latest.md/json`</li>
+            <li>`full-modality-claim-check-latest.json`</li>
+            <li>`metahuman-architecture-latest.json`</li>
+            <li>`metahuman-dependency-graph-latest.json/.mmd`</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+        <p className="text-sm text-[#948d82] mb-2">Typical cycle command</p>
+        <code className="text-sm text-[#f5f2ec] break-all">
+          python .claude/skills/full-modality-social-evolver/scripts/evolve_social_modality_research.py
+        </code>
+      </div>
+    </div>
+  );
+}
+
 function SlideThankYou() {
   return (
     <div className="flex flex-col items-center justify-center h-full text-center px-12">
@@ -2490,16 +2612,18 @@ const SLIDES: React.FC[] = [
   SlideGaussianCovariance,       // 15
   SlideGaussianPerf,             // 16
   SlideGaussianDemo,             // 17
-  SlideStreamingArchitecture,    // 18
-  SlideCapabilityMatrix,         // 19 NEW
-  SlideComparison,               // 20
-  SlideRealTimeMetrics,          // 21 NEW
-  SlideE2EPipeline,              // 22
-  SlideAudio2FaceBuildingBlocks, // 23 NEW
-  SlideWhereIntelligenceLives,   // 24 NEW
-  SlideResearchFrontier,         // 25 NEW
-  SlideConvergenceUpdated,       // 26 REPLACED
-  SlideThankYou,                 // 27
+  SlideGaussianWorldlabsDemo,    // 18 NEW
+  SlideStreamingArchitecture,    // 19
+  SlideCapabilityMatrix,         // 20 NEW
+  SlideComparison,               // 21
+  SlideRealTimeMetrics,          // 22 NEW
+  SlideE2EPipeline,              // 23
+  SlideAudio2FaceBuildingBlocks, // 24 NEW
+  SlideWhereIntelligenceLives,   // 25 NEW
+  SlideResearchFrontier,         // 26 NEW
+  SlideConvergenceUpdated,       // 27 REPLACED
+  SlideBuiltWithClaudeSkills,    // 28 NEW
+  SlideThankYou,                 // 29
 ];
 
 /* ═══════════════════════════════════════════════════════════════
