@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ExternalLink, Cpu, Video, Mic } from 'lucide-react';
-import MetaHumanEditorControlPanel from '../components/MetaHumanEditorControlPanel';
-import MetaHumanRealtimeTalkPanel from '../components/MetaHumanRealtimeTalkPanel';
 
 export const metadata: Metadata = {
   title: 'Rapport MetaHuman Demo — Real-Time Avatars',
@@ -75,9 +73,6 @@ export default function RapportPage() {
           </span>
         </div>
 
-        <MetaHumanEditorControlPanel />
-        <MetaHumanRealtimeTalkPanel />
-
         {/* Rapport iframe embed */}
         <div className="flex justify-center">
           <div className="w-full max-w-[600px]">
@@ -95,7 +90,7 @@ export default function RapportPage() {
               />
             </div>
             <p className="text-xs text-[var(--text-muted)] mt-3 text-center">
-              Click <strong>Start Demo</strong> and allow microphone access to interact
+              Click <strong>Start Demo</strong>. Microphone permission is only requested when voice input is enabled in the embed.
             </p>
           </div>
         </div>

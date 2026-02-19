@@ -273,7 +273,7 @@ function SlideEvidenceStrip({
   return (
     <div className="mt-3 rounded-lg border border-[#3d3a36] bg-[#181716] px-3 py-2">
       <div className="flex flex-wrap items-center gap-2 text-[11px] text-[#948d82]">
-        <span className="uppercase tracking-widest">Evidence</span>
+        <span className="uppercase tracking-widest">Reference</span>
         {links.map((link) => (
           <a
             key={link.href}
@@ -2723,12 +2723,14 @@ function SlideSignalsInteraction() {
     }
   > = {
     inputs: {
-      label: 'User Inputs',
+      label: 'Avatar System Inputs',
       signals: [
-        { name: 'Audio prosody', support: [2, 2, 2] },
-        { name: 'Face video (webcam)', support: [2, 2, 1] },
-        { name: 'Head pose', support: [2, 2, 2] },
-        { name: 'Gaze direction', support: [2, 1, 1] },
+        { name: 'User speech/audio stream', support: [2, 2, 2] },
+        { name: 'User face video (webcam/depth)', support: [2, 2, 1] },
+        { name: 'User head pose / motion', support: [2, 2, 2] },
+        { name: 'LLM text/policy tokens (GPT/OpenAI Realtime or equivalent)', support: [2, 2, 2] },
+        { name: 'Tool or realtime API events', support: [2, 2, 2] },
+        { name: 'Inferred gaze direction', support: [2, 1, 1] },
         { name: 'Expression coefficients', support: [2, 1, 2] },
         { name: 'Turn-taking signals', support: [2, 2, 2] },
       ],
@@ -2762,7 +2764,7 @@ function SlideSignalsInteraction() {
       <h2 className="text-5xl font-bold mb-2">Interaction Signals</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
       <p className="text-xl text-[#bdb8af] mb-5">
-        What signals flow between user and avatar -- and which methods support them?
+        What signals flow into the avatar system, and which rendering approaches support them natively?
       </p>
 
       <div className="flex gap-2 mb-4">
@@ -2817,7 +2819,7 @@ function SlideSignalsInteraction() {
       </div>
 
       <p className="text-sm text-[#948d82] mt-3">
-        Real multimodality depends on native signal support. Conditional channels usually require extra perception/control modules.
+        Real multimodality depends on native signal support. User sensing signals and AI policy/realtime API signals both feed the avatar-system input layer.
       </p>
 
       <SlideEvidenceStrip
