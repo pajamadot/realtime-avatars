@@ -41,7 +41,7 @@ import gaussianVideoWallData from '../data/gaussian-video-wall.json';
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   CONSTANTS
    鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
-const TOTAL_SLIDES = 40;
+const TOTAL_SLIDES = 34;
 
 function clampSlideNumber(slide: number) {
   if (!Number.isFinite(slide)) return 1;
@@ -63,6 +63,9 @@ const SKILL_MULTIMODAL_IO_URL = 'https://github.com/pajamadot/realtime-avatars/b
 const SKILL_SLIDE_PROOFREADER_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/slide-research-proofreader-evolver/SKILL.md';
 const METAHUMAN_EVOLVER_ARCH_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/metahuman-evolver/references/latest-architecture.json';
 const METAHUMAN_EVOLVER_SUMMARY_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/metahuman-evolver/references/latest-summary.md';
+const MULTIMODAL_IO_REPORT_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/multimodal-io-research-evolver/references/latest-report.md';
+const FULL_MODALITY_REPORT_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/full-modality-social-evolver/references/latest-report.md';
+const FULL_MODALITY_CLAIM_CHECK_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/full-modality-social-evolver/references/latest-claim-check.json';
 const HEDRA_AVATAR_URL = 'https://www.hedra.com/app/avatar';
 const WORLDLABS_MARBLE_APP_URL = 'https://marble.worldlabs.ai';
 const SUPERSPLAT_DEMO_ONE_URL = 'https://superspl.at/view?id=bd964899';
@@ -74,10 +77,10 @@ const EVIDENCE_URLS = {
   epicMetaHumansInUE: 'https://dev.epicgames.com/documentation/en-us/metahuman/metahumans-in-unreal-engine',
   epicMetaHumanAnimator: 'https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-animator',
   epicMetaHumanLiveLink: 'https://dev.epicgames.com/documentation/en-us/metahuman/realtime-animation-using-live-link',
+  epicMetaHumanAudioSource: 'https://dev.epicgames.com/documentation/en-us/metahuman/using-a-metahuman-audio-source',
   epicAudioDrivenAnimation: 'https://dev.epicgames.com/documentation/en-us/metahuman/audio-driven-animation',
   epicMeshToMetaHuman: 'https://dev.epicgames.com/documentation/en-us/metahuman/mesh-to-metahuman',
   epicRigLogicApi: 'https://dev.epicgames.com/documentation/en-us/unreal-engine/API/PluginIndex/RigLogic',
-  doiRealtimeMultimodalHAI: 'https://doi.org/10.1007/s12193-009-0039-y',
   nvidiaAudio2FaceBlog: 'https://developer.nvidia.com/blog/nvidia-open-sources-audio2face-animation-model/',
   nvidiaAudio2FaceRepo: 'https://github.com/NVIDIA/Audio2Face-3D',
   nvidiaAcePluginDocs: 'https://docs.nvidia.com/ace/ace-unreal-plugin/latest/index.html',
@@ -92,6 +95,7 @@ const EVIDENCE_URLS = {
   arxivStreamAvatar: 'https://arxiv.org/abs/2512.22065',
   arxivLiveTalk: 'https://arxiv.org/abs/2512.23576',
   arxivAvatarForcing: 'https://arxiv.org/abs/2601.00664',
+  arxivLivePortrait: 'https://arxiv.org/abs/2407.03168',
   arxivICo3D: 'https://arxiv.org/abs/2601.13148',
   arxivFastGHA: 'https://arxiv.org/abs/2601.13837',
   arxivSoulXFlashHead: 'https://arxiv.org/abs/2602.07449',
@@ -603,13 +607,6 @@ function SlideStoryCharacterCreationTool() {
 }
 
 function SlideRealtimeAvatarPerformanceBridge() {
-  const definitionLoop = [
-    'Perceive multimodal user input (audio, text, vision, gaze, events).',
-    'Update interaction state and policy (intent, turn-taking, social cues).',
-    'Actuate avatar output (speech, face, gaze, gesture) through a renderer.',
-    'Close the loop with latency-aware feedback from the user interaction.',
-  ];
-
   const steps = [
     {
       icon: Box,
@@ -621,20 +618,11 @@ function SlideRealtimeAvatarPerformanceBridge() {
       color: METHOD_COLORS.gaussian,
     },
     {
-      icon: Layers,
-      title: '3D Dynamic Embodiment (Next)',
-      points: [
-        'Add geometry, rig, deformation, and expression spaces.',
-        'Map emotion/state to controllable facial/body dynamics.',
-      ],
-      color: METHOD_COLORS.metahuman,
-    },
-    {
       icon: Sparkles,
-      title: 'Realtime Story Performance (Then)',
+      title: 'Realtime Story Performance',
       points: [
-        'Multimodal input -> story-aware response planning.',
-        'Low-latency voice + face + gaze performance for live scenes.',
+        'Multimodal user input.',
+        'Story-aware model response.',
       ],
       color: METHOD_COLORS.generative,
     },
@@ -642,24 +630,15 @@ function SlideRealtimeAvatarPerformanceBridge() {
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Roadmap" label="2D -> 3D Offline -> Realtime Performance" color={METHOD_COLORS.gaussian} />
+      <SlideMethodBadge method="Roadmap" label="2D -> Realtime Performance" color={METHOD_COLORS.gaussian} />
       <h2 className="text-5xl font-bold mb-2">Realtime Avatar Performance for Storytelling</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
 
-      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-5">
-        <h3 className="text-lg font-semibold text-[#f5f2ec] mb-2">End-to-End Definition</h3>
-        <ul className="list-disc pl-5 space-y-1.5 text-sm text-[#c7c2b9]">
-          {definitionLoop.map((line) => (
-            <li key={line}>{line}</li>
-          ))}
-        </ul>
-      </div>
-
       <p className="text-lg text-[#c7c2b9] mb-6">
-        Start with a 2D identity layer, then move to 3D dynamic expression, then realtime social storytelling performance.
+        Start with a 2D identity layer, then move directly to realtime storytelling performance.
       </p>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 gap-4">
         {steps.map((step) => (
           <div key={step.title} className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
             <step.icon size={24} className="mb-3" style={{ color: step.color }} />
@@ -675,9 +654,69 @@ function SlideRealtimeAvatarPerformanceBridge() {
 
       <SlideEvidenceStrip
         links={[
-          { label: 'Real-time multimodal HAI (2009)', href: EVIDENCE_URLS.doiRealtimeMultimodalHAI },
           { label: 'MIDAS', href: EVIDENCE_URLS.arxivMIDAS },
           { label: 'LiveTalk', href: EVIDENCE_URLS.arxivLiveTalk },
+        ]}
+      />
+    </div>
+  );
+}
+
+function SlideE2EDefinitionMindmap() {
+  return (
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <SlideMethodBadge method="Definition" label="End-to-End Realtime Avatar System" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">End-to-End Definition</h2>
+      <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
+
+      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-3">
+        <SlideFlow
+          accentColor={METHOD_COLORS.gaussian}
+          edgeType="straight"
+          height={180}
+          nodes={[
+            { id: 'input', label: 'End User Inputs', color: METHOD_COLORS.generative, position: { x: 40, y: 80 } },
+            { id: 'perception', label: 'Perception (ASR + vision + gaze)', color: METHOD_COLORS.generative, position: { x: 280, y: 80 } },
+            { id: 'response', label: 'LLM Response Model + Memory', color: METHOD_COLORS.metahuman, position: { x: 520, y: 80 } },
+            { id: 'actuation', label: 'Avatar Control Inputs', color: METHOD_COLORS.metahuman, position: { x: 760, y: 80 } },
+            { id: 'output', label: 'Multimodal Outputs', color: METHOD_COLORS.gaussian, position: { x: 1000, y: 80 } },
+          ]}
+          edges={[
+            { source: 'input', target: 'perception' },
+            { source: 'perception', target: 'response' },
+            { source: 'response', target: 'actuation' },
+            { source: 'actuation', target: 'output' },
+          ]}
+        />
+      </div>
+
+      <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-3">
+        <p className="text-sm text-[#c7c2b9]">
+          Operational path: <span className="text-[#f5f2ec]">inputs → perception → LLM response model → avatar control → outputs</span>
+        </p>
+      </div>
+
+      <div className="grid grid-cols-3 gap-3 mb-2">
+        <div className="rounded-lg p-3 border border-[#3d3a36] bg-[#1d1c1a]">
+          <p className="text-[11px] uppercase tracking-wide text-[#948d82] mb-1">End User Inputs</p>
+          <p className="text-xs text-[#c7c2b9]">Audio, text, face video, facial expression, gaze, gesture, events.</p>
+        </div>
+        <div className="rounded-lg p-3 border border-[#3d3a36] bg-[#1d1c1a]">
+          <p className="text-[11px] uppercase tracking-wide text-[#948d82] mb-1">System Boundary</p>
+          <p className="text-xs text-[#c7c2b9]">LLM response model means dialogue/intent generation with memory/state. Avatar control inputs are downstream actuation signals.</p>
+        </div>
+        <div className="rounded-lg p-3 border border-[#3d3a36] bg-[#1d1c1a]">
+          <p className="text-[11px] uppercase tracking-wide text-[#948d82] mb-1">Multimodal Outputs</p>
+          <p className="text-xs text-[#c7c2b9]">Speech, facial dynamics, gaze/head motion, gesture, rendered stream frames.</p>
+        </div>
+      </div>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: 'OpenAI Realtime API', href: EVIDENCE_URLS.openaiRealtimeApi },
+          { label: 'GazeGPT', href: EVIDENCE_URLS.arxivGazeGPT },
+          { label: 'MetaHuman Live Link', href: EVIDENCE_URLS.epicMetaHumanLiveLink },
+          { label: 'NVIDIA Audio2Face', href: EVIDENCE_URLS.nvidiaAudio2FaceRepo },
         ]}
       />
     </div>
@@ -930,71 +969,79 @@ function SlideApproachSelectionQuestion() {
 }
 
 function SlideFuturePerspectiveMissingLayers() {
-  const layers = [
+  const stages = [
     {
-      title: 'Interaction Runtime',
+      title: 'Capture + Timestamping',
       color: METHOD_COLORS.gaussian,
       icon: Clock,
       bullets: [
-        'Realtime turn-taking, barge-in, and latency budgeting.',
-        'Fast acknowledgement before full response generation.',
+        'Collect audio, text, face video, gaze, and interaction events in one clock domain.',
+        'Preserve packet/frame timestamps for turn-taking and causality.',
       ],
     },
     {
-      title: 'Memory + Identity Graph',
+      title: 'Signal Quality + Calibration',
       color: METHOD_COLORS.generative,
-      icon: Brain,
-      bullets: [
-        'Persistent character memory across sessions.',
-        'Narrative state + relationship continuity over time.',
-      ],
-    },
-    {
-      title: 'Social Reasoning Layer',
-      color: METHOD_COLORS.metahuman,
-      icon: Users,
-      bullets: [
-        'Multimodal fusion of facial expression (AU/micro-expression), gaze, voice, and text with uncertainty-aware affect estimates.',
-        'Conservative behavior when confidence is low.',
-      ],
-    },
-    {
-      title: 'Trust, Safety, and Eval',
-      color: METHOD_COLORS.gaussian,
       icon: Activity,
       bullets: [
-        'Consent-aware signal use + provenance instrumentation.',
-        'Metrics: first reaction latency, drift, coherence, MOS.',
+        'Run VAD/SNR, face-track confidence, gaze confidence, and drift checks.',
+        'Down-weight noisy channels instead of hard-failing the whole interaction.',
+      ],
+    },
+    {
+      title: 'Feature Extraction Per Modality',
+      color: METHOD_COLORS.metahuman,
+      icon: Eye,
+      bullets: [
+        'Audio -> transcript/prosody; video -> expression/head/gaze features; text -> intent entities.',
+        'Emit calibrated features with uncertainty for each modality.',
+      ],
+    },
+    {
+      title: 'Cross-Modal Alignment + State Update',
+      color: METHOD_COLORS.gaussian,
+      icon: Brain,
+      bullets: [
+        'Fuse features in short temporal windows and update interaction state.',
+        'Handoff one compact context object to the response model and avatar backend adapter.',
       ],
     },
   ];
 
+  const signalContracts = [
+    'Audio: waveform + VAD + prosody + transcript confidence',
+    'Face video: landmarks/AUs + head pose + per-frame confidence',
+    'Gaze: fixation/saccade events + AOI hits + quality score',
+    'Text/events: user intent, tool events, and turn boundary markers',
+  ];
+
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Future Perspective" label="Missing Layer: Multimodal Input Processing" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">Missing Layer: Multimodal User-Input Processing</h2>
+      <SlideMethodBadge method="Input Architecture" label="Multimodal User Input Processing" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Multimodal User-Input Processing Layer</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
       <p className="text-base text-[#c7c2b9] mb-5">
-        The three approaches mostly define output rendering. A dedicated pipeline for multimodal user-input processing is still needed before renderer selection.
+        This layer is upstream of all avatar backends. Its job is to convert noisy human signals into reliable interaction state before response generation and actuation.
       </p>
 
       <div className="mb-4">
         <SlideFlow
           accentColor={METHOD_COLORS.gaussian}
+          edgeType="straight"
           nodes={[
-            { id: 'in', label: 'User input (audio / text / video / facial expression / gesture)' },
-            { id: 'perception', label: 'Perception (ASR + vision + quality checks)' },
-            { id: 'fusion', label: 'Temporal fusion + uncertainty estimation' },
-            { id: 'state', label: 'Turn-taking + memory + social state' },
-            { id: 'policy', label: 'Response policy + intent planning' },
-            { id: 'renderer', label: 'Output renderer (MH / VG / GS)' },
+            { id: 'capture', label: 'Capture (audio / text / video / gaze / events)' },
+            { id: 'quality', label: 'Quality + calibration gates' },
+            { id: 'extract', label: 'Per-modality feature extraction' },
+            { id: 'align', label: 'Temporal alignment + uncertainty fusion' },
+            { id: 'state', label: 'Interaction state update' },
+            { id: 'handoff', label: 'Response model + avatar backend adapter' },
           ]}
         />
       </div>
 
       <div className="grid grid-cols-2 gap-4 mb-4">
-        {layers.map((layer) => (
+        {stages.map((layer) => (
           <div key={layer.title} className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
             <div className="flex items-center gap-2 mb-2">
               <layer.icon size={18} style={{ color: layer.color }} />
@@ -1012,21 +1059,25 @@ function SlideFuturePerspectiveMissingLayers() {
       </div>
 
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
-        <h3 className="text-lg font-semibold text-[#f5f2ec] mb-2">Eye Tracking as End-User Input (Example)</h3>
+        <h3 className="text-lg font-semibold text-[#f5f2ec] mb-2">Per-Signal Contract (Input Side)</h3>
         <ul className="list-disc pl-5 space-y-1.5 text-sm text-[#c7c2b9]">
-          <li><span className="text-[#f5f2ec]">GazeGPT (arXiv):</span> language-guided gaze estimation from image + text prompts.</li>
-          <li><span className="text-[#f5f2ec]">GPT-4 Eyes (Pupil Labs):</span> live gaze coordinates and AOI events passed to an LLM context loop.</li>
-          <li><span className="text-[#f5f2ec]">Takeaway:</span> gaze can be handled as first-class user input before avatar-control signals are generated.</li>
+          {signalContracts.map((line) => (
+            <li key={line}>{line}</li>
+          ))}
         </ul>
       </div>
 
       <div className="rounded-xl border border-[#3d3a36] bg-[#1d1c1a] p-4 text-sm text-[#bdb8af]">
-        <span className="font-semibold text-[#f5f2ec]">Recommended order:</span> Build multimodal input processing first, then connect the chosen output renderer (MetaHuman, Video Generation, Gaussian).
+        <span className="font-semibold text-[#f5f2ec]">Design rule:</span> keep user-input processing and avatar actuation separate, then bridge them with a typed interaction-state contract.
       </div>
 
       <SlideEvidenceStrip
         links={[
+          { label: 'OpenAI Realtime API', href: EVIDENCE_URLS.openaiRealtimeApi },
           { label: 'GazeGPT paper', href: EVIDENCE_URLS.arxivGazeGPT },
+          { label: 'LivePortrait', href: EVIDENCE_URLS.arxivLivePortrait },
+          { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
+          { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
           { label: 'GPT-4 Eyes docs', href: EVIDENCE_URLS.pupilGpt4EyesDocs },
           { label: 'GPT-4 Eyes code (gist)', href: EVIDENCE_URLS.pupilGpt4EyesCode },
         ]}
@@ -1386,7 +1437,7 @@ function SlideMetahumanIdentityResponse() {
 
       <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
         <p className="text-sm text-[#c7c2b9]">
-          Scope note: this page describes renderer/control stack inputs and outputs. End-user multimodal perception (ASR, vision, gaze, affect inference) is an upstream layer.
+          Scope note: this page describes avatar-backend control stack inputs and outputs. End-user multimodal perception (ASR, vision, gaze, affect inference) is an upstream layer.
         </p>
       </div>
 
@@ -1537,7 +1588,7 @@ function SlideGenerativeIdentityResponse() {
 
       <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
         <p className="text-sm text-[#c7c2b9]">
-          Scope note: this page focuses on generation/renderer control stack. End-user multimodal perception is a separate upstream processing layer.
+          Scope note: this page focuses on generation/avatar-backend control stack. End-user multimodal perception is a separate upstream processing layer.
         </p>
       </div>
 
@@ -1815,7 +1866,7 @@ function SlideGenerativeResearch() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="Video Generation" color={METHOD_COLORS.generative} />
-      <h2 className="text-5xl font-bold mb-2">Research Frontier Deep Dive</h2>
+      <h2 className="text-5xl font-bold mb-2">Research Frontier</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.generative }} />
 
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
@@ -2083,7 +2134,7 @@ function SlideGaussianIdentityResponse() {
         <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
           <h3 className="text-lg font-semibold text-[#f5f2ec] mb-2">2) Realtime Response Model</h3>
           <ul className="space-y-1.5 text-sm text-[#bdb8af]">
-            <li>Common renderer/control inputs: audio, expression coefficients, and head pose; direct webcam gaze/AU feeds are often extra modules.</li>
+            <li>Common avatar-backend control inputs: audio, expression coefficients, and head pose; direct webcam gaze/AU feeds are often extra modules.</li>
             <li>Models: Audio2Expression driver + deformation model (FLAME/SMPL-X or learned fields).</li>
             <li>Renderer: differentiable or realtime splat rasterizer with depth-aware alpha blending.</li>
             <li>Final outputs: high-FPS video stream and avatar state updates for interaction loops.</li>
@@ -2368,7 +2419,7 @@ function SlideGaussianPersonalDemo() {
   return (
     <div className="flex flex-col items-center justify-center h-full px-12 text-center">
       <SlideMethodBadge method="Gaussian Splatting Demo" label="Personal Demo" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-1">My Personal Gaussian Demo</h2>
+      <h2 className="text-5xl font-bold mb-1">Mr. Platypus</h2>
       <p className="text-[#bdb8af] text-lg mb-5 max-w-3xl">
         Personal PlayCanvas interactive demo.
       </p>
@@ -2874,7 +2925,7 @@ function SlideSignalsInteraction() {
             { label: 'GazeGPT', href: EVIDENCE_URLS.arxivGazeGPT },
             { label: 'GPT-4 Eyes docs', href: EVIDENCE_URLS.pupilGpt4EyesDocs },
           ],
-          note: 'Typically implemented in an upstream perception module, not native in renderer backends.',
+          note: 'Typically implemented in an upstream perception module, not native in avatar backends.',
         },
         {
           name: 'User gaze / eye-movement stream',
@@ -2920,7 +2971,7 @@ function SlideSignalsInteraction() {
             { label: 'LiveTalk', href: EVIDENCE_URLS.arxivLiveTalk },
             { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
           ],
-          note: 'Conditional because affect inference is usually external to the renderer backend.',
+          note: 'Conditional because affect inference is usually external to the avatar backend.',
         },
         {
           name: 'Viseme / expression coefficients',
@@ -3183,6 +3234,7 @@ function SlideCurrentE2EIOPaths() {
     'Audio (speech + prosody)',
     'Text/chat messages',
     'Video (face/head/gesture)',
+    'Facial expression signal (AU / affect features)',
     'Gaze/eye-tracking stream',
     'Interaction events (click/select/tool)',
   ];
@@ -3594,12 +3646,12 @@ function SlideAudio2FaceBuildingBlocks() {
             { id: 'audio', label: 'Audio Input' },
             { id: 'a2e', label: 'Phoneme + Emotion Extraction' },
             { id: 'viseme', label: 'Viseme / Expression Actuation' },
-            { id: 'renderer', label: 'Renderer Backend (MH / VG / GS)' },
+            { id: 'avatar_backend', label: 'Avatar Backend (MH / VG / GS)' },
           ]}
         />
         <div className="flex items-center justify-center gap-2 text-sm text-[#948d82] mt-2">
           <Layers size={14} />
-          Shared abstraction: one voice stream → one actuation interface → multiple renderers.
+          Shared abstraction: one voice stream → one actuation interface → multiple avatar backends.
         </div>
       </div>
 
@@ -3667,98 +3719,119 @@ function SlideAudio2FaceBuildingBlocks() {
 }
 
 function SlideWhereIntelligenceLives() {
+  const criteria = [
+    'Need precise expression/gaze/gesture control?',
+    'Need deterministic debugging and guardrails?',
+    'Need faster setup with fewer explicit control channels?',
+  ];
+
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <h2 className="text-5xl font-bold mb-2">Where Intelligence Lives</h2>
+      <SlideMethodBadge method="Architecture Decision" label="Why This Slide Exists" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Where Should Behavior Logic Live?</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
-      <p className="text-xl text-[#bdb8af] mb-5">
-        Two paradigms for how avatars embody emotion and response behavior.
+      <p className="text-base text-[#bdb8af] mb-5">
+        Purpose of this page: choose the control architecture before implementation.
       </p>
 
       <div className="grid grid-cols-2 gap-5 mb-6">
-        {/* Paradigm 1: External policy */}
         <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]">
           <div className="flex items-center gap-2 mb-3">
             <Cpu size={16} style={{ color: METHOD_COLORS.metahuman }} />
             <Brain size={16} style={{ color: METHOD_COLORS.gaussian }} />
           </div>
-          <h3 className="text-sm font-bold text-[#f5f2ec] mb-2">
-            Policy in AI, Embodiment in Renderer
+          <h3 className="text-base font-bold text-[#f5f2ec] mb-2">
+            Path A: External Response Model + Avatar Backend
           </h3>
-          <p className="text-xs text-[#bdb8af] mb-4">
-            An external AI decides what emotions to show. The renderer executes those explicit control signals on a rig or 3D representation.
+          <p className="text-sm text-[#bdb8af] mb-3">
+            User input processing and response logic stay upstream. Avatar backend executes explicit control signals.
           </p>
-
-          <div className="space-y-2 text-xs">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full" style={{ background: METHOD_COLORS.metahuman }} />
-              <span className="text-[#bdb8af]">MetaHuman + Audio2Face</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full" style={{ background: METHOD_COLORS.gaussian }} />
-              <span className="text-[#bdb8af]">Gaussian + LAM driver</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full" style={{ background: METHOD_COLORS.gaussian }} />
-              <span className="text-[#bdb8af]">TaoAvatar (90 FPS Vision Pro)</span>
-            </div>
-          </div>
-
-          <div className="mt-4 text-[10px] text-[#948d82] px-2 py-1.5 rounded bg-[#242220]">
-            Pros: Interpretable, debuggable, composable with any LLM
+          <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#c7c2b9]">
+            <li>Best for controllability and safety constraints.</li>
+            <li>Easier to debug latency path and behavior failures.</li>
+            <li>Examples: MetaHuman + Live Link, Gaussian + explicit drivers.</li>
+          </ul>
+          <div className="mt-3 text-[10px] text-[#948d82] px-2 py-1.5 rounded bg-[#242220]">
+            Recommended for production storytelling systems.
           </div>
         </div>
 
-        {/* Paradigm 2: Embodiment in AI */}
         <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]">
           <div className="flex items-center gap-2 mb-3">
             <Sparkles size={16} style={{ color: METHOD_COLORS.generative }} />
           </div>
-          <h3 className="text-sm font-bold text-[#f5f2ec] mb-2">
-            Embodiment in AI
+          <h3 className="text-base font-bold text-[#f5f2ec] mb-2">
+            Path B: End-to-End Generative Embodiment
           </h3>
-          <p className="text-xs text-[#bdb8af] mb-4">
-            The pixel generator itself internalizes emotional inference. No explicit rig needed -- the model learns what a nod or smile looks like.
+          <p className="text-sm text-[#bdb8af] mb-3">
+            More behavior is internalized in the generator; fewer explicit actuation channels.
           </p>
-
-          <div className="space-y-2 text-xs">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full" style={{ background: METHOD_COLORS.generative }} />
-              <span className="text-[#bdb8af]">Avatar Forcing (causal state)</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full" style={{ background: METHOD_COLORS.generative }} />
-              <span className="text-[#bdb8af]">LiveTalk (streaming diffusion)</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full" style={{ background: METHOD_COLORS.generative }} />
-              <span className="text-[#bdb8af]">SoulX-FlashHead (oracle guidance)</span>
-            </div>
-          </div>
-
-          <div className="mt-4 text-[10px] text-[#948d82] px-2 py-1.5 rounded bg-[#242220]">
-            Pros: Zero rigging, one-shot identity, richer emergent behavior
+          <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#c7c2b9]">
+            <li>Fast to prototype from image/audio/text conditioning.</li>
+            <li>Can produce rich motion with minimal explicit rig authoring.</li>
+            <li>Examples: Avatar Forcing, LiveTalk, SoulX-FlashHead.</li>
+          </ul>
+          <div className="mt-3 text-[10px] text-[#948d82] px-2 py-1.5 rounded bg-[#242220]">
+            Useful for rapid experimentation, but control can be less explicit.
           </div>
         </div>
       </div>
 
-      <div className="rounded-lg p-3 bg-[#242220] border border-[#3d3a36]">
-        <p className="text-xs text-[#f5f2ec] text-center font-medium">
-          <Eye size={12} className="inline mr-1" style={{ color: METHOD_COLORS.gaussian }} />
-          Central question: should emotion inference control explicit rigs,
-          or should the pixel generator internalize it?
-        </p>
+      <div className="grid grid-cols-2 gap-4 mb-4">
+        <div className="rounded-lg p-3 bg-[#242220] border border-[#3d3a36]">
+          <p className="text-xs uppercase tracking-wide text-[#948d82] mb-2">Decision Questions</p>
+          <ul className="list-disc pl-5 space-y-1 text-xs text-[#c7c2b9]">
+            {criteria.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="rounded-lg p-3 bg-[#242220] border border-[#3d3a36] flex items-center">
+          <p className="text-xs text-[#f5f2ec] font-medium">
+            <Eye size={12} className="inline mr-1" style={{ color: METHOD_COLORS.gaussian }} />
+            Takeaway: default to Path A for controllable realtime storytelling; use Path B when speed of iteration is the main objective.
+          </p>
+        </div>
       </div>
 
       <SlideEvidenceStrip
         links={[
+          { label: 'MetaHuman Live Link', href: EVIDENCE_URLS.epicMetaHumanLiveLink },
           { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
           { label: 'LiveTalk', href: EVIDENCE_URLS.arxivLiveTalk },
           { label: 'SoulX-FlashHead', href: EVIDENCE_URLS.arxivSoulXFlashHead },
           { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
-          { label: 'LAM', href: EVIDENCE_URLS.arxivLAM },
+          { label: 'ICo3D', href: EVIDENCE_URLS.arxivICo3D },
         ]}
       />
+    </div>
+  );
+}
+
+function SlideCapabilityTransition() {
+  const checkpoints = [
+    'Demos showed what each approach can render.',
+    'Now compare them with one decision frame.',
+    'Next slide turns evidence into selection criteria.',
+  ];
+
+  return (
+    <div className="flex flex-col justify-center h-full px-12 max-w-5xl mx-auto text-center">
+      <SlideMethodBadge method="Transition" label="From Demos To Decision" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Before The Capability Matrix</h2>
+      <div className="w-14 h-1 rounded-full mb-6 mx-auto" style={{ background: METHOD_COLORS.gaussian }} />
+
+      <p className="text-lg text-[#c7c2b9] mb-6">
+        The previous section showed individual demos and papers. The next step is a direct comparison to choose a stack.
+      </p>
+
+      <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]">
+        <ul className="list-disc pl-6 space-y-2 text-base text-[#c7c2b9] text-left">
+          {checkpoints.map((line) => (
+            <li key={line}>{line}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
@@ -3951,135 +4024,169 @@ function SlideResearchFrontier() {
 }
 
 function SlideConvergenceUpdated() {
-  const convergenceCards = [
+  const workflowCards = [
     {
-      title: 'Rig-Centric Production Anchor',
-      desc: 'Explicit rig, blendshape, and gaze controls with predictable runtime behavior.',
+      title: 'MetaHuman Workflow (Rig-Controlled)',
+      desc: 'Deterministic control path: solved facial controls drive explicit rig channels.',
       color: METHOD_COLORS.metahuman,
-      examples: 'MetaHuman DNA + RigLogic + Live Link',
+      inputs: 'User audio/video + Live Link streams',
+      steps: [
+        'Capture user streams (audio + face/head data).',
+        'Solve controls with MetaHuman Animator / Live Link.',
+        'LLM response model emits dialogue intent + timing tags.',
+        'RigLogic + UE render executes final avatar output.',
+      ],
     },
     {
-      title: '3D as Explicit Representation',
-      desc: 'Point clouds and meshes rendered directly. Full geometric control.',
+      title: 'Video Generation Workflow (Latent-Controlled)',
+      desc: 'Conditional generation path: multimodal conditioning drives streaming frame synthesis.',
+      color: METHOD_COLORS.generative,
+      inputs: 'Reference image + user audio/text (+ optional user motion)',
+      steps: [
+        'Encode identity and conditioning signals.',
+        'Run causal/streaming generation for next-frame prediction.',
+        'Use distillation/forcing modules to reduce latency.',
+        'Deliver video/audio stream via realtime transport.',
+      ],
+    },
+    {
+      title: 'Gaussian Workflow (Explicit 3D Primitives)',
+      desc: '3D primitive path: control signals deform Gaussian avatar state before rasterization.',
       color: METHOD_COLORS.gaussian,
-      examples: 'Gaussian Splatting, LAM, TaoAvatar',
+      inputs: 'Avatar model + user audio + pose/expression controls',
+      steps: [
+        'Build/initialize animatable 3DGS avatar.',
+        'Map audio/pose to expression and motion controls.',
+        'Deform Gaussian attributes per frame.',
+        'Rasterize and stream high-FPS outputs.',
+      ],
     },
-    {
-      title: '3D as Learned Prior',
-      desc: 'Tri-planes and implicit volumes inside the generator. 3D consistency without explicit meshes.',
-      color: METHOD_COLORS.generative,
-      examples: 'MIDAS-style autoregressive multimodal synthesis',
-    },
-    {
-      title: '3D as Control Signals',
-      desc: 'Pose, landmarks, and depth maps guide a 2D generator. 3D informs but pixels remain 2D.',
-      color: METHOD_COLORS.generative,
-      examples: 'LiveTalk multimodal conditioning, StreamAvatar streaming controls',
-    },
-  ];
-
-  const trends = [
-    { text: 'Audio2Face bridges all three paradigms', color: METHOD_COLORS.gaussian },
-    { text: 'MetaHuman is often used as a production baseline for controllability', color: METHOD_COLORS.metahuman },
-    { text: 'One-shot Gaussian from single photo (LAM)', color: METHOD_COLORS.gaussian },
-    { text: 'Sub-500ms E2E conversational loops', color: METHOD_COLORS.generative },
-    { text: 'On-device XR result: TaoAvatar reports 90 FPS on Vision Pro', color: METHOD_COLORS.gaussian },
   ];
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <h2 className="text-5xl font-bold mb-2">Convergence & the Role of 3D</h2>
+      <h2 className="text-5xl font-bold mb-2">Paper-Backed Workflow Comparison</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
+      <p className="text-sm text-[#bdb8af] mb-4">
+        Workflow view: user input processing hands off to response modeling, then each avatar backend executes a different actuation/render path.
+      </p>
 
-      <div className="grid grid-cols-2 gap-4 mb-5">
-        {convergenceCards.map((card) => (
+      <div className="mb-4">
+        <SlideFlow
+          accentColor={METHOD_COLORS.gaussian}
+          edgeType="straight"
+          nodes={[
+            { id: 'user', label: 'User input processing' },
+            { id: 'state', label: 'Interaction state' },
+            { id: 'llm', label: 'Response model (LLM + memory)' },
+            { id: 'adapter', label: 'Avatar backend adapter' },
+            { id: 'out', label: 'Avatar output stream' },
+          ]}
+        />
+      </div>
+
+      <div className="grid grid-cols-3 gap-4 mb-4">
+        {workflowCards.map((card) => (
           <div key={card.title} className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
             <div className="w-2.5 h-2.5 rounded-full mb-2" style={{ background: card.color }} />
             <h3 className="text-base font-bold text-[#f5f2ec] mb-1">{card.title}</h3>
-            <p className="text-sm text-[#bdb8af] mb-2">{card.desc}</p>
-            <p className="text-sm text-[#948d82]">{card.examples}</p>
+            <p className="text-xs text-[#bdb8af] mb-2">{card.desc}</p>
+            <p className="text-[11px] text-[#948d82] mb-2"><span className="text-[#f5f2ec]">Inputs:</span> {card.inputs}</p>
+            <ol className="list-decimal pl-4 space-y-1 text-[11px] text-[#c7c2b9]">
+              {card.steps.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ol>
           </div>
         ))}
       </div>
 
-      <h3 className="text-lg font-semibold text-[#f5f2ec] mb-3">Convergence Trends</h3>
-      <div className="space-y-3">
-        {trends.map((t, i) => (
-          <div key={i} className="flex items-center gap-3">
-            <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: t.color }} />
-            <span className="text-base text-[#f5f2ec]">{t.text}</span>
-          </div>
-        ))}
+      <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-2">
+        <p className="text-sm text-[#c7c2b9]">
+          Repo evidence: latest skill outputs track and verify these workflow claims against docs/papers each cycle.
+        </p>
       </div>
 
       <SlideEvidenceStrip
         links={[
-          { label: 'Audio Driven Animation (Epic)', href: EVIDENCE_URLS.epicAudioDrivenAnimation },
+          { label: 'MetaHuman Animator', href: EVIDENCE_URLS.epicMetaHumanAnimator },
+          { label: 'MetaHuman Live Link', href: EVIDENCE_URLS.epicMetaHumanLiveLink },
+          { label: 'MetaHuman Audio Source', href: EVIDENCE_URLS.epicMetaHumanAudioSource },
+          { label: 'LiveTalk', href: EVIDENCE_URLS.arxivLiveTalk },
           { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
-          { label: 'LAM', href: EVIDENCE_URLS.arxivLAM },
+          { label: 'SoulX-FlashHead', href: EVIDENCE_URLS.arxivSoulXFlashHead },
+          { label: '3D Gaussian Splatting', href: EVIDENCE_URLS.arxiv3dgs },
           { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
-          { label: 'MIDAS', href: EVIDENCE_URLS.arxivMIDAS },
+          { label: 'ICo3D', href: EVIDENCE_URLS.arxivICo3D },
+          { label: 'Multimodal IO report (repo)', href: MULTIMODAL_IO_REPORT_URL },
+          { label: 'Full-modality report (repo)', href: FULL_MODALITY_REPORT_URL },
+          { label: 'Claim check JSON (repo)', href: FULL_MODALITY_CLAIM_CHECK_URL },
         ]}
       />
     </div>
   );
 }
 
-function SlideBuiltWithClaudeSkills() {
+function SlideHowToEvolveProject() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Build Process" label="Claude Code + Skills" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">How I Built This Project</h2>
+      <SlideMethodBadge method="Evolution Guide" label="Research + Implementation Loop" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">How To Evolve This Project</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
-      <p className="text-lg text-[#bdb8af] mb-5">
-        This deck and site were built with iterative agent loops: inspect code, run skill cycles, verify claims against sources, patch, test, and publish artifacts.
+      <p className="text-base text-[#bdb8af] mb-5">
+        Keep one repeatable cycle: refresh sources, update claim matrix, patch slides/code, validate, publish, and store artifacts.
       </p>
 
       <div className="mb-5">
         <SlideFlow
           accentColor={METHOD_COLORS.gaussian}
+          edgeType="straight"
           nodes={[
-            { id: 'scan', label: 'Scan Repo + Live Pages' },
-            { id: 'skill', label: 'Run Skills (MetaHuman / Full-Modality / Multimodal I/O)' },
-            { id: 'patch', label: 'Patch Code + Slides' },
-            { id: 'verify', label: 'Verify Claims + Lint' },
-            { id: 'publish', label: 'Publish docs to web/public/docs' },
+            { id: 'scan', label: '1) Refresh docs/papers/repos' },
+            { id: 'skill', label: '2) Run evolution skills' },
+            { id: 'claims', label: '3) Update claim matrix + workflows' },
+            { id: 'patch', label: '4) Patch slides + implementation' },
+            { id: 'verify', label: '5) Build + evidence check + publish' },
           ]}
         />
       </div>
 
       <div className="grid grid-cols-2 gap-4 mb-4">
         <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-          <h3 className="text-lg font-semibold mb-2 text-[#f5f2ec]">Skills Used</h3>
+          <h3 className="text-lg font-semibold mb-2 text-[#f5f2ec]">Core Skills</h3>
           <ul className="space-y-1.5 text-sm text-[#bdb8af]">
-            <li>`metahuman-evolver`: Unreal plugin architecture + dependency graph</li>
-            <li>`full-modality-social-evolver`: slide claim checks + ArXiv/GitHub deltas</li>
-            <li>`multimodal-io-research-evolver`: distills native vs conditional I/O across all 3 approaches</li>
-            <li>`slide-research-proofreader-evolver`: page-level source-link and evidence-strip audits for research slides</li>
-            <li>Self-evolving state/events memory for repeatable improvement cycles</li>
+            <li><code>metahuman-evolver</code>: Unreal plugin architecture + dependency graph.</li>
+            <li><code>multimodal-io-research-evolver</code>: cross-approach I/O research refresh.</li>
+            <li><code>full-modality-social-evolver</code>: modality claim checks and deltas.</li>
+            <li><code>slide-research-proofreader-evolver</code>: citation and claim audits per slide.</li>
           </ul>
         </div>
 
         <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-          <h3 className="text-lg font-semibold mb-2 text-[#f5f2ec]">Continuous Outputs</h3>
+          <h3 className="text-lg font-semibold mb-2 text-[#f5f2ec]">Always Track</h3>
           <ul className="space-y-1.5 text-sm text-[#bdb8af]">
-            <li>`full-modality-research-latest.md/json`</li>
-            <li>`full-modality-claim-check-latest.json`</li>
-            <li>`multimodal-io-research-latest.md/json`</li>
-            <li>`multimodal-io-claim-matrix-latest.json`</li>
-            <li>`metahuman-architecture-latest.json`</li>
-            <li>`metahuman-dependency-graph-latest.json/.mmd`</li>
-            <li>`slide-proofread-latest.md/json`</li>
+            <li>new papers/repos affecting input processing or avatar backends</li>
+            <li>claim-matrix diffs (native vs conditional support)</li>
+            <li>latency path updates (input → response model → output)</li>
+            <li>latest generated reports under <code>.claude/skills/*/references/</code></li>
           </ul>
         </div>
       </div>
 
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-        <p className="text-sm text-[#948d82] mb-2">Typical cycle command</p>
-        <code className="text-sm text-[#f5f2ec] break-all">
-          python .claude/skills/multimodal-io-research-evolver/scripts/evolve_multimodal_io_research.py
-        </code>
+        <p className="text-sm text-[#948d82] mb-2">Reference artifacts</p>
+        <div className="flex flex-wrap items-center gap-4 text-sm">
+          <a href={MULTIMODAL_IO_REPORT_URL} target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: METHOD_COLORS.gaussian }}>
+            multimodal-io latest report <ExternalLink size={13} className="inline ml-1" />
+          </a>
+          <a href={FULL_MODALITY_REPORT_URL} target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: METHOD_COLORS.gaussian }}>
+            full-modality latest report <ExternalLink size={13} className="inline ml-1" />
+          </a>
+          <a href={FULL_MODALITY_CLAIM_CHECK_URL} target="_blank" rel="noopener noreferrer" className="hover:underline" style={{ color: METHOD_COLORS.gaussian }}>
+            claim-check JSON <ExternalLink size={13} className="inline ml-1" />
+          </a>
+        </div>
       </div>
     </div>
   );
@@ -4214,40 +4321,34 @@ const SLIDES: React.FC[] = [
   SlideGraphNerd,                // 4
   SlideStoryCharacterCreationTool,// 5
   SlideRealtimeAvatarPerformanceBridge, // 6
-  SlideProblem,                  // 7
-  SlideStoryPerformanceMotivation,// 8
-  SlideHumanModalityGraph,       // 9
-  SlideApproachSelectionQuestion,// 10
-  SlideThreeApproaches,          // 11
-  SlideSignalsInteraction,       // 12
-  SlideCurrentE2EIOPaths,        // 13
-  SlideMetahumanHow,             // 14
-  SlideMetahumanIdentityResponse,// 15
-  SlideMetahumanDemo,            // 16
-  SlideGenerativeHow,            // 17
-  SlideGenerativeIdentityResponse,// 18
-  SlideGenerativeMechanism,      // 19
-  SlideGenerativeResearch,       // 20
-  SlideGenerativeDemo,           // 21
-  SlideGaussianHow,              // 22
-  SlideGaussianSupersplatDemoOne,// 23
-  SlideGaussianSupersplatDemoTwo,// 24
-  SlideGaussianPersonalDemo,     // 25
-  SlideGaussianWorldlabsDemo,    // 26
-  SlideGaussianIdentityResponse, // 27
-  SlideGaussianMechanism,        // 28
-  SlideGaussianCovariance,       // 29
-  SlideGaussianDemo,             // 30
-  SlideGaussianResearchVideoWall,// 31
-  SlideCapabilityMatrix,         // 32
-  SlideAudio2FaceBuildingBlocks, // 33
-  SlideWhereIntelligenceLives,   // 34
-  SlideResearchFrontier,         // 35
-  SlideFuturePerspectiveMissingLayers, // 36
-  SlideConvergenceUpdated,       // 37
-  SlideBuiltWithClaudeSkills,    // 38
-  SlideAgentSkillsUsed,          // 39
-  SlideThankYou,                 // 40
+  SlideE2EDefinitionMindmap,     // 7
+  SlideApproachSelectionQuestion,// 8
+  SlideThreeApproaches,          // 9
+  SlideSignalsInteraction,       // 10
+  SlideMetahumanDemo,            // 11
+  SlideMetahumanHow,             // 12
+  SlideMetahumanIdentityResponse,// 13
+  SlideGenerativeDemo,           // 14
+  SlideGenerativeHow,            // 15
+  SlideGenerativeIdentityResponse,// 16
+  SlideGenerativeResearch,       // 17
+  SlideGaussianDemo,             // 18
+  SlideGaussianHow,              // 19
+  SlideGaussianIdentityResponse, // 20
+  SlideGaussianSupersplatDemoOne,// 21
+  SlideGaussianSupersplatDemoTwo,// 22
+  SlideGaussianPersonalDemo,     // 23
+  SlideGaussianWorldlabsDemo,    // 24
+  SlideGaussianResearchVideoWall,// 25
+  SlideCapabilityTransition,     // 26
+  SlideCapabilityMatrix,         // 27
+  SlideAudio2FaceBuildingBlocks, // 28
+  SlideWhereIntelligenceLives,   // 29
+  SlideResearchFrontier,         // 30
+  SlideFuturePerspectiveMissingLayers, // 31
+  SlideConvergenceUpdated,       // 32
+  SlideHowToEvolveProject,       // 33
+  SlideThankYou,                 // 34
 ];
 
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   MAIN SLIDES PAGE

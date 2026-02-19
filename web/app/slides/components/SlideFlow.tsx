@@ -31,6 +31,7 @@ interface SlideFlowProps {
   nodes: SlideFlowNode[];
   edges?: SlideFlowEdge[];
   direction?: 'horizontal' | 'vertical';
+  edgeType?: 'simplebezier' | 'straight';
   accentColor?: string;
   interactive?: boolean;
   height?: number;
@@ -45,6 +46,7 @@ export default function SlideFlow({
   nodes: inputNodes,
   edges: inputEdges,
   direction = 'horizontal',
+  edgeType = 'simplebezier',
   accentColor = '#e08840',
   interactive = false,
   height,
@@ -93,7 +95,7 @@ export default function SlideFlow({
       id: `e-${i}`,
       source: e.source,
       target: e.target,
-      type: 'simplebezier',
+      type: edgeType,
       animated: true,
       style: { stroke: accentColor, strokeWidth: 2 },
       markerEnd: {
@@ -103,7 +105,7 @@ export default function SlideFlow({
         height: 16,
       },
     }));
-  }, [inputEdges, inputNodes, accentColor]);
+  }, [inputEdges, inputNodes, accentColor, edgeType]);
 
   const [flowNodes, setFlowNodes, onNodesChange] = useNodesState(rfNodes);
   const [flowEdges, setFlowEdges, onEdgesChange] = useEdgesState(rfEdges);
