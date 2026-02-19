@@ -41,7 +41,7 @@ import gaussianVideoWallData from '../data/gaussian-video-wall.json';
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   CONSTANTS
    鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
-const TOTAL_SLIDES = 35;
+const TOTAL_SLIDES = 34;
 
 function clampSlideNumber(slide: number) {
   if (!Number.isFinite(slide)) return 1;
@@ -462,78 +462,6 @@ function SlideCogixEyeTrackerPrototype() {
 
 function SlideGraphNerd() {
   const PAJAMADOT_FLOW_EXAMPLE_URL = 'https://www.pajamadot.com/projects/5c91c637-ff86-4cf9-a47f-14175022a454/flow';
-  const graphNodes = [
-    {
-      id: 'graphs',
-      label: 'Graphs',
-      color: METHOD_COLORS.gaussian,
-      position: { x: 24, y: 168 },
-      sourcePosition: Position.Right,
-      targetPosition: Position.Left,
-    },
-    {
-      id: 'webgeo',
-      label: 'Web Geometry Nodes',
-      color: '#45b7d1',
-      position: { x: 270, y: 0 },
-      sourcePosition: Position.Right,
-      targetPosition: Position.Left,
-    },
-    {
-      id: 'reactflow',
-      label: 'React Flow Graphs',
-      color: '#86c6ff',
-      position: { x: 270, y: 56 },
-      sourcePosition: Position.Right,
-      targetPosition: Position.Left,
-    },
-    {
-      id: 'blueprint',
-      label: 'UE Blueprint',
-      color: METHOD_COLORS.metahuman,
-      position: { x: 270, y: 112 },
-      sourcePosition: Position.Right,
-      targetPosition: Position.Left,
-    },
-    {
-      id: 'uematerial',
-      label: 'UE Material Nodes',
-      color: '#c9b1ff',
-      position: { x: 270, y: 168 },
-      sourcePosition: Position.Right,
-      targetPosition: Position.Left,
-    },
-    {
-      id: 'blender',
-      label: 'Blender Geo Nodes',
-      color: '#6ec87a',
-      position: { x: 270, y: 224 },
-      sourcePosition: Position.Right,
-      targetPosition: Position.Left,
-    },
-    {
-      id: 'storynodes',
-      label: 'Story Narrative Nodes',
-      color: '#e1a65b',
-      position: { x: 270, y: 280 },
-      sourcePosition: Position.Right,
-      targetPosition: Position.Left,
-    },
-    {
-      id: 'pajamaflow',
-      label: 'PajamaDot Flow (Build)',
-      color: METHOD_COLORS.gaussian,
-      position: { x: 270, y: 336 },
-      sourcePosition: Position.Right,
-      targetPosition: Position.Left,
-    },
-  ];
-  const graphEdges = graphNodes
-    .filter((node) => node.id !== 'graphs')
-    .map((node) => ({
-      source: 'graphs',
-      target: node.id,
-    }));
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
@@ -542,16 +470,16 @@ function SlideGraphNerd() {
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
 
       <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]">
-        <p className="text-xs uppercase tracking-widest text-[#948d82] mb-2">Draggable Graph</p>
-        <SlideFlow
-          accentColor={METHOD_COLORS.gaussian}
-          interactive
-          height={420}
-          nodes={graphNodes}
-          edges={graphEdges}
-        />
+        <p className="text-xs uppercase tracking-widest text-[#948d82] mb-2">Story Graph Workspace Snapshot</p>
+        <div className="rounded-lg overflow-hidden border border-[#3d3a36] bg-[#10100f]">
+          <img
+            src="/story_graph.jpg"
+            alt="PajamaDot story graph editor screenshot"
+            className="w-full h-auto block"
+          />
+        </div>
         <div className="mt-2.5 flex items-center justify-between gap-3 text-xs">
-          <span className="text-[#948d82]">Hierarchical layout: root node “Graphs” on the left, branch nodes on the right, each node draggable.</span>
+          <span className="text-[#948d82]">Node graph workflow used for interactive story structure and scene sequencing.</span>
           <a
             href={PAJAMADOT_FLOW_EXAMPLE_URL}
             target="_blank"
@@ -574,7 +502,7 @@ function SlideStoryCharacterCreationTool() {
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="PajamaDot Tool" label="Story Character Creation" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">Character Creation Tool for Story (2D)</h2>
+      <h2 className="text-5xl font-bold mb-2">Character Creation Roadmap: 2D Static Frame to 3D Real-Time</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
 
       <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
@@ -617,32 +545,32 @@ function SlideRealtimeAvatarPerformanceBridge() {
   const layers = [
     {
       icon: Box,
-      title: 'Identity Layer',
-      desc: '2D character identity from Slide 5: role, style, and narrative memory.',
+      title: 'Identity Definition',
+      desc: 'From Slide 5: a 2D character profile with role, style, and story memory hooks.',
       color: METHOD_COLORS.gaussian,
     },
     {
       icon: Brain,
-      title: 'Runtime Response Layer',
-      desc: 'Perception + model response grounded in story context and session state.',
+      title: 'Runtime Response',
+      desc: 'Interpret end-user signals, then generate story-aware response intent and dialogue.',
       color: METHOD_COLORS.metahuman,
     },
     {
       icon: Sparkles,
       title: 'Performance Layer',
-      desc: 'Real-time voice, facial motion, and body expression during storytelling.',
+      desc: 'Convert response intent into real-time voice, expression, gaze, and gesture.',
       color: METHOD_COLORS.generative,
     },
   ];
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Roadmap" label="Identity -> Runtime -> Performance" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">Runtime Bridge: Identity to Live Performance</h2>
+      <SlideMethodBadge method="Roadmap" label="2D Identity -> Runtime -> Live Performance" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">From Character Identity to Live Story Performance</h2>
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
 
       <p className="text-lg text-[#c7c2b9] mb-6">
-        Slide 5 defines character identity. This slide defines the runtime handoff that turns identity into live storytelling performance.
+        Slide 5 defines the character. This bridge defines how runtime turns that definition into behavior before the formal end-to-end pipeline.
       </p>
 
       <div className="grid grid-cols-3 gap-4">
@@ -657,6 +585,10 @@ function SlideRealtimeAvatarPerformanceBridge() {
           </div>
         ))}
       </div>
+
+      <p className="text-sm text-[#948d82] mt-4">
+        Next: Slide 7 defines the shared end-to-end system boundary and data flow used across all approaches.
+      </p>
 
       <SlideEvidenceStrip
         links={[
@@ -947,7 +879,27 @@ function SlideApproachSelectionQuestion() {
     'Identity control: how precisely can character identity be authored and preserved?',
     'Response performance: how quickly and reliably can the system react in real time?',
     'Expression bandwidth: how much facial/voice/gesture control is available?',
+    'Rendering heaviness: how heavy is runtime rendering/compute at target quality?',
+    'Platform fit: how well does it deploy across native, web, mobile, and XR?',
     'Production fit: how practical is this for our storytelling pipeline?',
+  ];
+
+  const platformRows = [
+    {
+      name: 'MetaHuman',
+      color: METHOD_COLORS.metahuman,
+      path: 'Native Unreal first; web delivery mainly via Pixel Streaming.',
+    },
+    {
+      name: 'Video Generation',
+      color: METHOD_COLORS.generative,
+      path: 'Web-first managed streaming; native/mobile usually consume streamed output.',
+    },
+    {
+      name: 'Gaussian Splatting',
+      color: METHOD_COLORS.gaussian,
+      path: 'Flexible: web viewers + native runtimes + mobile/XR variants (quality-dependent).',
+    },
   ];
 
   return (
@@ -969,6 +921,18 @@ function SlideApproachSelectionQuestion() {
             <li key={axis}>{axis}</li>
           ))}
         </ul>
+      </div>
+
+      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mt-4">
+        <p className="text-sm uppercase tracking-wide text-[#948d82] mb-2">Platform Lens (Across All Later Slides)</p>
+        <div className="grid grid-cols-3 gap-3">
+          {platformRows.map((row) => (
+            <div key={row.name} className="rounded-lg p-3 border border-[#3d3a36] bg-[#181716]">
+              <p className="text-sm font-semibold mb-1" style={{ color: row.color }}>{row.name}</p>
+              <p className="text-xs text-[#c7c2b9] leading-relaxed">{row.path}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -1211,6 +1175,7 @@ function SlideThreeApproaches() {
       tagline: 'Rig-based control with stable real-time output',
       desc: 'Mesh-based rendering with rig/blendshape animation in Unreal Engine',
       a2f: 'MetaHuman Animator Speech2Face + Audio Live Link (UE-native).',
+      platformPath: 'Native Unreal; browser via Pixel Streaming.',
     },
     {
       phase: 'Approach 2/3',
@@ -1222,6 +1187,7 @@ function SlideThreeApproaches() {
       tagline: 'Photo-based identity with diffusion rendering',
       desc: 'Diffusion-based synthesis streamed via WebRTC providers',
       a2f: 'Audio-conditioned video synthesis; control is mostly implicit.',
+      platformPath: 'Web-first streaming; native/mobile as stream clients.',
     },
     {
       phase: 'Approach 3/3',
@@ -1233,6 +1199,7 @@ function SlideThreeApproaches() {
       tagline: 'Explicit 3D primitives, real-time rasterization',
       desc: 'Per-splat (mu, Sigma, color, alpha) rendering without neural-field runtime inference',
       a2f: 'Audio2Expression drives explicit pose/expression coefficients.',
+      platformPath: 'Web + native + mobile/XR (profile-dependent).',
     },
   ];
 
@@ -1304,6 +1271,9 @@ function SlideThreeApproaches() {
               <p className="text-sm text-[#bdb8af]">
                 <span className="font-semibold text-[#f5f2ec]">Audio-to-Face:</span> {m.a2f}
               </p>
+              <p className="text-sm text-[#bdb8af]">
+                <span className="font-semibold text-[#f5f2ec]">Platform path:</span> {m.platformPath}
+              </p>
             </div>
           </div>
         ))}
@@ -1326,66 +1296,50 @@ function SlideMetahumanHow() {
     {
       title: 'Identity & Authoring',
       points: [
-        'MetaHumanCharacterEditor (91h/90cpp)',
-        'MetaHumanIdentity + IdentityEditor',
-        'Mesh-to-MetaHuman -> DNA-backed character assets',
+        'MetaHuman Identity + Mesh to MetaHuman',
+        'DNA-backed character assets',
       ],
     },
     {
       title: 'Capture & Solving',
       points: [
-        'MetaHumanCaptureSource + CaptureProtocolStack',
-        'MetaHumanFaceAnimationSolver / Speech2Face',
-        'MetaHumanPerformance + MetaHumanPipeline',
+        'Live Link Face / CaptureSource inputs',
+        'Speech2Face + face animation solver path',
       ],
     },
     {
       title: 'Runtime & Delivery',
       points: [
-        'MetaHumanCoreTech (OneEuro + real-time smoothing)',
-        'RigLogicModule/RigLogicLib evaluates DNA rig',
-        'MetaHumanLiveLink + LiveLink -> UE render',
+        'CoreTech filtering + RigLogic evaluation',
+        'UE render + streaming output',
       ],
     },
-  ];
-
-  const dependencySignals = [
-    'MetaHumanAnimator -> MetaHumanCoreTechLib (35)',
-    'MetaHumanAnimator -> RigLogic (8)',
-    'MetaHumanCharacter -> MetaHumanSDK (10)',
-    'MetaHumanLiveLink -> MetaHumanCoreTechLib (9)',
   ];
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <SlideMethodBadge method="MetaHuman" label="Approach 1/3 · Mechanism" color={METHOD_COLORS.metahuman} />
       <h2 className="text-5xl font-bold mb-1">Approach 1/3: MetaHuman How It Works (UE 5.7)</h2>
-      <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-3">
-        <p className="text-sm text-[#c7c2b9]">
-          Transition from slide 13: this is the same end-to-end IO pipeline mapped onto one concrete backend,
-          <span className="text-[#f5f2ec]"> MetaHuman on UE 5.7</span>.
-        </p>
-      </div>
-      <p className="text-[#bdb8af] text-base mb-2">
-        Refined from metahuman-evolver cycle 11: 12 plugins, 70 modules, 248 internal module dependency edges.
+      <p className="text-[#bdb8af] text-base mb-3">
+        Compact mechanism view: two input paths converge into rig evaluation, then Unreal renders and streams final output.
       </p>
       <div
-        className="w-14 h-1 rounded-full mb-5"
+        className="w-14 h-1 rounded-full mb-4"
         style={{ background: METHOD_COLORS.metahuman }}
       />
 
-      <div className="mb-5">
+      <div className="mb-4">
         <SlideFlow
           accentColor={METHOD_COLORS.metahuman}
-          height={260}
+          height={330}
           nodes={[
-            { id: 'input', label: 'Camera / Audio / IMU', position: { x: 0, y: 92 }, sourcePosition: Position.Right, targetPosition: Position.Left },
-            { id: 'livelink', label: 'Real-time Path: LiveLinkFaceSource / MetaHumanLiveLink', position: { x: 250, y: 20 }, sourcePosition: Position.Right, targetPosition: Position.Left },
-            { id: 'capture', label: 'Solve Path: CaptureSource + ProtocolStack', position: { x: 250, y: 162 }, sourcePosition: Position.Right, targetPosition: Position.Left },
-            { id: 'solve', label: 'FaceAnimationSolver / Speech2Face', position: { x: 520, y: 162 }, sourcePosition: Position.Right, targetPosition: Position.Left },
-            { id: 'core', label: 'MetaHumanCoreTech (filters/smoothing)', position: { x: 790, y: 92 }, sourcePosition: Position.Right, targetPosition: Position.Left },
-            { id: 'riglogic', label: 'RigLogic (DNA -> rig controls)', position: { x: 1060, y: 92 }, sourcePosition: Position.Right, targetPosition: Position.Left },
-            { id: 'render', label: 'UE 5.7 Render + Stream', position: { x: 1330, y: 92 }, sourcePosition: Position.Right, targetPosition: Position.Left },
+            { id: 'input', label: 'Camera / Audio / IMU', position: { x: 0, y: 120 }, sourcePosition: Position.Right, targetPosition: Position.Left },
+            { id: 'livelink', label: 'Real-time Path: LiveLinkFaceSource / MetaHumanLiveLink', position: { x: 250, y: 30 }, sourcePosition: Position.Right, targetPosition: Position.Left },
+            { id: 'capture', label: 'Solve Path: CaptureSource + ProtocolStack', position: { x: 250, y: 232 }, sourcePosition: Position.Right, targetPosition: Position.Left },
+            { id: 'solve', label: 'FaceAnimationSolver / Speech2Face', position: { x: 520, y: 232 }, sourcePosition: Position.Right, targetPosition: Position.Left },
+            { id: 'core', label: 'MetaHumanCoreTech (filters/smoothing)', position: { x: 790, y: 120 }, sourcePosition: Position.Right, targetPosition: Position.Left },
+            { id: 'riglogic', label: 'RigLogic (DNA -> rig controls)', position: { x: 1060, y: 120 }, sourcePosition: Position.Right, targetPosition: Position.Left },
+            { id: 'render', label: 'UE 5.7 Render + Stream', position: { x: 1330, y: 120 }, sourcePosition: Position.Right, targetPosition: Position.Left },
           ]}
           edges={[
             { source: 'input', target: 'livelink' },
@@ -1399,16 +1353,16 @@ function SlideMetahumanHow() {
         />
       </div>
 
-      <div className="grid grid-cols-3 gap-3 mb-3">
+      <div className="grid grid-cols-3 gap-3 mb-2">
         {moduleLayers.map((layer) => (
           <div
             key={layer.title}
-            className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]"
+            className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]"
           >
-            <div className="text-sm font-semibold uppercase tracking-wide mb-2" style={{ color: METHOD_COLORS.metahuman }}>
+            <div className="text-xs font-semibold uppercase tracking-wide mb-1.5" style={{ color: METHOD_COLORS.metahuman }}>
               {layer.title}
             </div>
-            <ul className="space-y-1 text-xs text-[#bdb8af]">
+            <ul className="space-y-1 text-[11px] text-[#bdb8af]">
               {layer.points.map((point) => (
                 <li key={point}>{point}</li>
               ))}
@@ -1417,39 +1371,14 @@ function SlideMetahumanHow() {
         ))}
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
-        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-          <div className="text-sm font-semibold uppercase tracking-wide mb-2" style={{ color: METHOD_COLORS.metahuman }}>
-            Dependency Hot Paths
-          </div>
-          <ul className="space-y-1 text-xs text-[#bdb8af]">
-            {dependencySignals.map((entry) => (
-              <li key={entry}>{entry}</li>
-            ))}
-            <li>Hub targets: MetaHumanCore (19), MetaHumanCoreTech (20), RigLogicModule (15)</li>
-          </ul>
-        </div>
-
-        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-          <div className="text-sm font-semibold uppercase tracking-wide mb-2" style={{ color: METHOD_COLORS.metahuman }}>
-            Evolver + Official Signals
-          </div>
-          <ul className="space-y-1 text-xs text-[#bdb8af]">
-            <li>One-line docs include tracker model tags: hyprface-0.1.4, wav2face-0.0.10.</li>
-            <li>MetaHuman docs watch: 5/5 Epic docs endpoints reachable in latest cycle.</li>
-            <li>Plugin topology is stable across cycles; updates are mostly in API/method coverage.</li>
-          </ul>
-        </div>
-      </div>
-
       <SlideEvidenceStrip
         links={[
-          { label: 'Local architecture snapshot', href: METAHUMAN_EVOLVER_ARCH_URL },
-          { label: 'Local cycle summary', href: METAHUMAN_EVOLVER_SUMMARY_URL },
+          { label: 'MetaHuman Animator', href: EVIDENCE_URLS.epicMetaHumanAnimator },
+          { label: 'MetaHuman Live Link', href: EVIDENCE_URLS.epicMetaHumanLiveLink },
           { label: 'MetaHuman docs', href: EVIDENCE_URLS.epicMetaHumanDocs },
           { label: 'RigLogic API', href: EVIDENCE_URLS.epicRigLogicApi },
         ]}
-        note="Counts and dependency hubs on this slide are pulled from the local metahuman-evolver scan artifacts."
+        note="Pipeline stages on this slide follow Epic's documented MetaHuman runtime path."
       />
     </div>
   );
@@ -1505,6 +1434,13 @@ function SlideMetahumanIdentityResponse() {
             <p className="text-[#f5f2ec]">Explicit rig controls on mesh geometry (deterministic render).</p>
           </div>
         </div>
+      </div>
+
+      <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mt-3">
+        <p className="text-xs text-[#c7c2b9]">
+          <span className="text-[#948d82] uppercase tracking-wide mr-2">Platform Path</span>
+          Native Unreal runtime first; web/mobile delivery is commonly handled through streamed frames (for example Pixel Streaming) rather than direct in-browser rig execution.
+        </p>
       </div>
 
       <SlideEvidenceStrip
@@ -1656,6 +1592,13 @@ function SlideGenerativeIdentityResponse() {
             <p className="text-[#f5f2ec]">Implicit latent dynamics decoded directly to pixels.</p>
           </div>
         </div>
+      </div>
+
+      <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mt-3">
+        <p className="text-xs text-[#c7c2b9]">
+          <span className="text-[#948d82] uppercase tracking-wide mr-2">Platform Path</span>
+          Primarily web/cloud streaming today; native and mobile usually consume the generated stream as clients rather than running full generation locally.
+        </p>
       </div>
 
       <SlideEvidenceStrip
@@ -2250,6 +2193,13 @@ function SlideGaussianIdentityResponse() {
             <p className="text-[#f5f2ec]">Explicit 3D Gaussian primitives rasterized directly in real time.</p>
           </div>
         </div>
+      </div>
+
+      <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mt-3">
+        <p className="text-xs text-[#c7c2b9]">
+          <span className="text-[#948d82] uppercase tracking-wide mr-2">Platform Path</span>
+          Most flexible path: direct web rendering, native desktop engines, and mobile/XR variants when model size and quality settings are profiled for device limits.
+        </p>
       </div>
 
       <SlideEvidenceStrip
@@ -3024,9 +2974,9 @@ function SlideE2EPipeline() {
    鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
 function SlideSignalsInteraction() {
-  type AspectId = 'endUser' | 'avatarInputs' | 'outputs' | 'coupling';
-  type ApproachId = 'metahuman' | 'generative' | 'gaussian';
+  type AspectId = 'avatarInputs' | 'outputs' | 'coupling';
   type SupportLevel = 0 | 1 | 2;
+  type ApproachId = 'metahuman' | 'generative' | 'gaussian';
   type SignalRef = { label: string; href: string };
   type SignalRow = {
     name: string;
@@ -3034,21 +2984,39 @@ function SlideSignalsInteraction() {
     refs: SignalRef[];
     note?: string;
   };
-  const [activeApproach, setActiveApproach] = useState<ApproachId>('metahuman');
-  const [activeAspect, setActiveAspect] = useState<AspectId>('endUser');
+  const [activeAspect, setActiveAspect] = useState<AspectId>('avatarInputs');
   const [selectedSignalName, setSelectedSignalName] = useState<string>('');
 
-  const supportLabels: Record<SupportLevel, string> = {
-    0: 'Not native',
-    1: 'Conditional',
-    2: 'Native',
+  const supportSpec: Record<
+    SupportLevel,
+    {
+      short: string;
+      label: string;
+      style: { color: string; borderColor: string; background: string };
+    }
+  > = {
+    2: {
+      short: 'Built-in',
+      label: 'Built-in backend runtime path',
+      style: { color: '#6ec87a', borderColor: '#6ec87a66', background: '#6ec87a12' },
+    },
+    1: {
+      short: 'Adapter',
+      label: 'Supported via adapter/integration',
+      style: { color: '#e1a65b', borderColor: '#e1a65b66', background: '#e1a65b12' },
+    },
+    0: {
+      short: 'External',
+      label: 'Outside backend scope (upstream/downstream service)',
+      style: { color: '#948d82', borderColor: '#4a4641', background: '#252320' },
+    },
   };
 
-  const approaches: Record<ApproachId, { label: string; short: string; color: string; index: 0 | 1 | 2 }> = {
-    metahuman: { label: 'MetaHuman', short: 'MH', color: METHOD_COLORS.metahuman, index: 0 },
-    generative: { label: 'Video Generation', short: 'VG', color: METHOD_COLORS.generative, index: 1 },
-    gaussian: { label: 'Gaussian Splatting', short: 'GS', color: METHOD_COLORS.gaussian, index: 2 },
-  };
+  const approaches: Array<{ id: ApproachId; label: string; color: string; index: 0 | 1 | 2 }> = [
+    { id: 'metahuman', label: 'MetaHuman', color: METHOD_COLORS.metahuman, index: 0 },
+    { id: 'generative', label: 'Video Gen', color: METHOD_COLORS.generative, index: 1 },
+    { id: 'gaussian', label: 'Gaussian', color: METHOD_COLORS.gaussian, index: 2 },
+  ];
 
   const tabs: Record<
     AspectId,
@@ -3057,81 +3025,29 @@ function SlideSignalsInteraction() {
       signals: SignalRow[];
     }
   > = {
-    endUser: {
-      label: 'End User Inputs',
-      signals: [
-        {
-          name: 'Live user speech/audio',
-          support: [2, 2, 2],
-          refs: [{ label: 'OpenAI Realtime', href: EVIDENCE_URLS.openaiRealtimeApi }],
-        },
-        {
-          name: 'User text input / chat message',
-          support: [2, 2, 2],
-          refs: [{ label: 'OpenAI Realtime', href: EVIDENCE_URLS.openaiRealtimeApi }],
-        },
-        {
-          name: 'User face video (motion retargeting)',
-          support: [2, 1, 1],
-          refs: [
-            { label: 'MetaHuman Animator', href: EVIDENCE_URLS.epicMetaHumanAnimator },
-            { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
-          ],
-        },
-        {
-          name: 'User face video (response modeling: expression/affect)',
-          support: [0, 0, 0],
-          refs: [
-            { label: 'GazeGPT', href: EVIDENCE_URLS.arxivGazeGPT },
-            { label: 'GPT-4 Eyes docs', href: EVIDENCE_URLS.pupilGpt4EyesDocs },
-          ],
-          note: 'Typically implemented in an upstream perception module, not native in avatar backends.',
-        },
-        {
-          name: 'User gaze / eye-movement stream',
-          support: [0, 0, 0],
-          refs: [
-            { label: 'GazeGPT', href: EVIDENCE_URLS.arxivGazeGPT },
-            { label: 'GPT-4 Eyes code', href: EVIDENCE_URLS.pupilGpt4EyesCode },
-          ],
-          note: 'Usually routed into context/state estimation before avatar control.',
-        },
-        {
-          name: 'User head pose / body gesture',
-          support: [2, 1, 1],
-          refs: [
-            { label: 'MetaHuman Live Link', href: EVIDENCE_URLS.epicMetaHumanLiveLink },
-            { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
-          ],
-        },
-        {
-          name: 'User interaction events (click/select/tool)',
-          support: [2, 2, 2],
-          refs: [{ label: 'OpenAI Realtime', href: EVIDENCE_URLS.openaiRealtimeApi }],
-        },
-      ],
-    },
     avatarInputs: {
       label: 'Avatar System Inputs (Control Layer)',
       signals: [
         {
           name: 'ASR transcript + confidence',
-          support: [2, 2, 2],
+          support: [0, 0, 0],
           refs: [{ label: 'OpenAI Realtime', href: EVIDENCE_URLS.openaiRealtimeApi }],
+          note: 'ASR is typically an upstream perception service, not part of avatar backend runtime.',
         },
         {
           name: 'VAD + turn-taking state',
-          support: [2, 2, 2],
+          support: [0, 0, 0],
           refs: [{ label: 'OpenAI Realtime', href: EVIDENCE_URLS.openaiRealtimeApi }],
+          note: 'Turn-taking/state logic is generally external to backend render/animation engines.',
         },
         {
           name: 'Emotion/affect estimates',
-          support: [1, 1, 1],
+          support: [0, 1, 1],
           refs: [
             { label: 'LiveTalk', href: EVIDENCE_URLS.arxivLiveTalk },
             { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
           ],
-          note: 'Conditional because affect inference is usually external to the avatar backend.',
+          note: 'MetaHuman backend does not infer affect itself; affect signals are usually provided by an external model.',
         },
         {
           name: 'Viseme / expression coefficients',
@@ -3143,12 +3059,13 @@ function SlideSignalsInteraction() {
         },
         {
           name: 'LLM policy tokens / dialogue acts',
-          support: [2, 2, 2],
+          support: [0, 1, 1],
           refs: [{ label: 'OpenAI Realtime', href: EVIDENCE_URLS.openaiRealtimeApi }],
+          note: 'Policy/dialogue logic is upstream. Backends consume mapped control commands.',
         },
         {
           name: 'Tool or real-time API events',
-          support: [2, 2, 2],
+          support: [1, 1, 1],
           refs: [{ label: 'OpenAI Realtime', href: EVIDENCE_URLS.openaiRealtimeApi }],
         },
         {
@@ -3174,16 +3091,18 @@ function SlideSignalsInteraction() {
       signals: [
         {
           name: 'Speech audio',
-          support: [2, 2, 2],
+          support: [1, 2, 1],
           refs: [{ label: 'OpenAI Realtime', href: EVIDENCE_URLS.openaiRealtimeApi }],
+          note: 'MetaHuman backend animates/render controls; speech synthesis is usually provided by external TTS/audio services.',
         },
         {
-          name: 'Facial action units / expression curves',
-          support: [2, 1, 2],
+          name: 'Explicit facial control curves (rig/coeff)',
+          support: [2, 0, 2],
           refs: [
             { label: 'MetaHuman docs', href: EVIDENCE_URLS.epicMetaHumanDocs },
             { label: 'NVIDIA Audio2Face', href: EVIDENCE_URLS.nvidiaAudio2FaceRepo },
           ],
+          note: 'Video-generation pipelines usually output pixels directly rather than explicit rig/control curves.',
         },
         {
           name: 'Head motion',
@@ -3203,7 +3122,7 @@ function SlideSignalsInteraction() {
         },
         {
           name: 'Hand gestures',
-          support: [2, 2, 1],
+          support: [2, 1, 1],
           refs: [
             { label: 'MetaHuman docs', href: EVIDENCE_URLS.epicMetaHumanDocs },
             { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
@@ -3211,7 +3130,7 @@ function SlideSignalsInteraction() {
         },
         {
           name: 'Idle micro-motion',
-          support: [2, 2, 2],
+          support: [2, 1, 1],
           refs: [
             { label: 'MetaHuman docs', href: EVIDENCE_URLS.epicMetaHumanDocs },
             { label: 'LiveTalk', href: EVIDENCE_URLS.arxivLiveTalk },
@@ -3250,56 +3169,50 @@ function SlideSignalsInteraction() {
   };
 
   const active = tabs[activeAspect];
-  const approach = approaches[activeApproach];
   const selectedSignal = active.signals.find((s) => s.name === selectedSignalName) ?? active.signals[0];
 
   const supportPill = (level: SupportLevel) => {
-    const style =
-      level === 2
-        ? { color: '#6ec87a', borderColor: '#6ec87a66', background: '#6ec87a12' }
-        : level === 1
-          ? { color: '#e1a65b', borderColor: '#e1a65b66', background: '#e1a65b12' }
-          : { color: '#948d82', borderColor: '#4a4641', background: '#252320' };
+    const spec = supportSpec[level];
     return (
-      <span className="text-[10px] px-2 py-0.5 rounded border" style={style}>
-        {supportLabels[level]}
+      <span className="text-[10px] px-2 py-0.5 rounded border font-semibold" style={spec.style}>
+        {spec.short}
       </span>
     );
   };
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <h2 className="text-5xl font-bold mb-2">Interaction Signals (Shared Definitions)</h2>
+      <h2 className="text-5xl font-bold mb-2">Interaction Signal Contract</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
       <p className="text-base text-[#bdb8af] mb-4">
-        Use this as the shared glossary before approach deep dives. Approach tabs select backend behavior; aspect tabs separate end-user inputs from avatar-system interfaces.
+        This page is backend-only: it defines how each avatar backend handles control and output signals.
       </p>
 
-      <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
+      <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-3">
         <p className="text-xs text-[#c7c2b9]">
-          Face video has two roles: <span className="text-[#f5f2ec]">retargeting</span> vs
-          <span className="text-[#f5f2ec]"> perception for response modeling</span>.
+          <span className="text-[#948d82] uppercase tracking-wide mr-2">MetaHuman Control Baseline</span>
+          built-in paths are Live Link solved animation data, audio-driven facial solve, and rig-control execution. ASR/VAD/LLM policy remain external services.
         </p>
       </div>
 
-      <div className="flex flex-wrap gap-2 mb-3">
-        {(Object.entries(approaches) as [ApproachId, typeof approaches[ApproachId]][]).map(([id, item]) => (
-          <button
-            key={id}
-            onClick={() => {
-              setActiveApproach(id);
-              setSelectedSignalName('');
-            }}
-            className="px-3 py-1.5 rounded-md text-xs font-semibold uppercase tracking-wide border transition-colors"
-            style={{
-              borderColor: activeApproach === id ? item.color : '#3d3a36',
-              color: activeApproach === id ? '#f5f2ec' : '#bdb8af',
-              background: activeApproach === id ? `${item.color}16` : '#181716',
-            }}
-          >
-            {item.short} · {item.label}
-          </button>
-        ))}
+      <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-3">
+        <p className="text-xs uppercase tracking-wide text-[#948d82] mb-2">Classification Spec</p>
+        <div className="grid grid-cols-3 gap-2 text-[11px] text-[#c7c2b9]">
+          {[2, 1, 0].map((level) => {
+            const spec = supportSpec[level as SupportLevel];
+            return (
+              <div key={level} className="rounded-lg p-2 border border-[#3d3a36] bg-[#181716]">
+                <span className="inline-block mb-1 text-[10px] px-2 py-0.5 rounded border font-semibold" style={spec.style}>
+                  {spec.short}
+                </span>
+                <p>{spec.label}</p>
+              </div>
+            );
+          })}
+        </div>
+        <p className="text-[10px] text-[#948d82] mt-2">
+          End-user multimodal processing is specified separately in the dedicated user-input-processing slide.
+        </p>
       </div>
 
       <div className="flex flex-wrap gap-2 mb-4">
@@ -3322,10 +3235,14 @@ function SlideSignalsInteraction() {
         ))}
       </div>
 
-      <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]">
-        <div className="flex items-center gap-4 mb-3 text-sm text-[#948d82] uppercase tracking-widest">
-          <span className="flex-1">Signal</span>
-          <span style={{ color: approach.color }}>{approach.short}</span>
+      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+        <div className="grid grid-cols-[minmax(0,1.5fr)_minmax(0,0.8fr)_minmax(0,0.8fr)_minmax(0,0.8fr)] gap-3 mb-2 text-[11px] text-[#948d82] uppercase tracking-widest">
+          <span>Signal</span>
+          {approaches.map((a) => (
+            <span key={a.id} className="text-center" style={{ color: a.color }}>
+              {a.label}
+            </span>
+          ))}
         </div>
         <div className="space-y-2">
           {active.signals.map((signal) => (
@@ -3333,40 +3250,53 @@ function SlideSignalsInteraction() {
               key={signal.name}
               type="button"
               onClick={() => setSelectedSignalName(signal.name)}
-              className={`w-full text-left flex items-start gap-4 py-2 border-b border-[#242220] last:border-0 ${selectedSignal?.name === signal.name ? 'bg-[#20201d]' : ''}`}
+              className={`w-full text-left grid grid-cols-[minmax(0,1.5fr)_minmax(0,0.8fr)_minmax(0,0.8fr)_minmax(0,0.8fr)] gap-3 items-start py-2 border-b border-[#242220] last:border-0 rounded ${selectedSignal?.name === signal.name ? 'bg-[#20201d]' : ''}`}
             >
               <div className="flex-1 min-w-0">
-                <span className="text-base text-[#f5f2ec]">{signal.name}</span>
+                <span className="text-sm text-[#f5f2ec]">{signal.name}</span>
                 {selectedSignal?.name === signal.name && signal.note ? (
                   <p className="text-[11px] text-[#948d82] mt-0.5">{signal.note}</p>
                 ) : null}
               </div>
-              {supportPill(signal.support[approach.index])}
+              {approaches.map((a) => (
+                <div key={`${signal.name}-${a.id}`} className="flex items-center justify-center pt-0.5">
+                  {supportPill(signal.support[a.index])}
+                </div>
+              ))}
             </button>
           ))}
         </div>
       </div>
 
-      <div className="flex items-center gap-5 mt-3 text-[11px] text-[#948d82]">
-        <div className="flex items-center gap-1.5 text-[#6ec87a]">
-          <div className="w-2.5 h-2.5 rounded-full border border-[#6ec87a] bg-[#6ec87a]" />
-          Native
-        </div>
-        <div className="flex items-center gap-1.5 text-[#e1a65b]">
-          <div className="w-2.5 h-2.5 rounded-full border border-[#e1a65b] bg-[#e1a65b88]" />
-          Conditional
-        </div>
-        <div className="flex items-center gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full border border-[#4a4641] bg-[#3d3a36]" />
-          Not native
+      <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mt-3">
+        <p className="text-xs text-[#c7c2b9]">
+          <span className="text-[#948d82] uppercase tracking-wide mr-2">Selected Signal</span>
+          <span className="text-[#f5f2ec]">{selectedSignal?.name ?? 'N/A'}</span>
+        </p>
+        {selectedSignal?.note ? (
+          <p className="text-[11px] text-[#948d82] mt-1">{selectedSignal.note}</p>
+        ) : null}
+        <div className="flex flex-wrap gap-2 mt-2">
+          {(selectedSignal?.refs ?? []).map((ref) => (
+            <a
+              key={ref.href}
+              href={ref.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-[10px] text-[#f5f2ec] hover:underline"
+            >
+              {ref.label}
+              <ExternalLink size={10} />
+            </a>
+          ))}
         </div>
       </div>
 
-      <p className="text-xs text-[#948d82] mt-3">
-        End-user inputs belong to perception. Avatar-system inputs are backend control signals. Native = documented inside backend defaults.
+      <p className="text-xs text-[#948d82] mt-2">
+        Scope: avatar backend control contracts and output contracts only.
       </p>
       <p className="text-xs text-[#948d82] mt-1">
-        Next: apply this schema to Approach 1 (MetaHuman).
+        For end-user input processing, use the separate multimodal user-input-processing page.
       </p>
 
       <SlideEvidenceStrip
@@ -3383,7 +3313,7 @@ function SlideSignalsInteraction() {
           { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
           { label: 'ICo3D', href: EVIDENCE_URLS.arxivICo3D },
         ]}
-        note="Support dots indicate default pipeline behavior in cited systems, not absolute theoretical limits."
+        note="Labels indicate documented integration path in cited systems, not absolute theoretical limits."
       />
       <p className="text-[10px] text-[#7f7b74] mt-2">
         Heuristic classification updated from cited papers/docs on February 19, 2026.
@@ -3566,6 +3496,18 @@ function SlideCapabilityMatrix() {
       ],
     },
     {
+      name: 'Rendering Heaviness (Runtime Load)',
+      scores: [1, 1, 2],
+      cite: 'MetaHuman and diffusion video stacks are typically heavy at high fidelity; Gaussian pipelines still require GPU but can be profiled with explicit rasterization controls for lower runtime load envelopes.',
+      sources: [
+        { label: 'MetaHumans in UE', href: EVIDENCE_URLS.epicMetaHumansInUE },
+        { label: 'LiveTalk', href: EVIDENCE_URLS.arxivLiveTalk },
+        { label: 'SoulX-FlashHead', href: EVIDENCE_URLS.arxivSoulXFlashHead },
+        { label: '3D Gaussian Splatting', href: EVIDENCE_URLS.arxiv3dgs },
+        { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
+      ],
+    },
+    {
       name: 'Web-Ready Delivery Path',
       scores: [2, 3, 2],
       cite: 'MetaHuman uses Unreal Pixel Streaming for browser delivery, video-generation systems are commonly served via real-time streaming transports, and Gaussian content has direct web-native tooling.',
@@ -3673,6 +3615,9 @@ function SlideCapabilityMatrix() {
       </p>
       <p className="text-[10px] text-[#948d82] mt-1">
         For hardware and web-delivery rows, higher score means more deployment flexibility for production.
+      </p>
+      <p className="text-[10px] text-[#948d82] mt-1">
+        For the rendering-heaviness row, higher score means the runtime load is easier to keep manageable at production quality targets.
       </p>
       <p className="text-[10px] text-[#7f7b74] mt-1">
         Scores are evidence-guided heuristics for architecture planning, not a normalized benchmark.
@@ -3797,32 +3742,23 @@ function SlideAudio2FaceBuildingBlocks() {
     {
       title: 'MetaHuman Backend',
       color: METHOD_COLORS.metahuman,
-      representation: 'Rig + blendshape controls (ARKit / RigLogic)',
-      runtime: 'UE5 rendering pipeline with deterministic control surfaces',
-      notes: [
-        'Useful when precise authoring and stable facial control are required.',
-        'Integrates directly with Live Link and production animation stacks.',
-      ],
+      representation: 'Rig + blendshape (ARKit / RigLogic)',
+      runtime: 'UE runtime (deterministic controls)',
+      notes: ['High control and debugging clarity', 'Strong production animation tooling'],
     },
     {
       title: 'Video Diffusion Backend',
       color: METHOD_COLORS.generative,
-      representation: 'Latent pixel synthesis conditioned by audio/text/image',
-      runtime: 'Autoregressive/streaming diffusion video generation',
-      notes: [
-        'Supports one-shot identity onboarding with high visual quality potential.',
-        'Control is mostly implicit via conditioning rather than explicit rig channels.',
-      ],
+      representation: 'Latent synthesis (audio/text/image conditioned)',
+      runtime: 'Streaming diffusion generation',
+      notes: ['Fast onboarding from references', 'Control mostly through conditioning'],
     },
     {
       title: 'Gaussian Backend',
       color: METHOD_COLORS.gaussian,
-      representation: 'Explicit 3D Gaussians + expression/pose coefficient drivers',
-      runtime: 'Real-time splat rasterization (client or GPU server)',
-      notes: [
-        'Balances control and real-time speed on modern GPUs.',
-        'Supports explicit geometry-level editing and fast render loops.',
-      ],
+      representation: 'Explicit 3D Gaussians + coefficient drivers',
+      runtime: 'Real-time splat rasterization',
+      notes: ['Good control/speed balance', 'Geometry-level editability'],
     },
   ];
 
@@ -3834,17 +3770,14 @@ function SlideAudio2FaceBuildingBlocks() {
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Control Interface" label="Why This Page Exists" color={METHOD_COLORS.gaussian} />
+      <SlideMethodBadge method="Control Interface" label="Backend Bridge" color={METHOD_COLORS.gaussian} />
       <h2 className="text-5xl font-bold mb-2">Audio-to-Avatar Control Bridge</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
-      <p className="text-base text-[#bdb8af] mb-4">
-        Purpose: clarify the shared control layer between response-model output and each avatar backend.
+      <p className="text-sm text-[#bdb8af] mb-3">
+        Same speech/control stream, different backend execution paths.
       </p>
-      <p className="text-sm text-[#948d82] mb-2">
-        Narrative link from slide 28: after selecting a backend profile, implementation starts with a stable control interface.
-      </p>
-      <p className="text-sm text-[#948d82] mb-4">
-        Same input speech signal, different backend control execution paths.
+      <p className="text-xs text-[#948d82] mb-4">
+        Hover (or focus) each backend card to reveal details.
       </p>
 
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
@@ -3857,38 +3790,45 @@ function SlideAudio2FaceBuildingBlocks() {
             { id: 'avatar_backend', label: 'Avatar Backend (MH / VG / GS)' },
           ]}
         />
-        <div className="flex items-center justify-center gap-2 text-sm text-[#948d82] mt-2">
+        <div className="flex items-center justify-center gap-2 text-xs text-[#948d82] mt-2">
           <Layers size={14} />
-          Shared abstraction: one voice stream to one control interface to multiple avatar backends.
+          One control interface maps to one of multiple backend implementations.
         </div>
       </div>
 
       <div className="grid grid-cols-3 gap-3 mb-4">
         {backendCards.map((card) => (
-          <div key={card.title} className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-            <h3 className="text-base font-semibold mb-2" style={{ color: card.color }}>
+          <div
+            key={card.title}
+            tabIndex={0}
+            className="group rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] outline-none focus-visible:ring-2 focus-visible:ring-[#5b5650]"
+          >
+            <h3 className="text-sm font-semibold mb-2" style={{ color: card.color }}>
               {card.title}
             </h3>
-            <p className="text-xs text-[#948d82] mb-1">Representation</p>
-            <p className="text-sm text-[#c7c2b9] mb-2">{card.representation}</p>
-            <p className="text-xs text-[#948d82] mb-1">Runtime</p>
-            <p className="text-sm text-[#c7c2b9] mb-2">{card.runtime}</p>
-            <ul className="list-disc pl-5 space-y-1 text-xs text-[#bdb8af]">
-              {card.notes.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-            </ul>
+            <p className="text-[10px] text-[#948d82] mb-1">Representation</p>
+            <p className="text-xs text-[#c7c2b9] mb-2">{card.representation}</p>
+            <p className="text-[10px] text-[#948d82] mb-1">Runtime</p>
+            <p className="text-xs text-[#c7c2b9]">{card.runtime}</p>
+
+            <div className="max-h-0 opacity-0 overflow-hidden transition-all duration-300 group-hover:max-h-24 group-hover:opacity-100 group-focus-within:max-h-24 group-focus-within:opacity-100">
+              <ul className="list-disc pl-4 space-y-1 text-[11px] text-[#bdb8af] mt-2">
+                {card.notes.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         ))}
       </div>
 
       <div className="grid grid-cols-2 gap-3">
         <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]">
-          <h3 className="text-sm font-semibold text-[#f5f2ec] mb-1">Official Tracks (2026)</h3>
-          <ul className="list-disc pl-5 space-y-1 text-xs text-[#bdb8af]">
-            <li>MetaHuman docs provide official Audio Driven Animation and Live Link real-time workflows.</li>
-            <li>NVIDIA Audio2Face-3D is open sourced with model code and training/runtime assets.</li>
-            <li>For ACE Unreal plugin deployment, verify UE-version compatibility in the current plugin docs.</li>
+          <h3 className="text-sm font-semibold text-[#f5f2ec] mb-1">Official Tracks</h3>
+          <ul className="list-disc pl-5 space-y-1 text-[11px] text-[#bdb8af]">
+            <li>MetaHuman: Audio Driven + Live Link workflows</li>
+            <li>NVIDIA: Audio2Face-3D open source stack</li>
+            <li>ACE plugin: check UE version compatibility</li>
           </ul>
         </div>
         <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]">
@@ -3927,79 +3867,83 @@ function SlideAudio2FaceBuildingBlocks() {
 }
 
 function SlideWhereIntelligenceLives() {
-  const criteria = [
-    'Need precise expression/gaze/gesture control?',
-    'Need deterministic debugging and guardrails?',
-    'Need faster setup with fewer explicit control channels?',
+  const decisionQuestions = [
+    'Do we need explicit control over gaze, expression, and gesture?',
+    'Do we need deterministic debugging and safety guardrails?',
+    'Do we prioritize setup speed over control granularity?',
   ];
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Architecture Decision" label="Why This Slide Exists" color={METHOD_COLORS.gaussian} />
+      <SlideMethodBadge method="Architecture Decision" label="Behavior Logic Placement" color={METHOD_COLORS.gaussian} />
       <h2 className="text-5xl font-bold mb-2">Where Should Behavior Logic Live?</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
       <p className="text-base text-[#bdb8af] mb-5">
-        Purpose of this page: choose the control architecture before implementation.
+        This page sets one boundary decision: keep behavior logic external and send control signals to the avatar backend, or internalize more behavior in a generative model.
       </p>
 
-      <div className="grid grid-cols-2 gap-5 mb-6">
-        <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]">
-          <div className="flex items-center gap-2 mb-3">
-            <Cpu size={16} style={{ color: METHOD_COLORS.metahuman }} />
-            <Brain size={16} style={{ color: METHOD_COLORS.gaussian }} />
-          </div>
-          <h3 className="text-base font-bold text-[#f5f2ec] mb-2">
-            Path A: External Response Model + Avatar Backend
-          </h3>
-          <p className="text-sm text-[#bdb8af] mb-3">
-            User input processing and response logic stay upstream. Avatar backend executes explicit control signals.
-          </p>
-          <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#c7c2b9]">
-            <li>Best for controllability and safety constraints.</li>
-            <li>Easier to debug latency path and behavior failures.</li>
-            <li>Examples: MetaHuman + Live Link, Gaussian + explicit drivers.</li>
-          </ul>
-          <div className="mt-3 text-[10px] text-[#948d82] px-2 py-1.5 rounded bg-[#242220]">
-            Recommended for production storytelling systems.
-          </div>
-        </div>
-
-        <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]">
-          <div className="flex items-center gap-2 mb-3">
-            <Sparkles size={16} style={{ color: METHOD_COLORS.generative }} />
-          </div>
-          <h3 className="text-base font-bold text-[#f5f2ec] mb-2">
-            Path B: End-to-End Generative Embodiment
-          </h3>
-          <p className="text-sm text-[#bdb8af] mb-3">
-            More behavior is internalized in the generator; fewer explicit control channels.
-          </p>
-          <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#c7c2b9]">
-            <li>Fast to prototype from image/audio/text conditioning.</li>
-            <li>Can produce rich motion with minimal explicit rig authoring.</li>
-            <li>Examples: Avatar Forcing, LiveTalk, SoulX-FlashHead.</li>
-          </ul>
-          <div className="mt-3 text-[10px] text-[#948d82] px-2 py-1.5 rounded bg-[#242220]">
-            Useful for rapid experimentation, but control can be less explicit.
-          </div>
-        </div>
+      <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
+        <SlideFlow
+          accentColor={METHOD_COLORS.gaussian}
+          edgeType="straight"
+          height={120}
+          nodes={[
+            { id: 'perception', label: 'User input processing', position: { x: 40, y: 35 } },
+            { id: 'logic', label: 'Behavior logic (LLM + memory)', position: { x: 420, y: 35 } },
+            { id: 'backend', label: 'Avatar backend execution', position: { x: 800, y: 35 } },
+          ]}
+          edges={[
+            { source: 'perception', target: 'logic' },
+            { source: 'logic', target: 'backend' },
+          ]}
+        />
       </div>
 
       <div className="grid grid-cols-2 gap-4 mb-4">
-        <div className="rounded-lg p-3 bg-[#242220] border border-[#3d3a36]">
-          <p className="text-xs uppercase tracking-wide text-[#948d82] mb-2">Decision Questions</p>
-          <ul className="list-disc pl-5 space-y-1 text-xs text-[#c7c2b9]">
-            {criteria.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
+        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+          <div className="flex items-center gap-2 mb-2">
+            <Cpu size={16} style={{ color: METHOD_COLORS.metahuman }} />
+            <Brain size={16} style={{ color: METHOD_COLORS.gaussian }} />
+          </div>
+          <h3 className="text-base font-bold text-[#f5f2ec] mb-2">Path A: External Logic + Backend Execution</h3>
+          <ul className="space-y-1.5 text-xs text-[#c7c2b9]">
+            <li><span className="text-[#948d82]">Logic location:</span> upstream response model.</li>
+            <li><span className="text-[#948d82]">Strength:</span> high controllability and easier debugging.</li>
+            <li><span className="text-[#948d82]">Trade-off:</span> more integration wiring.</li>
+            <li><span className="text-[#948d82]">Best fit:</span> production storytelling systems.</li>
           </ul>
+          <p className="text-[10px] text-[#948d82] mt-2">Examples: MetaHuman + Live Link, Gaussian + explicit drivers.</p>
         </div>
-        <div className="rounded-lg p-3 bg-[#242220] border border-[#3d3a36] flex items-center">
-          <p className="text-xs text-[#f5f2ec] font-medium">
-            <Eye size={12} className="inline mr-1" style={{ color: METHOD_COLORS.gaussian }} />
-            Takeaway: default to Path A for controllable real-time storytelling; use Path B when speed of iteration is the main objective.
-          </p>
+
+        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+          <div className="flex items-center gap-2 mb-2">
+            <Sparkles size={16} style={{ color: METHOD_COLORS.generative }} />
+          </div>
+          <h3 className="text-base font-bold text-[#f5f2ec] mb-2">Path B: Internalized Generative Embodiment</h3>
+          <ul className="space-y-1.5 text-xs text-[#c7c2b9]">
+            <li><span className="text-[#948d82]">Logic location:</span> partially inside generator stack.</li>
+            <li><span className="text-[#948d82]">Strength:</span> faster prototyping from audio/text/image conditioning.</li>
+            <li><span className="text-[#948d82]">Trade-off:</span> less explicit control channels.</li>
+            <li><span className="text-[#948d82]">Best fit:</span> rapid experimentation.</li>
+          </ul>
+          <p className="text-[10px] text-[#948d82] mt-2">Examples: Avatar Forcing, LiveTalk, SoulX-FlashHead.</p>
         </div>
+      </div>
+
+      <div className="rounded-lg p-3 bg-[#242220] border border-[#3d3a36] mb-3">
+        <p className="text-xs uppercase tracking-wide text-[#948d82] mb-2">Decision Checklist</p>
+        <ul className="list-disc pl-5 space-y-1 text-xs text-[#c7c2b9]">
+          {decisionQuestions.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="rounded-lg p-3 bg-[#242220] border border-[#3d3a36] flex items-center mb-3">
+        <p className="text-xs text-[#f5f2ec] font-medium">
+          <Eye size={12} className="inline mr-1" style={{ color: METHOD_COLORS.gaussian }} />
+          Default architecture choice for this project: <span className="text-[#f5f2ec]">Path A</span>. Use Path B when iteration speed is the primary objective.
+        </p>
       </div>
 
       <SlideEvidenceStrip
@@ -4019,8 +3963,8 @@ function SlideWhereIntelligenceLives() {
 function SlideCapabilityTransition() {
   const checkpoints = [
     'Demos showed what each approach can render.',
-    'Next: quick scan of live research/demo signals.',
-    'Then: compare capabilities with one decision frame.',
+    'Research and workflow slides established the latest evidence.',
+    'Next: final capability comparison with one decision frame.',
   ];
 
   return (
@@ -4030,7 +3974,7 @@ function SlideCapabilityTransition() {
       <div className="w-14 h-1 rounded-full mb-6 mx-auto" style={{ background: METHOD_COLORS.gaussian }} />
 
       <p className="text-lg text-[#c7c2b9] mb-6">
-        The previous section showed approach demos. The next two slides connect market/research signals to a concrete architecture comparison.
+        This is the closing decision handoff: move from evidence gathering into one final architecture comparison.
       </p>
 
       <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a]">
@@ -4533,31 +4477,30 @@ const SLIDES: React.FC[] = [
   SlideApproachSelectionQuestion,// 8
   SlideThreeApproaches,          // 9
   SlideSignalsInteraction,       // 10
-  SlideMetahumanDemo,            // 11
-  SlideMetahumanHow,             // 12
-  SlideMetahumanIdentityResponse,// 13
-  SlideGenerativeDemo,           // 14
-  SlideGenerativeHow,            // 15
-  SlideGenerativeIdentityResponse,// 16
-  SlideGenerativeResearch,       // 17
-  SlideGaussianDemo,             // 18
-  SlideGaussianHow,              // 19
-  SlideGaussianMechanism,        // 20
+  SlideFuturePerspectiveMissingLayers, // 11
+  SlideMetahumanDemo,            // 12
+  SlideMetahumanHow,             // 13
+  SlideMetahumanIdentityResponse,// 14
+  SlideGenerativeDemo,           // 15
+  SlideGenerativeHow,            // 16
+  SlideGenerativeIdentityResponse,// 17
+  SlideGenerativeResearch,       // 18
+  SlideGaussianDemo,             // 19
+  SlideGaussianHow,              // 20
   SlideGaussianIdentityResponse, // 21
   SlideGaussianSupersplatDemoOne,// 22
   SlideGaussianSupersplatDemoTwo,// 23
   SlideGaussianPersonalDemo,     // 24
   SlideGaussianWorldlabsDemo,    // 25
-  SlideCapabilityTransition,     // 26
-  SlideGaussianResearchVideoWall,// 27
-  SlideCapabilityMatrix,         // 28
-  SlideAudio2FaceBuildingBlocks, // 29
-  SlideWhereIntelligenceLives,   // 30
-  SlideFuturePerspectiveMissingLayers, // 31
-  SlideResearchFrontier,         // 32
-  SlideConvergenceUpdated,       // 33
-  SlideHowToEvolveProject,       // 34
-  SlideThankYou,                 // 35
+  SlideGaussianResearchVideoWall,// 26
+  SlideAudio2FaceBuildingBlocks, // 27
+  SlideWhereIntelligenceLives,   // 28
+  SlideResearchFrontier,         // 29
+  SlideConvergenceUpdated,       // 30
+  SlideCapabilityTransition,     // 31
+  SlideCapabilityMatrix,         // 32
+  SlideHowToEvolveProject,       // 33
+  SlideThankYou,                 // 34
 ];
 
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   MAIN SLIDES PAGE
