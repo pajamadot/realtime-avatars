@@ -130,9 +130,9 @@ function SlideTitle() {
 
 function SlideAboutMe() {
   const experience = [
+    { icon: Headset, title: 'UnrealLight Digital Tech', period: '2015-2017', text: 'Early-stage VR product and engineering work.', color: METHOD_COLORS.gaussian },
     { icon: Gamepad2, title: 'Epic Games', period: '2018-2020', text: 'Developer relations engineer for UE4/UE5 in Shanghai.', color: METHOD_COLORS.metahuman },
     { icon: Video, title: 'Hedra', period: '2024-2025', text: 'Software engineer on diffusion video pipeline implementation.', color: METHOD_COLORS.generative },
-    { icon: Headset, title: 'UnrealLight Digital Tech', period: '2015-2017', text: 'Early-stage VR product and engineering work.', color: METHOD_COLORS.gaussian },
   ];
 
   const education = [
@@ -157,6 +157,7 @@ function SlideAboutMe() {
           <div>
             <h3 className="text-2xl font-semibold">Yuntian Chai</h3>
             <div className="flex items-center gap-3 mt-1 text-sm text-[#bdb8af]">
+              <span className="text-[#948d82]">Working on:</span>
               <a href="https://pajamadot.com" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted underline-offset-2 hover:text-[#f5f2ec]">pajamadot.com</a>
               <span className="text-[#66625d]">|</span>
               <a href="https://cogix.app" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted underline-offset-2 hover:text-[#f5f2ec]">cogix.app</a>
@@ -170,7 +171,7 @@ function SlideAboutMe() {
 
       <div className="grid gap-5" style={{ gridTemplateColumns: '1fr 1fr' }}>
         <div>
-          <p className="text-sm uppercase tracking-widest text-[#948d82] mb-3">Experience</p>
+          <p className="text-sm uppercase tracking-widest text-[#948d82] mb-3">Experience in 3D Digital Avatar & VR</p>
           <div className="space-y-3">
             {experience.map((entry) => (
               <div key={entry.title} className="rounded-xl p-4 border border-[#3d3a36] bg-[#181716] flex items-start gap-3">
