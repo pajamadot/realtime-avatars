@@ -1198,7 +1198,9 @@ function SlideThreeApproaches() {
     {
       name: 'MetaHuman',
       color: METHOD_COLORS.metahuman,
-      icon: Monitor,
+      icon: User,
+      secondaryIcon: Monitor,
+      iconLabel: 'Rig + Unreal',
       tagline: 'Rig-based control with stable real-time output',
       desc: 'Mesh-based rendering with rig/blendshape animation in Unreal Engine',
       a2f: 'MetaHuman Animator Speech2Face + Audio Live Link (UE-native).',
@@ -1206,7 +1208,9 @@ function SlideThreeApproaches() {
     {
       name: 'Video Generation',
       color: METHOD_COLORS.generative,
-      icon: Video,
+      icon: Sparkles,
+      secondaryIcon: Video,
+      iconLabel: 'Latent + Stream',
       tagline: 'Photo-based identity with diffusion rendering',
       desc: 'Diffusion-based synthesis streamed via WebRTC providers',
       a2f: 'Audio-conditioned video synthesis; control is mostly implicit.',
@@ -1215,6 +1219,8 @@ function SlideThreeApproaches() {
       name: 'Gaussian Splatting',
       color: METHOD_COLORS.gaussian,
       icon: Box,
+      secondaryIcon: Layers,
+      iconLabel: '3D Primitives',
       tagline: 'Explicit 3D primitives, real-time rasterization',
       desc: 'Per-splat (mu, Sigma, color, alpha) rendering without neural-field runtime inference',
       a2f: 'Audio2Expression drives explicit pose/expression coefficients.',
@@ -1261,11 +1267,20 @@ function SlideThreeApproaches() {
             style={{ borderColor: m.color }}
           >
             <div
-              className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
-              style={{ background: `${m.color}22` }}
+              className="relative w-14 h-14 rounded-xl flex items-center justify-center mb-2 border"
+              style={{ background: `${m.color}18`, borderColor: `${m.color}44` }}
             >
-              <m.icon size={24} style={{ color: m.color }} />
+              <m.icon size={26} style={{ color: m.color }} />
+              <div
+                className="absolute -right-1 -bottom-1 w-6 h-6 rounded-md border flex items-center justify-center"
+                style={{ background: '#1d1c1a', borderColor: `${m.color}66` }}
+              >
+                <m.secondaryIcon size={12} style={{ color: m.color }} />
+              </div>
             </div>
+            <p className="text-[10px] uppercase tracking-wide mb-2" style={{ color: `${m.color}cc` }}>
+              {m.iconLabel}
+            </p>
             <h3 className="text-2xl font-semibold mb-1" style={{ color: m.color }}>
               {m.name}
             </h3>
@@ -2444,8 +2459,15 @@ function SlideGaussianPersonalDemo() {
       <SlideMethodBadge method="Gaussian Splatting Demo" label="Personal Demo" color={METHOD_COLORS.gaussian} />
       <h2 className="text-5xl font-bold mb-1">Mr. Platypus</h2>
       <p className="text-[#bdb8af] text-lg mb-5 max-w-3xl">
-        Personal PlayCanvas interactive demo.
+        Personal PlayCanvas interactive demo built from a 360-degree walk-around capture workflow.
       </p>
+
+      <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mb-5 max-w-5xl w-full">
+        <p className="text-xs uppercase tracking-wide text-[#948d82] mb-1">Capture to Runtime Pipeline</p>
+        <p className="text-sm text-[#c7c2b9]">
+          360-degree scan video around the subject, Gaussian reconstruction with Luma AI, cleanup and refinement in SuperSplat, then interactive deployment in PlayCanvas.
+        </p>
+      </div>
 
       <div className="w-full max-w-5xl aspect-video rounded-xl overflow-hidden border border-[#3d3a36] bg-[#1d1c1a]">
         <iframe
@@ -2475,7 +2497,7 @@ function SlideGaussianWorldlabsDemo() {
   return (
     <div className="flex flex-col items-center justify-center h-full px-12 text-center">
       <SlideMethodBadge method="Gaussian Splatting Demo" label="World Labs" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-1">World Labs Gaussian Demo</h2>
+      <h2 className="text-5xl font-bold mb-1">World Labs Marble for Gaussian Splatting Generation</h2>
       <p className="text-[#bdb8af] text-lg mb-6 max-w-3xl">
         Open the official World Labs Marble experience directly in a new tab.
       </p>
