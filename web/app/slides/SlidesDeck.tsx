@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   ArrowLeft,
   ArrowRight,
@@ -17,7 +18,6 @@ import {
   Cpu,
   Globe,
   GraduationCap,
-  Briefcase,
   User,
   Gamepad2,
   Headset,
@@ -105,474 +105,107 @@ function SlideMethodBadge({ method, label, color }: { method: string; label?: st
 
 function SlideTitle() {
   return (
-    <div className="flex flex-col items-center justify-center h-full text-center px-12">
+    <div className="flex flex-col items-center justify-center h-full text-center px-8">
       <div
-        className="w-20 h-1 rounded-full mb-8"
+        className="w-28 h-1.5 rounded-full mb-10"
         style={{ background: METHOD_COLORS.gaussian }}
       />
-      <h1 className="text-6xl sm:text-7xl font-bold tracking-tight leading-tight mb-6">
+      <h1 className="text-7xl sm:text-8xl lg:text-9xl font-bold tracking-tight leading-[1.05] mb-8">
         Real-Time Digital Avatars:
         <br />
         <span style={{ color: METHOD_COLORS.gaussian }}>
           A Comparative Analysis
         </span>
       </h1>
-      <p className="text-2xl text-[#c4bfb6] max-w-3xl mb-10">
+      <p className="text-2xl sm:text-3xl text-[#c4bfb6] max-w-4xl mb-14">
         Three approaches to making digital humans respond in real-time
       </p>
-      <div className="flex flex-col items-center gap-1 text-[#948d82]">
-        <span className="text-xl font-medium text-[#f5f2ec]">Yuntian Chai</span>
-        <span className="text-base">PajamaDot / Cogix</span>
+      <div className="flex flex-col items-center gap-1.5 text-[#948d82]">
+        <span className="text-2xl font-medium text-[#f5f2ec]">Yuntian Chai</span>
+        <span className="text-lg">PajamaDot / Cogix</span>
       </div>
     </div>
   );
 }
 
 function SlideAboutMe() {
-  type DomainId = 'cs' | 'psych' | 'art';
+  const experience = [
+    { icon: Gamepad2, title: 'Epic Games', period: '2018-2020', text: 'Developer relations engineer for UE4/UE5 in Shanghai.', color: METHOD_COLORS.metahuman },
+    { icon: Video, title: 'Hedra', period: '2024-2025', text: 'Software engineer on diffusion video pipeline implementation.', color: METHOD_COLORS.generative },
+    { icon: Headset, title: 'UnrealLight Digital Tech', period: '2015-2017', text: 'Early-stage VR product and engineering work.', color: METHOD_COLORS.gaussian },
+  ];
 
-  const domains = {
-    cs: {
-      label: 'CS',
-      color: '#6ec87a',
-      icon: Cpu,
-      summary: 'Systems implementation: real-time pipelines, graphics, and ML integration.',
-    },
-    psych: {
-      label: 'Psychology',
-      color: '#45b7d1',
-      icon: BookOpen,
-      summary: 'Behavior framing: experiment design, observation, and user study context.',
-    },
-    art: {
-      label: 'Art and Design',
-      color: '#e08840',
-      icon: Palette,
-      summary: 'Creative direction: visual language, storytelling, and interface expression.',
-    },
-  } as const;
-
-  const perspectives = [
-    {
-      id: 'product',
-      label: 'Product Lens',
-      icon: Briefcase,
-      headline: 'Building and shipping applied research products.',
-      details: 'Current work is focused on avatar, behavior, and interactive media tooling.',
-    },
-    {
-      id: 'engineer',
-      label: 'Engineer Lens',
-      icon: Video,
-      headline: 'Implementation-focused across real-time avatar stacks.',
-      details: 'Background includes UE pipelines at Epic and diffusion pipeline work at Hedra.',
-    },
-    {
-      id: 'research',
-      label: 'Research Lens',
-      icon: GraduationCap,
-      headline: 'Cross-training in CS and psychology.',
-      details: 'MCIT plus psychology education informs evaluation and product decisions.',
-    },
-  ] as const;
-
-  const profileItems = [
-    {
-      icon: Gamepad2,
-      title: 'Epic Games',
-      period: '2018-2020',
-      text: 'Developer relations engineer for UE4/UE5 in Shanghai.',
-      domains: ['cs', 'art'] as DomainId[],
-      kind: 'experience' as const,
-    },
-    {
-      icon: Video,
-      title: 'Hedra',
-      period: '2024-2025',
-      text: 'Software engineer on diffusion video pipeline implementation.',
-      domains: ['cs', 'art'] as DomainId[],
-      kind: 'experience' as const,
-    },
-    {
-      icon: Headset,
-      title: 'UnrealLight Digital Tech',
-      period: '2015-2017',
-      text: 'Early-stage VR product and engineering work.',
-      domains: ['cs', 'art'] as DomainId[],
-      kind: 'experience' as const,
-    },
-    {
-      icon: GraduationCap,
-      title: 'University of Pennsylvania',
-      period: 'MCIT',
-      text: 'Master of Computer and Information Technology.',
-      domains: ['cs'] as DomainId[],
-      kind: 'education' as const,
-    },
-    {
-      icon: BookOpen,
-      title: 'East China Normal University',
-      period: 'M.Ed + B.S',
-      text: 'Psychology education background.',
-      domains: ['psych'] as DomainId[],
-      kind: 'education' as const,
-    },
-    {
-      icon: Palette,
-      title: 'Sheridan College',
-      period: 'Certificate',
-      text: 'Visual and Creative Art and Interactive Media training.',
-      domains: ['art'] as DomainId[],
-      kind: 'education' as const,
-    },
-  ] as const;
-
-  type PerspectiveId = (typeof perspectives)[number]['id'];
-  type RegionId =
-    | 'cs'
-    | 'psych'
-    | 'art'
-    | 'cs+psych'
-    | 'cs+art'
-    | 'psych+art'
-    | 'cs+psych+art';
-
-  const regionDefs = useMemo<Array<{
-    id: RegionId;
-    label: string;
-    domains: DomainId[];
-    x: number;
-    y: number;
-    w: number;
-    h: number;
-    accent: string;
-  }>>(() => [
-    { id: 'cs', label: 'CS', domains: ['cs'], x: 22, y: 23, w: 150, h: 126, accent: '#6ec87a' },
-    { id: 'psych', label: 'Psych', domains: ['psych'], x: 78, y: 23, w: 150, h: 126, accent: '#45b7d1' },
-    { id: 'art', label: 'Art', domains: ['art'], x: 50, y: 78, w: 154, h: 126, accent: '#e08840' },
-    { id: 'cs+psych', label: 'CS \u2229 Psych', domains: ['cs', 'psych'], x: 50, y: 22, w: 194, h: 132, accent: '#4fd0b8' },
-    { id: 'cs+art', label: 'CS \u2229 Art', domains: ['cs', 'art'], x: 37, y: 56, w: 192, h: 134, accent: '#d6b84d' },
-    { id: 'psych+art', label: 'Psych \u2229 Art', domains: ['psych', 'art'], x: 63, y: 56, w: 192, h: 134, accent: '#a77af0' },
-    { id: 'cs+psych+art', label: 'CS \u2229 Psych \u2229 Art', domains: ['cs', 'psych', 'art'], x: 50, y: 46, w: 146, h: 118, accent: '#ff6fb5' },
-  ], []);
-
-  const regionOrder = (domainsList: readonly DomainId[]) => [...domainsList].sort().join('+') as RegionId;
-
-  const [activePerspectiveId, setActivePerspectiveId] = useState<PerspectiveId>('product');
-  const activePerspective =
-    perspectives.find((entry) => entry.id === activePerspectiveId) ?? perspectives[0];
-  const [hoveredRegionId, setHoveredRegionId] = useState<RegionId | null>(null);
-  const hoveredRegion =
-    hoveredRegionId ? regionDefs.find((region) => region.id === hoveredRegionId) ?? null : null;
-
-  const regionMap = useMemo(
-    () => regionDefs.reduce((acc, region) => {
-      acc[region.id] = region;
-      return acc;
-    }, {} as Record<RegionId, (typeof regionDefs)[number]>),
-    [regionDefs],
-  );
-
-  const withAlpha = (hex: string, alpha: number) => {
-    const a = Math.max(0, Math.min(1, alpha));
-    return `${hex}${Math.round(a * 255).toString(16).padStart(2, '0')}`;
-  };
-
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  const getCircleLayout = useCallback((width: number, height: number) => {
-    const minDim = Math.min(width, height);
-    const r = minDim * 0.36;
-    return {
-      cs: { x: width * 0.34, y: height * 0.33, r },
-      psych: { x: width * 0.66, y: height * 0.33, r },
-      art: { x: width * 0.5, y: height * 0.61, r },
-    };
-  }, []);
-
-  const inEllipse = (x: number, y: number, cx: number, cy: number, rx: number, ry: number) =>
-    (((x - cx) * (x - cx)) / (rx * rx)) + (((y - cy) * (y - cy)) / (ry * ry)) <= 1;
-
-  const pickRegionAt = useCallback((x: number, y: number, width: number, height: number): RegionId | null => {
-    // Prioritize explicit set/intersection hit ellipses for larger interaction zones.
-    const priority: RegionId[] = ['cs+psych+art', 'cs+psych', 'cs+art', 'psych+art', 'cs', 'psych', 'art'];
-    for (const id of priority) {
-      const region = regionMap[id];
-      const cx = (region.x / 100) * width;
-      const cy = (region.y / 100) * height;
-      if (inEllipse(x, y, cx, cy, region.w * 0.5, region.h * 0.5)) return id;
-    }
-
-    // Fallback to strict set membership from circle math.
-    const circles = getCircleLayout(width, height);
-    const inside = (c: { x: number; y: number; r: number }) => ((x - c.x) ** 2 + (y - c.y) ** 2) <= c.r * c.r;
-    const key = `${inside(circles.cs) ? '1' : '0'}${inside(circles.psych) ? '1' : '0'}${inside(circles.art) ? '1' : '0'}`;
-    const strictMap: Record<string, RegionId> = {
-      '100': 'cs',
-      '010': 'psych',
-      '001': 'art',
-      '110': 'cs+psych',
-      '101': 'cs+art',
-      '011': 'psych+art',
-      '111': 'cs+psych+art',
-    };
-    return strictMap[key] ?? null;
-  }, [getCircleLayout, regionMap]);
-
-  const drawCanvasMap = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    if (rect.width < 10 || rect.height < 10) return;
-
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = Math.max(1, Math.floor(rect.width * dpr));
-    canvas.height = Math.max(1, Math.floor(rect.height * dpr));
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.clearRect(0, 0, rect.width, rect.height);
-
-    const bg = ctx.createLinearGradient(0, 0, rect.width, rect.height);
-    bg.addColorStop(0, '#151713');
-    bg.addColorStop(1, '#11110f');
-    ctx.fillStyle = bg;
-    ctx.fillRect(0, 0, rect.width, rect.height);
-
-    const circles = getCircleLayout(rect.width, rect.height);
-    const drawCircle = (circle: { x: number; y: number; r: number }, color: string) => {
-      const g = ctx.createRadialGradient(circle.x, circle.y, circle.r * 0.2, circle.x, circle.y, circle.r);
-      g.addColorStop(0, withAlpha(color, 0.34));
-      g.addColorStop(1, withAlpha(color, 0.08));
-      ctx.fillStyle = g;
-      ctx.beginPath();
-      ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.strokeStyle = withAlpha(color, 0.66);
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
-    };
-
-    drawCircle(circles.cs, domains.cs.color);
-    drawCircle(circles.psych, domains.psych.color);
-    drawCircle(circles.art, domains.art.color);
-
-    regionDefs.forEach((region) => {
-      const cx = (region.x / 100) * rect.width;
-      const cy = (region.y / 100) * rect.height;
-      const rx = region.w * 0.5;
-      const ry = region.h * 0.5;
-      const isActive = hoveredRegionId === region.id;
-      const alpha = isActive ? 0.46 : region.domains.length > 1 ? 0.3 : 0.2;
-      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(rx, ry));
-      grad.addColorStop(0, withAlpha(region.accent, alpha));
-      grad.addColorStop(1, withAlpha(region.accent, 0));
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2);
-      ctx.fill();
-    });
-
-    if (hoveredRegionId) {
-      const region = regionMap[hoveredRegionId];
-      const cx = (region.x / 100) * rect.width;
-      const cy = (region.y / 100) * rect.height;
-      const rx = region.w * 0.55;
-      const ry = region.h * 0.55;
-      ctx.strokeStyle = withAlpha(region.accent, 0.95);
-      ctx.lineWidth = 2.5;
-      ctx.shadowColor = withAlpha(region.accent, 0.75);
-      ctx.shadowBlur = 20;
-      ctx.beginPath();
-      ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.shadowBlur = 0;
-    }
-
-    ctx.fillStyle = '#f3ece2';
-    ctx.font = '600 13px ui-monospace, SFMono-Regular, Menlo, monospace';
-    ctx.fillText('CS', circles.cs.x - circles.cs.r * 0.75, circles.cs.y - circles.cs.r * 0.72);
-    ctx.fillText('Psych', circles.psych.x + circles.psych.r * 0.47, circles.psych.y - circles.psych.r * 0.72);
-    ctx.fillText('Art', circles.art.x - 12, circles.art.y + circles.art.r * 0.9);
-  }, [domains.art.color, domains.cs.color, domains.psych.color, getCircleLayout, hoveredRegionId, regionDefs, regionMap]);
-
-  useEffect(() => {
-    drawCanvasMap();
-    const canvas = canvasRef.current;
-    if (!canvas || typeof ResizeObserver === 'undefined') return;
-    const ro = new ResizeObserver(() => drawCanvasMap());
-    ro.observe(canvas);
-    return () => ro.disconnect();
-  }, [drawCanvasMap]);
-
-  const handleCanvasMove = useCallback((clientX: number, clientY: number) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const y = clientY - rect.top;
-    setHoveredRegionId(pickRegionAt(x, y, rect.width, rect.height));
-  }, [pickRegionAt]);
-
-  const hoveredItems = hoveredRegion ? profileItems.filter((entry) => {
-    const matchesDomainSet = regionOrder(entry.domains) === hoveredRegion.id;
-    if (!matchesDomainSet) return false;
-    if (hoveredRegion.domains.length === 1) return entry.kind === 'education';
-    return entry.kind === 'experience';
-  }) : [];
+  const education = [
+    { icon: GraduationCap, title: 'University of Pennsylvania', period: 'MCIT', text: 'Master of Computer and Information Technology.', color: '#6ec87a' },
+    { icon: BookOpen, title: 'East China Normal University', period: 'M.Ed + B.S', text: 'Psychology education background.', color: '#45b7d1' },
+    { icon: Palette, title: 'Sheridan College', period: 'Certificate', text: 'Visual and Creative Art and Interactive Media training.', color: METHOD_COLORS.gaussian },
+  ];
 
   return (
-    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+    <div className="flex flex-col justify-center h-full px-12 max-w-6xl mx-auto">
       <h2 className="text-5xl font-bold mb-2">About Me</h2>
-      <div
-        className="w-14 h-1 rounded-full mb-4"
-        style={{ background: METHOD_COLORS.gaussian }}
-      />
+      <div className="w-14 h-1 rounded-full mb-6" style={{ background: METHOD_COLORS.gaussian }} />
 
-      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-3">
-        <div className="flex items-start justify-between gap-4 mb-3">
-          <div className="flex items-center gap-3">
-            <div
-              className="w-12 h-12 rounded-full flex items-center justify-center"
-              style={{ background: 'rgba(196, 113, 59, 0.15)' }}
-            >
-              <User size={24} style={{ color: METHOD_COLORS.gaussian }} />
-            </div>
-            <div>
-              <h3 className="text-2xl font-semibold">Yuntian Chai</h3>
-              <div className="flex items-center gap-2 mt-1">
-                <a
-                  href="https://pajamadot.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-[#bdb8af] underline decoration-dotted underline-offset-2 hover:text-[#f5f2ec]"
-                >
-                  pajamadot.com
-                </a>
-                <span className="text-xs text-[#66625d]">|</span>
-                <a
-                  href="https://cogix.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-[#bdb8af] underline decoration-dotted underline-offset-2 hover:text-[#f5f2ec]"
-                >
-                  cogix.app
-                </a>
-              </div>
+      <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a] mb-5">
+        <div className="flex items-center gap-4">
+          <div
+            className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0"
+            style={{ background: 'rgba(196, 113, 59, 0.15)' }}
+          >
+            <User size={26} style={{ color: METHOD_COLORS.gaussian }} />
+          </div>
+          <div>
+            <h3 className="text-2xl font-semibold">Yuntian Chai</h3>
+            <div className="flex items-center gap-3 mt-1 text-sm text-[#bdb8af]">
+              <a href="https://pajamadot.com" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted underline-offset-2 hover:text-[#f5f2ec]">pajamadot.com</a>
+              <span className="text-[#66625d]">|</span>
+              <a href="https://cogix.app" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted underline-offset-2 hover:text-[#f5f2ec]">cogix.app</a>
             </div>
           </div>
-          <div className="flex flex-wrap gap-1.5">
-            <span className="text-xs px-2 py-1 rounded bg-[#181716] border border-[#3d3a36] text-[#bdb8af]">Epic + Hedra alumni</span>
+          <div className="ml-auto flex flex-wrap gap-1.5">
             <span className="text-xs px-2 py-1 rounded bg-[#181716] border border-[#3d3a36] text-[#bdb8af]">CS + Psych + Art</span>
           </div>
         </div>
-
-        <div className="flex flex-wrap gap-2 mb-3">
-          {perspectives.map((entry) => (
-            <button
-              key={entry.id}
-              type="button"
-              onClick={() => setActivePerspectiveId(entry.id)}
-              className="px-3 py-1.5 rounded-md text-sm font-semibold border transition-colors inline-flex items-center gap-1.5"
-              style={{
-                borderColor: activePerspectiveId === entry.id ? METHOD_COLORS.gaussian : '#3d3a36',
-                color: activePerspectiveId === entry.id ? METHOD_COLORS.gaussian : '#bdb8af',
-                background: activePerspectiveId === entry.id ? `${METHOD_COLORS.gaussian}16` : '#181716',
-              }}
-            >
-              <entry.icon size={14} />
-              {entry.label}
-            </button>
-          ))}
-        </div>
-
-        <p className="text-base text-[#f5f2ec]">{activePerspective.headline}</p>
-        <p className="text-sm text-[#948d82] mt-1">{activePerspective.details}</p>
       </div>
 
-      <div className="grid gap-4 flex-1 min-h-0" style={{ gridTemplateColumns: '1.7fr 1fr' }}>
-        <div className="rounded-[24px] p-5 border border-[#3d3a36] bg-[#151513] overflow-hidden flex flex-col">
-          <p className="text-sm uppercase tracking-widest text-[#948d82] mb-2">Set Intersection Map</p>
-          <div className="relative rounded-[20px] border border-[#2f2d2a] flex-1 min-h-0 overflow-hidden">
-            <canvas
-              ref={canvasRef}
-              className="absolute inset-0 w-full h-full cursor-crosshair"
-              onMouseMove={(e) => handleCanvasMove(e.clientX, e.clientY)}
-              onClick={(e) => handleCanvasMove(e.clientX, e.clientY)}
-              onMouseLeave={() => setHoveredRegionId(null)}
-              aria-label="Set intersection interaction map"
-            />
-            <div className="absolute left-3 bottom-3 text-xs text-[#948d82] bg-[#151513b8] px-2 py-1 rounded">
-              Hover any colored region to inspect mapped past experience / education.
-            </div>
+      <div className="grid gap-5" style={{ gridTemplateColumns: '1fr 1fr' }}>
+        <div>
+          <p className="text-sm uppercase tracking-widest text-[#948d82] mb-3">Experience</p>
+          <div className="space-y-3">
+            {experience.map((entry) => (
+              <div key={entry.title} className="rounded-xl p-4 border border-[#3d3a36] bg-[#181716] flex items-start gap-3">
+                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: `${entry.color}18` }}>
+                  <entry.icon size={18} style={{ color: entry.color }} />
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <p className="text-base font-semibold text-[#f5f2ec]">{entry.title}</p>
+                    <span className="text-xs text-[#948d82] font-mono">{entry.period}</span>
+                  </div>
+                  <p className="text-sm text-[#bdb8af] mt-0.5">{entry.text}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="rounded-[24px] p-4 border border-[#3d3a36] bg-[#161614]">
-          <p className="text-sm uppercase tracking-widest text-[#948d82] mb-2">Facts</p>
-          <ul className="mb-3 space-y-1 text-sm text-[#bdb8af]">
-            <li>Cogix: CS + Psychology</li>
-            <li>PajamaDot: CS + Art</li>
-          </ul>
-
-          <div
-            className="rounded-xl p-3 border mb-3"
-            style={{
-              borderColor: '#3d3a36',
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))',
-            }}
-          >
-            <div className="flex items-center justify-between gap-2 mb-2">
-              <p className="text-sm font-semibold text-[#f5f2ec]">{hoveredRegion?.label ?? 'Hover a region'}</p>
-              <span className="text-xs px-2 py-0.5 rounded bg-[#1d1c1a] border border-[#3d3a36] text-[#bdb8af]">
-                {hoveredRegion
-                  ? hoveredRegion.domains.length > 1
-                    ? 'Intersection experience (past)'
-                    : 'Non-intersection education'
-                  : 'Awaiting hover'}
-              </span>
-            </div>
-
-            <div className="flex gap-1 mb-2">
-              {hoveredRegion?.domains.map((domainId) => (
-                <span
-                  key={`${hoveredRegionId ?? 'none'}:${domainId}`}
-                  className="text-xs px-1.5 py-0.5 rounded border"
-                  style={{
-                    borderColor: domains[domainId].color,
-                    color: domains[domainId].color,
-                  }}
-                >
-                  {domains[domainId].label}
-                </span>
-              ))}
-            </div>
-
-            {hoveredRegion && hoveredItems.length ? (
-              <div className="space-y-1.5">
-                {hoveredItems.map((entry) => (
-                  <div key={`${entry.title}:${entry.period}`} className="flex items-start gap-2">
-                    <entry.icon size={14} className="mt-0.5" style={{ color: METHOD_COLORS.gaussian }} />
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-1.5">
-                        <p className="text-sm text-[#f5f2ec] font-medium">{entry.title}</p>
-                        <span className="text-xs text-[#948d82] font-mono">{entry.period}</span>
-                      </div>
-                      <p className="text-sm text-[#bdb8af]">{entry.text}</p>
-                    </div>
+        <div>
+          <p className="text-sm uppercase tracking-widest text-[#948d82] mb-3">Education</p>
+          <div className="space-y-3">
+            {education.map((entry) => (
+              <div key={entry.title} className="rounded-xl p-4 border border-[#3d3a36] bg-[#181716] flex items-start gap-3">
+                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: `${entry.color}18` }}>
+                  <entry.icon size={18} style={{ color: entry.color }} />
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <p className="text-base font-semibold text-[#f5f2ec]">{entry.title}</p>
+                    <span className="text-xs text-[#948d82] font-mono">{entry.period}</span>
                   </div>
-                ))}
+                  <p className="text-sm text-[#bdb8af] mt-0.5">{entry.text}</p>
+                </div>
               </div>
-            ) : hoveredRegion ? (
-              <p className="text-sm text-[#948d82]">No mapped records in this set region.</p>
-            ) : (
-              <p className="text-sm text-[#948d82]">Move the cursor over a colored set region to inspect details.</p>
-            )}
-          </div>
-
-          <div className="text-xs text-[#948d82]">
-            Region rule: intersections map to past work experience, single-set regions map to education background.
+            ))}
           </div>
         </div>
       </div>
@@ -2860,6 +2493,7 @@ const SLIDES: React.FC[] = [
    ═══════════════════════════════════════════════════════════════ */
 
 export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?: number; onExit?: () => void }) {
+  const router = useRouter();
   const [current, setCurrent] = useState(() => clampSlideNumber(initialSlide) - 1);
   const [direction, setDirection] = useState<'left' | 'right' | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -2868,22 +2502,29 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
   const touchStartX = useRef(0);
   const touchStartY = useRef(0);
 
+  // Sync URL on initial mount (e.g. /slides -> /slides/1)
+  useEffect(() => {
+    if (!onExit && typeof window !== 'undefined') {
+      const slideNum = clampSlideNumber(initialSlide);
+      window.history.replaceState(null, '', `/slides/${slideNum}`);
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   const goTo = useCallback(
     (index: number, dir: 'left' | 'right') => {
       if (isAnimating || index < 0 || index >= TOTAL_SLIDES || index === current) return;
       setDirection(dir);
       setIsAnimating(true);
-      // After a brief moment, switch the slide
       setTimeout(() => {
         setCurrent(index);
-        if (typeof window !== 'undefined' && !onExit) {
-          window.history.replaceState(null, '', `/slides/${index + 1}`);
+        if (!onExit) {
+          router.replace(`/slides/${index + 1}`, { scroll: false });
         }
         setDirection(null);
         setIsAnimating(false);
       }, 300);
     },
-    [current, isAnimating]
+    [current, isAnimating, onExit, router]
   );
 
   const next = useCallback(() => {
