@@ -35,11 +35,13 @@ import {
   Github,
 } from 'lucide-react';
 import SlideFlow from './components/SlideFlow';
+import GaussianVideoWall from '../components/GaussianVideoWall';
+import gaussianVideoWallData from '../data/gaussian-video-wall.json';
 
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   CONSTANTS
    鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
-const TOTAL_SLIDES = 32;
+const TOTAL_SLIDES = 33;
 
 function clampSlideNumber(slide: number) {
   if (!Number.isFinite(slide)) return 1;
@@ -60,6 +62,17 @@ const WORLDLABS_YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/6vRUKR2Qv30';
 const SUPERSPLAT_DEMO_ONE_URL = 'https://superspl.at/view?id=bd964899';
 const SUPERSPLAT_DEMO_TWO_URL = 'https://superspl.at/view?id=97a75605';
 const PLAYCANVAS_PERSONAL_DEMO_URL = 'https://playcanv.as/p/ySwArvB0/';
+const GAUSSIAN_VIDEO_WALL_ROUTE = '/gaussian-video-wall';
+
+const GAUSSIAN_WALL_VIDEOS = ((gaussianVideoWallData as { videos?: Array<{
+  video_id: string;
+  title: string;
+  channel?: string;
+  published_text?: string;
+  url: string;
+  embed_url: string;
+  thumbnail_url?: string;
+}> })?.videos ?? []);
 
 function DemoLink({ slug, label, color }: { slug: string; label: string; color: string }) {
   return (
@@ -1401,6 +1414,35 @@ function SlideGaussianWorldlabsDemo() {
   );
 }
 
+function SlideGaussianResearchVideoWall() {
+  return (
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <SlideMethodBadge method="Gaussian Splatting Demo" label="YouTube Research Wall" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-1">Latest Gaussian Avatar Demo Wall</h2>
+      <p className="text-[#bdb8af] text-base mb-4">
+        Auto-collected from YouTube by the self-evolving
+        <code className="mx-1">gaussian-youtube-video-wall-evolver</code>
+        skill. Click any tile to open modal playback.
+      </p>
+
+      <div className="mb-5">
+        <GaussianVideoWall videos={GAUSSIAN_WALL_VIDEOS} maxItems={12} compact />
+      </div>
+
+      <a
+        href={GAUSSIAN_VIDEO_WALL_ROUTE}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#3d3a36] text-sm font-semibold hover:bg-[#242220] transition-colors self-start"
+        style={{ color: METHOD_COLORS.gaussian }}
+      >
+        <ExternalLink size={14} />
+        Open Full Video Wall Page
+      </a>
+    </div>
+  );
+}
+
 function SlideStreamingArchitecture() {
   const [participants, setParticipants] = useState(4);
   const [bitrateKbps, setBitrateKbps] = useState(900);
@@ -2705,17 +2747,18 @@ const SLIDES: React.FC[] = [
   SlideGaussianSupersplatDemoTwo,// 19 NEW
   SlideGaussianPersonalDemo,     // 20 NEW
   SlideGaussianWorldlabsDemo,    // 21
-  SlideStreamingArchitecture,    // 22
-  SlideCapabilityMatrix,         // 23 NEW
-  SlideComparison,               // 24
-  SlideRealTimeMetrics,          // 25 NEW
-  SlideE2EPipeline,              // 26
-  SlideAudio2FaceBuildingBlocks, // 27 NEW
-  SlideWhereIntelligenceLives,   // 28 NEW
-  SlideResearchFrontier,         // 29 NEW
-  SlideConvergenceUpdated,       // 30 REPLACED
-  SlideBuiltWithClaudeSkills,    // 31 NEW
-  SlideThankYou,                 // 32
+  SlideGaussianResearchVideoWall,// 22 NEW
+  SlideStreamingArchitecture,    // 23
+  SlideCapabilityMatrix,         // 24 NEW
+  SlideComparison,               // 25
+  SlideRealTimeMetrics,          // 26 NEW
+  SlideE2EPipeline,              // 27
+  SlideAudio2FaceBuildingBlocks, // 28 NEW
+  SlideWhereIntelligenceLives,   // 29 NEW
+  SlideResearchFrontier,         // 30 NEW
+  SlideConvergenceUpdated,       // 31 REPLACED
+  SlideBuiltWithClaudeSkills,    // 32 NEW
+  SlideThankYou,                 // 33
 ];
 
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   MAIN SLIDES PAGE
