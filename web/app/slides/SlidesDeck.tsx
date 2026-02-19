@@ -2986,7 +2986,7 @@ export default function SlidesDeck({ initialSlide = 1, onExit }: { initialSlide?
 
         {/* Slide */}
         <div className="slide-content-shell h-full px-4 sm:px-6 overflow-y-auto" style={slideContentStyle}>
-          <div className="min-h-full max-w-[1720px] mx-auto py-1">
+          <div className="h-full min-h-full max-w-[1720px] mx-auto py-1">
             <CurrentSlide />
           </div>
         </div>
