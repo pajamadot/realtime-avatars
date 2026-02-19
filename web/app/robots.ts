@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/api/',
+      disallow: ['/api/', '/presenter-script-6f2a9c17/'],
     },
     sitemap: 'https://realtime-avatars.vercel.app/sitemap.xml',
   };

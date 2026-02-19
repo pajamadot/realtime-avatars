@@ -71,6 +71,7 @@ const WORLDLABS_MARBLE_APP_URL = 'https://marble.worldlabs.ai';
 const SUPERSPLAT_DEMO_ONE_URL = 'https://superspl.at/view?id=bd964899';
 const SUPERSPLAT_DEMO_TWO_URL = 'https://superspl.at/view?id=97a75605';
 const PLAYCANVAS_PERSONAL_DEMO_URL = 'https://playcanv.as/p/ySwArvB0/';
+const RAPPORT_BACKUP_URL = 'https://accounts.rapport.cloud/workspace/a75078e8-6f32-405a-913f-c85dc430125d/project/25b90290-ee16-4063-8917-e1055040bcae';
 const GAUSSIAN_TALKING_AVATAR_YOUTUBE_URL = 'https://www.youtube.com/watch?v=fetxolufsgQ';
 const GSPLAT_COLMAP_GUIDE_URL = 'https://docs.gsplat.studio/main/examples/colmap.html';
 const SUPERSPLAT_EDITOR_URL = 'https://superspl.at/editor';
@@ -1479,6 +1480,16 @@ function SlideMetahumanDemo() {
         <Monitor size={22} />
         Open Rapport Demo
         <ExternalLink size={16} />
+      </a>
+
+      <a
+        href={RAPPORT_BACKUP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-5 py-2.5 mt-4 rounded-lg text-sm font-semibold border border-[#3d3a36] text-[#f5f2ec] hover:bg-[#242220] transition-colors"
+      >
+        <ExternalLink size={14} />
+        Open Rapport Cloud Backup
       </a>
 
       <div className="flex items-center gap-2 text-xs text-[#948d82] mt-6">
