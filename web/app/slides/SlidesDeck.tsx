@@ -40,7 +40,7 @@ import gaussianVideoWallData from '../data/gaussian-video-wall.json';
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   CONSTANTS
    鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
-const TOTAL_SLIDES = 32;
+const TOTAL_SLIDES = 33;
 
 function clampSlideNumber(slide: number) {
   if (!Number.isFinite(slide)) return 1;
@@ -54,6 +54,10 @@ const METHOD_COLORS = {
 } as const;
 
 const PROJECT_REPO_URL = 'https://github.com/pajamadot/realtime-avatars';
+const PROJECT_SKILLS_DIR_URL = 'https://github.com/pajamadot/realtime-avatars/tree/main/.claude/skills';
+const SKILL_METAHUMAN_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/metahuman-evolver/SKILL.md';
+const SKILL_FULL_MODALITY_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/full-modality-social-evolver/SKILL.md';
+const SKILL_GAUSSIAN_WALL_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/gaussian-youtube-video-wall-evolver/SKILL.md';
 const HEDRA_AVATAR_URL = 'https://www.hedra.com/app/avatar';
 const WORLDLABS_SPLAT_WORLD_URL = 'https://www.worldlabs.ai/case-studies/1-splat-world';
 const WORLDLABS_MARBLE_GUIDE_URL = 'https://docs.worldlabs.ai/marble/getting-started/user-guide';
@@ -2693,6 +2697,78 @@ function SlideBuiltWithClaudeSkills() {
   );
 }
 
+function SlideAgentSkillsUsed() {
+  const skills = [
+    {
+      name: 'metahuman-evolver',
+      purpose: 'Scans Unreal MetaHuman plugin internals, updates architecture + dependency graph.',
+      url: SKILL_METAHUMAN_URL,
+    },
+    {
+      name: 'full-modality-social-evolver',
+      purpose: 'Verifies modality claims, tracks ArXiv/GitHub deltas, and evolves social interaction research.',
+      url: SKILL_FULL_MODALITY_URL,
+    },
+    {
+      name: 'gaussian-youtube-video-wall-evolver',
+      purpose: 'Collects latest realtime Gaussian avatar demo videos and publishes the modal video wall dataset.',
+      url: SKILL_GAUSSIAN_WALL_URL,
+    },
+  ];
+
+  return (
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <SlideMethodBadge method="Agent Skills" label="Project Automation" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Agent Skills Used In This Repo</h2>
+      <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
+
+      <p className="text-base text-[#bdb8af] mb-5">
+        These are the reusable agent skills that powered this project build, verification, and continuous evolution cycles.
+      </p>
+
+      <div className="grid grid-cols-1 gap-3 mb-5">
+        {skills.map((skill) => (
+          <div key={skill.name} className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <h3 className="text-lg font-semibold text-[#f5f2ec]">{skill.name}</h3>
+                <p className="text-sm text-[#bdb8af] mt-1">{skill.purpose}</p>
+              </div>
+              <a
+                href={skill.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#3d3a36] text-xs font-semibold hover:bg-[#242220] transition-colors"
+                style={{ color: METHOD_COLORS.gaussian }}
+              >
+                <ExternalLink size={13} />
+                Open Skill
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] flex items-center justify-between gap-3">
+        <p className="text-sm text-[#948d82]">
+          Browse all skill implementations in the repository:
+        </p>
+        <a
+          href={PROJECT_SKILLS_DIR_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-sm font-semibold hover:underline"
+          style={{ color: METHOD_COLORS.gaussian }}
+        >
+          <Github size={15} />
+          github.com/pajamadot/realtime-avatars/.claude/skills
+          <ExternalLink size={14} />
+        </a>
+      </div>
+    </div>
+  );
+}
+
 function SlideThankYou() {
   return (
     <div className="flex flex-col items-center justify-center h-full text-center px-12">
@@ -2765,7 +2841,8 @@ const SLIDES: React.FC[] = [
   SlideResearchFrontier,         // 29 NEW
   SlideConvergenceUpdated,       // 30 REPLACED
   SlideBuiltWithClaudeSkills,    // 31 NEW
-  SlideThankYou,                 // 32
+  SlideAgentSkillsUsed,          // 32 NEW
+  SlideThankYou,                 // 33
 ];
 
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   MAIN SLIDES PAGE
