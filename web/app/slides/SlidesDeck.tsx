@@ -40,7 +40,7 @@ import gaussianVideoWallData from '../data/gaussian-video-wall.json';
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   CONSTANTS
    鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
-const TOTAL_SLIDES = 33;
+const TOTAL_SLIDES = 32;
 
 function clampSlideNumber(slide: number) {
   if (!Number.isFinite(slide)) return 1;
@@ -59,9 +59,7 @@ const SKILL_METAHUMAN_URL = 'https://github.com/pajamadot/realtime-avatars/blob/
 const SKILL_FULL_MODALITY_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/full-modality-social-evolver/SKILL.md';
 const SKILL_GAUSSIAN_WALL_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/gaussian-youtube-video-wall-evolver/SKILL.md';
 const HEDRA_AVATAR_URL = 'https://www.hedra.com/app/avatar';
-const WORLDLABS_SPLAT_WORLD_URL = 'https://www.worldlabs.ai/case-studies/1-splat-world';
-const WORLDLABS_MARBLE_GUIDE_URL = 'https://docs.worldlabs.ai/marble/getting-started/user-guide';
-const WORLDLABS_YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/6vRUKR2Qv30';
+const WORLDLABS_MARBLE_APP_URL = 'https://marble.worldlabs.ai';
 const SUPERSPLAT_DEMO_ONE_URL = 'https://superspl.at/view?id=bd964899';
 const SUPERSPLAT_DEMO_TWO_URL = 'https://superspl.at/view?id=97a75605';
 const PLAYCANVAS_PERSONAL_DEMO_URL = 'https://playcanv.as/p/ySwArvB0/';
@@ -1384,44 +1382,21 @@ function SlideGaussianWorldlabsDemo() {
     <div className="flex flex-col items-center justify-center h-full px-12 text-center">
       <SlideMethodBadge method="Gaussian Splatting Demo" label="World Labs" color={METHOD_COLORS.gaussian} />
       <h2 className="text-5xl font-bold mb-1">World Labs Gaussian Showcase</h2>
-      <p className="text-[#bdb8af] text-lg mb-5 max-w-3xl">
-        Public World Labs pages are not embeddable (frame-ancestors / X-Frame-Options). We embed their public demo walkthrough and link directly to the live case study.
+      <p className="text-[#bdb8af] text-lg mb-6 max-w-3xl">
+        Open the official World Labs Marble experience directly in a new tab.
       </p>
 
-      <div className="w-full max-w-5xl aspect-video rounded-xl overflow-hidden border border-[#3d3a36] bg-[#1d1c1a]">
-        <iframe
-          src={WORLDLABS_YOUTUBE_EMBED_URL}
-          title="World Labs Gaussian Splatting Demo"
-          className="w-full h-full"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        />
-      </div>
-
-      <div className="flex flex-wrap items-center justify-center gap-3 mt-5">
-        <a
-          href={WORLDLABS_SPLAT_WORLD_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#3d3a36] text-sm font-semibold hover:bg-[#242220] transition-colors"
-          style={{ color: METHOD_COLORS.gaussian }}
-        >
-          <Globe size={15} />
-          Open World Labs Splat World
-          <ExternalLink size={14} />
-        </a>
-        <a
-          href={WORLDLABS_MARBLE_GUIDE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-[#3d3a36] text-sm font-semibold hover:bg-[#242220] transition-colors"
-          style={{ color: METHOD_COLORS.gaussian }}
-        >
-          <BookOpen size={15} />
-          Open Marble User Guide
-          <ExternalLink size={14} />
-        </a>
-      </div>
+      <a
+        href={WORLDLABS_MARBLE_APP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-base font-semibold border border-[#3d3a36] hover:bg-[#242220] transition-colors"
+        style={{ color: METHOD_COLORS.gaussian }}
+      >
+        <Globe size={17} />
+        Open marble.worldlabs.ai
+        <ExternalLink size={15} />
+      </a>
     </div>
   );
 }
@@ -1451,184 +1426,6 @@ function SlideGaussianResearchVideoWall() {
         <ExternalLink size={14} />
         Open Full Video Wall Page
       </a>
-    </div>
-  );
-}
-
-function SlideStreamingArchitecture() {
-  const [participants, setParticipants] = useState(4);
-  const [bitrateKbps, setBitrateKbps] = useState(900);
-  const [uplinkBudgetMbps, setUplinkBudgetMbps] = useState(8);
-  const [relayHops, setRelayHops] = useState(1);
-
-  const p2pClientUp = ((participants - 1) * bitrateKbps) / 1000;
-  const p2pClientDown = p2pClientUp;
-  const sfuClientUp = bitrateKbps / 1000;
-  const sfuClientDown = ((participants - 1) * bitrateKbps) / 1000;
-  const mcuClientUp = bitrateKbps / 1000;
-  const mcuClientDown = bitrateKbps / 1000;
-
-  const topologies = [
-    {
-      id: 'p2p',
-      name: 'P2P (Mesh)',
-      color: '#ff6b6b',
-      links: (participants * (participants - 1)) / 2,
-      clientUp: p2pClientUp,
-      clientDown: p2pClientDown,
-      serverLoad: participants * 0.4,
-      latencyMs: Math.round(45 + relayHops * 18 + Math.max(0, participants - 3) * 14),
-      note: 'Lowest baseline latency, but client uplink scales as N-1.',
-    },
-    {
-      id: 'sfu',
-      name: 'SFU',
-      color: '#3498db',
-      links: participants,
-      clientUp: sfuClientUp,
-      clientDown: sfuClientDown,
-      serverLoad: participants * 1.2,
-      latencyMs: Math.round(78 + relayHops * 20 + Math.max(0, participants - 8) * 4),
-      note: 'Best default for interactive avatars and group sessions.',
-    },
-    {
-      id: 'mcu',
-      name: 'MCU',
-      color: '#9b59b6',
-      links: participants,
-      clientUp: mcuClientUp,
-      clientDown: mcuClientDown,
-      serverLoad: participants * 3.2,
-      latencyMs: Math.round(132 + relayHops * 28 + Math.max(0, participants - 8) * 6),
-      note: 'Fixed client bandwidth, higher transcoding cost and delay.',
-    },
-  ].map((entry) => {
-    const fitsUplink = entry.clientUp <= uplinkBudgetMbps;
-    const overflow = Math.max(0, entry.clientUp - uplinkBudgetMbps);
-    const score = entry.latencyMs + entry.serverLoad * 10 + overflow * 65;
-    return {
-      ...entry,
-      fitsUplink,
-      overflow,
-      score,
-    };
-  });
-
-  const recommended =
-    [...topologies].sort((a, b) => a.score - b.score)[0] ?? topologies[0];
-
-  return (
-    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Streaming" label="Streaming" color={METHOD_COLORS.generative} />
-      <h2 className="text-5xl font-bold mb-2">Streaming Topology Explorer</h2>
-      <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.generative }} />
-
-      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
-        <p className="text-sm text-[#948d82] mb-3">Tune room size and network envelope to see which transport model wins.</p>
-        <div className="grid grid-cols-2 gap-3">
-          <label className="text-[11px] text-[#bdb8af]">
-            Participants: {participants}
-            <input
-              type="range"
-              min={2}
-              max={20}
-              step={1}
-              value={participants}
-              onChange={(e) => setParticipants(Number(e.target.value))}
-              className="slider mt-1.5"
-              aria-label="Participants"
-            />
-          </label>
-          <label className="text-[11px] text-[#bdb8af]">
-            Per-stream bitrate: {bitrateKbps} kbps
-            <input
-              type="range"
-              min={300}
-              max={2500}
-              step={50}
-              value={bitrateKbps}
-              onChange={(e) => setBitrateKbps(Number(e.target.value))}
-              className="slider mt-1.5"
-              aria-label="Per-stream bitrate"
-            />
-          </label>
-          <label className="text-[11px] text-[#bdb8af]">
-            Client uplink budget: {uplinkBudgetMbps.toFixed(1)} Mbps
-            <input
-              type="range"
-              min={1}
-              max={20}
-              step={0.5}
-              value={uplinkBudgetMbps}
-              onChange={(e) => setUplinkBudgetMbps(Number(e.target.value))}
-              className="slider mt-1.5"
-              aria-label="Client uplink budget"
-            />
-          </label>
-          <label className="text-[11px] text-[#bdb8af]">
-            Relay/region hops: {relayHops}
-            <input
-              type="range"
-              min={0}
-              max={4}
-              step={1}
-              value={relayHops}
-              onChange={(e) => setRelayHops(Number(e.target.value))}
-              className="slider mt-1.5"
-              aria-label="Relay hops"
-            />
-          </label>
-        </div>
-        <div className="mt-3 text-xs text-[#948d82]">
-          Recommended topology: <span className="font-semibold" style={{ color: recommended.color }}>{recommended.name}</span>
-          {' '}for the current latency and uplink envelope.
-        </div>
-      </div>
-
-      <div className="grid grid-cols-3 gap-3 mb-4">
-        {topologies.map((topology) => (
-          <div key={topology.id} className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]">
-            <div className="flex items-center justify-between gap-2 mb-1.5">
-              <p className="text-xs font-semibold" style={{ color: topology.color }}>{topology.name}</p>
-              <span
-                className="text-[10px] px-1.5 py-0.5 rounded"
-                style={{
-                  background: topology.fitsUplink ? '#2a3a2f' : '#3a2525',
-                  color: topology.fitsUplink ? '#8be39a' : '#ff9b9b',
-                }}
-              >
-                {topology.fitsUplink ? 'uplink fit' : `+${topology.overflow.toFixed(1)} Mbps`}
-              </span>
-            </div>
-            <div className="grid grid-cols-2 gap-1.5 text-[10px] text-[#bdb8af]">
-              <div>Links</div>
-              <div className="font-mono text-right text-[#f5f2ec]">{topology.links}</div>
-              <div>Client up</div>
-              <div className="font-mono text-right text-[#f5f2ec]">{topology.clientUp.toFixed(1)} Mbps</div>
-              <div>Client down</div>
-              <div className="font-mono text-right text-[#f5f2ec]">{topology.clientDown.toFixed(1)} Mbps</div>
-              <div>Server load</div>
-              <div className="font-mono text-right text-[#f5f2ec]">{topology.serverLoad.toFixed(1)}x</div>
-              <div>Latency</div>
-              <div className="font-mono text-right text-[#f5f2ec]">{topology.latencyMs} ms</div>
-            </div>
-            <p className="text-[10px] text-[#948d82] mt-2">{topology.note}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-2 gap-5 items-start">
-        <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]">
-          <div className="text-base font-semibold text-[#f5f2ec] mb-2">Decision heuristic</div>
-          <ul className="text-sm text-[#bdb8af] space-y-1.5">
-            <li>P2P when participants are small and uplink is strong.</li>
-            <li>SFU for most conversational avatar products.</li>
-            <li>MCU for constrained clients that need fixed downlink.</li>
-            <li>Move SFUs closer to users before adding GPU-heavy processing.</li>
-          </ul>
-        </div>
-        <DemoLink slug="sfu-comparison" label="SFU Topology Comparison" color={METHOD_COLORS.generative} />
-      </div>
     </div>
   );
 }
@@ -2831,18 +2628,17 @@ const SLIDES: React.FC[] = [
   SlideGaussianPersonalDemo,     // 19 NEW
   SlideGaussianWorldlabsDemo,    // 20
   SlideGaussianResearchVideoWall,// 21 NEW
-  SlideStreamingArchitecture,    // 22
-  SlideCapabilityMatrix,         // 23 NEW
-  SlideComparison,               // 24
-  SlideRealTimeMetrics,          // 25 NEW
-  SlideE2EPipeline,              // 26
-  SlideAudio2FaceBuildingBlocks, // 27 NEW
-  SlideWhereIntelligenceLives,   // 28 NEW
-  SlideResearchFrontier,         // 29 NEW
-  SlideConvergenceUpdated,       // 30 REPLACED
-  SlideBuiltWithClaudeSkills,    // 31 NEW
-  SlideAgentSkillsUsed,          // 32 NEW
-  SlideThankYou,                 // 33
+  SlideCapabilityMatrix,         // 22 NEW
+  SlideComparison,               // 23
+  SlideRealTimeMetrics,          // 24 NEW
+  SlideE2EPipeline,              // 25
+  SlideAudio2FaceBuildingBlocks, // 26 NEW
+  SlideWhereIntelligenceLives,   // 27 NEW
+  SlideResearchFrontier,         // 28 NEW
+  SlideConvergenceUpdated,       // 29 REPLACED
+  SlideBuiltWithClaudeSkills,    // 30 NEW
+  SlideAgentSkillsUsed,          // 31 NEW
+  SlideThankYou,                 // 32
 ];
 
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   MAIN SLIDES PAGE
