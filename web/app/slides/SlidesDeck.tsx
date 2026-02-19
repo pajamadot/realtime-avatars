@@ -41,7 +41,7 @@ import gaussianVideoWallData from '../data/gaussian-video-wall.json';
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   CONSTANTS
    鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
-const TOTAL_SLIDES = 34;
+const TOTAL_SLIDES = 35;
 
 function clampSlideNumber(slide: number) {
   if (!Number.isFinite(slide)) return 1;
@@ -71,6 +71,7 @@ const WORLDLABS_MARBLE_APP_URL = 'https://marble.worldlabs.ai';
 const SUPERSPLAT_DEMO_ONE_URL = 'https://superspl.at/view?id=bd964899';
 const SUPERSPLAT_DEMO_TWO_URL = 'https://superspl.at/view?id=97a75605';
 const PLAYCANVAS_PERSONAL_DEMO_URL = 'https://playcanv.as/p/ySwArvB0/';
+const GAUSSIAN_TALKING_AVATAR_YOUTUBE_URL = 'https://www.youtube.com/watch?v=fetxolufsgQ';
 const GSPLAT_COLMAP_GUIDE_URL = 'https://docs.gsplat.studio/main/examples/colmap.html';
 const SUPERSPLAT_EDITOR_URL = 'https://superspl.at/editor';
 const GAUSSIAN_VIDEO_WALL_ROUTE = '/gaussian-video-wall';
@@ -97,6 +98,11 @@ const EVIDENCE_URLS = {
   playcanvasGaussianSplatting: 'https://developer.playcanvas.com/user-manual/gaussian-splatting/',
   arxivTaoAvatar: 'https://arxiv.org/abs/2503.17032',
   arxivLAM: 'https://arxiv.org/abs/2502.17796',
+  arxivGaussianAvatars: 'https://arxiv.org/abs/2312.02069',
+  arxivPSAvatar: 'https://arxiv.org/abs/2401.12900',
+  arxivGaussianSpeech: 'https://arxiv.org/abs/2411.18675',
+  arxivSEGA: 'https://arxiv.org/abs/2504.14373',
+  arxivUniGAHA: 'https://arxiv.org/abs/2509.18924',
   arxivMIDAS: 'https://arxiv.org/abs/2508.19320',
   arxivKnotForcing: 'https://arxiv.org/abs/2512.21734',
   arxivStreamAvatar: 'https://arxiv.org/abs/2512.22065',
@@ -1999,6 +2005,8 @@ function SlideGenerativeDemo() {
 }
 
 function SlideGaussianHow() {
+  const [showMechanismDetails, setShowMechanismDetails] = useState(false);
+
   const plainEnglishE2E = [
     {
       title: '1) Capture',
@@ -2043,54 +2051,46 @@ function SlideGaussianHow() {
         </div>
       </div>
 
-      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-5">
-        <p className="text-lg text-[#bdb8af] leading-relaxed">
-          Think of a scene as <span className="text-[#f5f2ec]">millions of tiny translucent paint clouds</span>.
-          {' '}Each cloud is a 3D Gaussian with center, shape, color, and opacity. Unlike NeRF-style MLP field queries, 3DGS renders by projecting those clouds to screen-space ellipses and alpha-blending front-to-back.
-        </p>
+      <div className="flex justify-end mb-2 pr-1">
+        <button
+          type="button"
+          onClick={() => setShowMechanismDetails((prev) => !prev)}
+          className="text-[11px] text-[#58544d] hover:text-[#7a7469] tracking-widest"
+          aria-label={showMechanismDetails ? 'Hide Gaussian mechanism details' : 'Show Gaussian mechanism details'}
+          title={showMechanismDetails ? 'Hide details' : 'Show details'}
+        >
+          ...
+        </button>
       </div>
 
-      <div className="grid grid-cols-3 gap-3 mb-5">
-        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-          <p className="text-sm uppercase tracking-wide text-[#948d82] mb-2">Training (Offline)</p>
-          <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#c7c2b9]">
-            <li>Reconstruct identity from multi-view images/video and camera poses (3DGS/LAM family).</li>
-            <li>Optimize Gaussian parameters with photometric loss and density control (split/prune).</li>
-            <li>Train speech-driven motion mapping (audio to expression/pose coefficients) from paired motion data.</li>
-          </ul>
+      {showMechanismDetails ? (
+        <div className="grid grid-cols-3 gap-3 mb-4">
+          <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+            <p className="text-sm uppercase tracking-wide text-[#948d82] mb-2">Training (Offline)</p>
+            <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#c7c2b9]">
+              <li>Reconstruct identity from multi-view images/video and camera poses (3DGS/LAM family).</li>
+              <li>Optimize Gaussian parameters with photometric loss and density control (split/prune).</li>
+              <li>Train speech-driven motion mapping (audio to expression/pose coefficients) from paired motion data.</li>
+            </ul>
+          </div>
+          <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+            <p className="text-sm uppercase tracking-wide text-[#948d82] mb-2">Inference During Talk (Online)</p>
+            <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#c7c2b9]">
+              <li>Incoming speech is encoded into phoneme/prosody-conditioned control signals.</li>
+              <li>Controls drive expression/head/pose updates on the avatar state each frame.</li>
+              <li>Updated Gaussians are rasterized in real time and streamed as output frames.</li>
+            </ul>
+          </div>
+          <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+            <p className="text-sm uppercase tracking-wide text-[#948d82] mb-2">Underlying Representation</p>
+            <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#c7c2b9]">
+              <li>Explicit 3D primitives: per-splat <span className="text-[#f5f2ec]">mu, Sigma, color, opacity</span>.</li>
+              <li>Optional parameterized face/body control layers (for expression and gesture actuation).</li>
+              <li>Rendering is direct splat rasterization, not per-pixel neural-field querying.</li>
+            </ul>
+          </div>
         </div>
-        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-          <p className="text-sm uppercase tracking-wide text-[#948d82] mb-2">Inference During Talk (Online)</p>
-          <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#c7c2b9]">
-            <li>Incoming speech is encoded into phoneme/prosody-conditioned control signals.</li>
-            <li>Controls drive expression/head/pose updates on the avatar state each frame.</li>
-            <li>Updated Gaussians are rasterized in real time and streamed as output frames.</li>
-          </ul>
-        </div>
-        <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-          <p className="text-sm uppercase tracking-wide text-[#948d82] mb-2">Underlying Representation</p>
-          <ul className="list-disc pl-5 space-y-1.5 text-xs text-[#c7c2b9]">
-            <li>Explicit 3D primitives: per-splat <span className="text-[#f5f2ec]">mu, Sigma, color, opacity</span>.</li>
-            <li>Optional parameterized face/body control layers (for expression and gesture actuation).</li>
-            <li>Rendering is direct splat rasterization, not per-pixel neural-field querying.</li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Pipeline via ReactFlow */}
-      <div className="mb-2">
-        <SlideFlow
-          accentColor={METHOD_COLORS.gaussian}
-          height={300}
-          nodes={[
-            { id: 'capture', label: 'Capture / Input Views' },
-            { id: 'opt', label: 'Estimate Gaussian Params (mu, Sigma, c, alpha)' },
-            { id: 'project', label: 'Project to 2D Ellipses' },
-            { id: 'blend', label: 'Alpha Blend (Depth-Aware)' },
-            { id: 'render', label: 'Real-time View Synthesis' },
-          ]}
-        />
-      </div>
+      ) : null}
 
       <SlideEvidenceStrip
         links={[
@@ -2101,6 +2101,92 @@ function SlideGaussianHow() {
           { label: 'ICo3D', href: EVIDENCE_URLS.arxivICo3D },
           { label: 'FastGHA', href: EVIDENCE_URLS.arxivFastGHA },
         ]}
+      />
+    </div>
+  );
+}
+
+function SlideGaussianFacialAnimation() {
+  const drivingSignals = [
+    'Audio-driven speech/prosody (talking-avatar mode)',
+    'Video-driven expression transfer (reenactment mode)',
+    'Hybrid controls (audio + pose/expression cues)',
+  ];
+
+  const controlRepresentations = [
+    'Rigged Gaussians tied to parametric face models (for explicit expression control)',
+    'Latent expression spaces that encode geometry + appearance changes',
+    'Per-frame control coefficients that drive Gaussian deformation before rendering',
+  ];
+
+  const stabilityTargets = [
+    'Lip-sync accuracy and mouth interior consistency',
+    'Upper-face dynamics (brows/cheeks/eye area) without jitter',
+    'Temporal coherence across frames under fast speech changes',
+  ];
+
+  return (
+    <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
+      <SlideMethodBadge method="Gaussian Splatting" label="Approach 3/3 · Facial Animation" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">Approach 3/3: Gaussian Facial Animation</h2>
+      <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
+
+      <p className="text-base text-[#bdb8af] mb-4">
+        This slide zooms into the facial-animation mechanism used by Gaussian talking avatars.
+      </p>
+
+      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
+        <SlideFlow
+          accentColor={METHOD_COLORS.gaussian}
+          height={220}
+          nodes={[
+            { id: 'driver', label: 'Driver Signal (audio / video)' },
+            { id: 'encode', label: 'Motion Encoder (phoneme/prosody/expression)' },
+            { id: 'control', label: 'Expression Control Space (latent/coeff)' },
+            { id: 'deform', label: 'Gaussian Deformation (pose/expression updates)' },
+            { id: 'temporal', label: 'Temporal Stabilization' },
+            { id: 'render', label: 'Rendered Facial Frames' },
+          ]}
+        />
+      </div>
+
+      <div className="grid grid-cols-3 gap-3 mb-4">
+        <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]">
+          <p className="text-xs uppercase tracking-wide text-[#948d82] mb-2">Driving Signals</p>
+          <ul className="list-disc pl-5 space-y-1 text-xs text-[#c7c2b9]">
+            {drivingSignals.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]">
+          <p className="text-xs uppercase tracking-wide text-[#948d82] mb-2">Control Representation</p>
+          <ul className="list-disc pl-5 space-y-1 text-xs text-[#c7c2b9]">
+            {controlRepresentations.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]">
+          <p className="text-xs uppercase tracking-wide text-[#948d82] mb-2">Quality Targets</p>
+          <ul className="list-disc pl-5 space-y-1 text-xs text-[#c7c2b9]">
+            {stabilityTargets.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: 'GaussianAvatars', href: EVIDENCE_URLS.arxivGaussianAvatars },
+          { label: 'PSAvatar', href: EVIDENCE_URLS.arxivPSAvatar },
+          { label: 'GaussianSpeech', href: EVIDENCE_URLS.arxivGaussianSpeech },
+          { label: 'SEGA', href: EVIDENCE_URLS.arxivSEGA },
+          { label: 'UniGAHA', href: EVIDENCE_URLS.arxivUniGAHA },
+          { label: 'ICo3D', href: EVIDENCE_URLS.arxivICo3D },
+        ]}
+        note="References focus on drivable/facial Gaussian-avatar methods spanning video-driven and audio-driven pipelines."
       />
     </div>
   );
@@ -2392,6 +2478,16 @@ function SlideGaussianDemo() {
         <ExternalLink size={16} />
       </a>
 
+      <a
+        href={GAUSSIAN_TALKING_AVATAR_YOUTUBE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-5 py-2.5 mt-4 rounded-lg text-sm font-semibold border border-[#3d3a36] text-[#f5f2ec] hover:bg-[#242220] transition-colors"
+      >
+        <ExternalLink size={14} />
+        Open YouTube Fallback Demo
+      </a>
+
       <div className="flex flex-wrap items-center justify-center gap-3 mt-4">
         <a
           href={EVIDENCE_URLS.arxivLAM}
@@ -2417,7 +2513,7 @@ function SlideGaussianDemo() {
 
       <div className="flex items-center gap-2 text-xs text-[#948d82] mt-6">
         <Cpu size={14} />
-        <span>Requires local Docker setup (see gaussian-avatar/ directory)</span>
+        <span>Requires local Docker setup (see gaussian-avatar/ directory). Use YouTube fallback if local demo is unavailable.</span>
       </div>
     </div>
   );
@@ -4451,18 +4547,19 @@ const SLIDES: React.FC[] = [
   SlideGaussianSupersplatDemoOne,// 20
   SlideGaussianSupersplatDemoTwo,// 21
   SlideGaussianPersonalDemo,     // 22
-  SlideGaussianHow,              // 23
-  SlideGaussianIdentityResponse, // 24
-  SlideGaussianWorldlabsDemo,    // 25
-  SlideGaussianResearchVideoWall,// 26
-  SlideAudio2FaceBuildingBlocks, // 27
-  SlideWhereIntelligenceLives,   // 28
-  SlideResearchFrontier,         // 29
-  SlideConvergenceUpdated,       // 30
-  SlideCapabilityTransition,     // 31
-  SlideCapabilityMatrix,         // 32
-  SlideHowToEvolveProject,       // 33
-  SlideThankYou,                 // 34
+  SlideGaussianWorldlabsDemo,    // 23
+  SlideGaussianResearchVideoWall,// 24
+  SlideGaussianHow,              // 25
+  SlideGaussianFacialAnimation,  // 26
+  SlideGaussianIdentityResponse, // 27
+  SlideAudio2FaceBuildingBlocks, // 28
+  SlideWhereIntelligenceLives,   // 29
+  SlideResearchFrontier,         // 30
+  SlideConvergenceUpdated,       // 31
+  SlideCapabilityTransition,     // 32
+  SlideCapabilityMatrix,         // 33
+  SlideHowToEvolveProject,       // 34
+  SlideThankYou,                 // 35
 ];
 
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   MAIN SLIDES PAGE
