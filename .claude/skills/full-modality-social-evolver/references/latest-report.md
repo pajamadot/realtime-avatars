@@ -1,14 +1,14 @@
 # Full-Modality Social Interaction Research
 
-- Generated at (UTC): `2026-02-19T05:14:56+00:00`
-- Cycle: `10`
-- Slide URL: `https://www.realtime-avatars.com/slides/5`
+- Generated at (UTC): `2026-02-19T23:18:20+00:00`
+- Cycle: `15`
+- Slide URL: `https://www.realtime-avatars.com/slides/35`
 - Slide status: `200`
 - Slide title: `Real-Time Avatars: A Comparative Guide`
 
 ## Slide-5 Verification
 
-- Claims checked: `16`
+- Claims checked: `0`
 - Mismatched claims: `0`
 
 ## Full-Modality Architecture
@@ -24,32 +24,26 @@ Technique adapters:
 ## Research Delta
 
 - New ArXiv entries this cycle: `0`
-- New GitHub repositories this cycle: `5`
+- New GitHub repositories this cycle: `0`
 
 ### ArXiv Highlights
 
 - `Punchlines Unbound: Comedy Practices in Social Virtual Reality` (2026-02-17T21:09:00Z) - http://arxiv.org/abs/2602.16013v1 [score `3`, source `arxiv_query_api`]
-- `ReaDy-Go: Real-to-Sim Dynamic 3D Gaussian Splatting Simulation for Environment-Specific Visual Navigation with Moving Obstacles` (2026-02-14T15:05:27Z) - http://arxiv.org/abs/2602.11575v2 [score `3`, source `arxiv_query_api`]
-- `OMEGA-Avatar: One-shot Modeling of 360° Gaussian Avatars` (2026-02-12T08:16:38Z) - http://arxiv.org/abs/2602.11693v1 [score `3`, source `arxiv_query_api`]
-- `Scaling Open Discrete Audio Foundation Models with Interleaved Semantic, Acoustic, and Text Tokens` (2026-02-18T18:32:46Z) - http://arxiv.org/abs/2602.16687v1 [score `2`, source `arxiv_query_api`]
-- `DreamBarbie: Text to Barbie-Style 3D Avatars` (2026-02-14T05:16:46Z) - http://arxiv.org/abs/2408.09126v7 [score `2`, source `arxiv_query_api`]
-- `StrandHead: Text to Hair-Disentangled 3D Head Avatars Using Human-Centric Priors` (2026-02-14T05:17:02Z) - http://arxiv.org/abs/2412.11586v4 [score `1`, source `arxiv_query_api`]
 
 ### GitHub Highlights
 
-- GitHub API warnings: `2` (using curated fallback where needed)
 - `cvlab-kaist/GaussianTalker` (stars `None`, pushed `None`, source `curated_fallback`)
 - `graphdeco-inria/gaussian-splatting` (stars `None`, pushed `None`, source `curated_fallback`)
 - `OpenTalker/SadTalker` (stars `None`, pushed `None`, source `curated_fallback`)
 - `KwaiVGI/LivePortrait` (stars `None`, pushed `None`, source `curated_fallback`)
-- `Kedreamix/Linly-Talker` (stars `3134`, pushed `2026-02-10T05:17:05Z`, source `github_search_api`)
 - `livekit/agents` (stars `None`, pushed `None`, source `curated_fallback`)
 - `soulx-ai/SoulX-FlashHead` (stars `None`, pushed `None`, source `curated_fallback`)
 - `chocolatepcode/unreal-motion` (stars `0`, pushed `2026-02-05T07:23:47Z`, source `github_search_api`)
-- `TimoR91/FGJ2022_Lahti_TimoR` (stars `0`, pushed `2022-06-03T08:17:36Z`, source `github_search_api`)
-- `alexdjulin/LiveLinkFace-CSV-Retarget-For-Motionbuilder` (stars `19`, pushed `2022-02-11T09:36:11Z`, source `github_search_api`)
-- `Halfred12/engine` (stars `0`, pushed `2026-02-19T05:14:26Z`, source `github_search_api`)
-- `TsingyuanChou/MGSR` (stars `19`, pushed `2026-02-19T04:37:38Z`, source `github_search_api`)
+- `FloatingRobotics/face-animation-comparison` (stars `0`, pushed `2026-02-13T11:35:40Z`, source `github_search_api`)
+- `NVIDIA/Audio2Face-3D-SDK` (stars `155`, pushed `2025-08-28T14:22:28Z`, source `github_search_api`)
+- `FACEGOOD/FgControlRig` (stars `14`, pushed `2024-12-06T04:12:56Z`, source `github_search_api`)
+- `StarOfOman/Embody_Textures` (stars `0`, pushed `2026-02-19T23:03:56Z`, source `github_search_api`)
+- `viper-108/livekit_plugins_sub200` (stars `0`, pushed `2026-02-19T22:27:47Z`, source `github_search_api`)
 
 ## Evidence Links
 

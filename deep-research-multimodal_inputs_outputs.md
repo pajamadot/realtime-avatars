@@ -340,9 +340,9 @@ Key risks:
 
 ## Skill Conclusion: Multimodal Inputs/Outputs by Approach
 
-- Updated at (UTC): `2026-02-19T05:14:56Z`
-- Multimodal cycle: `2`
-- Research source cycle: `10`
+- Updated at (UTC): `2026-02-19T23:18:20Z`
+- Multimodal cycle: `22`
+- Research source cycle: `15`
 
 ### Cross-method summary
 
@@ -364,7 +364,7 @@ Key risks:
 - Output path: deterministic Unreal render stream plus synchronized voice/audio.
 3. Runtime representation: Deterministic rig controls with explicit facial coefficients and bone transforms.
 4. Supported coupling patterns
-- Audio-only driven (Native)
+- No native coupling pattern identified.
 
 ### Video Generation: how multimodal I/O works
 
@@ -378,9 +378,7 @@ Key risks:
 - Output path: pixel-space video frames with optional separate synthesized speech track.
 3. Runtime representation: Implicit latent dynamics decoded to pixels; less explicit geometric control.
 4. Supported coupling patterns
-- Audio + text + image (LiveTalk) (Native)
-- Audio + user motion (Avatar Forcing) (Native)
-- Audio-only driven (Native)
+- No native coupling pattern identified.
 
 ### Gaussian Splatting: how multimodal I/O works
 
@@ -394,8 +392,7 @@ Key risks:
 - Output path: realtime splat rasterization to RGB frames and stream transport.
 3. Runtime representation: Explicit neural primitives with fast rasterization and high-fps rendering.
 4. Supported coupling patterns
-- Audio + pose (TaoAvatar) (Native)
-- Audio-only driven (Native)
+- No native coupling pattern identified.
 
 ### Evidence pointers (sample)
 

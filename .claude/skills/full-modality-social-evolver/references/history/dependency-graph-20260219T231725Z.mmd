@@ -1,0 +1,23 @@
+graph LR
+  input_audio["Audio Input"]
+  input_video["Video Input"]
+  input_text["Text Input"]
+  signal_core["Social Signal Core"]
+  narrative_core["Narrative Core"]
+  behavior_core["Behavior Planner"]
+  adapter_metahuman["MetaHuman Adapter"]
+  adapter_video["VideoGen Adapter"]
+  adapter_gaussian["Gaussian Adapter"]
+  output_stream["Realtime Stream"]
+  input_audio -->|signal| signal_core
+  input_video -->|signal| signal_core
+  input_text -->|semantic| narrative_core
+  signal_core -->|context| narrative_core
+  signal_core -->|control| behavior_core
+  narrative_core -->|intent| behavior_core
+  behavior_core -->|adapter| adapter_metahuman
+  behavior_core -->|adapter| adapter_video
+  behavior_core -->|adapter| adapter_gaussian
+  adapter_metahuman -->|render| output_stream
+  adapter_video -->|render| output_stream
+  adapter_gaussian -->|render| output_stream

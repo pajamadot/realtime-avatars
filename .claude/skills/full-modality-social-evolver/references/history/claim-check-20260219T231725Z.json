@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-02-19T23:17:25+00:00",
+  "totals": {
+    "claims_checked": 0,
+    "mismatched_claims": 0
+  },
+  "mismatch_by_method": {
+    "MetaHuman": 0,
+    "Video Generation": 0,
+    "Gaussian Splatting": 0
+  },
+  "checks": []
+}

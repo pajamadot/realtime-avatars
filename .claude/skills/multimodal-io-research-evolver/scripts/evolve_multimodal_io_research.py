@@ -128,6 +128,10 @@ def run_core_refresh(repo_root: Path, args: argparse.Namespace) -> None:
         str(core_runner),
         "--repo-root",
         str(repo_root),
+        "--slide-url",
+        str(args.slide_url),
+        "--slide-source",
+        str(args.slide_source),
         "--max-arxiv-per-query",
         str(max(2, args.max_arxiv_per_query)),
         "--max-arxiv-total",
@@ -414,6 +418,8 @@ def publish_outputs(repo_root: Path, payload: dict[str, Any], report_text: str, 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run one multimodal I/O research evolution cycle.")
     parser.add_argument("--repo-root", type=str, default=None, help="Repository root override")
+    parser.add_argument("--slide-url", type=str, default="https://www.realtime-avatars.com/slides/35", help="Slide URL to anchor core verification")
+    parser.add_argument("--slide-source", type=str, default="web/app/slides/SlidesDeck.tsx", help="Slide source path relative to repo root")
     parser.add_argument("--skip-core-refresh", action="store_true", help="Do not re-run full-modality core refresh")
     parser.add_argument("--max-arxiv-per-query", type=int, default=8, help="ArXiv results per query")
     parser.add_argument("--max-arxiv-total", type=int, default=60, help="ArXiv total retained")
@@ -533,4 +539,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

@@ -1,7 +1,7 @@
 # Slide Research Proofread Report
 
-- Generated at (UTC): `2026-02-19T08:52:21Z`
-- Cycle: `3`
+- Generated at (UTC): `2026-02-19T23:18:20Z`
+- Cycle: `23`
 - Target slides: `17`
 - Passed: `17`
 - Warned: `0`
@@ -23,10 +23,10 @@
 - Primary source links: `4`
 - Issues: `none`
 - Primary links:
+  - https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-animator
   - https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-documentation
+  - https://dev.epicgames.com/documentation/en-us/metahuman/realtime-animation-using-live-link
   - https://dev.epicgames.com/documentation/en-us/unreal-engine/API/PluginIndex/RigLogic
-  - https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/metahuman-evolver/references/latest-architecture.json
-  - https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/metahuman-evolver/references/latest-summary.md
 
 ### SlideMetahumanIdentityResponse [PASS]
 - Evidence strip count: `1`
@@ -78,11 +78,14 @@
 
 ### SlideGaussianHow [PASS]
 - Evidence strip count: `1`
-- Primary source links: `2`
+- Primary source links: `5`
 - Issues: `none`
 - Primary links:
   - https://arxiv.org/abs/2308.04079
-  - https://arxiv.org/abs/2506.09127
+  - https://arxiv.org/abs/2502.17796
+  - https://arxiv.org/abs/2503.17032
+  - https://arxiv.org/abs/2601.13148
+  - https://arxiv.org/abs/2601.13837
 
 ### SlideGaussianIdentityResponse [PASS]
 - Evidence strip count: `1`
@@ -100,7 +103,7 @@
 - Issues: `none`
 - Primary links:
   - https://arxiv.org/abs/2308.04079
-  - https://arxiv.org/abs/2506.09127
+  - https://arxiv.org/abs/2502.17796
 
 ### SlideGaussianCovariance [PASS]
 - Evidence strip count: `1`
@@ -112,26 +115,27 @@
 
 ### SlideSignalsInteraction [PASS]
 - Evidence strip count: `1`
-- Primary source links: `5`
+- Primary source links: `10`
 - Issues: `none`
 - Primary links:
+  - https://arxiv.org/abs/2401.17217
   - https://arxiv.org/abs/2503.17032
   - https://arxiv.org/abs/2512.23576
   - https://arxiv.org/abs/2601.00664
   - https://arxiv.org/abs/2601.13148
-  - https://dev.epicgames.com/documentation/en-us/metahuman/realtime-animation-using-live-link
+  - https://dev.epicgames.com/documentation/en-us/metahuman/audio-driven-animation
 
 ### SlideCapabilityMatrix [PASS]
 - Evidence strip count: `1`
-- Primary source links: `7`
+- Primary source links: `12`
 - Issues: `none`
 - Primary links:
+  - https://arxiv.org/abs/2308.04079
+  - https://arxiv.org/abs/2407.03168
+  - https://arxiv.org/abs/2502.17796
   - https://arxiv.org/abs/2503.17032
-  - https://arxiv.org/abs/2506.09127
+  - https://arxiv.org/abs/2512.23576
   - https://arxiv.org/abs/2601.00664
-  - https://arxiv.org/abs/2601.13148
-  - https://dev.epicgames.com/documentation/en-us/metahuman/mesh-to-metahuman
-  - https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-documentation
 
 ### SlideAudio2FaceBuildingBlocks [PASS]
 - Evidence strip count: `1`
@@ -147,14 +151,15 @@
 
 ### SlideWhereIntelligenceLives [PASS]
 - Evidence strip count: `1`
-- Primary source links: `5`
+- Primary source links: `6`
 - Issues: `none`
 - Primary links:
   - https://arxiv.org/abs/2503.17032
-  - https://arxiv.org/abs/2506.09127
   - https://arxiv.org/abs/2512.23576
   - https://arxiv.org/abs/2601.00664
+  - https://arxiv.org/abs/2601.13148
   - https://arxiv.org/abs/2602.07449
+  - https://dev.epicgames.com/documentation/en-us/metahuman/realtime-animation-using-live-link
 
 ### SlideResearchFrontier [PASS]
 - Evidence strip count: `1`
@@ -170,11 +175,12 @@
 
 ### SlideConvergenceUpdated [PASS]
 - Evidence strip count: `1`
-- Primary source links: `5`
+- Primary source links: `12`
 - Issues: `none`
 - Primary links:
+  - https://arxiv.org/abs/2308.04079
   - https://arxiv.org/abs/2503.17032
-  - https://arxiv.org/abs/2506.09127
-  - https://arxiv.org/abs/2508.19320
+  - https://arxiv.org/abs/2512.23576
   - https://arxiv.org/abs/2601.00664
-  - https://dev.epicgames.com/documentation/en-us/metahuman/audio-driven-animation
+  - https://arxiv.org/abs/2601.13148
+  - https://arxiv.org/abs/2602.07449
