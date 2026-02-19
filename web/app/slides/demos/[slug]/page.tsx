@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { use } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 function DemoLoading() {
   return (
@@ -52,6 +53,8 @@ const DEMO_MAP: Record<string, {
 
 export default function DemoPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
+  const searchParams = useSearchParams();
+  const embed = searchParams.get('embed') === '1';
   const demo = DEMO_MAP[slug];
 
   if (!demo) {
@@ -68,7 +71,7 @@ export default function DemoPage({ params }: { params: Promise<{ slug: string }>
   const DemoComponent = demo.component;
 
   return (
-    <div className="min-h-screen flex flex-col"
+    <div className={`${embed ? 'h-full' : 'min-h-screen'} flex flex-col`}
       style={{
         '--text-muted': '#948d82',
         '--text-primary': '#f5f2ec',
@@ -83,20 +86,22 @@ export default function DemoPage({ params }: { params: Promise<{ slug: string }>
         '--foreground': '#f5f2ec',
       } as React.CSSProperties}
     >
-      <div className="flex items-center gap-3 px-6 py-4 border-b border-[#3d3a36]">
-        <Link
-          href="/slides/demos"
-          className="flex items-center gap-1.5 text-sm text-[#948d82] hover:text-[#f5f2ec] transition-colors"
-        >
-          <ArrowLeft size={16} />
-          Demos
-        </Link>
-        <span className="text-[#3d3a36]">|</span>
-        <h1 className="text-sm font-semibold" style={{ color: demo.color }}>
-          {demo.title}
-        </h1>
-      </div>
-      <div className="flex-1 p-6">
+      {!embed ? (
+        <div className="flex items-center gap-3 px-6 py-4 border-b border-[#3d3a36]">
+          <Link
+            href="/slides/demos"
+            className="flex items-center gap-1.5 text-sm text-[#948d82] hover:text-[#f5f2ec] transition-colors"
+          >
+            <ArrowLeft size={16} />
+            Demos
+          </Link>
+          <span className="text-[#3d3a36]">|</span>
+          <h1 className="text-sm font-semibold" style={{ color: demo.color }}>
+            {demo.title}
+          </h1>
+        </div>
+      ) : null}
+      <div className={`flex-1 ${embed ? 'p-3' : 'p-6'}`}>
         <DemoComponent />
       </div>
     </div>

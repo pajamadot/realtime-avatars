@@ -41,7 +41,7 @@ import gaussianVideoWallData from '../data/gaussian-video-wall.json';
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   CONSTANTS
    鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
-const TOTAL_SLIDES = 34;
+const TOTAL_SLIDES = 35;
 
 function clampSlideNumber(slide: number) {
   if (!Number.isFinite(slide)) return 1;
@@ -71,6 +71,8 @@ const WORLDLABS_MARBLE_APP_URL = 'https://marble.worldlabs.ai';
 const SUPERSPLAT_DEMO_ONE_URL = 'https://superspl.at/view?id=bd964899';
 const SUPERSPLAT_DEMO_TWO_URL = 'https://superspl.at/view?id=97a75605';
 const PLAYCANVAS_PERSONAL_DEMO_URL = 'https://playcanv.as/p/ySwArvB0/';
+const GSPLAT_COLMAP_GUIDE_URL = 'https://docs.gsplat.studio/main/examples/colmap.html';
+const SUPERSPLAT_EDITOR_URL = 'https://superspl.at/editor';
 const GAUSSIAN_VIDEO_WALL_ROUTE = '/gaussian-video-wall';
 const EVIDENCE_URLS = {
   epicMetaHumanDocs: 'https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-documentation',
@@ -88,6 +90,8 @@ const EVIDENCE_URLS = {
   arxivDdpm: 'https://arxiv.org/abs/2006.11239',
   arxivProgressiveDistillation: 'https://arxiv.org/abs/2202.00512',
   arxiv3dgs: 'https://arxiv.org/abs/2308.04079',
+  gsplatColmap: 'https://docs.gsplat.studio/main/examples/colmap.html',
+  supersplatDocs: 'https://developer.playcanvas.com/user-manual/gaussian-splatting/editing/supersplat/',
   arxivTaoAvatar: 'https://arxiv.org/abs/2503.17032',
   arxivLAM: 'https://arxiv.org/abs/2502.17796',
   arxivMIDAS: 'https://arxiv.org/abs/2508.19320',
@@ -607,23 +611,23 @@ function SlideStoryCharacterCreationTool() {
 }
 
 function SlideRealtimeAvatarPerformanceBridge() {
-  const steps = [
+  const layers = [
     {
       icon: Box,
-      title: '2D Static Base (Now)',
-      points: [
-        'Story-consistent character identity and style profiles.',
-        'Text/voice behavior grounded in character context.',
-      ],
+      title: 'Identity Layer',
+      desc: '2D character identity from Slide 5: role, style, and narrative memory.',
       color: METHOD_COLORS.gaussian,
     },
     {
+      icon: Brain,
+      title: 'Runtime Response Layer',
+      desc: 'Perception + model response grounded in story context and session state.',
+      color: METHOD_COLORS.metahuman,
+    },
+    {
       icon: Sparkles,
-      title: 'Real-time Story Performance',
-      points: [
-        'Multimodal user input.',
-        'Story-aware model response.',
-      ],
+      title: 'Performance Layer',
+      desc: 'Real-time voice, facial motion, and body expression during storytelling.',
       color: METHOD_COLORS.generative,
     },
   ];
@@ -635,19 +639,18 @@ function SlideRealtimeAvatarPerformanceBridge() {
       <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
 
       <p className="text-lg text-[#c7c2b9] mb-6">
-        Start with a 2D identity layer, then move directly to real-time storytelling performance.
+        Slide 5 shows identity authoring. This slide defines the runtime bridge from identity to live performance.
       </p>
 
-      <div className="grid grid-cols-2 gap-4">
-        {steps.map((step) => (
-          <div key={step.title} className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-            <step.icon size={24} className="mb-3" style={{ color: step.color }} />
-            <h3 className="text-xl font-semibold mb-2" style={{ color: step.color }}>{step.title}</h3>
-            <ul className="list-disc pl-5 space-y-1.5 text-base text-[#c7c2b9]">
-              {step.points.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-            </ul>
+      <div className="grid grid-cols-3 gap-4">
+        {layers.map((layer, index) => (
+          <div key={layer.title} className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] relative">
+            <layer.icon size={24} className="mb-3" style={{ color: layer.color }} />
+            <h3 className="text-xl font-semibold mb-2" style={{ color: layer.color }}>{layer.title}</h3>
+            <p className="text-base text-[#c7c2b9] leading-relaxed">{layer.desc}</p>
+            {index < layers.length - 1 ? (
+              <ChevronRight size={16} className="absolute -right-2 top-1/2 -translate-y-1/2 text-[#5d5a55]" />
+            ) : null}
           </div>
         ))}
       </div>
@@ -2187,83 +2190,120 @@ function SlideGaussianIdentityResponse() {
 }
 
 function SlideGaussianMechanism() {
+  const mechanismSteps = [
+    'Capture multi-view images/video and estimate camera poses (SfM).',
+    'Initialize one 3D Gaussian per reconstructed point.',
+    'Learn Gaussian parameters: position (\u03BC), covariance (\u03A3), color, opacity (\u03B1).',
+    'Project Gaussians to screen-space ellipses and alpha-blend front-to-back.',
+    'Densify underfit regions and prune low-contribution splats.',
+  ];
+
+  const params = [
+    { sym: '\u03BC', label: 'Position', detail: '3D center' },
+    { sym: '\u03A3', label: 'Covariance', detail: 'Anisotropic shape/orientation' },
+    { sym: 'c', label: 'Color', detail: 'View-dependent appearance features' },
+    { sym: '\u03B1', label: 'Opacity', detail: 'Contribution weight for compositing' },
+  ];
+
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
-      <SlideMethodBadge method="Gaussian Splatting" color={METHOD_COLORS.gaussian} />
-      <h2 className="text-5xl font-bold mb-2">From Points to Splats</h2>
-      <div className="w-14 h-1 rounded-full mb-5" style={{ background: METHOD_COLORS.gaussian }} />
+      <SlideMethodBadge method="Gaussian Splatting" label="Mechanism + Interactive Demo" color={METHOD_COLORS.gaussian} />
+      <h2 className="text-5xl font-bold mb-2">How Gaussian Splatting Works</h2>
+      <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
+      <p className="text-lg text-[#c7c2b9] mb-4 max-w-5xl">
+        Gaussian splatting represents a scene as explicit 3D Gaussian primitives and renders by projecting them to screen-space ellipses with alpha compositing, instead of querying a heavy neural field per pixel.
+      </p>
 
-      {/* Gaussian function formula */}
-      <FormulaBlock color={METHOD_COLORS.gaussian} label="3D Gaussian Function">
-        G(<span className="text-[#f5f2ec]">x</span>) = exp
-        <span className="text-[#948d82]">(</span>
-        -&frac12; (<span className="text-[#f5f2ec]">x</span>-<span style={{ color: METHOD_COLORS.gaussian }}>&mu;</span>)
-        <sup>T</sup>{' '}
-        <span style={{ color: METHOD_COLORS.gaussian }}>&Sigma;</span><sup>-1</sup>{' '}
-        (<span className="text-[#f5f2ec]">x</span>-<span style={{ color: METHOD_COLORS.gaussian }}>&mu;</span>)
-        <span className="text-[#948d82]">)</span>
-      </FormulaBlock>
-
-      <div className="grid grid-cols-2 gap-5 mt-5 items-start">
-        {/* Explanation */}
-        <div className="space-y-3">
-          {/* Learnable parameters as tagged pills */}
+      <div className="grid grid-cols-12 gap-4 items-stretch">
+        <div className="col-span-5 space-y-3">
           <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-            <div className="text-sm uppercase tracking-widest text-[#948d82] mb-2.5">Learnable Parameters per Gaussian</div>
-            <div className="grid grid-cols-2 gap-2">
-              {[
-                { sym: '\u03BC', name: 'Position', desc: 'xyz center', color: '#ff6b6b' },
-                { sym: '\u03A3', name: 'Covariance', desc: '3x3 shape', color: '#ffd93d' },
-                { sym: 'c', name: 'Color', desc: 'SH coefficients', color: '#4ecdc4' },
-                { sym: '\u03B1', name: 'Opacity', desc: '[0, 1] alpha', color: '#c9b1ff' },
-              ].map((p) => (
-                <div key={p.sym} className="flex items-center gap-2 p-2.5 rounded-lg bg-[#181716]">
-                  <span
-                    className="w-7 h-7 rounded flex items-center justify-center text-sm font-bold font-mono"
-                    style={{ background: `${p.color}25`, color: p.color }}
-                  >
-                    {p.sym}
-                  </span>
-                  <div>
-                    <div className="text-base font-medium text-[#f5f2ec]">{p.name}</div>
-                    <div className="text-sm text-[#948d82]">{p.desc}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Training pipeline */}
-          <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-            <div className="text-sm uppercase tracking-widest text-[#948d82] mb-2">Optimization Loop</div>
+            <p className="text-sm uppercase tracking-widest text-[#948d82] mb-2">Capture to Render Pipeline</p>
             <div className="space-y-2">
-              {[
-                'Render Gaussians \u2192 2D image via differentiable rasterizer',
-                'Compute photometric loss: L = ||I\u0302 - I||',
-                'Backprop gradients to all Gaussian parameters',
-                'Adaptive density: split under-reconstructed, prune low-\u03B1',
-              ].map((step, i) => (
-                <div key={i} className="flex items-start gap-2">
+              {mechanismSteps.map((step, index) => (
+                <div key={step} className="flex items-start gap-2">
                   <span
                     className="text-sm font-bold w-5 h-5 rounded flex items-center justify-center flex-shrink-0 mt-0.5"
                     style={{ background: `${METHOD_COLORS.gaussian}30`, color: METHOD_COLORS.gaussian }}
                   >
-                    {i + 1}
+                    {index + 1}
                   </span>
-                  <span className="text-base text-[#bdb8af]">{step}</span>
+                  <span className="text-base text-[#c7c2b9]">{step}</span>
                 </div>
               ))}
             </div>
           </div>
+
+          <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+            <p className="text-sm uppercase tracking-widest text-[#948d82] mb-2">Per-Gaussian Parameters</p>
+            <div className="grid grid-cols-2 gap-2">
+              {params.map((param) => (
+                <div key={param.sym} className="rounded-lg bg-[#181716] p-2.5">
+                  <p className="font-mono text-lg" style={{ color: METHOD_COLORS.gaussian }}>{param.sym}</p>
+                  <p className="text-sm font-semibold text-[#f5f2ec]">{param.label}</p>
+                  <p className="text-xs text-[#948d82]">{param.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+            <p className="text-sm uppercase tracking-widest text-[#948d82] mb-2">Best Learning Demo</p>
+            <div className="space-y-2">
+              <a
+                href={GSPLAT_COLMAP_GUIDE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between rounded-lg border border-[#3d3a36] bg-[#181716] px-3 py-2 hover:bg-[#242220] transition-colors"
+              >
+                <span className="text-sm text-[#f5f2ec]">gsplat: Fit a COLMAP Capture</span>
+                <ExternalLink size={14} className="text-[#948d82]" />
+              </a>
+              <a
+                href={SUPERSPLAT_EDITOR_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between rounded-lg border border-[#3d3a36] bg-[#181716] px-3 py-2 hover:bg-[#242220] transition-colors"
+              >
+                <span className="text-sm text-[#f5f2ec]">SuperSplat Editor (inspect/edit splats)</span>
+                <ExternalLink size={14} className="text-[#948d82]" />
+              </a>
+            </div>
+          </div>
         </div>
 
-        {/* Demo link */}
-        <DemoLink slug="point-cloud" label="Point Cloud to Splats" color={METHOD_COLORS.gaussian} />
+        <div className="col-span-7 rounded-xl border border-[#3d3a36] bg-[#1d1c1a] p-3">
+          <div className="flex items-center justify-between mb-2">
+            <p className="text-sm uppercase tracking-widest text-[#948d82]">Interactive Mechanism Demo</p>
+            <a
+              href="/slides/demos/point-cloud"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs hover:underline"
+              style={{ color: METHOD_COLORS.gaussian }}
+            >
+              Open full screen
+            </a>
+          </div>
+          <div className="w-full aspect-[16/10] rounded-lg overflow-hidden border border-[#3d3a36] bg-[#111110]">
+            <iframe
+              src="/slides/demos/point-cloud?embed=1"
+              title="Point Cloud to Gaussian Splats Demo"
+              className="w-full h-full"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            />
+          </div>
+          <p className="text-sm text-[#948d82] mt-2">
+            Drag to rotate and scrub from sparse points to splats to see the explicit primitive transition.
+          </p>
+        </div>
       </div>
 
       <SlideEvidenceStrip
         links={[
           { label: '3D Gaussian Splatting', href: EVIDENCE_URLS.arxiv3dgs },
+          { label: 'gsplat COLMAP Example', href: EVIDENCE_URLS.gsplatColmap },
+          { label: 'SuperSplat Docs', href: EVIDENCE_URLS.supersplatDocs },
           { label: 'LAM', href: EVIDENCE_URLS.arxivLAM },
         ]}
       />
@@ -4383,21 +4423,22 @@ const SLIDES: React.FC[] = [
   SlideGenerativeResearch,       // 17
   SlideGaussianDemo,             // 18
   SlideGaussianHow,              // 19
-  SlideGaussianIdentityResponse, // 20
-  SlideGaussianSupersplatDemoOne,// 21
-  SlideGaussianSupersplatDemoTwo,// 22
-  SlideGaussianPersonalDemo,     // 23
-  SlideGaussianWorldlabsDemo,    // 24
-  SlideGaussianResearchVideoWall,// 25
-  SlideCapabilityTransition,     // 26
-  SlideCapabilityMatrix,         // 27
-  SlideAudio2FaceBuildingBlocks, // 28
-  SlideWhereIntelligenceLives,   // 29
-  SlideResearchFrontier,         // 30
-  SlideFuturePerspectiveMissingLayers, // 31
-  SlideConvergenceUpdated,       // 32
-  SlideHowToEvolveProject,       // 33
-  SlideThankYou,                 // 34
+  SlideGaussianMechanism,        // 20
+  SlideGaussianIdentityResponse, // 21
+  SlideGaussianSupersplatDemoOne,// 22
+  SlideGaussianSupersplatDemoTwo,// 23
+  SlideGaussianPersonalDemo,     // 24
+  SlideGaussianWorldlabsDemo,    // 25
+  SlideGaussianResearchVideoWall,// 26
+  SlideCapabilityTransition,     // 27
+  SlideCapabilityMatrix,         // 28
+  SlideAudio2FaceBuildingBlocks, // 29
+  SlideWhereIntelligenceLives,   // 30
+  SlideResearchFrontier,         // 31
+  SlideFuturePerspectiveMissingLayers, // 32
+  SlideConvergenceUpdated,       // 33
+  SlideHowToEvolveProject,       // 34
+  SlideThankYou,                 // 35
 ];
 
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   MAIN SLIDES PAGE
