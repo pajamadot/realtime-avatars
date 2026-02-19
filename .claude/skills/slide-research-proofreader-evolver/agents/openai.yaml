@@ -1,0 +1,4 @@
+interface:
+  display_name: "Slide Research Proofreader"
+  short_description: "Audit research slides with source-verified claim checks."
+  default_prompt: "Use $slide-research-proofreader-evolver to verify research slide claims and refresh evidence artifacts."

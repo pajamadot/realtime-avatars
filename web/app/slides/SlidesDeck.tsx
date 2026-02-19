@@ -41,7 +41,7 @@ import gaussianVideoWallData from '../data/gaussian-video-wall.json';
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   CONSTANTS
    鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?*/
 
-const TOTAL_SLIDES = 41;
+const TOTAL_SLIDES = 38;
 
 function clampSlideNumber(slide: number) {
   if (!Number.isFinite(slide)) return 1;
@@ -60,12 +60,43 @@ const SKILL_METAHUMAN_URL = 'https://github.com/pajamadot/realtime-avatars/blob/
 const SKILL_FULL_MODALITY_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/full-modality-social-evolver/SKILL.md';
 const SKILL_GAUSSIAN_WALL_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/gaussian-youtube-video-wall-evolver/SKILL.md';
 const SKILL_MULTIMODAL_IO_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/multimodal-io-research-evolver/SKILL.md';
+const SKILL_SLIDE_PROOFREADER_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/slide-research-proofreader-evolver/SKILL.md';
+const METAHUMAN_EVOLVER_ARCH_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/metahuman-evolver/references/latest-architecture.json';
+const METAHUMAN_EVOLVER_SUMMARY_URL = 'https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/metahuman-evolver/references/latest-summary.md';
 const HEDRA_AVATAR_URL = 'https://www.hedra.com/app/avatar';
 const WORLDLABS_MARBLE_APP_URL = 'https://marble.worldlabs.ai';
 const SUPERSPLAT_DEMO_ONE_URL = 'https://superspl.at/view?id=bd964899';
 const SUPERSPLAT_DEMO_TWO_URL = 'https://superspl.at/view?id=97a75605';
 const PLAYCANVAS_PERSONAL_DEMO_URL = 'https://playcanv.as/p/ySwArvB0/';
 const GAUSSIAN_VIDEO_WALL_ROUTE = '/gaussian-video-wall';
+const EVIDENCE_URLS = {
+  epicMetaHumanDocs: 'https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-documentation',
+  epicMetaHumansInUE: 'https://dev.epicgames.com/documentation/en-us/metahuman/metahumans-in-unreal-engine',
+  epicMetaHumanAnimator: 'https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-animator',
+  epicMetaHumanLiveLink: 'https://dev.epicgames.com/documentation/en-us/metahuman/realtime-animation-using-live-link',
+  epicAudioDrivenAnimation: 'https://dev.epicgames.com/documentation/en-us/metahuman/audio-driven-animation',
+  epicMeshToMetaHuman: 'https://dev.epicgames.com/documentation/en-us/metahuman/mesh-to-metahuman',
+  epicRigLogicApi: 'https://dev.epicgames.com/documentation/en-us/unreal-engine/API/PluginIndex/RigLogic',
+  nvidiaAudio2FaceBlog: 'https://developer.nvidia.com/blog/nvidia-open-sources-audio2face-animation-model/',
+  nvidiaAudio2FaceRepo: 'https://github.com/NVIDIA/Audio2Face-3D',
+  nvidiaAcePluginDocs: 'https://docs.nvidia.com/ace/ace-unreal-plugin/latest/index.html',
+  arxivDdpm: 'https://arxiv.org/abs/2006.11239',
+  arxivProgressiveDistillation: 'https://arxiv.org/abs/2202.00512',
+  arxiv3dgs: 'https://arxiv.org/abs/2308.04079',
+  arxivTaoAvatar: 'https://arxiv.org/abs/2503.17032',
+  arxivLAM: 'https://arxiv.org/abs/2506.09127',
+  arxivMIDAS: 'https://arxiv.org/abs/2508.19320',
+  arxivKnotForcing: 'https://arxiv.org/abs/2512.21734',
+  arxivStreamAvatar: 'https://arxiv.org/abs/2512.22065',
+  arxivLiveTalk: 'https://arxiv.org/abs/2512.23576',
+  arxivAvatarForcing: 'https://arxiv.org/abs/2601.00664',
+  arxivICo3D: 'https://arxiv.org/abs/2601.13148',
+  arxivFastGHA: 'https://arxiv.org/abs/2601.13837',
+  arxivSoulXFlashHead: 'https://arxiv.org/abs/2602.07449',
+  githubAvatarForcing: 'https://github.com/TaekyungKi/AvatarForcing',
+  githubSoulXFlashHead: 'https://github.com/Soul-AILab/SoulX-FlashHead',
+  githubTaoAvatarMobileDemo: 'https://github.com/alibaba/MNN/blob/master/apps/Android/Mnn3dAvatar/README.md',
+} as const;
 const SLIDE_FONT_SCALE = 1.2;
 const SLIDE_TYPOGRAPHY_CSS = `
 .slides-root {
@@ -228,6 +259,35 @@ function SlideTitle() {
       <div className="flex flex-col items-center gap-1.5 text-[#948d82]">
         <span className="text-2xl font-medium text-[#f5f2ec]">Yuntian Chai</span>
       </div>
+    </div>
+  );
+}
+
+function SlideEvidenceStrip({
+  links,
+  note,
+}: {
+  links: Array<{ label: string; href: string }>;
+  note?: string;
+}) {
+  return (
+    <div className="mt-3 rounded-lg border border-[#3d3a36] bg-[#181716] px-3 py-2">
+      <div className="flex flex-wrap items-center gap-2 text-[11px] text-[#948d82]">
+        <span className="uppercase tracking-widest">Evidence</span>
+        {links.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 rounded-full border border-[#3d3a36] px-2 py-0.5 text-[#bdb8af] hover:text-[#f5f2ec] transition-colors"
+          >
+            {link.label}
+            <ExternalLink size={10} />
+          </a>
+        ))}
+      </div>
+      {note ? <p className="text-[10px] text-[#7f7b74] mt-1">{note}</p> : null}
     </div>
   );
 }
@@ -828,7 +888,7 @@ function SlideFuturePerspectiveMissingLayers() {
       color: METHOD_COLORS.metahuman,
       icon: Users,
       bullets: [
-        'Multimodal fusion with uncertainty-aware affect estimates.',
+        'Multimodal fusion of facial expression (AU/micro-expression), gaze, voice, and text with uncertainty-aware affect estimates.',
         'Conservative behavior when confidence is low.',
       ],
     },
@@ -857,7 +917,7 @@ function SlideFuturePerspectiveMissingLayers() {
         <SlideFlow
           accentColor={METHOD_COLORS.gaussian}
           nodes={[
-            { id: 'in', label: 'User input (audio / text / video / gesture)' },
+            { id: 'in', label: 'User input (audio / text / video / facial expression / gesture)' },
             { id: 'perception', label: 'Perception (ASR + vision + quality checks)' },
             { id: 'fusion', label: 'Temporal fusion + uncertainty estimation' },
             { id: 'state', label: 'Turn-taking + memory + social state' },
@@ -1062,6 +1122,14 @@ function SlideThreeApproaches() {
           </div>
         ))}
       </div>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: 'MetaHuman docs', href: EVIDENCE_URLS.epicMetaHumanDocs },
+          { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
+          { label: '3D Gaussian Splatting', href: EVIDENCE_URLS.arxiv3dgs },
+        ]}
+      />
     </div>
   );
 }
@@ -1180,6 +1248,16 @@ function SlideMetahumanHow() {
           </ul>
         </div>
       </div>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: 'Local architecture snapshot', href: METAHUMAN_EVOLVER_ARCH_URL },
+          { label: 'Local cycle summary', href: METAHUMAN_EVOLVER_SUMMARY_URL },
+          { label: 'MetaHuman docs', href: EVIDENCE_URLS.epicMetaHumanDocs },
+          { label: 'RigLogic API', href: EVIDENCE_URLS.epicRigLogicApi },
+        ]}
+        note="Counts and dependency hubs on this slide are pulled from the local metahuman-evolver scan artifacts."
+      />
     </div>
   );
 }
@@ -1204,9 +1282,10 @@ function SlideMetahumanIdentityResponse() {
         <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
           <h3 className="text-lg font-semibold text-[#f5f2ec] mb-2">2) Realtime Response Model</h3>
           <ul className="space-y-1.5 text-sm text-[#bdb8af]">
-            <li>Native multimodal inputs: face video/depth, audio prosody, head pose, gaze cues, turn-taking signals.</li>
+            <li>Native capture inputs: face video/depth (pipeline-dependent), audio, and head motion from Live Link devices.</li>
             <li>Models: Live Link Face + MetaHuman Animator 4D solver + RigLogic runtime path.</li>
             <li>Control outputs: ARKit-style blendshape curves, head/eye transforms, and interaction-state cues.</li>
+            <li>Turn-taking, intent, and social policy cues are usually handled in an external cognition layer.</li>
             <li>Final outputs: rendered video stream + synced speech audio.</li>
           </ul>
         </div>
@@ -1216,7 +1295,7 @@ function SlideMetahumanIdentityResponse() {
         <div className="grid grid-cols-3 gap-3 text-xs">
           <div className="rounded-lg p-3 bg-[#181716]">
             <p className="text-[#948d82] uppercase tracking-wide mb-1">Input Modalities</p>
-            <p className="text-[#f5f2ec]">Face/depth video, audio, head pose, gaze, turn-state, intent signals.</p>
+            <p className="text-[#f5f2ec]">Face/depth video, audio, head pose, and optional gaze feeds from capture tools.</p>
           </div>
           <div className="rounded-lg p-3 bg-[#181716]">
             <p className="text-[#948d82] uppercase tracking-wide mb-1">Core Models</p>
@@ -1228,6 +1307,14 @@ function SlideMetahumanIdentityResponse() {
           </div>
         </div>
       </div>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: 'MetaHuman Animator', href: EVIDENCE_URLS.epicMetaHumanAnimator },
+          { label: 'Realtime Live Link', href: EVIDENCE_URLS.epicMetaHumanLiveLink },
+          { label: 'Mesh to MetaHuman', href: EVIDENCE_URLS.epicMeshToMetaHuman },
+        ]}
+      />
     </div>
   );
 }
@@ -1295,18 +1382,27 @@ function SlideGenerativeHow() {
             24-32 FPS
           </div>
           <div className="text-sm text-[#948d82] uppercase tracking-wide">
-            With distillation
+            Reported in recent streaming models
           </div>
         </div>
         <div className="rounded-xl p-5 border border-[#3d3a36] bg-[#1d1c1a] text-center">
           <div className="text-4xl font-bold mb-1" style={{ color: METHOD_COLORS.generative }}>
-            {'<'}500ms
+            ≈500ms
           </div>
           <div className="text-sm text-[#948d82] uppercase tracking-wide">
-            E2E with Avatar Forcing
+            End-to-end interaction target
           </div>
         </div>
       </div>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
+          { label: 'LiveTalk', href: EVIDENCE_URLS.arxivLiveTalk },
+          { label: 'SoulX-FlashHead', href: EVIDENCE_URLS.arxivSoulXFlashHead },
+        ]}
+        note="Latency/FPS values are taken from paper-reported settings and are not normalized head-to-head benchmarks."
+      />
     </div>
   );
 }
@@ -1323,7 +1419,7 @@ function SlideGenerativeIdentityResponse() {
           <h3 className="text-lg font-semibold text-[#f5f2ec] mb-2">1) Identity Creation</h3>
           <ul className="space-y-1.5 text-sm text-[#bdb8af]">
             <li>Inputs: one portrait image (or short reference video) + optional style prompt.</li>
-            <li>Models: face/identity encoder + ReferenceNet/IP-Adapter conditioning.</li>
+            <li>Models: reference-conditioned identity encoders (for example, ReferenceNet/IP-Adapter style modules).</li>
             <li>Representation: latent identity tokens/features (2D latent space or DiT embeddings).</li>
             <li>Output modality: identity-conditioned latent state for subsequent frame generation.</li>
           </ul>
@@ -1356,6 +1452,14 @@ function SlideGenerativeIdentityResponse() {
           </div>
         </div>
       </div>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
+          { label: 'LiveTalk', href: EVIDENCE_URLS.arxivLiveTalk },
+          { label: 'StreamAvatar', href: EVIDENCE_URLS.arxivStreamAvatar },
+        ]}
+      />
     </div>
   );
 }
@@ -1416,7 +1520,7 @@ function SlideGenerativeMechanism() {
             {[
               { step: '1', text: 'U-Net predicts noise \u03B5\u03B8(x\u209C, t) at current step' },
               { step: '2', text: 'Subtract predicted noise, scaled by schedule (\u03B1, \u03B2)' },
-              { step: '3', text: 'Repeat T\u219250 times for full denoising' },
+              { step: '3', text: 'Repeat across many denoising steps (commonly tens in baseline DDPM)' },
             ].map((item) => (
               <div key={item.step} className="flex items-start gap-2">
                 <span
@@ -1447,121 +1551,139 @@ function SlideGenerativeMechanism() {
         {/* Demo link */}
         <DemoLink slug="denoising" label="Denoising Process" color={METHOD_COLORS.generative} />
       </div>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: 'DDPM', href: EVIDENCE_URLS.arxivDdpm },
+          { label: 'Progressive Distillation', href: EVIDENCE_URLS.arxivProgressiveDistillation },
+          { label: 'LiveTalk (distillation application)', href: EVIDENCE_URLS.arxivLiveTalk },
+        ]}
+      />
     </div>
   );
 }
 
 function SlideGenerativeResearch() {
-  const tracks = [
+  type TrackId = 'latency' | 'control' | 'deployment';
+  type ResearchPaper = {
+    name: string;
+    metric: string;
+    desc: string;
+    focus: string;
+    inputs: string;
+    url: string;
+    codeUrl?: string;
+    codeLabel?: string;
+  };
+
+  const tracks: Array<{ id: TrackId; label: string; hint: string; papers: ResearchPaper[] }> = [
     {
       id: 'latency',
       label: 'Latency',
-      hint: 'How papers cut end-to-end delay',
+      hint: 'Papers that explicitly target lower interaction delay.',
       papers: [
         {
           name: 'Avatar Forcing (2026)',
-          metric: '<500ms E2E',
-          desc: 'Causal forcing keeps interaction state warm between turns.',
-          speed: 9,
-          realism: 7,
-          control: 7,
+          metric: '~500ms E2E',
+          desc: 'Causal multimodal forcing for low-latency conversational video.',
+          focus: 'Keep interactive state warm between turns to reduce first-reaction lag.',
+          inputs: 'Audio + interaction history + multimodal context',
+          url: EVIDENCE_URLS.arxivAvatarForcing,
+          codeUrl: EVIDENCE_URLS.githubAvatarForcing,
+          codeLabel: 'GitHub code',
         },
         {
           name: 'SoulX-FlashHead (2026)',
-          metric: 'Streaming-ready',
-          desc: 'Oracle-guided architecture targets consistent real-time throughput.',
-          speed: 8,
-          realism: 8,
-          control: 6,
+          metric: 'Up to 96 FPS (Lite)',
+          desc: 'Oracle-guided streaming architecture for long-horizon stability.',
+          focus: 'Sustain realtime generation with stable long-form behavior.',
+          inputs: 'Audio + visual conditioning',
+          url: EVIDENCE_URLS.arxivSoulXFlashHead,
+          codeUrl: EVIDENCE_URLS.githubSoulXFlashHead,
+          codeLabel: 'GitHub code',
         },
         {
           name: 'LiveTalk (2025)',
-          metric: '40x fewer steps',
-          desc: 'Distillation compresses diffusion loops from dozens of steps to a few.',
-          speed: 8,
-          realism: 6,
-          control: 5,
+          metric: '20x distillation',
+          desc: 'Realtime multimodal interactive video diffusion.',
+          focus: 'Compress denoising cost using a distillation-heavy realtime stack.',
+          inputs: 'Audio + text + image',
+          url: EVIDENCE_URLS.arxivLiveTalk,
         },
       ],
     },
     {
       id: 'control',
       label: 'Control',
-      hint: 'How papers improve expression precision',
+      hint: 'Papers emphasizing identity consistency and controllable interaction.',
       papers: [
         {
-          name: 'AUHead (2026)',
-          metric: 'AU-conditioned',
-          desc: 'Action Unit controls improve emotion steering beyond lip-sync.',
-          speed: 6,
-          realism: 8,
-          control: 9,
+          name: 'Knot Forcing (2025)',
+          metric: 'Identity stability',
+          desc: 'Infinite interactive portrait animation with temporal knot constraints.',
+          focus: 'Hold identity and temporal consistency under prolonged interaction.',
+          inputs: 'Audio + interaction controls',
+          url: EVIDENCE_URLS.arxivKnotForcing,
         },
         {
-          name: 'Toward Fine-Grained Facial Control (2026)',
-          metric: 'Fine-grained motion',
-          desc: 'Targets sub-region expression control on 3D talking heads.',
-          speed: 7,
-          realism: 8,
-          control: 9,
+          name: 'StreamAvatar (2025)',
+          metric: 'Streaming diffusion',
+          desc: 'Consistent streaming talking avatar generation.',
+          focus: 'Preserve coherence while running a streaming pipeline.',
+          inputs: 'Audio + dialogue context',
+          url: EVIDENCE_URLS.arxivStreamAvatar,
         },
         {
-          name: 'EditYourself (2026)',
-          metric: 'Script-level edits',
-          desc: 'Modifies existing videos while preserving identity and motion.',
-          speed: 5,
-          realism: 8,
-          control: 8,
+          name: 'MIDAS (2025)',
+          metric: 'Audio+pose+text',
+          desc: 'Realtime autoregressive multimodal digital human synthesis.',
+          focus: 'Fuse multiple control channels in one autoregressive model.',
+          inputs: 'Audio + pose + text',
+          url: EVIDENCE_URLS.arxivMIDAS,
         },
       ],
     },
     {
       id: 'deployment',
       label: 'Deployment',
-      hint: 'How papers improve practicality and scaling',
+      hint: 'Papers emphasizing practical realtime deployment paths.',
       papers: [
         {
-          name: 'SelfieAvatar (2026)',
-          metric: 'Selfie video input',
-          desc: 'Reduces capture requirements for personalization.',
-          speed: 8,
-          realism: 7,
-          control: 6,
+          name: 'TaoAvatar (2025)',
+          metric: '90 FPS Vision Pro',
+          desc: 'Controllable full-body 3DGS avatars with XR deployment results.',
+          focus: 'Ship controllable Gaussian avatars in realtime XR settings.',
+          inputs: 'Audio + expression + gesture/pose controls',
+          url: EVIDENCE_URLS.arxivTaoAvatar,
+          codeUrl: EVIDENCE_URLS.githubTaoAvatarMobileDemo,
+          codeLabel: 'Mobile demo code',
         },
         {
-          name: 'Splat-Portrait (2026)',
-          metric: 'Single portrait',
-          desc: 'Generalizes to unseen identities while keeping 3DGS rendering speed.',
-          speed: 8,
-          realism: 8,
-          control: 7,
+          name: 'ICo3D (2026)',
+          metric: 'Gaze + expression',
+          desc: 'Interactive conversational 3D virtual human using Gaussian components.',
+          focus: 'Integrate conversational behavior with explicit 3D avatar representation.',
+          inputs: 'Speech + conversation state + expression controls',
+          url: EVIDENCE_URLS.arxivICo3D,
         },
         {
-          name: 'MANGO (2026)',
-          metric: 'Multi-speaker focus',
-          desc: 'Conversation-aware switching between speaking and listening behavior.',
-          speed: 6,
-          realism: 8,
-          control: 7,
+          name: 'FastGHA (2026)',
+          metric: 'Few-shot real-time',
+          desc: 'Few-shot Gaussian head avatars animated in realtime.',
+          focus: 'Lower data requirements while preserving realtime behavior.',
+          inputs: 'Few-shot visual identity + driving signals',
+          url: EVIDENCE_URLS.arxivFastGHA,
         },
       ],
     },
-  ] as const;
+  ];
 
-  type TrackId = (typeof tracks)[number]['id'];
-  type PaperName = (typeof tracks)[number]['papers'][number]['name'];
-  type PaperMetricKey = 'speed' | 'realism' | 'control';
+  type PaperName = ResearchPaper['name'];
   const [activeTrackId, setActiveTrackId] = useState<TrackId>('latency');
   const [activePaperName, setActivePaperName] = useState<PaperName>(tracks[0].papers[0].name);
 
   const activeTrack = tracks.find((track) => track.id === activeTrackId) ?? tracks[0];
   const activePaper = activeTrack.papers.find((paper) => paper.name === activePaperName) ?? activeTrack.papers[0];
-
-  const metrics: Array<{ key: PaperMetricKey; label: string }> = [
-    { key: 'speed', label: 'Speed' },
-    { key: 'realism', label: 'Realism' },
-    { key: 'control', label: 'Control' },
-  ];
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
@@ -1635,32 +1757,56 @@ function SlideGenerativeResearch() {
             </div>
           </div>
 
-          <div className="space-y-2.5">
-            {metrics.map((metric) => (
-              <div key={metric.key}>
-                <div className="flex items-center justify-between text-[11px] mb-1">
-                  <span className="text-[#bdb8af]">{metric.label}</span>
-                  <span className="font-mono text-[#f5f2ec]">{activePaper[metric.key]}/10</span>
-                </div>
-                <div className="h-1.5 rounded-full bg-[#181716] overflow-hidden">
-                  <div
-                    className="h-full rounded-full"
-                    style={{
-                      width: `${activePaper[metric.key] * 10}%`,
-                      background: METHOD_COLORS.generative,
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
+          <div className="space-y-2 text-xs text-[#bdb8af]">
+            <div>
+              <p className="text-[#948d82] uppercase tracking-widest mb-1">Focus</p>
+              <p className="text-[#f5f2ec]">{activePaper.focus}</p>
+            </div>
+            <div>
+              <p className="text-[#948d82] uppercase tracking-widest mb-1">Primary Inputs</p>
+              <p className="text-[#f5f2ec]">{activePaper.inputs}</p>
+            </div>
+            <div className="pt-1 flex flex-wrap items-center gap-2">
+              <a
+                href={activePaper.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-[11px] font-semibold hover:underline"
+                style={{ color: METHOD_COLORS.generative }}
+              >
+                Original paper
+                <ExternalLink size={12} />
+              </a>
+              {activePaper.codeUrl ? (
+                <a
+                  href={activePaper.codeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-[11px] font-semibold hover:underline text-[#f5f2ec]"
+                >
+                  {activePaper.codeLabel ?? 'Code'}
+                  <ExternalLink size={12} />
+                </a>
+              ) : (
+                <span className="text-[10px] text-[#7f7b74]">Code: not public</span>
+              )}
+            </div>
           </div>
 
           <p className="text-[11px] text-[#948d82] mt-4">
-            Practical direction: combine distillation (speed), AU or expression controls (precision),
-            and streaming-aware training for robust deployment.
+            This panel is source-backed: each card links to the original paper; no synthetic scoring is used here.
           </p>
         </div>
       </div>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
+          { label: 'SoulX-FlashHead', href: EVIDENCE_URLS.arxivSoulXFlashHead },
+          { label: 'LiveTalk', href: EVIDENCE_URLS.arxivLiveTalk },
+          { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
+        ]}
+      />
     </div>
   );
 }
@@ -1773,6 +1919,13 @@ function SlideGaussianHow() {
           { id: 'render', label: 'Realtime View Synthesis' },
         ]}
       />
+
+      <SlideEvidenceStrip
+        links={[
+          { label: '3D Gaussian Splatting', href: EVIDENCE_URLS.arxiv3dgs },
+          { label: 'LAM (one-shot Gaussian avatar)', href: EVIDENCE_URLS.arxivLAM },
+        ]}
+      />
     </div>
   );
 }
@@ -1797,7 +1950,7 @@ function SlideGaussianIdentityResponse() {
         <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
           <h3 className="text-lg font-semibold text-[#f5f2ec] mb-2">2) Realtime Response Model</h3>
           <ul className="space-y-1.5 text-sm text-[#bdb8af]">
-            <li>Native inputs: audio, expression coefficients, head pose; webcam face/gaze is usually conditional.</li>
+            <li>Common driving inputs: audio, expression coefficients, and head pose; direct webcam gaze/AU feeds are often extra modules.</li>
             <li>Models: Audio2Expression driver + deformation model (FLAME/SMPL-X or learned fields).</li>
             <li>Renderer: differentiable or realtime splat rasterizer with depth-aware alpha blending.</li>
             <li>Final outputs: high-FPS video stream and avatar state updates for interaction loops.</li>
@@ -1821,6 +1974,15 @@ function SlideGaussianIdentityResponse() {
           </div>
         </div>
       </div>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: '3D Gaussian Splatting', href: EVIDENCE_URLS.arxiv3dgs },
+          { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
+          { label: 'ICo3D', href: EVIDENCE_URLS.arxivICo3D },
+          { label: 'FastGHA', href: EVIDENCE_URLS.arxivFastGHA },
+        ]}
+      />
     </div>
   );
 }
@@ -1899,6 +2061,13 @@ function SlideGaussianMechanism() {
         {/* Demo link */}
         <DemoLink slug="point-cloud" label="Point Cloud to Splats" color={METHOD_COLORS.gaussian} />
       </div>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: '3D Gaussian Splatting', href: EVIDENCE_URLS.arxiv3dgs },
+          { label: 'LAM', href: EVIDENCE_URLS.arxivLAM },
+        ]}
+      />
     </div>
   );
 }
@@ -1965,6 +2134,13 @@ function SlideGaussianCovariance() {
         {/* Demo link */}
         <DemoLink slug="covariance" label="Covariance & Shape" color={METHOD_COLORS.gaussian} />
       </div>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: '3D Gaussian Splatting', href: EVIDENCE_URLS.arxiv3dgs },
+          { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
+        ]}
+      />
     </div>
   );
 }
@@ -2643,6 +2819,20 @@ function SlideSignalsInteraction() {
       <p className="text-sm text-[#948d82] mt-3">
         Real multimodality depends on native signal support. Conditional channels usually require extra perception/control modules.
       </p>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: 'MetaHuman Live Link', href: EVIDENCE_URLS.epicMetaHumanLiveLink },
+          { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
+          { label: 'LiveTalk', href: EVIDENCE_URLS.arxivLiveTalk },
+          { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
+          { label: 'ICo3D', href: EVIDENCE_URLS.arxivICo3D },
+        ]}
+        note="Support dots indicate default pipeline behavior in cited systems, not absolute theoretical limits."
+      />
+      <p className="text-[10px] text-[#7f7b74] mt-2">
+        Heuristic classification updated from cited papers/docs on February 19, 2026.
+      </p>
     </div>
   );
 }
@@ -2656,11 +2846,45 @@ function SlideCapabilityMatrix() {
     name: string;
     scores: [ScoreLevel, ScoreLevel, ScoreLevel];
     cite: string;
+    sources: Array<{ label: string; href: string }>;
   }> = [
-    { name: 'Identity Creation: Customizability & Control', scores: [3, 1, 2], cite: 'MetaHuman DNA rig controls are explicit; Gaussian identity is editable but less standardized; video generation is mostly latent/conditional.' },
-    { name: 'Eye / Gaze Control', scores: [3, 1, 2], cite: 'MetaHuman has explicit gaze rigs; ICo3D adds gaze to Gaussians' },
-    { name: 'Gesture Support', scores: [3, 2, 1], cite: 'MetaHuman full-body rigs are mature; TaoAvatar shows conditional gesture/pose control for Gaussian avatars.' },
-    { name: 'XR-Ready', scores: [3, 0, 3], cite: 'TaoAvatar reports 90 FPS Vision Pro deployment; MetaHuman is production-proven in UE XR pipelines.' },
+    {
+      name: 'Identity Creation: Customizability & Control',
+      scores: [3, 1, 2],
+      cite: 'MetaHuman exposes explicit rig channels and authoring workflows; video generation is mostly latent conditioning; Gaussian pipelines sit between explicit and learned control.',
+      sources: [
+        { label: 'Mesh to MetaHuman', href: EVIDENCE_URLS.epicMeshToMetaHuman },
+        { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
+        { label: 'LAM', href: EVIDENCE_URLS.arxivLAM },
+      ],
+    },
+    {
+      name: 'Eye / Gaze Control',
+      scores: [3, 1, 2],
+      cite: 'MetaHuman has direct rig-level eye controls, while gaze in generative stacks is usually conditional; ICo3D reports gaze-aware conversational control on 3D avatars.',
+      sources: [
+        { label: 'MetaHuman docs', href: EVIDENCE_URLS.epicMetaHumanDocs },
+        { label: 'ICo3D', href: EVIDENCE_URLS.arxivICo3D },
+      ],
+    },
+    {
+      name: 'Gesture Support',
+      scores: [3, 2, 1],
+      cite: 'MetaHuman has mature full-body rig workflows; TaoAvatar reports controllable expression/gesture in a Gaussian avatar pipeline.',
+      sources: [
+        { label: 'MetaHuman docs', href: EVIDENCE_URLS.epicMetaHumanDocs },
+        { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
+      ],
+    },
+    {
+      name: 'XR-Ready',
+      scores: [3, 0, 3],
+      cite: 'TaoAvatar reports 90 FPS on Vision Pro; MetaHuman remains widely used in Unreal-based XR production workflows.',
+      sources: [
+        { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
+        { label: 'MetaHumans in UE', href: EVIDENCE_URLS.epicMetaHumansInUE },
+      ],
+    },
   ];
 
   const methods = [
@@ -2714,7 +2938,21 @@ function SlideCapabilityMatrix() {
             </button>
             {expanded === cap.name && (
               <div className="px-4 py-2.5 bg-[#181716] text-xs text-[#bdb8af] border-b border-[#242220]">
-                {cap.cite}
+                <p>{cap.cite}</p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {cap.sources.map((src) => (
+                    <a
+                      key={src.href}
+                      href={src.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[10px] text-[#f5f2ec] hover:underline"
+                    >
+                      {src.label}
+                      <ExternalLink size={10} />
+                    </a>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -2733,6 +2971,18 @@ function SlideCapabilityMatrix() {
       <p className="text-[10px] text-[#948d82] mt-2">
         Note: this matrix evaluates rendering/output and identity-control traits. Full multimodal user-input processing is a separate stack.
       </p>
+      <p className="text-[10px] text-[#7f7b74] mt-1">
+        Scores are evidence-guided heuristics for architecture planning, not a normalized benchmark.
+      </p>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: 'MetaHuman docs', href: EVIDENCE_URLS.epicMetaHumanDocs },
+          { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
+          { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
+          { label: 'ICo3D', href: EVIDENCE_URLS.arxivICo3D },
+        ]}
+      />
     </div>
   );
 }
@@ -2836,97 +3086,128 @@ function SlideRealTimeMetrics() {
 }
 
 function SlideAudio2FaceBuildingBlocks() {
-  type PathId = 'metahuman' | 'gaussian' | 'videogen';
-  const [activePath, setActivePath] = useState<PathId>('metahuman');
-
-  const paths: Record<PathId, { label: string; color: string; steps: string[]; note: string }> = {
-    metahuman: {
-      label: 'MetaHuman Path',
+  const backendCards = [
+    {
+      title: 'MetaHuman Backend',
       color: METHOD_COLORS.metahuman,
-      steps: ['52 ARKit blendshapes', 'LiveLink / MetaHuman Animator', 'UE5 rig rendering'],
-      note: 'Explicit rig control with highest fidelity. Requires Unreal Engine.',
+      representation: 'Rig + blendshape controls (ARKit / RigLogic)',
+      runtime: 'UE5 rendering pipeline with deterministic control surfaces',
+      notes: [
+        'Best when we need precise authoring and predictable facial control.',
+        'Integrates directly with Live Link and production animation stacks.',
+      ],
     },
-    gaussian: {
-      label: 'Gaussian Path',
-      color: METHOD_COLORS.gaussian,
-      steps: ['Expression coefficients', 'LAM Audio2Expression', 'Gaussian splatting render'],
-      note: 'One-shot from photo. Client-side WebGL rendering at 110+ FPS mobile.',
-    },
-    videogen: {
-      label: 'Video Gen Path',
+    {
+      title: 'Video Diffusion Backend',
       color: METHOD_COLORS.generative,
-      steps: ['Emotion embedding', 'Conditioning signal for diffusion', 'Frame-by-frame pixel output'],
-      note: 'No explicit 3D needed. Generator internalizes embodiment.',
+      representation: 'Latent pixel synthesis conditioned by audio/text/image',
+      runtime: 'Autoregressive/streaming diffusion video generation',
+      notes: [
+        'Great one-shot identity onboarding and visual realism potential.',
+        'Control is mostly implicit via conditioning rather than explicit rig channels.',
+      ],
     },
-  };
+    {
+      title: 'Gaussian Backend',
+      color: METHOD_COLORS.gaussian,
+      representation: 'Explicit 3D Gaussians + expression/pose coefficient drivers',
+      runtime: 'Realtime splat rasterization (client or GPU server)',
+      notes: [
+        'Strong balance of control and realtime speed on modern GPUs.',
+        'Supports explicit geometry-level editing and fast render loops.',
+      ],
+    },
+  ];
 
-  const active = paths[activePath];
+  const ecosystem = [
+    { name: 'Avatar Forcing', detail: 'Public GitHub repo', url: 'https://github.com/TaekyungKi/AvatarForcing' },
+    { name: 'SoulX-FlashHead', detail: 'Public GitHub repo', url: 'https://github.com/Soul-AILab/SoulX-FlashHead' },
+    { name: 'TaoAvatar Mobile Demo', detail: 'Public GitHub demo code', url: 'https://github.com/alibaba/MNN/blob/master/apps/Android/Mnn3dAvatar/README.md' },
+  ];
 
   return (
     <div className="flex flex-col justify-center h-full px-12 max-w-7xl mx-auto">
       <h2 className="text-5xl font-bold mb-2">Audio2Face: The Bridge</h2>
       <div className="w-14 h-1 rounded-full mb-4" style={{ background: METHOD_COLORS.gaussian }} />
-      <p className="text-xl text-[#bdb8af] mb-5">
-        Audio-to-face is the shared building block. Same audio input, three different rendering backends.
+      <p className="text-lg text-[#bdb8af] mb-4">
+        Same audio signal, different embodiment backends. Audio2Face is the actuation bridge between cognition output and avatar performance.
       </p>
 
-      {/* Pipeline via ReactFlow */}
       <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a] mb-4">
         <SlideFlow
           accentColor={METHOD_COLORS.gaussian}
           nodes={[
             { id: 'audio', label: 'Audio Input' },
-            { id: 'a2e', label: 'Audio2Emotion' },
-            { id: 'viseme', label: 'Viseme + Emotion' },
-            { id: 'rig', label: 'Rig Controls' },
+            { id: 'a2e', label: 'Phoneme + Emotion Extraction' },
+            { id: 'viseme', label: 'Viseme / Expression Actuation' },
+            { id: 'renderer', label: 'Renderer Backend (MH / VG / GS)' },
           ]}
         />
         <div className="flex items-center justify-center gap-2 text-sm text-[#948d82] mt-2">
           <Layers size={14} />
-          Open models: Audio2Face (NVIDIA), Audio2Expression (LAM), SadTalker, GeneFace++
+          Shared abstraction: one voice stream → one actuation interface → multiple renderers.
         </div>
       </div>
 
-      {/* Three output path tabs */}
-      <div className="flex gap-2 mb-4">
-        {(Object.entries(paths) as [PathId, typeof paths[PathId]][]).map(([id, path]) => (
-          <button
-            key={id}
-            onClick={() => setActivePath(id)}
-            className="px-3 py-1.5 rounded-md text-xs font-semibold border transition-colors flex-1 text-center"
-            style={{
-              borderColor: activePath === id ? path.color : '#3d3a36',
-              color: activePath === id ? path.color : '#bdb8af',
-              background: activePath === id ? `${path.color}16` : '#181716',
-            }}
-          >
-            {path.label}
-          </button>
+      <div className="grid grid-cols-3 gap-3 mb-4">
+        {backendCards.map((card) => (
+          <div key={card.title} className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
+            <h3 className="text-base font-semibold mb-2" style={{ color: card.color }}>
+              {card.title}
+            </h3>
+            <p className="text-xs text-[#948d82] mb-1">Representation</p>
+            <p className="text-sm text-[#c7c2b9] mb-2">{card.representation}</p>
+            <p className="text-xs text-[#948d82] mb-1">Runtime</p>
+            <p className="text-sm text-[#c7c2b9] mb-2">{card.runtime}</p>
+            <ul className="list-disc pl-5 space-y-1 text-xs text-[#bdb8af]">
+              {card.notes.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </div>
         ))}
       </div>
 
-      <div className="rounded-xl p-4 border border-[#3d3a36] bg-[#1d1c1a]">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-3 h-3 rounded-full" style={{ background: active.color }} />
-          <h3 className="text-base font-semibold text-[#f5f2ec]">{active.label}</h3>
+      <div className="grid grid-cols-2 gap-3">
+        <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]">
+          <h3 className="text-sm font-semibold text-[#f5f2ec] mb-1">Official Tracks (2026)</h3>
+          <ul className="list-disc pl-5 space-y-1 text-xs text-[#bdb8af]">
+            <li>MetaHuman docs provide official Audio Driven Animation and Live Link realtime workflows.</li>
+            <li>NVIDIA Audio2Face-3D is open sourced with model code and training/runtime assets.</li>
+            <li>For ACE Unreal plugin deployment, verify UE-version compatibility in the current plugin docs.</li>
+          </ul>
         </div>
-
-        <SlideFlow
-          accentColor={active.color}
-          nodes={active.steps.map((step, i) => ({ id: `step-${i}`, label: step }))}
-        />
-
-        <p className="text-base text-[#bdb8af] mt-3">{active.note}</p>
+        <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a]">
+          <h3 className="text-sm font-semibold text-[#f5f2ec] mb-1">Public Code Anchors</h3>
+          <div className="space-y-2">
+            {ecosystem.map((item) => (
+              <a
+                key={item.name}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between gap-2 text-xs text-[#bdb8af] hover:text-[#f5f2ec] transition-colors"
+              >
+                <span>{item.name}</span>
+                <span className="inline-flex items-center gap-1" style={{ color: METHOD_COLORS.gaussian }}>
+                  {item.detail}
+                  <ExternalLink size={11} />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
 
-      <div className="rounded-xl p-3 border border-[#3d3a36] bg-[#1d1c1a] mt-3">
-        <h3 className="text-sm font-semibold text-[#f5f2ec] mb-1">Official Tracks (2026)</h3>
-        <ul className="list-disc pl-5 space-y-1 text-xs text-[#bdb8af]">
-          <li>UE 5.7 MetaHuman supports native audio-driven animation and realtime Audio Live Link workflows.</li>
-          <li>NVIDIA Audio2Face-3D provides open models + SDK + training framework for custom pipelines.</li>
-          <li>ACE Unreal Audio2Face plugin docs currently target UE 5.5/5.6, so UE 5.7 needs compatibility validation.</li>
-        </ul>
-      </div>
+      <SlideEvidenceStrip
+        links={[
+          { label: 'Audio Driven Animation (Epic)', href: EVIDENCE_URLS.epicAudioDrivenAnimation },
+          { label: 'Realtime Live Link (Epic)', href: EVIDENCE_URLS.epicMetaHumanLiveLink },
+          { label: 'NVIDIA Audio2Face-3D', href: EVIDENCE_URLS.nvidiaAudio2FaceRepo },
+          { label: 'NVIDIA Audio2Face release note', href: EVIDENCE_URLS.nvidiaAudio2FaceBlog },
+          { label: 'ACE Unreal plugin docs', href: EVIDENCE_URLS.nvidiaAcePluginDocs },
+        ]}
+      />
     </div>
   );
 }
@@ -3014,6 +3295,16 @@ function SlideWhereIntelligenceLives() {
           or do we want the pixel generator to internalize it?
         </p>
       </div>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
+          { label: 'LiveTalk', href: EVIDENCE_URLS.arxivLiveTalk },
+          { label: 'SoulX-FlashHead', href: EVIDENCE_URLS.arxivSoulXFlashHead },
+          { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
+          { label: 'LAM', href: EVIDENCE_URLS.arxivLAM },
+        ]}
+      />
     </div>
   );
 }
@@ -3023,15 +3314,84 @@ function SlideResearchFrontier() {
   const [activeCategory, setActiveCategory] = useState<CategoryId>('all');
 
   const papers = [
-    { name: 'Avatar Forcing', year: '2026', category: 'interactive' as const, metric: '~500ms E2E', speed: 9, realism: 7, control: 7, desc: 'Causal multimodal forcing for reactive conversation.', url: 'https://arxiv.org/abs/2601.00664' },
-    { name: 'Knot Forcing', year: '2025', category: 'interactive' as const, metric: 'Identity stability', speed: 7, realism: 8, control: 7, desc: 'Infinite interactive portrait animation with temporal knots.', url: 'https://arxiv.org/abs/2512.21734' },
-    { name: 'StreamAvatar', year: '2025', category: 'streaming' as const, metric: 'Streaming avatar', speed: 8, realism: 7, control: 6, desc: 'Streaming diffusion with coherent listening gestures.', url: 'https://arxiv.org/abs/2512.22065' },
-    { name: 'SoulX-FlashHead', year: '2026', category: 'streaming' as const, metric: '96 FPS (Lite)', speed: 8, realism: 8, control: 6, desc: 'Oracle-guided streaming talking heads with long-horizon stability.', url: 'https://arxiv.org/abs/2602.07449' },
-    { name: 'LiveTalk', year: '2025', category: 'streaming' as const, metric: '20x distillation', speed: 8, realism: 6, control: 5, desc: 'Realtime multimodal interactive video diffusion (audio+text+image).', url: 'https://arxiv.org/abs/2512.23576' },
-    { name: 'MIDAS', year: '2025', category: '3d_xr' as const, metric: 'Audio+pose+text', speed: 6, realism: 8, control: 7, desc: 'Real-time autoregressive multimodal digital-human synthesis.', url: 'https://arxiv.org/abs/2508.19320' },
-    { name: 'ICo3D', year: '2026', category: '3d_xr' as const, metric: 'Gaze + expression', speed: 7, realism: 8, control: 8, desc: 'Interactive conversational 3D virtual human with Gaussian head/body.', url: 'https://arxiv.org/abs/2601.13148' },
-    { name: 'FastGHA', year: '2026', category: '3d_xr' as const, metric: 'Few-shot real-time', speed: 9, realism: 7, control: 6, desc: 'Few-shot Gaussian head avatars with real-time animation.', url: 'https://arxiv.org/abs/2601.13837' },
-    { name: 'TaoAvatar', year: '2025', category: '3d_xr' as const, metric: '90 FPS Vision Pro', speed: 9, realism: 8, control: 8, desc: 'Full-body 3DGS avatars with controllable expression and gesture.', url: 'https://arxiv.org/abs/2503.17032' },
+    {
+      name: 'Avatar Forcing',
+      year: '2026',
+      category: 'interactive' as const,
+      metric: '~500ms E2E',
+      desc: 'Causal multimodal forcing for reactive conversation.',
+      url: EVIDENCE_URLS.arxivAvatarForcing,
+      codeUrl: EVIDENCE_URLS.githubAvatarForcing,
+      codeLabel: 'GitHub code',
+    },
+    {
+      name: 'Knot Forcing',
+      year: '2025',
+      category: 'interactive' as const,
+      metric: 'Identity stability',
+      desc: 'Infinite interactive portrait animation with temporal knots.',
+      url: EVIDENCE_URLS.arxivKnotForcing,
+    },
+    {
+      name: 'StreamAvatar',
+      year: '2025',
+      category: 'streaming' as const,
+      metric: 'Streaming avatar',
+      desc: 'Streaming diffusion with coherent listening gestures.',
+      url: EVIDENCE_URLS.arxivStreamAvatar,
+    },
+    {
+      name: 'SoulX-FlashHead',
+      year: '2026',
+      category: 'streaming' as const,
+      metric: '96 FPS (Lite)',
+      desc: 'Oracle-guided streaming talking heads with long-horizon stability.',
+      url: EVIDENCE_URLS.arxivSoulXFlashHead,
+      codeUrl: EVIDENCE_URLS.githubSoulXFlashHead,
+      codeLabel: 'GitHub code',
+    },
+    {
+      name: 'LiveTalk',
+      year: '2025',
+      category: 'streaming' as const,
+      metric: '20x distillation',
+      desc: 'Realtime multimodal interactive video diffusion (audio+text+image).',
+      url: EVIDENCE_URLS.arxivLiveTalk,
+    },
+    {
+      name: 'MIDAS',
+      year: '2025',
+      category: '3d_xr' as const,
+      metric: 'Audio+pose+text',
+      desc: 'Real-time autoregressive multimodal digital-human synthesis.',
+      url: EVIDENCE_URLS.arxivMIDAS,
+    },
+    {
+      name: 'ICo3D',
+      year: '2026',
+      category: '3d_xr' as const,
+      metric: 'Gaze + expression',
+      desc: 'Interactive conversational 3D virtual human with Gaussian head/body.',
+      url: EVIDENCE_URLS.arxivICo3D,
+    },
+    {
+      name: 'FastGHA',
+      year: '2026',
+      category: '3d_xr' as const,
+      metric: 'Few-shot real-time',
+      desc: 'Few-shot Gaussian head avatars with real-time animation.',
+      url: EVIDENCE_URLS.arxivFastGHA,
+    },
+    {
+      name: 'TaoAvatar',
+      year: '2025',
+      category: '3d_xr' as const,
+      metric: '90 FPS Vision Pro',
+      desc: 'Full-body 3DGS avatars with controllable expression and gesture.',
+      url: EVIDENCE_URLS.arxivTaoAvatar,
+      codeUrl: EVIDENCE_URLS.githubTaoAvatarMobileDemo,
+      codeLabel: 'Mobile demo code',
+    },
   ];
 
   const categories: Array<{ id: CategoryId; label: string }> = [
@@ -3090,26 +3450,48 @@ function SlideResearchFrontier() {
               </p>
               <p className="text-[11px] text-[#bdb8af] line-clamp-2 mb-2">{paper.desc}</p>
 
-              <div className="flex items-center gap-2 text-[10px] text-[#948d82] mb-2">
-                <span>S:{paper.speed}/10</span>
-                <span>R:{paper.realism}/10</span>
-                <span>C:{paper.control}/10</span>
+              <div className="mt-auto flex items-center justify-between gap-2">
+                <a
+                  href={paper.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-[11px] font-semibold hover:underline"
+                  style={{ color }}
+                >
+                  Original paper
+                  <ExternalLink size={12} />
+                </a>
+                {paper.codeUrl ? (
+                  <a
+                    href={paper.codeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-[11px] font-semibold hover:underline"
+                    style={{ color: '#f5f2ec' }}
+                  >
+                    {paper.codeLabel ?? 'Code'}
+                    <ExternalLink size={12} />
+                  </a>
+                ) : (
+                  <span className="text-[10px] text-[#7f7b74]">Code: not public</span>
+                )}
               </div>
-
-              <a
-                href={paper.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-auto inline-flex items-center gap-1.5 text-[11px] font-semibold hover:underline"
-                style={{ color }}
-              >
-                Original paper
-                <ExternalLink size={12} />
-              </a>
             </div>
           );
         })}
       </div>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
+          { label: 'LiveTalk', href: EVIDENCE_URLS.arxivLiveTalk },
+          { label: 'SoulX-FlashHead', href: EVIDENCE_URLS.arxivSoulXFlashHead },
+          { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
+          { label: 'ICo3D', href: EVIDENCE_URLS.arxivICo3D },
+          { label: 'FastGHA', href: EVIDENCE_URLS.arxivFastGHA },
+        ]}
+        note="Cards show paper-reported attributes and links to original sources; synthetic S/R/C scores were removed to avoid unsupported ranking."
+      />
     </div>
   );
 }
@@ -3132,13 +3514,13 @@ function SlideConvergenceUpdated() {
       title: '3D as Learned Prior',
       desc: 'Tri-planes and implicit volumes inside the generator. 3D consistency without explicit meshes.',
       color: METHOD_COLORS.generative,
-      examples: 'MIDAS tri-planes, SplattingAvatar',
+      examples: 'MIDAS-style autoregressive multimodal synthesis',
     },
     {
       title: '3D as Control Signals',
       desc: 'Pose, landmarks, and depth maps guide a 2D generator. 3D informs but pixels remain 2D.',
       color: METHOD_COLORS.generative,
-      examples: 'AUHead, LiveTalk pose conditioning',
+      examples: 'LiveTalk multimodal conditioning, StreamAvatar streaming controls',
     },
   ];
 
@@ -3147,7 +3529,7 @@ function SlideConvergenceUpdated() {
     { text: 'MetaHuman remains the production baseline for controllability', color: METHOD_COLORS.metahuman },
     { text: 'One-shot Gaussian from single photo (LAM)', color: METHOD_COLORS.gaussian },
     { text: 'Sub-500ms E2E conversational loops', color: METHOD_COLORS.generative },
-    { text: 'On-device: TaoAvatar 90 FPS Vision Pro, LAM 110 FPS mobile', color: METHOD_COLORS.gaussian },
+    { text: 'On-device XR result: TaoAvatar reports 90 FPS on Vision Pro', color: METHOD_COLORS.gaussian },
   ];
 
   return (
@@ -3175,6 +3557,16 @@ function SlideConvergenceUpdated() {
           </div>
         ))}
       </div>
+
+      <SlideEvidenceStrip
+        links={[
+          { label: 'Audio Driven Animation (Epic)', href: EVIDENCE_URLS.epicAudioDrivenAnimation },
+          { label: 'Avatar Forcing', href: EVIDENCE_URLS.arxivAvatarForcing },
+          { label: 'LAM', href: EVIDENCE_URLS.arxivLAM },
+          { label: 'TaoAvatar', href: EVIDENCE_URLS.arxivTaoAvatar },
+          { label: 'MIDAS', href: EVIDENCE_URLS.arxivMIDAS },
+        ]}
+      />
     </div>
   );
 }
@@ -3210,6 +3602,7 @@ function SlideBuiltWithClaudeSkills() {
             <li>`metahuman-evolver`: Unreal plugin architecture + dependency graph</li>
             <li>`full-modality-social-evolver`: slide claim checks + ArXiv/GitHub deltas</li>
             <li>`multimodal-io-research-evolver`: distills native vs conditional I/O across all 3 approaches</li>
+            <li>`slide-research-proofreader-evolver`: page-level source-link and evidence-strip audits for research slides</li>
             <li>Self-evolving state/events memory for repeatable improvement cycles</li>
           </ul>
         </div>
@@ -3223,6 +3616,7 @@ function SlideBuiltWithClaudeSkills() {
             <li>`multimodal-io-claim-matrix-latest.json`</li>
             <li>`metahuman-architecture-latest.json`</li>
             <li>`metahuman-dependency-graph-latest.json/.mmd`</li>
+            <li>`slide-proofread-latest.md/json`</li>
           </ul>
         </div>
       </div>
@@ -3258,6 +3652,11 @@ function SlideAgentSkillsUsed() {
       name: 'gaussian-youtube-video-wall-evolver',
       purpose: 'Collects latest realtime Gaussian avatar demo videos and publishes the modal video wall dataset.',
       url: SKILL_GAUSSIAN_WALL_URL,
+    },
+    {
+      name: 'slide-research-proofreader-evolver',
+      purpose: 'Runs evidence audits on research slides and tracks pass/warn deltas across proofreading cycles.',
+      url: SKILL_SLIDE_PROOFREADER_URL,
     },
   ];
 
@@ -3375,27 +3774,24 @@ const SLIDES: React.FC[] = [
   SlideGenerativeResearch,       // 18
   SlideGenerativeDemo,           // 19
   SlideGaussianHow,              // 20
-  SlideGaussianIdentityResponse, // 21
-  SlideGaussianMechanism,        // 22
-  SlideGaussianCovariance,       // 23
-  SlideGaussianDemo,             // 24
-  SlideGaussianSupersplatDemoOne,// 25
-  SlideGaussianSupersplatDemoTwo,// 26
-  SlideGaussianPersonalDemo,     // 27
-  SlideGaussianWorldlabsDemo,    // 28
+  SlideGaussianSupersplatDemoOne,// 21
+  SlideGaussianSupersplatDemoTwo,// 22
+  SlideGaussianPersonalDemo,     // 23
+  SlideGaussianWorldlabsDemo,    // 24
+  SlideGaussianIdentityResponse, // 25
+  SlideGaussianMechanism,        // 26
+  SlideGaussianCovariance,       // 27
+  SlideGaussianDemo,             // 28
   SlideGaussianResearchVideoWall,// 29
   SlideCapabilityMatrix,         // 30
-  SlideComparison,               // 31
-  SlideRealTimeMetrics,          // 32
-  SlideE2EPipeline,              // 33
-  SlideAudio2FaceBuildingBlocks, // 34
-  SlideWhereIntelligenceLives,   // 35
-  SlideResearchFrontier,         // 36
-  SlideFuturePerspectiveMissingLayers, // 37
-  SlideConvergenceUpdated,       // 38
-  SlideBuiltWithClaudeSkills,    // 39
-  SlideAgentSkillsUsed,          // 40
-  SlideThankYou,                 // 41
+  SlideAudio2FaceBuildingBlocks, // 31
+  SlideWhereIntelligenceLives,   // 32
+  SlideResearchFrontier,         // 33
+  SlideFuturePerspectiveMissingLayers, // 34
+  SlideConvergenceUpdated,       // 35
+  SlideBuiltWithClaudeSkills,    // 36
+  SlideAgentSkillsUsed,          // 37
+  SlideThankYou,                 // 38
 ];
 
 /* 鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺愨晲鈺?   MAIN SLIDES PAGE

@@ -1,0 +1,227 @@
+{
+  "generated_at": "2026-02-19T08:51:17Z",
+  "cycle": 1,
+  "slides_path": "web\\app\\slides\\SlidesDeck.tsx",
+  "target_slides": [
+    "SlideThreeApproaches",
+    "SlideMetahumanHow",
+    "SlideMetahumanIdentityResponse",
+    "SlideGenerativeHow",
+    "SlideGenerativeIdentityResponse",
+    "SlideGenerativeMechanism",
+    "SlideGenerativeResearch",
+    "SlideGaussianHow",
+    "SlideGaussianIdentityResponse",
+    "SlideGaussianMechanism",
+    "SlideGaussianCovariance",
+    "SlideSignalsInteraction",
+    "SlideCapabilityMatrix",
+    "SlideAudio2FaceBuildingBlocks",
+    "SlideWhereIntelligenceLives",
+    "SlideResearchFrontier",
+    "SlideConvergenceUpdated"
+  ],
+  "summary": {
+    "target_count": 17,
+    "pass_count": 1,
+    "warn_count": 16,
+    "pass_rate_percent": 5.9,
+    "missing_functions": []
+  },
+  "delta": {
+    "newly_warned": [],
+    "recovered": []
+  },
+  "slides": [
+    {
+      "slide": "SlideThreeApproaches",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 0 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 0,
+      "primary_urls": []
+    },
+    {
+      "slide": "SlideMetahumanHow",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 0 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 0,
+      "primary_urls": []
+    },
+    {
+      "slide": "SlideMetahumanIdentityResponse",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 0 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 0,
+      "primary_urls": []
+    },
+    {
+      "slide": "SlideGenerativeHow",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 0 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 0,
+      "primary_urls": []
+    },
+    {
+      "slide": "SlideGenerativeIdentityResponse",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 0 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 0,
+      "primary_urls": []
+    },
+    {
+      "slide": "SlideGenerativeMechanism",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 0 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 0,
+      "primary_urls": []
+    },
+    {
+      "slide": "SlideGenerativeResearch",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 0 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 0,
+      "primary_urls": []
+    },
+    {
+      "slide": "SlideGaussianHow",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 0 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 0,
+      "primary_urls": []
+    },
+    {
+      "slide": "SlideGaussianIdentityResponse",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 0 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 0,
+      "primary_urls": []
+    },
+    {
+      "slide": "SlideGaussianMechanism",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 0 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 0,
+      "primary_urls": []
+    },
+    {
+      "slide": "SlideGaussianCovariance",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 0 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 0,
+      "primary_urls": []
+    },
+    {
+      "slide": "SlideSignalsInteraction",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 0 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 0,
+      "primary_urls": []
+    },
+    {
+      "slide": "SlideCapabilityMatrix",
+      "status": "warn",
+      "issue_count": 2,
+      "issues": [
+        "missing SlideEvidenceStrip",
+        "only 0 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 0,
+      "total_urls": 0,
+      "primary_urls": []
+    },
+    {
+      "slide": "SlideAudio2FaceBuildingBlocks",
+      "status": "pass",
+      "issue_count": 0,
+      "issues": [],
+      "evidence_strip_count": 1,
+      "total_urls": 3,
+      "primary_urls": [
+        "https://github.com/Soul-AILab/SoulX-FlashHead",
+        "https://github.com/TaekyungKi/AvatarForcing",
+        "https://github.com/alibaba/MNN/blob/master/apps/Android/Mnn3dAvatar/README.md"
+      ]
+    },
+    {
+      "slide": "SlideWhereIntelligenceLives",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 0 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 0,
+      "primary_urls": []
+    },
+    {
+      "slide": "SlideResearchFrontier",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 0 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 0,
+      "primary_urls": []
+    },
+    {
+      "slide": "SlideConvergenceUpdated",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 0 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 0,
+      "primary_urls": []
+    }
+  ]
+}

@@ -1,0 +1,307 @@
+{
+  "generated_at": "2026-02-19T08:52:00Z",
+  "cycle": 2,
+  "slides_path": "web\\app\\slides\\SlidesDeck.tsx",
+  "target_slides": [
+    "SlideThreeApproaches",
+    "SlideMetahumanHow",
+    "SlideMetahumanIdentityResponse",
+    "SlideGenerativeHow",
+    "SlideGenerativeIdentityResponse",
+    "SlideGenerativeMechanism",
+    "SlideGenerativeResearch",
+    "SlideGaussianHow",
+    "SlideGaussianIdentityResponse",
+    "SlideGaussianMechanism",
+    "SlideGaussianCovariance",
+    "SlideSignalsInteraction",
+    "SlideCapabilityMatrix",
+    "SlideAudio2FaceBuildingBlocks",
+    "SlideWhereIntelligenceLives",
+    "SlideResearchFrontier",
+    "SlideConvergenceUpdated"
+  ],
+  "summary": {
+    "target_count": 17,
+    "pass_count": 15,
+    "warn_count": 2,
+    "pass_rate_percent": 88.2,
+    "missing_functions": []
+  },
+  "delta": {
+    "newly_warned": [],
+    "recovered": [
+      "SlideThreeApproaches",
+      "SlideMetahumanHow",
+      "SlideMetahumanIdentityResponse",
+      "SlideGenerativeHow",
+      "SlideGenerativeIdentityResponse",
+      "SlideGenerativeMechanism",
+      "SlideGenerativeResearch",
+      "SlideGaussianHow",
+      "SlideGaussianIdentityResponse",
+      "SlideSignalsInteraction",
+      "SlideCapabilityMatrix",
+      "SlideWhereIntelligenceLives",
+      "SlideResearchFrontier",
+      "SlideConvergenceUpdated"
+    ]
+  },
+  "slides": [
+    {
+      "slide": "SlideThreeApproaches",
+      "status": "pass",
+      "issue_count": 0,
+      "issues": [],
+      "evidence_strip_count": 1,
+      "total_urls": 3,
+      "primary_urls": [
+        "https://arxiv.org/abs/2308.04079",
+        "https://arxiv.org/abs/2601.00664",
+        "https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-documentation"
+      ]
+    },
+    {
+      "slide": "SlideMetahumanHow",
+      "status": "pass",
+      "issue_count": 0,
+      "issues": [],
+      "evidence_strip_count": 1,
+      "total_urls": 4,
+      "primary_urls": [
+        "https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-documentation",
+        "https://dev.epicgames.com/documentation/en-us/unreal-engine/API/PluginIndex/RigLogic",
+        "https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/metahuman-evolver/references/latest-architecture.json",
+        "https://github.com/pajamadot/realtime-avatars/blob/main/.claude/skills/metahuman-evolver/references/latest-summary.md"
+      ]
+    },
+    {
+      "slide": "SlideMetahumanIdentityResponse",
+      "status": "pass",
+      "issue_count": 0,
+      "issues": [],
+      "evidence_strip_count": 1,
+      "total_urls": 3,
+      "primary_urls": [
+        "https://dev.epicgames.com/documentation/en-us/metahuman/mesh-to-metahuman",
+        "https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-animator",
+        "https://dev.epicgames.com/documentation/en-us/metahuman/realtime-animation-using-live-link"
+      ]
+    },
+    {
+      "slide": "SlideGenerativeHow",
+      "status": "pass",
+      "issue_count": 0,
+      "issues": [],
+      "evidence_strip_count": 1,
+      "total_urls": 3,
+      "primary_urls": [
+        "https://arxiv.org/abs/2512.23576",
+        "https://arxiv.org/abs/2601.00664",
+        "https://arxiv.org/abs/2602.07449"
+      ]
+    },
+    {
+      "slide": "SlideGenerativeIdentityResponse",
+      "status": "pass",
+      "issue_count": 0,
+      "issues": [],
+      "evidence_strip_count": 1,
+      "total_urls": 3,
+      "primary_urls": [
+        "https://arxiv.org/abs/2512.22065",
+        "https://arxiv.org/abs/2512.23576",
+        "https://arxiv.org/abs/2601.00664"
+      ]
+    },
+    {
+      "slide": "SlideGenerativeMechanism",
+      "status": "pass",
+      "issue_count": 0,
+      "issues": [],
+      "evidence_strip_count": 1,
+      "total_urls": 3,
+      "primary_urls": [
+        "https://arxiv.org/abs/2006.11239",
+        "https://arxiv.org/abs/2202.00512",
+        "https://arxiv.org/abs/2512.23576"
+      ]
+    },
+    {
+      "slide": "SlideGenerativeResearch",
+      "status": "pass",
+      "issue_count": 0,
+      "issues": [],
+      "evidence_strip_count": 1,
+      "total_urls": 12,
+      "primary_urls": [
+        "https://arxiv.org/abs/2503.17032",
+        "https://arxiv.org/abs/2508.19320",
+        "https://arxiv.org/abs/2512.21734",
+        "https://arxiv.org/abs/2512.22065",
+        "https://arxiv.org/abs/2512.23576",
+        "https://arxiv.org/abs/2601.00664",
+        "https://arxiv.org/abs/2601.13148",
+        "https://arxiv.org/abs/2601.13837",
+        "https://arxiv.org/abs/2602.07449",
+        "https://github.com/Soul-AILab/SoulX-FlashHead",
+        "https://github.com/TaekyungKi/AvatarForcing",
+        "https://github.com/alibaba/MNN/blob/master/apps/Android/Mnn3dAvatar/README.md"
+      ]
+    },
+    {
+      "slide": "SlideGaussianHow",
+      "status": "pass",
+      "issue_count": 0,
+      "issues": [],
+      "evidence_strip_count": 1,
+      "total_urls": 2,
+      "primary_urls": [
+        "https://arxiv.org/abs/2308.04079",
+        "https://arxiv.org/abs/2506.09127"
+      ]
+    },
+    {
+      "slide": "SlideGaussianIdentityResponse",
+      "status": "pass",
+      "issue_count": 0,
+      "issues": [],
+      "evidence_strip_count": 1,
+      "total_urls": 4,
+      "primary_urls": [
+        "https://arxiv.org/abs/2308.04079",
+        "https://arxiv.org/abs/2503.17032",
+        "https://arxiv.org/abs/2601.13148",
+        "https://arxiv.org/abs/2601.13837"
+      ]
+    },
+    {
+      "slide": "SlideGaussianMechanism",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 1 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 1,
+      "primary_urls": [
+        "https://arxiv.org/abs/2308.04079"
+      ]
+    },
+    {
+      "slide": "SlideGaussianCovariance",
+      "status": "warn",
+      "issue_count": 1,
+      "issues": [
+        "only 1 primary source link(s), need >= 2"
+      ],
+      "evidence_strip_count": 1,
+      "total_urls": 1,
+      "primary_urls": [
+        "https://arxiv.org/abs/2308.04079"
+      ]
+    },
+    {
+      "slide": "SlideSignalsInteraction",
+      "status": "pass",
+      "issue_count": 0,
+      "issues": [],
+      "evidence_strip_count": 1,
+      "total_urls": 5,
+      "primary_urls": [
+        "https://arxiv.org/abs/2503.17032",
+        "https://arxiv.org/abs/2512.23576",
+        "https://arxiv.org/abs/2601.00664",
+        "https://arxiv.org/abs/2601.13148",
+        "https://dev.epicgames.com/documentation/en-us/metahuman/realtime-animation-using-live-link"
+      ]
+    },
+    {
+      "slide": "SlideCapabilityMatrix",
+      "status": "pass",
+      "issue_count": 0,
+      "issues": [],
+      "evidence_strip_count": 1,
+      "total_urls": 7,
+      "primary_urls": [
+        "https://arxiv.org/abs/2503.17032",
+        "https://arxiv.org/abs/2506.09127",
+        "https://arxiv.org/abs/2601.00664",
+        "https://arxiv.org/abs/2601.13148",
+        "https://dev.epicgames.com/documentation/en-us/metahuman/mesh-to-metahuman",
+        "https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-documentation",
+        "https://dev.epicgames.com/documentation/en-us/metahuman/metahumans-in-unreal-engine"
+      ]
+    },
+    {
+      "slide": "SlideAudio2FaceBuildingBlocks",
+      "status": "pass",
+      "issue_count": 0,
+      "issues": [],
+      "evidence_strip_count": 1,
+      "total_urls": 8,
+      "primary_urls": [
+        "https://dev.epicgames.com/documentation/en-us/metahuman/audio-driven-animation",
+        "https://dev.epicgames.com/documentation/en-us/metahuman/realtime-animation-using-live-link",
+        "https://developer.nvidia.com/blog/nvidia-open-sources-audio2face-animation-model/",
+        "https://docs.nvidia.com/ace/ace-unreal-plugin/latest/index.html",
+        "https://github.com/NVIDIA/Audio2Face-3D",
+        "https://github.com/Soul-AILab/SoulX-FlashHead",
+        "https://github.com/TaekyungKi/AvatarForcing",
+        "https://github.com/alibaba/MNN/blob/master/apps/Android/Mnn3dAvatar/README.md"
+      ]
+    },
+    {
+      "slide": "SlideWhereIntelligenceLives",
+      "status": "pass",
+      "issue_count": 0,
+      "issues": [],
+      "evidence_strip_count": 1,
+      "total_urls": 5,
+      "primary_urls": [
+        "https://arxiv.org/abs/2503.17032",
+        "https://arxiv.org/abs/2506.09127",
+        "https://arxiv.org/abs/2512.23576",
+        "https://arxiv.org/abs/2601.00664",
+        "https://arxiv.org/abs/2602.07449"
+      ]
+    },
+    {
+      "slide": "SlideResearchFrontier",
+      "status": "pass",
+      "issue_count": 0,
+      "issues": [],
+      "evidence_strip_count": 1,
+      "total_urls": 12,
+      "primary_urls": [
+        "https://arxiv.org/abs/2503.17032",
+        "https://arxiv.org/abs/2508.19320",
+        "https://arxiv.org/abs/2512.21734",
+        "https://arxiv.org/abs/2512.22065",
+        "https://arxiv.org/abs/2512.23576",
+        "https://arxiv.org/abs/2601.00664",
+        "https://arxiv.org/abs/2601.13148",
+        "https://arxiv.org/abs/2601.13837",
+        "https://arxiv.org/abs/2602.07449",
+        "https://github.com/Soul-AILab/SoulX-FlashHead",
+        "https://github.com/TaekyungKi/AvatarForcing",
+        "https://github.com/alibaba/MNN/blob/master/apps/Android/Mnn3dAvatar/README.md"
+      ]
+    },
+    {
+      "slide": "SlideConvergenceUpdated",
+      "status": "pass",
+      "issue_count": 0,
+      "issues": [],
+      "evidence_strip_count": 1,
+      "total_urls": 5,
+      "primary_urls": [
+        "https://arxiv.org/abs/2503.17032",
+        "https://arxiv.org/abs/2506.09127",
+        "https://arxiv.org/abs/2508.19320",
+        "https://arxiv.org/abs/2601.00664",
+        "https://dev.epicgames.com/documentation/en-us/metahuman/audio-driven-animation"
+      ]
+    }
+  ]
+}
