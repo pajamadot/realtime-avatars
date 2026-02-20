@@ -1,58 +1,72 @@
 # AGENTS.md
 
-This file is the agent entrypoint for repository navigation and execution discipline.
+Agent entrypoint for repository navigation and execution discipline.
 
 ## Start Here
 
-1. `README.md` - project overview and runtime entrypoints.
-2. `ARCHITECTURE.md` - layered architecture and dependency invariants.
-3. `ITERATION-MEGA-PROMPT.md` - current iteration strategy and priorities.
-4. `docs/design-docs/index.md` - durable design decisions and rationale.
-5. `docs/exec-plans/README.md` - execution planning format and lifecycle.
+1. `README.md` - current project status and runtime entrypoints.
+2. `ITERATION-MEGA-PROMPT.md` - current evolution principles and cycle contract.
+3. `web/app/learn/ARCHITECTURE.md` - learn-surface architecture context.
+4. `metahuman/UE57_METAHUMAN_ARCHITECTURE.md` - MetaHuman subsystem architecture.
+5. Relevant skill docs under `.claude/skills/*/SKILL.md`.
 
-## Working Protocol (Harness-Inspired)
+## Working Protocol
 
 1. Load map and constraints:
 - `AGENTS.md`
-- `ARCHITECTURE.md`
-- relevant plan in `docs/exec-plans/active/`
+- `README.md`
+- `ITERATION-MEGA-PROMPT.md`
+- subsystem docs for touched scope
 
-2. Execute against an explicit plan:
-- use one active plan file per coherent change stream
-- keep plans short, testable, and linked to touched paths
+2. Execute against an explicit change stream:
+- keep changes scoped and auditable
+- prefer one coherent objective per commit
+- avoid mixing unrelated subsystem edits
 
-3. Implement in small, auditable batches:
-- make minimal coherent changes
-- verify with build/lint/tests where available
+3. Implement in small batches:
+- make minimal coherent edits
+- verify with `web` build/lint/tests where relevant
+- do not revert unrelated workspace changes
 
 4. Close the loop:
-- update relevant docs when structure or behavior changes
-- move completed plans to `docs/exec-plans/completed/`
-- log follow-up debt in `docs/exec-plans/tech-debt-tracker.md`
+- update affected docs in the same change
+- summarize file-level deltas and validation
+- capture follow-up debt explicitly
 
 ## Repository Map
 
-- `web/` - Next.js application, API routes, slides, learning surfaces.
-- `agents/` - LiveKit and avatar agent runtimes.
-- `workers/` - support workers and token services.
-- `metahuman/` - Unreal project assets, bridge, architecture dossiers.
-- `gaussian-avatar/` - gaussian avatar runtime assets and configs.
-- `.claude/skills/` - local skill automation and evolvers.
-- `docs/` - design docs, execution plans, references, quality/reliability/security docs.
+- `web/` - Next.js app, slides, learn tracks, demos, API routes, published docs snapshots
+- `metahuman/` - UE 5.7 project, plugin, bridge service, runtime docs
+- `agents/` - LiveKit Hedra avatar agent runtime
+- `workers/` - Cloudflare worker token service
+- `gaussian-avatar/` - Dockerized Gaussian avatar runtime stack
+- `.claude/skills/` - evolvers and persistent skill state/history
+- `research/` - supporting research notes
+- `secrets/` - local secret-loading support
 
 ## Source-of-Truth Rules
 
-- Architecture contracts live in `ARCHITECTURE.md`.
-- Durable design reasoning lives in `docs/design-docs/`.
-- Active work plans live in `docs/exec-plans/active/`.
-- Research snapshots intended for website rendering live in `web/public/docs/`.
+- Web behavior and routes: `web/app/*`
+- Slide deck source: `web/app/slides/SlidesDeck.tsx`
+- Evolution policy and cycle gates: `ITERATION-MEGA-PROMPT.md`
+- Skill outputs intended for site rendering: `web/public/docs/*`
+- MetaHuman runtime contract: `metahuman/UE57_REALTIME_E2E.md`
+
+## Scan Hygiene
+
+- Exclude environment/build-heavy trees when scanning unless needed:
+  - `agents/**/.venv/**`
+  - `metahuman/avatar01/DerivedDataCache/**`
+  - `metahuman/avatar01/Intermediate/**`
+  - `metahuman/avatar01/Saved/**`
+  - `web/.next/**`
+- Prefer targeted `rg` queries over recursive full dumps.
 
 ## Required Updates for Structural Changes
 
-If folder layout, boundaries, or runtime wiring changes, update all relevant files in the same change:
+If boundaries, folder layout, or runtime wiring changes, update all relevant files in the same change:
 
-- `ARCHITECTURE.md`
 - `README.md`
-- impacted `docs/design-docs/*`
-- impacted `docs/exec-plans/*`
-
+- `AGENTS.md`
+- `ITERATION-MEGA-PROMPT.md`
+- impacted subsystem architecture docs (for example `web/app/learn/ARCHITECTURE.md`, `metahuman/UE57_METAHUMAN_ARCHITECTURE.md`)
