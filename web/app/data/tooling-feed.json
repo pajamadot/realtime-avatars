@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-20T10:48:10.158Z",
+  "updatedAt": "2026-02-21T10:39:53.838Z",
   "source": "GitHub Search",
   "queries": {
     "metahuman": {
@@ -34,8 +34,8 @@
           "name": "poly-hammer/meta-human-dna-addon",
           "link": "https://github.com/poly-hammer/meta-human-dna-addon",
           "description": "Imports MetaHuman head and body components into Blender from a their DNA files, lets you customize them, then send them back to MetaHuman Creator.",
-          "stars": 205,
-          "pushedAt": "2026-02-19T23:58:57.000Z",
+          "stars": 207,
+          "pushedAt": "2026-02-20T19:51:10.000Z",
           "language": "Python"
         },
         {
@@ -66,7 +66,7 @@
           "name": "SocAIty/py_audio2face",
           "link": "https://github.com/SocAIty/py_audio2face",
           "description": "Use the NVIDIA Audio2Face headless server and interact with it through a requests API. Generate animation sequences for Unreal Engine 5, Maya and MetaHumans",
-          "stars": 147,
+          "stars": 148,
           "pushedAt": "2025-05-01T17:23:11.000Z",
           "language": "Python"
         },
@@ -120,7 +120,7 @@
           "name": "yuyuyzl/EasyVtuber",
           "link": "https://github.com/yuyuyzl/EasyVtuber",
           "description": "Based on Talking-head-anime 3, works like Vtube Studio.",
-          "stars": 2686,
+          "stars": 2689,
           "pushedAt": "2026-02-12T07:11:57.000Z",
           "language": "Python"
         },
@@ -144,7 +144,7 @@
           "name": "harlanhong/awesome-talking-head-generation",
           "link": "https://github.com/harlanhong/awesome-talking-head-generation",
           "description": "",
-          "stars": 1875,
+          "stars": 1876,
           "pushedAt": "2025-08-03T12:08:02.000Z",
           "language": ""
         },
@@ -182,7 +182,7 @@
           "name": "graphdeco-inria/gaussian-splatting",
           "link": "https://github.com/graphdeco-inria/gaussian-splatting",
           "description": "Original reference implementation of \"3D Gaussian Splatting for Real-Time Radiance Field Rendering\"",
-          "stars": 20708,
+          "stars": 20717,
           "pushedAt": "2025-10-17T14:28:15.000Z",
           "language": "Python"
         },
@@ -206,7 +206,7 @@
           "name": "dreamgaussian/dreamgaussian",
           "link": "https://github.com/dreamgaussian/dreamgaussian",
           "description": "[ICLR 2024 Oral] Generative Gaussian Splatting for Efficient 3D Content Creation",
-          "stars": 4290,
+          "stars": 4291,
           "pushedAt": "2024-01-02T04:12:09.000Z",
           "language": "Python"
         },
@@ -214,7 +214,7 @@
           "name": "playcanvas/supersplat",
           "link": "https://github.com/playcanvas/supersplat",
           "description": "3D Gaussian Splat Editor",
-          "stars": 3608,
+          "stars": 3612,
           "pushedAt": "2026-02-16T13:45:47.000Z",
           "language": "TypeScript"
         },
@@ -230,7 +230,7 @@
           "name": "Anttwo/SuGaR",
           "link": "https://github.com/Anttwo/SuGaR",
           "description": "[CVPR 2024] Official PyTorch implementation of SuGaR: Surface-Aligned Gaussian Splatting for Efficient 3D Mesh Reconstruction and High-Quality Mesh Rendering",
-          "stars": 3205,
+          "stars": 3206,
           "pushedAt": "2024-09-24T15:13:31.000Z",
           "language": "C++"
         },
@@ -246,7 +246,7 @@
           "name": "hbb1/2d-gaussian-splatting",
           "link": "https://github.com/hbb1/2d-gaussian-splatting",
           "description": "[SIGGRAPH'24] 2D Gaussian Splatting for Geometrically Accurate Radiance Fields",
-          "stars": 3043,
+          "stars": 3044,
           "pushedAt": "2025-11-24T15:26:53.000Z",
           "language": "Python"
         },
