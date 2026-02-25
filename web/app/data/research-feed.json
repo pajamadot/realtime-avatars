@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-17T02:50:35.996Z",
+  "updatedAt": "2026-02-25T10:57:30.162Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -262,6 +262,17 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "WildGHand: Learning Anti-Perturbation Gaussian Hand Avatars from Monocular In-the-Wild Videos",
+          "link": "https://arxiv.org/abs/2602.20556v1",
+          "published": "2026-02-24T05:14:05.000Z",
+          "authors": "Hanhui Li",
+          "summary": "Despite recent progress in 3D hand reconstruction from monocular videos, most existing methods rely on data captured in well-controlled environments and therefore degrade in real-world settings with severe perturbations, such as hand-object interactions, extreme poses, illumin...",
+          "tags": [
+            "gaussian",
+            "monocular"
+          ]
+        },
+        {
           "title": "OMEGA-Avatar: One-shot Modeling of 360° Gaussian Avatars",
           "link": "https://arxiv.org/abs/2602.11693v1",
           "published": "2026-02-12T08:16:38.000Z",
@@ -374,16 +385,6 @@
           "published": "2026-01-26T16:06:57.000Z",
           "authors": "Tong Shi",
           "summary": "Talking Head Generation aims at synthesizing natural-looking talking videos from speech and a single portrait image. Previous 3D talking head generation methods have relied on domain-specific heuristics such as warping-based facial motion representation priors to animate talki...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "EVolSplat4D: Efficient Volume-based Gaussian Splatting for 4D Urban Scene Synthesis",
-          "link": "https://arxiv.org/abs/2601.15951v1",
-          "published": "2026-01-22T13:39:29.000Z",
-          "authors": "Sheng Miao",
-          "summary": "Novel view synthesis (NVS) of static and dynamic urban scenes is essential for autonomous driving simulation, yet existing methods often struggle to balance reconstruction time with quality. While state-of-the-art neural radiance fields and 3D Gaussian Splatting approaches ach...",
           "tags": [
             "gaussian"
           ]
