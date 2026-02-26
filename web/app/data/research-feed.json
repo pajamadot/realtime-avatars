@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T10:57:30.162Z",
+  "updatedAt": "2026-02-26T10:55:15.351Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -396,6 +396,18 @@
       "query": "(cat:cs.NI OR cat:cs.CV) AND (all:webrtc AND (all:streaming OR all:low-latency OR all:conference OR all:sfu OR all:telepresence OR all:avatar))",
       "items": [
         {
+          "title": "A Generic Web Component for WebRTC Pub-Sub",
+          "link": "https://arxiv.org/abs/2602.22011v1",
+          "published": "2026-02-25T15:27:54.000Z",
+          "authors": "Kundan Singh",
+          "summary": "We present video-io, a generic web component to publish or subscribe to a media stream in WebRTC (web real-time communication) applications. Unlike a call or conference room abstraction of existing video conferencing services, it uses a named stream abstraction, which is usefu...",
+          "tags": [
+            "real-time",
+            "telepresence",
+            "webrtc"
+          ]
+        },
+        {
           "title": "Lightweight Call Signaling and Peer-to-Peer Control of WebRTC Video Conferencing",
           "link": "https://arxiv.org/abs/2602.08975v1",
           "published": "2026-02-09T18:16:37.000Z",
@@ -470,17 +482,6 @@
           "tags": [
             "compression",
             "real-time"
-          ]
-        },
-        {
-          "title": "SnoW: Serverless n-Party calls over WebRTC",
-          "link": "https://arxiv.org/abs/2206.12762v1",
-          "published": "2022-06-26T01:51:30.000Z",
-          "authors": "Thomas Sandholm",
-          "summary": "We present a novel WebRTC communication system capable of hosting multi-party audio and video conferencing sessions without a media server. We implement various communication models based on the needs and capabilities of the communicating parties, and show that we can construc...",
-          "tags": [
-            "telepresence",
-            "webrtc"
           ]
         }
       ]
