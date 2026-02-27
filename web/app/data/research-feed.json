@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-26T10:55:15.351Z",
+  "updatedAt": "2026-02-27T10:49:18.444Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -262,6 +262,16 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "Latent Gaussian Splatting for 4D Panoptic Occupancy Tracking",
+          "link": "https://arxiv.org/abs/2602.23172v1",
+          "published": "2026-02-26T16:34:49.000Z",
+          "authors": "Maximilian Luz",
+          "summary": "Capturing 4D spatiotemporal surroundings is crucial for the safe and reliable operation of robots in dynamic environments. However, most existing methods address only one side of the problem: they either provide coarse geometric tracking via bounding boxes, or detailed 3D stru...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
           "title": "WildGHand: Learning Anti-Perturbation Gaussian Hand Avatars from Monocular In-the-Wild Videos",
           "link": "https://arxiv.org/abs/2602.20556v1",
           "published": "2026-02-24T05:14:05.000Z",
@@ -377,16 +387,6 @@
             "compression",
             "diffusion",
             "telepresence"
-          ]
-        },
-        {
-          "title": "Splat-Portrait: Generalizing Talking Heads with Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2601.18633v1",
-          "published": "2026-01-26T16:06:57.000Z",
-          "authors": "Tong Shi",
-          "summary": "Talking Head Generation aims at synthesizing natural-looking talking videos from speech and a single portrait image. Previous 3D talking head generation methods have relied on domain-specific heuristics such as warping-based facial motion representation priors to animate talki...",
-          "tags": [
-            "gaussian"
           ]
         }
       ]
