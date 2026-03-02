@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-27T10:49:18.444Z",
+  "updatedAt": "2026-03-02T10:52:27.417Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -129,6 +129,16 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "GeoDiff4D: Geometry-Aware Diffusion for 4D Head Avatar Reconstruction",
+          "link": "https://arxiv.org/abs/2602.24161v1",
+          "published": "2026-02-27T16:41:21.000Z",
+          "authors": "Chao Xu",
+          "summary": "Reconstructing photorealistic and animatable 4D head avatars from a single portrait image remains a fundamental challenge in computer vision. While diffusion models have enabled remarkable progress in image and video generation for avatar reconstruction, existing methods prima...",
+          "tags": [
+            "diffusion"
+          ]
+        },
+        {
           "title": "OMEGA-Avatar: One-shot Modeling of 360° Gaussian Avatars",
           "link": "https://arxiv.org/abs/2602.11693v1",
           "published": "2026-02-12T08:16:38.000Z",
@@ -242,17 +252,6 @@
           "summary": "Talking head generation creates lifelike avatars from static portraits for virtual communication and content creation. However, current models do not yet convey the feeling of truly interactive communication, often generating one-way responses that lack emotional engagement. W...",
           "tags": [
             "real-time"
-          ]
-        },
-        {
-          "title": "PTalker: Personalized Speech-Driven 3D Talking Head Animation via Style Disentanglement and Modality Alignment",
-          "link": "https://arxiv.org/abs/2512.22602v1",
-          "published": "2025-12-27T14:14:14.000Z",
-          "authors": "Bin Wang",
-          "summary": "Speech-driven 3D talking head generation aims to produce lifelike facial animations precisely synchronized with speech. While considerable progress has been made in achieving high lip-synchronization accuracy, existing methods largely overlook the intricate nuances of individu...",
-          "tags": [
-            "audio-driven",
-            "lip-sync"
           ]
         }
       ]
