@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-02T10:52:27.417Z",
+  "updatedAt": "2026-03-03T10:51:16.275Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -129,6 +129,17 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "OMG-Avatar: One-shot Multi-LOD Gaussian Head Avatar",
+          "link": "https://arxiv.org/abs/2603.01506v1",
+          "published": "2026-03-02T06:30:53.000Z",
+          "authors": "Jianqiang Ren",
+          "summary": "We propose OMG-Avatar, a novel One-shot method that leverages a Multi-LOD (Level-of-Detail) Gaussian representation for animatable 3D head reconstruction from a single image in 0.2s. Our method enables LOD head avatar modeling using a unified model that accommodates diverse ha...",
+          "tags": [
+            "gaussian",
+            "monocular"
+          ]
+        },
+        {
           "title": "GeoDiff4D: Geometry-Aware Diffusion for 4D Head Avatar Reconstruction",
           "link": "https://arxiv.org/abs/2602.24161v1",
           "published": "2026-02-27T16:41:21.000Z",
@@ -136,6 +147,17 @@
           "summary": "Reconstructing photorealistic and animatable 4D head avatars from a single portrait image remains a fundamental challenge in computer vision. While diffusion models have enabled remarkable progress in image and video generation for avatar reconstruction, existing methods prima...",
           "tags": [
             "diffusion"
+          ]
+        },
+        {
+          "title": "FlowPortrait: Reinforcement Learning for Audio-Driven Portrait Video Generation",
+          "link": "https://arxiv.org/abs/2603.00159v1",
+          "published": "2026-02-25T22:08:15.000Z",
+          "authors": "Weiting Tan",
+          "summary": "Generating realistic talking-head videos remains challenging due to persistent issues such as imperfect lip synchronization, unnatural motion, and evaluation metrics that correlate poorly with human perception. We propose FlowPortrait, a reinforcement-learning framework for au...",
+          "tags": [
+            "audio-driven",
+            "lip-sync"
           ]
         },
         {
@@ -233,26 +255,6 @@
             "audio-driven",
             "gaussian"
           ]
-        },
-        {
-          "title": "MANGO:Natural Multi-speaker 3D Talking Head Generation via 2D-Lifted Enhancement",
-          "link": "https://arxiv.org/abs/2601.01749v1",
-          "published": "2026-01-05T02:59:49.000Z",
-          "authors": "Lei Zhu",
-          "summary": "Current audio-driven 3D head generation methods mainly focus on single-speaker scenarios, lacking natural, bidirectional listen-and-speak interaction. Achieving seamless conversational behavior, where speaking and listening states transition fluidly remains a key challenge. Ex...",
-          "tags": [
-            "audio-driven"
-          ]
-        },
-        {
-          "title": "Avatar Forcing: Real-Time Interactive Head Avatar Generation for Natural Conversation",
-          "link": "https://arxiv.org/abs/2601.00664v1",
-          "published": "2026-01-02T11:58:48.000Z",
-          "authors": "Taekyung Ki",
-          "summary": "Talking head generation creates lifelike avatars from static portraits for virtual communication and content creation. However, current models do not yet convey the feeling of truly interactive communication, often generating one-way responses that lack emotional engagement. W...",
-          "tags": [
-            "real-time"
-          ]
         }
       ]
     },
@@ -260,6 +262,17 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "LiftAvatar: Kinematic-Space Completion for Expression-Controlled 3D Gaussian Avatar Animation",
+          "link": "https://arxiv.org/abs/2603.02129v1",
+          "published": "2026-03-02T17:46:32.000Z",
+          "authors": "Hualiang Wei",
+          "summary": "We present LiftAvatar, a new paradigm that completes sparse monocular observations in kinematic space (e.g., facial expressions and head pose) and uses the completed signals to drive high-fidelity avatar animation. LiftAvatar is a fine-grained, expression-controllable large-sc...",
+          "tags": [
+            "gaussian",
+            "monocular"
+          ]
+        },
         {
           "title": "Latent Gaussian Splatting for 4D Panoptic Occupancy Tracking",
           "link": "https://arxiv.org/abs/2602.23172v1",
@@ -375,18 +388,6 @@
             "gaussian",
             "real-time"
           ]
-        },
-        {
-          "title": "Lightweight High-Fidelity Low-Bitrate Talking Face Compression for 3D Video Conference",
-          "link": "https://arxiv.org/abs/2601.21269v1",
-          "published": "2026-01-29T05:03:29.000Z",
-          "authors": "Jianglong Li",
-          "summary": "The demand for immersive and interactive communication has driven advancements in 3D video conferencing, yet achieving high-fidelity 3D talking face representation at low bitrates remains a challenge. Traditional 2D video compression techniques fail to preserve fine-grained ge...",
-          "tags": [
-            "compression",
-            "diffusion",
-            "telepresence"
-          ]
         }
       ]
     },
@@ -470,17 +471,6 @@
           "tags": [
             "telepresence",
             "webrtc"
-          ]
-        },
-        {
-          "title": "SQP: Congestion Control for Low-Latency Interactive Video Streaming",
-          "link": "https://arxiv.org/abs/2207.11857v1",
-          "published": "2022-07-25T00:37:19.000Z",
-          "authors": "Devdeep Ray",
-          "summary": "This paper presents the design and evaluation of SQP, a congestion control algorithm (CCA) for interactive video streaming applications that need to stream high-bitrate compressed video with very low end-to-end frame delay (eg. AR streaming, cloud gaming). SQP uses frame-coupl...",
-          "tags": [
-            "compression",
-            "real-time"
           ]
         }
       ]
