@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-03T10:51:16.275Z",
+  "updatedAt": "2026-03-04T10:46:28.350Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -263,6 +263,18 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "Intrinsic Geometry-Appearance Consistency Optimization for Sparse-View Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2603.02893v1",
+          "published": "2026-03-03T11:44:46.000Z",
+          "authors": "Kaiqiang Xiong",
+          "summary": "3D human reconstruction from a single image is a challenging problem and has been exclusively studied in the literature. Recently, some methods have resorted to diffusion models for guidance, optimizing a 3D representation via Score Distillation Sampling(SDS) or generating a b...",
+          "tags": [
+            "diffusion",
+            "gaussian",
+            "monocular"
+          ]
+        },
+        {
           "title": "LiftAvatar: Kinematic-Space Completion for Expression-Controlled 3D Gaussian Avatar Animation",
           "link": "https://arxiv.org/abs/2603.02129v1",
           "published": "2026-03-02T17:46:32.000Z",
@@ -376,17 +388,6 @@
           "tags": [
             "gaussian",
             "monocular"
-          ]
-        },
-        {
-          "title": "VRGaussianAvatar: Integrating 3D Gaussian Avatars into VR",
-          "link": "https://arxiv.org/abs/2602.01674v1",
-          "published": "2026-02-02T05:42:40.000Z",
-          "authors": "Hail Song",
-          "summary": "We present VRGaussianAvatar, an integrated system that enables real-time full-body 3D Gaussian Splatting (3DGS) avatars in virtual reality using only head-mounted display (HMD) tracking signals. The system adopts a parallel pipeline with a VR Frontend and a GA Backend. The VR ...",
-          "tags": [
-            "gaussian",
-            "real-time"
           ]
         }
       ]
