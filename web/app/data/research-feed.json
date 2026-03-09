@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-04T10:46:28.350Z",
+  "updatedAt": "2026-03-09T10:53:37.176Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -129,6 +129,18 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "TempoSyncDiff: Distilled Temporally-Consistent Diffusion for Low-Latency Audio-Driven Talking Head Generation",
+          "link": "https://arxiv.org/abs/2603.06057v1",
+          "published": "2026-03-06T09:09:01.000Z",
+          "authors": "Soumya Mazumdar",
+          "summary": "Diffusion models have recently advanced photorealistic human synthesis, although practical talking-head generation (THG) remains constrained by high inference latency, temporal instability such as flicker and identity drift, and imperfect audio-visual alignment under challengi...",
+          "tags": [
+            "audio-driven",
+            "diffusion",
+            "real-time"
+          ]
+        },
+        {
           "title": "OMG-Avatar: One-shot Multi-LOD Gaussian Head Avatar",
           "link": "https://arxiv.org/abs/2603.01506v1",
           "published": "2026-03-02T06:30:53.000Z",
@@ -244,17 +256,6 @@
           "tags": [
             "lip-sync"
           ]
-        },
-        {
-          "title": "ESGaussianFace: Emotional and Stylized Audio-Driven Facial Animation via 3D Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2601.01847v1",
-          "published": "2026-01-05T07:19:38.000Z",
-          "authors": "Chuhang Ma",
-          "summary": "Most current audio-driven facial animation research primarily focuses on generating videos with neutral emotions. While some studies have addressed the generation of facial videos driven by emotional audio, efficiently generating high-quality talking head videos that integrate...",
-          "tags": [
-            "audio-driven",
-            "gaussian"
-          ]
         }
       ]
     },
@@ -262,6 +263,16 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "Transforming Omnidirectional RGB-LiDAR data into 3D Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2603.06061v1",
+          "published": "2026-03-06T09:12:51.000Z",
+          "authors": "Semin Bae",
+          "summary": "The demand for large-scale digital twins is rapidly growing in robotics and autonomous driving. However, constructing these environments with 3D Gaussian Splatting (3DGS) usually requires expensive, purpose-built data collection. Meanwhile, deployed platforms routinely collect...",
+          "tags": [
+            "gaussian"
+          ]
+        },
         {
           "title": "Intrinsic Geometry-Appearance Consistency Optimization for Sparse-View Gaussian Splatting",
           "link": "https://arxiv.org/abs/2603.02893v1",
@@ -377,17 +388,6 @@
           "summary": "We propose PoseGaussian, a pose-guided Gaussian Splatting framework for high-fidelity human novel view synthesis. Human body pose serves a dual purpose in our design: as a structural prior, it is fused with a color encoder to refine depth estimation; as a temporal cue, it is p...",
           "tags": [
             "gaussian"
-          ]
-        },
-        {
-          "title": "JOintGS: Joint Optimization of Cameras, Bodies and 3D Gaussians for In-the-Wild Monocular Reconstruction",
-          "link": "https://arxiv.org/abs/2602.04317v1",
-          "published": "2026-02-04T08:33:51.000Z",
-          "authors": "Zihan Lou",
-          "summary": "Reconstructing high-fidelity animatable 3D human avatars from monocular RGB videos remains challenging, particularly in unconstrained in-the-wild scenarios where camera parameters and human poses from off-the-shelf methods (e.g., COLMAP, HMR2.0) are often inaccurate. Splatting...",
-          "tags": [
-            "gaussian",
-            "monocular"
           ]
         }
       ]
