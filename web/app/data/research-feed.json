@@ -1,11 +1,21 @@
 {
-  "updatedAt": "2026-03-09T10:53:37.176Z",
+  "updatedAt": "2026-03-10T10:51:39.562Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
       "label": "MetaHuman / Graphics Pipeline",
       "query": "cat:cs.CV AND (all:metahuman OR (all:realtime AND all:facial AND all:animation) OR (all:facial AND all:retargeting AND all:rig) OR all:blendshape)",
       "items": [
+        {
+          "title": "Retrieval-Augmented Gaussian Avatars: Improving Expression Generalization",
+          "link": "https://arxiv.org/abs/2603.08645v1",
+          "published": "2026-03-09T17:24:11.000Z",
+          "authors": "Matan Levy",
+          "summary": "Template-free animatable head avatars can achieve high visual fidelity by learning expression-dependent facial deformation directly from a subject's capture, avoiding parametric face templates and hand-designed blendshape spaces. However, since learned deformation is supervise...",
+          "tags": [
+            "gaussian"
+          ]
+        },
         {
           "title": "RigAnyFace: Scaling Neural Facial Mesh Auto-Rigging with Unlabeled Data",
           "link": "https://arxiv.org/abs/2511.18601v1",
@@ -109,18 +119,6 @@
           "authors": "Sihun Cha",
           "summary": "Accurately retargeting facial expressions to a face mesh while enabling manipulation is a key challenge in facial animation retargeting. Recent deep-learning methods address this by encoding facial expressions into a global latent code, but they often fail to capture fine-grai...",
           "tags": []
-        },
-        {
-          "title": "ToonifyGB: StyleGAN-based Gaussian Blendshapes for 3D Stylized Head Avatars",
-          "link": "https://arxiv.org/abs/2505.10072v3",
-          "published": "2025-05-15T08:16:12.000Z",
-          "authors": "Rui-Yang Ju",
-          "summary": "The introduction of 3D Gaussian blendshapes has enabled the real-time reconstruction of animatable head avatars from monocular video. Toonify, a StyleGAN-based method, has become widely used for facial image stylization. To extend Toonify for synthesizing diverse stylized 3D h...",
-          "tags": [
-            "gaussian",
-            "monocular",
-            "real-time"
-          ]
         }
       ]
     },
@@ -128,6 +126,14 @@
       "label": "Generative Video Models",
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
+        {
+          "title": "Talking Together: Synthesizing Co-Located 3D Conversations from Audio",
+          "link": "https://arxiv.org/abs/2603.08674v1",
+          "published": "2026-03-09T17:46:52.000Z",
+          "authors": "Mengyi Shan",
+          "summary": "We tackle the challenging task of generating complete 3D facial animations for two interacting, co-located participants from a mixed audio stream. While existing methods often produce disembodied \"talking heads\" akin to a video conference call, our work is the first to explici...",
+          "tags": []
+        },
         {
           "title": "TempoSyncDiff: Distilled Temporally-Consistent Diffusion for Low-Latency Audio-Driven Talking Head Generation",
           "link": "https://arxiv.org/abs/2603.06057v1",
@@ -246,16 +252,6 @@
             "monocular",
             "real-time"
           ]
-        },
-        {
-          "title": "Exploring Talking Head Models With Adjacent Frame Prior for Speech-Preserving Facial Expression Manipulation",
-          "link": "https://arxiv.org/abs/2601.12876v1",
-          "published": "2026-01-19T09:31:24.000Z",
-          "authors": "Zhenxuan Lu",
-          "summary": "Speech-Preserving Facial Expression Manipulation (SPFEM) is an innovative technique aimed at altering facial expressions in images and videos while retaining the original mouth movements. Despite advancements, SPFEM still struggles with accurate lip synchronization due to the ...",
-          "tags": [
-            "lip-sync"
-          ]
         }
       ]
     },
@@ -263,6 +259,27 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "EmbedTalk: Triplane-Free Talking Head Synthesis using Embedding-Driven Gaussian Deformation",
+          "link": "https://arxiv.org/abs/2603.07604v1",
+          "published": "2026-03-08T12:21:47.000Z",
+          "authors": "Arpita Saggar",
+          "summary": "Real-time talking head synthesis increasingly relies on deformable 3D Gaussian Splatting (3DGS) due to its low latency. Tri-planes are the standard choice for encoding Gaussians prior to deformation, since they provide a continuous domain with explicit spatial relationships. H...",
+          "tags": [
+            "gaussian",
+            "real-time"
+          ]
+        },
+        {
+          "title": "ReconDrive: Fast Feed-Forward 4D Gaussian Splatting for Autonomous Driving Scene Reconstruction",
+          "link": "https://arxiv.org/abs/2603.07552v1",
+          "published": "2026-03-08T09:31:15.000Z",
+          "authors": "Haibao Yu",
+          "summary": "High-fidelity visual reconstruction and novel-view synthesis are essential for realistic closed-loop evaluation in autonomous driving. While 4D Gaussian Splatting (4DGS) offers a promising balance of accuracy and efficiency, existing per-scene optimization methods require cost...",
+          "tags": [
+            "gaussian"
+          ]
+        },
         {
           "title": "Transforming Omnidirectional RGB-LiDAR data into 3D Gaussian Splatting",
           "link": "https://arxiv.org/abs/2603.06061v1",
@@ -370,24 +387,6 @@
           "tags": [
             "gaussian",
             "monocular"
-          ]
-        },
-        {
-          "title": "From Blurry to Believable: Enhancing Low-quality Talking Heads with 3D Generative Priors",
-          "link": "https://arxiv.org/abs/2602.06122v1",
-          "published": "2026-02-05T19:00:50.000Z",
-          "authors": "Ding-Jiun Huang",
-          "summary": "Creating high-fidelity, animatable 3D talking heads is crucial for immersive applications, yet often hindered by the prevalence of low-quality image or video sources, which yield poor 3D reconstructions. In this paper, we introduce SuperHead, a novel framework for enhancing lo...",
-          "tags": []
-        },
-        {
-          "title": "PoseGaussian: Pose-Driven Novel View Synthesis for Robust 3D Human Reconstruction",
-          "link": "https://arxiv.org/abs/2602.05190v1",
-          "published": "2026-02-05T01:34:52.000Z",
-          "authors": "Ju Shen",
-          "summary": "We propose PoseGaussian, a pose-guided Gaussian Splatting framework for high-fidelity human novel view synthesis. Human body pose serves a dual purpose in our design: as a structural prior, it is fused with a color encoder to refine depth estimation; as a temporal cue, it is p...",
-          "tags": [
-            "gaussian"
           ]
         }
       ]
