@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-10T10:51:39.562Z",
+  "updatedAt": "2026-03-13T10:47:55.838Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -159,7 +159,7 @@
         },
         {
           "title": "GeoDiff4D: Geometry-Aware Diffusion for 4D Head Avatar Reconstruction",
-          "link": "https://arxiv.org/abs/2602.24161v1",
+          "link": "https://arxiv.org/abs/2602.24161v2",
           "published": "2026-02-27T16:41:21.000Z",
           "authors": "Chao Xu",
           "summary": "Reconstructing photorealistic and animatable 4D head avatars from a single portrait image remains a fundamental challenge in computer vision. While diffusion models have enabled remarkable progress in image and video generation for avatar reconstruction, existing methods prima...",
