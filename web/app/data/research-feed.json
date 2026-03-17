@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-13T10:47:55.838Z",
+  "updatedAt": "2026-03-17T10:58:02.803Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -127,6 +127,16 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "FreeTalk: Emotional Topology-Free 3D Talking Heads",
+          "link": "https://arxiv.org/abs/2603.15512v1",
+          "published": "2026-03-16T16:38:17.000Z",
+          "authors": "Federico Nocentini",
+          "summary": "Speech-driven 3D facial animation has advanced rapidly, yet most approaches remain tied to registered template meshes, preventing effective deployment on raw 3D scans with arbitrary topology. At the same time, modeling controllable emotional dynamics beyond lip articulation re...",
+          "tags": [
+            "audio-driven"
+          ]
+        },
+        {
           "title": "Talking Together: Synthesizing Co-Located 3D Conversations from Audio",
           "link": "https://arxiv.org/abs/2603.08674v1",
           "published": "2026-03-09T17:46:52.000Z",
@@ -241,17 +251,6 @@
           "tags": [
             "gaussian"
           ]
-        },
-        {
-          "title": "SelfieAvatar: Real-time Head Avatar reenactment from a Selfie Video",
-          "link": "https://arxiv.org/abs/2601.18851v1",
-          "published": "2026-01-26T14:26:16.000Z",
-          "authors": "Wei Liang",
-          "summary": "Head avatar reenactment focuses on creating animatable personal avatars from monocular videos, serving as a foundational element for applications like social signal understanding, gaming, human-machine interaction, and computer vision. Recent advances in 3D Morphable Model (3D...",
-          "tags": [
-            "monocular",
-            "real-time"
-          ]
         }
       ]
     },
@@ -259,6 +258,16 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "Direct Object-Level Reconstruction via Probabilistic Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2603.14316v1",
+          "published": "2026-03-15T10:17:14.000Z",
+          "authors": "Shuai Guo",
+          "summary": "Object-level 3D reconstruction play important roles across domains such as cultural heritage digitization, industrial manufacturing, and virtual reality. However, existing Gaussian Splatting-based approaches generally rely on full-scene reconstruction, in which substantial red...",
+          "tags": [
+            "gaussian"
+          ]
+        },
         {
           "title": "EmbedTalk: Triplane-Free Talking Head Synthesis using Embedding-Driven Gaussian Deformation",
           "link": "https://arxiv.org/abs/2603.07604v1",
@@ -376,17 +385,6 @@
             "audio-driven",
             "gaussian",
             "real-time"
-          ]
-        },
-        {
-          "title": "Uncertainty-Aware 4D Gaussian Splatting for Monocular Occluded Human Rendering",
-          "link": "https://arxiv.org/abs/2602.06343v1",
-          "published": "2026-02-06T03:14:37.000Z",
-          "authors": "Weiquan Wang",
-          "summary": "High-fidelity rendering of dynamic humans from monocular videos typically degrades catastrophically under occlusions. Existing solutions incorporate external priors-either hallucinating missing content via generative models, which induces severe temporal flickering, or imposin...",
-          "tags": [
-            "gaussian",
-            "monocular"
           ]
         }
       ]
