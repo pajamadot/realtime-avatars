@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-17T10:58:02.803Z",
+  "updatedAt": "2026-03-18T10:58:19.813Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -259,6 +259,30 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "M^3: Dense Matching Meets Multi-View Foundation Models for Monocular Gaussian Splatting SLAM",
+          "link": "https://arxiv.org/abs/2603.16844v1",
+          "published": "2026-03-17T17:52:37.000Z",
+          "authors": "Kerui Ren",
+          "summary": "Streaming reconstruction from uncalibrated monocular video remains challenging, as it requires both high-precision pose estimation and computationally efficient online refinement in dynamic environments. While coupling 3D foundation models with SLAM frameworks is a promising p...",
+          "tags": [
+            "gaussian",
+            "monocular",
+            "multi-view"
+          ]
+        },
+        {
+          "title": "Feed-forward Gaussian Registration for Head Avatar Creation and Editing",
+          "link": "https://arxiv.org/abs/2603.15811v1",
+          "published": "2026-03-16T18:42:30.000Z",
+          "authors": "Malte Prinzler",
+          "summary": "We present MATCH (Multi-view Avatars from Topologically Corresponding Heads), a multi-view Gaussian registration method for high-quality head avatar creation and editing. State-of-the-art multi-view head avatar methods require time-consuming head tracking followed by expensive...",
+          "tags": [
+            "diffusion",
+            "gaussian",
+            "multi-view"
+          ]
+        },
+        {
           "title": "Direct Object-Level Reconstruction via Probabilistic Gaussian Splatting",
           "link": "https://arxiv.org/abs/2603.14316v1",
           "published": "2026-03-15T10:17:14.000Z",
@@ -362,29 +386,6 @@
           "summary": "Visual navigation models often struggle in real-world dynamic environments due to limited robustness to the sim-to-real gap and the difficulty of training policies tailored to target deployment environments (e.g., households, restaurants, and factories). Although real-to-sim n...",
           "tags": [
             "gaussian"
-          ]
-        },
-        {
-          "title": "ArtisanGS: Interactive Tools for Gaussian Splat Selection with AI and Human in the Loop",
-          "link": "https://arxiv.org/abs/2602.10173v1",
-          "published": "2026-02-10T16:00:03.000Z",
-          "authors": "Clement Fuji Tsang",
-          "summary": "Representation in the family of 3D Gaussian Splats (3DGS) are growing into a viable alternative to traditional graphics for an expanding number of application, including recent techniques that facilitate physics simulation and animation. However, extracting usable objects from...",
-          "tags": [
-            "diffusion",
-            "gaussian"
-          ]
-        },
-        {
-          "title": "Toward Fine-Grained Facial Control in 3D Talking Head Generation",
-          "link": "https://arxiv.org/abs/2602.09736v1",
-          "published": "2026-02-10T12:49:50.000Z",
-          "authors": "Shaoyang Xie",
-          "summary": "Audio-driven talking head generation is a core component of digital avatars, and 3D Gaussian Splatting has shown strong performance in real-time rendering of high-fidelity talking heads. However, achieving precise control over fine-grained facial movements remains a significan...",
-          "tags": [
-            "audio-driven",
-            "gaussian",
-            "real-time"
           ]
         }
       ]
