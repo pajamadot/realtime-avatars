@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-18T10:58:19.813Z",
+  "updatedAt": "2026-03-19T10:51:59.883Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -259,6 +259,40 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "AHOY! Animatable Humans under Occlusion from YouTube Videos with Gaussian Splatting and Video Diffusion Priors",
+          "link": "https://arxiv.org/abs/2603.17975v1",
+          "published": "2026-03-18T17:39:05.000Z",
+          "authors": "Aymen Mir",
+          "summary": "We present AHOY, a method for reconstructing complete, animatable 3D Gaussian avatars from in-the-wild monocular video despite heavy occlusion. Existing methods assume unoccluded input-a fully visible subject, often in a canonical pose-excluding the vast majority of real-world...",
+          "tags": [
+            "diffusion",
+            "gaussian",
+            "monocular"
+          ]
+        },
+        {
+          "title": "CrowdGaussian: Reconstructing High-Fidelity 3D Gaussians for Human Crowd from a Single Image",
+          "link": "https://arxiv.org/abs/2603.17779v1",
+          "published": "2026-03-18T14:42:43.000Z",
+          "authors": "Yizheng Song",
+          "summary": "Single-view 3D human reconstruction has garnered significant attention in recent years. Despite numerous advancements, prior research has concentrated on reconstructing 3D models from clear, close-up images of individual subjects, often yielding subpar results in the more prev...",
+          "tags": [
+            "gaussian",
+            "monocular",
+            "transformer"
+          ]
+        },
+        {
+          "title": "SMAL-pets: SMAL Based Avatars of Pets from Single Image",
+          "link": "https://arxiv.org/abs/2603.17131v1",
+          "published": "2026-03-17T20:47:49.000Z",
+          "authors": "Piotr Borycki",
+          "summary": "Creating high-fidelity, animatable 3D dog avatars remains a formidable challenge in computer vision. Unlike human digital doubles, animal reconstruction faces a critical shortage of large-scale, annotated datasets for specialized applications. Furthermore, the immense morpholo...",
+          "tags": [
+            "monocular"
+          ]
+        },
+        {
           "title": "M^3: Dense Matching Meets Multi-View Foundation Models for Monocular Gaussian Splatting SLAM",
           "link": "https://arxiv.org/abs/2603.16844v1",
           "published": "2026-03-17T17:52:37.000Z",
@@ -280,6 +314,16 @@
             "diffusion",
             "gaussian",
             "multi-view"
+          ]
+        },
+        {
+          "title": "KGS-GCN: Enhancing Sparse Skeleton Sensing via Kinematics-Driven Gaussian Splatting and Probabilistic Topology for Action Recognition",
+          "link": "https://arxiv.org/abs/2603.16943v1",
+          "published": "2026-03-16T07:47:33.000Z",
+          "authors": "Yuhan Chen",
+          "summary": "Skeleton-based action recognition is widely utilized in sensor systems including human-computer interaction and intelligent surveillance. Nevertheless, current sensor devices typically generate sparse skeleton data as discrete coordinates, which inevitably discards fine-graine...",
+          "tags": [
+            "gaussian"
           ]
         },
         {
@@ -344,48 +388,6 @@
           "tags": [
             "gaussian",
             "monocular"
-          ]
-        },
-        {
-          "title": "Latent Gaussian Splatting for 4D Panoptic Occupancy Tracking",
-          "link": "https://arxiv.org/abs/2602.23172v1",
-          "published": "2026-02-26T16:34:49.000Z",
-          "authors": "Maximilian Luz",
-          "summary": "Capturing 4D spatiotemporal surroundings is crucial for the safe and reliable operation of robots in dynamic environments. However, most existing methods address only one side of the problem: they either provide coarse geometric tracking via bounding boxes, or detailed 3D stru...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "WildGHand: Learning Anti-Perturbation Gaussian Hand Avatars from Monocular In-the-Wild Videos",
-          "link": "https://arxiv.org/abs/2602.20556v1",
-          "published": "2026-02-24T05:14:05.000Z",
-          "authors": "Hanhui Li",
-          "summary": "Despite recent progress in 3D hand reconstruction from monocular videos, most existing methods rely on data captured in well-controlled environments and therefore degrade in real-world settings with severe perturbations, such as hand-object interactions, extreme poses, illumin...",
-          "tags": [
-            "gaussian",
-            "monocular"
-          ]
-        },
-        {
-          "title": "OMEGA-Avatar: One-shot Modeling of 360° Gaussian Avatars",
-          "link": "https://arxiv.org/abs/2602.11693v1",
-          "published": "2026-02-12T08:16:38.000Z",
-          "authors": "Zehao Xia",
-          "summary": "Creating high-fidelity, animatable 3D avatars from a single image remains a formidable challenge. We identified three desirable attributes of avatar generation: 1) the method should be feed-forward, 2) model a 360° full-head, and 3) should be animation-ready. However, current ...",
-          "tags": [
-            "gaussian",
-            "monocular"
-          ]
-        },
-        {
-          "title": "ReaDy-Go: Real-to-Sim Dynamic 3D Gaussian Splatting Simulation for Environment-Specific Visual Navigation with Moving Obstacles",
-          "link": "https://arxiv.org/abs/2602.11575v2",
-          "published": "2026-02-12T04:48:18.000Z",
-          "authors": "Seungyeon Yoo",
-          "summary": "Visual navigation models often struggle in real-world dynamic environments due to limited robustness to the sim-to-real gap and the difficulty of training policies tailored to target deployment environments (e.g., households, restaurants, and factories). Although real-to-sim n...",
-          "tags": [
-            "gaussian"
           ]
         }
       ]
