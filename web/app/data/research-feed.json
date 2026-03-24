@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-19T10:51:59.883Z",
+  "updatedAt": "2026-03-24T10:58:26.477Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -127,6 +127,29 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "EmoTaG: Emotion-Aware Talking Head Synthesis on Gaussian Splatting with Few-Shot Personalization",
+          "link": "https://arxiv.org/abs/2603.21332v1",
+          "published": "2026-03-22T17:17:01.000Z",
+          "authors": "Haolan Xu",
+          "summary": "Audio-driven 3D talking head synthesis has advanced rapidly with Neural Radiance Fields (NeRF) and 3D Gaussian Splatting (3DGS). By leveraging rich pre-trained priors, few-shot methods enable instant personalization from just a few seconds of video. However, under expressive f...",
+          "tags": [
+            "audio-driven",
+            "few-shot",
+            "gaussian"
+          ]
+        },
+        {
+          "title": "EARTalking: End-to-end GPT-style Autoregressive Talking Head Synthesis with Frame-wise Control",
+          "link": "https://arxiv.org/abs/2603.20307v1",
+          "published": "2026-03-19T15:15:17.000Z",
+          "authors": "Yuzhe Weng",
+          "summary": "Audio-driven talking head generation aims to create vivid and realistic videos from a static portrait and speech. Existing AR-based methods rely on intermediate facial representations, which limit their expressiveness and realism. Meanwhile, diffusion-based methods generate cl...",
+          "tags": [
+            "audio-driven",
+            "diffusion"
+          ]
+        },
+        {
           "title": "FreeTalk: Emotional Topology-Free 3D Talking Heads",
           "link": "https://arxiv.org/abs/2603.15512v1",
           "published": "2026-03-16T16:38:17.000Z",
@@ -229,28 +252,6 @@
             "audio-driven",
             "real-time"
           ]
-        },
-        {
-          "title": "EditYourself: Audio-Driven Generation and Manipulation of Talking Head Videos with Diffusion Transformers",
-          "link": "https://arxiv.org/abs/2601.22127v1",
-          "published": "2026-01-29T18:49:27.000Z",
-          "authors": "John Flynn",
-          "summary": "Current generative video models excel at producing novel content from text and image prompts, but leave a critical gap in editing existing pre-recorded videos, where minor alterations to the spoken script require preserving motion, temporal coherence, speaker identity, and acc...",
-          "tags": [
-            "audio-driven",
-            "diffusion",
-            "transformer"
-          ]
-        },
-        {
-          "title": "Splat-Portrait: Generalizing Talking Heads with Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2601.18633v1",
-          "published": "2026-01-26T16:06:57.000Z",
-          "authors": "Tong Shi",
-          "summary": "Talking Head Generation aims at synthesizing natural-looking talking videos from speech and a single portrait image. Previous 3D talking head generation methods have relied on domain-specific heuristics such as warping-based facial motion representation priors to animate talki...",
-          "tags": [
-            "gaussian"
-          ]
         }
       ]
     },
@@ -258,6 +259,18 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "EmoTaG: Emotion-Aware Talking Head Synthesis on Gaussian Splatting with Few-Shot Personalization",
+          "link": "https://arxiv.org/abs/2603.21332v1",
+          "published": "2026-03-22T17:17:01.000Z",
+          "authors": "Haolan Xu",
+          "summary": "Audio-driven 3D talking head synthesis has advanced rapidly with Neural Radiance Fields (NeRF) and 3D Gaussian Splatting (3DGS). By leveraging rich pre-trained priors, few-shot methods enable instant personalization from just a few seconds of video. However, under expressive f...",
+          "tags": [
+            "audio-driven",
+            "few-shot",
+            "gaussian"
+          ]
+        },
         {
           "title": "AHOY! Animatable Humans under Occlusion from YouTube Videos with Gaussian Splatting and Video Diffusion Priors",
           "link": "https://arxiv.org/abs/2603.17975v1",
@@ -272,7 +285,7 @@
         },
         {
           "title": "CrowdGaussian: Reconstructing High-Fidelity 3D Gaussians for Human Crowd from a Single Image",
-          "link": "https://arxiv.org/abs/2603.17779v1",
+          "link": "https://arxiv.org/abs/2603.17779v2",
           "published": "2026-03-18T14:42:43.000Z",
           "authors": "Yizheng Song",
           "summary": "Single-view 3D human reconstruction has garnered significant attention in recent years. Despite numerous advancements, prior research has concentrated on reconstructing 3D models from clear, close-up images of individual subjects, often yielding subpar results in the more prev...",
@@ -375,17 +388,6 @@
           "summary": "3D human reconstruction from a single image is a challenging problem and has been exclusively studied in the literature. Recently, some methods have resorted to diffusion models for guidance, optimizing a 3D representation via Score Distillation Sampling(SDS) or generating a b...",
           "tags": [
             "diffusion",
-            "gaussian",
-            "monocular"
-          ]
-        },
-        {
-          "title": "LiftAvatar: Kinematic-Space Completion for Expression-Controlled 3D Gaussian Avatar Animation",
-          "link": "https://arxiv.org/abs/2603.02129v1",
-          "published": "2026-03-02T17:46:32.000Z",
-          "authors": "Hualiang Wei",
-          "summary": "We present LiftAvatar, a new paradigm that completes sparse monocular observations in kinematic space (e.g., facial expressions and head pose) and uses the completed signals to drive high-fidelity avatar animation. LiftAvatar is a fine-grained, expression-controllable large-sc...",
-          "tags": [
             "gaussian",
             "monocular"
           ]
