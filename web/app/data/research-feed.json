@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-24T10:58:26.477Z",
+  "updatedAt": "2026-03-25T10:56:44.034Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -260,6 +260,16 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "Drop-In Perceptual Optimization for 3D Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2603.23297v1",
+          "published": "2026-03-23T17:42:49.000Z",
+          "authors": "Ezgi Ozyilkan",
+          "summary": "Despite their output being ultimately consumed by human viewers, 3D Gaussian Splatting (3DGS) methods often rely on ad-hoc combinations of pixel-level losses, resulting in blurry renderings. To address this, we systematically explore perceptual optimization strategies for 3DGS...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
           "title": "EmoTaG: Emotion-Aware Talking Head Synthesis on Gaussian Splatting with Few-Shot Personalization",
           "link": "https://arxiv.org/abs/2603.21332v1",
           "published": "2026-03-22T17:17:01.000Z",
@@ -378,18 +388,6 @@
           "summary": "The demand for large-scale digital twins is rapidly growing in robotics and autonomous driving. However, constructing these environments with 3D Gaussian Splatting (3DGS) usually requires expensive, purpose-built data collection. Meanwhile, deployed platforms routinely collect...",
           "tags": [
             "gaussian"
-          ]
-        },
-        {
-          "title": "Intrinsic Geometry-Appearance Consistency Optimization for Sparse-View Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2603.02893v1",
-          "published": "2026-03-03T11:44:46.000Z",
-          "authors": "Kaiqiang Xiong",
-          "summary": "3D human reconstruction from a single image is a challenging problem and has been exclusively studied in the literature. Recently, some methods have resorted to diffusion models for guidance, optimizing a 3D representation via Score Distillation Sampling(SDS) or generating a b...",
-          "tags": [
-            "diffusion",
-            "gaussian",
-            "monocular"
           ]
         }
       ]
