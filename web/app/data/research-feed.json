@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-25T10:56:44.034Z",
+  "updatedAt": "2026-03-31T11:01:40.818Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -128,7 +128,7 @@
       "items": [
         {
           "title": "EmoTaG: Emotion-Aware Talking Head Synthesis on Gaussian Splatting with Few-Shot Personalization",
-          "link": "https://arxiv.org/abs/2603.21332v1",
+          "link": "https://arxiv.org/abs/2603.21332v2",
           "published": "2026-03-22T17:17:01.000Z",
           "authors": "Haolan Xu",
           "summary": "Audio-driven 3D talking head synthesis has advanced rapidly with Neural Radiance Fields (NeRF) and 3D Gaussian Splatting (3DGS). By leveraging rich pre-trained priors, few-shot methods enable instant personalization from just a few seconds of video. However, under expressive f...",
@@ -181,7 +181,7 @@
         },
         {
           "title": "OMG-Avatar: One-shot Multi-LOD Gaussian Head Avatar",
-          "link": "https://arxiv.org/abs/2603.01506v1",
+          "link": "https://arxiv.org/abs/2603.01506v2",
           "published": "2026-03-02T06:30:53.000Z",
           "authors": "Jianqiang Ren",
           "summary": "We propose OMG-Avatar, a novel One-shot method that leverages a Multi-LOD (Level-of-Detail) Gaussian representation for animatable 3D head reconstruction from a single image in 0.2s. Our method enables LOD head avatar modeling using a unified model that accommodates diverse ha...",
@@ -260,6 +260,16 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "GS3LAM: Gaussian Semantic Splatting SLAM",
+          "link": "https://arxiv.org/abs/2603.27781v1",
+          "published": "2026-03-29T17:25:18.000Z",
+          "authors": "Linfei Li",
+          "summary": "Recently, the multi-modal fusion of RGB, depth, and semantics has shown great potential in dense Simultaneous Localization and Mapping (SLAM). However, a prerequisite for generating consistent semantic maps is the availability of dense, efficient, and scalable scene representa...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
           "title": "Drop-In Perceptual Optimization for 3D Gaussian Splatting",
           "link": "https://arxiv.org/abs/2603.23297v1",
           "published": "2026-03-23T17:42:49.000Z",
@@ -271,7 +281,7 @@
         },
         {
           "title": "EmoTaG: Emotion-Aware Talking Head Synthesis on Gaussian Splatting with Few-Shot Personalization",
-          "link": "https://arxiv.org/abs/2603.21332v1",
+          "link": "https://arxiv.org/abs/2603.21332v2",
           "published": "2026-03-22T17:17:01.000Z",
           "authors": "Haolan Xu",
           "summary": "Audio-driven 3D talking head synthesis has advanced rapidly with Neural Radiance Fields (NeRF) and 3D Gaussian Splatting (3DGS). By leveraging rich pre-trained priors, few-shot methods enable instant personalization from just a few seconds of video. However, under expressive f...",
@@ -376,16 +386,6 @@
           "published": "2026-03-08T09:31:15.000Z",
           "authors": "Haibao Yu",
           "summary": "High-fidelity visual reconstruction and novel-view synthesis are essential for realistic closed-loop evaluation in autonomous driving. While 4D Gaussian Splatting (4DGS) offers a promising balance of accuracy and efficiency, existing per-scene optimization methods require cost...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "Transforming Omnidirectional RGB-LiDAR data into 3D Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2603.06061v1",
-          "published": "2026-03-06T09:12:51.000Z",
-          "authors": "Semin Bae",
-          "summary": "The demand for large-scale digital twins is rapidly growing in robotics and autonomous driving. However, constructing these environments with 3D Gaussian Splatting (3DGS) usually requires expensive, purpose-built data collection. Meanwhile, deployed platforms routinely collect...",
           "tags": [
             "gaussian"
           ]

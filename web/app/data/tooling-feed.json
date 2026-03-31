@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-28T10:40:10.988Z",
+  "updatedAt": "2026-03-31T11:01:44.686Z",
   "source": "GitHub Search",
   "queries": {
     "metahuman": {
@@ -10,7 +10,7 @@
           "name": "YUANZHUO-BNU/metahuman_overview",
           "link": "https://github.com/YUANZHUO-BNU/metahuman_overview",
           "description": "",
-          "stars": 1097,
+          "stars": 1099,
           "pushedAt": "2025-01-08T10:04:36.000Z",
           "language": ""
         },
@@ -26,7 +26,7 @@
           "name": "see2023/Bert-VITS2-ext",
           "link": "https://github.com/see2023/Bert-VITS2-ext",
           "description": "Bert-VITS2. Animation testing based on Bert-VITS2.",
-          "stars": 538,
+          "stars": 539,
           "pushedAt": "2025-08-06T14:35:53.000Z",
           "language": "Python"
         },
@@ -34,7 +34,7 @@
           "name": "poly-hammer/meta-human-dna-addon",
           "link": "https://github.com/poly-hammer/meta-human-dna-addon",
           "description": "Imports MetaHuman head and body components into Blender from a their DNA files, lets you customize them, then send them back to MetaHuman Creator.",
-          "stars": 218,
+          "stars": 221,
           "pushedAt": "2026-03-24T21:51:32.000Z",
           "language": "Python"
         },
@@ -42,7 +42,7 @@
           "name": "swnolan/metahuman_facial_transfer",
           "link": "https://github.com/swnolan/metahuman_facial_transfer",
           "description": "Extracts/Transfers Metahuman Facial from exported FBX onto Maya face control board",
-          "stars": 178,
+          "stars": 180,
           "pushedAt": "2024-07-24T23:14:32.000Z",
           "language": "Python"
         },
@@ -58,7 +58,7 @@
           "name": "NxRoot/ALSV4-Metahumans",
           "link": "https://github.com/NxRoot/ALSV4-Metahumans",
           "description": "UE5 - Advanced Locomotion System (Replicated)",
-          "stars": 156,
+          "stars": 154,
           "pushedAt": "2024-05-08T00:06:54.000Z",
           "language": ""
         },
@@ -66,7 +66,7 @@
           "name": "SocAIty/py_audio2face",
           "link": "https://github.com/SocAIty/py_audio2face",
           "description": "Use the NVIDIA Audio2Face headless server and interact with it through a requests API. Generate animation sequences for Unreal Engine 5, Maya and MetaHumans",
-          "stars": 150,
+          "stars": 151,
           "pushedAt": "2025-05-01T17:23:11.000Z",
           "language": "Python"
         },
@@ -74,7 +74,7 @@
           "name": "SpookyCorgi/phiz",
           "link": "https://github.com/SpookyCorgi/phiz",
           "description": "Phiz is a tool that allows you to perform facial motion capture from any device and location.",
-          "stars": 141,
+          "stars": 142,
           "pushedAt": "2023-05-04T10:03:40.000Z",
           "language": "Svelte"
         },
@@ -96,7 +96,7 @@
           "name": "AIGC-Audio/AudioGPT",
           "link": "https://github.com/AIGC-Audio/AudioGPT",
           "description": "AudioGPT: Understanding and Generating Speech, Music, Sound, and Talking Head",
-          "stars": 10210,
+          "stars": 10207,
           "pushedAt": "2024-07-06T21:35:18.000Z",
           "language": "Python"
         },
@@ -112,7 +112,7 @@
           "name": "Kedreamix/Linly-Talker",
           "link": "https://github.com/Kedreamix/Linly-Talker",
           "description": "Digital Avatar Conversational System - Linly-Talker.  Linly-Talker is an intelligent AI system that combines large language models (LLMs) with visual models to create a novel human-AI interaction method.  It integrates various technologies like Whisper, Linly, Microsoft Speech Services, and SadTalker talking head generation system. ",
-          "stars": 3212,
+          "stars": 3217,
           "pushedAt": "2026-02-10T05:17:05.000Z",
           "language": "Python"
         },
@@ -120,7 +120,7 @@
           "name": "yuyuyzl/EasyVtuber",
           "link": "https://github.com/yuyuyzl/EasyVtuber",
           "description": "Based on Talking-head-anime 3, works like Vtube Studio.",
-          "stars": 2838,
+          "stars": 2845,
           "pushedAt": "2026-02-12T07:11:57.000Z",
           "language": "Python"
         },
@@ -128,7 +128,7 @@
           "name": "tencent-ailab/V-Express",
           "link": "https://github.com/tencent-ailab/V-Express",
           "description": "V-Express aims to generate a talking head video under the control of a reference image, an audio, and a sequence of V-Kps images.",
-          "stars": 2369,
+          "stars": 2367,
           "pushedAt": "2025-01-24T14:40:41.000Z",
           "language": "Python"
         },
@@ -144,7 +144,7 @@
           "name": "harlanhong/awesome-talking-head-generation",
           "link": "https://github.com/harlanhong/awesome-talking-head-generation",
           "description": "",
-          "stars": 1893,
+          "stars": 1891,
           "pushedAt": "2025-08-03T12:08:02.000Z",
           "language": ""
         },
@@ -152,7 +152,7 @@
           "name": "ali-vilab/dreamtalk",
           "link": "https://github.com/ali-vilab/dreamtalk",
           "description": "Official implementations for paper: DreamTalk: When Expressive Talking Head Generation Meets Diffusion Probabilistic Models",
-          "stars": 1793,
+          "stars": 1791,
           "pushedAt": "2024-01-15T19:11:17.000Z",
           "language": "Python"
         },
@@ -160,7 +160,7 @@
           "name": "ZiqiaoPeng/SyncTalk",
           "link": "https://github.com/ZiqiaoPeng/SyncTalk",
           "description": "[CVPR 2024] This is the official source for our paper \"SyncTalk: The Devil is in the Synchronization for Talking Head Synthesis\"",
-          "stars": 1626,
+          "stars": 1627,
           "pushedAt": "2025-09-18T15:00:06.000Z",
           "language": "Python"
         },
@@ -168,7 +168,7 @@
           "name": "Kedreamix/Awesome-Talking-Head-Synthesis",
           "link": "https://github.com/Kedreamix/Awesome-Talking-Head-Synthesis",
           "description": " An extensive collection of exceptional resources dedicated to the captivating world of talking face synthesis!  If you find this repo useful, please give it a star! ",
-          "stars": 1453,
+          "stars": 1459,
           "pushedAt": "2026-03-11T16:24:57.000Z",
           "language": ""
         }
@@ -182,7 +182,7 @@
           "name": "graphdeco-inria/gaussian-splatting",
           "link": "https://github.com/graphdeco-inria/gaussian-splatting",
           "description": "Original reference implementation of \"3D Gaussian Splatting for Real-Time Radiance Field Rendering\"",
-          "stars": 21153,
+          "stars": 21201,
           "pushedAt": "2025-10-17T14:28:15.000Z",
           "language": "Python"
         },
@@ -190,15 +190,15 @@
           "name": "MrNeRF/awesome-3D-gaussian-splatting",
           "link": "https://github.com/MrNeRF/awesome-3D-gaussian-splatting",
           "description": "Curated list of papers and resources focused on 3D Gaussian Splatting, intended to keep pace with the anticipated surge of research in the coming months.",
-          "stars": 8445,
-          "pushedAt": "2026-03-16T18:53:04.000Z",
+          "stars": 8460,
+          "pushedAt": "2026-03-31T08:20:01.000Z",
           "language": "HTML"
         },
         {
           "name": "nerfstudio-project/gsplat",
           "link": "https://github.com/nerfstudio-project/gsplat",
           "description": "CUDA accelerated rasterization of gaussian splatting",
-          "stars": 4737,
+          "stars": 4754,
           "pushedAt": "2026-03-25T19:47:33.000Z",
           "language": "Python"
         },
@@ -206,7 +206,7 @@
           "name": "dreamgaussian/dreamgaussian",
           "link": "https://github.com/dreamgaussian/dreamgaussian",
           "description": "[ICLR 2024 Oral] Generative Gaussian Splatting for Efficient 3D Content Creation",
-          "stars": 4312,
+          "stars": 4313,
           "pushedAt": "2024-01-02T04:12:09.000Z",
           "language": "Python"
         },
@@ -214,15 +214,15 @@
           "name": "playcanvas/supersplat",
           "link": "https://github.com/playcanvas/supersplat",
           "description": "3D Gaussian Splat Editor",
-          "stars": 4028,
-          "pushedAt": "2026-03-24T12:39:15.000Z",
+          "stars": 4054,
+          "pushedAt": "2026-03-30T18:49:35.000Z",
           "language": "TypeScript"
         },
         {
           "name": "hustvl/4DGaussians",
           "link": "https://github.com/hustvl/4DGaussians",
           "description": "[CVPR 2024] 4D Gaussian Splatting for Real-Time Dynamic Scene Rendering",
-          "stars": 3468,
+          "stars": 3485,
           "pushedAt": "2024-10-27T04:07:37.000Z",
           "language": "Jupyter Notebook"
         },
@@ -230,7 +230,7 @@
           "name": "Anttwo/SuGaR",
           "link": "https://github.com/Anttwo/SuGaR",
           "description": "[CVPR 2024] Official PyTorch implementation of SuGaR: Surface-Aligned Gaussian Splatting for Efficient 3D Mesh Reconstruction and High-Quality Mesh Rendering",
-          "stars": 3268,
+          "stars": 3276,
           "pushedAt": "2024-09-24T15:13:31.000Z",
           "language": "C++"
         },
@@ -238,7 +238,7 @@
           "name": "aras-p/UnityGaussianSplatting",
           "link": "https://github.com/aras-p/UnityGaussianSplatting",
           "description": "Toy Gaussian Splatting visualization in Unity",
-          "stars": 3189,
+          "stars": 3197,
           "pushedAt": "2025-10-17T07:21:38.000Z",
           "language": "C#"
         },
@@ -246,7 +246,7 @@
           "name": "hbb1/2d-gaussian-splatting",
           "link": "https://github.com/hbb1/2d-gaussian-splatting",
           "description": "[SIGGRAPH'24] 2D Gaussian Splatting for Geometrically Accurate Radiance Fields",
-          "stars": 3092,
+          "stars": 3100,
           "pushedAt": "2025-11-24T15:26:53.000Z",
           "language": "Python"
         },
@@ -254,7 +254,7 @@
           "name": "antimatter15/splat",
           "link": "https://github.com/antimatter15/splat",
           "description": "WebGL 3D Gaussian Splat Viewer",
-          "stars": 2932,
+          "stars": 2934,
           "pushedAt": "2025-11-16T20:20:59.000Z",
           "language": "JavaScript"
         }
