@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-31T11:01:40.818Z",
+  "updatedAt": "2026-04-03T10:52:37.174Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -260,6 +260,36 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "Director: Instance-aware Gaussian Splatting for Dynamic Scene Modeling and Understanding",
+          "link": "https://arxiv.org/abs/2604.01678v1",
+          "published": "2026-04-02T06:29:53.000Z",
+          "authors": "Yuheng Jiang",
+          "summary": "Volumetric video seeks to model dynamic scenes as temporally coherent 4D representations. While recent Gaussian-based approaches achieve impressive rendering fidelity, they primarily emphasize appearance but are largely agnostic to instance-level structure, limiting stable tra...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
+          "title": "Better Rigs, Not Bigger Networks: A Body Model Ablation for Gaussian Avatars",
+          "link": "https://arxiv.org/abs/2604.01447v1",
+          "published": "2026-04-01T22:42:57.000Z",
+          "authors": "Derek Austin",
+          "summary": "Recent 3D Gaussian splatting methods built atop SMPL achieve remarkable visual fidelity while continually increasing the complexity of the overall training architecture. We demonstrate that much of this complexity is unnecessary: by replacing SMPL with the Momentum Human Rig (...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
+          "title": "Autoregressive Appearance Prediction for 3D Gaussian Avatars",
+          "link": "https://arxiv.org/abs/2604.00928v1",
+          "published": "2026-04-01T14:07:14.000Z",
+          "authors": "Michael Steiner",
+          "summary": "A photorealistic and immersive human avatar experience demands capturing fine, person-specific details such as cloth and hair dynamics, subtle facial expressions, and characteristic motion patterns. Achieving this requires large, high-quality datasets, which often introduce am...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
           "title": "GS3LAM: Gaussian Semantic Splatting SLAM",
           "link": "https://arxiv.org/abs/2603.27781v1",
           "published": "2026-03-29T17:25:18.000Z",
@@ -355,37 +385,6 @@
           "published": "2026-03-16T07:47:33.000Z",
           "authors": "Yuhan Chen",
           "summary": "Skeleton-based action recognition is widely utilized in sensor systems including human-computer interaction and intelligent surveillance. Nevertheless, current sensor devices typically generate sparse skeleton data as discrete coordinates, which inevitably discards fine-graine...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "Direct Object-Level Reconstruction via Probabilistic Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2603.14316v1",
-          "published": "2026-03-15T10:17:14.000Z",
-          "authors": "Shuai Guo",
-          "summary": "Object-level 3D reconstruction play important roles across domains such as cultural heritage digitization, industrial manufacturing, and virtual reality. However, existing Gaussian Splatting-based approaches generally rely on full-scene reconstruction, in which substantial red...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "EmbedTalk: Triplane-Free Talking Head Synthesis using Embedding-Driven Gaussian Deformation",
-          "link": "https://arxiv.org/abs/2603.07604v1",
-          "published": "2026-03-08T12:21:47.000Z",
-          "authors": "Arpita Saggar",
-          "summary": "Real-time talking head synthesis increasingly relies on deformable 3D Gaussian Splatting (3DGS) due to its low latency. Tri-planes are the standard choice for encoding Gaussians prior to deformation, since they provide a continuous domain with explicit spatial relationships. H...",
-          "tags": [
-            "gaussian",
-            "real-time"
-          ]
-        },
-        {
-          "title": "ReconDrive: Fast Feed-Forward 4D Gaussian Splatting for Autonomous Driving Scene Reconstruction",
-          "link": "https://arxiv.org/abs/2603.07552v1",
-          "published": "2026-03-08T09:31:15.000Z",
-          "authors": "Haibao Yu",
-          "summary": "High-fidelity visual reconstruction and novel-view synthesis are essential for realistic closed-loop evaluation in autonomous driving. While 4D Gaussian Splatting (4DGS) offers a promising balance of accuracy and efficiency, existing per-scene optimization methods require cost...",
           "tags": [
             "gaussian"
           ]
