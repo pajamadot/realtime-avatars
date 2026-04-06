@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-03T10:52:37.174Z",
+  "updatedAt": "2026-04-06T11:04:08.198Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -127,6 +127,17 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "MMTalker: Multiresolution 3D Talking Head Synthesis with Multimodal Feature Fusion",
+          "link": "https://arxiv.org/abs/2604.02941v1",
+          "published": "2026-04-03T10:17:39.000Z",
+          "authors": "Bin Liu",
+          "summary": "Speech-driven three-dimensional (3D) facial animation synthesis aims to build a mapping from one-dimensional (1D) speech signals to time-varying 3D facial motion signals. Current methods still face challenges in maintaining lip-sync accuracy and producing realistic facial expr...",
+          "tags": [
+            "audio-driven",
+            "lip-sync"
+          ]
+        },
+        {
           "title": "EmoTaG: Emotion-Aware Talking Head Synthesis on Gaussian Splatting with Few-Shot Personalization",
           "link": "https://arxiv.org/abs/2603.21332v2",
           "published": "2026-03-22T17:17:01.000Z",
@@ -241,17 +252,6 @@
           "authors": "Jiayi Lyu",
           "summary": "Realistic talking-head video generation is critical for virtual avatars, film production, and interactive systems. Current methods struggle with nuanced emotional expressions due to the lack of fine-grained emotion control. To address this issue, we introduce a novel two-stage...",
           "tags": []
-        },
-        {
-          "title": "SoulX-FlashHead: Oracle-guided Generation of Infinite Real-time Streaming Talking Heads",
-          "link": "https://arxiv.org/abs/2602.07449v3",
-          "published": "2026-02-07T08:58:16.000Z",
-          "authors": "Tan Yu",
-          "summary": "Achieving a balance between high-fidelity visual quality and low-latency streaming remains a formidable challenge in audio-driven portrait generation. Existing large-scale models often suffer from prohibitive computational costs, while lightweight alternatives typically compro...",
-          "tags": [
-            "audio-driven",
-            "real-time"
-          ]
         }
       ]
     },
@@ -259,6 +259,24 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "Rendering Multi-Human and Multi-Object with 3D Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2604.02996v1",
+          "published": "2026-04-03T12:20:36.000Z",
+          "authors": "Weiquan Wang",
+          "summary": "Reconstructing dynamic scenes with multiple interacting humans and objects from sparse-view inputs is a critical yet challenging task, essential for creating high-fidelity digital twins for robotics and VR/AR. This problem, which we term Multi-Human Multi-Object (MHMO) renderi...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
+          "title": "UNICA: A Unified Neural Framework for Controllable 3D Avatars",
+          "link": "https://arxiv.org/abs/2604.02799v1",
+          "published": "2026-04-03T07:09:55.000Z",
+          "authors": "Jiahe Zhu",
+          "summary": "Controllable 3D human avatars have found widespread applications in 3D games, the metaverse, and AR/VR scenarios. The conventional approach to creating such a 3D avatar requires a lengthy, intricate pipeline encompassing appearance modeling, motion planning, rigging, and physi...",
+          "tags": []
+        },
         {
           "title": "Director: Instance-aware Gaussian Splatting for Dynamic Scene Modeling and Understanding",
           "link": "https://arxiv.org/abs/2604.01678v1",
@@ -271,7 +289,7 @@
         },
         {
           "title": "Better Rigs, Not Bigger Networks: A Body Model Ablation for Gaussian Avatars",
-          "link": "https://arxiv.org/abs/2604.01447v1",
+          "link": "https://arxiv.org/abs/2604.01447v2",
           "published": "2026-04-01T22:42:57.000Z",
           "authors": "Derek Austin",
           "summary": "Recent 3D Gaussian splatting methods built atop SMPL achieve remarkable visual fidelity while continually increasing the complexity of the overall training architecture. We demonstrate that much of this complexity is unnecessary: by replacing SMPL with the Momentum Human Rig (...",
@@ -365,28 +383,6 @@
             "gaussian",
             "monocular",
             "multi-view"
-          ]
-        },
-        {
-          "title": "Feed-forward Gaussian Registration for Head Avatar Creation and Editing",
-          "link": "https://arxiv.org/abs/2603.15811v1",
-          "published": "2026-03-16T18:42:30.000Z",
-          "authors": "Malte Prinzler",
-          "summary": "We present MATCH (Multi-view Avatars from Topologically Corresponding Heads), a multi-view Gaussian registration method for high-quality head avatar creation and editing. State-of-the-art multi-view head avatar methods require time-consuming head tracking followed by expensive...",
-          "tags": [
-            "diffusion",
-            "gaussian",
-            "multi-view"
-          ]
-        },
-        {
-          "title": "KGS-GCN: Enhancing Sparse Skeleton Sensing via Kinematics-Driven Gaussian Splatting and Probabilistic Topology for Action Recognition",
-          "link": "https://arxiv.org/abs/2603.16943v1",
-          "published": "2026-03-16T07:47:33.000Z",
-          "authors": "Yuhan Chen",
-          "summary": "Skeleton-based action recognition is widely utilized in sensor systems including human-computer interaction and intelligent surveillance. Nevertheless, current sensor devices typically generate sparse skeleton data as discrete coordinates, which inevitably discards fine-graine...",
-          "tags": [
-            "gaussian"
           ]
         }
       ]
