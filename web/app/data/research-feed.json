@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-06T11:04:08.198Z",
+  "updatedAt": "2026-04-07T11:05:33.283Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -260,6 +260,27 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "AvatarPointillist: AutoRegressive 4D Gaussian Avatarization",
+          "link": "https://arxiv.org/abs/2604.04787v1",
+          "published": "2026-04-06T15:56:50.000Z",
+          "authors": "Hongyu Liu",
+          "summary": "We introduce AvatarPointillist, a novel framework for generating dynamic 4D Gaussian avatars from a single portrait image. At the core of our method is a decoder-only Transformer that autoregressively generates a point cloud for 3D Gaussian Splatting. This sequential approach ...",
+          "tags": [
+            "gaussian",
+            "transformer"
+          ]
+        },
+        {
+          "title": "HOIGS: Human-Object Interaction Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2604.04016v1",
+          "published": "2026-04-05T08:27:28.000Z",
+          "authors": "Taewoo Kim",
+          "summary": "Reconstructing dynamic scenes with complex human-object interactions is a fundamental challenge in computer vision and graphics. Existing Gaussian Splatting methods either rely on human pose priors while neglecting dynamic objects, or approximate all motions within a single fi...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
           "title": "Rendering Multi-Human and Multi-Object with 3D Gaussian Splatting",
           "link": "https://arxiv.org/abs/2604.02996v1",
           "published": "2026-04-03T12:20:36.000Z",
@@ -361,28 +382,6 @@
             "gaussian",
             "monocular",
             "transformer"
-          ]
-        },
-        {
-          "title": "SMAL-pets: SMAL Based Avatars of Pets from Single Image",
-          "link": "https://arxiv.org/abs/2603.17131v1",
-          "published": "2026-03-17T20:47:49.000Z",
-          "authors": "Piotr Borycki",
-          "summary": "Creating high-fidelity, animatable 3D dog avatars remains a formidable challenge in computer vision. Unlike human digital doubles, animal reconstruction faces a critical shortage of large-scale, annotated datasets for specialized applications. Furthermore, the immense morpholo...",
-          "tags": [
-            "monocular"
-          ]
-        },
-        {
-          "title": "M^3: Dense Matching Meets Multi-View Foundation Models for Monocular Gaussian Splatting SLAM",
-          "link": "https://arxiv.org/abs/2603.16844v1",
-          "published": "2026-03-17T17:52:37.000Z",
-          "authors": "Kerui Ren",
-          "summary": "Streaming reconstruction from uncalibrated monocular video remains challenging, as it requires both high-precision pose estimation and computationally efficient online refinement in dynamic environments. While coupling 3D foundation models with SLAM frameworks is a promising p...",
-          "tags": [
-            "gaussian",
-            "monocular",
-            "multi-view"
           ]
         }
       ]
