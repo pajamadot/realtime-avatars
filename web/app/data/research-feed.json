@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T11:05:33.283Z",
+  "updatedAt": "2026-04-09T11:06:45.464Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -282,7 +282,7 @@
         },
         {
           "title": "Rendering Multi-Human and Multi-Object with 3D Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2604.02996v1",
+          "link": "https://arxiv.org/abs/2604.02996v2",
           "published": "2026-04-03T12:20:36.000Z",
           "authors": "Weiquan Wang",
           "summary": "Reconstructing dynamic scenes with multiple interacting humans and objects from sparse-view inputs is a critical yet challenging task, essential for creating high-fidelity digital twins for robotics and VR/AR. This problem, which we term Multi-Human Multi-Object (MHMO) renderi...",
