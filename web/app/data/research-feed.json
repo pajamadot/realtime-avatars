@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-09T11:06:45.464Z",
+  "updatedAt": "2026-04-10T11:02:36.299Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -127,6 +127,27 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "SyncBreaker:Stage-Aware Multimodal Adversarial Attacks on Audio-Driven Talking Head Generation",
+          "link": "https://arxiv.org/abs/2604.08405v1",
+          "published": "2026-04-09T16:03:24.000Z",
+          "authors": "Wenli Zhang",
+          "summary": "Diffusion-based audio-driven talking-head generation enables realistic portrait animation, but also introduces risks of misuse, such as fraud and misinformation. Existing protection methods are largely limited to a single modality, and neither image-only nor audio-only attacks...",
+          "tags": [
+            "audio-driven",
+            "diffusion"
+          ]
+        },
+        {
+          "title": "PrivFedTalk: Privacy-Aware Federated Diffusion with Identity-Stable Adapters for Personalized Talking-Head Generation",
+          "link": "https://arxiv.org/abs/2604.08037v1",
+          "published": "2026-04-09T09:41:30.000Z",
+          "authors": "Soumya Mazumdar",
+          "summary": "Talking-head generation has advanced rapidly with diffusion-based generative models, but training usually depends on centralized face-video and speech datasets, raising major privacy concerns. The problem is more acute for personalized talking-head generation, where identity-s...",
+          "tags": [
+            "diffusion"
+          ]
+        },
+        {
           "title": "MMTalker: Multiresolution 3D Talking Head Synthesis with Multimodal Feature Fusion",
           "link": "https://arxiv.org/abs/2604.02941v1",
           "published": "2026-04-03T10:17:39.000Z",
@@ -232,26 +253,6 @@
             "gaussian",
             "monocular"
           ]
-        },
-        {
-          "title": "Toward Fine-Grained Facial Control in 3D Talking Head Generation",
-          "link": "https://arxiv.org/abs/2602.09736v1",
-          "published": "2026-02-10T12:49:50.000Z",
-          "authors": "Shaoyang Xie",
-          "summary": "Audio-driven talking head generation is a core component of digital avatars, and 3D Gaussian Splatting has shown strong performance in real-time rendering of high-fidelity talking heads. However, achieving precise control over fine-grained facial movements remains a significan...",
-          "tags": [
-            "audio-driven",
-            "gaussian",
-            "real-time"
-          ]
-        },
-        {
-          "title": "AUHead: Realistic Emotional Talking Head Generation via Action Units Control",
-          "link": "https://arxiv.org/abs/2602.09534v1",
-          "published": "2026-02-10T08:45:51.000Z",
-          "authors": "Jiayi Lyu",
-          "summary": "Realistic talking-head video generation is critical for virtual avatars, film production, and interactive systems. Current methods struggle with nuanced emotional expressions due to the lack of fine-grained emotion control. To address this issue, we introduce a novel two-stage...",
-          "tags": []
         }
       ]
     },
