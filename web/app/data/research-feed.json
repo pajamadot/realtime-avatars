@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-10T11:02:36.299Z",
+  "updatedAt": "2026-04-13T11:22:32.146Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -128,7 +128,7 @@
       "items": [
         {
           "title": "SyncBreaker:Stage-Aware Multimodal Adversarial Attacks on Audio-Driven Talking Head Generation",
-          "link": "https://arxiv.org/abs/2604.08405v1",
+          "link": "https://arxiv.org/abs/2604.08405v2",
           "published": "2026-04-09T16:03:24.000Z",
           "authors": "Wenli Zhang",
           "summary": "Diffusion-based audio-driven talking-head generation enables realistic portrait animation, but also introduces risks of misuse, such as fraud and misinformation. Existing protection methods are largely limited to a single modality, and neither image-only nor audio-only attacks...",
@@ -261,6 +261,17 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "Structure-Aware Fine-Grained Gaussian Splatting for Expressive Avatar Reconstruction",
+          "link": "https://arxiv.org/abs/2604.09324v1",
+          "published": "2026-04-10T13:49:15.000Z",
+          "authors": "Yuze Su",
+          "summary": "Reconstructing photorealistic and topology-aware human avatars from monocular videos remains a significant challenge in the fields of computer vision and graphics. While existing 3D human avatar modeling approaches can effectively capture body motion, they often fail to accura...",
+          "tags": [
+            "gaussian",
+            "monocular"
+          ]
+        },
+        {
           "title": "AvatarPointillist: AutoRegressive 4D Gaussian Avatarization",
           "link": "https://arxiv.org/abs/2604.04787v1",
           "published": "2026-04-06T15:56:50.000Z",
@@ -371,18 +382,6 @@
             "diffusion",
             "gaussian",
             "monocular"
-          ]
-        },
-        {
-          "title": "CrowdGaussian: Reconstructing High-Fidelity 3D Gaussians for Human Crowd from a Single Image",
-          "link": "https://arxiv.org/abs/2603.17779v2",
-          "published": "2026-03-18T14:42:43.000Z",
-          "authors": "Yizheng Song",
-          "summary": "Single-view 3D human reconstruction has garnered significant attention in recent years. Despite numerous advancements, prior research has concentrated on reconstructing 3D models from clear, close-up images of individual subjects, often yielding subpar results in the more prev...",
-          "tags": [
-            "gaussian",
-            "monocular",
-            "transformer"
           ]
         }
       ]
