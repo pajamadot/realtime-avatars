@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-13T11:22:32.146Z",
+  "updatedAt": "2026-04-14T11:11:05.217Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -261,6 +261,28 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "Real-Time Human Reconstruction and Animation using Feed-Forward Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2604.10259v1",
+          "published": "2026-04-11T15:52:58.000Z",
+          "authors": "Devdoot Chatterjee",
+          "summary": "We present a generalizable feed-forward Gaussian splatting framework for human 3D reconstruction and real-time animation that operates directly on multi-view RGB images and their associated SMPL-X poses. Unlike prior methods that rely on depth supervision, fixed input views, U...",
+          "tags": [
+            "gaussian",
+            "multi-view",
+            "real-time"
+          ]
+        },
+        {
+          "title": "F3G-Avatar : Face Focused Full-body Gaussian Avatar",
+          "link": "https://arxiv.org/abs/2604.09835v1",
+          "published": "2026-04-10T19:08:46.000Z",
+          "authors": "Willem Menu",
+          "summary": "Existing full-body Gaussian avatar methods primarily optimize global reconstruction quality and often fail to preserve fine-grained facial geometry and expression details. This challenge arises from limited facial representational capacity that causes difficulties in modeling ...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
           "title": "Structure-Aware Fine-Grained Gaussian Splatting for Expressive Avatar Reconstruction",
           "link": "https://arxiv.org/abs/2604.09324v1",
           "published": "2026-04-10T13:49:15.000Z",
@@ -358,30 +380,6 @@
           "summary": "Despite their output being ultimately consumed by human viewers, 3D Gaussian Splatting (3DGS) methods often rely on ad-hoc combinations of pixel-level losses, resulting in blurry renderings. To address this, we systematically explore perceptual optimization strategies for 3DGS...",
           "tags": [
             "gaussian"
-          ]
-        },
-        {
-          "title": "EmoTaG: Emotion-Aware Talking Head Synthesis on Gaussian Splatting with Few-Shot Personalization",
-          "link": "https://arxiv.org/abs/2603.21332v2",
-          "published": "2026-03-22T17:17:01.000Z",
-          "authors": "Haolan Xu",
-          "summary": "Audio-driven 3D talking head synthesis has advanced rapidly with Neural Radiance Fields (NeRF) and 3D Gaussian Splatting (3DGS). By leveraging rich pre-trained priors, few-shot methods enable instant personalization from just a few seconds of video. However, under expressive f...",
-          "tags": [
-            "audio-driven",
-            "few-shot",
-            "gaussian"
-          ]
-        },
-        {
-          "title": "AHOY! Animatable Humans under Occlusion from YouTube Videos with Gaussian Splatting and Video Diffusion Priors",
-          "link": "https://arxiv.org/abs/2603.17975v1",
-          "published": "2026-03-18T17:39:05.000Z",
-          "authors": "Aymen Mir",
-          "summary": "We present AHOY, a method for reconstructing complete, animatable 3D Gaussian avatars from in-the-wild monocular video despite heavy occlusion. Existing methods assume unoccluded input-a fully visible subject, often in a canonical pose-excluding the vast majority of real-world...",
-          "tags": [
-            "diffusion",
-            "gaussian",
-            "monocular"
           ]
         }
       ]
