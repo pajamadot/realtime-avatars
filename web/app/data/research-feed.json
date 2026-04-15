@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-14T11:11:05.217Z",
+  "updatedAt": "2026-04-15T11:07:32.919Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -261,6 +261,16 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "Habitat-GS: A High-Fidelity Navigation Simulator with Dynamic Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2604.12626v1",
+          "published": "2026-04-14T11:52:59.000Z",
+          "authors": "Ziyuan Xia",
+          "summary": "Training embodied AI agents depends critically on the visual fidelity of simulation environments and the ability to model dynamic humans. Current simulators rely on mesh-based rasterization with limited visual realism, and their support for dynamic human avatars, where availab...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
           "title": "Real-Time Human Reconstruction and Animation using Feed-Forward Gaussian Splatting",
           "link": "https://arxiv.org/abs/2604.10259v1",
           "published": "2026-04-11T15:52:58.000Z",
@@ -368,16 +378,6 @@
           "published": "2026-03-29T17:25:18.000Z",
           "authors": "Linfei Li",
           "summary": "Recently, the multi-modal fusion of RGB, depth, and semantics has shown great potential in dense Simultaneous Localization and Mapping (SLAM). However, a prerequisite for generating consistent semantic maps is the availability of dense, efficient, and scalable scene representa...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "Drop-In Perceptual Optimization for 3D Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2603.23297v1",
-          "published": "2026-03-23T17:42:49.000Z",
-          "authors": "Ezgi Ozyilkan",
-          "summary": "Despite their output being ultimately consumed by human viewers, 3D Gaussian Splatting (3DGS) methods often rely on ad-hoc combinations of pixel-level losses, resulting in blurry renderings. To address this, we systematically explore perceptual optimization strategies for 3DGS...",
           "tags": [
             "gaussian"
           ]
