@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-15T11:07:32.919Z",
+  "updatedAt": "2026-04-16T11:11:42.014Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -127,6 +127,14 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "Any3DAvatar: Fast and High-Quality Full-Head 3D Avatar Reconstruction from Single Portrait Image",
+          "link": "https://arxiv.org/abs/2604.13856v1",
+          "published": "2026-04-15T13:24:47.000Z",
+          "authors": "Yujie Gao",
+          "summary": "Reconstructing a complete 3D head from a single portrait remains challenging because existing methods still face a sharp quality-speed trade-off: high-fidelity pipelines often rely on multi-stage processing and per-subject optimization, while fast feed-forward models struggle ...",
+          "tags": []
+        },
+        {
           "title": "SyncBreaker:Stage-Aware Multimodal Adversarial Attacks on Audio-Driven Talking Head Generation",
           "link": "https://arxiv.org/abs/2604.08405v2",
           "published": "2026-04-09T16:03:24.000Z",
@@ -242,17 +250,6 @@
             "audio-driven",
             "lip-sync"
           ]
-        },
-        {
-          "title": "OMEGA-Avatar: One-shot Modeling of 360° Gaussian Avatars",
-          "link": "https://arxiv.org/abs/2602.11693v1",
-          "published": "2026-02-12T08:16:38.000Z",
-          "authors": "Zehao Xia",
-          "summary": "Creating high-fidelity, animatable 3D avatars from a single image remains a formidable challenge. We identified three desirable attributes of avatar generation: 1) the method should be feed-forward, 2) model a 360° full-head, and 3) should be animation-ready. However, current ...",
-          "tags": [
-            "gaussian",
-            "monocular"
-          ]
         }
       ]
     },
@@ -260,6 +257,27 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "MSGS: Multispectral 3D Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2604.13340v1",
+          "published": "2026-04-14T23:03:38.000Z",
+          "authors": "Iris Zheng",
+          "summary": "We present a multispectral extension to 3D Gaussian Splatting (3DGS) for wavelength-aware view synthesis. Each Gaussian is augmented with spectral radiance, represented via per-band spherical harmonics, and optimized under a dual-loss supervision scheme combining RGB and multi...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
+          "title": "PatchPoison: Poisoning Multi-View Datasets to Degrade 3D Reconstruction",
+          "link": "https://arxiv.org/abs/2604.13153v1",
+          "published": "2026-04-14T18:00:00.000Z",
+          "authors": "Prajas Wadekar",
+          "summary": "3D Gaussian Splatting (3DGS) has recently enabled highly photorealistic 3D reconstruction from casually captured multi-view images. However, this accessibility raises a privacy concern: publicly available images or videos can be exploited to reconstruct detailed 3D models of s...",
+          "tags": [
+            "gaussian",
+            "multi-view"
+          ]
+        },
         {
           "title": "Habitat-GS: A High-Fidelity Navigation Simulator with Dynamic Gaussian Splatting",
           "link": "https://arxiv.org/abs/2604.12626v1",
@@ -358,26 +376,6 @@
           "published": "2026-04-01T22:42:57.000Z",
           "authors": "Derek Austin",
           "summary": "Recent 3D Gaussian splatting methods built atop SMPL achieve remarkable visual fidelity while continually increasing the complexity of the overall training architecture. We demonstrate that much of this complexity is unnecessary: by replacing SMPL with the Momentum Human Rig (...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "Autoregressive Appearance Prediction for 3D Gaussian Avatars",
-          "link": "https://arxiv.org/abs/2604.00928v1",
-          "published": "2026-04-01T14:07:14.000Z",
-          "authors": "Michael Steiner",
-          "summary": "A photorealistic and immersive human avatar experience demands capturing fine, person-specific details such as cloth and hair dynamics, subtle facial expressions, and characteristic motion patterns. Achieving this requires large, high-quality datasets, which often introduce am...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "GS3LAM: Gaussian Semantic Splatting SLAM",
-          "link": "https://arxiv.org/abs/2603.27781v1",
-          "published": "2026-03-29T17:25:18.000Z",
-          "authors": "Linfei Li",
-          "summary": "Recently, the multi-modal fusion of RGB, depth, and semantics has shown great potential in dense Simultaneous Localization and Mapping (SLAM). However, a prerequisite for generating consistent semantic maps is the availability of dense, efficient, and scalable scene representa...",
           "tags": [
             "gaussian"
           ]
