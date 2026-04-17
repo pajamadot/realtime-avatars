@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-16T11:11:42.014Z",
+  "updatedAt": "2026-04-17T11:04:12.241Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -127,6 +127,16 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "One-shot Compositional 3D Head Avatars with Deformable Hair",
+          "link": "https://arxiv.org/abs/2604.14782v1",
+          "published": "2026-04-16T08:39:37.000Z",
+          "authors": "Yuan Sun",
+          "summary": "We propose a compositional method for constructing a complete 3D head avatar from a single image. Prior one-shot holistic approaches frequently fail to produce realistic hair dynamics during animation, largely due to inadequate decoupling of hair from the facial region, result...",
+          "tags": [
+            "monocular"
+          ]
+        },
+        {
           "title": "Any3DAvatar: Fast and High-Quality Full-Head 3D Avatar Reconstruction from Single Portrait Image",
           "link": "https://arxiv.org/abs/2604.13856v1",
           "published": "2026-04-15T13:24:47.000Z",
@@ -229,27 +239,6 @@
             "gaussian",
             "monocular"
           ]
-        },
-        {
-          "title": "GeoDiff4D: Geometry-Aware Diffusion for 4D Head Avatar Reconstruction",
-          "link": "https://arxiv.org/abs/2602.24161v2",
-          "published": "2026-02-27T16:41:21.000Z",
-          "authors": "Chao Xu",
-          "summary": "Reconstructing photorealistic and animatable 4D head avatars from a single portrait image remains a fundamental challenge in computer vision. While diffusion models have enabled remarkable progress in image and video generation for avatar reconstruction, existing methods prima...",
-          "tags": [
-            "diffusion"
-          ]
-        },
-        {
-          "title": "FlowPortrait: Reinforcement Learning for Audio-Driven Portrait Video Generation",
-          "link": "https://arxiv.org/abs/2603.00159v1",
-          "published": "2026-02-25T22:08:15.000Z",
-          "authors": "Weiting Tan",
-          "summary": "Generating realistic talking-head videos remains challenging due to persistent issues such as imperfect lip synchronization, unnatural motion, and evaluation metrics that correlate poorly with human perception. We propose FlowPortrait, a reinforcement-learning framework for au...",
-          "tags": [
-            "audio-driven",
-            "lip-sync"
-          ]
         }
       ]
     },
@@ -257,6 +246,16 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "One-shot Compositional 3D Head Avatars with Deformable Hair",
+          "link": "https://arxiv.org/abs/2604.14782v1",
+          "published": "2026-04-16T08:39:37.000Z",
+          "authors": "Yuan Sun",
+          "summary": "We propose a compositional method for constructing a complete 3D head avatar from a single image. Prior one-shot holistic approaches frequently fail to produce realistic hair dynamics during animation, largely due to inadequate decoupling of hair from the facial region, result...",
+          "tags": [
+            "monocular"
+          ]
+        },
         {
           "title": "MSGS: Multispectral 3D Gaussian Splatting",
           "link": "https://arxiv.org/abs/2604.13340v1",
@@ -366,16 +365,6 @@
           "published": "2026-04-02T06:29:53.000Z",
           "authors": "Yuheng Jiang",
           "summary": "Volumetric video seeks to model dynamic scenes as temporally coherent 4D representations. While recent Gaussian-based approaches achieve impressive rendering fidelity, they primarily emphasize appearance but are largely agnostic to instance-level structure, limiting stable tra...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "Better Rigs, Not Bigger Networks: A Body Model Ablation for Gaussian Avatars",
-          "link": "https://arxiv.org/abs/2604.01447v2",
-          "published": "2026-04-01T22:42:57.000Z",
-          "authors": "Derek Austin",
-          "summary": "Recent 3D Gaussian splatting methods built atop SMPL achieve remarkable visual fidelity while continually increasing the complexity of the overall training architecture. We demonstrate that much of this complexity is unnecessary: by replacing SMPL with the Momentum Human Rig (...",
           "tags": [
             "gaussian"
           ]
