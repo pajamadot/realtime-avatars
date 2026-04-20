@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-17T11:04:12.241Z",
+  "updatedAt": "2026-04-20T11:24:13.860Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -247,6 +247,16 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "CLOTH-HUGS: Cloth Aware Human Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2604.15875v1",
+          "published": "2026-04-17T09:22:58.000Z",
+          "authors": "Sadia Mubashshira",
+          "summary": "We present Cloth-HUGS, a Gaussian Splatting based neural rendering framework for photorealistic clothed human reconstruction that explicitly disentangles body and clothing. Unlike prior methods that absorb clothing into a single body representation and struggle with loose garm...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
           "title": "One-shot Compositional 3D Head Avatars with Deformable Hair",
           "link": "https://arxiv.org/abs/2604.14782v1",
           "published": "2026-04-16T08:39:37.000Z",
@@ -358,16 +368,6 @@
           "authors": "Jiahe Zhu",
           "summary": "Controllable 3D human avatars have found widespread applications in 3D games, the metaverse, and AR/VR scenarios. The conventional approach to creating such a 3D avatar requires a lengthy, intricate pipeline encompassing appearance modeling, motion planning, rigging, and physi...",
           "tags": []
-        },
-        {
-          "title": "Director: Instance-aware Gaussian Splatting for Dynamic Scene Modeling and Understanding",
-          "link": "https://arxiv.org/abs/2604.01678v1",
-          "published": "2026-04-02T06:29:53.000Z",
-          "authors": "Yuheng Jiang",
-          "summary": "Volumetric video seeks to model dynamic scenes as temporally coherent 4D representations. While recent Gaussian-based approaches achieve impressive rendering fidelity, they primarily emphasize appearance but are largely agnostic to instance-level structure, limiting stable tra...",
-          "tags": [
-            "gaussian"
-          ]
         }
       ]
     },
