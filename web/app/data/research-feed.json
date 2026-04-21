@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-20T11:24:13.860Z",
+  "updatedAt": "2026-04-21T11:15:08.101Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -127,6 +127,17 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "EmbodiedHead: Real-Time Listening and Speaking Avatar for Conversational Agents",
+          "link": "https://arxiv.org/abs/2604.17211v1",
+          "published": "2026-04-19T02:43:00.000Z",
+          "authors": "Yu Zhang",
+          "summary": "We present EmbodiedHead, a speech-driven talking-head framework that equips LLMs with real-time visual avatars for conversation. A practical embodied avatar must achieve real-time generation, unified listening-speaking behavior, and high rendered visual quality simultaneously....",
+          "tags": [
+            "audio-driven",
+            "real-time"
+          ]
+        },
+        {
           "title": "One-shot Compositional 3D Head Avatars with Deformable Hair",
           "link": "https://arxiv.org/abs/2604.14782v1",
           "published": "2026-04-16T08:39:37.000Z",
@@ -228,17 +239,6 @@
             "diffusion",
             "real-time"
           ]
-        },
-        {
-          "title": "OMG-Avatar: One-shot Multi-LOD Gaussian Head Avatar",
-          "link": "https://arxiv.org/abs/2603.01506v2",
-          "published": "2026-03-02T06:30:53.000Z",
-          "authors": "Jianqiang Ren",
-          "summary": "We propose OMG-Avatar, a novel One-shot method that leverages a Multi-LOD (Level-of-Detail) Gaussian representation for animatable 3D head reconstruction from a single image in 0.2s. Our method enables LOD head avatar modeling using a unified model that accommodates diverse ha...",
-          "tags": [
-            "gaussian",
-            "monocular"
-          ]
         }
       ]
     },
@@ -246,6 +246,16 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "E3VS-Bench: A Benchmark for Viewpoint-Dependent Active Perception in 3D Gaussian Splatting Scenes",
+          "link": "https://arxiv.org/abs/2604.17969v1",
+          "published": "2026-04-20T08:49:39.000Z",
+          "authors": "Koya Sakamoto",
+          "summary": "Visual search in 3D environments requires embodied agents to actively explore their surroundings and acquire task-relevant evidence. However, existing visual search and embodied AI benchmarks, including EQA, typically rely on static observations or constrained egocentric motio...",
+          "tags": [
+            "gaussian"
+          ]
+        },
         {
           "title": "CLOTH-HUGS: Cloth Aware Human Gaussian Splatting",
           "link": "https://arxiv.org/abs/2604.15875v1",
@@ -332,7 +342,7 @@
         },
         {
           "title": "AvatarPointillist: AutoRegressive 4D Gaussian Avatarization",
-          "link": "https://arxiv.org/abs/2604.04787v1",
+          "link": "https://arxiv.org/abs/2604.04787v2",
           "published": "2026-04-06T15:56:50.000Z",
           "authors": "Hongyu Liu",
           "summary": "We introduce AvatarPointillist, a novel framework for generating dynamic 4D Gaussian avatars from a single portrait image. At the core of our method is a decoder-only Transformer that autoregressively generates a point cloud for 3D Gaussian Splatting. This sequential approach ...",
@@ -360,14 +370,6 @@
           "tags": [
             "gaussian"
           ]
-        },
-        {
-          "title": "UNICA: A Unified Neural Framework for Controllable 3D Avatars",
-          "link": "https://arxiv.org/abs/2604.02799v1",
-          "published": "2026-04-03T07:09:55.000Z",
-          "authors": "Jiahe Zhu",
-          "summary": "Controllable 3D human avatars have found widespread applications in 3D games, the metaverse, and AR/VR scenarios. The conventional approach to creating such a 3D avatar requires a lengthy, intricate pipeline encompassing appearance modeling, motion planning, rigging, and physi...",
-          "tags": []
         }
       ]
     },
