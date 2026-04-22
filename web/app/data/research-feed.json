@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-21T11:15:08.101Z",
+  "updatedAt": "2026-04-22T11:14:00.516Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -247,6 +247,18 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "SketchFaceGS: Real-Time Sketch-Driven Face Editing and Generation with Gaussian Splatting",
+          "link": "https://arxiv.org/abs/2604.19202v1",
+          "published": "2026-04-21T08:09:13.000Z",
+          "authors": "Bo Li",
+          "summary": "3D Gaussian representations have emerged as a powerful paradigm for digital head modeling, achieving photorealistic quality with real-time rendering. However, intuitive and interactive creation or editing of 3D Gaussian head models remains challenging. Although 2D sketches pro...",
+          "tags": [
+            "diffusion",
+            "gaussian",
+            "real-time"
+          ]
+        },
+        {
           "title": "E3VS-Bench: A Benchmark for Viewpoint-Dependent Active Perception in 3D Gaussian Splatting Scenes",
           "link": "https://arxiv.org/abs/2604.17969v1",
           "published": "2026-04-20T08:49:39.000Z",
@@ -357,16 +369,6 @@
           "published": "2026-04-05T08:27:28.000Z",
           "authors": "Taewoo Kim",
           "summary": "Reconstructing dynamic scenes with complex human-object interactions is a fundamental challenge in computer vision and graphics. Existing Gaussian Splatting methods either rely on human pose priors while neglecting dynamic objects, or approximate all motions within a single fi...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "Rendering Multi-Human and Multi-Object with 3D Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2604.02996v2",
-          "published": "2026-04-03T12:20:36.000Z",
-          "authors": "Weiquan Wang",
-          "summary": "Reconstructing dynamic scenes with multiple interacting humans and objects from sparse-view inputs is a critical yet challenging task, essential for creating high-fidelity digital twins for robotics and VR/AR. This problem, which we term Multi-Human Multi-Object (MHMO) renderi...",
           "tags": [
             "gaussian"
           ]
