@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-22T11:14:00.516Z",
+  "updatedAt": "2026-04-24T11:13:19.761Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -260,7 +260,7 @@
         },
         {
           "title": "E3VS-Bench: A Benchmark for Viewpoint-Dependent Active Perception in 3D Gaussian Splatting Scenes",
-          "link": "https://arxiv.org/abs/2604.17969v1",
+          "link": "https://arxiv.org/abs/2604.17969v2",
           "published": "2026-04-20T08:49:39.000Z",
           "authors": "Koya Sakamoto",
           "summary": "Visual search in 3D environments requires embodied agents to actively explore their surroundings and acquire task-relevant evidence. However, existing visual search and embodied AI benchmarks, including EQA, typically rely on static observations or constrained egocentric motio...",
