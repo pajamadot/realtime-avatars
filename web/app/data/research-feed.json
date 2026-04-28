@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-24T11:13:19.761Z",
+  "updatedAt": "2026-04-28T11:52:08.797Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -127,6 +127,46 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "Talker-T2AV: Joint Talking Audio-Video Generation with Autoregressive Diffusion Modeling",
+          "link": "https://arxiv.org/abs/2604.23586v1",
+          "published": "2026-04-26T07:48:47.000Z",
+          "authors": "Zhen Ye",
+          "summary": "Joint audio-video generation models have shown that unified generation yields stronger cross-modal coherence than cascaded approaches. However, existing models couple modalities throughout denoising via pervasive attention, treating high-level semantics and low-level details i...",
+          "tags": [
+            "diffusion",
+            "transformer"
+          ]
+        },
+        {
+          "title": "EAD-Net: Emotion-Aware Talking Head Generation with Spatial Refinement and Temporal Coherence",
+          "link": "https://arxiv.org/abs/2604.23325v1",
+          "published": "2026-04-25T14:29:58.000Z",
+          "authors": "Yahui Li",
+          "summary": "Emotionally talking head video generation aims to generate expressive portrait videos with accurate lip synchronization and emotional facial expressions. Current methods rely on simple emotional labels, leading to insufficient semantic information. While introducing high-level...",
+          "tags": [
+            "lip-sync"
+          ]
+        },
+        {
+          "title": "Micro-Expression-Aware Avatar Fingerprinting via Inter-Frame Feature Differencing",
+          "link": "https://arxiv.org/abs/2604.23247v1",
+          "published": "2026-04-25T10:57:39.000Z",
+          "authors": "Masoumeh Chapariniya",
+          "summary": "Avatar fingerprinting, i.e., verifying who drives a synthetic talking-head video rather than whether it is real, is a critical safeguard for authorized use of face-reenactment technology. Existing methods rely on a fixed, non-differentiable landmark extraction stage that preve...",
+          "tags": []
+        },
+        {
+          "title": "MeshLAM: Feed-Forward One-Shot Animatable Textured Mesh Avatar Reconstruction",
+          "link": "https://arxiv.org/abs/2604.22865v1",
+          "published": "2026-04-23T09:01:27.000Z",
+          "authors": "Yisheng He",
+          "summary": "We introduce MeshLAM, a feed-forward framework for one-shot animatable mesh head reconstruction that generates high-fidelity, animatable 3D head avatars from a single image. Unlike previous work that relies on time-consuming test-time optimization or extensive multi-view data,...",
+          "tags": [
+            "monocular",
+            "multi-view"
+          ]
+        },
+        {
           "title": "EmbodiedHead: Real-Time Listening and Speaking Avatar for Conversational Agents",
           "link": "https://arxiv.org/abs/2604.17211v1",
           "published": "2026-04-19T02:43:00.000Z",
@@ -209,36 +249,6 @@
             "audio-driven",
             "diffusion"
           ]
-        },
-        {
-          "title": "FreeTalk: Emotional Topology-Free 3D Talking Heads",
-          "link": "https://arxiv.org/abs/2603.15512v1",
-          "published": "2026-03-16T16:38:17.000Z",
-          "authors": "Federico Nocentini",
-          "summary": "Speech-driven 3D facial animation has advanced rapidly, yet most approaches remain tied to registered template meshes, preventing effective deployment on raw 3D scans with arbitrary topology. At the same time, modeling controllable emotional dynamics beyond lip articulation re...",
-          "tags": [
-            "audio-driven"
-          ]
-        },
-        {
-          "title": "Talking Together: Synthesizing Co-Located 3D Conversations from Audio",
-          "link": "https://arxiv.org/abs/2603.08674v1",
-          "published": "2026-03-09T17:46:52.000Z",
-          "authors": "Mengyi Shan",
-          "summary": "We tackle the challenging task of generating complete 3D facial animations for two interacting, co-located participants from a mixed audio stream. While existing methods often produce disembodied \"talking heads\" akin to a video conference call, our work is the first to explici...",
-          "tags": []
-        },
-        {
-          "title": "TempoSyncDiff: Distilled Temporally-Consistent Diffusion for Low-Latency Audio-Driven Talking Head Generation",
-          "link": "https://arxiv.org/abs/2603.06057v1",
-          "published": "2026-03-06T09:09:01.000Z",
-          "authors": "Soumya Mazumdar",
-          "summary": "Diffusion models have recently advanced photorealistic human synthesis, although practical talking-head generation (THG) remains constrained by high inference latency, temporal instability such as flicker and identity drift, and imperfect audio-visual alignment under challengi...",
-          "tags": [
-            "audio-driven",
-            "diffusion",
-            "real-time"
-          ]
         }
       ]
     },
@@ -246,6 +256,29 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "Light 'em Up: Enabling Few-Shot Low-Light 3D Gaussian Splatting with Multi-Scale Explicit Retinex Illumination Decoupling",
+          "link": "https://arxiv.org/abs/2604.24053v1",
+          "published": "2026-04-27T05:20:01.000Z",
+          "authors": "YuHao Yin",
+          "summary": "Full 360$^\\circ$ novel view synthesis under low-light conditions remains challenging. Insufficient illumination, noise amplification, and view-dependent photometric inconsistencies prevent existing methods from jointly preserving geometric consistency and photorealism. Unsuper...",
+          "tags": [
+            "diffusion",
+            "few-shot",
+            "gaussian",
+            "relighting"
+          ]
+        },
+        {
+          "title": "Bringing a Personal Point of View: Evaluating Dynamic 3D Gaussian Splatting for Egocentric Scene Reconstruction",
+          "link": "https://arxiv.org/abs/2604.23803v1",
+          "published": "2026-04-26T16:58:19.000Z",
+          "authors": "Jan Warchocki",
+          "summary": "Egocentric video provides a unique view into human perception and interaction, with growing relevance for augmented reality, robotics, and assistive technologies. However, rapid camera motion and complex scene dynamics pose major challenges for 3D reconstruction from this pers...",
+          "tags": [
+            "gaussian"
+          ]
+        },
         {
           "title": "SketchFaceGS: Real-Time Sketch-Driven Face Editing and Generation with Gaussian Splatting",
           "link": "https://arxiv.org/abs/2604.19202v1",
@@ -350,27 +383,6 @@
           "tags": [
             "gaussian",
             "monocular"
-          ]
-        },
-        {
-          "title": "AvatarPointillist: AutoRegressive 4D Gaussian Avatarization",
-          "link": "https://arxiv.org/abs/2604.04787v2",
-          "published": "2026-04-06T15:56:50.000Z",
-          "authors": "Hongyu Liu",
-          "summary": "We introduce AvatarPointillist, a novel framework for generating dynamic 4D Gaussian avatars from a single portrait image. At the core of our method is a decoder-only Transformer that autoregressively generates a point cloud for 3D Gaussian Splatting. This sequential approach ...",
-          "tags": [
-            "gaussian",
-            "transformer"
-          ]
-        },
-        {
-          "title": "HOIGS: Human-Object Interaction Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2604.04016v1",
-          "published": "2026-04-05T08:27:28.000Z",
-          "authors": "Taewoo Kim",
-          "summary": "Reconstructing dynamic scenes with complex human-object interactions is a fundamental challenge in computer vision and graphics. Existing Gaussian Splatting methods either rely on human pose priors while neglecting dynamic objects, or approximate all motions within a single fi...",
-          "tags": [
-            "gaussian"
           ]
         }
       ]
