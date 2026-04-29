@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-28T11:52:08.797Z",
+  "updatedAt": "2026-04-29T11:45:44.189Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -257,6 +257,17 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "Generalizable Human Gaussian Splatting via Multi-view Semantic Consistency",
+          "link": "https://arxiv.org/abs/2604.25466v1",
+          "published": "2026-04-28T10:12:28.000Z",
+          "authors": "Jingi Kim",
+          "summary": "Recently, generalizable human Gaussian splatting from sparse-view inputs has been actively studied for the photorealistic human rendering. Most existing methods rely on explicit geometric constraints or predefined structural representations to accurately position 3D Gaussians....",
+          "tags": [
+            "gaussian",
+            "multi-view"
+          ]
+        },
+        {
           "title": "Light 'em Up: Enabling Few-Shot Low-Light 3D Gaussian Splatting with Multi-Scale Explicit Retinex Illumination Decoupling",
           "link": "https://arxiv.org/abs/2604.24053v1",
           "published": "2026-04-27T05:20:01.000Z",
@@ -372,17 +383,6 @@
           "summary": "Existing full-body Gaussian avatar methods primarily optimize global reconstruction quality and often fail to preserve fine-grained facial geometry and expression details. This challenge arises from limited facial representational capacity that causes difficulties in modeling ...",
           "tags": [
             "gaussian"
-          ]
-        },
-        {
-          "title": "Structure-Aware Fine-Grained Gaussian Splatting for Expressive Avatar Reconstruction",
-          "link": "https://arxiv.org/abs/2604.09324v1",
-          "published": "2026-04-10T13:49:15.000Z",
-          "authors": "Yuze Su",
-          "summary": "Reconstructing photorealistic and topology-aware human avatars from monocular videos remains a significant challenge in the fields of computer vision and graphics. While existing 3D human avatar modeling approaches can effectively capture body motion, they often fail to accura...",
-          "tags": [
-            "gaussian",
-            "monocular"
           ]
         }
       ]
