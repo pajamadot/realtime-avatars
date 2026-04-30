@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-29T11:45:44.189Z",
+  "updatedAt": "2026-04-30T11:44:10.581Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -257,6 +257,17 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "Semantic Foam: Unifying Spatial and Semantic Scene Decomposition",
+          "link": "https://arxiv.org/abs/2604.26262v1",
+          "published": "2026-04-29T03:40:13.000Z",
+          "authors": "Amr Sharafeldin",
+          "summary": "Modern scene reconstruction methods, such as 3D Gaussian Splatting, enable photo-realistic novel view synthesis at real-time speeds. However, their adoption in interactive graphics applications remains limited due to the difficulty of interacting with these representations com...",
+          "tags": [
+            "gaussian",
+            "real-time"
+          ]
+        },
+        {
           "title": "Generalizable Human Gaussian Splatting via Multi-view Semantic Consistency",
           "link": "https://arxiv.org/abs/2604.25466v1",
           "published": "2026-04-28T10:12:28.000Z",
@@ -373,16 +384,6 @@
             "gaussian",
             "multi-view",
             "real-time"
-          ]
-        },
-        {
-          "title": "F3G-Avatar : Face Focused Full-body Gaussian Avatar",
-          "link": "https://arxiv.org/abs/2604.09835v1",
-          "published": "2026-04-10T19:08:46.000Z",
-          "authors": "Willem Menu",
-          "summary": "Existing full-body Gaussian avatar methods primarily optimize global reconstruction quality and often fail to preserve fine-grained facial geometry and expression details. This challenge arises from limited facial representational capacity that causes difficulties in modeling ...",
-          "tags": [
-            "gaussian"
           ]
         }
       ]
