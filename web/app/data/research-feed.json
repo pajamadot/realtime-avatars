@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-04T11:56:30.942Z",
+  "updatedAt": "2026-05-05T11:21:02.934Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -257,6 +257,16 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "HumanSplatHMR: Closing the Loop Between Human Mesh Recovery and Gaussian Splatting Avatar",
+          "link": "https://arxiv.org/abs/2605.02784v1",
+          "published": "2026-05-04T16:26:11.000Z",
+          "authors": "Yeheng Zong",
+          "summary": "Accurately recovering human pose and appearance from video is an essential component of scene reconstruction, with applications to motion capture, motion prediction, virtual reality, and digital twinning. Despite significant interest in building realistic human avatars from vi...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
           "title": "Semantic Foam: Unifying Spatial and Semantic Scene Decomposition",
           "link": "https://arxiv.org/abs/2604.26262v2",
           "published": "2026-04-29T03:40:13.000Z",
@@ -372,18 +382,6 @@
           "summary": "Training embodied AI agents depends critically on the visual fidelity of simulation environments and the ability to model dynamic humans. Current simulators rely on mesh-based rasterization with limited visual realism, and their support for dynamic human avatars, where availab...",
           "tags": [
             "gaussian"
-          ]
-        },
-        {
-          "title": "Real-Time Human Reconstruction and Animation using Feed-Forward Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2604.10259v1",
-          "published": "2026-04-11T15:52:58.000Z",
-          "authors": "Devdoot Chatterjee",
-          "summary": "We present a generalizable feed-forward Gaussian splatting framework for human 3D reconstruction and real-time animation that operates directly on multi-view RGB images and their associated SMPL-X poses. Unlike prior methods that rely on depth supervision, fixed input views, U...",
-          "tags": [
-            "gaussian",
-            "multi-view",
-            "real-time"
           ]
         }
       ]
