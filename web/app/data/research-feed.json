@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-05T11:21:02.934Z",
+  "updatedAt": "2026-05-06T11:54:43.141Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -111,14 +111,6 @@
           "tags": [
             "audio-driven"
           ]
-        },
-        {
-          "title": "Neural Face Skinning for Mesh-agnostic Facial Expression Cloning",
-          "link": "https://arxiv.org/abs/2505.22416v1",
-          "published": "2025-05-28T14:43:43.000Z",
-          "authors": "Sihun Cha",
-          "summary": "Accurately retargeting facial expressions to a face mesh while enabling manipulation is a key challenge in facial animation retargeting. Recent deep-learning methods address this by encoding facial expressions into a global latent code, but they often fail to capture fine-grai...",
-          "tags": []
         }
       ]
     },
@@ -426,11 +418,11 @@
           ]
         },
         {
-          "title": "Adaptive Receiver-Side Scheduling for Smooth Interactive Delivery",
-          "link": "https://arxiv.org/abs/2511.16902v1",
+          "title": "ARC: Consistent, Low-Latency Delivery via Receiver-Side Scheduling",
+          "link": "https://arxiv.org/abs/2511.16902v2",
           "published": "2025-11-21T02:32:33.000Z",
           "authors": "Michael Luby",
-          "summary": "Interactive applications such as cloud gaming, XR streaming, and real-time inference depend on data objects arriving at a steady cadence. In practice, network delay variation and recovery dynamics at the receiver distort this cadence even when transports deliver all packets co...",
+          "summary": "Applications such as cloud gaming, video streaming, telemetry, ML inference, and data transfer provide a better experience when data is released at the receiver with timing reflecting how the data enters the sender. In practice, network delay variation and recovery dynamics at...",
           "tags": [
             "real-time"
           ]
