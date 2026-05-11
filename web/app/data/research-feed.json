@@ -1,11 +1,21 @@
 {
-  "updatedAt": "2026-05-08T11:24:17.346Z",
+  "updatedAt": "2026-05-11T12:43:36.666Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
       "label": "MetaHuman / Graphics Pipeline",
       "query": "cat:cs.CV AND (all:metahuman OR (all:realtime AND all:facial AND all:animation) OR (all:facial AND all:retargeting AND all:rig) OR all:blendshape)",
       "items": [
+        {
+          "title": "AudioFace: Language-Assisted Speech-Driven Facial Animation with Multimodal Language Models",
+          "link": "https://arxiv.org/abs/2605.07478v1",
+          "published": "2026-05-08T09:23:29.000Z",
+          "authors": "Kai Zheng",
+          "summary": "Speech-driven facial animation requires accurate correspondence between acoustic signals and facial motion, especially for articulation-related mouth movements. However, directly mapping speech audio to facial coefficients often overlooks the linguistic and phonetic structure ...",
+          "tags": [
+            "audio-driven"
+          ]
+        },
         {
           "title": "SuperFace: Preference-Aligned Facial Expression Estimation Beyond Pseudo Supervision",
           "link": "https://arxiv.org/abs/2605.06179v1",
@@ -109,16 +119,6 @@
           "authors": "Hao Li",
           "summary": "While 3D facial animation has made impressive progress, challenges still exist in realizing fine-grained stylized 3D facial expression manipulation due to the lack of appropriate datasets. In this paper, we introduce the AUBlendSet, a 3D facial dataset based on AU-Blendshape r...",
           "tags": []
-        },
-        {
-          "title": "MEDTalk: Multimodal Controlled 3D Facial Animation with Dynamic Emotions by Disentangled Embedding",
-          "link": "https://arxiv.org/abs/2507.06071v4",
-          "published": "2025-07-08T15:14:27.000Z",
-          "authors": "Chang Liu",
-          "summary": "Audio-driven emotional 3D facial animation aims to generate synchronized lip movements and vivid facial expressions. However, most existing approaches focus on static and predefined emotion labels, limiting their diversity and naturalness. To address these challenges, we propo...",
-          "tags": [
-            "audio-driven"
-          ]
         }
       ]
     },
@@ -126,6 +126,16 @@
       "label": "Generative Video Models",
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
+        {
+          "title": "MoCoTalk: Multi-Conditional Diffusion with Adaptive Router for Controllable Talking Head Generation",
+          "link": "https://arxiv.org/abs/2605.08050v1",
+          "published": "2026-05-08T17:40:01.000Z",
+          "authors": "Xinyan Ye",
+          "summary": "Talking-head generation requires joint modeling of identity, head pose, facial expression, and mouth dynamics. Existing methods typically address only a subset of these factors, and rely on fixed-weight or heuristic fusion when multiple conditions are involved. We present MoCo...",
+          "tags": [
+            "diffusion"
+          ]
+        },
         {
           "title": "Talker-T2AV: Joint Talking Audio-Video Generation with Autoregressive Diffusion Modeling",
           "link": "https://arxiv.org/abs/2604.23586v1",
@@ -238,17 +248,6 @@
             "few-shot",
             "gaussian"
           ]
-        },
-        {
-          "title": "EARTalking: End-to-end GPT-style Autoregressive Talking Head Synthesis with Frame-wise Control",
-          "link": "https://arxiv.org/abs/2603.20307v1",
-          "published": "2026-03-19T15:15:17.000Z",
-          "authors": "Yuzhe Weng",
-          "summary": "Audio-driven talking head generation aims to create vivid and realistic videos from a static portrait and speech. Existing AR-based methods rely on intermediate facial representations, which limit their expressiveness and realism. Meanwhile, diffusion-based methods generate cl...",
-          "tags": [
-            "audio-driven",
-            "diffusion"
-          ]
         }
       ]
     },
@@ -256,6 +255,17 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "High-Fidelity Surface Splatting-Based 3D Reconstruction from Multi-View Images",
+          "link": "https://arxiv.org/abs/2605.07254v1",
+          "published": "2026-05-08T05:23:28.000Z",
+          "authors": "Nandhana Sunil",
+          "summary": "Multi-view mesh reconstruction remains a core challenge in computer graphics and vision, especially for recovering high-frequency geometry from sparse observations. Recent methods such as 3D Gaussian Splatting (3DGS) and Neural Radiance Fields (NeRF) rely on post-processing fo...",
+          "tags": [
+            "gaussian",
+            "multi-view"
+          ]
+        },
         {
           "title": "HumanSplatHMR: Closing the Loop Between Human Mesh Recovery and Gaussian Splatting Avatar",
           "link": "https://arxiv.org/abs/2605.02784v1",
@@ -372,16 +382,6 @@
           "tags": [
             "gaussian",
             "multi-view"
-          ]
-        },
-        {
-          "title": "Habitat-GS: A High-Fidelity Navigation Simulator with Dynamic Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2604.12626v1",
-          "published": "2026-04-14T11:52:59.000Z",
-          "authors": "Ziyuan Xia",
-          "summary": "Training embodied AI agents depends critically on the visual fidelity of simulation environments and the ability to model dynamic humans. Current simulators rely on mesh-based rasterization with limited visual realism, and their support for dynamic human avatars, where availab...",
-          "tags": [
-            "gaussian"
           ]
         }
       ]
