@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-21T12:49:17.199Z",
+  "updatedAt": "2026-05-22T12:27:34.695Z",
   "source": "GitHub Search",
   "queries": {
     "metahuman": {
@@ -10,7 +10,7 @@
           "name": "YUANZHUO-BNU/metahuman_overview",
           "link": "https://github.com/YUANZHUO-BNU/metahuman_overview",
           "description": "",
-          "stars": 1132,
+          "stars": 1131,
           "pushedAt": "2025-01-08T10:04:36.000Z",
           "language": ""
         },
@@ -42,7 +42,7 @@
           "name": "swnolan/metahuman_facial_transfer",
           "link": "https://github.com/swnolan/metahuman_facial_transfer",
           "description": "Extracts/Transfers Metahuman Facial from exported FBX onto Maya face control board",
-          "stars": 181,
+          "stars": 182,
           "pushedAt": "2024-07-24T23:14:32.000Z",
           "language": "Python"
         },
@@ -96,7 +96,7 @@
           "name": "AIGC-Audio/AudioGPT",
           "link": "https://github.com/AIGC-Audio/AudioGPT",
           "description": "AudioGPT: Understanding and Generating Speech, Music, Sound, and Talking Head",
-          "stars": 10182,
+          "stars": 10181,
           "pushedAt": "2024-07-06T21:35:18.000Z",
           "language": "Python"
         },
@@ -104,7 +104,7 @@
           "name": "OpenTalker/video-retalking",
           "link": "https://github.com/OpenTalker/video-retalking",
           "description": "[SIGGRAPH Asia 2022] VideoReTalking: Audio-based Lip Synchronization for Talking Head Video Editing In the Wild",
-          "stars": 7249,
+          "stars": 7247,
           "pushedAt": "2024-08-05T05:59:59.000Z",
           "language": "Python"
         },
@@ -112,7 +112,7 @@
           "name": "Kedreamix/Linly-Talker",
           "link": "https://github.com/Kedreamix/Linly-Talker",
           "description": "Digital Avatar Conversational System - Linly-Talker.  Linly-Talker is an intelligent AI system that combines large language models (LLMs) with visual models to create a novel human-AI interaction method.  It integrates various technologies like Whisper, Linly, Microsoft Speech Services, and SadTalker talking head generation system. ",
-          "stars": 3315,
+          "stars": 3316,
           "pushedAt": "2026-02-10T05:17:05.000Z",
           "language": "Python"
         },
@@ -120,7 +120,7 @@
           "name": "yuyuyzl/EasyVtuber",
           "link": "https://github.com/yuyuyzl/EasyVtuber",
           "description": "Based on Talking-head-anime 3, works like Vtube Studio.",
-          "stars": 2933,
+          "stars": 2935,
           "pushedAt": "2026-02-12T07:11:57.000Z",
           "language": "Python"
         },
@@ -168,7 +168,7 @@
           "name": "Kedreamix/Awesome-Talking-Head-Synthesis",
           "link": "https://github.com/Kedreamix/Awesome-Talking-Head-Synthesis",
           "description": " An extensive collection of exceptional resources dedicated to the captivating world of talking face synthesis!  If you find this repo useful, please give it a star! ",
-          "stars": 1500,
+          "stars": 1501,
           "pushedAt": "2026-05-20T03:36:24.000Z",
           "language": ""
         }
@@ -182,7 +182,7 @@
           "name": "graphdeco-inria/gaussian-splatting",
           "link": "https://github.com/graphdeco-inria/gaussian-splatting",
           "description": "Original reference implementation of \"3D Gaussian Splatting for Real-Time Radiance Field Rendering\"",
-          "stars": 22051,
+          "stars": 22063,
           "pushedAt": "2025-10-17T14:28:15.000Z",
           "language": "Python"
         },
@@ -198,7 +198,7 @@
           "name": "playcanvas/supersplat",
           "link": "https://github.com/playcanvas/supersplat",
           "description": "3D Gaussian Splat Editor",
-          "stars": 8502,
+          "stars": 8538,
           "pushedAt": "2026-05-20T17:36:21.000Z",
           "language": "TypeScript"
         },
@@ -206,7 +206,7 @@
           "name": "nerfstudio-project/gsplat",
           "link": "https://github.com/nerfstudio-project/gsplat",
           "description": "CUDA accelerated rasterization of gaussian splatting",
-          "stars": 5074,
+          "stars": 5078,
           "pushedAt": "2026-05-12T20:07:30.000Z",
           "language": "Python"
         },
@@ -214,7 +214,7 @@
           "name": "dreamgaussian/dreamgaussian",
           "link": "https://github.com/dreamgaussian/dreamgaussian",
           "description": "[ICLR 2024 Oral] Generative Gaussian Splatting for Efficient 3D Content Creation",
-          "stars": 4322,
+          "stars": 4323,
           "pushedAt": "2024-01-02T04:12:09.000Z",
           "language": "Python"
         },
@@ -222,7 +222,7 @@
           "name": "hustvl/4DGaussians",
           "link": "https://github.com/hustvl/4DGaussians",
           "description": "[CVPR 2024] 4D Gaussian Splatting for Real-Time Dynamic Scene Rendering",
-          "stars": 3591,
+          "stars": 3596,
           "pushedAt": "2024-10-27T04:07:37.000Z",
           "language": "Jupyter Notebook"
         },
@@ -230,7 +230,7 @@
           "name": "Anttwo/SuGaR",
           "link": "https://github.com/Anttwo/SuGaR",
           "description": "[CVPR 2024] Official PyTorch implementation of SuGaR: Surface-Aligned Gaussian Splatting for Efficient 3D Mesh Reconstruction and High-Quality Mesh Rendering",
-          "stars": 3367,
+          "stars": 3371,
           "pushedAt": "2024-09-24T15:13:31.000Z",
           "language": "C++"
         },
@@ -246,7 +246,7 @@
           "name": "hbb1/2d-gaussian-splatting",
           "link": "https://github.com/hbb1/2d-gaussian-splatting",
           "description": "[SIGGRAPH'24] 2D Gaussian Splatting for Geometrically Accurate Radiance Fields",
-          "stars": 3172,
+          "stars": 3174,
           "pushedAt": "2025-11-24T15:26:53.000Z",
           "language": "Python"
         },
@@ -254,8 +254,8 @@
           "name": "MrNeRF/LichtFeld-Studio",
           "link": "https://github.com/MrNeRF/LichtFeld-Studio",
           "description": "Train, inspect, edit, automate, and export 3D Gaussian Splatting scenes from a single native application.",
-          "stars": 3088,
-          "pushedAt": "2026-05-21T10:08:58.000Z",
+          "stars": 3091,
+          "pushedAt": "2026-05-22T10:34:21.000Z",
           "language": "C++"
         }
       ]
