@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-22T12:27:31.026Z",
+  "updatedAt": "2026-05-28T13:57:43.164Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -127,6 +127,27 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "CogPortrait: Fine-Grained Eye-Region Control in Portrait Animation via Hierarchical Agent Planning",
+          "link": "https://arxiv.org/abs/2605.28056v1",
+          "published": "2026-05-27T07:02:31.000Z",
+          "authors": "He Feng",
+          "summary": "Portrait animation methods have achieved substantial visual quality and lip synchronization, but fine-grained manipulation of the eye region still faces a trade-off between input granularity and motion accuracy. Existing methods using emotion labels or coarse text prompts are ...",
+          "tags": [
+            "lip-sync"
+          ]
+        },
+        {
+          "title": "SplitAvatar: One-shot Head Avatar with Autoregressive Gaussian Splitting",
+          "link": "https://arxiv.org/abs/2605.25751v1",
+          "published": "2026-05-25T12:02:43.000Z",
+          "authors": "Hongzhe Liao",
+          "summary": "3D Gaussian Splatting (3DGS) provides an efficient method for high-quality scene reconstruction using anisotropic Gaussians. Recently, 3DGS-based methods have significantly improved the rendering quality of human avatars while enabling real-time performance. However, existing ...",
+          "tags": [
+            "gaussian",
+            "real-time"
+          ]
+        },
+        {
           "title": "MoCoTalk: Multi-Conditional Diffusion with Adaptive Router for Controllable Talking Head Generation",
           "link": "https://arxiv.org/abs/2605.08050v1",
           "published": "2026-05-08T17:40:01.000Z",
@@ -225,29 +246,6 @@
           "tags": [
             "diffusion"
           ]
-        },
-        {
-          "title": "MMTalker: Multiresolution 3D Talking Head Synthesis with Multimodal Feature Fusion",
-          "link": "https://arxiv.org/abs/2604.02941v1",
-          "published": "2026-04-03T10:17:39.000Z",
-          "authors": "Bin Liu",
-          "summary": "Speech-driven three-dimensional (3D) facial animation synthesis aims to build a mapping from one-dimensional (1D) speech signals to time-varying 3D facial motion signals. Current methods still face challenges in maintaining lip-sync accuracy and producing realistic facial expr...",
-          "tags": [
-            "audio-driven",
-            "lip-sync"
-          ]
-        },
-        {
-          "title": "EmoTaG: Emotion-Aware Talking Head Synthesis on Gaussian Splatting with Few-Shot Personalization",
-          "link": "https://arxiv.org/abs/2603.21332v2",
-          "published": "2026-03-22T17:17:01.000Z",
-          "authors": "Haolan Xu",
-          "summary": "Audio-driven 3D talking head synthesis has advanced rapidly with Neural Radiance Fields (NeRF) and 3D Gaussian Splatting (3DGS). By leveraging rich pre-trained priors, few-shot methods enable instant personalization from just a few seconds of video. However, under expressive f...",
-          "tags": [
-            "audio-driven",
-            "few-shot",
-            "gaussian"
-          ]
         }
       ]
     },
@@ -256,11 +254,44 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "TriSplat: Simulation-Ready Feed-Forward 3D Scene Reconstruction",
+          "link": "https://arxiv.org/abs/2605.26115v1",
+          "published": "2026-05-25T17:59:53.000Z",
+          "authors": "Weijie Wang",
+          "summary": "Sparse-view 3D reconstruction is increasingly addressed with feed-forward splatting networks that predict explicit primitives directly from images. Yet most existing methods remain centered on Gaussian primitives and expose surfaces only indirectly: extracting a usable mesh fo...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
+          "title": "SplitAvatar: One-shot Head Avatar with Autoregressive Gaussian Splitting",
+          "link": "https://arxiv.org/abs/2605.25751v1",
+          "published": "2026-05-25T12:02:43.000Z",
+          "authors": "Hongzhe Liao",
+          "summary": "3D Gaussian Splatting (3DGS) provides an efficient method for high-quality scene reconstruction using anisotropic Gaussians. Recently, 3DGS-based methods have significantly improved the rendering quality of human avatars while enabling real-time performance. However, existing ...",
+          "tags": [
+            "gaussian",
+            "real-time"
+          ]
+        },
+        {
+          "title": "COSY: Compositional 3DGS Synthesis for Disentangled Human Head Editing",
+          "link": "https://arxiv.org/abs/2605.24114v1",
+          "published": "2026-05-22T18:22:04.000Z",
+          "authors": "Florian Barthel",
+          "summary": "Recent 3D Gaussian Splatting (3DGS) GANs for human heads synthesize and render photorealistic 3D models in real-time and offer a vast variety in identity and appearance. However, controlling specific semantic attributes such as hair color or glasses remains challenging, as edi...",
+          "tags": [
+            "diffusion",
+            "gaussian",
+            "real-time"
+          ]
+        },
+        {
           "title": "ForeSplat: Optimization-Aware Foresight for Feed-Forward 3D Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2605.22020v1",
+          "link": "https://arxiv.org/abs/2605.22020v2",
           "published": "2026-05-21T05:38:47.000Z",
           "authors": "Yuke Li",
-          "summary": "Feed-forward 3D Gaussian Splatting (3DGS) models offer fast single-pass reconstruction,but scaling them to match per-scene optimization quality is fundamentally hindered by the scarcity of large-scale 3D annotations.A practical compromise is predict-then-refine,where post-pred...",
+          "summary": "Feed-forward 3D Gaussian Splatting models offer fast single-pass reconstruction,but scaling them to match per-scene optimization quality is fundamentally hindered by the scarcity of large-scale 3D annotations. A practical compromise is predict-then-refine,where post-prediction...",
           "tags": [
             "gaussian"
           ]
@@ -351,38 +382,6 @@
             "few-shot",
             "gaussian",
             "relighting"
-          ]
-        },
-        {
-          "title": "Bringing a Personal Point of View: Evaluating Dynamic 3D Gaussian Splatting for Egocentric Scene Reconstruction",
-          "link": "https://arxiv.org/abs/2604.23803v1",
-          "published": "2026-04-26T16:58:19.000Z",
-          "authors": "Jan Warchocki",
-          "summary": "Egocentric video provides a unique view into human perception and interaction, with growing relevance for augmented reality, robotics, and assistive technologies. However, rapid camera motion and complex scene dynamics pose major challenges for 3D reconstruction from this pers...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "SketchFaceGS: Real-Time Sketch-Driven Face Editing and Generation with Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2604.19202v1",
-          "published": "2026-04-21T08:09:13.000Z",
-          "authors": "Bo Li",
-          "summary": "3D Gaussian representations have emerged as a powerful paradigm for digital head modeling, achieving photorealistic quality with real-time rendering. However, intuitive and interactive creation or editing of 3D Gaussian head models remains challenging. Although 2D sketches pro...",
-          "tags": [
-            "diffusion",
-            "gaussian",
-            "real-time"
-          ]
-        },
-        {
-          "title": "E3VS-Bench: A Benchmark for Viewpoint-Dependent Active Perception in 3D Gaussian Splatting Scenes",
-          "link": "https://arxiv.org/abs/2604.17969v2",
-          "published": "2026-04-20T08:49:39.000Z",
-          "authors": "Koya Sakamoto",
-          "summary": "Visual search in 3D environments requires embodied agents to actively explore their surroundings and acquire task-relevant evidence. However, existing visual search and embodied AI benchmarks, including EQA, typically rely on static observations or constrained egocentric motio...",
-          "tags": [
-            "gaussian"
           ]
         }
       ]
