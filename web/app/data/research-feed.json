@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-28T13:57:43.164Z",
+  "updatedAt": "2026-05-29T12:49:39.100Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -127,6 +127,16 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "CapTalk: Text-Guided Stylization and Speech-Driven 3D Head Animation",
+          "link": "https://arxiv.org/abs/2605.29316v1",
+          "published": "2026-05-28T03:46:11.000Z",
+          "authors": "Xuangeng Chu",
+          "summary": "Audio-driven 3D facial animation aims to generate synchronized lip movements and vivid facial expressions from arbitrary audio clips. While existing methods can produce synchronized lip motions, they often rely on predefined identity or style latent features, which limits user...",
+          "tags": [
+            "audio-driven"
+          ]
+        },
+        {
           "title": "CogPortrait: Fine-Grained Eye-Region Control in Portrait Animation via Hierarchical Agent Planning",
           "link": "https://arxiv.org/abs/2605.28056v1",
           "published": "2026-05-27T07:02:31.000Z",
@@ -236,16 +246,6 @@
             "audio-driven",
             "diffusion"
           ]
-        },
-        {
-          "title": "PrivFedTalk: Privacy-Aware Federated Diffusion with Identity-Stable Adapters for Personalized Talking-Head Generation",
-          "link": "https://arxiv.org/abs/2604.08037v1",
-          "published": "2026-04-09T09:41:30.000Z",
-          "authors": "Soumya Mazumdar",
-          "summary": "Talking-head generation has advanced rapidly with diffusion-based generative models, but training usually depends on centralized face-video and speech datasets, raising major privacy concerns. The problem is more acute for personalized talking-head generation, where identity-s...",
-          "tags": [
-            "diffusion"
-          ]
         }
       ]
     },
@@ -253,6 +253,16 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "PhyGenHOI: Physically-Aware 4D Generation of Dynamic Human-Object Interactions",
+          "link": "https://arxiv.org/abs/2605.30268v1",
+          "published": "2026-05-28T17:29:19.000Z",
+          "authors": "Omer Benishu",
+          "summary": "We address the task of generating physically accurate and visually faithful 4D Human-Object Interaction (HOI). Given a static 3D human and target object represented as 3D Gaussian Splats (3DGS), our goal is to synthesize dynamic scenes where the human actively engages with the...",
+          "tags": [
+            "gaussian"
+          ]
+        },
         {
           "title": "TriSplat: Simulation-Ready Feed-Forward 3D Scene Reconstruction",
           "link": "https://arxiv.org/abs/2605.26115v1",
@@ -369,19 +379,6 @@
           "tags": [
             "gaussian",
             "multi-view"
-          ]
-        },
-        {
-          "title": "Light 'em Up: Enabling Few-Shot Low-Light 3D Gaussian Splatting with Multi-Scale Explicit Retinex Illumination Decoupling",
-          "link": "https://arxiv.org/abs/2604.24053v1",
-          "published": "2026-04-27T05:20:01.000Z",
-          "authors": "YuHao Yin",
-          "summary": "Full 360$^\\circ$ novel view synthesis under low-light conditions remains challenging. Insufficient illumination, noise amplification, and view-dependent photometric inconsistencies prevent existing methods from jointly preserving geometric consistency and photorealism. Unsuper...",
-          "tags": [
-            "diffusion",
-            "few-shot",
-            "gaussian",
-            "relighting"
           ]
         }
       ]
