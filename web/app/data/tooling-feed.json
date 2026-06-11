@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-10T13:37:17.270Z",
+  "updatedAt": "2026-06-11T14:04:55.400Z",
   "source": "GitHub Search",
   "queries": {
     "metahuman": {
@@ -34,7 +34,7 @@
           "name": "poly-hammer/character-dna-addon",
           "link": "https://github.com/poly-hammer/character-dna-addon",
           "description": "Imports MetaHuman head and body components into Blender from a their DNA files, lets you customize them, then send them back to MetaHuman Creator.",
-          "stars": 251,
+          "stars": 252,
           "pushedAt": "2026-06-08T18:42:52.000Z",
           "language": "Python"
         },
@@ -58,7 +58,7 @@
           "name": "NxRoot/ALSV4-Metahumans",
           "link": "https://github.com/NxRoot/ALSV4-Metahumans",
           "description": "UE5 - Advanced Locomotion System (Replicated)",
-          "stars": 158,
+          "stars": 159,
           "pushedAt": "2024-05-08T00:06:54.000Z",
           "language": ""
         },
@@ -82,7 +82,7 @@
           "name": "vinjn/llm-metahuman",
           "link": "https://github.com/vinjn/llm-metahuman",
           "description": "An open solution for AI-powered photorealistic digital humans.",
-          "stars": 142,
+          "stars": 143,
           "pushedAt": "2025-07-12T19:17:58.000Z",
           "language": "Python"
         }
@@ -96,7 +96,7 @@
           "name": "AIGC-Audio/AudioGPT",
           "link": "https://github.com/AIGC-Audio/AudioGPT",
           "description": "AudioGPT: Understanding and Generating Speech, Music, Sound, and Talking Head",
-          "stars": 10178,
+          "stars": 10177,
           "pushedAt": "2024-07-06T21:35:18.000Z",
           "language": "Python"
         },
@@ -144,7 +144,7 @@
           "name": "harlanhong/awesome-talking-head-generation",
           "link": "https://github.com/harlanhong/awesome-talking-head-generation",
           "description": "",
-          "stars": 1916,
+          "stars": 1917,
           "pushedAt": "2026-04-27T04:48:12.000Z",
           "language": ""
         },
@@ -152,7 +152,7 @@
           "name": "ali-vilab/dreamtalk",
           "link": "https://github.com/ali-vilab/dreamtalk",
           "description": "Official implementations for paper: DreamTalk: When Expressive Talking Head Generation Meets Diffusion Probabilistic Models",
-          "stars": 1793,
+          "stars": 1792,
           "pushedAt": "2024-01-15T19:11:17.000Z",
           "language": "Python"
         },
@@ -168,7 +168,7 @@
           "name": "Kedreamix/Awesome-Talking-Head-Synthesis",
           "link": "https://github.com/Kedreamix/Awesome-Talking-Head-Synthesis",
           "description": " An extensive collection of exceptional resources dedicated to the captivating world of talking face synthesis!  If you find this repo useful, please give it a star! ",
-          "stars": 1513,
+          "stars": 1515,
           "pushedAt": "2026-05-20T03:36:24.000Z",
           "language": ""
         }
@@ -182,7 +182,7 @@
           "name": "graphdeco-inria/gaussian-splatting",
           "link": "https://github.com/graphdeco-inria/gaussian-splatting",
           "description": "Original reference implementation of \"3D Gaussian Splatting for Real-Time Radiance Field Rendering\"",
-          "stars": 22312,
+          "stars": 22327,
           "pushedAt": "2025-10-17T14:28:15.000Z",
           "language": "Python"
         },
@@ -190,7 +190,7 @@
           "name": "playcanvas/supersplat",
           "link": "https://github.com/playcanvas/supersplat",
           "description": "3D Gaussian Splat Editor",
-          "stars": 9091,
+          "stars": 9111,
           "pushedAt": "2026-06-04T14:38:59.000Z",
           "language": "TypeScript"
         },
@@ -198,7 +198,7 @@
           "name": "MrNeRF/awesome-3D-gaussian-splatting",
           "link": "https://github.com/MrNeRF/awesome-3D-gaussian-splatting",
           "description": "Curated list of papers and resources focused on 3D Gaussian Splatting, intended to keep pace with the anticipated surge of research in the coming months.",
-          "stars": 8682,
+          "stars": 8683,
           "pushedAt": "2026-06-10T09:23:29.000Z",
           "language": "HTML"
         },
@@ -206,7 +206,7 @@
           "name": "nerfstudio-project/gsplat",
           "link": "https://github.com/nerfstudio-project/gsplat",
           "description": "CUDA accelerated rasterization of gaussian splatting",
-          "stars": 5178,
+          "stars": 5183,
           "pushedAt": "2026-06-09T17:25:53.000Z",
           "language": "Python"
         },
@@ -214,7 +214,7 @@
           "name": "dreamgaussian/dreamgaussian",
           "link": "https://github.com/dreamgaussian/dreamgaussian",
           "description": "[ICLR 2024 Oral] Generative Gaussian Splatting for Efficient 3D Content Creation",
-          "stars": 4331,
+          "stars": 4330,
           "pushedAt": "2024-01-02T04:12:09.000Z",
           "language": "Python"
         },
@@ -222,7 +222,7 @@
           "name": "hustvl/4DGaussians",
           "link": "https://github.com/hustvl/4DGaussians",
           "description": "[CVPR 2024] 4D Gaussian Splatting for Real-Time Dynamic Scene Rendering",
-          "stars": 3701,
+          "stars": 3731,
           "pushedAt": "2024-10-27T04:07:37.000Z",
           "language": "Jupyter Notebook"
         },
@@ -230,7 +230,7 @@
           "name": "Anttwo/SuGaR",
           "link": "https://github.com/Anttwo/SuGaR",
           "description": "[CVPR 2024] Official PyTorch implementation of SuGaR: Surface-Aligned Gaussian Splatting for Efficient 3D Mesh Reconstruction and High-Quality Mesh Rendering",
-          "stars": 3406,
+          "stars": 3407,
           "pushedAt": "2024-09-24T15:13:31.000Z",
           "language": "C++"
         },
@@ -238,9 +238,17 @@
           "name": "aras-p/UnityGaussianSplatting",
           "link": "https://github.com/aras-p/UnityGaussianSplatting",
           "description": "Toy Gaussian Splatting visualization in Unity",
-          "stars": 3327,
+          "stars": 3330,
           "pushedAt": "2025-10-17T07:21:38.000Z",
           "language": "C#"
+        },
+        {
+          "name": "MrNeRF/LichtFeld-Studio",
+          "link": "https://github.com/MrNeRF/LichtFeld-Studio",
+          "description": "Train, inspect, edit, automate, and export 3D Gaussian Splatting scenes from a single native application.",
+          "stars": 3204,
+          "pushedAt": "2026-06-11T12:10:29.000Z",
+          "language": "C++"
         },
         {
           "name": "hbb1/2d-gaussian-splatting",
@@ -249,14 +257,6 @@
           "stars": 3198,
           "pushedAt": "2025-11-24T15:26:53.000Z",
           "language": "Python"
-        },
-        {
-          "name": "MrNeRF/LichtFeld-Studio",
-          "link": "https://github.com/MrNeRF/LichtFeld-Studio",
-          "description": "Train, inspect, edit, automate, and export 3D Gaussian Splatting scenes from a single native application.",
-          "stars": 3194,
-          "pushedAt": "2026-06-10T12:28:12.000Z",
-          "language": "C++"
         }
       ]
     },
