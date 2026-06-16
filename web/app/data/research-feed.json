@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-12T13:32:10.919Z",
+  "updatedAt": "2026-06-16T15:15:20.649Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -125,6 +125,29 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "EmoZone-Talker: Regional Semantic Control of Audio-Driven 3DGS Talking Heads via Facial Action Units",
+          "link": "https://arxiv.org/abs/2606.15848v1",
+          "published": "2026-06-14T15:10:05.000Z",
+          "authors": "Tingting Chen",
+          "summary": "3D Gaussian Splatting (3DGS) has shown strong potential for high-fidelity talking head synthesis. However, enabling fine-grained, interpretable, and editable facial expression control remains fundamentally challenging due to intrinsic conflicts between speech-driven facial dyn...",
+          "tags": [
+            "audio-driven",
+            "diffusion",
+            "gaussian"
+          ]
+        },
+        {
+          "title": "SpatialAvatar-0: High-Quality 4D Head Avatar with Multi-Stage Reconstruction",
+          "link": "https://arxiv.org/abs/2606.15659v1",
+          "published": "2026-06-14T07:55:57.000Z",
+          "authors": "Yiran Wang",
+          "summary": "High-quality 4D head avatars from one or a few source portraits are central to telepresence, AR/VR, and digital-human interaction. 3D Gaussian Splatting (3DGS) has emerged as the dominant representation, with two complementary regimes (generalizable feed-forward predictors and...",
+          "tags": [
+            "gaussian",
+            "telepresence"
+          ]
+        },
+        {
           "title": "ReFree: Towards Realistic Co-Speech Video Generation via Reward-Free RL and Multilevel Speech Guidance",
           "link": "https://arxiv.org/abs/2606.13304v1",
           "published": "2026-06-11T13:00:58.000Z",
@@ -135,11 +158,11 @@
           ]
         },
         {
-          "title": "PrismAvatar: Pseudo-Multiview Reconstruction and Subpixel Prism Rendering for Real-Time Stereoscopic Communication",
-          "link": "https://arxiv.org/abs/2606.10550v1",
+          "title": "LentiAvatar: Pseudo-Multiview Reconstruction and Subpixel Prism Rendering for Real-Time Stereoscopic Communication",
+          "link": "https://arxiv.org/abs/2606.10550v2",
           "published": "2026-06-09T08:17:51.000Z",
           "authors": "Chufeng Fang",
-          "summary": "Real-time stereoscopic video communication has long been a goal of immersive telepresence, yet practical systems still require specialized capture rigs or reduce remote users to a single portrait view. We present PrismAvatar, a Gaussian head-avatar system that connects monocul...",
+          "summary": "Real-time stereoscopic video communication has long been a goal of immersive telepresence, yet practical systems still require specialized capture rigs or reduce remote users to a single portrait view. We present LentiAvatar, a Gaussian head-avatar system that connects monocul...",
           "tags": [
             "gaussian",
             "multi-view",
@@ -228,25 +251,6 @@
           "tags": [
             "lip-sync"
           ]
-        },
-        {
-          "title": "Micro-Expression-Aware Avatar Fingerprinting via Inter-Frame Feature Differencing",
-          "link": "https://arxiv.org/abs/2604.23247v1",
-          "published": "2026-04-25T10:57:39.000Z",
-          "authors": "Masoumeh Chapariniya",
-          "summary": "Avatar fingerprinting, i.e., verifying who drives a synthetic talking-head video rather than whether it is real, is a critical safeguard for authorized use of face-reenactment technology. Existing methods rely on a fixed, non-differentiable landmark extraction stage that preve...",
-          "tags": []
-        },
-        {
-          "title": "MeshLAM: Feed-Forward One-Shot Animatable Textured Mesh Avatar Reconstruction",
-          "link": "https://arxiv.org/abs/2604.22865v1",
-          "published": "2026-04-23T09:01:27.000Z",
-          "authors": "Yisheng He",
-          "summary": "We introduce MeshLAM, a feed-forward framework for one-shot animatable mesh head reconstruction that generates high-fidelity, animatable 3D head avatars from a single image. Unlike previous work that relies on time-consuming test-time optimization or extensive multi-view data,...",
-          "tags": [
-            "monocular",
-            "multi-view"
-          ]
         }
       ]
     },
@@ -254,6 +258,29 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "EmoZone-Talker: Regional Semantic Control of Audio-Driven 3DGS Talking Heads via Facial Action Units",
+          "link": "https://arxiv.org/abs/2606.15848v1",
+          "published": "2026-06-14T15:10:05.000Z",
+          "authors": "Tingting Chen",
+          "summary": "3D Gaussian Splatting (3DGS) has shown strong potential for high-fidelity talking head synthesis. However, enabling fine-grained, interpretable, and editable facial expression control remains fundamentally challenging due to intrinsic conflicts between speech-driven facial dyn...",
+          "tags": [
+            "audio-driven",
+            "diffusion",
+            "gaussian"
+          ]
+        },
+        {
+          "title": "SpatialAvatar-0: High-Quality 4D Head Avatar with Multi-Stage Reconstruction",
+          "link": "https://arxiv.org/abs/2606.15659v1",
+          "published": "2026-06-14T07:55:57.000Z",
+          "authors": "Yiran Wang",
+          "summary": "High-quality 4D head avatars from one or a few source portraits are central to telepresence, AR/VR, and digital-human interaction. 3D Gaussian Splatting (3DGS) has emerged as the dominant representation, with two complementary regimes (generalizable feed-forward predictors and...",
+          "tags": [
+            "gaussian",
+            "telepresence"
+          ]
+        },
         {
           "title": "FreeStreamGS: Online Feed-forward 3D Gaussian Splatting from Unposed Streaming Inputs",
           "link": "https://arxiv.org/abs/2606.03254v1",
@@ -357,27 +384,6 @@
           "published": "2026-05-18T12:49:53.000Z",
           "authors": "Beizhen Zhao",
           "summary": "While 3D Gaussian Splatting (3DGS) has revolutionized real-time photorealistic view synthesis, its fundamental reliance on symmetric Gaussian distributions introduces visual artifacts that hinder accurate spatial data exploration. Specifically, symmetric kernels struggle to ca...",
-          "tags": [
-            "gaussian",
-            "real-time"
-          ]
-        },
-        {
-          "title": "UAV-Assisted Scan-to-Simulation for Landslides Using Physics-Informed Gaussian Splatting",
-          "link": "https://arxiv.org/abs/2605.10715v1",
-          "published": "2026-05-11T15:25:21.000Z",
-          "authors": "Zhenyu Liang",
-          "summary": "Landslide monitoring and simulation play an important role in urban safety assessment and disaster prevention. Existing landslide simulation pipelines typically rely on digital elevation model and mesh-based representations, which are suitable for geometric analysis, but often...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "SDTalk: Structured Facial Priors and Dual-Branch Motion Fields for Generalizable Gaussian Talking Head Synthesis",
-          "link": "https://arxiv.org/abs/2605.09956v1",
-          "published": "2026-05-11T04:05:20.000Z",
-          "authors": "Peng Jia",
-          "summary": "High-quality, real-time talking head synthesis remains a fundamental challenge in computer vision. Existing reconstruction- and rendering-based methods typically rely on identity-specific models, limiting cross-identity generalization. To address this issue, we propose SDTalk,...",
           "tags": [
             "gaussian",
             "real-time"
