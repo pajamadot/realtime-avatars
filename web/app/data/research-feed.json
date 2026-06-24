@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-18T13:33:08.432Z",
+  "updatedAt": "2026-06-24T12:23:26.430Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -259,6 +259,16 @@
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
         {
+          "title": "ArtiTwinSplat: Interactable Digital Twin Reconstruction via Gaussian Splatting from RGB-D videos",
+          "link": "https://arxiv.org/abs/2606.24628v1",
+          "published": "2026-06-23T14:24:07.000Z",
+          "authors": "Pranjal Mishra",
+          "summary": "Deploying robots in unstructured real-world environments needs accurate, interactive models of the objects. Constructing these models at scale remains a critical bottleneck for robotic system integration. We present ArtiTwinSplat, a framework that automatically constructs arti...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
           "title": "Hand-4DGS: Feed-Forward 3D Gaussian Splatting for 4D Hand Reconstruction from Egocentric Videos",
           "link": "https://arxiv.org/abs/2606.19156v1",
           "published": "2026-06-17T14:58:37.000Z",
@@ -374,18 +384,6 @@
           "authors": "Hongzhe Liao",
           "summary": "3D Gaussian Splatting (3DGS) provides an efficient method for high-quality scene reconstruction using anisotropic Gaussians. Recently, 3DGS-based methods have significantly improved the rendering quality of human avatars while enabling real-time performance. However, existing ...",
           "tags": [
-            "gaussian",
-            "real-time"
-          ]
-        },
-        {
-          "title": "COSY: Compositional 3DGS Synthesis for Disentangled Human Head Editing",
-          "link": "https://arxiv.org/abs/2605.24114v1",
-          "published": "2026-05-22T18:22:04.000Z",
-          "authors": "Florian Barthel",
-          "summary": "Recent 3D Gaussian Splatting (3DGS) GANs for human heads synthesize and render photorealistic 3D models in real-time and offer a vast variety in identity and appearance. However, controlling specific semantic attributes such as hair color or glasses remains challenging, as edi...",
-          "tags": [
-            "diffusion",
             "gaussian",
             "real-time"
           ]
