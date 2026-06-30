@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T12:23:26.430Z",
+  "updatedAt": "2026-06-30T12:16:37.660Z",
   "source": "arXiv",
   "methods": {
     "metahuman": {
@@ -125,6 +125,17 @@
       "query": "cat:cs.CV AND ((all:\"talking head\" OR all:\"portrait animation\" OR all:\"head avatar\" OR all:reenactment) AND (all:audio OR all:speech OR all:lip OR all:avatar))",
       "items": [
         {
+          "title": "FFAvatar: Feed-Forward 4D Head Avatar Reconstruction from Sparse Portrait Images",
+          "link": "https://arxiv.org/abs/2606.30347v1",
+          "published": "2026-06-29T14:21:33.000Z",
+          "authors": "Jianjiang Yao",
+          "summary": "We present FFAvatar, a Transformer-based 3D Gaussian framework for fast construction of high-quality and animatable 4D head avatars from one or more reference portrait images. Unlike existing feed-forward approaches that require a fixed number of input views, FFAvatar supports...",
+          "tags": [
+            "gaussian",
+            "transformer"
+          ]
+        },
+        {
           "title": "EmoZone-Talker: Regional Semantic Control of Audio-Driven 3DGS Talking Heads via Facial Action Units",
           "link": "https://arxiv.org/abs/2606.15848v1",
           "published": "2026-06-14T15:10:05.000Z",
@@ -241,16 +252,6 @@
             "diffusion",
             "transformer"
           ]
-        },
-        {
-          "title": "EAD-Net: Emotion-Aware Talking Head Generation with Spatial Refinement and Temporal Coherence",
-          "link": "https://arxiv.org/abs/2604.23325v1",
-          "published": "2026-04-25T14:29:58.000Z",
-          "authors": "Yahui Li",
-          "summary": "Emotionally talking head video generation aims to generate expressive portrait videos with accurate lip synchronization and emotional facial expressions. Current methods rely on simple emotional labels, leading to insufficient semantic information. While introducing high-level...",
-          "tags": [
-            "lip-sync"
-          ]
         }
       ]
     },
@@ -258,6 +259,38 @@
       "label": "Gaussian Splatting (3DGS)",
       "query": "cat:cs.CV AND (all:gaussian AND (all:splatting OR all:\"gaussian splatting\" OR all:3dgs) AND (all:avatar OR all:human OR all:head OR all:talking OR all:conversation OR all:\"large avatar\"))",
       "items": [
+        {
+          "title": "L2D2-GS: Learning to Densify for Feedforward Dynamic Gaussian Scene Reconstruction",
+          "link": "https://arxiv.org/abs/2606.29374v1",
+          "published": "2026-06-28T12:51:17.000Z",
+          "authors": "Zetian Song",
+          "summary": "High-fidelity reconstruction of dynamic urban environments is a cornerstone of autonomous driving simulation and large-scale world modeling. While 3D Gaussian Splatting (3DGS) has established a new standard for real-time rendering, its reliance on expensive per-scene optimizat...",
+          "tags": [
+            "gaussian",
+            "real-time"
+          ]
+        },
+        {
+          "title": "RAGA: Real Time Ray Traced Gaussian Shadow Casting for 3DGS Avatar-Scene Interaction",
+          "link": "https://arxiv.org/abs/2606.29329v1",
+          "published": "2026-06-28T10:55:32.000Z",
+          "authors": "Aymen Mir",
+          "summary": "We study the problem of physically plausible shadow casting when animating 3D Gaussian Splatting (3DGS) avatars, either individually or in multi-avatar and object-interaction scenarios, within existing 3DGS scenes. In contrast to prior methods that rely on binary hit tests and...",
+          "tags": [
+            "gaussian"
+          ]
+        },
+        {
+          "title": "CoGS: Compositional Dynamic Human-Object Scenes Gaussian Splatting from Monocular Video",
+          "link": "https://arxiv.org/abs/2606.28820v1",
+          "published": "2026-06-27T09:10:22.000Z",
+          "authors": "Jerrin Bright",
+          "summary": "Reconstructing dynamic human--object interaction scenes from monocular video is difficult because the human, manipulated object, and background obey different motion models while sharing the same pixels. Existing dynamic radiance-field and Gaussian-splatting methods often enta...",
+          "tags": [
+            "gaussian",
+            "monocular"
+          ]
+        },
         {
           "title": "ArtiTwinSplat: Interactable Digital Twin Reconstruction via Gaussian Splatting from RGB-D videos",
           "link": "https://arxiv.org/abs/2606.24628v1",
@@ -352,37 +385,6 @@
           "published": "2026-05-30T00:30:11.000Z",
           "authors": "Adrian Ramlal",
           "summary": "Integrating dynamic 3D reconstructions into physics simulation requires fixed mesh topology for efficient collision detection, but state-of-the-art methods like DG-Mesh produce varying topology optimized for geometric quality. We investigate whether topology conversion can ena...",
-          "tags": [
-            "gaussian",
-            "real-time"
-          ]
-        },
-        {
-          "title": "PhyGenHOI: Physically-Aware 4D Generation of Dynamic Human-Object Interactions",
-          "link": "https://arxiv.org/abs/2605.30268v1",
-          "published": "2026-05-28T17:29:19.000Z",
-          "authors": "Omer Benishu",
-          "summary": "We address the task of generating physically accurate and visually faithful 4D Human-Object Interaction (HOI). Given a static 3D human and target object represented as 3D Gaussian Splats (3DGS), our goal is to synthesize dynamic scenes where the human actively engages with the...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "TriSplat: Simulation-Ready Feed-Forward 3D Scene Reconstruction",
-          "link": "https://arxiv.org/abs/2605.26115v1",
-          "published": "2026-05-25T17:59:53.000Z",
-          "authors": "Weijie Wang",
-          "summary": "Sparse-view 3D reconstruction is increasingly addressed with feed-forward splatting networks that predict explicit primitives directly from images. Yet most existing methods remain centered on Gaussian primitives and expose surfaces only indirectly: extracting a usable mesh fo...",
-          "tags": [
-            "gaussian"
-          ]
-        },
-        {
-          "title": "SplitAvatar: One-shot Head Avatar with Autoregressive Gaussian Splitting",
-          "link": "https://arxiv.org/abs/2605.25751v1",
-          "published": "2026-05-25T12:02:43.000Z",
-          "authors": "Hongzhe Liao",
-          "summary": "3D Gaussian Splatting (3DGS) provides an efficient method for high-quality scene reconstruction using anisotropic Gaussians. Recently, 3DGS-based methods have significantly improved the rendering quality of human avatars while enabling real-time performance. However, existing ...",
           "tags": [
             "gaussian",
             "real-time"
